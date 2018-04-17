@@ -1,0 +1,38 @@
+.pagination {
+	display: block;
+	text-align: center;
+	clear: both;
+	margin: 1.5em auto;
+	padding: 0 1em;
+	font-weight: bold;
+}
+
+/* All buttons */
+.pagination span,
+.pagination a {
+	display: inline-block;
+	text-align: center;
+	min-width: 2em;
+	border-radius: 2px;
+	padding: 1px 5px;
+}
+
+.pagination span {
+	color: #fff;
+	background: $darkGray;
+	border: solid 1px $darkGray;
+}
+
+.pagination span:hover {
+	cursor: not-allowed;
+}
+
+.pagination a {
+	border: solid 1px $darkGray;
+	color: #000;
+}
+
+.pagination a:hover,
+.pagination a:active {
+	background: $lightGray;
+}

@@ -1,0 +1,40 @@
+/* Hamburger
+==================== */
+
+#hamburger-container {
+	opacity: .9;
+	height: 1.8em;
+	position: fixed;
+	font-size: 1.7em;
+	line-height: 1.8em;
+	background: $lightPink;
+	transition: all 300ms;
+	z-index: 2;
+	text-align: center;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+#hamburger {
+	position: fixed;
+	cursor: pointer;
+	padding: .4em;
+	color: #313131;
+	left: .55em;
+}
+
+.hamburger-up {
+	width: 100%;
+	padding-left: .6em;
+}
+
+.hamburger-down {
+	width: 1.8em;
+	position: fixed;
+	margin: .5em;
+	border-radius: 3px;
+	border: solid 1px #b8b8b8;
+}
+.hamburger:hover {
+	background: $mainHover;
+}

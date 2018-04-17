@@ -1,0 +1,64 @@
+.single-container {
+	padding-top: .5em;
+	background: #fff;
+}
+
+.single-image {
+	text-align: center;
+	padding: 0 1em; 
+}
+
+.single-image img {
+	width: 80%;
+	height: auto;
+	border: 1px dotted $darkPink;
+	border-radius: 2px;
+	transition: transform 300ms;
+}
+
+.single-image img:hover {
+	transform: scale(1.3);
+}
+
+.single-info {
+	width: 84%;
+	padding: 1em 8%;
+	font-weight: bold;
+}
+
+.single-status {
+	color: $gray;
+}
+
+.single-info span {
+	display: block;
+}
+
+.single-price {
+	font-size: 3em;
+	line-height: .9;
+	text-align: right;
+}
+
+.single-price span {
+	font-size: .5em;
+	margin-right: 3px;
+	font-weight: normal;
+}
+
+.single-title {
+	font-size: 1.5em;
+}
+
+.single-intro {
+	padding: 2em 0 3em 0;
+	color: $gray;
+	font-size: .93em;
+}
+
+.sidebar {
+	background:#F2F2F2;
+	padding-top: .5em;
+	margin-top: 2em;
+	border-top: 1px dotted $darkPink;
+}

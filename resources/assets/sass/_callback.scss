@@ -1,0 +1,71 @@
+#overlay {
+	background: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	z-index: 9;
+	transition: opacity 500ms;
+	opacity: 0;
+	display: none;
+}
+
+#popup-callback {
+	height: auto;
+	position: fixed;
+	top: -20em;
+	left: 10%;
+	right: 10%;
+	background: $lightPink;
+	z-index: 10;
+	border-radius: 4px;
+	transition: top 600ms, bottom 200ms;
+}
+
+.callback-form {
+	padding: 1em;
+}
+
+.callback-form input {
+	width: 80%;
+	height: 2em;
+	margin: 0 10% .2em 10%;
+	padding: 0 1em;
+	border-radius: 2em;
+	border: 1px solid $darkPink;
+	font-size: 1rem;
+	color: $darkGray;
+	font-weight: bold;
+}
+
+.callback-form input:last-of-type {
+	background: $pink;
+}
+
+.callback-form label {
+	display: block;
+	padding: .5em;
+	text-align: center;
+	font-size: 0.9em;
+	font-weight: bold;
+}
+
+#close-popup-form-btn {
+	width: 80%;
+	height: 2em;
+	line-height: 2em;
+	text-align: center;
+	display: block;
+	margin: 0 10%;
+	border-radius: 2em;
+	border: 1px solid #dbc7c7;
+	padding: 0 1em;
+	color: $darkGray;
+	font-weight: bold;
+}
+
+.callback-form input:last-of-type:hover,
+#close-popup-form-btn:hover {
+	background: $darkPink;
+}

@@ -1,0 +1,28 @@
+.home-banner img {
+	width: 100%;
+}
+
+.contact-container {
+	height: auto;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	background: #EDE3ED;
+	font-weight: bold;
+	font-size: .9em;
+	padding: .4em 0;
+	box-shadow: inset 0 15px 8px -16px #111;
+	clear: both;
+	transition: transform .5s;
+	transform: scaleY(0);
+	animation: appearContactContainer 500ms ease-in-out 100ms 1 normal forwards;
+}
+
+.contact-item {
+	display: flex;
+	align-items: center;
+}
+
+.gsm-operator {
+	margin: 0 .3em;
+}

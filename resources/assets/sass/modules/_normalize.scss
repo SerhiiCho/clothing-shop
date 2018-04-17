@@ -1,0 +1,37 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%
+}
+
+body {
+	line-height: 1.6;
+	font-family: $mainFont;
+}
+
+a {
+	text-decoration: none;
+	color: #444;
+}
+
+img {
+	max-width: 100%;
+}
+
+li {
+	list-style: none;
+}
+
+main {
+	padding-top: 3em;
+}
+
+textarea, input {
+	font-family: Arial, Helvetica, sans-serif;
+}
