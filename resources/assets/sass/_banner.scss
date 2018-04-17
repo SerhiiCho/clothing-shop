@@ -2,12 +2,14 @@
 	position: relative;
 	max-height: 1000px;
 	overflow: hidden;
-}
 
-.main-banner img {
-    width: 100%;
-    overflow: hidden;
-    animation: fade-in 500ms;
+	&:hover .imgbanbtn {
+		display: block;
+	}
+
+	img {
+		width: 100%;
+	}
 }
 
 .imgbanbtn {
@@ -24,21 +26,17 @@
     background-size: 40%;
     background-position: center;
     background-repeat: no-repeat;
-    display: none;
-}
+	display: none;
 
-.main-banner:hover .imgbanbtn {
-    display: block;
-}
-
-.imgbanbtn:hover {
-    opacity: 0.8;
-}
-
-.imgbanbtn-prev {
-    left: .31rem;
-}
-
-.imgbanbtn-next {
-    right: .31rem;
+	&:hover {
+		opacity: 0.8;
+	}
+	
+	&-prev {
+		left: .31rem;
+	}
+	
+	&-next {
+		right: .31rem;
+	}
 }

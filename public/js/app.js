@@ -3941,74 +3941,9 @@ var app = new Vue({
 	el: '#app'
 });
 
-// Variables
-var littleButtons = document.querySelectorAll(".imgbanbtn"); // prev[0], next[1]
-var allImages = document.querySelectorAll(".bannerImg"); // [0][1][2]
-var currentImage = 0;
-var timing = 5000;
-var i = 0;
-
-// Functions
-function reset() {
-	for (var _i = 0; _i < allImages.length; _i++) {
-		allImages[_i].style.display = "none";
-	}
-}
-
-function autoChangeImage() {
-	reset();
-	allImages[i].style.display = "block";
-
-	// Check If Index Is Under Max
-	if (i < allImages.length - 1) {
-		i++;
-	} else {
-		i = 0;
-	}
-}
-
-Object(__WEBPACK_IMPORTED_MODULE_0_core_js__["setInterval"])(function () {
-	return autoChangeImage();
-}, timing);
-
-function startSlide() {
-	reset();
-	allImages[0].style.display = "block";
-}
-
-function slideLeft() {
-	reset();
-	allImages[currentImage - 1].style.display = "block";
-	currentImage--;
-}
-
-function slideRight() {
-	reset();
-	allImages[currentImage + 1].style.display = "block";
-	currentImage++;
-}
-
-// Events
-littleButtons[0].addEventListener("click", function () {
-	if (currentImage === 0) {
-		currentImage = allImages.length;
-	}
-	slideLeft();
-});
-
-littleButtons[1].addEventListener("click", function () {
-	if (currentImage === allImages.length - 1) {
-		currentImage = -1;
-	}
-	slideRight();
-});
-
-// Running
-window.onload = autoChangeImage;
-startSlide();
-
-var opened = false;
-
+/**
+ * JQUERY SUCKS
+ */
 $('#hamburger').on('click', function () {
 	$('#nav-menu').css('top', '0');
 	$('#hamburger-container').css('opacity', '0');
@@ -20480,7 +20415,7 @@ if (false) {
 var disposed = false
 var normalizeComponent = __webpack_require__(130)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(358)
 /* template */
 var __vue_template__ = __webpack_require__(352)
 /* template functional */
@@ -20528,38 +20463,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "main-banner" }, [
-      _c("div", {
-        staticClass: "imgbanbtn imgbanbtn-prev",
-        staticStyle: { "background-image": "url(storage/img/arrow-left.png)" }
-      }),
-      _vm._v(" "),
-      _c("picture", { staticClass: "bannerImg" }, [
-        _c("img", { attrs: { src: "storage/img/banner/1.jpg", alt: "banner" } })
-      ]),
-      _vm._v(" "),
-      _c("picture", { staticClass: "bannerImg" }, [
-        _c("img", { attrs: { src: "storage/img/banner/2.jpg", alt: "banner" } })
-      ]),
-      _vm._v(" "),
-      _c("picture", { staticClass: "bannerImg" }, [
-        _c("img", { attrs: { src: "storage/img/banner/3.jpg", alt: "banner" } })
-      ]),
-      _vm._v(" "),
-      _c("div", {
-        staticClass: "imgbanbtn imgbanbtn-next",
-        staticStyle: { "background-image": "url(storage/img/arrow-right.png)" }
+  return _c("div", { staticClass: "main-banner" }, [
+    _c("div", {
+      staticClass: "imgbanbtn imgbanbtn-prev",
+      staticStyle: { "background-image": "url(storage/img/arrow-left.png)" },
+      on: { click: _vm.prev }
+    }),
+    _vm._v(" "),
+    _c("div", [
+      _c("img", {
+        attrs: {
+          src: _vm.images[Math.abs(_vm.currentNumber) % _vm.images.length],
+          alt: "banner"
+        },
+        on: { mouseover: _vm.stopRotation, mouseout: _vm.startRotation }
       })
-    ])
-  }
-]
+    ]),
+    _vm._v(" "),
+    _c("div", {
+      staticClass: "imgbanbtn imgbanbtn-next",
+      staticStyle: { "background-image": "url(storage/img/arrow-right.png)" },
+      on: { click: _vm.next }
+    })
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -20574,6 +20502,66 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 354 */,
+/* 355 */,
+/* 356 */,
+/* 357 */,
+/* 358 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			images: ['storage/img/banner/1.jpg', 'storage/img/banner/2.jpg', 'storage/img/banner/3.jpg'],
+			currentNumber: 0
+		};
+	},
+	created: function created() {
+		this.startRotation();
+	},
+
+
+	methods: {
+		startRotation: function startRotation() {
+			this.timer = setInterval(this.next, 5000);
+		},
+
+		stopRotation: function stopRotation() {
+			clearTimeout(this.timer);
+			this.timer = null;
+		},
+
+		next: function next() {
+			this.currentNumber += 1;
+		},
+
+		prev: function prev() {
+			this.currentNumber -= 1;
+		}
+	}
+});
 
 /***/ })
 /******/ ]);

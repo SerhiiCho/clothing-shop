@@ -1381,11 +1381,12 @@ input {
   overflow: hidden;
 }
 
+.main-banner:hover .imgbanbtn {
+  display: block;
+}
+
 .main-banner img {
   width: 100%;
-  overflow: hidden;
-  -webkit-animation: fade-in 500ms;
-          animation: fade-in 500ms;
 }
 
 .imgbanbtn {
@@ -1404,10 +1405,6 @@ input {
   background-position: center;
   background-repeat: no-repeat;
   display: none;
-}
-
-.main-banner:hover .imgbanbtn {
-  display: block;
 }
 
 .imgbanbtn:hover {
@@ -1996,26 +1993,6 @@ footer a:hover {
   to {
     -webkit-transform: scaleY(1);
             transform: scaleY(1);
-  }
-}
-
-@-webkit-keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }
 
