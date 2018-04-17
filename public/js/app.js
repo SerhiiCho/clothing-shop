@@ -3944,6 +3944,14 @@ var app = new Vue({
  * JQUERY SUCKS
  */
 
+var opened = false;
+
+$('#hamburger').on('click', function () {
+	$('#nav-menu').css('top', '0');
+	$('#hamburger-container').css('opacity', '0');
+	opened = true;
+});
+
 $('#close-nav-menu').on('click', function () {
 	$('#nav-menu').css('top', '-25em');
 	$('#hamburger-container').css('opacity', '0.9');
@@ -3971,7 +3979,7 @@ $(window).scroll(function () {
 		$('#logo-clothing').css('opacity', '1');
 		$('#hamburger-container').removeClass('hamburger-down');
 		setTimeout(function () {
-			return id('logo-clothing').css('display', 'block');
+			return $('#logo-clothing').css('display', 'block');
 		}, 250);
 	}
 });

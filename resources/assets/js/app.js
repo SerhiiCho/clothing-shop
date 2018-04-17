@@ -25,6 +25,14 @@ const app = new Vue({
  * JQUERY SUCKS
  */
 
+var opened = false
+
+$('#hamburger').on('click', function() {
+	$('#nav-menu').css('top', '0');
+	$('#hamburger-container').css('opacity', '0');
+    opened = true
+});
+
 $('#close-nav-menu').on('click', function() {
 	$('#nav-menu').css('top', '-25em');
 	$('#hamburger-container').css('opacity', '0.9');
@@ -47,7 +55,7 @@ $(window).scroll(function() {
     } else {
 		$('#logo-clothing').css('opacity', '1');
 		$('#hamburger-container').removeClass('hamburger-down');
-		setTimeout(() => id('logo-clothing').css('display', 'block'), 250)
+		setTimeout(() => $('#logo-clothing').css('display', 'block'), 250)
     }
 });
 
