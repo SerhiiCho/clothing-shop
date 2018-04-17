@@ -1,3 +1,16 @@
+<div class="hamburger-up" id="hamburger-container">
+	<div id="hamburger">
+		<i>
+			<span class="lines line1"></span>
+			<span class="lines line2"></span>
+			<span class="lines line3"></span>
+		</i>
+	</div>
+	<a href="/" title="Главная" id="logo-clothing" style="color:#000;">
+		Clothing Shop
+	</a>
+</div>
+
 <!-- Popup window -->
 <div id="overlay"></div>
 <div id="popup-callback">
@@ -24,7 +37,6 @@
 	<a href="#" title="Перезвоните мне" id="header-callback" class="nav-and-header-btns">Перезвоните мне</a>
 </header>
 
-<!-- Navigation -->
 <nav id="nav-menu" class="top-nav">
 	<ul>
 		<a href="/" title="Главная" class="nav-logo">Clothing</a>

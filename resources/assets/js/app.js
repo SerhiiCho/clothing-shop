@@ -15,7 +15,6 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
 Vue.component('banner', require('./components/Banner.vue'));
 
 const app = new Vue({
@@ -25,11 +24,6 @@ const app = new Vue({
 /**
  * JQUERY SUCKS
  */
-$('#hamburger').on('click', function() {
-	$('#nav-menu').css('top', '0');
-	$('#hamburger-container').css('opacity', '0');
-    opened = true
-});
 
 $('#close-nav-menu').on('click', function() {
 	$('#nav-menu').css('top', '-25em');
