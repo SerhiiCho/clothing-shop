@@ -10,20 +10,19 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-	<div class="hamburger-up" id="hamburger-container">
-		<div id="hamburger">
-			<i>
-				<span class="lines line1"></span>
-				<span class="lines line2"></span>
-				<span class="lines line3"></span>
-			</i>
-		</div>
-		<a href="/" title="Главная" id="logo-clothing" style="color:#000;">
-			Clothing Shop
-		</a>
-	</div>
-		
 	<main id="app">
+		<div class="hamburger-up" id="hamburger-container">
+			<div id="hamburger">
+				<i>
+					<span class="lines line1"></span>
+					<span class="lines line2"></span>
+					<span class="lines line3"></span>
+				</i>
+			</div>
+			<a href="/" title="Главная" id="logo-clothing" style="color:#000;">
+				Clothing Shop
+			</a>
+		</div>
 		@include('includes.nav')
 
 		@include('includes.gsm')
