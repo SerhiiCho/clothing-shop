@@ -18,8 +18,8 @@ mix.js('resources/assets/js/app.js', 'public/js')
 		scrollRestoreTechnique: 'cookie',
 		files: [
 			'resources/views/**/*.blade.php',
-			'public/js/app.js',
-			'public/css/app.css'
+			'public/js/*.js',
+			'public/css/*.css'
 		]
 	})
 	.disableNotifications()

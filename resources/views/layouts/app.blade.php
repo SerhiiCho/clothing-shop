@@ -10,9 +10,30 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+	<div class="hamburger-up" id="hamburger-container">
+		<div id="hamburger">
+			<i>
+				<span class="lines line1"></span>
+				<span class="lines line2"></span>
+				<span class="lines line3"></span>
+			</i>
+		</div>
+		<a href="/" title="Главная" id="logo-clothing" style="color:#000;">
+			Clothing Shop
+		</a>
+	</div>
+		
 	<main id="app">
+		@include('includes.nav')
+
+		@include('includes.gsm')
+		
 		@yield('content')
+		
+		@include('includes.footer')
 	</main>
+
+	<script src="{{ asset('js/jquery.js') }}" defer></script>
 	<script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>

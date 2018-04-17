@@ -1,7 +1,5 @@
 <template>
-	<div>
-		<h1>Русский текст</h1>
-	</div>
+	<h1>Русский текст</h1>
 </template>
 
 <script>

@@ -3,7 +3,7 @@
 
 #hamburger-container {
 	opacity: .9;
-	height: 1.8em;
+	height: 50px;
 	position: fixed;
 	font-size: 1.7em;
 	line-height: 1.8em;
@@ -13,19 +13,38 @@
 	text-align: center;
 	font-weight: bold;
 	text-transform: uppercase;
-}
-
-#hamburger {
-	position: fixed;
 	cursor: pointer;
-	padding: .4em;
-	color: #313131;
-	left: .55em;
+
+	#hamburger {
+		width: 26px;
+		height: 33px;
+		position: absolute;
+		color: #313131;
+		top: 50%;
+		margin-top: -17px;
+		display: block;
+	
+		.lines {
+			width: 26px;
+			height: 4px;
+			left: 0px;
+			background: #000;
+			position: absolute;
+			border-radius: 5px;
+		}
+		
+		.line1 { top: 8px; }
+		.line2 { top: 16px; }
+		.line3 { top: 24px; }
+	}
 }
 
 .hamburger-up {
 	width: 100%;
-	padding-left: .6em;
+
+	#hamburger {
+		left: 15px;
+	}
 }
 
 .hamburger-down {
@@ -34,7 +53,11 @@
 	margin: .5em;
 	border-radius: 3px;
 	border: solid 1px #b8b8b8;
+
+	#hamburger {
+		left: 11px;
+	}
 }
 .hamburger:hover {
-	background: $mainHover;
+	background: $darkGray;
 }
