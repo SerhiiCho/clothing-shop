@@ -35,3 +35,10 @@
 	padding: .4em 2em;
 	font-size: 1.5em;
 }
+
+@media (min-width: 768px) {
+	.one-of-three-cards img {
+		width: 96%;
+		margin: 0 2%;
+	}
+}

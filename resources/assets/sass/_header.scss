@@ -43,3 +43,29 @@ header {
 .nav-and-header-btns {
 	background: #554d4d;
 }
+
+@media (min-width: 840px) {
+	header {
+		display: flex;
+		align-items: center;
+		min-height: 4em;
+		background: $lightPink;
+	}
+	.header-logo {
+		display: inline-block;
+		font-size: 1.5em;
+		padding: 0 1.5em;
+	}
+	.nav-logo {
+		display: none;
+	}
+	.nav-search input {
+		display: none;
+	}
+	.header-search input {
+		width: 18em;
+	}
+	#nav-callback {
+		display: none;
+	}
+}

@@ -26,3 +26,28 @@
 .top-nav li a:hover {
 	color: #d67d7d;
 }
+
+@media (min-width: 840px) {
+	#hamburger-container {
+		display: none;
+	}
+	.top-nav {
+		position: initial;
+		width: 100%;
+		height: 3.2em;
+		margin: 0;
+		top: 0em;
+		border: none;
+	}
+	.top-nav ul {
+		padding: .3em;
+	}
+	.top-nav li {
+		margin-right: 1em;
+		display: inline-block;
+	}
+	.top-nav li a {
+		width: auto;
+		padding: .3em .2em;
+	}
+}

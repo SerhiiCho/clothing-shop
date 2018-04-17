@@ -48,3 +48,15 @@
 .card-status {
 	font-size: .8em !important;
 }
+
+@media (min-width: 500px) {
+	.card {
+		height: 340px;
+	}
+	.card img {
+		width: 180px;
+	}
+	.card-price {
+		width: 180px;
+	}
+}

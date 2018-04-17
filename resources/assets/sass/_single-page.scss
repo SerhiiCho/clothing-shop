@@ -62,3 +62,13 @@
 	margin-top: 2em;
 	border-top: 1px dotted $darkPink;
 }
+
+@media (min-width: 500px) {
+	.single-image img {
+		width: 100%;
+	}
+	
+	.single-info {
+		padding: 1em;
+	}
+}
