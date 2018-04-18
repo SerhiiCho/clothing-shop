@@ -1,8 +1,39 @@
+.unstyled-list {
+	list-style: none;
+}
+
 .center {
 	text-align: center;
 }
 
-.message {
-	padding: .5em;
-	background: $pink;
+.heading {
+	height: 3em;
+	line-height: 3em;
+	font-size: 1.3em;
+	margin-bottom: .3em;
+	text-align: center;
 }
+
+.block {
+	display: block;
+	margin: auto;
+}
+
+.spacer {
+	padding: 8px 0;
+}
+
+.message {
+	display: inline-block;
+	padding: .5em 1em;
+	transition: transform 300ms;
+	animation: appearFromLeft 8s;
+	animation-fill-mode: forwards;
+	font-size: .9em;
+	color: #fff;
+	border-radius: 5px;
+	margin-top: .5em;
+}
+
+.error { background: #d34343; }
+.success { background: #3da355; }

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="col-xs-12 home-cards-heading center" style="background:#F2F2F2;">Все</section>
+<section class="heading" style="background:#F2F2F2;">Все</section>
 <section class="main-content">
 	<div class="container">
 		<div class="row">

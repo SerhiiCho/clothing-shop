@@ -2,3 +2,31 @@
 	from { transform: scaleY(0); }
 	to { transform: scaleY(1); }
 }
+
+@keyframes appearFromLeft {
+	// Appears
+	0% {
+		margin-left: -100em;
+		transform: scaleY(0);
+		position: static;
+	}
+	5% {
+		margin-left: 50%;
+		transform: translateX(-50%);
+		position: static;
+	}
+	80% {
+		margin-left: 50%;
+		transform: translateX(-50%);
+		position: static;
+	}
+	// Goes away
+	90% {
+		margin-left: -100em;
+		transform: scaleY(0);
+	}
+	100% {
+		position: absolute;
+		left: -100em;
+	}
+}

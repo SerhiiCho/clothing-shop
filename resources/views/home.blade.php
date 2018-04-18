@@ -5,7 +5,7 @@
 	<banner></banner>
 
 	<!-- 3 Cards -->
-	<section class="col-xs-12 home-cards-heading center">
+	<section class="heading">
 		Сезонные категории
 	</section>
 	<div class="row center three-cards">
@@ -30,8 +30,8 @@
 	</div>
 
 	<!-- Content -->
-	<section class="col-xs-12 home-cards-heading center" style="background:#F2F2F2;">Популярное</section>
 	<section class="main-content">
+		<section class="heading" style="background:#F2F2F2;">Популярное</section>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-2 col-md-3 col-xs-6 col-sm-4 card">

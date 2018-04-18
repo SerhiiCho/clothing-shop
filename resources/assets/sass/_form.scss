@@ -1,0 +1,60 @@
+.form {
+	width: 100%;
+	max-width: 30em;
+	margin: auto;
+	padding-bottom: 1em;
+
+	input[type=email], input[type=password], input[type=text], label {
+		width: 80%;
+		display: block;
+		margin: auto;
+		color: $darkGray;
+	}
+
+	input[type=email], input[type=password], input[type=text] {
+		height: 2em;
+		border-radius: 5px;
+		border: solid 2px $darkPink;
+		font-size: 1rem;
+		padding: 0 .5em;
+		outline-color: $gray;
+	}
+
+	input[type=checkbox] {
+		width: 16px;
+		height: 16px;
+		margin-top: 3px;
+		margin-right: .5em;
+		background: coral;
+	}
+
+	.checkbox {
+		width: 80%;
+		font-size: .9em;
+		margin: .5em auto;
+		display: flex;
+		align-self: center;
+	}
+
+	label {
+		font-size: .85em;
+		margin-top: .2em;
+		padding-left: .1em;
+	}
+
+	.btn {
+		width: 80%;
+		height: 2.3em;
+		border: solid 2px $darkPink;
+		padding: .3em 1em;
+		background: $lightPink;
+		border-radius: 4px;
+		cursor: pointer;
+		transition: background 200ms;
+
+		&:hover {
+			background: $pink;
+			transition: background 200ms;
+		}
+	}
+}

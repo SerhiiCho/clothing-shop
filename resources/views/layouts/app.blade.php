@@ -12,9 +12,11 @@
 <body>
 	<main id="app">
 		@include('includes.nav')
-
+		
 		@include('includes.gsm')
 		
+		@include('includes.messages')
+
 		@yield('content')
 		
 		@include('includes.footer')
