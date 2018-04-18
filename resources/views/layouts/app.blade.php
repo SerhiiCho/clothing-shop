@@ -7,7 +7,8 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<script>window.Laravel = { csrfToken: '{{ csrf_token() }}' }</script>
     <title>{{ config('app.name', '') }}</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ asset('storage/img/favicon.png') }}" type="image/x-icon">
 </head>
 <body>
 	<main id="app">

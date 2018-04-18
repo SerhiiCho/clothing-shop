@@ -2,8 +2,8 @@
 
 @section('content')
 
-<section class="heading" style="background:#F2F2F2;">Все</section>
 <section class="main-content">
+	<section class="heading" style="background:#F2F2F2;">Все</section>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-2 col-md-3 col-xs-6 col-sm-4 card">

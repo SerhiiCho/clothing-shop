@@ -40,7 +40,7 @@
 
 		<!-- Sidebar -->
 		<div class="col-xs-12 sidebar">
-			<section class="heading">Еще товары</section>
+			<section class="heading">@lang('messages.more_clothes')</section>
 			<div class="row">
 				<div class="col-lg-2 col-md-3 col-xs-6 col-sm-4 card">
 					<a href="#" title="#">

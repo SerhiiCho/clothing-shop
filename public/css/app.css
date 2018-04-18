@@ -1395,6 +1395,30 @@ footer a:hover {
   color: #999;
 }
 
+.languages {
+  padding-bottom: 1.5em;
+}
+
+.languages a {
+  margin-left: .5em;
+}
+
+.languages a img {
+  -webkit-transition: -webkit-transform 200ms;
+  transition: -webkit-transform 200ms;
+  transition: transform 200ms;
+  transition: transform 200ms, -webkit-transform 200ms;
+}
+
+.languages a img:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transition: -webkit-transform 200ms;
+  transition: -webkit-transform 200ms;
+  transition: transform 200ms;
+  transition: transform 200ms, -webkit-transform 200ms;
+}
+
 @-webkit-keyframes appearContactContainer {
   from {
     -webkit-transform: scaleY(0);

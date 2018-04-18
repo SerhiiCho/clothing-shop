@@ -22,4 +22,12 @@
 			{{ date('Y') }} &copy; @lang('navigation.shop_name')
 		</h6>
 	</div>
+	<div class="languages block center">
+		<a href="/language/en" title="English">
+			<img src="{{ asset('storage/img/en.png') }}" alt="English">
+		</a>
+		<a href="/language/ru" title="Русский">
+			<img src="{{ asset('storage/img/ru.png') }}" alt="Русский">
+		</a>
+	</div>
 </footer>

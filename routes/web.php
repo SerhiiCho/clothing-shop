@@ -15,6 +15,7 @@ Route::resource('item', 'ItemController');
 
 // Page Controllers
 Route::get('/', 'PageController@home');
+Route::get('language/{lang}', 'PageController@lang');
 
 // Dashboard
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

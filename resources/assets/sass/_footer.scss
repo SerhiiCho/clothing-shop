@@ -29,3 +29,20 @@ footer a:hover {
 	padding-bottom: 2em;
 	color: #999;
 }
+
+.languages {
+	padding-bottom: 1.5em;
+
+	a {
+		margin-left: .5em;
+
+		img {
+			transition: transform 200ms;
+
+			&:hover {
+				transform: scale(1.2);
+				transition: transform 200ms;
+			}
+		}
+	}
+}
