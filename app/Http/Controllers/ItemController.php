@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Item;
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of items.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return view('items.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        // 
     }
 
     /**
@@ -46,7 +46,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //
+        return view('items.show');
     }
 
     /**

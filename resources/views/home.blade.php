@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 	<banner></banner>
 
 	<!-- 3 Cards -->

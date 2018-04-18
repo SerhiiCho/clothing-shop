@@ -47,8 +47,8 @@
 			</form>
 		</li>
 		<li><a href="/">Главная</a></li>
-		<li><a href="">Мужская</a></li>
-		<li><a href="">Женская</a></li>
+		<li><a href="/item">Мужская</a></li>
+		<li><a href="/item">Женская</a></li>
 
 		<a href="#" title="Перезвоните мне" class="nav-and-header-btns" id="nav-callback">
 			Перезвоните мне
