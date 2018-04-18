@@ -10,11 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('home');
-});
-
 Auth::routes();
 
+// Page Controllers
+Route::get('/', 'PageController@home');
+
+// Dashboard
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
