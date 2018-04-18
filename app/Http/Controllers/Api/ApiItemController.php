@@ -106,6 +106,6 @@ class ApiItemController extends Controller
     {
         $item = Item::findOrFail($id);
         $item->delete();
-		return back();
+		return new ItemResource($item);
     }
 }
