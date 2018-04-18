@@ -1,38 +1,67 @@
 .pagination {
+	width: 150px;
 	display: block;
-	text-align: center;
-	clear: both;
-	margin: 1.5em auto;
-	padding: 0 1em;
-	font-weight: bold;
-}
+	margin: 20px auto;
+	clear: left;
+	padding-bottom: 3em;
 
-/* All buttons */
-.pagination span,
-.pagination a {
-	display: inline-block;
-	text-align: center;
-	min-width: 2em;
-	border-radius: 2px;
-	padding: 1px 5px;
-}
+	& > li {
+		display: inline;
+	
+		& > a,
+		& > span {
+			position: relative;
+			float: left;
+			padding: 5px 15px;
+			margin-left: -1px;
+			line-height: 1.428571429;
+			text-decoration: none;
+			background: #fff;
+			border: 1px solid #bebebe;
+		}
+		
+		& > a {
+			color: #333;
+		}
+	
+		& > span {
+			background: $pink;
+			color: #fff;
+		}
+	
+		&:first-child > a,
+		&:first-child > span {
+			margin-left: 0;
+			border-bottom-left-radius: 2px;
+			border-top-left-radius: 2px;
+			font-weight: 600;
+		}
+	
+		&:last-child > a,
+		&:last-child > span {
+			border-top-right-radius: 2px;
+			border-bottom-right-radius: 2px;
+			font-weight: 600;
+		}
+	
+		& > a:focus,
+		& > a:hover,
+		& > span:focus,
+		& > span:hover {
+			background: $darkPink;
+		}
+	}
 
-.pagination span {
-	color: #fff;
-	background: $darkGray;
-	border: solid 1px $darkGray;
-}
-
-.pagination span:hover {
-	cursor: not-allowed;
-}
-
-.pagination a {
-	border: solid 1px $darkGray;
-	color: #000;
-}
-
-.pagination a:hover,
-.pagination a:active {
-	background: $lightGray;
+	& > .disabled {
+		a,
+		a:focus,
+		a:hover,
+		span,
+		span:focus,
+		span:hover {
+			color: #999;
+			cursor: not-allowed;
+			background: #fff;
+		}
+	}
 }

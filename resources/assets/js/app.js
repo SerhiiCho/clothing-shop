@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('banner', require('./components/Banner.vue'));
+Vue.component('items', require('./components/Items.vue'));
 
 const app = new Vue({
     el: '#app'

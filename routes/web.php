@@ -11,7 +11,7 @@
 |
 */
 Auth::routes();
-Route::resource('item', 'ItemController');
+Route::resource('items', 'ItemController');
 
 // Page Controllers
 Route::get('/', 'PageController@home');

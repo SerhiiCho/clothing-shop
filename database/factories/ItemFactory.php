@@ -12,6 +12,6 @@ $factory->define(Item::class, function (Faker $faker) {
 		'price'     => rand(99, 999),
 		'status'    => 'none',
 		'author'    => $faker->randomDigit,
-		'image'     => rand(1, 30) . '.jpg'
+		'image'     => rand(1, 16)
     ];
 });
