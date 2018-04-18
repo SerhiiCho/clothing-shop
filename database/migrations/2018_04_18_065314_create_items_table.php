@@ -17,10 +17,12 @@ class CreateItemsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('content');
+            $table->string('sex');
             $table->string('category');
             $table->text('status');
             $table->integer('price');
             $table->integer('author');
+            $table->string('image');
 			$table->timestamps();
         });
     }

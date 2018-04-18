@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('items/{category}', 'Api/ItemsController@index');
-Route::get('item/{id}', 'Api/ItemsController@show');
-Route::post('item', 'Api/ItemsController@store');
-Route::put('item/{id}', 'Api/ItemsController@edit');
-Route::delete('item/{id}', 'Api/ItemsController@destroy');
+Route::get('items/{sex?}/{category?}', 'Api\ApiItemController@index');
+Route::get('item/{id}', 'Api\ApiItemController@show');
+Route::post('item', 'Api\ApiItemController@store');
+Route::put('item/{id}', 'Api\ApiItemController@edit');
+Route::delete('item/{id}', 'Api\ApiItemController@destroy');
