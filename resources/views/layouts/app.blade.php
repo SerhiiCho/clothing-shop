@@ -12,6 +12,10 @@
 </head>
 <body>
 	<main id="app">
+
+		<div class="loading" id="loading"></div>
+		<h4 class="loading-title" id="loading-title">Загрузка ...</h4>
+
 		@include('includes.nav')
 		
 		@include('includes.gsm')
