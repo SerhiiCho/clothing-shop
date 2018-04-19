@@ -11,7 +11,12 @@
 |
 */
 Auth::routes();
-Route::resource('items', 'ItemController');
+
+// Items
+Route::get('items', 'ItemController@index');
+Route::get('items/men', 'ItemController@men');
+Route::get('items/women', 'ItemController@women');
+Route::get('item/{id}', 'ItemController@show');
 
 // Page Controllers
 Route::get('/', 'PageController@home');

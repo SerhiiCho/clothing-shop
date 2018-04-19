@@ -3934,9 +3934,11 @@ window.Vue = __webpack_require__(344);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('single-item', __webpack_require__(354));
 Vue.component('banner', __webpack_require__(348));
 Vue.component('items', __webpack_require__(351));
-Vue.component('single-item', __webpack_require__(354));
+Vue.component('women', __webpack_require__(365));
+Vue.component('men', __webpack_require__(362));
 
 var app = new Vue({
 	el: '#app'
@@ -20567,12 +20569,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
 			items: [],
-			pagination: {}
+			pagination: {},
+			title: 'Вся одежда'
 		};
 	},
 	created: function created() {
@@ -20585,10 +20592,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var _this = this;
 
 			var vm = this;
-			url = url || 'api/items';
+			var slug = window.location.pathname.split("/").slice(-1)[0];
+			var addToUrl = slug === 'men' || slug === 'women' ? '/' + slug : '';
 
-			fetch(url).then(function (res) {
-				return res.json(res);
+			if (slug === 'men') {
+				this.title = 'Мужская одежда';
+			} else if (slug === 'women') {
+				this.title = 'Женская одежда';
+			}
+
+			url = url || '/api/items';
+
+			fetch(url + addToUrl).then(function (res) {
+				return res.json();
 			}).then(function (res) {
 				_this.items = res.data;
 				vm.makePagination(res.meta, res.links);
@@ -20617,89 +20633,98 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _vm._l(_vm.items, function(item) {
-        return _c(
-          "div",
-          {
-            key: item,
-            staticClass: "col-lg-2 col-md-3 col-xs-6 col-sm-4 card"
-          },
-          [
-            _c(
-              "a",
-              { attrs: { href: "items/" + item.id, title: item.title } },
-              [
-                _c("img", {
-                  attrs: {
-                    src: "storage/img/clothes/" + item.image + ".jpg",
-                    alt: item.title
-                  }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-price" }, [
-              _c("span", [_vm._v(_vm._s(item.title))]),
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "section",
+      { staticClass: "heading", staticStyle: { background: "#F2F2F2" } },
+      [_vm._v(_vm._s(_vm.title))]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row" },
+      [
+        _vm._l(_vm.items, function(item) {
+          return _c(
+            "div",
+            {
+              key: item.id,
+              staticClass: "col-lg-2 col-md-3 col-xs-6 col-sm-4 card"
+            },
+            [
+              _c(
+                "a",
+                { attrs: { href: "/item/" + item.id, title: item.title } },
+                [
+                  _c("img", {
+                    attrs: {
+                      src: "/storage/img/clothes/" + item.image + ".jpg",
+                      alt: item.title
+                    }
+                  })
+                ]
+              ),
               _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(item.price) + " грн")])
-            ])
-          ]
-        )
-      }),
-      _vm._v(" "),
-      _vm.pagination.next_page_url || _vm.pagination.prev_page_url
-        ? _c("div", { staticClass: "pagination" }, [
-            _vm.pagination.prev_page_url
-              ? _c("li", [
-                  _c(
-                    "a",
-                    {
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          _vm.fetchItems(_vm.pagination.prev_page_url)
-                        }
-                      }
-                    },
-                    [_vm._v("«")]
-                  )
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _c("li", { staticClass: "disabled" }, [
-              _c("a", { staticClass: "page-link" }, [
-                _vm._v(
-                  _vm._s(_vm.pagination.current_page) +
-                    " / " +
-                    _vm._s(_vm.pagination.last_page)
-                )
+              _c("div", { staticClass: "card-price" }, [
+                _c("span", [_vm._v(_vm._s(item.title))]),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(item.price) + " грн")])
               ])
-            ]),
-            _vm._v(" "),
-            _vm.pagination.next_page_url
-              ? _c("li", [
-                  _c(
-                    "a",
-                    {
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          _vm.fetchItems(_vm.pagination.next_page_url)
+            ]
+          )
+        }),
+        _vm._v(" "),
+        _vm.pagination.next_page_url || _vm.pagination.prev_page_url
+          ? _c("div", { staticClass: "pagination" }, [
+              _vm.pagination.prev_page_url
+                ? _c("li", [
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            _vm.fetchItems(_vm.pagination.prev_page_url)
+                          }
                         }
-                      }
-                    },
-                    [_vm._v("»")]
+                      },
+                      [_vm._v("«")]
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("li", { staticClass: "disabled" }, [
+                _c("a", { staticClass: "page-link" }, [
+                  _vm._v(
+                    _vm._s(_vm.pagination.current_page) +
+                      " / " +
+                      _vm._s(_vm.pagination.last_page)
                   )
                 ])
-              : _vm._e()
-          ])
-        : _vm._e()
-    ],
-    2
-  )
+              ]),
+              _vm._v(" "),
+              _vm.pagination.next_page_url
+                ? _c("li", [
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            _vm.fetchItems(_vm.pagination.next_page_url)
+                          }
+                        }
+                      },
+                      [_vm._v("»")]
+                    )
+                  ])
+                : _vm._e()
+            ])
+          : _vm._e()
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -20819,10 +20844,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		fetchItem: function fetchItem() {
 			var _this = this;
 
-			var itemId = location.pathname.split("/").slice(-1);
+			var itemId = window.location.pathname.split("/").slice(-1);
 
 			fetch('/api/item/' + itemId).then(function (res) {
-				return res.json(res);
+				return res.json();
 			}).then(function (res) {
 				return _this.item = res.data;
 			}).catch(function (err) {
@@ -20916,6 +20941,482 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(96)
+/* script */
+var __vue_script__ = __webpack_require__(363)
+/* template */
+var __vue_template__ = __webpack_require__(364)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Men.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-795cda2f", Component.options)
+  } else {
+    hotAPI.reload("data-v-795cda2f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 363 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			items: [],
+			pagination: {}
+		};
+	},
+	created: function created() {
+		this.fetchItems();
+	},
+
+
+	methods: {
+		fetchItems: function fetchItems(url) {
+			var _this = this;
+
+			var vm = this;
+			url = url || '/api/items/men';
+
+			fetch(url).then(function (res) {
+				return res.json();
+			}).then(function (res) {
+				_this.items = res.data;
+				vm.makePagination(res.meta, res.links);
+			}).catch(function (error) {
+				return console.log(error);
+			});
+		},
+		makePagination: function makePagination(meta, links) {
+			var pagintaion = {
+				current_page: meta.current_page,
+				last_page: meta.last_page,
+				next_page_url: links.next,
+				prev_page_url: links.prev
+			};
+
+			this.pagination = pagintaion;
+		}
+	}
+});
+
+/***/ }),
+/* 364 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "section",
+      { staticClass: "heading", staticStyle: { background: "#F2F2F2" } },
+      [_vm._v("Мужская одежда")]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row" },
+      [
+        _vm._l(_vm.items, function(item) {
+          return _c(
+            "div",
+            {
+              key: item.id,
+              staticClass: "col-lg-2 col-md-3 col-xs-6 col-sm-4 card"
+            },
+            [
+              _c(
+                "a",
+                { attrs: { href: "/item/" + item.id, title: item.title } },
+                [
+                  _c("img", {
+                    attrs: {
+                      src: "/storage/img/clothes/" + item.image + ".jpg",
+                      alt: item.title
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-price" }, [
+                _c("span", [_vm._v(_vm._s(item.title))]),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(item.price) + " грн")])
+              ])
+            ]
+          )
+        }),
+        _vm._v(" "),
+        _vm.pagination.next_page_url || _vm.pagination.prev_page_url
+          ? _c("div", { staticClass: "pagination" }, [
+              _vm.pagination.prev_page_url
+                ? _c("li", [
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            _vm.fetchItems(_vm.pagination.prev_page_url)
+                          }
+                        }
+                      },
+                      [_vm._v("«")]
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("li", { staticClass: "disabled" }, [
+                _c("a", { staticClass: "page-link" }, [
+                  _vm._v(
+                    _vm._s(_vm.pagination.current_page) +
+                      " / " +
+                      _vm._s(_vm.pagination.last_page)
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _vm.pagination.next_page_url
+                ? _c("li", [
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            _vm.fetchItems(_vm.pagination.next_page_url)
+                          }
+                        }
+                      },
+                      [_vm._v("»")]
+                    )
+                  ])
+                : _vm._e()
+            ])
+          : _vm._e()
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-795cda2f", module.exports)
+  }
+}
+
+/***/ }),
+/* 365 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(96)
+/* script */
+var __vue_script__ = __webpack_require__(366)
+/* template */
+var __vue_template__ = __webpack_require__(367)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Women.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d12a87d2", Component.options)
+  } else {
+    hotAPI.reload("data-v-d12a87d2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 366 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			items: [],
+			pagination: {}
+		};
+	},
+	created: function created() {
+		this.fetchItems();
+	},
+
+
+	methods: {
+		fetchItems: function fetchItems(url) {
+			var _this = this;
+
+			var vm = this;
+			url = url || '/api/items/women';
+
+			fetch(url).then(function (res) {
+				return res.json();
+			}).then(function (res) {
+				_this.items = res.data;
+				vm.makePagination(res.meta, res.links);
+			}).catch(function (error) {
+				return console.log(error);
+			});
+		},
+		makePagination: function makePagination(meta, links) {
+			var pagintaion = {
+				current_page: meta.current_page,
+				last_page: meta.last_page,
+				next_page_url: links.next,
+				prev_page_url: links.prev
+			};
+
+			this.pagination = pagintaion;
+		}
+	}
+});
+
+/***/ }),
+/* 367 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "section",
+      { staticClass: "heading", staticStyle: { background: "#F2F2F2" } },
+      [_vm._v("Женская одежда")]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row" },
+      [
+        _vm._l(_vm.items, function(item) {
+          return _c(
+            "div",
+            {
+              key: item.id,
+              staticClass: "col-lg-2 col-md-3 col-xs-6 col-sm-4 card"
+            },
+            [
+              _c(
+                "a",
+                { attrs: { href: "/item/" + item.id, title: item.title } },
+                [
+                  _c("img", {
+                    attrs: {
+                      src: "/storage/img/clothes/" + item.image + ".jpg",
+                      alt: item.title
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-price" }, [
+                _c("span", [_vm._v(_vm._s(item.title))]),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(item.price) + " грн")])
+              ])
+            ]
+          )
+        }),
+        _vm._v(" "),
+        _vm.pagination.next_page_url || _vm.pagination.prev_page_url
+          ? _c("div", { staticClass: "pagination" }, [
+              _vm.pagination.prev_page_url
+                ? _c("li", [
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            _vm.fetchItems(_vm.pagination.prev_page_url)
+                          }
+                        }
+                      },
+                      [_vm._v("«")]
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("li", { staticClass: "disabled" }, [
+                _c("a", { staticClass: "page-link" }, [
+                  _vm._v(
+                    _vm._s(_vm.pagination.current_page) +
+                      " / " +
+                      _vm._s(_vm.pagination.last_page)
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _vm.pagination.next_page_url
+                ? _c("li", [
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            _vm.fetchItems(_vm.pagination.next_page_url)
+                          }
+                        }
+                      },
+                      [_vm._v("»")]
+                    )
+                  ])
+                : _vm._e()
+            ])
+          : _vm._e()
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d12a87d2", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

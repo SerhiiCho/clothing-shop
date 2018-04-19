@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="main-content">
-	<items></items>
+	<women></women>
 </section>
 
 @endsection

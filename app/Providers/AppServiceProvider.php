@@ -27,6 +27,13 @@ class AppServiceProvider extends ServiceProvider
 				App::setLocale('en');
 			}
 		}
+
+		/**
+		 * This header I added because I've been gettin error
+		 * with Vue.js when I was clicking button to go on another page
+		 * using pagination, so I found this solution.
+		 */
+		header('Access-Control-Allow-Origin: *');
     }
 
     /**

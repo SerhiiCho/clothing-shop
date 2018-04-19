@@ -14,17 +14,11 @@ class ApiItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($sex = null, $category = null)
+    public function index($sex = null)
     {
-		if ($sex && $category) {
-			$statement = [['sex', $sex], ['category', $category]];
-		} elseif ($sex && $category == null) {
-			$statement = [['sex', $sex]];
-		} else {
-			$statement = [['category', '!=', 'null']];
-		}
+		$statement = $sex ? [['sex', $sex]] : [['category', '!=', 'null']];
 
-		$items = Item::where($statement)->paginate(30);
+		$items = Item::where($statement)->paginate(40);
 
 		return ItemResource::collection($items);
     }

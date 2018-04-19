@@ -7,14 +7,19 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    /**
-     * Display a listing of items.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('items.index');
+	}
+
+    public function men()
+    {
+        return view('items.men');
+	}
+
+    public function women()
+    {
+        return view('items.women');
     }
 
     /**

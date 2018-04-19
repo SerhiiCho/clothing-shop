@@ -51,10 +51,10 @@ export default {
 
 	methods: {
 		fetchItem() {
-			let itemId = location.pathname.split("/").slice(-1)
+			let itemId = window.location.pathname.split("/").slice(-1)
 
 			fetch('/api/item/' + itemId)
-			.then(res => res.json(res))
+			.then(res => res.json())
 			.then(res => this.item = res.data)
 			.catch(err => console.log(err))
 		}

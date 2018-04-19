@@ -3,9 +3,9 @@
 		<nav class="col-xs-6 col-sm-4 col-sm-offset-2 col-md-2 col-md-offset-4">
 			<h4>@lang('navigation.menu')</h4>
 			<ul class="footer-list">
-				<li><a href="#" title="#">Test 1</a></li>
-				<li><a href="#" title="#">Test 2</a></li>
-				<li><a href="#" title="#">Test 3</a></li>
+				<li><a href="/">@lang('navigation.home')</a></li>
+				<li><a href="/items/men">@lang('navigation.men')</a></li>
+				<li><a href="/items/women">@lang('navigation.women')</a></li>
 			</ul>
 		</nav>
 		<nav class="col-xs-6 col-sm-4 col-md-2">
