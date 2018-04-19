@@ -24,7 +24,7 @@ class ApiItemController extends Controller
 			$statement = [['category', '!=', 'null']];
 		}
 
-		$items = Item::where($statement)->paginate(2);
+		$items = Item::where($statement)->paginate(30);
 
 		return ItemResource::collection($items);
     }

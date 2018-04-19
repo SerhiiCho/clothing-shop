@@ -1,8 +1,8 @@
 <template>
 	<div>
 		<div v-for="item in items" v-bind:key="item" class="col-lg-2 col-md-3 col-xs-6 col-sm-4 card">
-			<a :href="'item/' + item.id" :title="item.title">
-				<img :src="'storage/img/clothes/' + item.image + '.jpg'" alt="Платья">
+			<a :href="'items/' + item.id" :title="item.title">
+				<img :src="'storage/img/clothes/' + item.image + '.jpg'" :alt="item.title">
 			</a>
 			<div class="card-price">
 				<span>{{ item.title }}</span>
