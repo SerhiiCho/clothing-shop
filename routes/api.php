@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
  */
 
 Route::get('items/{sex?}', 'Api\ApiItemController@index');
+Route::get('random', 'Api\ApiItemController@random');
 Route::get('item/{item}', 'Api\ApiItemController@show');
 Route::post('item', 'Api\ApiItemController@store');
 Route::put('item/{id}', 'Api\ApiItemController@edit');

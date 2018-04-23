@@ -21490,8 +21490,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
-			//
+			items: {}
 		};
+	},
+	created: function created() {
+		this.fetchItems();
+	},
+
+
+	methods: {
+		fetchItems: function fetchItems() {
+			var _this = this;
+
+			fetch('/api/random').then(function (res) {
+				return res.json();
+			}).then(function (res) {
+				_this.items = res.data;
+			}).catch(function (err) {
+				return console.log(err);
+			});
+		}
 	}
 });
 
@@ -21503,30 +21521,36 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "col-lg-2 col-md-3 col-xs-6 col-sm-4 card" }, [
-        _c("a", { attrs: { href: "#", title: "#" } }, [
-          _c("img", {
-            attrs: { src: "/storage/img/clothes/1.jpg", alt: "Платья" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-price" }, [
-          _c("span", [_vm._v("Title")]),
+  return _c(
+    "div",
+    _vm._l(_vm.items, function(item) {
+      return _c(
+        "div",
+        {
+          key: item.id,
+          staticClass: "col-lg-2 col-md-3 col-xs-6 col-sm-4 card"
+        },
+        [
+          _c("a", { attrs: { href: "/item/" + item.id, title: item.title } }, [
+            _c("img", {
+              attrs: {
+                src: "/storage/img/clothes/" + item.image + ".jpg",
+                alt: item.title
+              }
+            })
+          ]),
           _vm._v(" "),
-          _c("span", [_vm._v("50 грн")])
-        ])
-      ])
-    ])
-  }
-]
+          _c("div", { staticClass: "card-price" }, [
+            _c("span", [_vm._v(_vm._s(item.title))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(item.price) + " грн")])
+          ])
+        ]
+      )
+    })
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

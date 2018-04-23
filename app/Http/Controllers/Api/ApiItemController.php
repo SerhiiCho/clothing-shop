@@ -47,6 +47,13 @@ class ApiItemController extends Controller
     public function show(Item $item)
     {
 		return new ItemResource($item);
+	}
+	
+
+    public function random()
+    {
+		$items = Item::inRandomOrder()->take(6)->get();
+		return ItemResource::collection($items);
     }
 
 
