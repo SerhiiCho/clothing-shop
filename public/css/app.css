@@ -1371,12 +1371,9 @@ header {
 
 .icon-profile-menu-line {
   width: 25px;
-  height: 25px;
+  font-size: 1.8em !important;
   margin: 0 10px;
   vertical-align: middle;
-  position: relative;
-  display: inline-block;
-  background-repeat: no-repeat !important;
 }
 
 @media (min-width: 740px) {
