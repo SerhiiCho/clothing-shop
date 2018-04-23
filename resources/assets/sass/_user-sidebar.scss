@@ -1,0 +1,89 @@
+.user-sidebar {
+	background: #222;
+	position: fixed;
+	top: 0;
+	height: 100%;
+	bottom: 0;
+	width: 45px;
+	overflow: hidden;
+	-webkit-transition: width 200ms, opacity 200ms;
+	transition: width 200ms, opacity 200ms;
+	transform: translateZ(0) scale(1, 1);
+	opacity: .5;
+	z-index: 10;
+	padding-top: 51px;
+}
+
+.user-sidebar:hover {
+	overflow: visible;
+	width: 200px;
+	height: 100%;
+	overflow-y: scroll;
+	opacity: .95;
+}
+
+/* Hide scrollbar */
+.user-sidebar::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.user-sidebar > ul {
+	margin: 7px 0;
+}
+
+.user-sidebar li {
+	position: relative;
+	display: block;
+	width: 200px;
+	line-height: 40px;
+	margin: auto;
+}
+
+.menu-second-level a {
+	display: block;
+	padding: .3em .8em .3em 45px;
+}
+
+.menu-second-level a:hover {
+	background: $darkPink;
+}
+
+.menu-second-level span {
+	display: block;
+	color: #fff;
+	text-align: left;
+}
+
+.user-sidebar li > a {
+	position: relative;
+	display: table;
+	border-collapse: collapse;
+	border-spacing: 0;
+	color: #fff;
+	font-family: arial;
+	font-size: 14px;
+	text-decoration: none;
+	transform: translateZ(0) scale(1, 1);
+}
+
+.user-sidebar li:hover {
+	color: #fff;
+	background: $darkPink;
+}
+
+.icon-profile-menu-line {
+	width: 25px;
+	height: 25px;
+	margin: 0 10px;
+	vertical-align: middle;
+	position: relative;
+	display: inline-block;
+	background-repeat: no-repeat!important;
+}
+
+@media (min-width: 740px) {
+	.disapear-on-big-screen {
+		display: none !important;
+	}
+}

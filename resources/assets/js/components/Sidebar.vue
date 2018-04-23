@@ -28,9 +28,7 @@ export default {
 		fetchItems() {
 			fetch('/api/random')
 			.then(res => res.json())
-			.then(res => {
-				this.items = res.data
-			})
+			.then(res =>  this.items = res.data)
 			.catch(err => console.log(err))
 		}
 	}

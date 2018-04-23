@@ -54,6 +54,13 @@ class ApiItemController extends Controller
     {
 		$items = Item::inRandomOrder()->take(6)->get();
 		return ItemResource::collection($items);
+	}
+
+
+    public function popular()
+    {
+		$items = Item::take(12)->latest()->get();
+		return ItemResource::collection($items);
     }
 
 

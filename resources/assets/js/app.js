@@ -18,6 +18,7 @@ window.Vue = require('vue');
 Vue.component('single-item', require('./components/SingleItem.vue'));
 Vue.component('sidebar', require('./components/Sidebar.vue'));
 Vue.component('banner', require('./components/Banner.vue'));
+Vue.component('popular', require('./components/Popular.vue'));
 Vue.component('items', require('./components/Items.vue'));
 Vue.component('women', require('./components/Women.vue'));
 Vue.component('men', require('./components/Men.vue'));

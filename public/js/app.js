@@ -3937,6 +3937,7 @@ window.Vue = __webpack_require__(344);
 Vue.component('single-item', __webpack_require__(348));
 Vue.component('sidebar', __webpack_require__(368));
 Vue.component('banner', __webpack_require__(351));
+Vue.component('popular', __webpack_require__(371));
 Vue.component('items', __webpack_require__(354));
 Vue.component('women', __webpack_require__(357));
 Vue.component('men', __webpack_require__(360));
@@ -21505,7 +21506,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			fetch('/api/random').then(function (res) {
 				return res.json();
 			}).then(function (res) {
-				_this.items = res.data;
+				return _this.items = res.data;
 			}).catch(function (err) {
 				return console.log(err);
 			});
@@ -21557,6 +21558,151 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-00467796", module.exports)
+  }
+}
+
+/***/ }),
+/* 371 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(50)
+/* script */
+var __vue_script__ = __webpack_require__(372)
+/* template */
+var __vue_template__ = __webpack_require__(373)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Popular.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7d2da532", Component.options)
+  } else {
+    hotAPI.reload("data-v-7d2da532", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 372 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			populars: {}
+		};
+	},
+	created: function created() {
+		this.fetchPopularItems();
+	},
+
+
+	methods: {
+		fetchPopularItems: function fetchPopularItems() {
+			var _this = this;
+
+			fetch('/api/popular').then(function (res) {
+				return res.json();
+			}).then(function (res) {
+				return _this.populars = res.data;
+			}).catch(function (err) {
+				return console.log(err);
+			});
+		}
+	}
+});
+
+/***/ }),
+/* 373 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    _vm._l(_vm.populars, function(popular) {
+      return _c(
+        "div",
+        {
+          key: popular.id,
+          staticClass: "col-lg-2 col-md-3 col-xs-6 col-sm-4 card"
+        },
+        [
+          _c(
+            "a",
+            { attrs: { href: "/item/" + popular.id, title: popular.title } },
+            [
+              _c("img", {
+                attrs: {
+                  src: "storage/img/clothes/" + popular.image + ".jpg",
+                  alt: popular.title
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-price" }, [
+            _c("span", [_vm._v(_vm._s(popular.title))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(popular.price) + " грн")])
+          ])
+        ]
+      )
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7d2da532", module.exports)
   }
 }
 
