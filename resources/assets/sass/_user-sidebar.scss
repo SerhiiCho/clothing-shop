@@ -74,13 +74,8 @@
 
 .icon-profile-menu-line {
 	width: 25px;
-	font-size: 1.8em !important;
+	font-size: 1.6em !important;
+	text-align: center;
 	margin: 0 10px;
 	vertical-align: middle;
-}
-
-@media (min-width: 740px) {
-	.disapear-on-big-screen {
-		display: none !important;
-	}
 }
