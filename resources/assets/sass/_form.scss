@@ -4,14 +4,15 @@
 	margin: auto;
 	padding-bottom: 1em;
 
-	input[type=email], input[type=password], input[type=text], label {
+	input, select, label, textarea {
 		width: 80%;
 		display: block;
 		margin: auto;
+		margin-bottom: 5px;
 		color: $darkGray;
 	}
 
-	input[type=email], input[type=password], input[type=text] {
+	input, select, textarea {
 		height: 2em;
 		border-radius: 5px;
 		border: solid 2px $darkPink;
@@ -23,6 +24,7 @@
 	input[type=checkbox] {
 		width: 16px;
 		height: 16px;
+		margin: 0;
 		margin-top: 3px;
 		margin-right: .5em;
 		background: coral;
@@ -40,6 +42,11 @@
 		font-size: .85em;
 		margin-top: .2em;
 		padding-left: .1em;
+	}
+
+	textarea {
+		min-height: 8em;
+		resize: vertical;
 	}
 
 	.btn {

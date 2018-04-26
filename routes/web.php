@@ -9,6 +9,8 @@ Auth::routes();
 
 // Items
 Route::get('items', 'ItemController@index');
+Route::get('items/create', 'ItemController@create');
+Route::put('items/store', 'ItemController@store');
 Route::get('items/men', 'ItemController@men');
 Route::get('items/women', 'ItemController@women');
 Route::get('item/{item}', 'ItemController@show');
