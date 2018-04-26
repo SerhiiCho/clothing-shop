@@ -12,15 +12,16 @@
 	opacity: .5;
 	z-index: 10;
 	padding-top: 51px;
+
+	&:hover {
+		overflow: visible;
+		width: 200px;
+		height: 100%;
+		overflow-y: scroll;
+		opacity: .95;
+	}
 }
 
-.user-sidebar:hover {
-	overflow: visible;
-	width: 200px;
-	height: 100%;
-	overflow-y: scroll;
-	opacity: .95;
-}
 
 /* Hide scrollbar */
 .user-sidebar::-webkit-scrollbar {
@@ -46,7 +47,7 @@
 }
 
 .menu-second-level a:hover {
-	background: $darkPink;
+	background: $darkestPink;
 }
 
 .menu-second-level span {
@@ -69,7 +70,7 @@
 
 .user-sidebar li:hover {
 	color: #fff;
-	background: $darkPink;
+	background: $darkestPink;
 }
 
 .icon-profile-menu-line {

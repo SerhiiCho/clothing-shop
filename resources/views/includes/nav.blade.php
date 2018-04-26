@@ -49,8 +49,8 @@
 			</form>
 		</li>
 		<li><a href="/">@lang('navigation.home')</a></li>
-		<li><a href="/items/men">@lang('navigation.men')</a></li>
-		<li><a href="/items/women">@lang('navigation.women')</a></li>
+		<li><a href="/items?category=men">@lang('navigation.men')</a></li>
+		<li><a href="/items?category=women">@lang('navigation.women')</a></li>
 
 		<a href="#" title="@lang('navigation.callback')" class="nav-and-header-btns" id="nav-callback">
 			@lang('navigation.callback')

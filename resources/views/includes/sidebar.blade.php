@@ -14,6 +14,12 @@
 				</a>
 			</li>
 			<li>
+				<a href="/items" title="@lang('user-sidebar.all_items')">
+					<i class="fa fa-shopping-bag icon-profile-menu-line" aria-hidden="true"></i>
+					<span>@lang('user-sidebar.all_items')</span>
+				</a>
+			</li>
+			<li>
 				<a>
 					<i class="fa fa-cog icon-profile-menu-line" aria-hidden="true"></i>
 					<span>@lang('user-sidebar.settings')</span>

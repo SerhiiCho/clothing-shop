@@ -45,25 +45,25 @@ export default {
 
 	methods: {
 		fetchItems(url) {
-			let vm       = this
-			let slug     = window.location.pathname.split("/").slice(-1)[0]
-			let addToUrl = slug === 'men'  || slug === 'women' ? '/' + slug : ''
+			let vm = this
+			let addToUrl = '/' + location.search.split('category=')[1]
 
-			if (slug === 'men') {
-				this.title = 'Мужская одежда'
-			} else if (slug === 'women') {
-				this.title = 'Женская одежда'
+			addToUrl = (addToUrl == '/undefined') ? '' : addToUrl
+			url = url || '/api/items' + addToUrl
+
+			if (addToUrl === '/men') {
+				this.title = 'Мужская одежа'
+			} else if (addToUrl === '/women') {
+				this.title = 'Женская одежа'
 			}
 
-			url = url || '/api/items'
-
-			fetch(url + addToUrl)
-			.then(res => res.json())
-			.then(res => {
-				this.items = res.data
-				vm.makePagination(res.meta, res.links)
-			})
-			.catch(error => console.log(error))
+			fetch(url)
+				.then(res => res.json())
+				.then(res => {
+					this.items = res.data
+					vm.makePagination(res.meta, res.links)
+				})
+				.catch(error => console.log(error))
 		},
 
 		makePagination(meta, links) {

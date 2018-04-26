@@ -5,45 +5,47 @@
 
 .single-image {
 	text-align: center;
-	padding: 0 1em; 
-}
+	padding: 0 1em;
 
-.single-image img {
-	width: 80%;
-	height: auto;
-	border: 1px dotted $darkPink;
-	border-radius: 2px;
-	transition: transform 300ms;
-}
+	img {
+		width: 80%;
+		height: auto;
+		border: 1px dotted $darkPink;
+		border-radius: 2px;
+		transition: transform 300ms;
 
-.single-image img:hover {
-	transform: scale(1.3);
+		&:hover {
+			transform: scale(1.3);
+		}
+	}
 }
 
 .single-info {
 	padding: 1em 8%;
 	font-weight: bold;
+
+	span {
+		display: block;
+	}
 }
 
 .single-status {
 	color: $gray;
 }
 
-.single-info span {
-	display: block;
-}
-
 .single-price {
-	font-size: 3em;
+	font-size: 2em;
 	line-height: .9;
 	text-align: right;
+
+	span {
+		font-size: .5em;
+		margin-right: 3px;
+		font-weight: normal;
+	}
 }
 
-.single-price span {
-	font-size: .5em;
-	margin-right: 3px;
-	font-weight: normal;
-}
+
 
 .single-title {
 	font-size: 1.5em;
@@ -69,5 +71,9 @@
 	
 	.single-info {
 		padding: 1em;
+	}
+
+	.single-price {
+		font-size: 2.5em;
 	}
 }

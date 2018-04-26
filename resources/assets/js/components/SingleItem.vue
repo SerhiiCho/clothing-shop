@@ -22,9 +22,6 @@
 						<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
 						Номер товара: {{ item.id }}
 					</span>
-					<span class="single-status" style="display: flex;">
-						Категория: &nbsp; {{ item.category }}
-					</span>
 				</div>
 
 				<!-- Intro -->

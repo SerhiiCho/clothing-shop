@@ -1245,16 +1245,16 @@ header {
   font-weight: bold;
 }
 
-.single-status {
-  color: #646464;
-}
-
 .single-info span {
   display: block;
 }
 
+.single-status {
+  color: #646464;
+}
+
 .single-price {
-  font-size: 3em;
+  font-size: 2em;
   line-height: .9;
   text-align: right;
 }
@@ -1289,6 +1289,10 @@ header {
 
   .single-info {
     padding: 1em;
+  }
+
+  .single-price {
+    font-size: 2.5em;
   }
 }
 
@@ -1342,7 +1346,7 @@ header {
 }
 
 .menu-second-level a:hover {
-  background: #ecdcdc;
+  background: #974c4c;
 }
 
 .menu-second-level span {
@@ -1366,7 +1370,7 @@ header {
 
 .user-sidebar li:hover {
   color: #fff;
-  background: #ecdcdc;
+  background: #974c4c;
 }
 
 .icon-profile-menu-line {

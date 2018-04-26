@@ -29,21 +29,21 @@ class ItemRequest extends FormRequest
 	public function messages()
     {
         return [
-            'title.required' => 'Поле название обязательно для заполнения',
-            'content.required' => 'Поле описание обязательно для заполнения',
-            'category.required' => 'Поле категория обязательно для заполнения',
-            'type.required' => 'Поле тип обязательно для заполнения',
-            'image.required' => 'Добавьте изображение',
-            'price1.required' => 'Цена обязательна',
-            'price2.required' => 'Цена обязательна',
-            'title.min' => 'Количество символов в поле название должно быть не менее :min',
-            'content.min' => 'Количество символов в поле описание должно быть не менее :min',
-            'title.max' => 'Количество символов в поле название не может превышать :max',
-            'content.max' => 'Количество символов в поле описание не может превышать :max',
-            'price1.numeric' => 'Цена дожна быть числом',
-            'price2.numeric' => 'Цена дожна быть числом',
-            'image.image' => 'Изображение должно быть jpg разширения, и не более 2MB',
-            'image.max' => 'Изображение должно превышать :max кб'
+            'title.required' 		=> trans('items.title_required'),
+            'content.required' 		=> trans('items.content_required'),
+            'category.required' 	=> trans('items.category_required'),
+            'type.required' 		=> trans('items.type_required'),
+            'image.required'	    => trans('items.image_required'),
+            'price1.required' 		=> trans('items.price_required'),
+            'price2.required' 		=> trans('items.price_required'),
+            'title.min' 			=> trans('items.title_min'),
+            'content.min'			=> trans('items.content_min'),
+            'title.max'				=> trans('items.title_max'),
+            'content.max'			=> trans('items.content_max'),
+            'price1.numeric'		=> trans('items.price_numeric'),
+            'price2.numeric'		=> trans('items.price_numeric'),
+            'image.image'			=> trans('items.image_image'),
+            'image.max'				=> trans('items.image_max')
         ];
     }
 }
