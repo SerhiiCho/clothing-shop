@@ -48,9 +48,15 @@
 				<input type="submit" id="searchsubmit" style="display:none;" />
 			</form>
 		</li>
-		<li><a href="/">@lang('navigation.home')</a></li>
-		<li><a href="/items?category=men">@lang('navigation.men')</a></li>
-		<li><a href="/items?category=women">@lang('navigation.women')</a></li>
+		<li class="{{ activeIfRouteIs('/') }}">
+			<a href="/">@lang('navigation.home')</a>
+		</li>
+		<li class="{{ activeIfRouteIs('/items?category=men') }}">
+			<a href="/items?category=men">@lang('navigation.men')</a>
+		</li>
+		<li class="{{ activeIfRouteIs('/items?category=women') }}">
+			<a href="/items?category=women">@lang('navigation.women')</a>
+		</li>
 
 		<a href="#" title="@lang('navigation.callback')" class="nav-and-header-btns" id="nav-callback">
 			@lang('navigation.callback')
