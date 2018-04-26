@@ -11,9 +11,9 @@ class ApiItemController extends Controller
 {
 
 	
-    public function index($sex = null)
+    public function index($category = null)
     {
-		$statement = $sex ? [['sex', $sex]] : [['category', '!=', 'null']];
+		$statement = $category ? [['category', $category]] : [['category', '!=', 'null']];
 
 		$items = Item::where($statement)->paginate(40);
 

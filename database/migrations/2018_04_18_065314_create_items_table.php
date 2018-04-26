@@ -18,10 +18,8 @@ class CreateItemsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('category');
-            $table->string('type');
-            $table->text('status');
-            $table->integer('price');
-            $table->integer('author');
+            $table->string('status')->default('posted');
+            $table->string('price');
             $table->string('image');
 			$table->timestamps();
         });

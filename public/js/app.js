@@ -20479,7 +20479,7 @@ var render = function() {
     _c("div", { staticClass: "col-xs-12 col-sm-4 col-lg-3 single-image" }, [
       _c("img", {
         attrs: {
-          src: "/storage/img/clothes/" + _vm.item.image + ".jpg",
+          src: "/storage/img/clothes/" + _vm.item.image,
           alt: _vm.item.title
         }
       })
@@ -21146,7 +21146,7 @@ var render = function() {
                 [
                   _c("img", {
                     attrs: {
-                      src: "/storage/img/clothes/" + item.image + ".jpg",
+                      src: "/storage/img/clothes/" + item.image,
                       alt: item.title
                     }
                   })
@@ -21382,7 +21382,7 @@ var render = function() {
                 [
                   _c("img", {
                     attrs: {
-                      src: "/storage/img/clothes/" + item.image + ".jpg",
+                      src: "/storage/img/clothes/" + item.image,
                       alt: item.title
                     }
                   })
@@ -21618,7 +21618,7 @@ var render = function() {
                 [
                   _c("img", {
                     attrs: {
-                      src: "/storage/img/clothes/" + item.image + ".jpg",
+                      src: "/storage/img/clothes/" + item.image,
                       alt: item.title
                     }
                   })

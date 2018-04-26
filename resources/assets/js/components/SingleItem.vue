@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<div class="col-xs-12 col-sm-4 col-lg-3 single-image">
-			<img :src="'/storage/img/clothes/' + item.image + '.jpg'" :alt="item.title">
+			<img :src="'/storage/img/clothes/' + item.image" :alt="item.title">
 		</div>
 		<div class="col-xs-12 col-sm-8 col-lg-9 single-info">
 			<div class="row">
