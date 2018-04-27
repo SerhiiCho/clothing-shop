@@ -21044,6 +21044,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -21146,7 +21147,11 @@ var render = function() {
               _c("div", { staticClass: "card-price" }, [
                 _c("span", [_vm._v(_vm._s(item.title))]),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(item.price) + " грн")])
+                _c("span", [_vm._v(_vm._s(item.price) + " грн")]),
+                _vm._v(" "),
+                _c("a", { attrs: { href: "items/edit", title: "Изменить" } }, [
+                  _vm._v("Изменить")
+                ])
               ])
             ]
           )

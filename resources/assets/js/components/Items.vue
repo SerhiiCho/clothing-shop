@@ -10,6 +10,7 @@
 					<div class="card-price">
 						<span>{{ item.title }}</span>
 						<span>{{ item.price }} грн</span>
+						<a href="items/edit" title="Изменить">Изменить</a>
 					</div>
 				</div>
 
