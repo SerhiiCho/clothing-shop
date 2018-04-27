@@ -8,9 +8,7 @@
 Auth::routes();
 
 // Items
-Route::get('items', 'ItemController@index');
-Route::get('items/create', 'ItemController@create');
-Route::put('items/store', 'ItemController@store');
+Route::resource('items', 'ItemController', ['except' => ['show']]);
 Route::get('item/{item}', 'ItemController@show');
 
 // Page Controllers

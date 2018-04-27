@@ -7,7 +7,6 @@
 	<form action="{{ action('ItemController@store') }}" method="post" class="form" enctype="multipart/form-data">
 
 			@csrf
-			@method('put')
 
 			<input type="text" name="title" placeholder="@lang('items.name')" required>
 			<textarea name="content" placeholder="@lang('items.discreption')" required></textarea>

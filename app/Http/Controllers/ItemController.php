@@ -16,19 +16,6 @@ class ItemController extends Controller
         return view('items.index');
 	}
 
-
-    public function men()
-    {
-        return view('items.men');
-	}
-
-
-    public function women()
-    {
-        return view('items.women');
-    }
-
-
     public function create()
     {
         return view('items.create')->withTypes(
@@ -69,7 +56,7 @@ class ItemController extends Controller
 
     public function edit(Item $item)
     {
-        //
+        return view('items.edit');
     }
 
 
