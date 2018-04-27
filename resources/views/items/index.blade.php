@@ -3,7 +3,8 @@
 @section('content')
 
 <section class="main-content">
-	<items></items>
+	<items :admin="'@json('auth()->user()->admin')'">
+	</items>
 </section>
 
 @endsection

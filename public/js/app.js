@@ -21053,6 +21053,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			title: 'Вся одежда'
 		};
 	},
+
+
+	props: ['admin'],
+
+	mounted: function mounted() {
+		console.log(this.admin);
+	},
 	created: function created() {
 		this.fetchItems();
 	},

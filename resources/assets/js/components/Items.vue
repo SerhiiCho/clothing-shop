@@ -39,6 +39,14 @@ export default {
 		}
 	},
 
+	props: [
+		'admin'
+	],
+
+    mounted () {
+        console.log(this.admin)
+    },
+
 	created() {
 		this.fetchItems()
 	},
