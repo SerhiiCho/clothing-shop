@@ -10,7 +10,9 @@
 					<div class="card-price">
 						<span>{{ item.title }}</span>
 						<span>{{ item.price }} грн</span>
-						<a href="items/edit" title="Изменить">Изменить</a>
+						<a v-if="admin == 1" href="items/edit" title="Изменить" class="btn-change-item">
+							<i class="fa fa-pencil" aria-hidden="true"></i>
+						</a>
 					</div>
 				</div>
 
@@ -88,3 +90,4 @@ export default {
 	}
 }
 </script>
+
