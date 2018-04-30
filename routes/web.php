@@ -17,3 +17,9 @@ Route::get('language/{lang}', 'PageController@lang');
 
 // Dashboard
 Route::get('/dashboard', 'DashboardController@index');
+
+// Artisan commands =======
+Route::get('php/artisan/cache/{url_key}', 'ArtisanController@cache');
+Route::get('php/artisan/clear/{url_key}', 'ArtisanController@clear');
+Route::get('php/artisan/storage/link/{url_key}', 'ArtisanController@link');
+Route::get('php/artisan/migrate/fresh/{url_key}', 'ArtisanController@migrate');
