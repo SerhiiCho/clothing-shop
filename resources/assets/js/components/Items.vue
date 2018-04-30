@@ -9,8 +9,8 @@
 					</a>
 					<div class="card-price">
 						<span>{{ item.title }}</span>
-						<span>{{ item.price + ' ' + this.trans.items.hryvnia }}</span>
-						<a v-if="admin == 1" :href="'/items/' + item.id + '/edit'" :title="this.trans.items.change" class="btn-change-item">
+						<span>{{ item.price }} грн</span>
+						<a v-if="admin == 1" :href="'/items/' + item.id + '/edit'" title="Изменить" class="btn-change-item">
 							<i class="fa fa-pencil" aria-hidden="true"></i>
 						</a>
 					</div>
@@ -57,9 +57,9 @@ export default {
 			url = url || '/api/items' + addToUrl
 
 			if (addToUrl === '/men') {
-				this.title = trans.items.men_items
+				this.title = 'Мужская одежда'
 			} else if (addToUrl === '/women') {
-				this.title = trans.items.women_items
+				this.title = 'Женская одежда'
 			}
 
 			fetch(url)

@@ -32,7 +32,5 @@ return [
 	'price_change' => 'Цена (мелочь)',
 	'select_hryvnia' => 'Укажите гривны',
 	'select_change' => 'Укажите мелоч',
-	'hryvnia' => 'грн',
-	'change' => 'Изменить',
 
 ];

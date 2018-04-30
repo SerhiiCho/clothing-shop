@@ -4,7 +4,7 @@
 
 <div class="single-container">
 	<div class="row">
-		<single-item></single-item>
+		<single-item :admin={{ json_encode(optional(auth()->user())->admin) }}></single-item>
 
 		<!-- Sidebar -->
 		<div class="col-xs-12 sidebar">

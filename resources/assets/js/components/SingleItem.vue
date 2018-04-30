@@ -42,6 +42,8 @@ export default {
 		}
 	},
 
+	props: [ 'admin' ],
+
 	created() {
 		this.fetchItem()
 	},

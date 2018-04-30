@@ -20440,6 +20440,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			item: []
 		};
 	},
+
+
+	props: ['admin'],
+
 	created: function created() {
 		this.fetchItem();
 	},
@@ -21076,9 +21080,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			url = url || '/api/items' + addToUrl;
 
 			if (addToUrl === '/men') {
-				this.title = trans.items.men_items;
+				this.title = 'Мужская одежда';
 			} else if (addToUrl === '/women') {
-				this.title = trans.items.women_items;
+				this.title = 'Женская одежда';
 			}
 
 			fetch(url).then(function (res) {
@@ -21146,9 +21150,7 @@ var render = function() {
               _c("div", { staticClass: "card-price" }, [
                 _c("span", [_vm._v(_vm._s(item.title))]),
                 _vm._v(" "),
-                _c("span", [
-                  _vm._v(_vm._s(item.price + " " + this.trans.items.hryvnia))
-                ]),
+                _c("span", [_vm._v(_vm._s(item.price) + " грн")]),
                 _vm._v(" "),
                 _vm.admin == 1
                   ? _c(
@@ -21157,7 +21159,7 @@ var render = function() {
                         staticClass: "btn-change-item",
                         attrs: {
                           href: "/items/" + item.id + "/edit",
-                          title: this.trans.items.change
+                          title: "Изменить"
                         }
                       },
                       [

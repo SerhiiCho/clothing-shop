@@ -17,6 +17,3 @@ Route::get('language/{lang}', 'PageController@lang');
 
 // Dashboard
 Route::get('/dashboard', 'DashboardController@index');
-
-// Localization
-Route::get('/js/lang.js', 'LocalizationController@local');
