@@ -1,8 +1,11 @@
 <?php
 
-function activeIfRouteIs($route)
+function activeIfRouteIs($route, $get = null)
 {
-    return request()->is($route) ? 'active' : '';
+	if (request('category')) {
+		return request('category') == $get ? 'active' : '';
+	}
+	return request()->is($route) ? 'active' : '';
 }
 
 function getFileName($title, $ext)

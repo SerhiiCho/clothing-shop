@@ -6,6 +6,7 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ItemResource;
+use Illuminate\Support\Facades\Storage;
 
 class ApiItemController extends Controller
 {
@@ -64,22 +65,13 @@ class ApiItemController extends Controller
     }
 
 
-    public function edit($id)
-    {
-        //
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
     public function destroy($id)
     {
-        $item = Item::findOrFail($id);
-        $item->delete();
-		return new ItemResource($item);
+		$item = Item::findOrFail($id);
+
+		if ($item->delete()) {
+			Storage::delete('public/img/clothes/'.$item->image);
+			return new ItemResource($item);
+		}
     }
 }

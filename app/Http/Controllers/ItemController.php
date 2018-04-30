@@ -96,10 +96,4 @@ class ItemController extends Controller
 			trans('items.item_added')
 		);
     }
-
-
-    public function destroy(Item $item)
-    {
-        //
-    }
 }

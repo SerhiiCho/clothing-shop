@@ -10,8 +10,15 @@
 					<div class="card-price">
 						<span>{{ item.title }}</span>
 						<span>{{ item.price1 }}.{{ item.price2 }} грн</span>
-						<a v-if="admin == 1" :href="'/items/' + item.id + '/edit'" title="Изменить" class="btn-change-item">
+
+						<!-- Edit button -->
+						<a v-if="admin == 1" :href="'/items/' + item.id + '/edit'" title="Изменить" class="btn-change-item" style="top:10px;">
 							<i class="fa fa-pencil" aria-hidden="true"></i>
+						</a>
+
+						<!-- Delete button -->
+						<a @click="deleteItem(item.id)" href="#" v-if="admin == 1" title="Удалить" class="btn-change-item" style="top:55px; background:brown;">
+							<i class="fa fa-trash-o" aria-hidden="true" style="color:#fff;"></i>
 						</a>
 					</div>
 				</div>
@@ -72,14 +79,25 @@ export default {
 		},
 
 		makePagination(meta, links) {
-			let pagintaion = {
+			let pagination = {
 				current_page: meta.current_page,
 				last_page: meta.last_page,
 				next_page_url: links.next,
 				prev_page_url: links.prev
 			}
 
-			this.pagination = pagintaion
+			this.pagination = pagination
+		},
+
+		deleteItem(id) {
+			if (confirm('Удалить этот товар?')) {
+				fetch(`api/item/${id}`, {
+					method: 'delete'
+				})
+				.then(res => res.json())
+				.then(data => this.fetchItems())
+				.catch(error => console.log(error))
+			}
 		}
 	}
 }

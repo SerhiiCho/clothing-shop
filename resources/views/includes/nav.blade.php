@@ -51,10 +51,10 @@
 		<li class="{{ activeIfRouteIs('/') }}">
 			<a href="/">@lang('navigation.home')</a>
 		</li>
-		<li class="{{ activeIfRouteIs('/items?category=men') }}">
+		<li class="{{ activeIfRouteIs('items', 'men') }}">
 			<a href="/items?category=men">@lang('navigation.men')</a>
 		</li>
-		<li class="{{ activeIfRouteIs('/items?category=women') }}">
+		<li class="{{ activeIfRouteIs('items', 'women') }}">
 			<a href="/items?category=women">@lang('navigation.women')</a>
 		</li>
 

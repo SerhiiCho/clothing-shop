@@ -25,7 +25,7 @@ class UpdateItemRequest extends FormRequest
     {
 		return [
 			'title'		 => 'required|min:4|max:80',
-			'content'    => 'required|min:4|max:199',
+			'content'    => 'required|min:4|max:900',
 			'category'	 => 'required',
 			'type' 		 => 'required',
 			'price1' 	 => 'required|numeric',

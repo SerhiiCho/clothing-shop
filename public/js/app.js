@@ -21057,6 +21057,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -21101,14 +21108,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			});
 		},
 		makePagination: function makePagination(meta, links) {
-			var pagintaion = {
+			var pagination = {
 				current_page: meta.current_page,
 				last_page: meta.last_page,
 				next_page_url: links.next,
 				prev_page_url: links.prev
 			};
 
-			this.pagination = pagintaion;
+			this.pagination = pagination;
+		},
+		deleteItem: function deleteItem(id) {
+			var _this2 = this;
+
+			if (confirm('Удалить этот товар?')) {
+				fetch('api/item/' + id, {
+					method: 'delete'
+				}).then(function (res) {
+					return res.json();
+				}).then(function (data) {
+					return _this2.fetchItems();
+				}).catch(function (error) {
+					return console.log(error);
+				});
+			}
 		}
 	}
 });
@@ -21167,6 +21189,7 @@ var render = function() {
                       "a",
                       {
                         staticClass: "btn-change-item",
+                        staticStyle: { top: "10px" },
                         attrs: {
                           href: "/items/" + item.id + "/edit",
                           title: "Изменить"
@@ -21175,6 +21198,29 @@ var render = function() {
                       [
                         _c("i", {
                           staticClass: "fa fa-pencil",
+                          attrs: { "aria-hidden": "true" }
+                        })
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.admin == 1
+                  ? _c(
+                      "a",
+                      {
+                        staticClass: "btn-change-item",
+                        staticStyle: { top: "55px", background: "brown" },
+                        attrs: { href: "#", title: "Удалить" },
+                        on: {
+                          click: function($event) {
+                            _vm.deleteItem(item.id)
+                          }
+                        }
+                      },
+                      [
+                        _c("i", {
+                          staticClass: "fa fa-trash-o",
+                          staticStyle: { color: "#fff" },
                           attrs: { "aria-hidden": "true" }
                         })
                       ]
