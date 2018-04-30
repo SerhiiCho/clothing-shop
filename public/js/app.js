@@ -20657,7 +20657,9 @@ var render = function() {
           _c("div", { staticClass: "card-price" }, [
             _c("span", [_vm._v(_vm._s(item.title))]),
             _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(item.price) + " грн")])
+            _c("span", [
+              _vm._v(_vm._s(item.price1) + "." + _vm._s(item.price2) + " грн")
+            ])
           ])
         ]
       )
@@ -20947,7 +20949,11 @@ var render = function() {
           _c("div", { staticClass: "card-price" }, [
             _c("span", [_vm._v(_vm._s(popular.title))]),
             _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(popular.price) + " грн")])
+            _c("span", [
+              _vm._v(
+                _vm._s(popular.price1) + "." + _vm._s(popular.price2) + " грн"
+              )
+            ])
           ])
         ]
       )

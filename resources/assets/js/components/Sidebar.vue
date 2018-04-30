@@ -6,7 +6,7 @@
 			</a>
 			<div class="card-price">
 				<span>{{ item.title }}</span>
-				<span>{{ item.price }} грн</span>
+				<span>{{ item.price1 }}.{{ item.price2 }} грн</span>
 			</div>
 		</div>
 	</div>
