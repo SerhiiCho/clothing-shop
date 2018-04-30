@@ -13,7 +13,7 @@
 
 				<!-- Price -->
 				<div class="col-xs-6">
-					<p class="single-price">{{ item.price }}<span>грн</span></p>
+					<p class="single-price">{{ item.price1 }}.{{ item.price2 }}<span>грн</span></p>
 				</div>
 
 				<!-- ID and Category -->

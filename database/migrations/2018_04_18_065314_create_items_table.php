@@ -19,7 +19,8 @@ class CreateItemsTable extends Migration
             $table->text('content');
             $table->string('category');
             $table->string('status')->default('posted');
-            $table->string('price');
+            $table->string('price1');
+            $table->string('price2');
             $table->string('image');
 			$table->timestamps();
         });

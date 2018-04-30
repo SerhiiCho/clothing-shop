@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Schema;
@@ -24,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
 		// Change language
 		if (Cookie::get('lang')) {
 			if (Crypt::decrypt(Cookie::get('lang')) == 'en') {
-				App::setLocale('en');
+				app()->setLocale('en');
 			}
 		}
 

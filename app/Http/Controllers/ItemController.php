@@ -32,14 +32,14 @@ class ItemController extends Controller
 			storage_path('app/public/img/clothes/' . $filename
 		));
 
-		Item::create([
+		auth()->user()->items()->create([
 			'title' => $request->title,
 			'content' => $request->content,
 			'category' => $request->category,
-			'price' => $request->price1 . '.' . $request->price2,
+			'price1' => $request->price1,
+			'price2' => $request->price2,
 			'image' => $filename,
-			'type_id' => $request->type,
-			'user_id' => auth()->user()->id
+			'type_id' => $request->type
 		]);
 
 		return back()->withSuccess(
@@ -56,7 +56,8 @@ class ItemController extends Controller
 
     public function edit(Item $item)
     {
-        return view('items.edit');
+		$types = (new Type)->orderBy('type')->get();
+        return view('items.edit')->with(compact('item', 'types'));
     }
 
 

@@ -7,10 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
 	// The attributes that are mass assignable.
-    protected $fillable = [
-		'title', 'content', 'category', 'type',    'price',
-		'image', 'author',  'status',   'user_id', 'type_id'
-	];
+    protected $guarded = ['id'];
 
 	public function user() {
 		return $this->belongsTo(User::class);
