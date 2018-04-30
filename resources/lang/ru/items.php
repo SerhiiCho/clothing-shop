@@ -22,6 +22,7 @@ return [
 
 	// Views
 	'add_item' => 'Добавить товар',
+	'change_item' => 'Изменить товар',
 	'name' => 'Название',
 	'discreption' => 'Описание',
 	'women_items' => 'Женская одежда',
