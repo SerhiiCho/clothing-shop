@@ -1345,15 +1345,17 @@ header {
   opacity: .95;
 }
 
-/* Hide scrollbar */
-
 .user-sidebar::-webkit-scrollbar {
   width: 0px;
   background: transparent;
 }
 
-.user-sidebar > ul {
+.user-sidebar ul {
   margin: 7px 0;
+}
+
+.user-sidebar .active {
+  background: #974c4c;
 }
 
 .user-sidebar li {
@@ -1364,22 +1366,12 @@ header {
   margin: auto;
 }
 
-.menu-second-level a {
-  display: block;
-  padding: .3em .8em .3em 45px;
-}
-
-.menu-second-level a:hover {
+.user-sidebar li:hover {
+  color: #fff;
   background: #974c4c;
 }
 
-.menu-second-level span {
-  display: block;
-  color: #fff;
-  text-align: left;
-}
-
-.user-sidebar li > a {
+.user-sidebar li a {
   position: relative;
   display: table;
   border-collapse: collapse;
@@ -1392,9 +1384,19 @@ header {
           transform: translateZ(0) scale(1, 1);
 }
 
-.user-sidebar li:hover {
-  color: #fff;
+.menu-second-level a {
+  display: block;
+  padding: .3em .8em .3em 45px;
+}
+
+.menu-second-level a:hover {
   background: #974c4c;
+}
+
+.menu-second-level a span {
+  display: block;
+  color: #fff;
+  text-align: left;
 }
 
 .icon-profile-menu-line {

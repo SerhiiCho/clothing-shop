@@ -22,6 +22,7 @@ class CreateItemsTable extends Migration
             $table->string('price1');
             $table->string('price2');
             $table->string('image');
+            $table->integer('popular');
 			$table->timestamps();
         });
     }

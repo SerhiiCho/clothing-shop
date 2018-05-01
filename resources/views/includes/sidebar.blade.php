@@ -1,19 +1,19 @@
 @auth     
 	<nav class="user-sidebar">
 		<ul>
-			<li>
+			<li class="{{ activeIfRouteIs('dashboard') }}">
 				<a href="/dashboard" title="@lang('user-sidebar.profile')">
 					<i class="fa fa-user-circle-o icon-profile-menu-line" aria-hidden="true"></i>
 					<span>@lang('user-sidebar.profile')</span>
 				</a>
 			</li>
-			<li>
+			<li class="{{ activeIfRouteIs('items/create') }}">
 				<a href="/items/create" title="@lang('user-sidebar.add_new_item')">
 					<i class="fa fa-plus-circle icon-profile-menu-line" aria-hidden="true"></i>
 					<span>@lang('user-sidebar.add_new_item')</span>
 				</a>
 			</li>
-			<li>
+			<li class="{{ activeIfRouteIs('items') }}">
 				<a href="/items" title="@lang('user-sidebar.all_items')">
 					<i class="fa fa-shopping-bag icon-profile-menu-line" aria-hidden="true"></i>
 					<span>@lang('user-sidebar.all_items')</span>
@@ -28,7 +28,7 @@
 
 			{{-- Menu Second Level --}}
 			<div class="menu-second-level">
-				<a href="/settings/general" title="@lang('user-sidebar.general')">
+				<a href="/settings/general" title="@lang('user-sidebar.general')" class="{{ activeIfRouteIs('settings/general') }}">
 					<span>@lang('user-sidebar.general')</span>
 				</a>
 			</div>
