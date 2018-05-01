@@ -616,6 +616,36 @@ header {
   display: block;
 }
 
+.single-info .message-form {
+  color: #646464;
+  margin: 8px 2px;
+}
+
+.single-info .phone-form {
+  margin: .3em 2px;
+  color: #646464;
+}
+
+.single-info .phone-form input,
+.single-info .phone-form button {
+  border-radius: 3px;
+  border: solid 1px #ecdcdc;
+  padding: 3px 5px;
+}
+
+.single-info .phone-form button {
+  background: #ecdcdc;
+  cursor: pointer;
+  -webkit-transition: background-color 300ms;
+  transition: background-color 300ms;
+}
+
+.single-info .phone-form button:hover {
+  background: #e3cbcb;
+  -webkit-transition: background-color 300ms;
+  transition: background-color 300ms;
+}
+
 .single-status {
   color: #646464;
 }

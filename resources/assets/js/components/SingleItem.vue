@@ -28,8 +28,8 @@
 				</div>
 
 				<!-- Callback -->
-				<p>{{ messageToCustomer }}</p>
-				<div class="col-xs-12">
+				<p class="message-form">{{ messageToCustomer }}</p>
+				<div class="col-xs-12 phone-form">
 					+38 <input v-model="phoneNumber" type="text" placeholder="Номер телефона" maxlength="10">
 					<button @click="sentPhoneNumber(item.id)">Заказать</button>
 				</div>

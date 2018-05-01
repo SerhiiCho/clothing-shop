@@ -20441,9 +20441,11 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(_vm.messageToCustomer))]),
+        _c("p", { staticClass: "message-form" }, [
+          _vm._v(_vm._s(_vm.messageToCustomer))
+        ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12" }, [
+        _c("div", { staticClass: "col-xs-12 phone-form" }, [
           _vm._v("\n\t\t\t\t+38 "),
           _c("input", {
             directives: [

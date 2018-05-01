@@ -27,6 +27,33 @@
 	span {
 		display: block;
 	}
+
+	.message-form {
+		color: $gray;
+		margin: 8px 2px;
+	}
+
+	.phone-form {
+		margin: .3em 2px;
+		color: $gray;
+
+		input, button {
+			border-radius: 3px;
+			border: solid 1px $darkPink;
+			padding: 3px 5px;
+		}
+
+		button {
+			background: $darkPink;
+			cursor: pointer;
+			transition: background-color 300ms;
+
+			&:hover {
+				background: darken($color: $darkPink, $amount: 5);
+				transition: background-color 300ms;
+			}
+		}
+	}
 }
 
 .single-status {
