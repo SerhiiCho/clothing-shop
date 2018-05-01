@@ -7,19 +7,19 @@
 	<!-- 3 Cards -->
 	<section class="heading">@lang('home.season_categories')</section>
 	<div class="row center three-cards">
-		<div class="col-xs-12 col-sm-4 one-of-three-cards">
+		<div class="col-xs-12 col-sm-4 one-card">
 			<img src="{{ asset('storage/img/3cards/1.jpg') }}" alt="">
 			<a href="#" title="@lang('home.tops')" class="card-btn">
 				<span>@lang('home.tops')</span>
 			</a>
 		</div>
-		<div class="col-xs-12 col-sm-4 one-of-three-cards">
+		<div class="col-xs-12 col-sm-4 one-card">
 			<img src="{{ asset('storage/img/3cards/2.jpg') }}" alt="">
 			<a href="#" title="@lang('home.skirts')" class="card-btn">
 				<span>@lang('home.skirts')</span>
 			</a>
 		</div>
-		<div class="col-xs-12 col-sm-4 one-of-three-cards">
+		<div class="col-xs-12 col-sm-4 one-card">
 			<img src="{{ asset('storage/img/3cards/3.jpg') }}" alt="Платья">
 			<a href="#" title="@lang('home.dresses')" class="card-btn">
 				<span>@lang('home.dresses')</span>

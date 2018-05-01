@@ -1,16 +1,16 @@
 .three-cards {
 	width: 90%;
 	margin: 0 5%;
-}
 
-.one-of-three-cards {
-	overflow: hidden;
-	position: relative;
-}
-
-.one-of-three-cards img {
-	width: 90%;
-	margin: 0 5%;
+	.one-card {
+		overflow: hidden;
+		position: relative;
+	
+		img {
+			width: 90%;
+			margin: 0 5%;
+		}
+	}
 }
 
 .card-btn {
@@ -24,20 +24,20 @@
 	opacity: .8;
 	transition: opacity 400ms;
 	border: solid 1px $darkGray;
-}
 
-.card-btn:hover {
-	opacity: .9;
-}
+	&:hover {
+		opacity: .9;
+	}
 
-.card-btn span {
-	display: block;
-	padding: .4em 2em;
-	font-size: 1.5em;
+	span {
+		display: block;
+		padding: .4em 2em;
+		font-size: 1.5em;
+	}
 }
 
 @media (min-width: 768px) {
-	.one-of-three-cards img {
+	.one-card img {
 		width: 96%;
 		margin: 0 2%;
 	}

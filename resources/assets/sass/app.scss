@@ -3,21 +3,24 @@
 @import 'modules/normalize';
 @import 'modules/common';
 
-@import 'grid';
-@import 'hamburger';
-@import 'banner';
-@import 'header';
+// Nav
+@import 'nav/hamburger';
+@import 'nav/nav';
+@import 'nav/header';
+@import 'nav/gsm';
+
+// Home
+@import 'home/banner';
+@import 'home/three-cards';
+@import 'home/home-cards';
+
 @import 'items';
-@import 'callback';
-@import 'nav';
-@import 'gsm';
-@import 'three-cards';
-@import 'home-cards';
 @import 'single-page';
 @import 'user-sidebar';
 @import 'form';
 @import 'pagination';
 @import 'footer';
 @import 'animations';
+@import 'grid';
 
 @import 'font-awesome/scss/font-awesome';
