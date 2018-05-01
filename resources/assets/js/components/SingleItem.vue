@@ -31,7 +31,7 @@
 				<p>{{ error }}</p>
 				<div class="col-xs-12">
 					+38 <input v-model="phoneNumber" type="text" placeholder="Номер телефона" maxlength="10">
-					<button @click="sentPhoneNumber()">Заказать</button>
+					<button @click="sentPhoneNumber(item.id)">Заказать</button>
 				</div>
 
 				<!-- Intro -->
@@ -69,9 +69,9 @@ export default {
 			let itemId = window.location.pathname.split("/").slice(-1)
 
 			fetch('/api/item/' + itemId)
-			.then(res => res.json())
-			.then(res => this.item = res.data)
-			.catch(err => console.log(err))
+				.then(res => res.json())
+				.then(res => this.item = res.data)
+				.catch(err => console.log(err))
 		},
 
 		validatePhoneNumber(input) {
@@ -79,15 +79,33 @@ export default {
 			this.error = ''
 
 			if (input.match(phoneno)) {
-				this.error = 'Мы с свяжимся с вами в ближайшее время'
+				return true;
 			} else {
-				this.error = 'Не правильный формат номера телефона'
+				return false;
 			}
 		},
 
-		sentPhoneNumber() {
-			this.validatePhoneNumber(this.phoneNumber)
-			//if(!this.name) this.errors.push("Name required.");
+		sentPhoneNumber(item) {
+			if (this.validatePhoneNumber(this.phoneNumber)) {
+
+				let dataForRequest = {
+					item: item,
+					phone: this.phoneNumber
+				}
+
+				fetch('/api/message', {
+						method: 'post',
+						body: JSON.stringify(dataForRequest),
+						headers: {
+							'content-type': 'application/json'
+						}
+					})
+					.then(res => res.text())
+					.then(data => this.error = 'Мы с свяжимся с вами в ближайшее время')
+					.catch(error => console.log(error))
+			} else {
+				this.error = 'Не правильный формат номера телефона'
+			}
 		}
 	}
 }

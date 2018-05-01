@@ -20396,14 +20396,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.error = '';
 
 			if (input.match(phoneno)) {
-				this.error = 'Мы с свяжимся с вами в ближайшее время';
+				return true;
+			} else {
+				return false;
+			}
+		},
+		sentPhoneNumber: function sentPhoneNumber(item) {
+			var _this2 = this;
+
+			if (this.validatePhoneNumber(this.phoneNumber)) {
+
+				var dataForRequest = {
+					item: item,
+					phone: this.phoneNumber
+				};
+
+				fetch('/api/message', {
+					method: 'post',
+					body: JSON.stringify(dataForRequest),
+					headers: {
+						'content-type': 'application/json'
+					}
+				}).then(function (res) {
+					return res.text();
+				}).then(function (data) {
+					return _this2.error = 'Мы с свяжимся с вами в ближайшее время';
+				}).catch(function (error) {
+					return console.log(error);
+				});
 			} else {
 				this.error = 'Не правильный формат номера телефона';
 			}
-		},
-		sentPhoneNumber: function sentPhoneNumber() {
-			this.validatePhoneNumber(this.phoneNumber);
-			//if(!this.name) this.errors.push("Name required.");
 		}
 	}
 });
@@ -20497,7 +20520,7 @@ var render = function() {
             {
               on: {
                 click: function($event) {
-                  _vm.sentPhoneNumber()
+                  _vm.sentPhoneNumber(_vm.item.id)
                 }
               }
             },

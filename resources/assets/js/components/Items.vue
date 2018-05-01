@@ -102,9 +102,9 @@ export default {
 				fetch(`api/item/${id}`, {
 					method: 'delete'
 				})
-				.then(res => res.json())
-				.then(data => this.fetchItems())
-				.catch(error => console.log(error))
+					.then(res => res.json())
+					.then(data => this.fetchItems())
+					.catch(error => console.log(error))
 			}
 		}
 	}
