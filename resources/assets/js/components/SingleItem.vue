@@ -19,7 +19,7 @@
 					</p>
 				</div>
 
-				<!-- ID and Category -->
+				<!-- ID -->
 				<div class="col-xs-12">
 					<span class="single-status">
 						<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
@@ -27,9 +27,16 @@
 					</span>
 				</div>
 
+				<!-- Callback -->
+				<p>{{ error }}</p>
+				<div class="col-xs-12">
+					+38 <input v-model="phoneNumber" type="text" placeholder="Номер телефона" maxlength="10">
+					<button @click="sentPhoneNumber()">Заказать</button>
+				</div>
+
 				<!-- Intro -->
 				<div class="col-xs-12 single-intro">
-					<p><!-- Intro here--></p>
+					<p>{{ item.content }}</p>
 				</div>
 			</div>
 		</div>
@@ -41,7 +48,9 @@
 export default {
 	data() {
 		return {
-			item: []
+			item: [],
+			error: '',
+			phoneNumber: ''
 		}
 	},
 
@@ -63,6 +72,22 @@ export default {
 			.then(res => res.json())
 			.then(res => this.item = res.data)
 			.catch(err => console.log(err))
+		},
+
+		validatePhoneNumber(input) {
+			var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+			this.error = ''
+
+			if (input.match(phoneno)) {
+				this.error = 'Мы с свяжимся с вами в ближайшее время'
+			} else {
+				this.error = 'Не правильный формат номера телефона'
+			}
+		},
+
+		sentPhoneNumber() {
+			this.validatePhoneNumber(this.phoneNumber)
+			//if(!this.name) this.errors.push("Name required.");
 		}
 	}
 }

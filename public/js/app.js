@@ -20352,11 +20352,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
-			item: []
+			item: [],
+			error: '',
+			phoneNumber: ''
 		};
 	},
 
@@ -20381,6 +20390,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}).catch(function (err) {
 				return console.log(err);
 			});
+		},
+		validatePhoneNumber: function validatePhoneNumber(input) {
+			var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+			this.error = '';
+
+			if (input.match(phoneno)) {
+				this.error = 'Мы с свяжимся с вами в ближайшее время';
+			} else {
+				this.error = 'Не правильный формат номера телефона';
+			}
+		},
+		sentPhoneNumber: function sentPhoneNumber() {
+			this.validatePhoneNumber(this.phoneNumber);
+			//if(!this.name) this.errors.push("Name required.");
 		}
 	}
 });
@@ -20440,19 +20463,56 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _c("p", [_vm._v(_vm._s(_vm.error))]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xs-12" }, [
+          _vm._v("\n\t\t\t\t+38 "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.phoneNumber,
+                expression: "phoneNumber"
+              }
+            ],
+            attrs: {
+              type: "text",
+              placeholder: "Номер телефона",
+              maxlength: "10"
+            },
+            domProps: { value: _vm.phoneNumber },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.phoneNumber = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              on: {
+                click: function($event) {
+                  _vm.sentPhoneNumber()
+                }
+              }
+            },
+            [_vm._v("Заказать")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xs-12 single-intro" }, [
+          _c("p", [_vm._v(_vm._s(_vm.item.content))])
+        ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xs-12 single-intro" }, [_c("p")])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

@@ -14,3 +14,5 @@ Route::get('item/{item}', 'Api\ApiItemController@show');
 Route::post('item', 'Api\ApiItemController@store');
 Route::put('item/{id}', 'Api\ApiItemController@edit');
 Route::delete('item/{id}', 'Api\ApiItemController@destroy');
+
+Route::post('phone/{phone}/{item}', 'Api\ApiPhoneController@send');

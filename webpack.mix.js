@@ -13,13 +13,13 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js/app.js')
 	.sass('resources/assets/sass/app.scss', 'public/css')
-	.browserSync({
-		proxy: 'localhost:8000',
-		scrollRestoreTechnique: 'cookie',
-		files: [
-			'resources/views/**/*.blade.php',
-			'public/js/*.js',
-			'public/css/*.css'
-		]
-	})
 	.disableNotifications()
+
+mix.browserSync({
+	proxy: 'localhost:8000',
+	browser: 'chrome',
+	files: [
+		'public/js/*.js',
+		'public/css/*.css'
+	]
+})
