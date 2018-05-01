@@ -29,7 +29,6 @@
 		@include('includes.footer')
 	</main>
 
-	<script src="{{ asset('js/jquery.js') }}" defer></script>
 	<script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>
