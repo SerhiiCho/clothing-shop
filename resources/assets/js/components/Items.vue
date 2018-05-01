@@ -9,15 +9,15 @@
 					</a>
 					<div class="card-price">
 						<span>{{ item.title }}</span>
-						<span>{{ item.price1 }}.{{ item.price2 }} грн</span>
+						<span>{{ item.price1 + '.' + item.price2 + ' ' + hryvnia }}</span>
 
 						<!-- Edit button -->
-						<a v-if="admin == 1" :href="'/items/' + item.id + '/edit'" title="Изменить" class="btn-change-item" style="top:10px;">
+						<a v-if="admin == 1" :href="'/items/' + item.id + '/edit'" :title="change" class="btn-change-item" style="top:10px;">
 							<i class="fa fa-pencil" aria-hidden="true"></i>
 						</a>
 
 						<!-- Delete button -->
-						<a @click="deleteItem(item.id)" href="#" v-if="admin == 1" title="Удалить" class="btn-change-item" style="top:55px; background:brown;">
+						<a v-if="admin == 1" v-on:click="deleteItem(item.id)" href="#" :title="deleting" class="btn-change-item" style="top:55px; background:brown;">
 							<i class="fa fa-trash-o" aria-hidden="true" style="color:#fff;"></i>
 						</a>
 					</div>
@@ -45,11 +45,19 @@ export default {
 		return {
 			items: [],
 			pagination: {},
-			title: 'Вся одежда'
+			title: this.allitems
 		}
 	},
 
-	props: [ 'admin' ],
+	props: [
+		'womenitems',
+		'allitems',
+		'menitems',
+		'hryvnia',
+		'deleting',
+		'admin',
+		'change'
+	],
 
 	created() {
 		this.fetchItems()
@@ -64,9 +72,9 @@ export default {
 			url = url || '/api/items' + addToUrl
 
 			if (addToUrl === '/men') {
-				this.title = 'Мужская одежда'
+				this.title = this.menitems
 			} else if (addToUrl === '/women') {
-				this.title = 'Женская одежда'
+				this.title = this.womenitems
 			}
 
 			fetch(url)

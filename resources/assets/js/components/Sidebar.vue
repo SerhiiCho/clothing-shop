@@ -6,7 +6,7 @@
 			</a>
 			<div class="card-price">
 				<span>{{ item.title }}</span>
-				<span>{{ item.price1 }}.{{ item.price2 }} грн</span>
+				<span>{{ item.price1 + '.' + item.price2 + ' ' + hryvnia }}</span>
 			</div>
 		</div>
 	</div>
@@ -19,6 +19,10 @@ export default {
 			items: {}
 		}
 	},
+
+	props: [
+		'hryvnia'
+	],
 
 	created() {
 		this.fetchItems()

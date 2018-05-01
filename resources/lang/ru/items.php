@@ -27,11 +27,16 @@ return [
 	'discreption' => 'Описание',
 	'women_items' => 'Женская одежда',
 	'men_items' => 'Мужская одежда',
+	'all_items' => 'Вся одежда',
 	'type' => 'Тип',
 	'category' => 'Категория',
 	'price_hryvnia' => 'Цена (гривны)',
 	'price_change' => 'Цена (мелочь)',
 	'select_hryvnia' => 'Укажите гривны',
 	'select_change' => 'Укажите мелоч',
+	'number_item' => 'Номер товара',
+	'hryvnia' => 'грн',
+	'delete' => 'Удалить',
+	'change' => 'Изменить',
 
 ];

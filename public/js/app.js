@@ -20433,6 +20433,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -20442,7 +20445,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 
-	props: ['admin'],
+	props: ['admin', 'numberitem', 'hryvnia'],
 
 	created: function created() {
 		this.fetchItem();
@@ -20494,8 +20497,14 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-6" }, [
           _c("p", { staticClass: "single-price" }, [
-            _vm._v(_vm._s(_vm.item.price1) + "." + _vm._s(_vm.item.price2)),
-            _c("span", [_vm._v("грн")])
+            _vm._v(
+              "\n\t\t\t\t\t" +
+                _vm._s(_vm.item.price1) +
+                "." +
+                _vm._s(_vm.item.price2) +
+                "\n\t\t\t\t\t"
+            ),
+            _c("span", [_vm._v(_vm._s(_vm.hryvnia))])
           ])
         ]),
         _vm._v(" "),
@@ -20506,7 +20515,11 @@ var render = function() {
               attrs: { "aria-hidden": "true" }
             }),
             _vm._v(
-              " \n\t\t\t\t\tНомер товара: " + _vm._s(_vm.item.id) + "\n\t\t\t\t"
+              " \n\t\t\t\t\t" +
+                _vm._s(_vm.numberitem) +
+                ": " +
+                _vm._s(_vm.item.id) +
+                "\n\t\t\t\t"
             )
           ])
         ]),
@@ -20607,6 +20620,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			items: {}
 		};
 	},
+
+
+	props: ['hryvnia'],
+
 	created: function created() {
 		this.fetchItems();
 	},
@@ -20658,7 +20675,9 @@ var render = function() {
             _c("span", [_vm._v(_vm._s(item.title))]),
             _vm._v(" "),
             _c("span", [
-              _vm._v(_vm._s(item.price1) + "." + _vm._s(item.price2) + " грн")
+              _vm._v(
+                _vm._s(item.price1 + "." + item.price2 + " " + _vm.hryvnia)
+              )
             ])
           ])
         ]
@@ -20895,6 +20914,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			populars: {}
 		};
 	},
+
+
+	props: ['hryvnia'],
+
 	created: function created() {
 		this.fetchPopularItems();
 	},
@@ -20951,7 +20974,9 @@ var render = function() {
             _vm._v(" "),
             _c("span", [
               _vm._v(
-                _vm._s(popular.price1) + "." + _vm._s(popular.price2) + " грн"
+                _vm._s(
+                  popular.price1 + "." + popular.price2 + " " + _vm.hryvnia
+                )
               )
             ])
           ])
@@ -21070,12 +21095,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			items: [],
 			pagination: {},
-			title: 'Вся одежда'
+			title: this.allitems
 		};
 	},
 
 
-	props: ['admin'],
+	props: ['womenitems', 'allitems', 'menitems', 'hryvnia', 'deleting', 'admin', 'change'],
 
 	created: function created() {
 		this.fetchItems();
@@ -21093,9 +21118,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			url = url || '/api/items' + addToUrl;
 
 			if (addToUrl === '/men') {
-				this.title = 'Мужская одежда';
+				this.title = this.menitems;
 			} else if (addToUrl === '/women') {
-				this.title = 'Женская одежда';
+				this.title = this.womenitems;
 			}
 
 			fetch(url).then(function (res) {
@@ -21180,7 +21205,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("span", [
                   _vm._v(
-                    _vm._s(item.price1) + "." + _vm._s(item.price2) + " грн"
+                    _vm._s(item.price1 + "." + item.price2 + " " + _vm.hryvnia)
                   )
                 ]),
                 _vm._v(" "),
@@ -21192,7 +21217,7 @@ var render = function() {
                         staticStyle: { top: "10px" },
                         attrs: {
                           href: "/items/" + item.id + "/edit",
-                          title: "Изменить"
+                          title: _vm.change
                         }
                       },
                       [
@@ -21210,7 +21235,7 @@ var render = function() {
                       {
                         staticClass: "btn-change-item",
                         staticStyle: { top: "55px", background: "brown" },
-                        attrs: { href: "#", title: "Удалить" },
+                        attrs: { href: "#", title: _vm.deleting },
                         on: {
                           click: function($event) {
                             _vm.deleteItem(item.id)

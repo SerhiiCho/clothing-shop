@@ -32,7 +32,7 @@
 		<section class="heading" style="background:#F2F2F2;">@lang('home.popular')</section>
 		<div class="container">
 			<div class="row">
-				<popular></popular>
+				<popular :hryvnia="{{ json_encode(trans('items.hryvnia')) }}"></popular>
 			</div>
 		</div>
 	</section>

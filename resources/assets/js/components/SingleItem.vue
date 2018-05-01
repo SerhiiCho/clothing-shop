@@ -13,14 +13,17 @@
 
 				<!-- Price -->
 				<div class="col-xs-6">
-					<p class="single-price">{{ item.price1 }}.{{ item.price2 }}<span>грн</span></p>
+					<p class="single-price">
+						{{ item.price1 }}.{{ item.price2 }}
+						<span>{{ hryvnia }}</span>
+					</p>
 				</div>
 
 				<!-- ID and Category -->
 				<div class="col-xs-12">
 					<span class="single-status">
 						<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
-						Номер товара: {{ item.id }}
+						{{ numberitem }}: {{ item.id }}
 					</span>
 				</div>
 
@@ -42,7 +45,11 @@ export default {
 		}
 	},
 
-	props: [ 'admin' ],
+	props: [
+		'admin',
+		'numberitem',
+		'hryvnia'
+	],
 
 	created() {
 		this.fetchItem()

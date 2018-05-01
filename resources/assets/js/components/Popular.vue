@@ -6,7 +6,7 @@
 			</a>
 			<div class="card-price">
 				<span>{{ popular.title }}</span>
-				<span>{{ popular.price1 }}.{{ popular.price2 }} грн</span>
+				<span>{{ popular.price1 + '.' + popular.price2 + ' ' + hryvnia }}</span>
 			</div>
 		</div>
 	</div>
@@ -19,6 +19,10 @@ export default {
 			populars: {}
 		}
 	},
+
+	props: [
+		'hryvnia'
+	],
 
 	created() {
 		this.fetchPopularItems()
