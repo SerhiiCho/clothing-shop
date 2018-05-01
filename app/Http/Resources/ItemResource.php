@@ -16,13 +16,13 @@ class ItemResource extends JsonResource
     {
         return [
 			'id'        => $this->id,
+			'image'     => $this->image,
 			'title'     => $this->title,
 			'content'   => $this->content,
 			'price1'    => $this->price1,
 			'price2'    => $this->price2,
 			'sex'       => $this->sex,
-			'category'  => $this->category,
-			'image'     => $this->image
+			'category'  => $this->category
 		];
     }
 }

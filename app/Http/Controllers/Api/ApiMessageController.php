@@ -10,13 +10,16 @@ class ApiMessageController extends Controller
 {
     public function send() {
 
-		$checkIfMessageIsAlreadyExists = 
+		$checkIfMessageIsAlreadyExists = Message::wherePhone(request()->phone)->first();
 
-		Message::create([
-			'phone' => request()->phone,
-			'item_id' => request()->item
-		]);
-
-		return request()->all();
+		if ($checkIfMessageIsAlreadyExists) {
+			return 'exists';
+		} else {
+			Message::create([
+				'phone' => request()->phone,
+				'item_id' => request()->item
+			]);
+			return 'success';
+		}
 	}
 }

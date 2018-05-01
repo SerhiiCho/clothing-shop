@@ -28,7 +28,7 @@
 				</div>
 
 				<!-- Callback -->
-				<p>{{ error }}</p>
+				<p>{{ messageToCustomer }}</p>
 				<div class="col-xs-12">
 					+38 <input v-model="phoneNumber" type="text" placeholder="Номер телефона" maxlength="10">
 					<button @click="sentPhoneNumber(item.id)">Заказать</button>
@@ -49,7 +49,7 @@ export default {
 	data() {
 		return {
 			item: [],
-			error: '',
+			messageToCustomer: '',
 			phoneNumber: ''
 		}
 	},
@@ -76,18 +76,15 @@ export default {
 
 		validatePhoneNumber(input) {
 			var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-			this.error = ''
 
 			if (input.match(phoneno)) {
 				return true;
-			} else {
-				return false;
 			}
+			return;
 		},
 
 		sentPhoneNumber(item) {
 			if (this.validatePhoneNumber(this.phoneNumber)) {
-
 				let dataForRequest = {
 					item: item,
 					phone: this.phoneNumber
@@ -101,10 +98,16 @@ export default {
 						}
 					})
 					.then(res => res.text())
-					.then(data => this.error = 'Мы с свяжимся с вами в ближайшее время')
+					.then(data => {
+						if (data === 'success') {
+							this.messageToCustomer = 'Мы с свяжимся с вами в ближайшее время'
+						} else {
+							this.messageToCustomer = 'Вы уже отправили ваш заказ. Вам позвонят в ближайшее время'
+						}
+					})
 					.catch(error => console.log(error))
 			} else {
-				this.error = 'Не правильный формат номера телефона'
+				this.messageToCustomer = 'Не правильный формат номера телефона'
 			}
 		}
 	}

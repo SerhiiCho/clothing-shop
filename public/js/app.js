@@ -3944,52 +3944,6 @@ var app = new Vue({
   el: '#app'
 });
 
-// Shortcut function
-function id(el) {
-  return document.getElementById(el);
-}
-
-var loadingTitle = document.getElementById('loading-title');
-var loading = document.getElementById('loading');
-var opened = false;
-
-/**
- * After page has been loaded, it will
- * remove the loading animation
- * 
- * @name preloader
- */
-window.onload = function () {
-  loading.classList.remove("loading");
-  loadingTitle.innerHTML = '';
-};
-
-id('hamburger').addEventListener('click', function () {
-  id('nav-menu').style.top = 0;
-  id('hamburger-container').style.opacity = 0;
-  opened = true;
-});
-
-id('close-nav-menu').addEventListener('click', function () {
-  id('nav-menu').style.top = '-25em';
-  id('hamburger-container').style.opacity = 0.9;
-  opened = false;
-});
-
-window.onscroll = function () {
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-    id('logo-clothing').style.opacity = 0;
-    id('logo-clothing').style.display = 'none';
-    id('hamburger-container').classList.add('hamburger-down');
-  } else {
-    id('logo-clothing').style.opacity = 1;
-    id('hamburger-container').classList.remove('hamburger-down');
-    setTimeout(function () {
-      return id('logo-clothing').style.display = 'block';
-    }, 250);
-  }
-};
-
 /***/ }),
 /* 133 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -20364,7 +20318,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			item: [],
-			error: '',
+			messageToCustomer: '',
 			phoneNumber: ''
 		};
 	},
@@ -20393,19 +20347,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		validatePhoneNumber: function validatePhoneNumber(input) {
 			var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-			this.error = '';
 
 			if (input.match(phoneno)) {
 				return true;
-			} else {
-				return false;
 			}
+			return;
 		},
 		sentPhoneNumber: function sentPhoneNumber(item) {
 			var _this2 = this;
 
 			if (this.validatePhoneNumber(this.phoneNumber)) {
-
 				var dataForRequest = {
 					item: item,
 					phone: this.phoneNumber
@@ -20420,12 +20371,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				}).then(function (res) {
 					return res.text();
 				}).then(function (data) {
-					return _this2.error = 'Мы с свяжимся с вами в ближайшее время';
+					if (data === 'success') {
+						_this2.messageToCustomer = 'Мы с свяжимся с вами в ближайшее время';
+					} else {
+						_this2.messageToCustomer = 'Вы уже отправили ваш заказ. Вам позвонят в ближайшее время';
+					}
 				}).catch(function (error) {
 					return console.log(error);
 				});
 			} else {
-				this.error = 'Не правильный формат номера телефона';
+				this.messageToCustomer = 'Не правильный формат номера телефона';
 			}
 		}
 	}
@@ -20486,7 +20441,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(_vm.error))]),
+        _c("p", [_vm._v(_vm._s(_vm.messageToCustomer))]),
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-12" }, [
           _vm._v("\n\t\t\t\t+38 "),
