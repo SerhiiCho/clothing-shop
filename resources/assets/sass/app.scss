@@ -14,8 +14,10 @@
 @import 'home/three-cards';
 @import 'home/home-cards';
 
-@import 'items';
-@import 'single-page';
+// Items
+@import 'items/items';
+@import 'items/single-page';
+
 @import 'user-sidebar';
 @import 'form';
 @import 'pagination';
