@@ -60,7 +60,7 @@ class ApiItemController extends Controller
 
     public function popular()
     {
-		$items = Item::take(12)->latest()->get();
+		$items = Item::take(12)->orderBy('popular', 'desc')->get();
 		return ItemResource::collection($items);
     }
 

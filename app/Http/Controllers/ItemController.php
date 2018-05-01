@@ -7,6 +7,7 @@ use App\Models\Type;
 use Illuminate\Http\Request;
 use App\Http\Requests\ItemRequest;
 use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Cookie;
 use App\Http\Requests\UpdateItemRequest;
 
 class ItemController extends Controller
@@ -52,7 +53,16 @@ class ItemController extends Controller
 
     public function show(Item $item)
     {
-        return view('items.show');
+		if (Cookie::get('visited')) {
+			if (Cookie::get('visited') == $item->id) {
+				return view('items.show');
+			}
+		}
+
+		Cookie::queue('visited', $item->id, 1);
+		$item->increment('popular');
+
+		return view('items.show');
     }
 
 
