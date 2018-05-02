@@ -70,7 +70,9 @@ class ApiItemController extends Controller
 		$item = Item::findOrFail($id);
 
 		if ($item->delete()) {
-			Storage::delete('public/img/clothes/'.$item->image);
+			if ($item->image != 'default.jpg') {
+				Storage::delete('public/img/clothes/'.$item->image);
+			}
 			return new ItemResource($item);
 		}
     }

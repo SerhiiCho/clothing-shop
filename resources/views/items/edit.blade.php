@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container pb-4 col-12 col-lg-8 col-offset-lg-2">
-	<div class="heading center">@lang('items.change_item')</div>
+	<h4 class="heading center">@lang('items.change_item')</h4>
 
 	<div class="row">
 		<form action="{{ action('ItemController@update', ['id' => $item->id]) }}" method="post" enctype="multipart/form-data" class="col-md-6">
@@ -22,7 +22,7 @@
 			</div>
 
 			<div class="row">
-				<div class="form-group col-md-6">
+				<div class="form-group col-sm-6">
 					<label>@lang('items.category')</label>
 					<select name="category" class="form-control">
 						<option value="{{ $item->category }}">{{ $category }}</option>
@@ -32,7 +32,7 @@
 					</select>
 				</div>
 
-				<div class="form-group col-md-6">
+				<div class="form-group col-sm-6">
 					<label>@lang('items.type')</label>
 					<select name="type" value="{{ $item->id }}" class="form-control">
 						<option value="{{ $item->type->id }}">{{ $item->type->type }}</option>
@@ -45,12 +45,12 @@
 			</div>
 
 			<div class="row">
-				<div class="form-group col-md-6">
+				<div class="form-group col-6">
 					<label>@lang('items.price_hryvnia')</label>
 					<input type="number" value="{{ $item->price1 }}" name="price1" value="0" placeholder="@lang('items.select_hryvnia')" class="form-control" required>
 				</div>
 
-				<div class="form-group col-md-6">
+				<div class="form-group col-6">
 					<label>@lang('items.price_change')</label>
 					<input type="number" value="{{ $item->price2 }}" name="price2" value="0" class="form-control" placeholder="@lang('items.select_change')" max="99" required>
 				</div>
@@ -63,7 +63,7 @@
 			<button type="submit" class="btn btn-dark">@lang('items.change_item')</button>
 		</form>
 
-		<div class="col-md-6">
+		<div class="col-md-6 mt-3">
 			<img src="{{ asset('/storage/img/clothes/' . $item->image) }}" alt="{{ $item->title }}" class="rounded mx-auto d-block">
 		</div>
 	</div>
