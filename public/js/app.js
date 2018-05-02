@@ -20311,15 +20311,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
 			item: [],
 			messageToCustomer: '',
-			phoneNumber: ''
+			phoneNumber: '',
+			clicked: false
 		};
 	},
 
@@ -20356,6 +20355,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		sentPhoneNumber: function sentPhoneNumber(item) {
 			var _this2 = this;
 
+			this.clicked = true;
 			if (this.validatePhoneNumber(this.phoneNumber)) {
 				var dataForRequest = {
 					item: item,
@@ -20394,8 +20394,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", [
-    _c("div", { staticClass: "col-xs-12 col-sm-4 col-lg-3 single-image" }, [
+  return _c("section", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-12 col-sm-4 col-lg-3 single-image" }, [
       _c("img", {
         attrs: {
           src: "/storage/img/clothes/" + _vm.item.image,
@@ -20404,15 +20404,15 @@ var render = function() {
       })
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-xs-12 col-sm-8 col-lg-9 single-info" }, [
+    _c("div", { staticClass: "col-12 col-sm-8 col-lg-9 single-info" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-xs-6" }, [
+        _c("div", { staticClass: "col-6" }, [
           _c("span", { staticClass: "single-title" }, [
             _vm._v(_vm._s(_vm.item.title))
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-6" }, [
+        _c("div", { staticClass: "col-6" }, [
           _c("p", { staticClass: "single-price" }, [
             _vm._v(
               "\n\t\t\t\t\t" +
@@ -20425,27 +20425,21 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12" }, [
-          _c("span", { staticClass: "single-status" }, [
-            _c("i", {
-              staticClass: "fa fa-shopping-cart",
-              attrs: { "aria-hidden": "true" }
-            }),
-            _vm._v(
-              " \n\t\t\t\t\t" +
-                _vm._s(_vm.numberitem) +
-                ": " +
-                _vm._s(_vm.item.id) +
-                "\n\t\t\t\t"
-            )
-          ])
+        _c("span", { staticClass: "col-12 single-status" }, [
+          _c("i", {
+            staticClass: "fa fa-shopping-cart",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(
+            " \n\t\t\t\t" +
+              _vm._s(_vm.numberitem) +
+              ": " +
+              _vm._s(_vm.item.id) +
+              "\n\t\t\t"
+          )
         ]),
         _vm._v(" "),
-        _c("p", { staticClass: "message-form" }, [
-          _vm._v(_vm._s(_vm.messageToCustomer))
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 phone-form" }, [
+        _c("div", { staticClass: "col-12 phone-form" }, [
           _vm._v("\n\t\t\t\t+38 "),
           _c("input", {
             directives: [
@@ -20482,11 +20476,24 @@ var render = function() {
               }
             },
             [_vm._v("Заказать")]
-          )
+          ),
+          _vm._v(" "),
+          _vm.clicked
+            ? _c(
+                "div",
+                {
+                  staticClass: "alert alert-pink mt-3",
+                  attrs: { role: "alert" }
+                },
+                [_vm._v(_vm._s(_vm.messageToCustomer))]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c("hr", { staticClass: "mt-4" })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 single-intro" }, [
-          _c("p", [_vm._v(_vm._s(_vm.item.content))])
+        _c("p", { staticClass: "col-12 lead" }, [
+          _vm._v(_vm._s(_vm.item.content))
         ])
       ])
     ])
@@ -20569,6 +20576,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -20609,13 +20617,14 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "section",
+    { staticClass: "row" },
     _vm._l(_vm.items, function(item) {
       return _c(
         "div",
         {
           key: item.id,
-          staticClass: "col-lg-2 col-md-3 col-xs-6 col-sm-4 card"
+          staticClass: "col-lg-2 col-md-3 col-6 col-sm-4 item-card"
         },
         [
           _c("a", { attrs: { href: "/item/" + item.id, title: item.title } }, [
@@ -20627,13 +20636,15 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-price" }, [
+          _c("div", { staticClass: "item-card-price" }, [
             _c("span", [_vm._v(_vm._s(item.title))]),
             _vm._v(" "),
-            _c("span", [
-              _vm._v(
-                _vm._s(item.price1 + "." + item.price2 + " " + _vm.hryvnia)
-              )
+            _c("span", { staticClass: "hryvnia" }, [
+              _vm._v(_vm._s(item.price1) + ".")
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "change" }, [
+              _vm._v(_vm._s(item.price2) + " " + _vm._s(_vm.hryvnia))
             ])
           ])
         ]
@@ -20911,7 +20922,7 @@ var render = function() {
         "div",
         {
           key: popular.id,
-          staticClass: "col-lg-2 col-md-3 col-xs-6 col-sm-4 item-card"
+          staticClass: "col-lg-2 col-md-3 col-6 col-sm-4 item-card"
         },
         [
           _c(
@@ -21142,7 +21153,7 @@ var render = function() {
             "div",
             {
               key: item.id,
-              staticClass: "col-lg-2 col-md-3 col-xs-6 col-sm-4 item-card"
+              staticClass: "col-lg-2 col-md-3 col-6 col-sm-4 item-card"
             },
             [
               _c(

@@ -10395,17 +10395,6 @@ a.text-dark:focus {
   margin: 0;
 }
 
-html {
-  height: 100%;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  line-height: 1.6;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-}
-
 img {
   max-width: 100%;
 }
@@ -10510,6 +10499,13 @@ main {
   border: none;
   color: #646464;
   z-index: 100;
+}
+
+.alert-pink {
+  background: #EDE2ED;
+  border: 1px solid #ecdcdc;
+  color: #000;
+  font-weight: normal;
 }
 
 /* Hamburger
@@ -10923,7 +10919,7 @@ header {
   display: inline-block;
   font-size: 1.3em;
   color: #974c4c;
-  margin-right: -3px;
+  margin-right: -13px;
 }
 
 .item-card-price .change {
@@ -10972,6 +10968,40 @@ header {
   background: #fff;
 }
 
+.single-container .single-info {
+  padding: 1em 3%;
+  font-weight: bold;
+}
+
+.single-container .single-info span {
+  display: block;
+}
+
+.single-container .single-info .phone-form {
+  margin: .3em 2px;
+  color: #646464;
+}
+
+.single-container .single-info .phone-form input,
+.single-container .single-info .phone-form button {
+  border-radius: 3px;
+  border: solid 1px #ecdcdc;
+  padding: 3px 5px;
+}
+
+.single-container .single-info .phone-form button {
+  background: #ecdcdc;
+  cursor: pointer;
+  -webkit-transition: background-color 300ms;
+  transition: background-color 300ms;
+}
+
+.single-container .single-info .phone-form button:hover {
+  background: #e3cbcb;
+  -webkit-transition: background-color 300ms;
+  transition: background-color 300ms;
+}
+
 .single-image {
   text-align: center;
   padding: 0 1em;
@@ -10991,45 +11021,6 @@ header {
 .single-image img:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
-}
-
-.single-info {
-  padding: 1em 8%;
-  font-weight: bold;
-}
-
-.single-info span {
-  display: block;
-}
-
-.single-info .message-form {
-  color: #646464;
-  margin: 8px 2px;
-}
-
-.single-info .phone-form {
-  margin: .3em 2px;
-  color: #646464;
-}
-
-.single-info .phone-form input,
-.single-info .phone-form button {
-  border-radius: 3px;
-  border: solid 1px #ecdcdc;
-  padding: 3px 5px;
-}
-
-.single-info .phone-form button {
-  background: #ecdcdc;
-  cursor: pointer;
-  -webkit-transition: background-color 300ms;
-  transition: background-color 300ms;
-}
-
-.single-info .phone-form button:hover {
-  background: #e3cbcb;
-  -webkit-transition: background-color 300ms;
-  transition: background-color 300ms;
 }
 
 .single-status {

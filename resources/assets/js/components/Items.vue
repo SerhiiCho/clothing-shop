@@ -2,7 +2,7 @@
 		<div class="container">
 			<section class="heading" style="background:#F2F2F2;">{{ title }}</section>
 			<div class="row">
-				<div v-for="item in items" v-bind:key="item.id" class="col-lg-2 col-md-3 col-xs-6 col-sm-4 item-card">
+				<div v-for="item in items" v-bind:key="item.id" class="col-lg-2 col-md-3 col-6 col-sm-4 item-card">
 					<a :href="'/item/' + item.id" :title="item.title">
 						<img :src="'/storage/img/clothes/' + item.image" :alt="item.title">
 					</a>

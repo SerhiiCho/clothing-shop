@@ -73,3 +73,10 @@
 	color: $gray;
 	z-index: 100;
 }
+
+.alert-pink {
+	background: $pink;
+	border: 1px solid $darkPink;
+	color: #000;
+	font-weight: normal;
+}

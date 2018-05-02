@@ -1,6 +1,6 @@
 <template>
 	<section class="row">
-		<div v-for="popular in populars" v-bind:key="popular.id" class="col-lg-2 col-md-3 col-xs-6 col-sm-4 item-card">
+		<div v-for="popular in populars" v-bind:key="popular.id" class="col-lg-2 col-md-3 col-6 col-sm-4 item-card">
 			<a :href="'/item/' + popular.id" :title="popular.title">
 				<img :src="'storage/img/clothes/' + popular.image" :alt="popular.title">
 			</a>

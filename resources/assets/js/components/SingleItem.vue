@@ -1,18 +1,18 @@
 <template>
-	<section>
-		<div class="col-xs-12 col-sm-4 col-lg-3 single-image">
+	<section class="row">
+		<div class="col-12 col-sm-4 col-lg-3 single-image">
 			<img :src="'/storage/img/clothes/' + item.image" :alt="item.title">
 		</div>
-		<div class="col-xs-12 col-sm-8 col-lg-9 single-info">
+		<div class="col-12 col-sm-8 col-lg-9 single-info">
 			<div class="row">
 
 				<!-- Title -->
-				<div class="col-xs-6">
+				<div class="col-6">
 					<span class="single-title">{{ item.title }}</span>
 				</div>
 
 				<!-- Price -->
-				<div class="col-xs-6">
+				<div class="col-6">
 					<p class="single-price">
 						{{ item.price1 }}.{{ item.price2 }}
 						<span>{{ hryvnia }}</span>
@@ -20,24 +20,22 @@
 				</div>
 
 				<!-- ID -->
-				<div class="col-xs-12">
-					<span class="single-status">
-						<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
-						{{ numberitem }}: {{ item.id }}
-					</span>
-				</div>
+				<span class="col-12 single-status">
+					<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
+					{{ numberitem }}: {{ item.id }}
+				</span>
 
 				<!-- Callback -->
-				<p class="message-form">{{ messageToCustomer }}</p>
-				<div class="col-xs-12 phone-form">
+				<div class="col-12 phone-form">
 					+38 <input v-model="phoneNumber" type="text" placeholder="Номер телефона" maxlength="10">
 					<button @click="sentPhoneNumber(item.id)">Заказать</button>
+					<div v-if="clicked" class="alert alert-pink mt-3" role="alert">{{ messageToCustomer }}</div>
+
+					<hr class="mt-4" />
 				</div>
 
 				<!-- Intro -->
-				<div class="col-xs-12 single-intro">
-					<p>{{ item.content }}</p>
-				</div>
+				<p class="col-12 lead">{{ item.content }}</p>
 			</div>
 		</div>
 	</section>
@@ -50,7 +48,8 @@ export default {
 		return {
 			item: [],
 			messageToCustomer: '',
-			phoneNumber: ''
+			phoneNumber: '',
+			clicked: false
 		}
 	},
 
@@ -84,6 +83,7 @@ export default {
 		},
 
 		sentPhoneNumber(item) {
+			this.clicked = true
 			if (this.validatePhoneNumber(this.phoneNumber)) {
 				let dataForRequest = {
 					item: item,
