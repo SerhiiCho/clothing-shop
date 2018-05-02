@@ -11,6 +11,11 @@ header {
 	padding-top: 1em;
 	color: #000;
 	transition: opacity 200ms;
+
+	&:hover {
+		text-decoration: none;
+		color: #424242;
+	}
 }
 
 .header-search input,

@@ -19,19 +19,18 @@
 					<span>@lang('user-sidebar.all_items')</span>
 				</a>
 			</li>
-			<li>
-				<a>
+			<li class="remove-hover">
+				<a href="#">
 					<i class="fa fa-cog icon-profile-menu-line" aria-hidden="true"></i>
 					<span>@lang('user-sidebar.settings')</span>
 				</a>
 			</li>
-
-			{{-- Menu Second Level --}}
-			<div class="menu-second-level">
-				<a href="/settings/general" title="@lang('user-sidebar.general')" class="{{ activeIfRouteIs('settings/general') }}">
+			<li class="{{ activeIfRouteIs('settings/general') }}">
+				<a href="/settings/general" title="@lang('user-sidebar.general')">
+					<i class="fa fa-angle-right icon-profile-menu-line" aria-hidden="true"></i>
 					<span>@lang('user-sidebar.general')</span>
 				</a>
-			</div>
+			</li>
 		</ul>
 		<li>
 			<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="@lang('user-sidebar.exit')">

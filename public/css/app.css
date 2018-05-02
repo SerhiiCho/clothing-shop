@@ -10672,6 +10672,12 @@ header {
   transition: opacity 200ms;
 }
 
+.header-logo:hover,
+.nav-logo:hover {
+  text-decoration: none;
+  color: #424242;
+}
+
 .header-search input,
 .nav-search input {
   width: 15em;
@@ -11134,19 +11140,8 @@ header {
           transform: translateZ(0) scale(1, 1);
 }
 
-.menu-second-level a {
-  display: block;
-  padding: .3em .8em .3em 45px;
-}
-
-.menu-second-level a:hover {
-  background: #974c4c;
-}
-
-.menu-second-level a span {
-  display: block;
-  color: #fff;
-  text-align: left;
+.user-sidebar .remove-hover:hover {
+  background: none;
 }
 
 .icon-profile-menu-line {
