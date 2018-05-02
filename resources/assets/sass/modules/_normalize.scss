@@ -1,7 +1,6 @@
 * {
 	padding: 0;
 	margin: 0;
-	box-sizing: border-box;
 }
 
 html {
@@ -15,11 +14,6 @@ body {
 	font-family: $mainFont;
 }
 
-a {
-	text-decoration: none;
-	color: #444;
-}
-
 img {
 	max-width: 100%;
 }
@@ -30,10 +24,6 @@ li {
 
 main {
 	padding-top: 3em;
-}
-
-textarea, input {
-	font-family: Arial, Helvetica, sans-serif;
 }
 
 @media (min-width: 840px) {
