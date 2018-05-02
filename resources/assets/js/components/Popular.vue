@@ -6,7 +6,8 @@
 			</a>
 			<div class="item-card-price">
 				<span>{{ popular.title }}</span>
-				<span>{{ popular.price1 + '.' + popular.price2 + ' ' + hryvnia }}</span>
+				<span class="hryvnia">{{ popular.price1 }}.</span>
+				<span class="change">{{ popular.price2 }} {{ hryvnia }}</span>
 			</div>
 		</div>
 	</section>

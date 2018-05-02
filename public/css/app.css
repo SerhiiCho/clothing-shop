@@ -10896,15 +10896,12 @@ header {
   transition: transform 300ms, -webkit-transform 300ms;
   border-radius: 2px;
   border: 1px dotted #ecdcdc;
+  margin-bottom: 5px;
 }
 
 .item-card img:hover {
   -webkit-transform: scale(1.05) translateZ(0);
           transform: scale(1.05) translateZ(0);
-}
-
-.item-card-status {
-  font-size: .8em !important;
 }
 
 .item-card-price {
@@ -10919,11 +10916,20 @@ header {
   display: block;
   color: #646464;
   font-size: .9em;
+  padding: 0 6px;
 }
 
-.item-card-price span:last-of-type {
-  font-size: 1.2em;
-  color: #444;
+.item-card-price .hryvnia {
+  display: inline-block;
+  font-size: 1.3em;
+  color: #974c4c;
+  margin-right: -3px;
+}
+
+.item-card-price .change {
+  display: inline-block;
+  font-size: .8em;
+  color: #974c4c;
 }
 
 @media (min-width: 500px) {

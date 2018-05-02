@@ -57,7 +57,7 @@
 
 		<div class="form-group">
 			<img src="{{ asset('/storage/img/clothes/' . $item->image) }}" alt="{{ $item->title }}" style="text-align:center; margin:1em auto; display:block;">
-			<input type="file" name="image" class="form-control-file" required>
+			<input type="file" name="image" class="form-control-file">
 		</div>
 		
 		<button type="submit" class="btn btn-dark">@lang('items.change_item')</button>

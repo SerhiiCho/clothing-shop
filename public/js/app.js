@@ -20863,6 +20863,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -20929,12 +20930,12 @@ var render = function() {
           _c("div", { staticClass: "item-card-price" }, [
             _c("span", [_vm._v(_vm._s(popular.title))]),
             _vm._v(" "),
-            _c("span", [
-              _vm._v(
-                _vm._s(
-                  popular.price1 + "." + popular.price2 + " " + _vm.hryvnia
-                )
-              )
+            _c("span", { staticClass: "hryvnia" }, [
+              _vm._v(_vm._s(popular.price1) + ".")
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "change" }, [
+              _vm._v(_vm._s(popular.price2) + " " + _vm._s(_vm.hryvnia))
             ])
           ])
         ]
@@ -21005,6 +21006,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -21159,10 +21161,12 @@ var render = function() {
               _c("div", { staticClass: "item-card-price" }, [
                 _c("span", [_vm._v(_vm._s(item.title))]),
                 _vm._v(" "),
-                _c("span", [
-                  _vm._v(
-                    _vm._s(item.price1 + "." + item.price2 + " " + _vm.hryvnia)
-                  )
+                _c("span", { staticClass: "hryvnia" }, [
+                  _vm._v(_vm._s(item.price1) + ".")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "change" }, [
+                  _vm._v(_vm._s(item.price2) + " " + _vm._s(_vm.hryvnia))
                 ]),
                 _vm._v(" "),
                 _vm.admin == 1

@@ -12,14 +12,11 @@
 		transition: transform 300ms;
 		border-radius: 2px;
 		border: 1px dotted $darkPink;
+		margin-bottom: 5px;
 
 		&:hover {
 			transform: scale(1.05) translateZ(0);
 		}
-	}
-
-	&-status {
-		font-size: .8em !important;
 	}
 
 	&-price {
@@ -33,11 +30,20 @@
 			display: block;
 			color: $gray;
 			font-size: .9em;
-	
-			&:last-of-type {
-				font-size: 1.2em;
-				color: $darkGray;
-			}
+			padding: 0 6px;
+		}
+
+		.hryvnia {
+			display: inline-block;
+			font-size: 1.3em;
+			color: $darkestPink;
+			margin-right: -3px;
+		}
+
+		.change {
+			display: inline-block;
+			font-size: .8em;
+			color: $darkestPink;
 		}
 	}
 }
