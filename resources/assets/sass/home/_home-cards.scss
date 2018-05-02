@@ -2,7 +2,7 @@
 	background: #F2F2F2;
 }
 
-.card {
+.item-card {
 	height: 290px;
 	text-align: center;
 
@@ -43,7 +43,7 @@
 }
 
 @media (min-width: 500px) {
-	.card {
+	.item-card {
 		height: 340px;
 
 		img {

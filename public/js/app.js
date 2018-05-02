@@ -20903,13 +20903,14 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "section",
+    { staticClass: "row" },
     _vm._l(_vm.populars, function(popular) {
       return _c(
         "div",
         {
           key: popular.id,
-          staticClass: "col-lg-2 col-md-3 col-xs-6 col-sm-4 card"
+          staticClass: "col-lg-2 col-md-3 col-xs-6 col-sm-4 item-card"
         },
         [
           _c(
@@ -20925,7 +20926,7 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "card-price" }, [
+          _c("div", { staticClass: "item-card-price" }, [
             _c("span", [_vm._v(_vm._s(popular.title))]),
             _vm._v(" "),
             _c("span", [
@@ -21004,7 +21005,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -21140,7 +21140,7 @@ var render = function() {
             "div",
             {
               key: item.id,
-              staticClass: "col-lg-2 col-md-3 col-xs-6 col-sm-4 card"
+              staticClass: "col-lg-2 col-md-3 col-xs-6 col-sm-4 item-card"
             },
             [
               _c(
@@ -21156,7 +21156,7 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "card-price" }, [
+              _c("div", { staticClass: "item-card-price" }, [
                 _c("span", [_vm._v(_vm._s(item.title))]),
                 _vm._v(" "),
                 _c("span", [
