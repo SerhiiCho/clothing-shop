@@ -1,3 +1,5 @@
+@import '~bootstrap/scss/bootstrap';
+
 // Modules
 @import 'modules/variables';
 @import 'modules/normalize';
@@ -18,11 +20,10 @@
 @import 'items/items';
 @import 'items/single-page';
 
+
 @import 'user-sidebar';
-@import 'form';
 @import 'pagination';
 @import 'footer';
 @import 'animations';
-@import 'grid';
 
 @import 'font-awesome/scss/font-awesome';

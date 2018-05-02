@@ -3,36 +3,58 @@
 @section('content')
 
 <div class="container">
-	<div class="col-xs-12 heading center">@lang('items.add_item')</div>
-	<form action="{{ action('ItemController@store') }}" method="post" class="form" enctype="multipart/form-data">
+	<h4 class="heading center">@lang('items.add_item')</h4>
 
-			@csrf
+	<form action="{{ action('ItemController@store') }}" method="post" enctype="multipart/form-data" class="col-md-6 offset-md-3 pb-5">
 
-			<input type="text" name="title" placeholder="@lang('items.name')" required>
-			<textarea name="content" placeholder="@lang('items.discreption')" required></textarea>
+		@csrf
 
-			<label for="category">@lang('items.category')</label>
-			<select name="category" id="category">
-				<option value="women">@lang('items.women_items')</option>
-				<option value="men">@lang('items.men_items')</option>
-			</select>
+		<div class="form-group">
+			<label>@lang('items.name')</label>
+			<input type="text" name="title" placeholder="@lang('items.name')" class="form-control" required>
+		</div>
 
-			<label for="type">@lang('items.type')</label>
-			<select name="type" id="type">
-				@foreach ($types as $type)
-					<option value="{{ $type->id }}">{{ $type->type }}</option>
-				@endforeach
-			</select>
+		<div class="form-group">
+			<label>@lang('items.discreption')</label>
+			<textarea name="content" placeholder="@lang('items.discreption')" class="form-control" required></textarea>
+		</div>
 
-			<label for="price1" style="display:inline-block; width:39%; float:left; margin-left:10%;">@lang('items.price_hryvnia')</label>
-			<label for="price2" style="display:inline-block; width:39%; float:left; margin-left:2%;">@lang('items.price_change')</label>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label>@lang('items.category')</label>
+				<select name="category" class="form-control">
+					<option value="women">@lang('items.women_items')</option>
+					<option value="men">@lang('items.men_items')</option>
+				</select>
+			</div>
 
-			<input id="price1" type="number" name="price1" value="0" placeholder="@lang('items.select_hryvnia')" style="width:39%; margin-left:10%; margin-right:1%; float:left;" required>
-			<input id="price2" type="number" name="price2" value="0" style="width:39%; float:left; margin-right:10%; margin-left:1%;" placeholder="@lang('items.select_change')" max="99" required>
+			<div class="form-group col-md-6">
+				<label>@lang('items.type')</label>
+				<select name="type" class="form-control">
+					@foreach ($types as $type)
+						<option value="{{ $type->id }}">{{ $type->type }}</option>
+					@endforeach
+				</select>
+			</div>
+		</div>
 
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label>@lang('items.price_hryvnia')</label>
+				<input type="number" name="price1" value="0" placeholder="@lang('items.select_hryvnia')" class="form-control" required>
+			</div>
 
-			<input type="file" name="image" id="image" required>
-			<button type="submit" class="btn block">@lang('items.add_item')</button>
+			<div class="form-group col-md-6">
+				<label>@lang('items.price_change')</label>
+				<input type="number" name="price2" value="0" class="form-control" placeholder="@lang('items.select_change')" max="99" required>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<input type="file" name="image" class="form-control-file" required>
+		</div>
+		
+		<button type="submit" class="btn btn-dark">@lang('items.add_item')</button>
 	</form>
 </div>
 
