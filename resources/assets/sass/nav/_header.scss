@@ -2,27 +2,28 @@ header {
 	display: none;
 }
 
-.header-logo,
-.nav-logo {
+.nav-logo,
+.header-logo {
+	width: 100%;
 	display: block;
 	font-size: 1.8em;
 	font-weight: bold;
 	text-transform: uppercase;
-	padding-top: 1em;
+	margin: .5em auto;
 	color: #000;
 	transition: opacity 200ms;
 
 	&:hover {
-		text-decoration: none;
 		color: #424242;
 	}
 }
 
 .header-search input,
 .nav-search input {
-	width: 15em;
+	width: 15.5em;
 	height: 2em;
-	margin: 0 auto;
+	line-height: 2em;
+	margin: 5px auto;
 	padding: 0 1em;
 	margin-top: .2em;
 	border-radius: 2em;
@@ -56,21 +57,24 @@ header {
 		min-height: 4em;
 		background: $lightPink;
 	}
+
 	.header-logo {
 		display: inline-block;
-		font-size: 1.5em;
+		width: auto;
+		text-align: left;
+		margin: 0;
 		padding: 0 1.5em;
 	}
+	
 	.nav-logo {
 		display: none;
 	}
+
 	.nav-search input {
 		display: none;
 	}
+
 	.header-search input {
 		width: 18em;
-	}
-	#nav-callback {
-		display: none;
 	}
 }

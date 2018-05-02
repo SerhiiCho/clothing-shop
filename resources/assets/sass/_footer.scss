@@ -2,11 +2,8 @@ footer {
 	padding-top: 2em;
 	background: #3C3C3C;
 
-	nav {
-		padding: 0 0 1em 3em;
-	}
-
 	h4 {
+		widows: 100%;
 		color: #fff;
 		font-size: 0.9em;
 		text-transform: uppercase;
@@ -30,13 +27,12 @@ footer {
 }
 
 .languages {
-
 	a {
 		display: block;
 
 		img {
 			transition: transform 200ms;
-			margin: .7em .5em .7em 0;
+			margin: .7em 0;
 
 			&:hover {
 				transform: scale(1.2);

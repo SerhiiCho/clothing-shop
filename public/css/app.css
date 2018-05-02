@@ -10399,6 +10399,11 @@ img {
   max-width: 100%;
 }
 
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
 li {
   list-style: none;
 }
@@ -10616,7 +10621,7 @@ main {
 }
 
 .top-nav .close-top-nav {
-  display: block;
+  display: inline-block;
 }
 
 @media (min-width: 840px) {
@@ -10660,29 +10665,30 @@ header {
   display: none;
 }
 
-.header-logo,
-.nav-logo {
+.nav-logo,
+.header-logo {
+  width: 100%;
   display: block;
   font-size: 1.8em;
   font-weight: bold;
   text-transform: uppercase;
-  padding-top: 1em;
+  margin: .5em auto;
   color: #000;
   -webkit-transition: opacity 200ms;
   transition: opacity 200ms;
 }
 
-.header-logo:hover,
-.nav-logo:hover {
-  text-decoration: none;
+.nav-logo:hover,
+.header-logo:hover {
   color: #424242;
 }
 
 .header-search input,
 .nav-search input {
-  width: 15em;
+  width: 15.5em;
   height: 2em;
-  margin: 0 auto;
+  line-height: 2em;
+  margin: 5px auto;
   padding: 0 1em;
   margin-top: .2em;
   border-radius: 2em;
@@ -10724,7 +10730,9 @@ header {
 
   .header-logo {
     display: inline-block;
-    font-size: 1.5em;
+    width: auto;
+    text-align: left;
+    margin: 0;
     padding: 0 1.5em;
   }
 
@@ -10738,10 +10746,6 @@ header {
 
   .header-search input {
     width: 18em;
-  }
-
-  #nav-callback {
-    display: none;
   }
 }
 
@@ -10841,6 +10845,7 @@ header {
 .three-cards .one-card {
   overflow: hidden;
   position: relative;
+  margin-bottom: .7em;
 }
 
 .three-cards .one-card img {
@@ -10856,7 +10861,6 @@ header {
           transform: translate(-50%);
   background: #000000;
   color: #fff;
-  padding: 0 .5em;
   opacity: .8;
   -webkit-transition: opacity 400ms;
   transition: opacity 400ms;
@@ -10869,7 +10873,7 @@ header {
 
 .card-btn span {
   display: block;
-  padding: .4em 2em;
+  padding: .3em 1.7em;
   font-size: 1.5em;
 }
 
@@ -11223,11 +11227,8 @@ footer {
   background: #3C3C3C;
 }
 
-footer nav {
-  padding: 0 0 1em 3em;
-}
-
 footer h4 {
+  widows: 100%;
   color: #fff;
   font-size: 0.9em;
   text-transform: uppercase;
@@ -11257,7 +11258,7 @@ footer a:hover {
   transition: -webkit-transform 200ms;
   transition: transform 200ms;
   transition: transform 200ms, -webkit-transform 200ms;
-  margin: .7em .5em .7em 0;
+  margin: .7em 0;
 }
 
 .languages a img:hover {

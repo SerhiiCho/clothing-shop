@@ -5,6 +5,7 @@
 	.one-card {
 		overflow: hidden;
 		position: relative;
+		margin-bottom: .7em;
 	
 		img {
 			width: 90%;
@@ -20,7 +21,6 @@
 	transform: translate(-50%);
 	background: #000000;
 	color: #fff;
-	padding: 0 .5em;
 	opacity: .8;
 	transition: opacity 400ms;
 	border: solid 1px $darkGray;
@@ -31,7 +31,7 @@
 
 	span {
 		display: block;
-		padding: .4em 2em;
+		padding: .3em 1.7em;
 		font-size: 1.5em;
 	}
 }
