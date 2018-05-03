@@ -13,8 +13,8 @@
 					<span>@lang('user-sidebar.add_new_item')</span>
 				</a>
 			</li>
-			<li class="{{ activeIfRouteIs('items/create') }}">
-				<a href="/items/create" title="@lang('user-sidebar.add_new_item')">
+			<li class="{{ activeIfRouteIs('cards/index') }}">
+				<a href="/cards/index" title="@lang('user-sidebar.cards')">
 					<i class="fa fa-file-image-o icon-profile-menu-line" aria-hidden="true"></i>
 					<span>@lang('user-sidebar.cards')</span>
 				</a>
