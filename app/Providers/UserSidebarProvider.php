@@ -5,12 +5,11 @@ namespace App\Providers;
 use App\Models\Message;
 use Illuminate\Support\ServiceProvider;
 
-class ComposerProvider extends ServiceProvider
+class UserSidebarProvider extends ServiceProvider
 {
     /**
-     * Bootstrap services.
-     *
-     * @return void
+     * Count all messages and if there are more than
+	 * 1 message, display them on user-sidebar
      */
     public function boot()
     {
@@ -21,15 +20,5 @@ class ComposerProvider extends ServiceProvider
 		view()->composer('includes.user-sidebar', function ($view) use ($unreaded) {
 			$view->with(compact('unreaded'));
 		});
-    }
-
-    /**
-     * Register services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
     }
 }

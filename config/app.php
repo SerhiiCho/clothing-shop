@@ -159,7 +159,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\ComposerProvider::class,
+        App\Providers\UserSidebarProvider::class,
         App\Providers\FooterProvider::class,
 
     ],

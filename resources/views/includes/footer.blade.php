@@ -11,12 +11,14 @@
 			</nav>
 			<nav class="col-6 col-md-4 center">
 				<h4>@lang('navigation.last_posts')</h4>
-
 				<ul>
-					<li><a href="#" title="#">Test 1</a></li>
-					<li><a href="#" title="#">Test 2</a></li>
-					<li><a href="#" title="#">Test 3</a></li>
-					<li><a href="#" title="#">Test 4</a></li>
+					@foreach ($last_items_for_footer as $item)
+						<li>
+							<a href="/item/{{ $item->id }}" title="{{ $item->title }}">
+								{{ $item->title }}
+							</a>
+						</li>
+					@endforeach
 				</ul>
 			</nav>
 
