@@ -7,13 +7,16 @@ use Illuminate\Http\Request;
  * within a group which is assigned the "api" middleware group
  */
 
-Route::get('items/{sex?}', 'Api\ApiItemController@index');
+// Items
 Route::get('random', 'Api\ApiItemController@random');
 Route::get('popular', 'Api\ApiItemController@popular');
 Route::get('item/{item}', 'Api\ApiItemController@show');
 Route::post('item', 'Api\ApiItemController@store');
 Route::put('item/{id}', 'Api\ApiItemController@edit');
 Route::delete('item/{id}', 'Api\ApiItemController@destroy');
+
+Route::get('items/{sex?}', 'Api\ApiItemController@index');
+Route::get('items/type/{id}', 'Api\ApiItemController@type');
 
 // Messages
 Route::get('clients_orders/index', 'Api\ApiMessageController@index');

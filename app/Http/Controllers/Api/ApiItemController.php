@@ -14,9 +14,23 @@ class ApiItemController extends Controller
 	
     public function index($category = null)
     {
-		$statement = $category ? [['category', $category]] : [['category', '!=', 'null']];
-		$items = Item::where($statement)->paginate(40);
+		$statement
+			= $category
+			? [['category', $category]]
+			: [['category', '!=', 'null']];
 
+		$items = Item::where($statement)->paginate(40);
+		return ItemResource::collection($items);
+	}
+
+    public function type($type = null)
+    {
+		$statement
+			= $type
+			? [['type_id', $type]]
+			: [['type', '!=', 'null']];
+
+		$items = Item::where($statement)->paginate(40);
 		return ItemResource::collection($items);
     }
 
@@ -24,7 +38,10 @@ class ApiItemController extends Controller
     public function store(Request $request)
     {
 		$id = $request->item_id;
-		$item = $request->isMethod('put') ? Item::findOrFail($id) : new Item;
+		$item
+			= $request->isMethod('put')
+			? Item::findOrFail($id)
+			: new Item;
 
 		$item->id = $request->input('item_id');
 		$item->title = $request->input('title');

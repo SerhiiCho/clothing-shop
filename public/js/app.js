@@ -21075,7 +21075,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 
-	props: ['womenitems', 'allitems', 'menitems', 'hryvnia', 'deleting', 'admin', 'change'],
+	props: ['womenitems', 'category', 'allitems', 'menitems', 'deleting', 'hryvnia', 'change', 'admin'],
 
 	created: function created() {
 		this.fetchItems();
@@ -21087,15 +21087,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var _this = this;
 
 			var vm = this;
-			var addToUrl = '/' + location.search.split('category=')[1];
+			var category = '/' + location.search.split('category=')[1];
+			var type = '/' + location.search.split('type=')[1];
+			var addToUrl = '';
 
-			addToUrl = addToUrl == '/undefined' ? '' : addToUrl;
+			if (category == '/undefined' && type == '/undefined') {
+				addToUrl = '';
+			} else if (category == '/undefined') {
+				addToUrl = '/type' + type;
+			} else if (type == '/undefined') {
+				addToUrl = category;
+			}
+
+			console.log(addToUrl);
+
 			url = url || '/api/items' + addToUrl;
 
 			if (addToUrl === '/men') {
 				this.title = this.menitems;
 			} else if (addToUrl === '/women') {
 				this.title = this.womenitems;
+			} else if (addToUrl.includes("/type")) {
+				this.title = this.category;
 			}
 
 			fetch(url).then(function (res) {

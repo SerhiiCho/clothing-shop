@@ -51,12 +51,13 @@ export default {
 
 	props: [
 		'womenitems',
+		'category',
 		'allitems',
 		'menitems',
-		'hryvnia',
 		'deleting',
-		'admin',
-		'change'
+		'hryvnia',
+		'change',
+		'admin'
 	],
 
 	created() {
@@ -66,24 +67,37 @@ export default {
 	methods: {
 		fetchItems(url) {
 			let vm = this
-			let addToUrl = '/' + location.search.split('category=')[1]
+			let category = '/' + location.search.split('category=')[1]
+			let type = '/' + location.search.split('type=')[1]
+			let addToUrl = ''
 
-			addToUrl = (addToUrl == '/undefined') ? '' : addToUrl
+			if (category == '/undefined' && type == '/undefined') {
+				addToUrl = ''
+			} else if (category == '/undefined') {
+				addToUrl = '/type' + type
+			} else if (type == '/undefined') {
+				addToUrl = category
+			}
+
+			console.log(addToUrl)
+
 			url = url || '/api/items' + addToUrl
 
 			if (addToUrl === '/men') {
 				this.title = this.menitems
 			} else if (addToUrl === '/women') {
 				this.title = this.womenitems
+			} else if (addToUrl.includes("/type")) {
+				this.title = this.category
 			}
 
 			fetch(url)
-				.then(res => res.json())
-				.then(res => {
-					this.items = res.data
-					vm.makePagination(res.meta, res.links)
-				})
-				.catch(error => console.log(error))
+			.then(res => res.json())
+			.then(res => {
+				this.items = res.data
+				vm.makePagination(res.meta, res.links)
+			})
+			.catch(error => console.log(error))
 		},
 
 		makePagination(meta, links) {
@@ -102,9 +116,9 @@ export default {
 				fetch(`api/item/${id}`, {
 					method: 'delete'
 				})
-					.then(res => res.json())
-					.then(data => this.fetchItems())
-					.catch(error => console.log(error))
+				.then(res => res.json())
+				.then(data => this.fetchItems())
+				.catch(error => console.log(error))
 			}
 		}
 	}

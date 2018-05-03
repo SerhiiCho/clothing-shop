@@ -9,20 +9,8 @@
 	<div class="row center three-cards">
 		<div class="col-12 col-sm-4 one-card">
 			<img src="{{ asset('storage/img/3cards/1.jpg') }}" alt="">
-			<a href="#" title="@lang('home.tops')" class="card-btn">
-				<span>@lang('home.tops')</span>
-			</a>
-		</div>
-		<div class="col-12 col-sm-4 one-card">
-			<img src="{{ asset('storage/img/3cards/2.jpg') }}" alt="">
-			<a href="#" title="@lang('home.skirts')" class="card-btn">
-				<span>@lang('home.skirts')</span>
-			</a>
-		</div>
-		<div class="col-12 col-sm-4 one-card">
-			<img src="{{ asset('storage/img/3cards/3.jpg') }}" alt="Платья">
-			<a href="#" title="@lang('home.dresses')" class="card-btn">
-				<span>@lang('home.dresses')</span>
+			<a href="/items?type=4" title="@lang('home.tops')" class="card-btn">
+				<span>Юбки</span>
 			</a>
 		</div>
 	</div>

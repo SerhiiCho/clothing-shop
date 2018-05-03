@@ -12,4 +12,9 @@ class Type extends Model
     public function item() {
 		return $this->belongsTo(Item::class);
 	}
+
+	public function card()
+	{
+		return $this->belongsTo(Card::class);
+	}
 }
