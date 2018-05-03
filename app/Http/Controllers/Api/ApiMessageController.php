@@ -8,9 +8,17 @@ use App\Http\Controllers\Controller;
 
 class ApiMessageController extends Controller
 {
-    public function send() {
+	public function index()
+	{
+		return Message::all();
+	}
 
-		$checkIfMessageIsAlreadyExists = Message::wherePhone(request()->phone)->first();
+	public function send()
+	{
+
+		$checkIfMessageIsAlreadyExists = Message::wherePhone(
+			request()->phone
+		)->first();
 
 		if ($checkIfMessageIsAlreadyExists) {
 			return 'exists';

@@ -90,7 +90,7 @@ export default {
 					phone: this.phoneNumber
 				}
 
-				fetch('/api/message', {
+				fetch('/api/clients_orders/message', {
 						method: 'post',
 						body: JSON.stringify(dataForRequest),
 						headers: {
