@@ -15,16 +15,9 @@ class ApiItemController extends Controller
     public function index($category = null)
     {
 		$statement = $category ? [['category', $category]] : [['category', '!=', 'null']];
-
 		$items = Item::where($statement)->paginate(40);
 
 		return ItemResource::collection($items);
-    }
-
-
-	public function create()
-    {
-        //
     }
 
 
@@ -53,7 +46,7 @@ class ApiItemController extends Controller
 
     public function random()
     {
-		$items = Item::inRandomOrder()->take(6)->get();
+		$items = Item::inRandomOrder()->take(7)->get();
 		return ItemResource::collection($items);
 	}
 

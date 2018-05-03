@@ -20587,7 +20587,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 
-	props: ['hryvnia'],
+	props: ['hryvnia', 'itemid'],
 
 	created: function created() {
 		this.fetchItems();
@@ -20601,7 +20601,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			fetch('/api/random').then(function (res) {
 				return res.json();
 			}).then(function (res) {
-				return _this.items = res.data;
+				var removeIdenticalItem = res.data.map(function (el) {
+					return el.id;
+				}).indexOf(_this.itemid);
+				res.data.splice(removeIdenticalItem, 1);
+				_this.items = res.data;
 			}).catch(function (err) {
 				return console.log(err);
 			});

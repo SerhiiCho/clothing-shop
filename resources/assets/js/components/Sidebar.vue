@@ -22,7 +22,8 @@ export default {
 	},
 
 	props: [
-		'hryvnia'
+		'hryvnia',
+		'itemid'
 	],
 
 	created() {
@@ -32,9 +33,13 @@ export default {
 	methods: {
 		fetchItems() {
 			fetch('/api/random')
-			.then(res => res.json())
-			.then(res =>  this.items = res.data)
-			.catch(err => console.log(err))
+				.then(res => res.json())
+				.then(res => {
+					let removeIdenticalItem = res.data.map(el => el.id).indexOf(this.itemid)
+					res.data.splice(removeIdenticalItem, 1)
+					this.items = res.data
+				})
+				.catch(err => console.log(err))
 		}
 	}
 }
