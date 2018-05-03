@@ -16,7 +16,8 @@ class ApiMessageController extends Controller
 	public function store()
 	{
 		$checkIfMessageIsAlreadyExists = Message::where([
-			'phone'   => request()->phone
+			'phone'   => request()->phone,
+			'ip'	  => request()->ip()
 		])->first();
 
 		if ($checkIfMessageIsAlreadyExists) {
@@ -24,6 +25,7 @@ class ApiMessageController extends Controller
 		} else {
 			Message::create([
 				'phone'   => request()->phone,
+				'ip'	  => request()->ip(),
 				'item_id' => request()->item
 			]);
 			return 'success';

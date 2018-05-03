@@ -8,12 +8,12 @@
 		:numberitem="{{ json_encode(trans('items.number_item')) }}"
 		:hryvnia="{{ json_encode(trans('items.hryvnia')) }}"
 	></single-item>
+</div>
 
-	<!-- Sidebar -->
-	<div class="col-12 sidebar">
-		<section class="heading">@lang('messages.more_clothes')</section>
-		<sidebar :hryvnia="{{ json_encode(trans('items.hryvnia')) }}"></sidebar>
-	</div>
+<!-- Sidebar -->
+<div class="col-12 sidebar">
+	<section class="heading">@lang('messages.more_clothes')</section>
+	<sidebar :hryvnia="{{ json_encode(trans('items.hryvnia')) }}"></sidebar>
 </div>
 
 @endsection
