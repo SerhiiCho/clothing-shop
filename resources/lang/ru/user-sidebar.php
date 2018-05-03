@@ -9,5 +9,6 @@ return [
 	'settings'     => 'Настройки',
 	'general'      => 'Общие',
 	'exit'         => 'Выйти',
+	'cards'        => 'Карты',
 	
 ];

@@ -9,5 +9,6 @@ return [
 	'settings'     => 'Settings',
 	'general'      => 'General',
 	'exit'         => 'Exit',
+	'cards'        => 'Cards',
 	
 ];
