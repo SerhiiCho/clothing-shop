@@ -27,7 +27,7 @@ class ArtisanController extends Controller
 
 	public function clear($url_key)
 	{
-        if ($url_key != env('URL_KEY')) {
+        if ($url_key != config('custom.url_key')) {
             abort( 403 );
 		}
 
@@ -45,7 +45,7 @@ class ArtisanController extends Controller
 	
 	public function link($url_key)
 	{
-        if ($url_key != env('URL_KEY')) {
+        if ($url_key != config('custom.url_key')) {
             abort( 403 );
 		}
 
@@ -60,7 +60,7 @@ class ArtisanController extends Controller
 
 	public function migrate($url_key)
 	{
-        if ($url_key != env('URL_KEY')) {
+        if ($url_key != config('custom.url_key')) {
             abort( 403 );
 		}
 
