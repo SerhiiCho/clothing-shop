@@ -20363,7 +20363,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					phone: this.phoneNumber
 				};
 
-				fetch('/api/clients_orders/message', {
+				fetch('/api/clients_orders/store', {
 					method: 'post',
 					body: JSON.stringify(dataForRequest),
 					headers: {
@@ -21400,6 +21400,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -21423,6 +21426,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}).catch(function (err) {
 				return console.log(err);
 			});
+		},
+		deleteMessage: function deleteMessage(id) {
+			var _this2 = this;
+
+			if (confirm('Удалить этот заказ?')) {
+				fetch('/api/clients_orders/destroy/' + id, {
+					method: 'delete'
+				}).then(function (res) {
+					return res.json();
+				}).then(function (data) {
+					_this2.orders = [];
+					_this2.orders.push(data);
+					_this2.getMessages();
+				}).catch(function (error) {
+					return console.log(error);
+				});
+			}
 		}
 	}
 });
@@ -21436,7 +21456,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", [
-    _vm.orders[0].length > 0
+    _vm.orders[0] && _vm.orders[0].length !== 0
       ? _c("section", [
           _c("table", { staticClass: "table table-sm" }, [
             _vm._m(0),
@@ -21455,7 +21475,7 @@ var render = function() {
                     _vm._v(
                       "\n\t\t\t\t\t\t\t" +
                         _vm._s(order.item_id) +
-                        " - \n\t\t\t\t\t\t\t"
+                        " \n\t\t\t\t\t\t\t"
                     ),
                     _c("a", { attrs: { href: "/item/" + order.item_id } }, [
                       _c("i", {
@@ -21467,15 +21487,35 @@ var render = function() {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(order.created_at))]),
                   _vm._v(" "),
-                  _vm._m(1, true)
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: {
+                          href: "#",
+                          title: "Удалить номер " + order.phone
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.deleteMessage(order.id)
+                          }
+                        }
+                      },
+                      [
+                        _c("i", {
+                          staticClass: "fa fa-trash-o",
+                          attrs: { "aria-hidden": "true" }
+                        })
+                      ]
+                    )
+                  ])
                 ])
               })
             )
           ])
         ])
-      : _c("section", { staticClass: "p-5" }, [
-          _c("h4", { staticClass: "text-center" }, [_vm._v("Нет заказов")])
-        ])
+      : _c("section", { staticClass: "p-1" }, [_vm._m(1)])
   ])
 }
 var staticRenderFns = [
@@ -21489,7 +21529,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Номер")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Товар")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Товар#")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Время")]),
         _vm._v(" "),
@@ -21501,13 +21541,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { staticClass: "text-danger", attrs: { href: "#" } }, [
-        _c("i", {
-          staticClass: "fa fa-trash-o",
-          attrs: { "aria-hidden": "true" }
-        })
-      ])
+    return _c("h5", { staticClass: "text-center pb-4" }, [
+      _c("i", {
+        staticClass: "fa fa-frown-o",
+        attrs: { "aria-hidden": "true" }
+      }),
+      _vm._v(" \n\t\t\tНет заказов\n\t\t")
     ])
   }
 ]

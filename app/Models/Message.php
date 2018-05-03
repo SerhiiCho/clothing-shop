@@ -11,4 +11,9 @@ class Message extends Model
 	public function item() {
 		return $this->belongsTo(Item::class);
 	}
+
+	public function getCreatedAtAttribute($value)
+	{
+		return facebookTimeAgo($value);
+	}
 }

@@ -17,4 +17,5 @@ Route::delete('item/{id}', 'Api\ApiItemController@destroy');
 
 // Messages
 Route::get('clients_orders/index', 'Api\ApiMessageController@index');
-Route::post('clients_orders/message', 'Api\ApiMessageController@send');
+Route::post('clients_orders/store', 'Api\ApiMessageController@store');
+Route::delete('clients_orders/destroy/{id}', 'Api\ApiMessageController@destroy');

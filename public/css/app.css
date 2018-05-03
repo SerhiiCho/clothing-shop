@@ -757,6 +757,25 @@ header {
   background: none;
 }
 
+.user-sidebar .red-buttons[data-notif]::after {
+  content: attr(data-notif);
+  font-family: Arial, Helvetica;
+  min-width: 16px;
+  height: 16px;
+  line-height: 15px;
+  text-align: center;
+  font-size: 11px;
+  display: inline-block;
+  position: absolute;
+  left: 23px;
+  top: 5px;
+  color: #fff;
+  text-shadow: none;
+  background: #860101;
+  border: solid 1px #fff;
+  border-radius: 50%;
+}
+
 .icon-profile-menu-line {
   width: 25px;
   font-size: 1.6em !important;

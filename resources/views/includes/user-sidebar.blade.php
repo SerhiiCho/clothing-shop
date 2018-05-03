@@ -1,7 +1,7 @@
 @auth     
 	<nav class="user-sidebar">
 		<ul>
-			<li class="{{ activeIfRouteIs('dashboard') }}">
+			<li class="{{ activeIfRouteIs('dashboard') }} red-buttons" {{ $unreaded }}>
 				<a href="/dashboard" title="@lang('user-sidebar.profile')">
 					<i class="fa fa-user-circle-o icon-profile-menu-line" aria-hidden="true"></i>
 					<span>@lang('user-sidebar.profile')</span>
@@ -13,7 +13,7 @@
 					<span>@lang('user-sidebar.add_new_item')</span>
 				</a>
 			</li>
-			<li class="{{ activeIfRouteIs('items') }}">
+			<li class="{{ activeIfRouteIs('items') }}" >
 				<a href="/items" title="@lang('user-sidebar.all_items')">
 					<i class="fa fa-shopping-bag icon-profile-menu-line" aria-hidden="true"></i>
 					<span>@lang('user-sidebar.all_items')</span>
