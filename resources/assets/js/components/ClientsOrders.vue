@@ -5,10 +5,10 @@
 				<thead>
 					<tr>
 						<th scope="col">#</th>
-						<th scope="col">Номер</th>
-						<th scope="col">Товар#</th>
-						<th scope="col">Время</th>
-						<th scope="col">Удалить</th>
+						<th scope="col">{{ number }}</th>
+						<th scope="col">{{ product }}</th>
+						<th scope="col">{{ date }}</th>
+						<th scope="col">{{ deleting }}</th>
 					</tr>
 				</thead>
 					<tbody>
@@ -23,7 +23,7 @@
 							</td>
 							<td>{{ order.created_at }}</td>
 							<td> 
-								<a href="#" :title="'Удалить номер ' + order.phone" class="btn btn-danger" @click="deleteMessage(order.id)">
+								<a href="#" :title="deletenumber +' ' + order.phone" class="btn btn-danger" @click="deleteMessage(order.id)">
 									<i class="fa fa-trash-o" aria-hidden="true"></i>
 								</a>
 							</td>
@@ -34,7 +34,7 @@
 		<section v-else class="p-1">
 			<h5 class="text-center pb-4">
 				<i class="fa fa-frown-o" aria-hidden="true"></i> 
-				Нет заказов
+				{{ noorders }}
 			</h5>
 		</section>
 	</section>
@@ -47,6 +47,16 @@ export default {
 			orders: []
 		}
 	},
+
+	props: [
+		'date',
+		'number',
+		'product',
+		'deleting',
+		'noorders',
+		'deletenumber',
+		'deletethisorder'
+	],
 
 	created() {
 		this.getMessages()
@@ -63,7 +73,7 @@ export default {
 		},
 
 		deleteMessage(id) {
-			if (confirm('Удалить этот заказ?')) {
+			if (confirm(this.deletethisorder)) {
 				fetch(`/api/clients_orders/destroy/${id}`, {
 					method: 'delete'
 				})

@@ -21415,6 +21415,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			orders: []
 		};
 	},
+
+
+	props: ['date', 'number', 'product', 'deleting', 'noorders', 'deletenumber', 'deletethisorder'],
+
 	created: function created() {
 		this.getMessages();
 	},
@@ -21435,7 +21439,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		deleteMessage: function deleteMessage(id) {
 			var _this2 = this;
 
-			if (confirm('Удалить этот заказ?')) {
+			if (confirm(this.deletethisorder)) {
 				fetch('/api/clients_orders/destroy/' + id, {
 					method: 'delete'
 				}).then(function (res) {
@@ -21464,7 +21468,27 @@ var render = function() {
     _vm.orders[0] && _vm.orders[0].length !== 0
       ? _c("section", [
           _c("table", { staticClass: "table table-sm" }, [
-            _vm._m(0),
+            _c("thead", [
+              _c("tr", [
+                _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+                _vm._v(" "),
+                _c("th", { attrs: { scope: "col" } }, [
+                  _vm._v(_vm._s(_vm.number))
+                ]),
+                _vm._v(" "),
+                _c("th", { attrs: { scope: "col" } }, [
+                  _vm._v(_vm._s(_vm.product))
+                ]),
+                _vm._v(" "),
+                _c("th", { attrs: { scope: "col" } }, [
+                  _vm._v(_vm._s(_vm.date))
+                ]),
+                _vm._v(" "),
+                _c("th", { attrs: { scope: "col" } }, [
+                  _vm._v(_vm._s(_vm.deleting))
+                ])
+              ])
+            ]),
             _vm._v(" "),
             _c(
               "tbody",
@@ -21499,7 +21523,7 @@ var render = function() {
                         staticClass: "btn btn-danger",
                         attrs: {
                           href: "#",
-                          title: "Удалить номер " + order.phone
+                          title: _vm.deletenumber + " " + order.phone
                         },
                         on: {
                           click: function($event) {
@@ -21520,41 +21544,18 @@ var render = function() {
             )
           ])
         ])
-      : _c("section", { staticClass: "p-1" }, [_vm._m(1)])
+      : _c("section", { staticClass: "p-1" }, [
+          _c("h5", { staticClass: "text-center pb-4" }, [
+            _c("i", {
+              staticClass: "fa fa-frown-o",
+              attrs: { "aria-hidden": "true" }
+            }),
+            _vm._v(" \n\t\t\t" + _vm._s(_vm.noorders) + "\n\t\t")
+          ])
+        ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Номер")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Товар#")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Время")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Удалить")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h5", { staticClass: "text-center pb-4" }, [
-      _c("i", {
-        staticClass: "fa fa-frown-o",
-        attrs: { "aria-hidden": "true" }
-      }),
-      _vm._v(" \n\t\t\tНет заказов\n\t\t")
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
