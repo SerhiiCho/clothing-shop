@@ -5,15 +5,19 @@
 	<banner></banner>
 
 	<!-- 3 Cards -->
-	<section class="heading">@lang('home.season_categories')</section>
-	<div class="row center three-cards">
-		<div class="col-12 col-sm-4 one-card">
-			<img src="{{ asset('storage/img/3cards/1.jpg') }}" alt="">
-			<a href="/items?type=4" title="@lang('home.tops')" class="card-btn">
-				<span>Юбки</span>
-			</a>
+	@if ($cards->count() > 0)
+		<section class="heading">@lang('home.season_categories')</section>
+		<div class="row center three-cards">
+			@foreach ($cards as $card)
+				<div class="col-12 col-sm-4 one-card">
+					<img src="{{ asset('storage/img/cards/'. $card->image) }}" alt="">
+					<a href="/items?type={{ $card->type_id }}" title="{{ $card->type->type }}" class="card-btn">
+						<span>{{ $card->type->type }}</span>
+					</a>
+				</div>
+			@endforeach
 		</div>
-	</div>
+	@endif
 
 	<!-- Content -->
 	<section class="main-content">
