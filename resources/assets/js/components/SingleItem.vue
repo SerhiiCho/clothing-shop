@@ -27,8 +27,8 @@
 
 				<!-- Callback -->
 				<div class="col-12 phone-form">
-					+38 <input v-model="phoneNumber" type="text" placeholder="Номер телефона" maxlength="10">
-					<button @click="sentPhoneNumber(item.id)">Заказать</button>
+					+38 <input v-model="phoneNumber" type="text" :placeholder="phonenumber" maxlength="10">
+					<button @click="sentPhoneNumber(item.id)" :title="order">{{ order }}</button>
 					<div v-if="clicked" class="alert alert-pink mt-3" role="alert">{{ messageToCustomer }}</div>
 
 					<hr class="mt-4" />
@@ -56,7 +56,9 @@ export default {
 	props: [
 		'admin',
 		'numberitem',
-		'hryvnia'
+		'hryvnia',
+		'phonenumber',
+		'order'
 	],
 
 	created() {

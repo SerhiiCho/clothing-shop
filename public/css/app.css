@@ -358,10 +358,6 @@ header {
   }
 }
 
-.home-banner img {
-  width: 100%;
-}
-
 .contact-container {
   height: auto;
   display: -webkit-box;
@@ -396,9 +392,12 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  line-height: 100%;
 }
 
 .gsm-operator {
+  width: 25px;
+  height: 25px;
   margin: 0 .3em;
 }
 
@@ -886,7 +885,7 @@ footer a:hover {
   transition: -webkit-transform 200ms;
   transition: transform 200ms;
   transition: transform 200ms, -webkit-transform 200ms;
-  margin: .7em 0;
+  margin: .7em 4px;
 }
 
 .languages a img:hover {

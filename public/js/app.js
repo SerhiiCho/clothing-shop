@@ -20324,7 +20324,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 
-	props: ['admin', 'numberitem', 'hryvnia'],
+	props: ['admin', 'numberitem', 'hryvnia', 'phonenumber', 'order'],
 
 	created: function created() {
 		this.fetchItem();
@@ -20453,7 +20453,7 @@ var render = function() {
             ],
             attrs: {
               type: "text",
-              placeholder: "Номер телефона",
+              placeholder: _vm.phonenumber,
               maxlength: "10"
             },
             domProps: { value: _vm.phoneNumber },
@@ -20470,13 +20470,14 @@ var render = function() {
           _c(
             "button",
             {
+              attrs: { title: _vm.order },
               on: {
                 click: function($event) {
                   _vm.sentPhoneNumber(_vm.item.id)
                 }
               }
             },
-            [_vm._v("Заказать")]
+            [_vm._v(_vm._s(_vm.order))]
           ),
           _vm._v(" "),
           _vm.clicked

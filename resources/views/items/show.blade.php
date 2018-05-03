@@ -7,6 +7,8 @@
 		:admin={{ json_encode(optional(auth()->user())->admin) }}
 		:numberitem="{{ json_encode(trans('items.number_item')) }}"
 		:hryvnia="{{ json_encode(trans('items.hryvnia')) }}"
+		:phonenumber="{{ json_encode(trans('items.phone_number')) }}"
+		:order="{{ json_encode(trans('items.order')) }}"
 	></single-item>
 </div>
 

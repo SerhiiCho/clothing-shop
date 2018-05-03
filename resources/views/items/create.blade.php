@@ -2,11 +2,11 @@
 
 @section('content')
 
-<div class="container pb-4 col-12 col-lg-8 col-offset-lg-2">
+<div class="container pb-4 col-12 col-lg-10 col-offset-lg-1 col-xl-8 col-offset-xl-2">
 	<h4 class="heading center">@lang('items.add_item')</h4>
 
 	<div class="row">
-		<form action="{{ action('ItemController@store') }}" method="post" enctype="multipart/form-data" class="col-md-6">
+		<form action="{{ action('ItemController@store') }}" method="post" enctype="multipart/form-data" class="col-md-6 col-lg-8">
 
 			@csrf
 
@@ -58,7 +58,7 @@
 			<button type="submit" class="btn btn-dark">@lang('items.add_item')</button>
 		</form>
 
-		<div class="col-md-6 mt-3">
+		<div class="col-md-6 col-lg-4 mt-3">
 			<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image" style="width: 303px; height:437px;">
 		</div>
 	</div>
