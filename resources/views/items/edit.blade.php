@@ -64,7 +64,7 @@
 		</form>
 
 		<div class="col-md-6 mt-3">
-			<img src="{{ asset('/storage/img/clothes/' . $item->image) }}" alt="{{ $item->title }}" class="rounded mx-auto d-block" id="target-image">
+			<img src="{{ asset('/storage/img/clothes/' . $item->image) }}" alt="{{ $item->title }}" class="rounded mx-auto d-block" id="target-image" style="width: 303px; height:437px;">
 		</div>
 	</div>
 </div>
