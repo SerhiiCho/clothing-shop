@@ -15,11 +15,14 @@ Route::get('item/{item}', 'ItemController@show');
 Route::get('/', 'PageController@home');
 Route::get('language/{lang}', 'PageController@lang');
 
-// Dashboard
-Route::get('/dashboard', 'DashboardController@index');
+// Views
+Route::view('cards/index', 'cards.index');
+Route::view('dashboard', 'dashboard')->middleware('auth');
 
 // Artisan commands =======
-Route::get('php/artisan/cache/{url_key}', 'ArtisanController@cache');
-Route::get('php/artisan/clear/{url_key}', 'ArtisanController@clear');
-Route::get('php/artisan/storage/link/{url_key}', 'ArtisanController@link');
-Route::get('php/artisan/migrate/fresh/{url_key}', 'ArtisanController@migrate');
+Route::prefix('php/artisan')->group(function () {
+	Route::get('cache/{url_key}', 'ArtisanController@cache');
+	Route::get('clear/{url_key}', 'ArtisanController@clear');
+	Route::get('storage/link/{url_key}', 'ArtisanController@link');
+	Route::get('migrate/fresh/{url_key}', 'ArtisanController@migrate');
+});

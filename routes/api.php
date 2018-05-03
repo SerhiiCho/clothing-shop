@@ -18,6 +18,9 @@ Route::delete('item/{id}', 'Api\ApiItemController@destroy');
 Route::get('items/{sex?}', 'Api\ApiItemController@index');
 Route::get('items/type/{id}', 'Api\ApiItemController@type');
 
+// Cards
+Route::resource('cards', 'Api\ApiCardController', ['except' => ['show']]);
+
 // Messages
 Route::get('clients_orders/index', 'Api\ApiMessageController@index');
 Route::post('clients_orders/store', 'Api\ApiMessageController@store');
