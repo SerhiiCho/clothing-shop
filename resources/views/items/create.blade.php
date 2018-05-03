@@ -52,14 +52,14 @@
 			</div>
 
 			<div class="form-group">
-				<input type="file" name="image" class="form-control-file" required>
+				<input type="file" name="image" class="form-control-file" id="src-image" required>
 			</div>
 			
 			<button type="submit" class="btn btn-dark">@lang('items.add_item')</button>
 		</form>
 
 		<div class="col-md-6 mt-3">
-			<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block">
+			<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image">
 		</div>
 	</div>
 </div>

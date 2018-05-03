@@ -41,3 +41,16 @@ window.onscroll = () => {
 		setTimeout(() => id('logo-clothing').style.display = 'block', 250)
     }
 }
+
+
+var src = id("src-image")
+var target = id("target-image")
+
+if (src && target) showImage(src, target)
+
+function showImage(src, target) {
+	var fr = new FileReader()
+	
+	fr.onload = function(e) { target.src = this.result }
+	src.addEventListener("change", ()=> fr.readAsDataURL(src.files[0]))
+}
