@@ -21,7 +21,7 @@
 			<select name="type" class="form-control mt-2" id="type">
 				<option value="none">@lang('forms.choose_category')</option>
 				@foreach ($types as $type)
-					<option value="{{ $type->id }}">{{ $type->type }}</option>
+					<option value="{{ $type->id }}">{{ $type->name }}</option>
 				@endforeach
 			</select>
 

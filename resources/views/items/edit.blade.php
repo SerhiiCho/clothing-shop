@@ -35,10 +35,10 @@
 				<div class="form-group col-sm-6">
 					<label>@lang('items.type')</label>
 					<select name="type" value="{{ $item->id }}" class="form-control">
-						<option value="{{ $item->type->id }}">{{ $item->type->type }}</option>
+						<option value="{{ $item->type->id }}">{{ $item->type->name }}</option>
 						<option>------------------------</option>
 						@foreach ($types as $type)
-							<option value="{{ $type->id }}">{{ $type->type }}</option>
+							<option value="{{ $type->id }}">{{ $type->name }}</option>
 						@endforeach
 					</select>
 				</div>

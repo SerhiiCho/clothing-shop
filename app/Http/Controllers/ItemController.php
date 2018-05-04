@@ -22,7 +22,7 @@ class ItemController extends Controller
     public function create()
     {
         return view('items.create')->withTypes(
-			(new Type)->orderBy('type')->get()
+			(new Type)->orderBy('name')->get()
 		);
     }
 
@@ -70,7 +70,7 @@ class ItemController extends Controller
 
     public function edit(Item $item)
     {
-		$types = (new Type)->orderBy('type')->get();
+		$types = (new Type)->orderBy('name')->get();
 
 		$category = ($item->category === 'men')
 			? trans('items.men_items')

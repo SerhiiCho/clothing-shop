@@ -20,10 +20,10 @@
 			</div>
 
 			<select name="type" class="form-control mt-2" id="type">
-				<option value="{{ $card->type_id }}">{{ $card->type->type }}</option>
+				<option value="{{ $card->type_id }}">{{ $card->type->name }}</option>
 				<option value="none">-------------------------</option>
 				@foreach ($types as $type)
-					<option value="{{ $type->id }}">{{ $type->type }}</option>
+					<option value="{{ $type->id }}">{{ $type->name }}</option>
 				@endforeach
 			</select>
 

@@ -24,7 +24,7 @@ class CardController extends Controller
     public function create()
     {
         return view('cards.create')->withTypes(
-			Type::orderBy('type')->get()
+			Type::orderBy('name')->get()
 		);
     }
 
@@ -56,7 +56,7 @@ class CardController extends Controller
     // Show the form for editing the specified resource.
     public function edit(Card $card)
     {
-		$types = Type::orderBy('type')->get();
+		$types = Type::orderBy('name')->get();
 		return view('cards.edit')->with(
 			compact('card', 'types')
 		);

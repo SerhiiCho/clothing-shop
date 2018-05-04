@@ -33,7 +33,7 @@
 					<label>@lang('items.type')</label>
 					<select name="type" class="form-control">
 						@foreach ($types as $type)
-							<option value="{{ $type->id }}">{{ $type->type }}</option>
+							<option value="{{ $type->id }}">{{ $type->name }}</option>
 						@endforeach
 					</select>
 				</div>
