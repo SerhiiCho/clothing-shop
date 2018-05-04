@@ -31,27 +31,6 @@ main {
   list-style: none;
 }
 
-.center {
-  text-align: center;
-}
-
-.heading {
-  height: 3em;
-  line-height: 3em;
-  font-size: 1.3em;
-  margin-bottom: .3em;
-  text-align: center;
-}
-
-.block {
-  display: block;
-  margin: auto;
-}
-
-.spacer {
-  padding: 8px 0;
-}
-
 .message {
   display: inline-block;
   padding: .5em 1em;
@@ -67,14 +46,6 @@ main {
   color: #fff;
   border-radius: 5px;
   margin-top: .5em;
-}
-
-.error {
-  background: #d34343;
-}
-
-.success {
-  background: #3da355;
 }
 
 .loading,
@@ -120,6 +91,17 @@ main {
   border: 1px solid #ecdcdc;
   color: #000;
   font-weight: normal;
+}
+
+.btn-pink {
+  background: #EDE2ED;
+  border: 1px solid #ecdcdc;
+  color: #000;
+  font-weight: normal;
+}
+
+.btn-pink:hover {
+  background: #e3d2e3;
 }
 
 /* Hamburger
@@ -781,72 +763,6 @@ header {
   text-align: center;
   margin: 0 10px;
   vertical-align: middle;
-}
-
-.pagination {
-  width: 150px;
-  display: block;
-  margin: 20px auto;
-  clear: left;
-  padding-bottom: 3em;
-}
-
-.pagination > li {
-  display: inline;
-}
-
-.pagination > li > a,
-.pagination > li > span {
-  position: relative;
-  float: left;
-  padding: 5px 15px;
-  margin-left: -1px;
-  line-height: 1.428571429;
-  text-decoration: none;
-  background: #fff;
-  border: 1px solid #bebebe;
-}
-
-.pagination > li > a {
-  color: #333;
-}
-
-.pagination > li > span {
-  background: #EDE2ED;
-  color: #fff;
-}
-
-.pagination > li:first-child > a,
-.pagination > li:first-child > span {
-  margin-left: 0;
-  border-bottom-left-radius: 2px;
-  border-top-left-radius: 2px;
-  font-weight: 600;
-}
-
-.pagination > li:last-child > a,
-.pagination > li:last-child > span {
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  font-weight: 600;
-}
-
-.pagination > li > a:focus,
-.pagination > li > a:hover,
-.pagination > li > span:focus,
-.pagination > li > span:hover {
-  background: #ecdcdc;
-}
-
-.pagination > .disabled a,
-.pagination > .disabled a:focus,
-.pagination > .disabled a:hover,
-.pagination > .disabled span,
-.pagination > .disabled span:focus,
-.pagination > .disabled span:hover {
-  color: #999;
-  cursor: not-allowed;
-  background: #fff;
 }
 
 footer {

@@ -2,27 +2,6 @@
 	list-style: none;
 }
 
-.center {
-	text-align: center;
-}
-
-.heading {
-	height: 3em;
-	line-height: 3em;
-	font-size: 1.3em;
-	margin-bottom: .3em;
-	text-align: center;
-}
-
-.block {
-	display: block;
-	margin: auto;
-}
-
-.spacer {
-	padding: 8px 0;
-}
-
 .message {
 	display: inline-block;
 	padding: .5em 1em;
@@ -34,9 +13,6 @@
 	border-radius: 5px;
 	margin-top: .5em;
 }
-
-.error { background: #d34343; }
-.success { background: #3da355; }
 
 .loading,
 .loading::before {
@@ -79,4 +55,15 @@
 	border: 1px solid $darkPink;
 	color: #000;
 	font-weight: normal;
+}
+
+.btn-pink {
+	background: $pink;
+	border: 1px solid $darkPink;
+	color: #000;
+	font-weight: normal;
+
+	&:hover {
+		background: darken($color: $pink, $amount: 5);
+	}
 }

@@ -27,7 +27,8 @@
 
 				<!-- Callback -->
 				<div class="col-12 phone-form">
-					+38 <input v-model="phoneNumber" type="text" :placeholder="phonenumber" maxlength="10">
+					+38 
+					<input v-model="phoneNumber" @keyup.enter="sentPhoneNumber(item.id)" type="text" :placeholder="phonenumber" maxlength="10">
 					<button @click="sentPhoneNumber(item.id)" :title="order">{{ order }}</button>
 					<div v-if="clicked" class="alert alert-pink mt-3" role="alert">{{ messageToCustomer }}</div>
 

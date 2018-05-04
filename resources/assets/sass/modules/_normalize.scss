@@ -1,26 +1,9 @@
-* {
-	padding: 0;
-	margin: 0;
-}
-
-img {
-	max-width: 100%;
-}
-
-a:hover {
-	text-decoration: none;
-}
-
-li {
-	list-style: none;
-}
-
-main {
-	padding-top: 3em;
-}
+* 		{ padding: 0; margin: 0; }
+img 	{ max-width: 100%; }
+a:hover { text-decoration: none; }
+li 		{ list-style: none; }
+main 	{ padding-top: 3em; }
 
 @media (min-width: 840px) {
-	main {
-		padding-top: 0;
-	}
+	main { padding-top: 0; }
 }

@@ -24,17 +24,19 @@
 				</div>
 
 				<!-- Pagination -->
-				<div v-if="pagination.next_page_url || pagination.prev_page_url" class="pagination">
-					<li v-if="pagination.prev_page_url">
-						<a @click="fetchItems(pagination.prev_page_url)" href="#">&laquo;</a>
-					</li>
-					<li class="disabled">
-						<a class="page-link">{{ pagination.current_page }} / {{ pagination.last_page }}</a>
-					</li>
-					<li v-if="pagination.next_page_url">
-						<a @click="fetchItems(pagination.next_page_url) " href="#">&raquo;</a>
-					</li>
-				</div>
+				<nav class="col-12">
+					<ul v-if="pagination.next_page_url || pagination.prev_page_url" class="pagination">
+						<li v-if="pagination.prev_page_url" class="page-item">
+							<a @click="fetchItems(pagination.prev_page_url)" class="page-link" href="#">&laquo;</a>
+						</li>
+						<li class="page-item">
+							<a class="page-link" href="#">{{ pagination.current_page }} / {{ pagination.last_page }}</a>
+						</li>
+						<li v-if="pagination.next_page_url" class="page-item">
+							<a @click="fetchItems(pagination.next_page_url)" class="page-link" href="#">&raquo;</a>
+						</li>
+					</ul>
+				</nav>
 			</div>
 		</div>
 </template>
