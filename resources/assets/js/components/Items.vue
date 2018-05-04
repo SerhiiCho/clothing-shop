@@ -8,7 +8,7 @@
 					</a>
 					<div class="item-card-price">
 						<span>{{ item.title }}</span>
-						<span class="hryvnia">{{ item.price1 }}.</span>
+						<span class="hryvnia">{{ item.price1 }}</span>
 						<span class="change">{{ item.price2 }} {{ hryvnia }}</span>
 
 						<!-- Edit button -->

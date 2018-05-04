@@ -20740,12 +20740,12 @@ var render = function() {
           _c("p", { staticClass: "single-price" }, [
             _vm._v(
               "\n\t\t\t\t\t" +
-                _vm._s(_vm.item.price1) +
-                "." +
-                _vm._s(_vm.item.price2) +
+                _vm._s(_vm.item.price1 + _vm.item.price2) +
                 "\n\t\t\t\t\t"
             ),
-            _c("span", [_vm._v(_vm._s(_vm.hryvnia))])
+            _c("span", { staticClass: "d-block" }, [
+              _vm._v(_vm._s(_vm.hryvnia))
+            ])
           ])
         ]),
         _vm._v(" "),
@@ -20978,7 +20978,7 @@ var render = function() {
             _c("span", [_vm._v(_vm._s(popular.title))]),
             _vm._v(" "),
             _c("span", { staticClass: "hryvnia" }, [
-              _vm._v(_vm._s(popular.price1) + ".")
+              _vm._v(_vm._s(popular.price1))
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "change" }, [
@@ -21135,7 +21135,7 @@ var render = function() {
             _c("span", [_vm._v(_vm._s(item.title))]),
             _vm._v(" "),
             _c("span", { staticClass: "hryvnia" }, [
-              _vm._v(_vm._s(item.price1) + ".")
+              _vm._v(_vm._s(item.price1))
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "change" }, [
@@ -21529,7 +21529,7 @@ var render = function() {
                 _c("span", [_vm._v(_vm._s(item.title))]),
                 _vm._v(" "),
                 _c("span", { staticClass: "hryvnia" }, [
-                  _vm._v(_vm._s(item.price1) + ".")
+                  _vm._v(_vm._s(item.price1))
                 ]),
                 _vm._v(" "),
                 _c("span", { staticClass: "change" }, [

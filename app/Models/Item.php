@@ -19,4 +19,20 @@ class Item extends Model
 	public function type() {
 		return $this->belongsTo(Type::class);
 	}
+
+	public function getPrice1Attribute($value)
+	{
+		return $this->price2 == 0 ? $value : $value . '.';
+	}
+
+	public function getPrice2Attribute($value)
+	{
+		if ($value == 0) {
+			return '';
+		} elseif (strlen($value) < 2) {
+			return $value . '0';
+		} else {
+			return $value;
+		}
+	}
 }
