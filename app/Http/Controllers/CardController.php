@@ -91,6 +91,6 @@ class CardController extends Controller
     {
 		$card->delete();
 		Storage::delete('public/img/cards/'.$card->image);
-		return back()->withSuccess(trans('cards.card_deleted'));
+		return redirect('cards')->withSuccess(trans('cards.card_deleted'));
     }
 }

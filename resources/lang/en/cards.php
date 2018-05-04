@@ -7,6 +7,7 @@ return [
 	'popular' => 'Popular',
 	'cards' => 'Сards',
 	'add_card' => 'Add card',
+	'save_changes' => 'Save changes',
 	'change_card' => 'Change card',
 	'delete_card' => 'Delete card',
 	'amount_of_cards' => 'Current number of cards',

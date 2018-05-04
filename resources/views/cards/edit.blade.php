@@ -27,7 +27,18 @@
 				@endforeach
 			</select>
 
-			<button type="submit" class="btn btn-pink mt-3">@lang('cards.change_card')</button>
+			<button type="submit" class="btn btn-info btn-block mt-3" title="@lang('cards.save_changes')">
+				@lang('cards.save_changes')
+			</button>
+		</form>
+
+		{{-- Delete button --}}
+		<form action="{{ action('CardController@destroy', ['id' => $card->id]) }}" method="post" onsubmit='return confirm("@lang('cards.are_you_sure_you_want_delete')")' class="my-2">
+			@method('delete')
+			@csrf
+			<button type="submit" class="btn btn-danger btn-block" title="@lang('cards.delete_card')">
+				@lang('cards.delete_card')
+			</button>
 		</form>
 
 	</div>
