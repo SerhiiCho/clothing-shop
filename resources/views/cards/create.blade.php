@@ -2,9 +2,10 @@
 
 @section('content')
 
-<div class="container p-5">
+<div class="container pb-5">
+	<h4 class="display-4 text-center p-3">@lang('cards.add_card')</h4>
 	<div>
-		<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image" style="width: 300px; height:430px;">
+		<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image" style="width: 300px; height:410px;">
 	</div>
 	<div class="col-md-8 offset-md-2">
 
@@ -18,7 +19,7 @@
 			</div>
 
 			<select name="type" class="form-control mt-2" id="type">
-				<option>@lang('forms.choose_category')</option>
+				<option value="none">@lang('forms.choose_category')</option>
 				@foreach ($types as $type)
 					<option value="{{ $type->id }}">{{ $type->type }}</option>
 				@endforeach

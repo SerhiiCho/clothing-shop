@@ -8,17 +8,22 @@
 		<h3 class="display-4 text-center">@lang('cards.cards')</h3>
 		<div class="row center three-cards p-3">
 			@foreach ($cards as $card)
-				<div class="col-12 col-sm-4 one-card position-relative">
+				<div class="col-12 col-md-4 one-card position-relative">
 					<img src="{{ asset('storage/img/cards/'. $card->image) }}" alt="">
 					<a href="/items?type={{ $card->type_id }}" title="{{ $card->type->type }}" class="card-btn">
 						<span>{{ $card->type->type }}</span>
 					</a>
 
+					{{-- Edit button --}}
+					<a href="/cards/{{ $card->id }}/edit" class="btn btn-primary position-absolute" title="@lang('cards.change_card')" style="left: 1.8em; bottom:0;">
+						<i class="fa fa-pencil" aria-hidden="true"></i>
+					</a>
+
 					{{-- Delete button --}}
-					<form action="{{ action('CardController@destroy', ['id' => $card->id]) }}" method="post" onsubmit='return confirm("@lang('cards.are_you_sure_you_want_delete')")' class="position-absolute" style="left: 1.8em; bottom:0;">
+					<form action="{{ action('CardController@destroy', ['id' => $card->id]) }}" method="post" onsubmit='return confirm("@lang('cards.are_you_sure_you_want_delete')")' class="position-absolute" style="right: 1.8em; bottom:0;">
 						@method('delete')
 						@csrf
-						<button type="submit" class="btn btn-danger">
+						<button type="submit" class="btn btn-danger" title="@lang('cards.delete_card')">
 							<i class="fa fa-trash-o" aria-hidden="true"></i>
 						</button>
 					</form>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCardRequest extends FormRequest
+class UpdateCardRequest extends FormRequest
 {
     // Determine if the user is authorized to make this request
     public function authorize()
@@ -16,7 +16,6 @@ class StoreCardRequest extends FormRequest
     public function rules()
     {
         return [
-            'image'  	 => 'required|max:1999',
             'type'		 => 'required|max:30|numeric'
         ];
 	}
@@ -25,9 +24,7 @@ class StoreCardRequest extends FormRequest
 	public function messages()
     {
         return [
-            'image.required' 	=> trans('cards.img_required'),
             'type.required' 	=> trans('cards.type_required'),
-            'image.max' 		=> trans('cards.image_max'),
             'type.max' 			=> trans('cards.type_max'),
             'type.numeric' 		=> trans('cards.type_numeric')
         ];

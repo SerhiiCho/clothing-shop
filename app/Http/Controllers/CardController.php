@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use App\Http\Requests\StoreCardRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UpdateCardRequest;
 
 class CardController extends Controller
 {
@@ -38,12 +39,13 @@ class CardController extends Controller
 		$ext = $image->getClientOriginalExtension();
 		$filename = getFileName($request->type, $ext);
 		
-		(new ImageManager)->make($image)->resize(300, 430)->save(
+		(new ImageManager)->make($image)->resize(300, 410)->save(
 			storage_path('app/public/img/cards/' . $filename
 		));
 
-		Type::find($request->type)->card()->create([
-			'image' => $filename
+		Card::create([
+			'image' => $filename,
+			'type_id' => $request->type
 		]);
 
 		return redirect('cards')->withSuccess(
@@ -52,15 +54,37 @@ class CardController extends Controller
     }
 
     // Show the form for editing the specified resource.
-    public function edit($id)
+    public function edit(Card $card)
     {
-		dd($id);
+		$types = Type::orderBy('type')->get();
+		return view('cards.edit')->with(
+			compact('card', 'types')
+		);
     }
 
     // Update the specified resource in storage
-    public function update(Request $request, $id)
+    public function update(UpdateCardRequest $request, Card $card)
     {
-        dd($request);
+		if ($request->hasFile('image')) {
+			if (Storage::exists('public/img/cards/'.$card->image)) {
+				Storage::delete('public/img/cards/'.$card->image);
+			}
+			$image = $request->file('image');
+			$ext = $image->getClientOriginalExtension();
+			$filename = getFileName($request->type, $ext);
+			
+			(new ImageManager)->make($image)->resize(300, 410)->save(
+				storage_path('app/public/img/cards/' . $filename
+			));
+		}
+		$card->update([
+			'image' => $filename,
+			'type_id' => $request->type
+		]);
+
+		return redirect('cards')->withSuccess(
+			trans('cards.card_changed')
+		);
     }
 
     // Remove the specified resource from storage

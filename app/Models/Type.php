@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Type extends Model
 {
-	public    $timestamps = false;
-	protected $fillable = [ 'type' ];
+	public $timestamps = false;
+	protected $guarded = ['id'];
 	
     public function item() {
 		return $this->belongsTo(Item::class);
