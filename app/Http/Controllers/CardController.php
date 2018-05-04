@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class ApiCardController extends Controller
+class CardController extends Controller
 {
     // Display a listing of the resource
     public function index()
@@ -25,7 +24,7 @@ class ApiCardController extends Controller
         //
     }
 
-    // Show the form for editing the specified resource
+    // Show the form for editing the specified resource.
     public function edit($id)
     {
         //

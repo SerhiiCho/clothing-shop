@@ -1,7 +1,7 @@
 <footer class="pb-5">
 	<div class="container">
 		<div class="row">
-			<nav class="col-6 col-md-4 center">
+			<nav class="col-6 col-md-4">
 				<h4>@lang('navigation.menu')</h4>
 				<ul>
 					<li><a href="/">@lang('navigation.home')</a></li>
@@ -9,7 +9,7 @@
 					<li><a href="/items/women">@lang('navigation.women')</a></li>
 				</ul>
 			</nav>
-			<nav class="col-6 col-md-4 center">
+			<nav class="col-6 col-md-4">
 				<h4>@lang('navigation.last_posts')</h4>
 				<ul>
 					@foreach ($last_items_for_footer as $item)
@@ -22,7 +22,7 @@
 				</ul>
 			</nav>
 
-			<div class="col-12 col-md-4 languages center">
+			<div class="col-12 col-md-4 languages">
 				<h4>@lang('navigation.available_languages')</h4>
 
 				<a href="/language/en" title="English">
@@ -36,7 +36,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<h6 class="col-12 center copyright">
+			<h6 class="col-12 pt-5 text-center copyright">
 				{{ date('Y') }} &copy; @lang('navigation.shop_name')
 			</h6>
 		</div>

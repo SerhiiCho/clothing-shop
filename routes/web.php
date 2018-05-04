@@ -15,8 +15,10 @@ Route::get('item/{item}', 'ItemController@show');
 Route::get('/', 'PageController@home');
 Route::get('language/{lang}', 'PageController@lang');
 
+// Cards
+Route::resource('cards', 'CardController', ['except' => ['show']]);
+
 // Views
-Route::view('cards/index', 'cards.index');
 Route::view('dashboard', 'dashboard')->middleware('auth');
 
 // Artisan commands =======
