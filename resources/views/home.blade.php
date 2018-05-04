@@ -6,7 +6,7 @@
 
 	<!-- 3 Cards -->
 	@if ($cards->count() > 0)
-		<h3 class="display-4 text-center p-4">@lang('home.season_categories')</h3>
+		<h3 class="display-4 text-center p-4">@lang('cards.season_categories')</h3>
 		<div class="row center three-cards">
 			@foreach ($cards as $card)
 				<div class="col-12 col-sm-4 one-card">
@@ -21,7 +21,7 @@
 
 	<!-- Content -->
 	<section class="main-content">
-		<h3 class="display-4  text-center p-4" style="background:#F2F2F2;">@lang('home.popular')</h3>
+		<h3 class="display-4  text-center p-4" style="background:#F2F2F2;">@lang('cards.popular')</h3>
 		<div class="container">
 			<popular :hryvnia="{{ json_encode(trans('items.hryvnia')) }}"></popular>
 		</div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Card;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
@@ -9,7 +10,9 @@ class CardController extends Controller
     // Display a listing of the resource
     public function index()
     {
-        //
+		return view('cards.index')->withCards(
+			Card::all()
+		);
     }
 
     // Show the form for creating a new resource
@@ -39,6 +42,6 @@ class CardController extends Controller
     // Remove the specified resource from storage
     public function destroy($id)
     {
-        //
+        dd('yeap ' . $id);
     }
 }

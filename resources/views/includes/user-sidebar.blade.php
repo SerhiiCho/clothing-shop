@@ -14,7 +14,7 @@
 				</a>
 			</li>
 			<li class="{{ activeIfRouteIs('cards/index') }}">
-				<a href="/cards/index" title="@lang('user-sidebar.cards')">
+				<a href="/cards" title="@lang('user-sidebar.cards')">
 					<i class="fa fa-file-image-o icon-profile-menu-line" aria-hidden="true"></i>
 					<span>@lang('user-sidebar.cards')</span>
 				</a>
