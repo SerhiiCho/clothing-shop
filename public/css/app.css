@@ -463,6 +463,7 @@ header {
 
 .card-btn:hover {
   opacity: .9;
+  color: #fff;
 }
 
 .card-btn span {

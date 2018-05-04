@@ -19,6 +19,7 @@ return [
 	// Controller
 	'card_added' => 'Карта добавленна',
 	'card_deleted' => 'Карта удалена',
+	'already_3_cards' => 'Вы не можете добавлять больше трех карт',
 
 	
 

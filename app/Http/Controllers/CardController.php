@@ -7,6 +7,7 @@ use App\Models\Type;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use App\Http\Requests\StoreCardRequest;
+use Illuminate\Support\Facades\Storage;
 
 class CardController extends Controller
 {
@@ -29,11 +30,15 @@ class CardController extends Controller
     // Store a newly created resource in storage
     public function store(StoreCardRequest $request)
     {
+		if (Card::count() >= 3) {
+			return back()->withError(trans('cards.already_3_cards'));
+		}
+
         $image = $request->file('image');
 		$ext = $image->getClientOriginalExtension();
 		$filename = getFileName($request->type, $ext);
 		
-		(new ImageManager)->make($image)->resize(300, 400)->save(
+		(new ImageManager)->make($image)->resize(300, 430)->save(
 			storage_path('app/public/img/cards/' . $filename
 		));
 
@@ -62,6 +67,7 @@ class CardController extends Controller
     public function destroy(Card $card)
     {
 		$card->delete();
+		Storage::delete('public/img/cards/'.$card->image);
 		return back()->withSuccess(trans('cards.card_deleted'));
     }
 }

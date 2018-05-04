@@ -19,5 +19,6 @@ return [
 	// Controller
 	'card_added' => 'The card was added',
 	'card_deleted' => 'The card has been deleted',
+	'already_3_cards' => 'You cannot add more than 3 cards',
 
 ];

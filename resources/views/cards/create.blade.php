@@ -4,7 +4,7 @@
 
 <div class="container p-5">
 	<div>
-		<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image" style="width: 300px; height:400px;">
+		<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image" style="width: 300px; height:430px;">
 	</div>
 	<div class="col-md-8 offset-md-2">
 
