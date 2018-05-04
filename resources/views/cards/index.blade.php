@@ -6,7 +6,7 @@
 	<!-- 3 Cards -->
 	@if ($cards->count() > 0)
 		<h3 class="display-4 text-center">@lang('cards.cards')</h3>
-		<div class="row center three-cards p-3">
+		<div class="row center three-cards p-3 position-relative">
 			@foreach ($cards as $card)
 				<div class="col-12 col-sm-4 one-card">
 					<img src="{{ asset('storage/img/cards/'. $card->image) }}" alt="">
@@ -16,7 +16,7 @@
 				</div>
 
 				{{-- Delete button --}}
-				<form action="{{ action('CardController@destroy', ['id' => $card->id]) }}" method="post" onsubmit='return confirm("@lang('cards.are_you_sure_you_want_delete')")'>
+				<form action="{{ action('CardController@destroy', ['id' => $card->id]) }}" method="post" onsubmit='return confirm("@lang('cards.are_you_sure_you_want_delete')")' class="position-absolute" style="left: 2.5em; bottom: 1.1em;">
 					@method('delete')
 					@csrf
 					<button type="submit" class="btn btn-danger">

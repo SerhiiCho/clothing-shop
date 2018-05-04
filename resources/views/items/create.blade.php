@@ -51,11 +51,12 @@
 				</div>
 			</div>
 
-			<div class="form-group">
+			<div class="custom-file">
 				<input type="file" name="image" class="form-control-file" id="src-image" required>
+				<label class="custom-file-label" for="src-image">@lang('forms.choose_file')...</label>
 			</div>
 			
-			<button type="submit" class="btn btn-dark">@lang('items.add_item')</button>
+			<button type="submit" class="btn btn-dark mt-3">@lang('items.add_item')</button>
 		</form>
 
 		<div class="col-md-6 col-lg-4 mt-3">

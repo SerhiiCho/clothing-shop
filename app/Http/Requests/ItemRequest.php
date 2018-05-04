@@ -26,6 +26,7 @@ class ItemRequest extends FormRequest
         ];
 	}
 
+	// Custom messages
 	public function messages()
     {
         return [

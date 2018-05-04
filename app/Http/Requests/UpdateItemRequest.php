@@ -6,21 +6,13 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateItemRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+    // Determine if the user is authorized to make this request
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+    // Get the validation rules that apply to the request
     public function rules()
     {
 		return [
@@ -32,7 +24,8 @@ class UpdateItemRequest extends FormRequest
 			'price2' 	 => 'required|numeric',
 		];
 	}
-	
+
+	// Custom messages
 	public function messages()
     {
         return [

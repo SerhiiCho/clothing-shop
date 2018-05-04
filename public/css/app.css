@@ -473,7 +473,7 @@ header {
 
 @media (min-width: 768px) {
   .one-card img {
-    width: 96%;
+    width: 300px;
     margin: 0 2%;
   }
 }

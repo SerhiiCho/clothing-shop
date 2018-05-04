@@ -9,6 +9,8 @@ return [
 	'input_password' => 'Пароль',
 	'input_remember_me' => 'Запомнить меня',
 	'input_name' => 'Имя',
-	'confirm_password' => 'Подтвердите пароль'
+	'confirm_password' => 'Подтвердите пароль',
+	'choose_file' => 'Выбрать файл',
+	'choose_category' => 'Выберите категорию',
 
 ];
