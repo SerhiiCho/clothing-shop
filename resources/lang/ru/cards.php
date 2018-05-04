@@ -18,6 +18,7 @@ return [
 	
 	// Controller
 	'card_added' => 'Карта добавленна',
+	'card_deleted' => 'Карта удалена',
 
 	
 

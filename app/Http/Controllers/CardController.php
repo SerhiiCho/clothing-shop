@@ -59,8 +59,9 @@ class CardController extends Controller
     }
 
     // Remove the specified resource from storage
-    public function destroy($id)
+    public function destroy(Card $card)
     {
-        dd('yeap ' . $id);
+		$card->delete();
+		return back()->withSuccess(trans('cards.card_deleted'));
     }
 }

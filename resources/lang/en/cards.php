@@ -18,5 +18,6 @@ return [
 
 	// Controller
 	'card_added' => 'The card was added',
+	'card_deleted' => 'The card has been deleted',
 
 ];
