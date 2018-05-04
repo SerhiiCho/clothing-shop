@@ -57,7 +57,7 @@
 			</div>
 
 			<div class="custom-file">
-				<input type="file" name="image" class="form-control-file" id="src-image" required>
+				<input type="file" name="image" class="form-control-file" id="src-image">
 				<label class="custom-file-label" for="src-image">@lang('forms.choose_file')...</label>
 			</div>
 

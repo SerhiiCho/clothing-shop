@@ -20565,6 +20565,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -20577,7 +20587,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 
-	props: ['admin', 'numberitem', 'hryvnia', 'phonenumber', 'order'],
+	props: ['phonenumber', 'numberitem', 'deleting', 'hryvnia', 'change', 'admin', 'order'],
 
 	created: function created() {
 		this.fetchItem();
@@ -20636,6 +20646,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			} else {
 				this.messageToCustomer = 'Не правильный формат номера телефона';
 			}
+		},
+		deleteItem: function deleteItem(id) {
+			if (confirm('Удалить этот товар?')) {
+				fetch('/api/item/' + id, {
+					method: 'delete'
+				}).then(function (res) {
+					return res.json();
+				}).then(function (data) {
+					return window.location.href = '/items';
+				}).catch(function (error) {
+					return console.log(error);
+				});
+			}
 		}
 	}
 });
@@ -20648,7 +20671,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "row" }, [
+  return _c("section", { staticClass: "row pb-2" }, [
     _c(
       "div",
       { staticClass: "col-12 col-sm-4 col-lg-3 text-center single-image" },
@@ -20658,7 +20681,50 @@ var render = function() {
             src: "/storage/img/clothes/" + _vm.item.image,
             alt: _vm.item.title
           }
-        })
+        }),
+        _vm._v(" "),
+        _vm.admin == 1
+          ? _c(
+              "a",
+              {
+                staticClass: "btn-change-item",
+                staticStyle: { top: "10px" },
+                attrs: {
+                  href: "/items/" + _vm.item.id + "/edit",
+                  title: _vm.change
+                }
+              },
+              [
+                _c("i", {
+                  staticClass: "fa fa-pencil",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.admin == 1
+          ? _c(
+              "a",
+              {
+                staticClass: "btn-change-item",
+                staticStyle: { top: "55px", background: "brown" },
+                attrs: { href: "#", title: _vm.deleting },
+                on: {
+                  click: function($event) {
+                    _vm.deleteItem(_vm.item.id)
+                  }
+                }
+              },
+              [
+                _c("i", {
+                  staticClass: "fa fa-trash-o",
+                  staticStyle: { color: "#fff" },
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]
+            )
+          : _vm._e()
       ]
     ),
     _vm._v(" "),

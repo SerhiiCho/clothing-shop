@@ -9,6 +9,8 @@
 		:hryvnia="{{ json_encode(trans('items.hryvnia')) }}"
 		:phonenumber="{{ json_encode(trans('items.phone_number')) }}"
 		:order="{{ json_encode(trans('items.order')) }}"
+		:deleting="{{ json_encode(trans('items.delete')) }}"
+		:change="{{ json_encode(trans('items.change')) }}"
 	></single-item>
 </div>
 

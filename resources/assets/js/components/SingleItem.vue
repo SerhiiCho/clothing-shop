@@ -1,7 +1,17 @@
 <template>
-	<section class="row">
+	<section class="row pb-2">
 		<div class="col-12 col-sm-4 col-lg-3 text-center single-image">
 			<img :src="'/storage/img/clothes/' + item.image" :alt="item.title">
+
+			<!-- Edit button -->
+			<a v-if="admin == 1" :href="'/items/' + item.id + '/edit'" :title="change" class="btn-change-item" style="top:10px;">
+				<i class="fa fa-pencil" aria-hidden="true"></i>
+			</a>
+
+			<!-- Delete button -->
+			<a v-if="admin == 1" v-on:click="deleteItem(item.id)" href="#" :title="deleting" class="btn-change-item" style="top:55px; background:brown;">
+				<i class="fa fa-trash-o" aria-hidden="true" style="color:#fff;"></i>
+			</a>
 		</div>
 		<div class="col-12 col-sm-8 col-lg-9">
 			<div class="row">
@@ -55,10 +65,12 @@ export default {
 	},
 
 	props: [
-		'admin',
-		'numberitem',
-		'hryvnia',
 		'phonenumber',
+		'numberitem',
+		'deleting',
+		'hryvnia',
+		'change',
+		'admin',
 		'order'
 	],
 
@@ -111,6 +123,17 @@ export default {
 					.catch(error => console.log(error))
 			} else {
 				this.messageToCustomer = 'Не правильный формат номера телефона'
+			}
+		},
+
+		deleteItem(id) {
+			if (confirm('Удалить этот товар?')) {
+				fetch(`/api/item/${id}`, {
+					method: 'delete'
+				})
+				.then(res => res.json())
+				.then(data => window.location.href = '/items')
+				.catch(error => console.log(error))
 			}
 		}
 	}

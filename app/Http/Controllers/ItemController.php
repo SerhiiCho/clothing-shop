@@ -46,7 +46,7 @@ class ItemController extends Controller
 			'type_id' => $request->type
 		]);
 
-		return back()->withSuccess(
+		return redirect('items')->withSuccess(
 			trans('items.item_added')
 		);
     }
