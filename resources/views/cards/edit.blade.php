@@ -13,7 +13,7 @@
 			@csrf
 			@method('put')
 			<div class="custom-file mt-3">
-				<input type="file" name="image" class="custom-file-input" id="src-image" required>
+				<input type="file" name="image" class="custom-file-input" id="src-image">
 				<label class="custom-file-label" for="src-image">
 					@lang('forms.choose_file')...
 				</label>

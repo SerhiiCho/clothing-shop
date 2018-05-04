@@ -76,11 +76,10 @@ class CardController extends Controller
 			(new ImageManager)->make($image)->resize(300, 410)->save(
 				storage_path('app/public/img/cards/' . $filename
 			));
+
+			$card->update([ 'image' => $filename ]);
 		}
-		$card->update([
-			'image' => $filename,
-			'type_id' => $request->type
-		]);
+		$card->update([ 'type_id' => $request->type ]);
 
 		return redirect('cards')->withSuccess(
 			trans('cards.card_changed')

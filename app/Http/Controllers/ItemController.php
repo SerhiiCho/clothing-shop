@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ItemRequest;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateItemRequest;
 
 class ItemController extends Controller
@@ -83,6 +84,9 @@ class ItemController extends Controller
     {
 		if ($request->hasFile('image'))
 		{
+			if (Storage::exists('public/img/clothes/'.$item->image)) {
+				Storage::delete('public/img/clothes/'.$item->image);
+			}
 			$image = $request->file('image');
 			$ext = $image->getClientOriginalExtension();
 			$filename = getFileName($request->title, $ext);
