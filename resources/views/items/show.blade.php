@@ -14,7 +14,7 @@
 
 <!-- Sidebar -->
 <div class="col-12 sidebar">
-	<section class="heading">@lang('messages.more_clothes')</section>
+	<h5 class="text-center pt-2 font-weight-normal">@lang('messages.more_clothes')</h5>
 	<sidebar
 		:hryvnia="{{ json_encode(trans('items.hryvnia')) }}"
 		:itemid="{{ json_encode($itemId) }}"

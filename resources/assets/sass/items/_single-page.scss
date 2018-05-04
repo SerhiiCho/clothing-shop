@@ -1,58 +1,41 @@
 .single-container {
 	padding-top: .5em;
 	background: #fff;
+	
+	.phone-form {
+		margin: .3em 2px;
+		color: $gray;
 
-	.single-info {
-		padding: 1em 3%;
-		font-weight: bold;
-	
-		span {
-			display: block;
+		input, button {
+			border-radius: 3px;
+			border: solid 1px $darkPink;
+			padding: 3px 5px;
 		}
-	
-		.phone-form {
-			margin: .3em 2px;
-			color: $gray;
-	
-			input, button {
-				border-radius: 3px;
-				border: solid 1px $darkPink;
-				padding: 3px 5px;
-			}
-	
-			button {
-				background: $darkPink;
-				cursor: pointer;
+
+		button {
+			background: $darkPink;
+			cursor: pointer;
+			transition: background-color 300ms;
+
+			&:hover {
+				background: darken($color: $darkPink, $amount: 5);
 				transition: background-color 300ms;
-	
-				&:hover {
-					background: darken($color: $darkPink, $amount: 5);
-					transition: background-color 300ms;
-				}
 			}
 		}
 	}
 }
 
 .single-image {
-	text-align: center;
-	padding: 0 1em;
-
 	img {
 		width: 80%;
 		height: auto;
 		border: 1px dotted $darkPink;
-		border-radius: 2px;
 		transition: transform 300ms;
 
 		&:hover {
 			transform: scale(1.1);
 		}
 	}
-}
-
-.single-status {
-	color: $gray;
 }
 
 .single-price {
@@ -67,32 +50,14 @@
 	}
 }
 
-
-
-.single-title {
-	font-size: 1.5em;
-}
-
-.single-intro {
-	padding: 2em 0 3em 0;
-	color: $gray;
-	font-size: .93em;
-}
-
 .sidebar {
 	background:#F2F2F2;
-	padding-top: .5em;
-	margin-top: 2em;
 	border-top: 1px dotted $darkPink;
 }
 
 @media (min-width: 500px) {
 	.single-image img {
 		width: 100%;
-	}
-	
-	.single-info {
-		padding: 1em;
 	}
 
 	.single-price {

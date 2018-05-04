@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container pb-4 col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
-	<h4 class="heading center">@lang('items.change_item')</h4>
+	<h5 class="text-center pt-4">@lang('items.change_item')</h5>
 
 	<div class="row">
 		<form action="{{ action('ItemController@update', ['id' => $item->id]) }}" method="post" enctype="multipart/form-data" class="col-md-6 col-lg-8">
@@ -18,7 +18,7 @@
 
 			<div class="form-group">
 				<label>@lang('items.discreption')</label>
-				<textarea name="content" placeholder="@lang('items.discreption')" class="form-control" required>{{ $item->content }}</textarea>
+				<textarea name="content" placeholder="@lang('items.discreption')" class="form-control" style="min-height: 200px" required>{{ $item->content }}</textarea>
 			</div>
 
 			<div class="row">

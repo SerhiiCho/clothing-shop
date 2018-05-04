@@ -3,27 +3,35 @@
 @section('content')
 
 <div class="container">
-	<div class="col-xs-12 heading center">@lang('forms.register_title')</div>
+	<h3 class="text-center pt-4">@lang('forms.register_title')</h3>
 
-	<form method="POST" action="{{ route('register') }}" class="form">
-		@csrf
+	<div class="col-12 offset-md-3 col-md-6 pb-5">
+		<form method="POST" action="{{ route('register') }}" class="form">
+			@csrf
 
-		<label for="name">@lang('forms.input_name')</label>
-		<input id="name" type="text" name="name" value="{{ old('name') }}" placeholder="@lang('forms.input_name')" required autofocus>
+			<div class="form-group">
+				<label for="name">@lang('forms.input_name')</label>
+				<input id="name" class="form-control" type="text" name="name" value="{{ old('name') }}" placeholder="@lang('forms.input_name')" required autofocus>
+			</div>
 
-		<label for="email">@lang('forms.input_email_address')</label>
-		<input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="@lang('forms.input_email_address')" required>
+			<div class="form-group">
+				<label for="email">@lang('forms.input_email_address')</label>
+				<input id="email" class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="@lang('forms.input_email_address')" required>
+			</div>
 
-		<label for="password">@lang('forms.input_password')</label>
-		<input id="password" type="password" name="password" placeholder="@lang('forms.input_password')" required>
+			<div class="form-group">
+				<label for="password">@lang('forms.input_password')</label>
+				<input id="password" class="form-control" type="password" name="password" placeholder="@lang('forms.input_password')" required>
+			</div>
 
-		<label for="password-confirm">@lang('forms.confirm_password')</label>
-		<input id="password-confirm" type="password" name="password_confirmation" placeholder="@lang('forms.confirm_password')" required>
+			<div class="form-group">
+				<label for="password-confirm">@lang('forms.confirm_password')</label>
+				<input id="password-confirm" class="form-control" type="password" name="password_confirmation" placeholder="@lang('forms.confirm_password')" required>
+			</div>
 
-		<div class="spacer"></div>
-
-		<button type="submit" class="btn block">@lang('forms.register_title')</button>
-	</form>
+			<button type="submit" class="btn btn-pink">@lang('forms.register_title')</button>
+		</form>
+	</div>
 </div>
 
 @endsection

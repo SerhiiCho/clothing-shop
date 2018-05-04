@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="container">
-	<h3 class="text-center pt-2">@lang('forms.login_title')</h3>
+	<h3 class="text-center pt-4">@lang('forms.login_title')</h3>
 	
-	<div class="col-12 offset-md-3 col-md-6 pb-3 pt-3">
+	<div class="col-12 offset-md-3 col-md-6 pb-5">
 		<form method="POST" action="{{ route('login') }}" class="form">
 			@csrf
 			

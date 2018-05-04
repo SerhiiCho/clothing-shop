@@ -104,6 +104,10 @@ main {
   background: #e3d2e3;
 }
 
+.display-4 {
+  font-size: 2rem;
+}
+
 /* Hamburger
 ==================== */
 
@@ -568,50 +572,35 @@ header {
   background: #fff;
 }
 
-.single-container .single-info {
-  padding: 1em 3%;
-  font-weight: bold;
-}
-
-.single-container .single-info span {
-  display: block;
-}
-
-.single-container .single-info .phone-form {
+.single-container .phone-form {
   margin: .3em 2px;
   color: #646464;
 }
 
-.single-container .single-info .phone-form input,
-.single-container .single-info .phone-form button {
+.single-container .phone-form input,
+.single-container .phone-form button {
   border-radius: 3px;
   border: solid 1px #ecdcdc;
   padding: 3px 5px;
 }
 
-.single-container .single-info .phone-form button {
+.single-container .phone-form button {
   background: #ecdcdc;
   cursor: pointer;
   -webkit-transition: background-color 300ms;
   transition: background-color 300ms;
 }
 
-.single-container .single-info .phone-form button:hover {
+.single-container .phone-form button:hover {
   background: #e3cbcb;
   -webkit-transition: background-color 300ms;
   transition: background-color 300ms;
-}
-
-.single-image {
-  text-align: center;
-  padding: 0 1em;
 }
 
 .single-image img {
   width: 80%;
   height: auto;
   border: 1px dotted #ecdcdc;
-  border-radius: 2px;
   -webkit-transition: -webkit-transform 300ms;
   transition: -webkit-transform 300ms;
   transition: transform 300ms;
@@ -621,10 +610,6 @@ header {
 .single-image img:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
-}
-
-.single-status {
-  color: #646464;
 }
 
 .single-price {
@@ -639,30 +624,14 @@ header {
   font-weight: normal;
 }
 
-.single-title {
-  font-size: 1.5em;
-}
-
-.single-intro {
-  padding: 2em 0 3em 0;
-  color: #646464;
-  font-size: .93em;
-}
-
 .sidebar {
   background: #F2F2F2;
-  padding-top: .5em;
-  margin-top: 2em;
   border-top: 1px dotted #ecdcdc;
 }
 
 @media (min-width: 500px) {
   .single-image img {
     width: 100%;
-  }
-
-  .single-info {
-    padding: 1em;
   }
 
   .single-price {

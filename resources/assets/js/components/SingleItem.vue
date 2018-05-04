@@ -1,18 +1,18 @@
 <template>
 	<section class="row">
-		<div class="col-12 col-sm-4 col-lg-3 single-image">
+		<div class="col-12 col-sm-4 col-lg-3 text-center single-image">
 			<img :src="'/storage/img/clothes/' + item.image" :alt="item.title">
 		</div>
-		<div class="col-12 col-sm-8 col-lg-9 single-info">
+		<div class="col-12 col-sm-8 col-lg-9">
 			<div class="row">
 
 				<!-- Title -->
-				<div class="col-6">
-					<span class="single-title">{{ item.title }}</span>
+				<div class="col-6 p-3">
+					<span class="display-4">{{ item.title }}</span>
 				</div>
 
 				<!-- Price -->
-				<div class="col-6">
+				<div class="col-6 p-3">
 					<p class="single-price">
 						{{ item.price1 }}.{{ item.price2 }}
 						<span>{{ hryvnia }}</span>
@@ -20,7 +20,7 @@
 				</div>
 
 				<!-- ID -->
-				<span class="col-12 single-status">
+				<span class="col-12 text-secondary">
 					<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
 					{{ numberitem }}: {{ item.id }}
 				</span>
@@ -32,11 +32,11 @@
 					<button @click="sentPhoneNumber(item.id)" :title="order">{{ order }}</button>
 					<div v-if="clicked" class="alert alert-pink mt-3" role="alert">{{ messageToCustomer }}</div>
 
-					<hr class="mt-4" />
+					<hr class="mt-3" />
 				</div>
 
 				<!-- Intro -->
-				<p class="col-12 lead">{{ item.content }}</p>
+				<p class="lead pr-4 pl-4">{{ item.content }}</p>
 			</div>
 		</div>
 	</section>

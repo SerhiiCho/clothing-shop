@@ -20649,24 +20649,28 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-12 col-sm-4 col-lg-3 single-image" }, [
-      _c("img", {
-        attrs: {
-          src: "/storage/img/clothes/" + _vm.item.image,
-          alt: _vm.item.title
-        }
-      })
-    ]),
+    _c(
+      "div",
+      { staticClass: "col-12 col-sm-4 col-lg-3 text-center single-image" },
+      [
+        _c("img", {
+          attrs: {
+            src: "/storage/img/clothes/" + _vm.item.image,
+            alt: _vm.item.title
+          }
+        })
+      ]
+    ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-12 col-sm-8 col-lg-9 single-info" }, [
+    _c("div", { staticClass: "col-12 col-sm-8 col-lg-9" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-6" }, [
-          _c("span", { staticClass: "single-title" }, [
+        _c("div", { staticClass: "col-6 p-3" }, [
+          _c("span", { staticClass: "display-4" }, [
             _vm._v(_vm._s(_vm.item.title))
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-6" }, [
+        _c("div", { staticClass: "col-6 p-3" }, [
           _c("p", { staticClass: "single-price" }, [
             _vm._v(
               "\n\t\t\t\t\t" +
@@ -20679,7 +20683,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("span", { staticClass: "col-12 single-status" }, [
+        _c("span", { staticClass: "col-12 text-secondary" }, [
           _c("i", {
             staticClass: "fa fa-shopping-cart",
             attrs: { "aria-hidden": "true" }
@@ -20753,10 +20757,10 @@ var render = function() {
               )
             : _vm._e(),
           _vm._v(" "),
-          _c("hr", { staticClass: "mt-4" })
+          _c("hr", { staticClass: "mt-3" })
         ]),
         _vm._v(" "),
-        _c("p", { staticClass: "col-12 lead" }, [
+        _c("p", { staticClass: "lead pr-4 pl-4" }, [
           _vm._v(_vm._s(_vm.item.content))
         ])
       ])
@@ -21043,7 +21047,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "section",
-    { staticClass: "row" },
+    { staticClass: "row pt-4" },
     _vm._l(_vm.items, function(item) {
       return _c(
         "div",
@@ -21423,7 +21427,10 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c(
       "section",
-      { staticClass: "heading", staticStyle: { background: "#F2F2F2" } },
+      {
+        staticClass: "display-4 p-4 text-center",
+        staticStyle: { background: "#F2F2F2" }
+      },
       [_vm._v(_vm._s(_vm.title))]
     ),
     _vm._v(" "),
