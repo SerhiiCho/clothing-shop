@@ -1,7 +1,9 @@
 <footer class="pb-5">
 	<div class="container">
 		<div class="row">
-			<nav class="col-6 col-md-4">
+
+			{{-- Navigation --}}
+			<nav class="col-6 col-md-3">
 				<h4>@lang('navigation.menu')</h4>
 				<ul>
 					<li><a href="/">@lang('navigation.home')</a></li>
@@ -9,7 +11,9 @@
 					<li><a href="/items/women">@lang('navigation.women')</a></li>
 				</ul>
 			</nav>
-			<nav class="col-6 col-md-4">
+
+			{{-- Last items --}}
+			<nav class="col-6 col-md-3">
 				<h4>@lang('navigation.last_posts')</h4>
 				<ul>
 					@foreach ($last_items_for_footer as $item)
@@ -22,7 +26,22 @@
 				</ul>
 			</nav>
 
-			<div class="col-12 col-md-4 languages">
+			{{-- Categories --}}
+			<nav class="col-6 col-md-3">
+				<h4>@lang('navigation.types')</h4>
+				<ul>
+					@foreach ($distinct_items as $item)
+						<li>
+							<a href="/items?type={{ $item->type->id }}" title="{{ $item->type->name }}">
+								{{ $item->type->name }}
+							</a>
+						</li>
+					@endforeach
+				</ul>
+			</nav>
+
+			{{-- Languages --}}
+			<div class="col-6 col-md-3 languages">
 				<h4>@lang('navigation.available_languages')</h4>
 
 				<a href="/language/en" title="English">
