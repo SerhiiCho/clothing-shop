@@ -13,13 +13,15 @@ class TypesSeeder extends Seeder
     public function run()
     {
         DB::table('types')->insert([
-			[ 'type' => 'Штаны' ],
-			[ 'type' => 'Шорты' ],
-			[ 'type' => 'Юбки' ],
+			[ 'type' => 'Аксесуары' ],
+			[ 'type' => 'Джинсы' ],
+			[ 'type' => 'Рубашки' ],
+			[ 'type' => 'Куртки' ],
 			[ 'type' => 'Платья' ],
 			[ 'type' => 'Майки' ],
-			[ 'type' => 'Куртки' ],
-			[ 'type' => 'Аксесуары' ]
+			[ 'type' => 'Юбки' ],
+			[ 'type' => 'Шорты' ],
+			[ 'type' => 'Штаны' ],
 		]);
     }
 }
