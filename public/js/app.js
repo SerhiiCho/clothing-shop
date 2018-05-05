@@ -20587,7 +20587,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 
-	props: ['phonenumber', 'numberitem', 'deleting', 'hryvnia', 'change', 'admin', 'order'],
+	props: ['deletethisphonenuber', 'phonenumberincorrect', 'youalreadysendorder', 'wewillcontactyou', 'phonenumber', 'numberitem', 'deleting', 'hryvnia', 'change', 'admin', 'order'],
 
 	created: function created() {
 		this.fetchItem();
@@ -20636,19 +20636,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					return res.text();
 				}).then(function (data) {
 					if (data === 'success') {
-						_this2.messageToCustomer = 'Мы с свяжимся с вами в ближайшее время';
+						_this2.messageToCustomer = _this2.wewillcontactyou;
 					} else {
-						_this2.messageToCustomer = 'Вы уже отправили ваш заказ. Вам позвонят в ближайшее время';
+						_this2.messageToCustomer = _this2.youalreadysendorder;
 					}
 				}).catch(function (error) {
 					return console.log(error);
 				});
 			} else {
-				this.messageToCustomer = 'Не правильный формат номера телефона';
+				this.messageToCustomer = this.phonenumberincorrect;
 			}
 		},
 		deleteItem: function deleteItem(id) {
-			if (confirm('Удалить этот товар?')) {
+			if (confirm(this.deletethisphonenuber)) {
 				fetch('/api/item/' + id, {
 					method: 'delete'
 				}).then(function (res) {

@@ -39,5 +39,9 @@ return [
 	'phone_number' => 'Номер телефона',
 	'price_hryvnia' => 'Цена (гривны)',
 	'select_hryvnia' => 'Укажите гривны',
+	'we_will_contact_you' => 'Мы с свяжимся с вами в ближайшее время',
+	'you_already_send_order' => 'Вы уже отправили ваш заказ. Вам позвонят в ближайшее время',
+	'phone_number_incorrect' => 'Не правильный формат номера телефона',
+	'delete_this_phone_nuber' => 'Удалить этот товар?',
 
 ];

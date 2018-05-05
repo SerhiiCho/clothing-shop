@@ -65,6 +65,10 @@ export default {
 	},
 
 	props: [
+		'deletethisphonenuber',
+		'phonenumberincorrect',
+		'youalreadysendorder',
+		'wewillcontactyou',
 		'phonenumber',
 		'numberitem',
 		'deleting',
@@ -115,19 +119,19 @@ export default {
 					.then(res => res.text())
 					.then(data => {
 						if (data === 'success') {
-							this.messageToCustomer = 'Мы с свяжимся с вами в ближайшее время'
+							this.messageToCustomer = this.wewillcontactyou
 						} else {
-							this.messageToCustomer = 'Вы уже отправили ваш заказ. Вам позвонят в ближайшее время'
+							this.messageToCustomer = this.youalreadysendorder
 						}
 					})
 					.catch(error => console.log(error))
 			} else {
-				this.messageToCustomer = 'Не правильный формат номера телефона'
+				this.messageToCustomer = this.phonenumberincorrect
 			}
 		},
 
 		deleteItem(id) {
-			if (confirm('Удалить этот товар?')) {
+			if (confirm(this.deletethisphonenuber)) {
 				fetch(`/api/item/${id}`, {
 					method: 'delete'
 				})
