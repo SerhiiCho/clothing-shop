@@ -20911,6 +20911,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -20920,7 +20925,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 
-	props: ['hryvnia'],
+	props: ['hryvnia', 'popular'],
 
 	created: function created() {
 		this.fetchPopularItems();
@@ -20950,45 +20955,60 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "section",
-    { staticClass: "row" },
-    _vm._l(_vm.populars, function(popular) {
-      return _c(
-        "div",
-        {
-          key: popular.id,
-          staticClass: "col-lg-2 col-md-3 col-6 col-sm-4 item-card"
-        },
-        [
-          _c(
-            "a",
-            { attrs: { href: "/item/" + popular.id, title: popular.title } },
+  return _c("section", { staticClass: "main-content" }, [
+    _c(
+      "h3",
+      {
+        staticClass: "display-4  text-center p-4",
+        staticStyle: { background: "#F2F2F2" }
+      },
+      [_vm._v(_vm._s(_vm.popular))]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c(
+        "section",
+        { staticClass: "row" },
+        _vm._l(_vm.populars, function(popular) {
+          return _c(
+            "div",
+            {
+              key: popular.id,
+              staticClass: "col-lg-2 col-md-3 col-6 col-sm-4 item-card"
+            },
             [
-              _c("img", {
-                attrs: {
-                  src: "storage/img/clothes/" + popular.image,
-                  alt: popular.title
-                }
-              })
+              _c(
+                "a",
+                {
+                  attrs: { href: "/item/" + popular.id, title: popular.title }
+                },
+                [
+                  _c("img", {
+                    attrs: {
+                      src: "storage/img/clothes/" + popular.image,
+                      alt: popular.title
+                    }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "item-card-price" }, [
+                _c("span", [_vm._v(_vm._s(popular.title))]),
+                _vm._v(" "),
+                _c("span", { staticClass: "hryvnia" }, [
+                  _vm._v(_vm._s(popular.price1))
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "change" }, [
+                  _vm._v(_vm._s(popular.price2) + " " + _vm._s(_vm.hryvnia))
+                ])
+              ])
             ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "item-card-price" }, [
-            _c("span", [_vm._v(_vm._s(popular.title))]),
-            _vm._v(" "),
-            _c("span", { staticClass: "hryvnia" }, [
-              _vm._v(_vm._s(popular.price1))
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "change" }, [
-              _vm._v(_vm._s(popular.price2) + " " + _vm._s(_vm.hryvnia))
-            ])
-          ])
-        ]
+          )
+        })
       )
-    })
-  )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

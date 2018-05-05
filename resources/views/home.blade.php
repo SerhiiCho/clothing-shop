@@ -19,12 +19,9 @@
 		</div>
 	@endif
 
-	<!-- Content -->
-	<section class="main-content">
-		<h3 class="display-4  text-center p-4" style="background:#F2F2F2;">@lang('cards.popular')</h3>
-		<div class="container">
-			<popular :hryvnia="{{ json_encode(trans('items.hryvnia')) }}"></popular>
-		</div>
-	</section>
+	<popular
+		:hryvnia="{{ json_encode(trans('items.hryvnia')) }}"
+		:popular="{{ json_encode(trans('cards.popular')) }}"
+	></popular>
 
 @endsection
