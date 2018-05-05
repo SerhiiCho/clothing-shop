@@ -1,7 +1,7 @@
 @auth     
 	<nav class="user-sidebar">
 		<ul>
-			<li class="{{ activeIfRouteIs('dashboard') }} red-buttons" {{ $unreaded }}>
+			<li class="{{ activeIfRouteIs('dashboard') }} red-buttons" {{ $unreaded ?? '' }}>
 				<a href="/dashboard" title="@lang('user-sidebar.profile')">
 					<i class="fa fa-user-circle-o icon-profile-menu-line" aria-hidden="true"></i>
 					<span>@lang('user-sidebar.profile')</span>
