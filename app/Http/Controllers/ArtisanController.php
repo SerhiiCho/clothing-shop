@@ -67,6 +67,7 @@ class ArtisanController extends Controller
 
         try {
             Artisan::call('migrate:fresh');
+            Artisan::call('db:seed');
             echo 'Миграция завершена успешно! <br> <a href="/" title="На главную">На главную</a>';
 
         } catch (Exception $e) {
