@@ -10,11 +10,7 @@ use Illuminate\Http\Resources\Json\Resource;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
+    // Bootstrap any application services
     public function boot()
     {
 		// For Database
@@ -35,11 +31,7 @@ class AppServiceProvider extends ServiceProvider
 		header('Access-Control-Allow-Origin: *');
     }
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
+    // Register any application services
     public function register()
     {
         //
