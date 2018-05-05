@@ -13,32 +13,36 @@
 			</nav>
 
 			{{-- Last items --}}
-			<nav class="col-6 col-md-3">
-				<h4>@lang('navigation.last_posts')</h4>
-				<ul>
-					@foreach ($last_items_for_footer as $item)
-						<li>
-							<a href="/item/{{ $item->id }}" title="{{ $item->title }}">
-								{{ $item->title }}
-							</a>
-						</li>
-					@endforeach
-				</ul>
-			</nav>
+			@isset($last_items_for_footer)
+				<nav class="col-6 col-md-3">
+					<h4>@lang('navigation.last_posts')</h4>
+					<ul>
+						@foreach ($last_items_for_footer as $item)
+							<li>
+								<a href="/item/{{ $item->id }}" title="{{ $item->title }}">
+									{{ $item->title }}
+								</a>
+							</li>
+						@endforeach
+					</ul>
+				</nav>
+			@endisset
 
 			{{-- Categories --}}
-			<nav class="col-6 col-md-3">
-				<h4>@lang('navigation.types')</h4>
-				<ul>
-					@foreach ($distinct_items as $item)
+			@isset($distinct_items)
+				<nav class="col-6 col-md-3">
+					<h4>@lang('navigation.types')</h4>
+					<ul>
+						@foreach ($distinct_items as $item)
 						<li>
 							<a href="/items?type={{ $item->type->id }}" title="{{ $item->type->name }}">
 								{{ $item->type->name }}
 							</a>
 						</li>
-					@endforeach
-				</ul>
-			</nav>
+						@endforeach
+					</ul>
+				</nav>
+			@endisset
 
 			{{-- Languages --}}
 			<div class="col-6 col-md-3 languages">
