@@ -86,11 +86,14 @@ class CardController extends Controller
 		);
     }
 
-    // Remove the specified resource from storage
+    /**
+	 * Remove the specified resource from storage,
+	 * App\Observers\CardObserver will delete image
+	 * file while database record is being deleted
+	 */
     public function destroy(Card $card)
     {
 		$card->delete();
-		Storage::delete('public/img/cards/'.$card->image);
 		return redirect('cards')->withSuccess(trans('cards.card_deleted'));
     }
 }
