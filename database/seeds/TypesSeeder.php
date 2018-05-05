@@ -12,7 +12,7 @@ class TypesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('name')->insert([
+        DB::table('types')->insert([
 			[ 'name' => 'Аксесуары' ],
 			[ 'name' => 'Джинсы' ],
 			[ 'name' => 'Рубашки' ],
