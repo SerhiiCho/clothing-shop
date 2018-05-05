@@ -18,8 +18,8 @@ Route::get('language/{lang}', 'PageController@lang');
 // Cards
 Route::resource('cards', 'CardController', ['except' => ['show']]);
 
-// Views
-Route::view('dashboard', 'dashboard')->middleware('auth');
+// User
+Route::view('user/dashboard', 'user.dashboard')->middleware('auth');
 
 // Artisan commands =======
 Route::prefix('php/artisan')->group(function () {
