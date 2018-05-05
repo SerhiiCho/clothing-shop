@@ -15,7 +15,7 @@
 	<main id="app">
 
 		<div class="loading" id="loading"></div>
-		<h4 class="loading-title" id="loading-title">Загрузка ...</h4>
+		<span class="loading-title" id="loading-title">Загрузка ...</span>
 
 		@include('includes.user-sidebar')
 

@@ -34,15 +34,16 @@
 	width: 20px;
 	height: 20px;
 	content: '';
-	top: 4px;
-	left: 4px;
+	top: 7px;
+	left: 7px;
 	margin: 0;
 }
 
 .loading-title {
 	position: absolute;
-	top: 13em;
+	top: 11em;
 	left: 50%;
+	font-size: 1.2em;
 	margin-left: -40px;
 	animation: none;
 	border: none;
