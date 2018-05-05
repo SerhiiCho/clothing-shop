@@ -20931,7 +20931,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		fetchPopularItems: function fetchPopularItems() {
 			var _this = this;
 
-			fetch('/api/popular').then(function (res) {
+			fetch('/api/item/popular').then(function (res) {
 				return res.json();
 			}).then(function (res) {
 				return _this.populars = res.data;
@@ -21088,7 +21088,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		fetchItems: function fetchItems() {
 			var _this = this;
 
-			fetch('/api/random').then(function (res) {
+			fetch('/api/item/random').then(function (res) {
 				return res.json();
 			}).then(function (res) {
 				var removeIdenticalItem = res.data.map(function (el) {

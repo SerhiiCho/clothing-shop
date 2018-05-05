@@ -7,18 +7,28 @@ use Illuminate\Http\Request;
  * within a group which is assigned the "api" middleware group
  */
 
-// Items
-Route::get('random', 'Api\ApiItemController@random');
-Route::get('popular', 'Api\ApiItemController@popular');
-Route::get('item/{item}', 'Api\ApiItemController@show');
-Route::post('item', 'Api\ApiItemController@store');
-Route::put('item/{id}', 'Api\ApiItemController@edit');
-Route::delete('item/{id}', 'Api\ApiItemController@destroy');
+Route::namespace('Api')->group(function () {
 
-Route::get('items/{sex?}', 'Api\ApiItemController@index');
-Route::get('items/type/{id}', 'Api\ApiItemController@type');
+	// Item
+	Route::prefix('item')->group(function () {
+		Route::post('/', 'ApiItemController@store');
+		Route::get('random', 'ApiItemController@random');
+		Route::put('{id}', 'ApiItemController@edit');
+		Route::get('popular', 'ApiItemController@popular');
+		Route::get('{item}', 'ApiItemController@show');
+		Route::delete('{id}', 'ApiItemController@destroy');
+	});
 
-// Messages
-Route::get('clients_orders/index', 'Api\ApiMessageController@index');
-Route::post('clients_orders/store', 'Api\ApiMessageController@store');
-Route::delete('clients_orders/destroy/{id}', 'Api\ApiMessageController@destroy');
+	// Items
+	Route::prefix('items')->group(function () {
+		Route::get('{category?}', 'ApiItemController@index');
+		Route::get('type/{id}', 'ApiItemController@type');
+	});
+
+	// Messages clients orders
+	Route::prefix('clients_orders')->group(function () {
+		Route::get('index', 'ApiMessageController@index');
+		Route::post('store', 'ApiMessageController@store');
+		Route::delete('destroy/{id}', 'ApiMessageController@destroy');
+	});
+});

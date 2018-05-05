@@ -32,7 +32,7 @@ export default {
 
 	methods: {
 		fetchItems() {
-			fetch('/api/random')
+			fetch('/api/item/random')
 				.then(res => res.json())
 				.then(res => {
 					let removeIdenticalItem = res.data.map(el => el.id).indexOf(this.itemid)

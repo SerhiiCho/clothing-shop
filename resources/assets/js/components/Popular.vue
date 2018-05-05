@@ -31,7 +31,7 @@ export default {
 
 	methods: {
 		fetchPopularItems() {
-			fetch('/api/popular')
+			fetch('/api/item/popular')
 			.then(res => res.json())
 			.then(res => this.populars = res.data)
 			.catch(err => console.log(err))
