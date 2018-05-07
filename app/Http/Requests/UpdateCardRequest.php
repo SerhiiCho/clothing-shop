@@ -16,7 +16,7 @@ class UpdateCardRequest extends FormRequest
     public function rules()
     {
         return [
-            'type'		 => 'required|max:30|numeric'
+            'type' => 'required|max:30|numeric'
         ];
 	}
 	
