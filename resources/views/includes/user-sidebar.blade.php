@@ -13,10 +13,16 @@
 					<span>@lang('user-sidebar.add_new_item')</span>
 				</a>
 			</li>
-			<li class="{{ activeIfRouteIs('cards/index') }}">
+			<li class="{{ activeIfRouteIs('cards') }}">
 				<a href="/cards" title="@lang('user-sidebar.cards')">
 					<i class="fa fa-file-image-o icon-profile-menu-line" aria-hidden="true"></i>
 					<span>@lang('user-sidebar.cards')</span>
+				</a>
+			</li>
+			<li class="{{ activeIfRouteIs('slider') }}">
+				<a href="/slider" title="@lang('user-sidebar.slider')">
+					<i class="fa fa-picture-o icon-profile-menu-line" aria-hidden="true"></i>
+					<span>@lang('user-sidebar.slider')</span>
 				</a>
 			</li>
 			<li class="{{ activeIfRouteIs('items') }}" >

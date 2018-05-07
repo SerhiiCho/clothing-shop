@@ -10,5 +10,6 @@ return [
 	'general'      => 'General',
 	'exit'         => 'Exit',
 	'cards'        => 'Cards',
+	'slider'       => 'Slider',
 	
 ];
