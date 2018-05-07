@@ -19,7 +19,7 @@ Vue.component('clients-orders', require('./components/ClientsOrders.vue'));
 Vue.component('single-item', require('./components/SingleItem.vue'));
 Vue.component('popular', require('./components/Popular.vue'));
 Vue.component('sidebar', require('./components/Sidebar.vue'));
-Vue.component('banner', require('./components/Banner.vue'));
+Vue.component('slider', require('./components/Slider.vue'));
 Vue.component('items', require('./components/Items.vue'));
 
 const app = new Vue({
