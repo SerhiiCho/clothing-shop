@@ -20319,7 +20319,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 
-	props: ['date', 'number', 'product', 'deleting', 'noorders', 'deletenumber', 'deletethisorder'],
+	props: ['date', 'number', 'product', 'noorders', 'deletenumber', 'deletethisorder'],
 
 	created: function created() {
 		this.getMessages();
@@ -20386,9 +20386,7 @@ var render = function() {
                   _vm._v(_vm._s(_vm.date))
                 ]),
                 _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [
-                  _vm._v(_vm._s(_vm.deleting))
-                ])
+                _c("th", { attrs: { scope: "col" } })
               ])
             ]),
             _vm._v(" "),
@@ -21616,12 +21614,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
-			images: ['storage/img/banner/1.jpg', 'storage/img/banner/2.jpg', 'storage/img/banner/3.jpg'],
+			images: [],
+			order: [],
 			currentNumber: 0
 		};
 	},
 	created: function created() {
-		this.startRotation();
+		this.startRotation(), this.fetchSlides();
 	},
 
 
@@ -21641,6 +21640,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 		prev: function prev() {
 			this.currentNumber -= 1;
+		},
+
+		fetchSlides: function fetchSlides() {
+			var _this = this;
+
+			fetch('/api/other/slider').then(function (res) {
+				return res.json();
+			}).then(function (data) {
+				for (var i = 0; i < data.length; i++) {
+					_this.images.push(data[i].image);
+				}
+			}).catch(function (err) {
+				return console.log(err);
+			});
 		}
 	}
 });
@@ -21663,7 +21676,9 @@ var render = function() {
     _c("div", [
       _c("img", {
         attrs: {
-          src: _vm.images[Math.abs(_vm.currentNumber) % _vm.images.length],
+          src:
+            "/storage/img/slider/" +
+            _vm.images[Math.abs(_vm.currentNumber) % _vm.images.length],
           alt: "banner"
         },
         on: { mouseover: _vm.stopRotation, mouseout: _vm.startRotation }
