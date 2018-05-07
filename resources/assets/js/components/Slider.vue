@@ -4,7 +4,7 @@
 
 			<div>
 				<img
-					:src="images[Math.abs(currentNumber) % images.length]"
+					:src="'/storage/img/slider/' + images[Math.abs(currentNumber) % images.length]"
 					v-on:mouseover="stopRotation"
 					v-on:mouseout="startRotation"
 					alt="banner"
@@ -19,17 +19,15 @@
 export default {
 	data() {
 		return {
-			images: [
-				'storage/img/banner/1.jpg',
-				'storage/img/banner/2.jpg',
-				'storage/img/banner/3.jpg'
-			],
+			images: [],
+			order: [],
 			currentNumber: 0
 		}
 	},
 
 	created() {
-		this.startRotation()
+		this.startRotation(),
+		this.fetchSlides()
 	},
 
 	methods: {
@@ -48,7 +46,18 @@ export default {
 		
         prev: function() {
             this.currentNumber -= 1
-        }
+		},
+		
+		fetchSlides() {
+			fetch('/api/other/slider')
+				.then(res => res.json())
+				.then(data => {
+					for (let i = 0; i < data.length; i++) {
+						this.images.push(data[i].image)
+					}
+				})
+				.catch(err => console.log(err))
+		}
 	}
 }
 </script>
