@@ -8,7 +8,7 @@
 						<th scope="col">{{ number }}</th>
 						<th scope="col">{{ product }}</th>
 						<th scope="col">{{ date }}</th>
-						<th scope="col">{{ deleting }}</th>
+						<th scope="col"></th>
 					</tr>
 				</thead>
 					<tbody>
@@ -23,7 +23,7 @@
 							</td>
 							<td>{{ order.created_at }}</td>
 							<td> 
-								<a href="#" :title="deletenumber +' ' + order.phone" class="btn btn-danger" @click="deleteMessage(order.id)">
+								<a href="#" :title="deletenumber + ' ' + order.phone" class="btn btn-danger" @click="deleteMessage(order.id)">
 									<i class="fa fa-trash-o" aria-hidden="true"></i>
 								</a>
 							</td>
@@ -52,7 +52,6 @@ export default {
 		'date',
 		'number',
 		'product',
-		'deleting',
 		'noorders',
 		'deletenumber',
 		'deletethisorder'
