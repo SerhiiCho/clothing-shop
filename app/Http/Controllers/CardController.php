@@ -6,7 +6,6 @@ use App\Models\Card;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
-use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\StoreCardRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateCardRequest;
@@ -16,10 +15,6 @@ class CardController extends Controller
     // Display a listing of the resource
     public function index()
     {
-		if (! Schema::hasTable('cards')) {
-			$this->log('Cannot find table "cards" in cards/index');
-			return view('cards.index');
-		}
 		return view('cards.index')->withCards(
 			Card::all()
 		);

@@ -7,7 +7,6 @@ use App\Models\Type;
 use Illuminate\Http\Request;
 use App\Http\Requests\ItemRequest;
 use Intervention\Image\ImageManager;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateItemRequest;
@@ -22,11 +21,6 @@ class ItemController extends Controller
 
     public function create()
     {
-		if (! Schema::hasTable('types')) {
-			$this->log('Cannot find table "types" in items/create');
-			return view('items.create');
-		}
-
         return view('items.create')->withTypes(
 			(new Type)->orderBy('name')->get()
 		);
@@ -80,11 +74,6 @@ class ItemController extends Controller
 
     public function edit(Item $item)
     {
-		if (! Schema::hasTable('types')) {
-			$this->log('Cannot find table "types" in items/edit');
-			return view('items.create');
-		}
-
 		$types = (new Type)->orderBy('name')->get();
 
 		$category = ($item->category === 'men')
