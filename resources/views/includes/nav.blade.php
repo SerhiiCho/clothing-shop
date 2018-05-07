@@ -17,22 +17,21 @@
 		@lang('navigation.shop_name')
 	</a>
 
-	<!-- Header search form -->
-	<form role="search" method="get" id="searchform" class="header-search" action="">
+	{{-- <form role="search" method="get" id="searchform" class="header-search" action="">
 		<input type="search" value="" name="s" placeholder="@lang('navigation.search')"/>
 		<input type="submit" id="searchsubmit" style="display:none;" />
-	</form>
+	</form> --}}
 </header>
 
 <nav id="nav-menu" class="top-nav">
 	<ul>
 		<a href="/" title="Главная" class="nav-logo">@lang('navigation.shop_name')</a>
-		<li class="nav-search">
+		{{-- <li class="nav-search">
 			<form role="search" method="get" id="searchform" class="header-search" action="">
 				<input type="search" value="" name="s" placeholder="@lang('navigation.search')" />
 				<input type="submit" id="searchsubmit" style="display:none;" />
 			</form>
-		</li>
+		</li> --}}
 		<li class="{{ activeIfRouteIs('/') }}">
 			<a href="/">@lang('navigation.home')</a>
 		</li>
