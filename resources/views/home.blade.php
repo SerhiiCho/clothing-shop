@@ -7,7 +7,7 @@
 	<banner></banner>
 
 	<!-- 3 Cards -->
-	@if ($cards->count() > 0)
+	@if (isset($cards) && $cards->count() > 0)
 		<h3 class="display-4 text-center p-4">@lang('cards.season_categories')</h3>
 		<div class="row center three-cards">
 			@foreach ($cards as $card)
