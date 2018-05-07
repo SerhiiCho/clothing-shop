@@ -7,6 +7,7 @@ use App\Models\Type;
 use Illuminate\Http\Request;
 use App\Http\Requests\ItemRequest;
 use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateItemRequest;
