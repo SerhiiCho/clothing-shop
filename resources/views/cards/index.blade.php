@@ -23,8 +23,8 @@
 
 					{{-- Delete button --}}
 					<form action="{{ action('CardController@destroy', ['id' => $card->id]) }}" method="post" onsubmit='return confirm("@lang('cards.are_you_sure_you_want_delete')")' class="position-absolute" style="right:1.8em; bottom:0; opacity:.8;">
-						@method('delete')
-						@csrf
+						@csrf @method('delete')
+
 						<button type="submit" class="btn btn-danger" title="@lang('cards.delete_card')">
 							<i class="fa fa-trash-o" aria-hidden="true"></i>
 						</button>

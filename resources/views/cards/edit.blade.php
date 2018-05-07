@@ -35,9 +35,10 @@
 		</form>
 
 		{{-- Delete button --}}
-		<form action="{{ action('CardController@destroy', ['id' => $card->id]) }}" method="post" onsubmit='return confirm("@lang('cards.are_you_sure_you_want_delete')")' class="my-2">
-			@method('delete')
-			@csrf
+		<form action="{{ action('CardController@destroy', ['card' => $card->id]) }}" method="post" onsubmit='return confirm("@lang('cards.are_you_sure_you_want_delete')")' class="my-2">
+
+			@csrf @method('delete')
+
 			<button type="submit" class="btn btn-danger btn-block" title="@lang('cards.delete_card')">
 				@lang('cards.delete_card')
 			</button>
