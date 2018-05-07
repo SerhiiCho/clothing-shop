@@ -10,6 +10,6 @@ class ApiOtherController extends Controller
 {
     public function slider()
 	{
-		return Slider::all();
+		return Slider::orderBy('order')->get();
 	}
 }
