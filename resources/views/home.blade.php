@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<banner></banner>
+	<slider></slider>
 
 	<!-- 3 Cards -->
 	@if (isset($cards) && $cards->count() > 0)
