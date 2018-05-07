@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Welcome')
+@section('title', trans('dashboard.your_orders'))
 
 @section('content')
 <div class="container">
