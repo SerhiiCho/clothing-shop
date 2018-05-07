@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', trans('messages.welcome'))
+
 @section('content')
 
 	<banner></banner>

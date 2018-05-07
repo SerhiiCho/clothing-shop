@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', trans('items.all_items'))
+
 @section('content')
 
 <section class="main-content">

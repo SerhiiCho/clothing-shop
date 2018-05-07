@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Welcome')
+
 @section('content')
 <div class="container">
 	<h4 class="text-center p-3">@lang('dashboard.your_orders'):</h4>

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', trans('cards.add_card'))
+
 @section('content')
 
 <div class="container pb-5">

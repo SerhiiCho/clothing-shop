@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', trans('forms.register_title'))
+
 @section('content')
 
 <div class="container">

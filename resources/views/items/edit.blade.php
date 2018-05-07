@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', trans('items.change_item'))
+
 @section('content')
 
 <div class="container pb-4 col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
