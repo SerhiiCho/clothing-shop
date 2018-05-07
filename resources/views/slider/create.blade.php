@@ -7,7 +7,7 @@
 <div class="container pb-5">
 	<h4 class="display-4 text-center p-3">@lang('slider.add_slide')</h4>
 	<div>
-		<img src="{{ asset('/storage/img/slider/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image">
+		<img src="{{ asset('/storage/img/slider/default.jpg') }}" class="rounded mx-auto d-block" id="target-image">
 	</div>
 	<div class="col-md-8 offset-md-2">
 
