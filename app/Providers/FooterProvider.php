@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Item;
+use Log;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class FooterProvider extends ServiceProvider
@@ -13,18 +15,20 @@ class FooterProvider extends ServiceProvider
      */
     public function boot()
     {
-		$last_items_for_footer
-			= Item::latest()
-			->take(7)
-			->get(['id', 'title']);
+		if (Schema::hasTable('items')) {
+			$last_items_for_footer
+				= Item::latest()
+				->take(7)
+				->get(['id', 'title']);
 
-		$distinct_items
-			= Item::distinct()
-			->take(10)
-			->get(['type_id']);
+			$distinct_items
+				= Item::distinct()
+				->take(10)
+				->get(['type_id']);
 
-		view()->composer('includes.footer', function ($view) use ($last_items_for_footer, $distinct_items) {
-			$view->with(compact('last_items_for_footer', 'distinct_items'));
-		});
+			view()->composer('includes.footer', function ($view) use ($last_items_for_footer, $distinct_items) {
+				$view->with(compact('last_items_for_footer', 'distinct_items'));
+			});
+		}
     }
 }

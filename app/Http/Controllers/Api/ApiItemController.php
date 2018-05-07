@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+
 use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ItemResource;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 
 class ApiItemController extends Controller
@@ -14,6 +16,11 @@ class ApiItemController extends Controller
 	
     public function index($category = null)
     {
+		if (! Schema::hasTable('items')) {
+			$this->log('Cannot find table "items" in items/index');
+			return;
+		}
+
 		$statement
 			= $category
 			? [['category', $category]]
@@ -25,6 +32,11 @@ class ApiItemController extends Controller
 
     public function type($type = null)
     {
+		if (Schema::hasTable('items')) {
+			$this->log('Cannot find table "items" in items/index');
+			return;
+		}
+
 		$statement
 			= $type
 			? [['type_id', $type]]
