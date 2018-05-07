@@ -2,82 +2,51 @@
 
 namespace App\Http\Controllers;
 
-use App\Slider;
+use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class SliderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Display a listing of the resource
     public function index()
     {
-        //
+		if (! Schema::hasTable('slider')) {
+			$this->log('Cannot find table "slider" in slider/index');
+			return view('slider.index');
+		}
+        return view('slider.index')->withSlider(Slider::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Show the form for creating a new resource
     public function create()
     {
-        //
+        return view('slider.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // Store a newly created resource in storage
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Slider  $slider
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Slider $slider)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Slider  $slider
-     * @return \Illuminate\Http\Response
-     */
+    // Show the form for editing the specified resource
     public function edit(Slider $slider)
     {
-        //
+		if (! Schema::hasTable('slider')) {
+			$this->log('Cannot find table "slider" in slider/create');
+			return view('slider.create');
+		}
+        return view('slider.create')->withSlider($slider);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Slider  $slider
-     * @return \Illuminate\Http\Response
-     */
+    // Update the specified resource in storage
     public function update(Request $request, Slider $slider)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Slider  $slider
-     * @return \Illuminate\Http\Response
-     */
+    // Remove the specified resource from storage
     public function destroy(Slider $slider)
     {
         //
