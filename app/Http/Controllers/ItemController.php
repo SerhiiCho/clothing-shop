@@ -54,20 +54,21 @@ class ItemController extends Controller
 
     public function show(Item $item)
     {
-		$item_id = $item->id;
-		$item_title = $item->title;
-
 		if (Cookie::get('visited')) {
-			if (Cookie::get('visited') == $item_id) {
-				return view('items.show')->withItemId($item_id);
+			if (Cookie::get('visited') == $item->id) {
+				return view('items.show')->with([
+					'item_id' 	 => $item->id,
+					'item_title' => $item->title
+				]);
 			}
 		}
-		Cookie::queue('visited', $item_id, 1);
+		Cookie::queue('visited', $item->id, 1);
 		$item->increment('popular');
 
-		return view('items.show')->with(
-			compact('item_id', 'item_title')
-		);
+		return view('items.show')->with([
+			'item_id' 	 => $item->id,
+			'item_title' => $item->title
+		]);
     }
 
 

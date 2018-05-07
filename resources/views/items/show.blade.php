@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $item_title)
+@section('title', $item_title ?? '')
 
 @section('content')
 
@@ -25,7 +25,7 @@
 	<h5 class="text-center pt-2 font-weight-normal">@lang('messages.more_clothes')</h5>
 	<sidebar
 		:hryvnia="{{ json_encode(trans('items.hryvnia')) }}"
-		:itemid="{{ json_encode($item_id) }}"
+		:itemid="{{ json_encode($item_id ?? '') }}"
 	></sidebar>
 </div>
 
