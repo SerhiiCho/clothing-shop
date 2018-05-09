@@ -25,6 +25,12 @@
 					<span>@lang('user-sidebar.slider')</span>
 				</a>
 			</li>
+			<li class="{{ activeIfRouteIs('contacts') }}">
+				<a href="/contacts/create" title="@lang('user-sidebar.contacts')">
+					<i class="fa fa-phone icon-profile-menu-line" aria-hidden="true"></i>
+					<span>@lang('user-sidebar.contacts')</span>
+				</a>
+			</li>
 			<li class="{{ activeIfRouteIs('items') }}" >
 				<a href="/items" title="@lang('user-sidebar.all_items')">
 					<i class="fa fa-shopping-bag icon-profile-menu-line" aria-hidden="true"></i>
