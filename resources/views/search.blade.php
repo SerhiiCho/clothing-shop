@@ -7,7 +7,7 @@
 <div class="container pb-5">
 	<section class="display-4 p-3 text-center">@lang('search.search')</section>
 
-	<div class="text-center">@include('includes.search-form')</div>
+	<div class="text-center pb-4">@include('includes.search-form')</div>
 
 	@isset($result)
 	<div class="row">
