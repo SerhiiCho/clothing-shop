@@ -35,4 +35,13 @@ class Item extends Model
 			return $value;
 		}
 	}
+
+	public function getByTitleOrTypeName($word)
+	{
+		return self::whereHas('type', function ($query) use ($word) {
+			$query
+				->where('name', 'like', '%'.$word.'%')
+				->orWhere('title', 'like', '%'.$word.'%');
+		})->get();
+	}
 }
