@@ -3938,7 +3938,7 @@ Vue.component('clients-orders', __webpack_require__(348));
 Vue.component('single-item', __webpack_require__(351));
 Vue.component('popular', __webpack_require__(354));
 Vue.component('sidebar', __webpack_require__(357));
-Vue.component('slider', __webpack_require__(376));
+Vue.component('slider', __webpack_require__(360));
 Vue.component('items', __webpack_require__(363));
 
 var app = new Vue({
@@ -21176,9 +21176,168 @@ if (false) {
 }
 
 /***/ }),
-/* 360 */,
-/* 361 */,
-/* 362 */,
+/* 360 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(47)
+/* script */
+var __vue_script__ = __webpack_require__(361)
+/* template */
+var __vue_template__ = __webpack_require__(362)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Slider.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-305e9ad0", Component.options)
+  } else {
+    hotAPI.reload("data-v-305e9ad0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 361 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			images: [],
+			order: [],
+			currentNumber: 0
+		};
+	},
+	created: function created() {
+		this.startRotation(), this.fetchSlides();
+	},
+
+
+	methods: {
+		startRotation: function startRotation() {
+			this.timer = setInterval(this.next, 5000);
+		},
+
+		stopRotation: function stopRotation() {
+			clearTimeout(this.timer);
+			this.timer = null;
+		},
+
+		next: function next() {
+			this.currentNumber += 1;
+		},
+
+		prev: function prev() {
+			this.currentNumber -= 1;
+		},
+
+		fetchSlides: function fetchSlides() {
+			var _this = this;
+
+			fetch('/api/other/slider').then(function (res) {
+				return res.json();
+			}).then(function (data) {
+				for (var i = 0; i < data.length; i++) {
+					_this.images.push(data[i].image);
+				}
+			}).catch(function (err) {
+				return console.log(err);
+			});
+		}
+	}
+});
+
+/***/ }),
+/* 362 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "main-banner" }, [
+    _c("div", {
+      staticClass: "imgbanbtn imgbanbtn-prev",
+      staticStyle: { "background-image": "url(storage/img/arrow-left.png)" },
+      on: { click: _vm.prev }
+    }),
+    _vm._v(" "),
+    _c("div", [
+      _c("img", {
+        attrs: {
+          src:
+            "/storage/img/slider/" +
+            _vm.images[Math.abs(_vm.currentNumber) % _vm.images.length],
+          alt: "banner"
+        },
+        on: { mouseover: _vm.stopRotation, mouseout: _vm.startRotation }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", {
+      staticClass: "imgbanbtn imgbanbtn-next",
+      staticStyle: { "background-image": "url(storage/img/arrow-right.png)" },
+      on: { click: _vm.next }
+    })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-305e9ad0", module.exports)
+  }
+}
+
+/***/ }),
 /* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21530,177 +21689,6 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 367 */,
-/* 368 */,
-/* 369 */,
-/* 370 */,
-/* 371 */,
-/* 372 */,
-/* 373 */,
-/* 374 */,
-/* 375 */,
-/* 376 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(47)
-/* script */
-var __vue_script__ = __webpack_require__(377)
-/* template */
-var __vue_template__ = __webpack_require__(378)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\Slider.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-305e9ad0", Component.options)
-  } else {
-    hotAPI.reload("data-v-305e9ad0", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 377 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-	data: function data() {
-		return {
-			images: [],
-			order: [],
-			currentNumber: 0
-		};
-	},
-	created: function created() {
-		this.startRotation(), this.fetchSlides();
-	},
-
-
-	methods: {
-		startRotation: function startRotation() {
-			this.timer = setInterval(this.next, 5000);
-		},
-
-		stopRotation: function stopRotation() {
-			clearTimeout(this.timer);
-			this.timer = null;
-		},
-
-		next: function next() {
-			this.currentNumber += 1;
-		},
-
-		prev: function prev() {
-			this.currentNumber -= 1;
-		},
-
-		fetchSlides: function fetchSlides() {
-			var _this = this;
-
-			fetch('/api/other/slider').then(function (res) {
-				return res.json();
-			}).then(function (data) {
-				for (var i = 0; i < data.length; i++) {
-					_this.images.push(data[i].image);
-				}
-			}).catch(function (err) {
-				return console.log(err);
-			});
-		}
-	}
-});
-
-/***/ }),
-/* 378 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "main-banner" }, [
-    _c("div", {
-      staticClass: "imgbanbtn imgbanbtn-prev",
-      staticStyle: { "background-image": "url(storage/img/arrow-left.png)" },
-      on: { click: _vm.prev }
-    }),
-    _vm._v(" "),
-    _c("div", [
-      _c("img", {
-        attrs: {
-          src:
-            "/storage/img/slider/" +
-            _vm.images[Math.abs(_vm.currentNumber) % _vm.images.length],
-          alt: "banner"
-        },
-        on: { mouseover: _vm.stopRotation, mouseout: _vm.startRotation }
-      })
-    ]),
-    _vm._v(" "),
-    _c("div", {
-      staticClass: "imgbanbtn imgbanbtn-next",
-      staticStyle: { "background-image": "url(storage/img/arrow-right.png)" },
-      on: { click: _vm.next }
-    })
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-305e9ad0", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

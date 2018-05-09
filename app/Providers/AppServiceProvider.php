@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
 		 * with Vue.js when I was clicking button to go on another page
 		 * using pagination, so I found this solution.
 		 */
-		header('Access-Control-Allow-Origin: *');
+		//header('Access-Control-Allow-Origin: *');
     }
 
     // Register any application services
