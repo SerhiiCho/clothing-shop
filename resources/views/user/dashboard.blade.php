@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('dashboard.your_orders'))
+@section('title', auth()->user()->name)
 
 @section('content')
 <div class="container">
