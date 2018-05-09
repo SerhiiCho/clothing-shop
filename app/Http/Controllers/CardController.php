@@ -91,7 +91,8 @@ class CardController extends Controller
 	 */
     public function destroy(Card $card)
     {
-		$card->delete();
-		return redirect('cards')->withSuccess(trans('cards.card_deleted'));
+		return ($card->delete())
+			? redirect('cards')->withSuccess(trans('cards.card_deleted'))
+			: redirect('cards')->withError(trans('cards.deleted_fail'));
     }
 }

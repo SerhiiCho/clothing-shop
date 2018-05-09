@@ -23,6 +23,7 @@ return [
 	// Controller
 	'card_added' => 'The card was added',
 	'card_deleted' => 'The card has been deleted',
+	'deleted_fail' => 'There was an error while trying to delete a card',
 	'already_3_cards' => 'You cannot add more than 3 cards',
 	'type_not_found' => 'The category is not found',
 	'card_changed' => 'The card has been changed',
