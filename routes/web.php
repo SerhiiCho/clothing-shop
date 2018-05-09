@@ -18,7 +18,8 @@ Route::get('item/{item}', 'ItemController@show');
 Route::get('/', 'PageController@home');
 Route::get('language/{lang}', 'PageController@lang');
 
-Route::get('search', 'SearchController@index');
+// Search
+Route::view('search', 'search');
 Route::post('search', 'SearchController@handleTheRequest');
 
 // User
