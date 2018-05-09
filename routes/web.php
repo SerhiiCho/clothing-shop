@@ -18,6 +18,9 @@ Route::get('item/{item}', 'ItemController@show');
 Route::get('/', 'PageController@home');
 Route::get('language/{lang}', 'PageController@lang');
 
+Route::get('search', 'SearchController@index');
+Route::post('search', 'SearchController@handleTheRequest');
+
 // User
 Route::view('user/dashboard', 'user.dashboard')->middleware('auth');
 
