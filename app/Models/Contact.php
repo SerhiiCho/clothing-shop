@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Contact extends Model
 {
 	public $timestamps = false;
-	public $fillable = ['phone', 'icon'];
+	public $fillable = ['phone', 'icon_id'];
 
 	public function icon()
 	{

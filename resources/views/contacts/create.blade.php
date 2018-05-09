@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
-@section('title', '')
+@section('title', trans('user-sidebar.contacts'))
 
 @section('content')
 
 <div class="container pb-5">
-
 	@isset($contacts)
 		<h4 class="display-4 text-center p-3">@lang('user-sidebar.contacts')</h4>
 		<div class="row">
@@ -23,12 +22,12 @@
 								
 							{{-- Buttons --}}
 							<div class="align-items-right">
-								<button class="btn btn-primary mr-3">
+								<a href="/contacts/{{ $contact->id }}/edit" class="btn btn-primary mr-3" title="@lang('contacts.change_contact')">
 									<i class="fa fa-pencil" aria-hidden="true"></i>
-								</button>
+								</a>
 								<form action="{{ action('ContactController@destroy', ['contact' => $contact->id]) }}" method="post" class="d-inline" onsubmit='return confirm("@lang('contacts.confirm_delete')")'>
 									@csrf @method('delete')
-									<button class="btn btn-danger">
+									<button class="btn btn-danger" title="@lang('contacts.delete')">
 										<i class="fa fa-trash-o" aria-hidden="true"></i>
 									</button>
 								</form>
@@ -50,22 +49,27 @@
 				@csrf
 				<div class="form-group">
 					<label for="phone">@lang('contacts.write_phone_number')</label>
-					<input type="text" name="phone" class="form-control" id="phone" placeholder="(095) 777-77-77">
+					<input type="text" name="phone" class="form-control" id="phone" placeholder="(095) 777-77-77" required>
 				</div>
-				<div class="form-group">
+
 				@isset($icons)
-					<label for="icon">@lang('contacts.choose_icon')</label>
-					<select class="form-control" id="icon">
-						<option>@lang('contacts.without_icon')</option>
-						@foreach ($icons as $icon)
-							<option value="{{ $icon->id }}">{{ $icon->name }}</option>
-						@endforeach
-					</select>
+					<div class="form-group">
+						<label for="icon">@lang('contacts.choose_icon')</label>
+						<select class="form-control" id="icon" name="icon">
+							<option value="">@lang('contacts.without_icon')</option>
+							@foreach ($icons as $icon)
+								<option value="{{ $icon->id }}">{{ $icon->name }}</option>
+							@endforeach
+						</select>
+					</div>
 				@endisset
-				</div>
-				<button type="submit" class="btn btn-primary">@lang('contacts.add_contact')</button>
+
+				<button type="submit" class="btn btn-primary" title="@lang('contacts.add_contact')">
+					@lang('contacts.add_contact')
+				</button>
 			</form>
 		</div>
 	</div>
 </div>
+
 @endsection

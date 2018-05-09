@@ -33,20 +33,28 @@ class ContactController extends Controller
     // Show the form for editing the specified resource
     public function edit(Contact $contact)
     {
-        //
+        return view('contacts.edit')->with([
+			'contact' => $contact,
+			'icons' => Icon::orderBy('name')->get()
+		]);
     }
 
     // Update the specified resource in storage
     public function update(Request $request, Contact $contact)
     {
-        //
+        $contact->icon_id = $request->icon;
+		$contact->phone = $request->phone;
+
+		return ($contact->save())
+			? back()->withSuccess(trans('contacts.changed'))
+			: back()->withError(trans('contacts.changing_fails'));
     }
 
     // Remove the specified resource from storage
     public function destroy(Contact $contact)
     {
 		return ($contact->delete())
-			? back()->withSuccess(trans('contacts.deleted'))
-			: back()->withError(trans('contacts.deleted_fail'));
+			? redirect('contacts/create')->withSuccess(trans('contacts.deleted'))
+			: redirect('contacts/create')->withError(trans('contacts.deleted_fail'));
     }
 }
