@@ -162,6 +162,7 @@ return [
         App\Providers\UserSidebarProvider::class,
         App\Providers\FooterProvider::class,
         App\Providers\EloquentEventProvider::class,
+        App\Providers\GsmProvider::class,
 
     ],
 
