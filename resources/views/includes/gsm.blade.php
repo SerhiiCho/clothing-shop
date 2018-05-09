@@ -1,10 +1,12 @@
-<section class="contact-container">
-	<div class="contact-item">
-		<img src="{{ asset('storage/img/viber.png') }}" alt="" width="35" height="35" class="gsm-operator">
-		<span>(095) 956-12-32</span>
-	</div>
-	<div class="contact-item">
-		<img src="{{ asset('storage/img/mts.png') }}" alt="" width="35" height="35" class="gsm-operator">
-		<span>(095) 956-12-32</span>
-	</div>
-</section>
+@isset($contacts)
+	@forelse ($contacts as $contact)
+		<section class="contact-container">
+			<div class="contact-item">
+				@empty(! $contact->icon_id)
+					<img src="{{ asset('storage/img/' . $contact->icon->image) }}" alt="{{ $contact->icon->name }}" title="{{ $contact->icon->name }}" width="35" height="35" class="gsm-operator">
+				@endempty
+				<span>{{ $contact->phone }}</span>
+			</div>
+		</section>
+	@empty @endforelse
+@endisset
