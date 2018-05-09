@@ -16,9 +16,10 @@ class SearchController extends Controller
     public function handleTheRequest(SearchRequest $request)
     {
 		if ($request->has('word')) {
-			return view('search')->withResult(
-				(new Item)->getByTitleOrTypeName($request->word)
-			);
+			return view('search')->with([
+				'result' => (new Item)->getByTitleOrTypeName($request->word),
+				'word' => $request->word
+			]);
 		}
 		return view('search');
     }
