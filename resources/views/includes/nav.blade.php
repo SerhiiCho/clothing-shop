@@ -16,23 +16,22 @@
 	<a href="/" title="@lang('navigation.home')" class="header-logo">
 		@lang('navigation.shop_name')
 	</a>
-
 	@include('includes.search-form')
 </header>
 
 <nav id="nav-menu" class="top-nav">
 	<ul>
-		<a href="/" title="Главная" class="nav-logo">@lang('navigation.shop_name')</a>
-		<li class="nav-search">
+		<a href="/" title="@lang('navigation.home')" class="nav-logo">@lang('navigation.shop_name')</a>
+		<li class="nav-search" title="@lang('navigation.search')">
 			@include('includes.search-form')
 		</li>
-		<li class="{{ activeIfRouteIs('/') }}">
+		<li class="{{ activeIfRouteIs('/') }}" title="@lang('navigation.home')">
 			<a href="/">@lang('navigation.home')</a>
 		</li>
-		<li class="{{ activeIfRouteIs('items', 'men') }}">
+		<li class="{{ activeIfRouteIs('items', 'men') }}" title="@lang('navigation.men')">
 			<a href="/items?category=men">@lang('navigation.men')</a>
 		</li>
-		<li class="{{ activeIfRouteIs('items', 'women') }}">
+		<li class="{{ activeIfRouteIs('items', 'women') }}" title="@lang('navigation.women')">
 			<a href="/items?category=women">@lang('navigation.women')</a>
 		</li>
 
