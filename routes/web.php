@@ -7,9 +7,10 @@
 
 // Resources
 Auth::routes();
-Route::resource('items',  'ItemController', 	['except' => ['show']]);
-Route::resource('cards',  'CardController', 	['except' => ['show']]);
-Route::resource('slider', 'SliderController', 	['except' => ['show']]);
+Route::resource('items',  'ItemController', ['except' => ['show']]);
+Route::resource('cards',  'CardController', ['except' => ['show']]);
+Route::resource('slider', 'SliderController', ['except' => ['show']]);
+Route::resource('contacts', 'ContactController', ['except' => ['show', 'index']]);
 
 // Items
 Route::get('item/{item}', 'ItemController@show');
