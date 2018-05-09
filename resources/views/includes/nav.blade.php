@@ -17,22 +17,15 @@
 		@lang('navigation.shop_name')
 	</a>
 
-	<form method="post" class="header-search" action="{{ action('SearchController@handleTheRequest') }}">
-		@csrf
-		<input type="search" name="word" placeholder="@lang('navigation.search')"/>
-		<input type="submit" style="display:none;" />
-	</form>
+	@include('includes.search-form')
 </header>
 
 <nav id="nav-menu" class="top-nav">
 	<ul>
 		<a href="/" title="Главная" class="nav-logo">@lang('navigation.shop_name')</a>
-		{{-- <li class="nav-search">
-			<form role="search" method="get" id="searchform" class="header-search" action="">
-				<input type="search" value="" name="s" placeholder="@lang('navigation.search')" />
-				<input type="submit" id="searchsubmit" style="display:none;" />
-			</form>
-		</li> --}}
+		<li class="nav-search">
+			@include('includes.search-form')
+		</li>
 		<li class="{{ activeIfRouteIs('/') }}">
 			<a href="/">@lang('navigation.home')</a>
 		</li>
