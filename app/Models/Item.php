@@ -8,6 +8,7 @@ class Item extends Model
 {
     protected $guarded = ['id'];
 
+	// Relationships
 	public function user() {
 		return $this->belongsTo(User::class);
 	}
@@ -20,11 +21,13 @@ class Item extends Model
 		return $this->belongsTo(Type::class);
 	}
 
+	// Accessor
 	public function getPrice1Attribute($value)
 	{
 		return $this->price2 == 0 ? $value : $value . '.';
 	}
 
+	// Accessor
 	public function getPrice2Attribute($value)
 	{
 		if ($value == 0) {
@@ -42,6 +45,8 @@ class Item extends Model
 			$query
 				->where('name', 'like', '%'.$word.'%')
 				->orWhere('title', 'like', '%'.$word.'%');
-		})->get();
+		})->simplePaginate(20);
 	}
+
+
 }
