@@ -17,7 +17,7 @@
 					</a>
 
 					{{-- Edit button --}}
-					<a href="/cards/{{ $card->id }}/edit" class="btn btn-info position-absolute" title="@lang('cards.change_card')" style="left:1.8em; bottom:0; opacity:.8;">
+					<a href="/cards/{{ $card->id }}/edit" class="btn btn-dark position-absolute" title="@lang('cards.change_card')" style="left:1.8em; bottom:0; opacity:.8;">
 						<i class="fa fa-pencil" aria-hidden="true"></i>
 					</a>
 

@@ -28,16 +28,17 @@
 					</div>
 				@endisset
 
-				<button type="submit" class="btn btn-primary" title="@lang('contacts.change_contact')">
+				<button type="submit" class="btn btn-dark btn-block" title="@lang('contacts.change_contact')">
 					@lang('contacts.change_contact')
 				</button>
 			</form>
 			<form action="{{ action('ContactController@destroy', ['contact' => $contact->id]) }}" method="post" class="mt-2" onsubmit='return confirm("@lang('contacts.confirm_delete')")'>
 				@csrf @method('delete')
-				<button class="btn btn-danger" title="@lang('contacts.delete')">
+				<button class="btn btn-danger btn-block" title="@lang('contacts.delete')">
 					@lang('contacts.delete')
 				</button>
 			</form>
+			<a href="/contacts/create" title="@lang('messages.back')" class="btn btn-dark btn-block mt-2">@lang('messages.back')</a>
 		</div>
 	</div>
 </div>

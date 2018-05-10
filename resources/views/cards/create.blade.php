@@ -27,8 +27,9 @@
 				@endforeach
 			</select>
 
-			<button type="submit" class="btn btn-pink mt-3">@lang('cards.add_card')</button>
+			<button type="submit" class="btn btn-dark btn-block mt-3">@lang('cards.add_card')</button>
 		</form>
+		<a href="/cards" title="@lang('messages.back')" class="btn btn-secondary btn-block mt-2">@lang('messages.back')</a>
 
 	</div>
 </div>

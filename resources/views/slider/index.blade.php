@@ -14,8 +14,7 @@
 				<tr>
 					<th scope="col">@lang('slider.image')</th>
 					<th scope="col">@lang('slider.order')</th>
-					<th scope="col" title="@lang('slider.edit')"></th>
-					<th scope="col" title="@lang('slider.delete')"></th>
+					<th scope="col"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -24,12 +23,10 @@
 						<td><img src="{{ asset('storage/img/slider/' . $slide->image) }}" style="max-width:100px"></td>
 						<th scope="row">{{ $slide->order }}</th>
 						<td>
-							<a href="slider/{{ $slide->id }}/edit" class="btn btn-info" title="@lang('slider.edit')">
+							<a href="slider/{{ $slide->id }}/edit" class="btn btn-dark" title="@lang('slider.edit')">
 								<i class="fa fa-pencil" aria-hidden="true"></i>
 							</a>
-						</td>
-						<td>
-							<form action="{{ action('SliderController@destroy', ['slider' => $slide->id]) }}" method="post" onsubmit='return confirm("@lang('slider.are_you_sure')")'>
+							<form action="{{ action('SliderController@destroy', ['slider' => $slide->id]) }}" method="post" onsubmit='return confirm("@lang('slider.are_you_sure')")' class="d-inline">
 
 								@csrf @method('delete')
 

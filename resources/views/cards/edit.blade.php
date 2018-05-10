@@ -29,7 +29,7 @@
 				@endforeach
 			</select>
 
-			<button type="submit" class="btn btn-info btn-block mt-3" title="@lang('cards.save_changes')">
+			<button type="submit" class="btn btn-dark btn-block mt-3" title="@lang('cards.save_changes')">
 				@lang('cards.save_changes')
 			</button>
 		</form>
@@ -43,7 +43,7 @@
 				@lang('cards.delete_card')
 			</button>
 		</form>
-
+		<a href="/cards" title="@lang('messages.back')" class="btn btn-dark btn-block mt-2">@lang('messages.back')</a>
 	</div>
 </div>
 

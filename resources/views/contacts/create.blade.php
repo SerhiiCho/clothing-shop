@@ -22,7 +22,7 @@
 								
 							{{-- Buttons --}}
 							<div class="align-items-right">
-								<a href="/contacts/{{ $contact->id }}/edit" class="btn btn-primary mr-3" title="@lang('contacts.change_contact')">
+								<a href="/contacts/{{ $contact->id }}/edit" class="btn btn-dark mr-3" title="@lang('contacts.change_contact')">
 									<i class="fa fa-pencil" aria-hidden="true"></i>
 								</a>
 								<form action="{{ action('ContactController@destroy', ['contact' => $contact->id]) }}" method="post" class="d-inline" onsubmit='return confirm("@lang('contacts.confirm_delete')")'>
@@ -64,7 +64,7 @@
 					</div>
 				@endisset
 
-				<button type="submit" class="btn btn-primary" title="@lang('contacts.add_contact')">
+				<button type="submit" class="btn btn-dark btn-block" title="@lang('contacts.add_contact')">
 					@lang('contacts.add_contact')
 				</button>
 			</form>

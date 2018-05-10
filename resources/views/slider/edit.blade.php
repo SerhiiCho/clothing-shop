@@ -25,7 +25,7 @@
 				<input type="number" value="{{ $slider->order }}" class="form-control" name="order" placeholder="@lang('slider.choose_order_number')">
 			</div>
 
-			<button type="submit" class="btn btn-info btn-block mt-3" title="@lang('slider.save_changes')">
+			<button type="submit" class="btn btn-dark btn-block mt-3" title="@lang('slider.save_changes')">
 				@lang('slider.save_changes')
 			</button>
 		</form>
@@ -38,8 +38,8 @@
 			<button type="submit" class="btn btn-danger btn-block" title="@lang('slider.delete')">
 				@lang('slider.delete')
 			</button>
+			<a href="/slider" title="@lang('messages.back')" class="btn btn-dark btn-block mt-2">@lang('messages.back')</a>
 		</form>
-
 	</div>
 </div>
 
