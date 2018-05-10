@@ -18,8 +18,8 @@
 			</div>
 
 			<div class="form-group">
-				<label>@lang('items.discreption')</label>
-				<textarea name="content" placeholder="@lang('items.discreption')" class="form-control" style="min-height: 200px" required></textarea>
+				<label>@lang('items.description')</label>
+				<textarea name="content" placeholder="@lang('items.description')" class="form-control" style="min-height: 200px" required></textarea>
 			</div>
 
 			<div class="row">

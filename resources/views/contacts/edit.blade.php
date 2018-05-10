@@ -29,7 +29,7 @@
 				</div>
 
 				<button type="submit" class="btn btn-dark btn-block" title="@lang('contacts.change_contact')">
-					@lang('contacts.change_contact')
+					@lang('contacts.save')
 				</button>
 			</form>
 			<form action="{{ action('ContactController@destroy', ['contact' => $contact->id]) }}" method="post" class="mt-2" onsubmit='return confirm("@lang('contacts.confirm_delete')")'>
