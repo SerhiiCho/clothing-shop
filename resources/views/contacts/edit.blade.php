@@ -15,18 +15,18 @@
 					<input type="text" value="{{ $contact->phone }}" name="phone" class="form-control" id="phone" placeholder="(095) 777-77-77" required>
 				</div>
 
-				@isset($contact->icon)
-					<div class="form-group">
-						<label for="icon">@lang('contacts.choose_icon')</label>
-						<select class="form-control" id="icon" name="icon">
+				<div class="form-group">
+					<label for="icon">@lang('contacts.choose_icon')</label>
+					<select class="form-control" id="icon" name="icon">
+						@isset($contact->icon)
 							<option value="{{ $contact->icon_id }}">{{ $contact->icon->name }}</option>
 							<option value="">---------------------------</option>
-							@foreach ($icons as $icon)
-								<option value="{{ $icon->id }}">{{ $icon->name }}</option>
-							@endforeach
-						</select>
-					</div>
-				@endisset
+						@endisset
+						@foreach ($icons as $icon)
+							<option value="{{ $icon->id }}">{{ $icon->name }}</option>
+						@endforeach
+					</select>
+				</div>
 
 				<button type="submit" class="btn btn-dark btn-block" title="@lang('contacts.change_contact')">
 					@lang('contacts.change_contact')

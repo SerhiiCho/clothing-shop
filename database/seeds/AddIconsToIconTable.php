@@ -13,7 +13,8 @@ class AddIconsToIconTable extends Seeder
 			[ 'name' => 'Kyevstar', 	'image' => 'kyevstar.png' ],
 			[ 'name' => 'MTC', 			'image' => 'mts.png' ],
 			[ 'name' => 'Viber', 		'image' => 'viber.png' ],
-			[ 'name' => 'Telegram',		'image' => 'telegram.png' ]
+			[ 'name' => 'Telegram',		'image' => 'telegram.png' ],
+			[ 'name' => 'Vodafone',		'image' => 'vodafone.png' ],
 		]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Icon;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateOrUpdateContactRequest;
 
 class ContactController extends Controller
 {
@@ -19,7 +20,7 @@ class ContactController extends Controller
     }
 
     // Store a newly created resource in storage
-    public function store(Request $request)
+    public function store(CreateOrUpdateContactRequest $request)
     {
 		Contact::create([
 			'icon_id' => $request->icon,
@@ -40,7 +41,7 @@ class ContactController extends Controller
     }
 
     // Update the specified resource in storage
-    public function update(Request $request, Contact $contact)
+    public function update(CreateOrUpdateContactRequest $request, Contact $contact)
     {
         $contact->icon_id = $request->icon;
 		$contact->phone = $request->phone;
