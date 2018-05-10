@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Icon extends Model
 {
-    public $timestamps = false;
-	public $fillable = ['name', 'image'];
+    protected $timestamps = false;
+	protected $fillable = ['name', 'image'];
 
 	public function contact()
 	{
