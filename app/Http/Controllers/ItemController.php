@@ -13,6 +13,12 @@ use App\Http\Requests\UpdateItemRequest;
 
 class ItemController extends Controller
 {
+	public function __construct()
+    {
+		$this->middleware('auth')->except([
+			'index', 'show'
+		]);
+	}
 	
     public function index()
     {

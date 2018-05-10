@@ -12,6 +12,11 @@ use App\Http\Requests\UpdateCardRequest;
 
 class CardController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+	}
+
     // Display a listing of the resource
     public function index()
     {
