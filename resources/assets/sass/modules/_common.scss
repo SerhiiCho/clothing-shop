@@ -58,17 +58,6 @@
 	font-weight: normal;
 }
 
-.btn-pink {
-	background: $pink;
-	border: 1px solid $darkPink;
-	color: #000;
-	font-weight: normal;
-
-	&:hover {
-		background: darken($color: $pink, $amount: 5);
-	}
-}
-
 .display-4 {
 	font-size: 2rem;
 }

@@ -94,17 +94,6 @@ main {
   font-weight: normal;
 }
 
-.btn-pink {
-  background: #EDE2ED;
-  border: 1px solid #ecdcdc;
-  color: #000;
-  font-weight: normal;
-}
-
-.btn-pink:hover {
-  background: #e3d2e3;
-}
-
 .display-4 {
   font-size: 2rem;
 }
