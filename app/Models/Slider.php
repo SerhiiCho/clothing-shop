@@ -8,6 +8,6 @@ class Slider extends Model
 {
 	protected $fillable = ['image', 'order'];
 	protected $table = 'slider';
-	protected $timestamps = false;
+	public $timestamps = false;
 	
 }

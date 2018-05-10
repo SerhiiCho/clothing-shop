@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Card extends Model
 {
-	protected $timestamps = false;
+	public $timestamps = false;
 	protected $guarded = [ 'id' ];
 	
 	public function type()
