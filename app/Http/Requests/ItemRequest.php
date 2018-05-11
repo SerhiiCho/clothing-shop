@@ -20,8 +20,7 @@ class ItemRequest extends FormRequest
             'content'    => 'required|min:4|max:900',
             'category'	 => 'required',
             'type' 		 => 'required',
-            'price1' 	 => 'required|numeric',
-            'price2' 	 => 'required|numeric',
+            'price' 	 => 'required|numeric',
             'image'		 => 'required|image|nullable|max:1999'
         ];
 	}
@@ -35,14 +34,12 @@ class ItemRequest extends FormRequest
             'category.required' 	=> trans('items.category_required'),
             'type.required' 		=> trans('items.type_required'),
             'image.required'	    => trans('items.image_required'),
-            'price1.required' 		=> trans('items.price_required'),
-            'price2.required' 		=> trans('items.price_required'),
+            'price.required' 		=> trans('items.price_required'),
             'title.min' 			=> trans('items.title_min'),
             'content.min'			=> trans('items.content_min'),
             'title.max'				=> trans('items.title_max'),
             'content.max'			=> trans('items.content_max'),
-            'price1.numeric'		=> trans('items.price_numeric'),
-            'price2.numeric'		=> trans('items.price_numeric'),
+            'price.numeric'		=> trans('items.price_numeric'),
             'image.image'			=> trans('items.image_image'),
             'image.max'				=> trans('items.image_max')
         ];

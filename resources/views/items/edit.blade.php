@@ -48,17 +48,8 @@
 
 			<div class="row">
 				<div class="form-group col-6">
-					<label>@lang('items.price_hryvnia')</label>
-					<input type="number" value="{{ $item->price1 }}" name="price1" value="0" placeholder="@lang('items.select_hryvnia')" class="form-control" required>
-				</div>
-
-				<div class="form-group col-6">
-					<label>@lang('items.price_change')</label>
-					@if ($item->price2 != '')
-						<input type="number" value="{{ $item->price2 }}" name="price2" class="form-control" placeholder="@lang('items.select_change')" max="99">
-					@else
-						<input type="number" name="price2" value="0" class="form-control" placeholder="@lang('items.select_change')" max="99">
-					@endif
+					<label>@lang('items.price')</label>
+					<input type="text" value="{{ $item->price }}" name="price" value="0" placeholder="@lang('items.select')" class="form-control" required>
 				</div>
 			</div>
 

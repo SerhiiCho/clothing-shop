@@ -43,13 +43,8 @@
 
 			<div class="row">
 				<div class="form-group col-6">
-					<label>@lang('items.price_hryvnia')</label>
-					<input type="number" name="price1" value="0" placeholder="@lang('items.select_hryvnia')" class="form-control" required>
-				</div>
-
-				<div class="form-group col-6">
-					<label>@lang('items.price_change')</label>
-					<input type="number" name="price2" value="0" class="form-control" placeholder="@lang('items.select_change')" max="99" required>
+					<label>@lang('items.price')</label>
+					<input type="text" name="price" value="0" placeholder="@lang('items.select')" class="form-control" required>
 				</div>
 			</div>
 

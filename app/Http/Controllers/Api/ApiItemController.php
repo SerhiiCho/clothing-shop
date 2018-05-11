@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ApiItemController extends Controller
 {
-
-	
     public function index($category = null)
     {
 		$statement

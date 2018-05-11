@@ -24,7 +24,7 @@
 				<!-- Price -->
 				<div class="col-6 p-3">
 					<p class="single-price">
-						{{ item.price1 + item.price2 }}
+						{{ item.price }}
 						<span class="d-block">{{ hryvnia }}</span>
 					</p>
 				</div>

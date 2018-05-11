@@ -517,12 +517,6 @@ header {
   margin-right: -13px;
 }
 
-.item-card-price .change {
-  display: inline-block;
-  font-size: .8em;
-  color: #974c4c;
-}
-
 @media (min-width: 500px) {
   .item-card {
     height: 340px;

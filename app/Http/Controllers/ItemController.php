@@ -46,8 +46,7 @@ class ItemController extends Controller
 			'title' => $request->title,
 			'content' => $request->content,
 			'category' => $request->category,
-			'price1' => $request->price1,
-			'price2' => $request->price2,
+			'price' => $request->price,
 			'image' => $filename,
 			'type_id' => $request->type
 		]);
@@ -112,8 +111,7 @@ class ItemController extends Controller
 			'title' => $request->title,
 			'content' => $request->content,
 			'category' => $request->category,
-			'price1' => $request->price1,
-			'price2' => $request->price2,
+			'price' => $request->price,
 			'type_id' => $request->type
 		]);
 
