@@ -37,7 +37,7 @@
 					<span>@lang('user-sidebar.all_items')</span>
 				</a>
 			</li>
-			<li class="remove-hover">
+			{{-- <li class="remove-hover">
 				<a href="#">
 					<i class="fa fa-cog icon-profile-menu-line" aria-hidden="true"></i>
 					<span>@lang('user-sidebar.settings')</span>
@@ -48,7 +48,7 @@
 					<i class="fa fa-angle-right icon-profile-menu-line" aria-hidden="true"></i>
 					<span>@lang('user-sidebar.general')</span>
 				</a>
-			</li>
+			</li> --}}
 		</ul>
 		<li>
 			<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="@lang('user-sidebar.exit')">

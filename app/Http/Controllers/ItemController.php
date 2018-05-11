@@ -118,7 +118,7 @@ class ItemController extends Controller
 		]);
 
 		return back()->withSuccess(
-			trans('items.item_added')
+			trans('items.item_changed')
 		);
     }
 }

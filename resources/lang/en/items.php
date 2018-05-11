@@ -4,6 +4,7 @@ return [
 
 	// Controllers
 	'item_added' => 'Product was added',
+	'item_changed' => 'Product was changed',
 
 	// Validation
 	'title_required' => 'Field name is required',

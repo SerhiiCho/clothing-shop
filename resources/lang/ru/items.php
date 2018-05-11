@@ -4,6 +4,7 @@ return [
 
 	// Controllers
 	'item_added' => 'Товар был успешно добавлен',
+	'item_changed' => 'Товар был успешно изменен',
 
 	// Validation
 	'title_required' => 'Поле название обязательно для заполнения',

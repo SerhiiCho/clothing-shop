@@ -54,7 +54,11 @@
 
 				<div class="form-group col-6">
 					<label>@lang('items.price_change')</label>
-					<input type="number" value="{{ $item->price2 }}" name="price2" value="0" class="form-control" placeholder="@lang('items.select_change')" max="99" required>
+					@if ($item->price2 != '')
+						<input type="number" value="{{ $item->price2 }}" name="price2" class="form-control" placeholder="@lang('items.select_change')" max="99">
+					@else
+						<input type="number" name="price2" value="0" class="form-control" placeholder="@lang('items.select_change')" max="99">
+					@endif
 				</div>
 			</div>
 
