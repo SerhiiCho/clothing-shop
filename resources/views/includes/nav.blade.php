@@ -17,12 +17,13 @@
 		@lang('navigation.shop_name')
 	</a>
 	@include('includes.search-form')
-	<div class="position-relative">
-		<a href="/cart" class="ml-5 text-dark cart" data="1">
+
+	@if (Cart::instance('default')->count() > 0)
+		<a href="/cart" class="ml-5 text-dark cart" data="{{ Cart::instance('default')->count() }}">
 			<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
 			@lang('cart.cart')
 		</a>
-	</div>
+	@endif
 </header>
 
 <nav id="nav-menu" class="top-nav">

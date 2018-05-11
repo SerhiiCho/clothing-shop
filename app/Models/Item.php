@@ -29,6 +29,4 @@ class Item extends Model
 				->orWhere('title', 'like', '%'.$word.'%');
 		})->simplePaginate(20);
 	}
-
-
 }
