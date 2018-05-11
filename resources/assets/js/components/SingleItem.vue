@@ -32,18 +32,18 @@
 				<!-- ID -->
 				<span class="col-12 text-secondary">
 					<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
-					{{ numberitem }}: {{ item.id }}
+					{{ numberItem }}: {{ item.id }}
 				</span>
 
-				<!-- Callback -->
-				<div class="col-12 phone-form">
-					+38 
-					<input v-model="phoneNumber" @keyup.enter="sentPhoneNumber(item.id)" type="text" :placeholder="phonenumber" maxlength="10">
-					<button @click="sentPhoneNumber(item.id)" :title="order">{{ order }}</button>
-					<div v-if="clicked" class="alert alert-pink mt-3" role="alert">{{ messageToCustomer }}</div>
-
+				<!-- Add To Cart -->
+				<form action="/cart/store" method="post" class="col-12 phone-form">
+					<input type="hidden" name="_token" :value="token">
+					<input type="hidden" name="id" :value="item.id">
+					<input type="hidden" name="title" :value="item.title">
+					<input type="hidden" name="price" :value="item.price">
+					<button type="submit" :title="addToCart">{{ addToCart }}</button>
 					<hr class="mt-3" />
-				</div>
+				</form>
 
 				<!-- Intro -->
 				<p class="lead pr-4 pl-4">{{ item.content }}</p>
@@ -58,24 +58,19 @@ export default {
 	data() {
 		return {
 			item: [],
-			messageToCustomer: '',
-			phoneNumber: '',
 			clicked: false
 		}
 	},
 
 	props: [
-		'deletethisphonenuber',
-		'phonenumberincorrect',
-		'youalreadysendorder',
-		'wewillcontactyou',
-		'phonenumber',
-		'numberitem',
+		'deleteThisProduct',
+		'numberItem',
+		'addToCart',
 		'deleting',
 		'hryvnia',
 		'change',
-		'admin',
-		'order'
+		'token',
+		'admin'
 	],
 
 	created() {
@@ -92,46 +87,8 @@ export default {
 				.catch(err => console.log(err))
 		},
 
-		validatePhoneNumber(input) {
-			var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-
-			if (input.match(phoneno)) {
-				return true;
-			}
-			return;
-		},
-
-		sentPhoneNumber(item) {
-			this.clicked = true
-			if (this.validatePhoneNumber(this.phoneNumber)) {
-				let dataForRequest = {
-					item: item,
-					phone: this.phoneNumber
-				}
-
-				fetch('/api/clients_orders/store', {
-						method: 'post',
-						body: JSON.stringify(dataForRequest),
-						headers: {
-							'content-type': 'application/json'
-						}
-					})
-					.then(res => res.text())
-					.then(data => {
-						if (data === 'success') {
-							this.messageToCustomer = this.wewillcontactyou
-						} else {
-							this.messageToCustomer = this.youalreadysendorder
-						}
-					})
-					.catch(error => console.log(error))
-			} else {
-				this.messageToCustomer = this.phonenumberincorrect
-			}
-		},
-
 		deleteItem(id) {
-			if (confirm(this.deletethisphonenuber)) {
+			if (confirm(this.deleteThisProduct)) {
 				fetch(`/api/item/${id}`, {
 					method: 'delete'
 				})

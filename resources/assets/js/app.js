@@ -22,6 +22,7 @@ Vue.component('sidebar', require('./components/Sidebar.vue'));
 Vue.component('slider', require('./components/Slider.vue'));
 Vue.component('items', require('./components/Items.vue'));
 
+
 const app = new Vue({
-    el: '#app'
+	el: '#app'
 });
