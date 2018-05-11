@@ -592,6 +592,15 @@ header {
   width: 80%;
   height: auto;
   border: 1px dotted #ecdcdc;
+  -webkit-transition: -webkit-transform 300ms;
+  transition: -webkit-transform 300ms;
+  transition: transform 300ms;
+  transition: transform 300ms, -webkit-transform 300ms;
+}
+
+.single-image img:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .single-price {
