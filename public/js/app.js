@@ -20578,14 +20578,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			item: [],
-			messageToCustomer: '',
-			phoneNumber: '',
 			clicked: false
 		};
 	},
 
 
-	props: ['deletethisphonenuber', 'phonenumberincorrect', 'youalreadysendorder', 'wewillcontactyou', 'phonenumber', 'numberitem', 'deleting', 'hryvnia', 'change', 'admin', 'order'],
+	props: ['deleteThisProduct', 'numberItem', 'addToCart', 'deleting', 'hryvnia', 'change', 'token', 'admin'],
 
 	created: function created() {
 		this.fetchItem();
@@ -20606,47 +20604,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				return console.log(err);
 			});
 		},
-		validatePhoneNumber: function validatePhoneNumber(input) {
-			var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-
-			if (input.match(phoneno)) {
-				return true;
-			}
-			return;
-		},
-		sentPhoneNumber: function sentPhoneNumber(item) {
-			var _this2 = this;
-
-			this.clicked = true;
-			if (this.validatePhoneNumber(this.phoneNumber)) {
-				var dataForRequest = {
-					item: item,
-					phone: this.phoneNumber
-				};
-
-				fetch('/api/clients_orders/store', {
-					method: 'post',
-					body: JSON.stringify(dataForRequest),
-					headers: {
-						'content-type': 'application/json'
-					}
-				}).then(function (res) {
-					return res.text();
-				}).then(function (data) {
-					if (data === 'success') {
-						_this2.messageToCustomer = _this2.wewillcontactyou;
-					} else {
-						_this2.messageToCustomer = _this2.youalreadysendorder;
-					}
-				}).catch(function (error) {
-					return console.log(error);
-				});
-			} else {
-				this.messageToCustomer = this.phonenumberincorrect;
-			}
-		},
 		deleteItem: function deleteItem(id) {
-			if (confirm(this.deletethisphonenuber)) {
+			if (confirm(this.deleteThisProduct)) {
 				fetch('/api/item/' + id, {
 					method: 'delete'
 				}).then(function (res) {
@@ -20750,75 +20709,47 @@ var render = function() {
           }),
           _vm._v(
             " \n\t\t\t\t" +
-              _vm._s(_vm.numberitem) +
+              _vm._s(_vm.numberItem) +
               ": " +
               _vm._s(_vm.item.id) +
               "\n\t\t\t"
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-12 phone-form" }, [
-          _vm._v("\n\t\t\t\t+38 \n\t\t\t\t"),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.phoneNumber,
-                expression: "phoneNumber"
-              }
-            ],
-            attrs: {
-              type: "text",
-              placeholder: _vm.phonenumber,
-              maxlength: "10"
-            },
-            domProps: { value: _vm.phoneNumber },
-            on: {
-              keyup: function($event) {
-                if (
-                  !("button" in $event) &&
-                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                ) {
-                  return null
-                }
-                _vm.sentPhoneNumber(_vm.item.id)
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.phoneNumber = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              attrs: { title: _vm.order },
-              on: {
-                click: function($event) {
-                  _vm.sentPhoneNumber(_vm.item.id)
-                }
-              }
-            },
-            [_vm._v(_vm._s(_vm.order))]
-          ),
-          _vm._v(" "),
-          _vm.clicked
-            ? _c(
-                "div",
-                {
-                  staticClass: "alert alert-pink mt-3",
-                  attrs: { role: "alert" }
-                },
-                [_vm._v(_vm._s(_vm.messageToCustomer))]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c("hr", { staticClass: "mt-3" })
-        ]),
+        _c(
+          "form",
+          {
+            staticClass: "col-12 phone-form",
+            attrs: { action: "/cart/store", method: "post" }
+          },
+          [
+            _c("input", {
+              attrs: { type: "hidden", name: "_token" },
+              domProps: { value: _vm.token }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "id" },
+              domProps: { value: _vm.item.id }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "title" },
+              domProps: { value: _vm.item.title }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "price" },
+              domProps: { value: _vm.item.price }
+            }),
+            _vm._v(" "),
+            _c("button", { attrs: { type: "submit", title: _vm.addToCart } }, [
+              _vm._v(_vm._s(_vm.addToCart))
+            ]),
+            _vm._v(" "),
+            _c("hr", { staticClass: "mt-3" })
+          ]
+        ),
         _vm._v(" "),
         _c("p", { staticClass: "lead pr-4 pl-4" }, [
           _vm._v(_vm._s(_vm.item.content))

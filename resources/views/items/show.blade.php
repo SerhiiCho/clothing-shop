@@ -7,16 +7,15 @@
 <div class="single-container container">
 	<single-item
 		:admin={{ json_encode(optional(auth()->user())->admin) }}
-		:numberitem="{{ json_encode(trans('items.number_item')) }}"
+		:number-item="{{ json_encode(trans('items.number_item')) }}"
 		:hryvnia="{{ json_encode(trans('items.hryvnia')) }}"
-		:phonenumber="{{ json_encode(trans('items.phone_number')) }}"
-		:order="{{ json_encode(trans('items.order')) }}"
+		:add-to-cart="{{ json_encode(trans('items.add_to_cart')) }}"
 		:deleting="{{ json_encode(trans('items.delete')) }}"
 		:change="{{ json_encode(trans('items.change')) }}"
-		:wewillcontactyou="{{ json_encode(trans('items.we_will_contact_you')) }}"
-		:youalreadysendorder="{{ json_encode(trans('items.you_already_send_order')) }}"
-		:phonenumberincorrect="{{ json_encode(trans('items.phone_number_incorrect')) }}"
-		:deletethisphonenuber="{{ json_encode(trans('items.delete_this_phone_nuber')) }}"
+		:token="{{ json_encode(csrf_token()) }}"
+		:added-to-cart="{{ json_encode(trans('items.added_to_cart')) }}"
+		:you-already-send-order="{{ json_encode(trans('items.you_already_send_order')) }}"
+		:delete-this-product="{{ json_encode(trans('items.delete_this_product')) }}"
 	></single-item>
 </div>
 
