@@ -18,7 +18,6 @@ class CreateItemsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('category');
-            $table->string('status')->default('posted');
             $table->string('price1');
             $table->string('price2');
             $table->string('image');
