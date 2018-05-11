@@ -34,14 +34,14 @@ return [
 	'number_item' => 'Product number',
 	'men_items' => "Men's clothing",
 	'women_items' => "Women's clothing",
+	'add_to_cart' => 'Add to cart',
 	'change_item' => 'Edit product',
 	'select_change' => 'Enter change',
-	'phone_number' => 'Phone number',
 	'price' => 'Price',
 	'select' => 'Enter price',
+	'added_to_cart' => 'Added to cart',
 	'we_will_contact_you' => 'We will contact you as soon as possible',
 	'you_already_send_order' => 'You have already sent your order. Will call you back shortly',
-	'phone_number_incorrect' => 'Invalid phone number format',
-	'delete_this_phone_nuber' => 'Delete this product?',
+	'delete_this_product' => 'Delete this product?',
 
 ];
