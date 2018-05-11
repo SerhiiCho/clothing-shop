@@ -18,6 +18,7 @@ class CreateItemsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('category');
+            $table->boolean('stock')->default(1);
             $table->string('price1');
             $table->string('price2');
             $table->string('image');
