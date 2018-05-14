@@ -1,7 +1,5 @@
 <?php
 
-use Gloudemans\Shoppingcart\Facades\Cart;
-
 /**
  * These routes are loaded by the RouteServiceProvider within
  * a group which contains the "web" middleware group.
@@ -9,21 +7,30 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 // Resources
 Auth::routes();
-Route::resource('items',  'ItemController', ['except' => ['show']]);
 Route::resource('cards',  'CardController', ['except' => ['show']]);
 Route::resource('slider', 'SliderController', ['except' => ['show']]);
 Route::resource('contacts', 'ContactController', ['except' => ['show', 'index']]);
 
 // Cart
-Route::get('/cart','CartController@index');
-Route::post('/cart/store','CartController@store');
-Route::delete('/cart/{item}','CartController@destroy');
+Route::prefix('cart')->group(function () {
+	Route::get('/','CartController@index');
+	Route::post('/store','CartController@store');
+	Route::delete('/{item}','CartController@destroy');
+	Route::post('/addToFavorite/{id}','CartController@addToFavorite');
+});
 
-Route::get('empty', function () {
-	Cart::destroy();
+Route::prefix('checkout')->group(function () {
+	Route::get('/','CheckoutController@index');
+	Route::post('/','CheckoutController@store');
+});
+
+Route::prefix('favorite')->group(function () {
+	Route::post('/addToCart/{id}','FavoriteItemController@addToCart');
+	Route::delete('/{id}','FavoriteItemController@destroy');
 });
 
 // Items
+Route::resource('items',  'ItemController', ['except' => ['show']]);
 Route::get('item/{item}', 'ItemController@show');
 
 // Page Controllers
