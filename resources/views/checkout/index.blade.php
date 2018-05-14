@@ -28,7 +28,7 @@
 		</div>
 		<div class="col-md-8 order-md-1">
 			<h4 class="mb-3">@lang('checkout.your_info')</h4>
-			<form action="{{ action('CheckoutController@store') }}" method="post" class="needs-validation">
+			<form action="{{ action('CheckoutController@store') }}" method="post" class="needs-validation" id="prevent-double-submitting">
 				@csrf
 				<div class="row">
 					<div class="col-md-6 mb-3">
@@ -41,7 +41,7 @@
 					</div>
 				</div>
 				<hr class="mb-4">
-				<button class="btn btn-dark btn-lg btn-block" type="submit">
+				<button class="btn btn-dark btn-lg btn-block" type="submit" id="submit-button" onclick="disableButton()">
 					@lang('cart.order')
 				</button>
 			</form>

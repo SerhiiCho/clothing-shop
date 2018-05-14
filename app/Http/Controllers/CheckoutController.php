@@ -12,31 +12,33 @@ class CheckoutController extends Controller
     // Display a listing of the resource
     public function index()
     {
-        return view('checkout.index');
+		return (Cart::instance('default')->count() > 0)
+			? view('checkout.index')
+			: redirect('/cart');
     }
 
     // Store a newly created resource in storage
     public function store(CheckoutRequest $request)
     {
-		$items = [];
+		try {
+			$items = Cart::content()->map(function ($item) {
+				return $item->name;
+			})->toJson();
 
-		foreach (Cart::content() as $item) {
-			array_push($items, $item->name);
-		}
+			$send = Message::create([
+				'ip' => $request->ip(),
+				'phone' => $request->phone,
+				'name' => $request->name,
+				'total' => str_replace(' ', '', Cart::total()),
+				'order' => $items,
+			]);
 
-		$send = Message::create([
-			'ip' => $request->ip(),
-			'phone' => $request->phone,
-			'name' => $request->name,
-			'total' => str_replace(' ', '', Cart::total()),
-			'order' => implode(" | ", $items),
-		]);
-
-		if ($send) {
-			Cart::destroy();
-			return redirect('/cart')->withSuccess(trans('checkout.order_sent'));
-		} else {
-			return redirect('/cart')->withError(trans('checkout.error'));
+				Cart::instance('default')->destroy();
+				return redirect('/cart')->withSuccess(trans('checkout.order_sent'));
+		} catch (Exception $e) {
+			return back()->withError(
+				trans('checkout.error') . ' ' . $e->getMessage()
+			);
 		}
 		
     }

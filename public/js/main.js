@@ -42,7 +42,6 @@ window.onscroll = () => {
     }
 }
 
-
 var src = id("src-image")
 var target = id("target-image")
 
@@ -54,3 +53,7 @@ function showImage(src, target) {
 	fr.onload = function(e) { target.src = this.result }
 	src.addEventListener("change", ()=> fr.readAsDataURL(src.files[0]))
 }
+
+id('prevent-double-submitting').addEventListener('submit', function () {
+	id('submit-button').disabled = true
+})
