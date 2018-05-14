@@ -562,14 +562,10 @@ header {
   color: #646464;
 }
 
-.single-container .phone-form input,
 .single-container .phone-form button {
   border-radius: 3px;
   border: solid 1px #ecdcdc;
-  padding: 3px 5px;
-}
-
-.single-container .phone-form button {
+  padding: 5px 10px;
   background: #ecdcdc;
   cursor: pointer;
   -webkit-transition: background-color 300ms;

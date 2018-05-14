@@ -6,13 +6,10 @@
 		margin: .3em 2px;
 		color: $gray;
 
-		input, button {
+		button {
 			border-radius: 3px;
 			border: solid 1px $darkPink;
-			padding: 3px 5px;
-		}
-
-		button {
+			padding: 5px 10px;
 			background: $darkPink;
 			cursor: pointer;
 			transition: background-color 300ms;
