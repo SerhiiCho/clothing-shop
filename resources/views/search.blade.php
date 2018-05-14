@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container pb-5">
-	<section class="display-4 p-3 text-center">@lang('search.search')</section>
+	<h3 class="display-4 p-3 text-center">@lang('search.search')</h3>
 
 	<div class="text-center pb-4">@include('includes.search-form')</div>
 
