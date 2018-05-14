@@ -51,6 +51,7 @@
 						</td>
 					</tr>
 				@endforeach
+
 			</tbody>
 
 			{{-- Table Footer --}}

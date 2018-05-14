@@ -26,6 +26,5 @@ return [
 	'item_is_in_favorite' => 'Этот товар уже добавлен в избранное',
 	'item_is_in_your_cart' => 'Этот товар уже в корзине',
 	'moved_to_cart' => ':item перенесен в корзину',
-	
 
 ];
