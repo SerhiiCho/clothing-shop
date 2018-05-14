@@ -14,7 +14,6 @@ Route::resource('slider', 'SliderController', ['except' => ['show']]);
 Route::resource('contacts', 'ContactController', ['except' => ['show', 'index']]);
 
 // Cart
-<<<<<<< HEAD
 Route::prefix('cart')->group(function () {
 	Route::get('/','CartController@index');
 	Route::post('/store','CartController@store');
@@ -30,14 +29,6 @@ Route::prefix('checkout')->group(function () {
 Route::prefix('favorite')->group(function () {
 	Route::post('/addToCart/{id}','FavoriteItemController@addToCart');
 	Route::delete('/{id}','FavoriteItemController@destroy');
-=======
-Route::get('/cart','CartController@index');
-Route::post('/cart/store','CartController@store');
-Route::delete('/cart/destroy','CartController@destroy');
-
-Route::get('empty', function () {
-	Cart::destroy();
->>>>>>> 6b9aa120b62b693410c5e895f35eb44f96cba4c1
 });
 
 // Items
