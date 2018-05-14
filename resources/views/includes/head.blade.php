@@ -4,6 +4,8 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <script>window.Laravel = { csrfToken: '{{ csrf_token() }}' }</script>
 <title>@yield('title') | {{ config('app.name', 'Clothing Shop') }}</title>
-<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+{!! styleTimestamp('css/bootstrap.min.css') !!}
+{!! styleTimestamp('css/app.css') !!}
+{{-- <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 <link rel="shortcut icon" href="{{ asset('storage/img/favicon.png') }}" type="image/x-icon">
