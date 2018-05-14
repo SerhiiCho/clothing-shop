@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use App\Http\Requests\CheckoutRequest;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
@@ -15,7 +16,7 @@ class CheckoutController extends Controller
     }
 
     // Store a newly created resource in storage
-    public function store(Request $request)
+    public function store(CheckoutRequest $request)
     {
 		$items = [];
 
