@@ -41,7 +41,7 @@
 					</div>
 				</div>
 				<hr class="mb-4">
-				<button class="btn btn-info btn-lg btn-block" type="submit">
+				<button class="btn btn-dark btn-lg btn-block" type="submit">
 					@lang('cart.order')
 				</button>
 			</form>

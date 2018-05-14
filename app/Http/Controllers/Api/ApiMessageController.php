@@ -16,7 +16,7 @@ class ApiMessageController extends Controller
 
 	public function destroy($id)
     {
-		Message::delete($id);
+		Message::find($id)->delete();
 
 		return Message::all();
     }

@@ -38,7 +38,7 @@
 						<td class="actions" data-th="@lang('cart.add_to_favorite')">
 							<form action="{{ action('CartController@addToFavorite', ['id' => $item->rowId]) }}" method="post" class="d-inline">
 								@csrf
-								<button type="submit" class="btn btn-info btn-sm" title="@lang('cart.add_to_favorite')">
+								<button type="submit" class="btn btn-dark btn-sm" title="@lang('cart.add_to_favorite')">
 									<i class="fa fa-star-o"></i>
 								</button>
 							</form>
@@ -58,7 +58,7 @@
 			<tfoot>
 				<tr>
 					<td>
-						<a href="#" class="btn btn-warning">
+						<a href="#" class="btn btn-dark">
 							<i class="fa fa-angle-left"></i> @lang('messages.back')
 						</a>
 					</td>
@@ -69,7 +69,7 @@
 						</strong>
 					</td>
 					<td>
-						<a href="/checkout" class="btn btn-success btn-block">
+						<a href="/checkout" class="btn btn-dark btn-block">
 							@lang('cart.order') <i class="fa fa-angle-right"></i>
 						</a>
 					</td>
@@ -112,7 +112,7 @@
 							<td class="actions" data-th="@lang('cart.add_to_favorite')">
 								<form action="{{ action('FavoriteItemController@addToCart', ['id' => $item->rowId]) }}" method="post" class="d-inline">
 									@csrf
-									<button type="submit" class="btn btn-info btn-sm" title="@lang('cart.add_to_cart')">
+									<button type="submit" class="btn btn-dark btn-sm" title="@lang('cart.add_to_cart')">
 										<i class="fa fa-cart-plus"></i>
 									</button>
 								</form>
