@@ -3,6 +3,7 @@
 return [
 
 	// View
+	'sum' => 'Сумма',
 	'date' => 'Число',
 	'number' => 'Номер',
 	'product' => 'Товар',

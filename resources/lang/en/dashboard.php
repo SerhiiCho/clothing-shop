@@ -3,6 +3,7 @@
 return [
 
 	// View
+	'sum' => 'Sum',
 	'date' => 'Date',
 	'number' => 'Phone number',
 	'product' => 'Product',
