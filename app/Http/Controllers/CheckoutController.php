@@ -20,6 +20,10 @@ class CheckoutController extends Controller
     // Store a newly created resource in storage
     public function store(CheckoutRequest $request)
     {
+		if (Message::whereIp($request->ip())->count() > 0) {
+			return back()->withError(trans('checkout.olready_did_order'));
+		}
+
 		try {
 			$data = '{';
 			foreach (Cart::content() as $item) {
