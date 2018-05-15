@@ -21,16 +21,17 @@ class CheckoutController extends Controller
     public function store(CheckoutRequest $request)
     {
 		try {
-			$items = Cart::content()->map(function ($item) {
-				return $item->name;
-			})->toJson();
+			$data = '{';
+			foreach (Cart::content() as $item) {
+				$data .= ' || ' . $item->id;
+			}
 
 			$send = Message::create([
 				'ip' => $request->ip(),
 				'phone' => $request->phone,
 				'name' => $request->name,
 				'total' => str_replace(' ', '', Cart::total()),
-				'order' => $items,
+				'order' => $data,
 			]);
 
 				Cart::instance('default')->destroy();
