@@ -1,12 +1,13 @@
 <template>
-	<section>
+	<section style="overflow:auto; white-space:nowrap;">
 		<section v-if="orders[0] && orders[0].length !== 0">
-			<table class="table table-sm">
+			<table class="table table-sm text-center">
 				<thead>
 					<tr>
 						<th scope="col">#</th>
 						<th scope="col">{{ number }}</th>
 						<th scope="col">{{ product }}</th>
+						<th scope="col">{{ sum }}</th>
 						<th scope="col">{{ date }}</th>
 						<th scope="col"></th>
 					</tr>
@@ -16,11 +17,13 @@
 							<th scope="row">{{ order.id }}</th>
 							<td>{{ order.phone }}</td>
 							<td>
-								{{ order.item_id }} 
-								<a :href="'/item/' + order.item_id">
-									<i class="fa fa-external-link" aria-hidden="true"></i>
+								<a v-for="item in convertToArray(order.order)" v-bind:key="item" :href="'/item/' + item">
+									<span class="badge badge-dark d-block mt-1 mb-1 p-2">
+										# {{ item }}
+									</span>
 								</a>
 							</td>
+							<td>{{ order.total }}</td>
 							<td>{{ order.created_at }}</td>
 							<td> 
 								<a href="#" :title="deletenumber + ' ' + order.phone" class="btn btn-danger" @click="deleteMessage(order.id)">
@@ -49,6 +52,7 @@ export default {
 	},
 
 	props: [
+		'sum',
 		'date',
 		'number',
 		'product',
@@ -84,6 +88,12 @@ export default {
 					})
 					.catch(error => console.log(error))
 			}
+		},
+
+		convertToArray(item) {
+			return item
+					.split(' || ')
+					.splice(1, item.length);
 		}
 	}
 }

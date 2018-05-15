@@ -54,6 +54,8 @@ function showImage(src, target) {
 	src.addEventListener("change", ()=> fr.readAsDataURL(src.files[0]))
 }
 
-id('prevent-double-submitting').addEventListener('submit', function () {
-	id('submit-button').disabled = true
-})
+if (id('prevent-double-submitting')) {
+	id('prevent-double-submitting').addEventListener('submit', function () {
+		id('submit-button').disabled = true
+	})
+}

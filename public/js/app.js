@@ -20310,6 +20310,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -20319,7 +20322,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 
-	props: ['date', 'number', 'product', 'noorders', 'deletenumber', 'deletethisorder'],
+	props: ['sum', 'date', 'number', 'product', 'noorders', 'deletenumber', 'deletethisorder'],
 
 	created: function created() {
 		this.getMessages();
@@ -20354,6 +20357,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					return console.log(error);
 				});
 			}
+		},
+		convertToArray: function convertToArray(item) {
+			return item.split(' || ').splice(1, item.length);
 		}
 	}
 });
@@ -20366,94 +20372,116 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", [
-    _vm.orders[0] && _vm.orders[0].length !== 0
-      ? _c("section", [
-          _c("table", { staticClass: "table table-sm" }, [
-            _c("thead", [
-              _c("tr", [
-                _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [
-                  _vm._v(_vm._s(_vm.number))
-                ]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [
-                  _vm._v(_vm._s(_vm.product))
-                ]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } }, [
-                  _vm._v(_vm._s(_vm.date))
-                ]),
-                _vm._v(" "),
-                _c("th", { attrs: { scope: "col" } })
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.orders[0], function(order) {
-                return _c("tr", { key: order.id }, [
-                  _c("th", { attrs: { scope: "row" } }, [
-                    _vm._v(_vm._s(order.id))
+  return _c(
+    "section",
+    { staticStyle: { overflow: "auto", "white-space": "nowrap" } },
+    [
+      _vm.orders[0] && _vm.orders[0].length !== 0
+        ? _c("section", [
+            _c("table", { staticClass: "table table-sm text-center" }, [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(_vm.number))
                   ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(order.phone))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(
-                      "\n\t\t\t\t\t\t\t" +
-                        _vm._s(order.item_id) +
-                        " \n\t\t\t\t\t\t\t"
-                    ),
-                    _c("a", { attrs: { href: "/item/" + order.item_id } }, [
-                      _c("i", {
-                        staticClass: "fa fa-external-link",
-                        attrs: { "aria-hidden": "true" }
-                      })
-                    ])
+                  _c("th", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(_vm.product))
                   ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(order.created_at))]),
+                  _c("th", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(_vm.sum))
+                  ]),
                   _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn btn-danger",
-                        attrs: {
-                          href: "#",
-                          title: _vm.deletenumber + " " + order.phone
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.deleteMessage(order.id)
-                          }
-                        }
-                      },
-                      [
-                        _c("i", {
-                          staticClass: "fa fa-trash-o",
-                          attrs: { "aria-hidden": "true" }
-                        })
-                      ]
-                    )
-                  ])
+                  _c("th", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(_vm.date))
+                  ]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } })
                 ])
-              })
-            )
+              ]),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.orders[0], function(order) {
+                  return _c("tr", { key: order.id }, [
+                    _c("th", { attrs: { scope: "row" } }, [
+                      _vm._v(_vm._s(order.id))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(order.phone))]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      _vm._l(_vm.convertToArray(order.order), function(item) {
+                        return _c(
+                          "a",
+                          { key: item, attrs: { href: "/item/" + item } },
+                          [
+                            _c(
+                              "span",
+                              {
+                                staticClass:
+                                  "badge badge-dark d-block mt-1 mb-1 p-2"
+                              },
+                              [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\t\t\t# " +
+                                    _vm._s(item) +
+                                    "\n\t\t\t\t\t\t\t\t"
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      })
+                    ),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(order.total))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(order.created_at))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: {
+                            href: "#",
+                            title: _vm.deletenumber + " " + order.phone
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.deleteMessage(order.id)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fa fa-trash-o",
+                            attrs: { "aria-hidden": "true" }
+                          })
+                        ]
+                      )
+                    ])
+                  ])
+                })
+              )
+            ])
           ])
-        ])
-      : _c("section", { staticClass: "p-1" }, [
-          _c("h5", { staticClass: "text-center pb-4" }, [
-            _c("i", {
-              staticClass: "fa fa-frown-o",
-              attrs: { "aria-hidden": "true" }
-            }),
-            _vm._v(" \n\t\t\t" + _vm._s(_vm.noorders) + "\n\t\t")
+        : _c("section", { staticClass: "p-1" }, [
+            _c("h5", { staticClass: "text-center pb-4" }, [
+              _c("i", {
+                staticClass: "fa fa-frown-o",
+                attrs: { "aria-hidden": "true" }
+              }),
+              _vm._v(" \n\t\t\t" + _vm._s(_vm.noorders) + "\n\t\t")
+            ])
           ])
-        ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
