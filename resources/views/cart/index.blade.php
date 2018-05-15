@@ -9,10 +9,8 @@
 		<table id="cart" class="table table-hover table-condensed">
 			<thead>
 				<tr>
-					<th style="width:50%">@lang('cart.product')</th>
-					<th style="width:10%">@lang('cart.price')</th>
-					<th style="width:8%">@lang('cart.quantity')</th>
-					<th style="width:22%" class="text-center">@lang('cart.total')</th>
+					<th style="width:75%">@lang('cart.product')</th>
+					<th style="width:15%" class="text-center">@lang('cart.price')</th>
 					<th style="width:10%"></th>
 				</tr>
 			</thead>
@@ -25,17 +23,14 @@
 									<img src="{{ asset('storage/img/clothes/' . $item->model->image) }}" alt="{{ $item->model->title }}" class="img-responsive" />
 								</a>
 								<div class="col-sm-10">
-									<h4 class="nomargin">{{ $item->model->title }}</h4>
-									<p>{{ $item->model->intro }}</p>
+									<h5 class="nomargin">{{ $item->model->title }}</h5>
 								</div>
 							</div>
 						</td>
-						<td data-th="@lang('cart.price')">{{ $item->model->price }} @lang('items.hryvnia')</td>
-						<td data-th="@lang('cart.quantity')">
-							<input type="number" class="form-control text-center" value="1">
+						<td data-th="@lang('cart.price')" class="text-center">
+							<h5>{{ $item->model->price }} @lang('items.hryvnia')</h5>
 						</td>
-						<td data-th="@lang('cart.total')" class="text-center">0 @lang('items.hryvnia')</td>
-						<td class="actions" data-th="@lang('cart.add_to_favorite')">
+						<td class="actions" data-th="@lang('cart.add_or_delete')">
 							<form action="{{ action('CartController@addToFavorite', ['id' => $item->rowId]) }}" method="post" class="d-inline">
 								@csrf
 								<button type="submit" class="btn btn-dark btn-sm" title="@lang('cart.add_to_favorite')">
@@ -62,7 +57,6 @@
 							<i class="fa fa-angle-left"></i> @lang('messages.back')
 						</a>
 					</td>
-					<td colspan="2" class="hidden-xs"></td>
 					<td class="hidden-xs text-center">
 						<strong>
 							@lang('cart.total')  {{ Cart::total() }} @lang('items.hryvnia')
@@ -89,8 +83,8 @@
 			<table id="cart" class="table table-hover table-condensed">
 				<thead>
 					<tr>
-						<th style="width:50%">@lang('cart.product')</th>
-						<th style="width:10%">@lang('cart.price')</th>
+						<th style="width:75%">@lang('cart.product')</th>
+						<th style="width:15%" class="text-center">@lang('cart.price')</th>
 						<th style="width:10%"></th>
 					</tr>
 				</thead>
@@ -108,7 +102,9 @@
 									</div>
 								</div>
 							</td>
-							<td data-th="@lang('cart.price')">{{ $item->model->price }} @lang('items.hryvnia')</td>
+							<td data-th="@lang('cart.price')" class="text-center">
+								<h5>{{ $item->model->price }} @lang('items.hryvnia')</h5>
+							</td>
 							<td class="actions" data-th="@lang('cart.add_to_favorite')">
 								<form action="{{ action('FavoriteItemController@addToCart', ['id' => $item->rowId]) }}" method="post" class="d-inline">
 									@csrf

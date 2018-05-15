@@ -6,6 +6,7 @@
 <div class="container">
 	<h4 class="text-center p-3">@lang('dashboard.your_orders'):</h4>
 	<clients-orders
+		:sum="{{ json_encode(trans('dashboard.sum')) }}"
 		:date="{{ json_encode(trans('dashboard.date')) }}"
 		:number="{{ json_encode(trans('dashboard.number')) }}"
 		:product="{{ json_encode(trans('dashboard.product')) }}"
