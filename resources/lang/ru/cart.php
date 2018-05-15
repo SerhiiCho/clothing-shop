@@ -4,9 +4,9 @@ return [
 
 	// View
 	'cart' => 'Корзина',
+	'add_or_delete' => 'Сохранить | Удалить',
 	'product' => 'Продукт',
 	'price' => 'Цена',
-	'quantity' => 'Кол-во',
 	'total' => 'Всего',
 	'delete' => 'Удалить',
 	'order' => 'Заказать',
