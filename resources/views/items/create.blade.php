@@ -12,9 +12,15 @@
 
 			@csrf
 
-			<div class="form-group">
-				<label>@lang('items.name')</label>
-				<input type="text" name="title" placeholder="@lang('items.name')" class="form-control" required>
+			<div class="row">
+				<div class="form-group col-12 col-sm-6">
+					<label>@lang('items.name')</label>
+					<input type="text" name="title" placeholder="@lang('items.name')" class="form-control" required>
+				</div>
+				<div class="form-group col-12 col-sm-6">
+					<label>@lang('items.price')</label>
+					<input type="text" name="price" value="0" placeholder="@lang('items.select')" class="form-control" required>
+				</div>
 			</div>
 
 			<div class="form-group">
@@ -38,13 +44,6 @@
 							<option value="{{ $type->id }}">{{ $type->name }}</option>
 						@endforeach
 					</select>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="form-group col-6">
-					<label>@lang('items.price')</label>
-					<input type="text" name="price" value="0" placeholder="@lang('items.select')" class="form-control" required>
 				</div>
 			</div>
 

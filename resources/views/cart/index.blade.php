@@ -5,32 +5,33 @@
 @section('content')
 
 <div class="container">
+	<h5 class="text-center pt-4 font-weight-normal">@lang('cart.cart')</h5>
 	@if (Cart::count() > 0)
-		<table id="cart" class="table table-hover table-condensed">
+		<table class="table table-hover table-condensed">
 			<thead>
 				<tr>
-					<th style="width:75%">@lang('cart.product')</th>
-					<th style="width:15%" class="text-center">@lang('cart.price')</th>
-					<th style="width:10%"></th>
+					<th style="width:50%">@lang('cart.product')</th>
+					<th style="width:20%" class="text-center">@lang('cart.price')</th>
+					<th style="width:30%"></th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach (Cart::content() as $item)
 					<tr>
-						<td data-th="@lang('cart.product')">
+						<td>
 							<div class="row">
-								<a href="/item/{{ $item->model->id }}" class="col-sm-2 hidden-xs">
-									<img src="{{ asset('storage/img/clothes/' . $item->model->image) }}" alt="{{ $item->model->title }}" class="img-responsive" />
+								<a href="/item/{{ $item->model->id }}" class="col-12 col-sm-2">
+									<img src="{{ asset('storage/img/clothes/' . $item->model->image) }}" alt="{{ $item->model->title }}" class="img-responsive" style="max-width:50px;" />
 								</a>
-								<div class="col-sm-10">
-									<h5 class="nomargin">{{ $item->model->title }}</h5>
+								<div class="col-12 col-sm-10 pt-2">
+									<h6 class="nomargin">{{ $item->model->title }}</h6>
 								</div>
 							</div>
 						</td>
-						<td data-th="@lang('cart.price')" class="text-center">
-							<h5>{{ $item->model->price }} @lang('items.hryvnia')</h5>
+						<td class="text-center">
+							<h6>{{ $item->model->price }} @lang('items.hryvnia')</h6>
 						</td>
-						<td class="actions" data-th="@lang('cart.add_or_delete')">
+						<td class="text-center">
 							<form action="{{ action('CartController@addToFavorite', ['id' => $item->rowId]) }}" method="post" class="d-inline">
 								@csrf
 								<button type="submit" class="btn btn-dark btn-sm" title="@lang('cart.add_to_favorite')">
@@ -46,7 +47,6 @@
 						</td>
 					</tr>
 				@endforeach
-
 			</tbody>
 
 			{{-- Table Footer --}}
@@ -63,7 +63,7 @@
 						</strong>
 					</td>
 					<td>
-						<a href="/checkout" class="btn btn-dark btn-block">
+						<a href="/checkout" class="btn btn-success btn-block">
 							@lang('cart.order') <i class="fa fa-angle-right"></i>
 						</a>
 					</td>
@@ -75,37 +75,35 @@
 	@endif
 
 	{{-- Favorite --}}
-	<hr />
-	<h3 class="display-4 p-3 text-center">@lang('cart.favorite')</h3>
+	<h5 class="text-center pt-2 font-weight-normal">@lang('cart.favorite')</h5>
 
 	<section class="row pt-4">
 		@if (Cart::instance('favorite')->count() > 0)
 			<table id="cart" class="table table-hover table-condensed">
 				<thead>
 					<tr>
-						<th style="width:75%">@lang('cart.product')</th>
-						<th style="width:15%" class="text-center">@lang('cart.price')</th>
-						<th style="width:10%"></th>
+						<th style="width:50%">@lang('cart.product')</th>
+						<th style="width:20%" class="text-center">@lang('cart.price')</th>
+						<th style="width:30%"></th>
 					</tr>
 				</thead>
 				<tbody>
 					@foreach (Cart::instance('favorite')->content() as $item)
 						<tr>
-							<td data-th="@lang('cart.product')">
+							<td>
 								<div class="row">
-									<a href="/item/{{ $item->model->id }}" class="col-sm-2 hidden-xs">
-										<img src="{{ asset('storage/img/clothes/' . $item->model->image) }}" alt="{{ $item->model->title }}" class="img-responsive" />
+									<a href="/item/{{ $item->model->id }}" class="col-12 col-sm-2">
+										<img src="{{ asset('storage/img/clothes/' . $item->model->image) }}" alt="{{ $item->model->title }}" class="img-responsive" style="max-width:50px;" />
 									</a>
-									<div class="col-sm-10">
-										<h4 class="nomargin">{{ $item->model->title }}</h4>
-										<p>{{ $item->model->intro }}</p>
+									<div class="col-12 col-sm-10 pt-2">
+										<h6 class="nomargin">{{ $item->model->title }}</h6>
 									</div>
 								</div>
 							</td>
-							<td data-th="@lang('cart.price')" class="text-center">
-								<h5>{{ $item->model->price }} @lang('items.hryvnia')</h5>
+							<td class="text-center">
+								<h6>{{ $item->model->price }} @lang('items.hryvnia')</h6>
 							</td>
-							<td class="actions" data-th="@lang('cart.add_to_favorite')">
+							<td class="text-center">
 								<form action="{{ action('FavoriteItemController@addToCart', ['id' => $item->rowId]) }}" method="post" class="d-inline">
 									@csrf
 									<button type="submit" class="btn btn-dark btn-sm" title="@lang('cart.add_to_cart')">
