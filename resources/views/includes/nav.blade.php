@@ -17,7 +17,6 @@
 		@lang('navigation.shop_name')
 	</a>
 	@include('includes.search-form')
-
 		<div class="ml-5">@include('includes.cart')</div>
 </header>
 
