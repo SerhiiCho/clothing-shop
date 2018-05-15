@@ -18,15 +18,7 @@
 	</a>
 	@include('includes.search-form')
 
-		<a href="/cart"
-			class="ml-5 text-dark cart"
-			@if (Cart::instance('default')->count() > 0)
-				data="{{ Cart::instance('default')->count() }}"
-			@endif
-		>
-			<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
-			@lang('cart.cart')
-		</a>
+		<div class="ml-5">@include('includes.cart')</div>
 </header>
 
 <nav id="nav-menu" class="top-nav">
@@ -35,6 +27,7 @@
 		<li class="nav-search" title="@lang('navigation.search')">
 			@include('includes.search-form')
 		</li>
+		<li class="hide-on-desktop">@include('includes.cart')</li>
 		<li class="{{ activeIfRouteIs('/') }}" title="@lang('navigation.home')">
 			<a href="/">@lang('navigation.home')</a>
 		</li>
