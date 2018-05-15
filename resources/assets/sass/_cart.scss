@@ -1,22 +1,19 @@
-.table>tbody>tr>td, .table>tfoot>tr>td{
+.table > tbody > tr > td, .table>tfoot>tr>td{
 	vertical-align: middle;
 }
 
+table#cart img {
+	width: 60px;
+}
+
 @media screen and (max-width: 600px) {
-	table#cart tbody td .form-control{
-		width:20%;
-		display: inline !important;
+	.actions {
+		text-align: center;
 	}
+
 	.actions .btn{
-		width:36%;
-		margin:1.5em 0;
-	}
-	
-	.actions .btn-info{
-		float:left;
-	}
-	.actions .btn-danger{
-		float:right;
+		width: 100px;
+		margin: 5px auto;
 	}
 
 	table#cart thead {
@@ -24,15 +21,23 @@
 	}
 
 	table#cart tbody td {
-		display: block; padding: .6rem; min-width:320px;
+		display: block;
+		padding: .6rem;
+		min-width:320px;
 	}
 	table#cart tbody tr td:first-child {
-		background: #333; color: #fff;
+		color: #000;
+		text-align: center;
+		font-size: 1.5em;
 	}
 
 	table#cart tbody td:before {
-		content: attr(data-th); font-weight: bold;
-		display: inline-block; width: 8rem;
+		content: attr(data-th);
+		font-weight: bold;
+		display: block;
+		width: 90%;
+		margin: 8px 5%;
+		text-align: center;
 	}
 
 	table#cart tfoot td {
@@ -41,6 +46,10 @@
 
 	table#cart tfoot td .btn {
 		display:block;
+	}
+
+	table#cart img {
+		margin: .8em auto;
 	}
 }
 

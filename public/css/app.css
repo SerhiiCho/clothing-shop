@@ -884,23 +884,18 @@ footer a:hover {
   vertical-align: middle;
 }
 
+table#cart img {
+  width: 60px;
+}
+
 @media screen and (max-width: 600px) {
-  table#cart tbody td .form-control {
-    width: 20%;
-    display: inline !important;
+  .actions {
+    text-align: center;
   }
 
   .actions .btn {
-    width: 36%;
-    margin: 1.5em 0;
-  }
-
-  .actions .btn-info {
-    float: left;
-  }
-
-  .actions .btn-danger {
-    float: right;
+    width: 100px;
+    margin: 5px auto;
   }
 
   table#cart thead {
@@ -914,15 +909,18 @@ footer a:hover {
   }
 
   table#cart tbody tr td:first-child {
-    background: #333;
-    color: #fff;
+    color: #000;
+    text-align: center;
+    font-size: 1.5em;
   }
 
   table#cart tbody td:before {
     content: attr(data-th);
     font-weight: bold;
-    display: inline-block;
-    width: 8rem;
+    display: block;
+    width: 90%;
+    margin: 8px 5%;
+    text-align: center;
   }
 
   table#cart tfoot td {
@@ -931,6 +929,10 @@ footer a:hover {
 
   table#cart tfoot td .btn {
     display: block;
+  }
+
+  table#cart img {
+    margin: .8em auto;
   }
 }
 
