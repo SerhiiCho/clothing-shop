@@ -1,4 +1,4 @@
-<a href="/cart" class="text-dark cart">
+<a href="/cart" class="text-dark d-block mt-1 cart">
 	<i class="fa fa-shopping-cart" aria-hidden="true"></i>  
 	@lang('cart.cart')
 </a>
