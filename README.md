@@ -4,7 +4,7 @@
 <ol>
 	<li>PHP Laravel framework</li>
 	<li>Vue.js</li>
-  <li>Bootstrap 4</li>
+  	<li>Bootstrap 4</li>
 </ol>
 
 <h4>Laravel Packages</h4>
