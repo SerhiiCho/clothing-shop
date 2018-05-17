@@ -1,0 +1,32 @@
+#table-log {
+	font-size: 0.85rem;
+	word-wrap: wrap;
+}
+
+.logs .sidebar {
+	line-height: 1.1;
+}
+
+.logs .text {
+	word-break: break-all;
+}
+
+.logs .list-group-item-dark {
+	background: #343a40;
+	color: #fff;
+}
+
+.logs .list-group-item-dark:hover {
+	background: #2c333a;
+	color: #fff;
+}
+
+@media(max-width: 455px) {
+	.logs .my-table {
+		overflow: auto;
+		white-space: nowrap;
+	}
+	.text {
+		text-align: left;
+	}
+}
