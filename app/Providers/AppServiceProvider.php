@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
 		}
 
 		// Header for javascript
-		header('Access-Control-Allow-Origin: *');
+		//header('Access-Control-Allow-Origin: *');
     }
 
     // Register any application services
