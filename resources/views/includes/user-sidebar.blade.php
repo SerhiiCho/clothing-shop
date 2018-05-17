@@ -37,6 +37,12 @@
 					<span>@lang('user-sidebar.all_items')</span>
 				</a>
 			</li>
+			<li class="{{ activeIfRouteIs('logs') }}" >
+				<a href="/logs" title="@lang('logs.logs')">
+					<i class="fa fa-question-circle-o icon-profile-menu-line" aria-hidden="true"></i>
+					<span>@lang('logs.logs')</span>
+				</a>
+			</li>
 			{{-- <li class="remove-hover">
 				<a href="#">
 					<i class="fa fa-cog icon-profile-menu-line" aria-hidden="true"></i>
