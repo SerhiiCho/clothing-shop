@@ -44,15 +44,28 @@ window.onscroll = () => {
 
 var src = id("src-image")
 var target = id("target-image")
-
-if (src && target) showImage(src, target)
-
+/**
+ * This function auto updates pictures after selecting them via
+ * file input
+ * @param {string} src 
+ * @param {string} target 
+ */
 function showImage(src, target) {
 	var fr = new FileReader()
 	
-	fr.onload = function(e) { target.src = this.result }
-	src.addEventListener("change", ()=> fr.readAsDataURL(src.files[0]))
+	src.addEventListener("change", ()=> {
+		if (src.files.length !== 0) {
+			fr.readAsDataURL(src.files[0])
+			fr.onload = function(e) { target.src = this.result }
+		} else {
+			target.src = '/storage/img/clothes/default.jpg'
+		}
+	})
 }
+
+// User on page where variables:
+// src and target exist, run function
+if (src && target) showImage(src, target)
 
 if (id('prevent-double-submitting')) {
 	id('prevent-double-submitting').addEventListener('submit', function () {
