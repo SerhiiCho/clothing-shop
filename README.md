@@ -10,5 +10,6 @@
 <h4>Laravel Packages</h4>
 <ol>
 	<li>Intervention / image</li>
+	<li>rap2hpoutre / laravel-log-viewer</li>
 	<li>Crinsane / LaravelShoppingcart</li>
 </ol>
