@@ -6,6 +6,9 @@ use Gloudemans\Shoppingcart\Facades\Cart;
  * These routes are loaded by the RouteServiceProvider within
  * a group which contains the "web" middleware group.
  */
+Route::get('logs',
+	'\Rap2hpoutre\LaravelLogViewer\LogViewerController@index'
+)->middleware('auth');
 
 // Resources
 Auth::routes();
