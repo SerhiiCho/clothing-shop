@@ -4,9 +4,24 @@
 
 @section('content')
 
-<div class="wrapper">
+<div class="wrapper pb-3">
 	<section class="row">
-		<items-sidebar></items-sidebar>
+		<div class="col-md-3 items-sidebar">
+			<div class="list-group mb-5">
+				{{-- Categories --}}
+				<h4 class="list-group-item text-center {{ activeIfRouteIs('items', 'category', $current_category) }}">
+					@lang('navigation.types')
+				</h4>
+				@isset($categories)
+					@foreach ($categories as $item)
+						<a href="/items?category={{ $current_category }}&type={{ $item->type->id }}" class="list-group-item {{ activeIfRouteIs('items', 'type', $item->type->id) }}">
+							{{ $item->type->name }}
+						</a>
+					@endforeach
+				@endisset
+			</div>
+		</div>
+
 		<items
 			:womenitems="{{ json_encode(trans('items.women_items')) }}"
 			:admin={{ json_encode(optional(auth()->user())->admin) }}

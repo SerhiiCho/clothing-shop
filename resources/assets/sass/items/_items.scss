@@ -16,6 +16,35 @@
 		opacity: 1;
 	}
 }
+
+.items-sidebar {
+	a {
+		color: $gray;
+	}
+
+	.list-group {
+		max-width: 300px;
+		box-shadow: 3px 3px 10px rgba(51, 51, 51, .3);
+		margin-top: -4.3em;
+
+		.active {
+			background: $pink;
+			border-color: $darkPink;
+			color: $gray;
+		}
+
+		h4 {
+			text-transform: uppercase;
+			color: #333;
+		}
+	}
+
+	.list-group-item {
+		padding: .5em 5px;
+		border-radius: 0;
+	}
+}
+
 @media (max-width: 767px) {
 	.items-sidebar {
 		width: 250px;

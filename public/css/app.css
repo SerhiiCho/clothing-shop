@@ -351,6 +351,7 @@ header {
 
 .contact-container {
   height: auto;
+  min-height: 46px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -584,6 +585,33 @@ header {
   -webkit-transition: background-color .3s, opacity .3s;
   transition: background-color .3s, opacity .3s;
   opacity: 1;
+}
+
+.items-sidebar a {
+  color: #646464;
+}
+
+.items-sidebar .list-group {
+  max-width: 300px;
+  -webkit-box-shadow: 3px 3px 10px rgba(51, 51, 51, 0.3);
+          box-shadow: 3px 3px 10px rgba(51, 51, 51, 0.3);
+  margin-top: -4.3em;
+}
+
+.items-sidebar .list-group .active {
+  background: #EDE2ED;
+  border-color: #ecdcdc;
+  color: #646464;
+}
+
+.items-sidebar .list-group h4 {
+  text-transform: uppercase;
+  color: #333;
+}
+
+.items-sidebar .list-group-item {
+  padding: .5em 5px;
+  border-radius: 0;
 }
 
 @media (max-width: 767px) {
