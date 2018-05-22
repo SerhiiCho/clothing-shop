@@ -2,8 +2,20 @@
 img 	{ max-width: 100%; }
 a:hover { text-decoration: none; }
 li 		{ list-style: none; }
-main 	{ padding-top: 3em; }
+body {
+	background: $lightPink;
+}
+main 	{
+	padding-top: 3em;
+
+}
+.wrapper {
+	max-width: 1200px;
+	margin: auto;
+}
 
 @media (min-width: 840px) {
-	main { padding-top: 0; }
+	main {
+		padding-top: 0;
+	}
 }

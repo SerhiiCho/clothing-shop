@@ -17,8 +17,17 @@ li {
   list-style: none;
 }
 
+body {
+  background: #f9f8f6;
+}
+
 main {
   padding-top: 3em;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: auto;
 }
 
 @media (min-width: 840px) {
@@ -393,10 +402,6 @@ header {
   display: block;
 }
 
-.main-banner img {
-  width: 100%;
-}
-
 .imgbanbtn {
   width: 3rem;
   height: 3rem;
@@ -425,6 +430,37 @@ header {
 
 .imgbanbtn-next {
   right: .31rem;
+}
+
+.slider {
+  background-size: cover;
+  background-color: #333;
+  background-position: center;
+  height: 600px;
+}
+
+@media (max-width: 992px) {
+  .slider {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .slider {
+    height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .slider {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider {
+    height: 150px;
+  }
 }
 
 .three-cards {
@@ -666,7 +702,7 @@ header {
   top: 0;
   height: 100%;
   bottom: 0;
-  width: 45px;
+  width: 43px;
   overflow: hidden;
   -webkit-transition: width 200ms, opacity 200ms;
   transition: width 200ms, opacity 200ms;

@@ -4,6 +4,7 @@
 
 @section('content')
 
+<div class="wrapper">
 	<slider></slider>
 
 	<!-- 3 Cards -->
@@ -25,5 +26,6 @@
 		:hryvnia="{{ json_encode(trans('items.hryvnia')) }}"
 		:popular="{{ json_encode(trans('cards.popular')) }}"
 	></popular>
+</div>
 
 @endsection

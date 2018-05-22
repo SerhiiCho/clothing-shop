@@ -21253,17 +21253,14 @@ var render = function() {
       on: { click: _vm.prev }
     }),
     _vm._v(" "),
-    _c("div", [
-      _c("img", {
-        attrs: {
-          src:
-            "/storage/img/slider/" +
-            _vm.images[Math.abs(_vm.currentNumber) % _vm.images.length],
-          alt: "banner"
-        },
-        on: { mouseover: _vm.stopRotation, mouseout: _vm.startRotation }
-      })
-    ]),
+    _c("div", {
+      staticClass: "slider",
+      style:
+        "background-image:url(storage/img/slider/" +
+        _vm.images[Math.abs(_vm.currentNumber) % _vm.images.length] +
+        ");",
+      on: { mouseover: _vm.stopRotation, mouseout: _vm.startRotation }
+    }),
     _vm._v(" "),
     _c("div", {
       staticClass: "imgbanbtn imgbanbtn-next",
