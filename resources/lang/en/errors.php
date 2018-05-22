@@ -18,9 +18,9 @@ return [
 	'500_description' => 'Something has gone wrong on the server, we cannot be specific on what the exact problem is',
 
 	// 503
-	'503' => 'Error 503',
+	'503' => 'Maintenance',
 	'503_title' => 'Service Unavailable',
-	'503_description' => 'The server is currently unable to handle the request due to a temporary overloading or maintenance of the server. The implication is that this is a temporary condition which will be alleviated after some delay.',
+	'503_description' => 'The server is currently unable to handle the request due to a temporary overloading or maintenance of the site. The implication is that this is a temporary condition which will be alleviated after some delay.',
 
 	// Other
 	'to_home' => 'Home page',
