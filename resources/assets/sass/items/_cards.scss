@@ -3,11 +3,11 @@
 }
 
 .item-card {
-	height: 290px;
+	height: auto;
 	text-align: center;
 
 	img {
-		width: 140px;
+		width: 100%;
 		height: auto;
 		transition: transform 300ms;
 		border-radius: 2px;
@@ -44,14 +44,8 @@
 
 @media (min-width: 500px) {
 	.item-card {
-		height: 340px;
-
-		img {
-			width: 180px;
-		}
-
 		&-price {
-			width: 180px;
+			width: 100%;
 		}
 	}
 }
