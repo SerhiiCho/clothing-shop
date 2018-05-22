@@ -24,13 +24,19 @@ class ItemController extends Controller
     {
 		if (str_contains(request()->fullUrl(), 'women')) {
 			$current_category = 'women';
+			$title = trans('items.women_items');
+			$sidebar = true;
 		} elseif (str_contains(request()->fullUrl(), 'men')) {
 			$current_category = 'men';
+			$title = trans('items.men_items');
+			$sidebar = true;
 		} else {
+			$title = trans('items.all_items');
 			$current_category = '';
+			$sidebar = false;
 		}
 		
-        return view('items.index')->with(compact('current_category'));
+        return view('items.index')->with(compact('current_category', 'title', 'sidebar'));
 	}
 
     public function create()

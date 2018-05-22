@@ -21,13 +21,20 @@ class FooterProvider extends ServiceProvider
 				->take(7)
 				->get(['id', 'title']);
 
-			$categories
+			$categories_women
 				= Item::distinct()
+				->whereCategory('women')
 				->take(10)
 				->get(['type_id']);
 
-			view()->composer('*', function ($view) use ($last_items_for_footer, $categories) {
-				$view->with(compact('last_items_for_footer', 'categories'));
+			$categories_men
+				= Item::distinct()
+				->whereCategory('men')
+				->take(10)
+				->get(['type_id']);
+
+			view()->composer('*', function ($view) use ($last_items_for_footer, $categories_women, $categories_men) {
+				$view->with(compact('last_items_for_footer', 'categories_men', 'categories_women'));
 			});
 		}
     }
