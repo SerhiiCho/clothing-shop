@@ -70,27 +70,18 @@ export default {
 			let vm = this
 			let category = '/' + location.search.split('category=')[1]
 			let type = '/' + location.search.split('type=')[1]
-			let addToUrl = ''
-
-			if (category == '/undefined' && type == '/undefined') {
-				addToUrl = ''
-			} else if (category == '/undefined') {
-				addToUrl = '/type' + type
-			} else if (type == '/undefined') {
-				addToUrl = category
-			}
-
-			console.log(addToUrl)
-
-			url = url || '/api/items' + addToUrl
+			let wholeUrl = category.replace("&type=", "/")
+			let addToUrl = wholeUrl
 
 			if (addToUrl === '/men') {
 				this.title = this.menitems
 			} else if (addToUrl === '/women') {
 				this.title = this.womenitems
-			} else if (addToUrl.includes("/type")) {
-				this.title = this.category
+			} else if (addToUrl == '/undefined') {
+				addToUrl = ''
 			}
+
+			url = url || '/api/items' + addToUrl
 
 			fetch(url)
 			.then(res => res.json())

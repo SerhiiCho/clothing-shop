@@ -21407,27 +21407,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var vm = this;
 			var category = '/' + location.search.split('category=')[1];
 			var type = '/' + location.search.split('type=')[1];
-			var addToUrl = '';
-
-			if (category == '/undefined' && type == '/undefined') {
-				addToUrl = '';
-			} else if (category == '/undefined') {
-				addToUrl = '/type' + type;
-			} else if (type == '/undefined') {
-				addToUrl = category;
-			}
-
-			console.log(addToUrl);
-
-			url = url || '/api/items' + addToUrl;
+			var wholeUrl = category.replace("&type=", "/");
+			var addToUrl = wholeUrl;
 
 			if (addToUrl === '/men') {
 				this.title = this.menitems;
 			} else if (addToUrl === '/women') {
 				this.title = this.womenitems;
-			} else if (addToUrl.includes("/type")) {
-				this.title = this.category;
+			} else if (addToUrl == '/undefined') {
+				addToUrl = '';
 			}
+
+			url = url || '/api/items' + addToUrl;
 
 			fetch(url).then(function (res) {
 				return res.json();
