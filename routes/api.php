@@ -22,7 +22,6 @@ Route::namespace('Api')->group(function () {
 	// Items
 	Route::prefix('items')->group(function () {
 		Route::get('{category?}/{type?}', 'ApiItemController@index');
-		// Route::get('type/{id}', 'ApiItemController@type');
 	});
 
 	// Messages clients orders
