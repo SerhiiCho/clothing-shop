@@ -12,7 +12,7 @@
 </div>
 
 <!-- Header -->
-<header>
+<header class="wrapper">
 	<a href="/" title="@lang('navigation.home')" class="header-logo">
 		@lang('navigation.shop_name')
 	</a>
