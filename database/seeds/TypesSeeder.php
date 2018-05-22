@@ -10,9 +10,11 @@ class TypesSeeder extends Seeder
     {
         DB::table('types')->insert([
 			[ 'name' => 'Аксесуары' ],
+			[ 'name' => 'Блузки' ],
 			[ 'name' => 'Джинсы' ],
 			[ 'name' => 'Рубашки' ],
 			[ 'name' => 'Куртки' ],
+			[ 'name' => 'Кофты' ],
 			[ 'name' => 'Платья' ],
 			[ 'name' => 'Майки' ],
 			[ 'name' => 'Юбки' ],
