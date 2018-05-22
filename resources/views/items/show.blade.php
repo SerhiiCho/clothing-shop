@@ -20,7 +20,7 @@
 </div>
 
 <!-- Sidebar -->
-<div class="col-12 sidebar">
+<div class="col-12 sidebar pb-4">
 	<h5 class="text-center pt-2 font-weight-normal">@lang('messages.more_clothes')</h5>
 	<sidebar
 		:hryvnia="{{ json_encode(trans('items.hryvnia')) }}"
