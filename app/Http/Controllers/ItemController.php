@@ -38,7 +38,7 @@ class ItemController extends Controller
 		$ext = $image->getClientOriginalExtension();
 		$filename = getFileName($request->title, $ext);
 		
-		(new ImageManager)->make($image)->resize(303, 437)->save(
+		(new ImageManager)->make($image)->resize(451, 676)->save(
 			storage_path('app/public/img/clothes/' . $filename
 		));
 
@@ -100,7 +100,7 @@ class ItemController extends Controller
 			$ext = $image->getClientOriginalExtension();
 			$filename = getFileName($request->title, $ext);
 			
-			(new ImageManager)->make($image)->resize(303, 437)->save(
+			(new ImageManager)->make($image)->resize(451, 676)->save(
 				storage_path('app/public/img/clothes/' . $filename
 			));
 
