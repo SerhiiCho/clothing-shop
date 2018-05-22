@@ -4,10 +4,9 @@
 
 @section('content')
 
-<div class="container-fluid">
+<div class="wrapper">
 	<section class="row">
 		<items-sidebar></items-sidebar>
-	
 		<items
 			:womenitems="{{ json_encode(trans('items.women_items')) }}"
 			:admin={{ json_encode(optional(auth()->user())->admin) }}
