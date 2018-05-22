@@ -1,9 +1,9 @@
 <?php
 
 // Helper for giving an active button class "avtive"
-function activeIfRouteIs($route, $get = null) {
-	if (request('category')) {
-		return request('category') == $get ? 'active' : '';
+function activeIfRouteIs($route, $request = null, $get = null) {
+	if ($request) {
+		return request($request) == $get ? 'active' : '';
 	}
 	return request()->is($route) ? 'active' : '';
 }
