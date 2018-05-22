@@ -1,6 +1,6 @@
 <template>
 	<section class="row pb-2">
-		<div class="col-12 col-sm-4 col-lg-3 text-center single-image">
+		<div class="col-12 col-sm-6 col-lg-5 text-center single-image">
 			<img :src="'/storage/img/clothes/' + item.image" :alt="item.title">
 
 			<!-- Edit button -->
@@ -13,7 +13,7 @@
 				<i class="fa fa-trash-o" aria-hidden="true" style="color:#fff;"></i>
 			</a>
 		</div>
-		<div class="col-12 col-sm-8 col-lg-9">
+		<div class="col-12 col-sm-6 col-lg-7">
 			<div class="row">
 
 				<!-- Title -->
