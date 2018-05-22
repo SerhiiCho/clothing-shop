@@ -22,7 +22,15 @@ class ItemController extends Controller
 	
     public function index()
     {
-        return view('items.index');
+		if (str_contains(request()->fullUrl(), 'women')) {
+			$current_category = 'women';
+		} elseif (str_contains(request()->fullUrl(), 'men')) {
+			$current_category = 'men';
+		} else {
+			$current_category = '';
+		}
+		
+        return view('items.index')->with(compact('current_category'));
 	}
 
     public function create()

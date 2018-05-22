@@ -11,28 +11,17 @@ use Illuminate\Support\Facades\Storage;
 
 class ApiItemController extends Controller
 {
-    public function index($category = null)
+    public function index($category = null, $type = null)
     {
-		$statement
-			= $category
-			? [['category', $category]]
-			: [['category', '!=', 'null']];
-
-		$items = Item::where($statement)->paginate(40);
+		if ($category && !$type) {
+			$items = Item::where('category', $category)->paginate(40);
+		} elseif ($category && $type) {
+			$items = Item::where([['category', $category], ['type_id', $type]])->paginate(40);
+		} else {
+			$items = Item::get();
+		}
 		return ItemResource::collection($items);
 	}
-
-    public function type($type = null)
-    {
-		$statement
-			= $type
-			? [['type_id', $type]]
-			: [['type', '!=', 'null']];
-
-		$items = Item::where($statement)->paginate(40);
-		return ItemResource::collection($items);
-    }
-
 
     public function store(Request $request)
     {
