@@ -29,11 +29,11 @@
 			@endisset
 
 			{{-- Categories --}}
-			@isset($distinct_items)
+			@isset($categories)
 				<nav class="col-6 col-md-3">
 					<h4>@lang('navigation.types')</h4>
 					<ul>
-						@foreach ($distinct_items as $item)
+						@foreach ($categories as $item)
 						<li>
 							<a href="/items?type={{ $item->type->id }}" title="{{ $item->type->name }}">
 								{{ $item->type->name }}
