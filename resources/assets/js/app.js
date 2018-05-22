@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('clients-orders', require('./components/ClientsOrders.vue'));
+Vue.component('items-sidebar', require('./components/ItemsSidebar.vue'));
 Vue.component('single-item', require('./components/SingleItem.vue'));
 Vue.component('popular', require('./components/Popular.vue'));
 Vue.component('sidebar', require('./components/Sidebar.vue'));

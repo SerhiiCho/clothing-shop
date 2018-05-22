@@ -16,3 +16,12 @@
 		opacity: 1;
 	}
 }
+@media (max-width: 767px) {
+	.items-sidebar {
+		width: 250px;
+		position: absolute;
+		z-index: 10;
+		padding: 0;
+		left: -250px;
+	}
+}

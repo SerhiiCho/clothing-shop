@@ -3935,6 +3935,7 @@ window.Vue = __webpack_require__(344);
  */
 
 Vue.component('clients-orders', __webpack_require__(348));
+Vue.component('items-sidebar', __webpack_require__(382));
 Vue.component('single-item', __webpack_require__(351));
 Vue.component('popular', __webpack_require__(354));
 Vue.component('sidebar', __webpack_require__(357));
@@ -20659,7 +20660,7 @@ var render = function() {
   return _c("section", { staticClass: "row pb-2" }, [
     _c(
       "div",
-      { staticClass: "col-12 col-sm-4 col-lg-3 text-center single-image" },
+      { staticClass: "col-12 col-sm-6 col-lg-5 text-center single-image" },
       [
         _c("img", {
           attrs: {
@@ -20713,7 +20714,7 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-12 col-sm-8 col-lg-9" }, [
+    _c("div", { staticClass: "col-12 col-sm-6 col-lg-7" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-6 p-3" }, [
           _c("span", { staticClass: "display-4" }, [
@@ -20911,13 +20912,13 @@ var render = function() {
     _c(
       "h3",
       {
-        staticClass: "display-4  text-center p-4",
+        staticClass: "display-4 text-center p-4",
         staticStyle: { background: "#F2F2F2" }
       },
       [_vm._v(_vm._s(_vm.popular))]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "container pb-3" }, [
       _c(
         "section",
         { staticClass: "row" },
@@ -21035,6 +21036,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -21078,37 +21081,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "section",
-    { staticClass: "row pt-4" },
-    _vm._l(_vm.items, function(item) {
-      return _c(
-        "div",
-        {
-          key: item.id,
-          staticClass: "col-lg-2 col-md-3 col-6 col-sm-4 item-card"
-        },
-        [
-          _c("a", { attrs: { href: "/item/" + item.id, title: item.title } }, [
-            _c("img", {
-              attrs: {
-                src: "/storage/img/clothes/" + item.image,
-                alt: item.title
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "item-card-price" }, [
-            _c("span", [_vm._v(_vm._s(item.title))]),
+  return _c("div", { staticClass: "wrapper" }, [
+    _c(
+      "section",
+      { staticClass: "row pt-4" },
+      _vm._l(_vm.items, function(item) {
+        return _c(
+          "div",
+          {
+            key: item.id,
+            staticClass: "col-lg-2 col-md-3 col-6 col-sm-4 item-card"
+          },
+          [
+            _c(
+              "a",
+              { attrs: { href: "/item/" + item.id, title: item.title } },
+              [
+                _c("img", {
+                  attrs: {
+                    src: "/storage/img/clothes/" + item.image,
+                    alt: item.title
+                  }
+                })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "hryvnia" }, [
-              _vm._v(_vm._s(item.price) + " " + _vm._s(_vm.hryvnia))
+            _c("div", { staticClass: "item-card-price" }, [
+              _c("span", [_vm._v(_vm._s(item.title))]),
+              _vm._v(" "),
+              _c("span", { staticClass: "hryvnia" }, [
+                _vm._v(_vm._s(item.price) + " " + _vm._s(_vm.hryvnia))
+              ])
             ])
-          ])
-        ]
-      )
-    })
-  )
+          ]
+        )
+      })
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -21466,15 +21475,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c(
-      "section",
-      {
-        staticClass: "display-4 p-4 text-center",
-        staticStyle: { background: "#F2F2F2" }
-      },
-      [_vm._v(_vm._s(_vm.title))]
-    ),
+  return _c("div", { staticClass: "col-md-9" }, [
+    _c("section", { staticClass: "display-4 p-4 text-center" }, [
+      _vm._v(_vm._s(_vm.title))
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -21483,10 +21487,7 @@ var render = function() {
         _vm._l(_vm.items, function(item) {
           return _c(
             "div",
-            {
-              key: item.id,
-              staticClass: "col-lg-2 col-md-3 col-6 col-sm-4 item-card"
-            },
+            { key: item.id, staticClass: "col-lg-3 col-6 item-card" },
             [
               _c(
                 "a",
@@ -21626,6 +21627,180 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */,
+/* 373 */,
+/* 374 */,
+/* 375 */,
+/* 376 */,
+/* 377 */,
+/* 378 */,
+/* 379 */,
+/* 380 */,
+/* 381 */,
+/* 382 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(47)
+/* script */
+var __vue_script__ = __webpack_require__(383)
+/* template */
+var __vue_template__ = __webpack_require__(384)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\ItemsSidebar.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1178f71a", Component.options)
+  } else {
+    hotAPI.reload("data-v-1178f71a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 383 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			//
+		};
+	},
+
+
+	methods: {
+		//
+	}
+});
+
+/***/ }),
+/* 384 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "col-md-3 col-sm-hidden sidebar-offcanvas items-sidebar" },
+      [
+        _c("div", { staticClass: "list-group" }, [
+          _c(
+            "a",
+            { staticClass: "list-group-item active", attrs: { href: "#" } },
+            [_vm._v("Link")]
+          ),
+          _vm._v(" "),
+          _c("a", { staticClass: "list-group-item", attrs: { href: "#" } }, [
+            _vm._v("Link")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "list-group-item", attrs: { href: "#" } }, [
+            _vm._v("Link")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "list-group-item", attrs: { href: "#" } }, [
+            _vm._v("Link")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "list-group-item", attrs: { href: "#" } }, [
+            _vm._v("Link")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "list-group-item", attrs: { href: "#" } }, [
+            _vm._v("Link")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "list-group-item", attrs: { href: "#" } }, [
+            _vm._v("Link")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "list-group-item", attrs: { href: "#" } }, [
+            _vm._v("Link")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "list-group-item", attrs: { href: "#" } }, [
+            _vm._v("Link")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "list-group-item", attrs: { href: "#" } }, [
+            _vm._v("Link")
+          ])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1178f71a", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
