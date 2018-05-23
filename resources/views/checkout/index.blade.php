@@ -15,9 +15,10 @@
 					<li class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">{{ $item->model->title }}</h6>
-							<small class="text-muted">{{ str_limit($item->model->content, 80) }}</small>
 						</div>
-						<span class="text-muted">{{ $item->model->price }} @lang('items.hryvnia')</span>
+						<span class="text-muted text-right" style="min-width:80px">
+							{{ $item->model->price }} @lang('items.hryvnia')
+						</span>
 					</li>
 				@endforeach
 				<li class="list-group-item d-flex justify-content-between">

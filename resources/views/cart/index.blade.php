@@ -5,8 +5,8 @@
 @section('content')
 
 <div class="container">
-	<h5 class="text-center pt-4 font-weight-normal">@lang('cart.cart')</h5>
 	@if (Cart::count() > 0)
+		<h5 class="text-center pt-4 font-weight-normal">@lang('cart.cart')</h5>
 		<table class="table table-hover table-condensed">
 			<thead>
 				<tr>
@@ -71,11 +71,20 @@
 			</tfoot>
 		</table>
 	@else
-		<p class="text-center pt-5 pb-5">@lang('cart.empty')</p>
+		<p class="text-center pt-5">@lang('cart.empty')</p>
+		<p class="text-center pb-5">
+			<a href="{{ url()->previous() }}" class="btn btn-dark" title="@lang('messages.back')">
+				&laquo; @lang('messages.back')
+			</a>
+		</p>
 	@endif
 
 	{{-- Favorite --}}
-	<h5 class="text-center pt-2 font-weight-normal">@lang('cart.favorite')</h5>
+	@if (Cart::instance('favorite')->count() > 0)
+		<h5 class="text-center pt-2 font-weight-normal">
+			@lang('cart.favorite')
+		</h5>
+	@endif
 
 	<section class="row pt-4">
 		@if (Cart::instance('favorite')->count() > 0)

@@ -10,7 +10,7 @@ return [
 	'total' => 'Total',
 	'delete' => 'Delete',
 	'order' => 'Order',
-	'empty' => 'Cart is empty',
+	'empty' => 'Your cart is empty',
 	'favorite' => 'Favorite',
 	'add_to_cart' => 'Add to cart',
 	'favorite' => 'Favorite',
