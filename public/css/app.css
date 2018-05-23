@@ -676,6 +676,10 @@ header {
   transition: background-color 300ms;
 }
 
+.images-to-show {
+  width: 80px;
+}
+
 .single-image img {
   width: 80%;
   height: auto;
@@ -715,6 +719,24 @@ header {
 
   .single-price {
     font-size: 2.5em;
+  }
+}
+
+@media (min-width: 500px) {
+  .images-to-show {
+    width: 100px;
+  }
+}
+
+@media (max-width: 370px) {
+  .images-to-show {
+    width: 70px;
+  }
+}
+
+@media (max-width: 290px) {
+  .images-to-show {
+    width: 60px;
   }
 }
 
