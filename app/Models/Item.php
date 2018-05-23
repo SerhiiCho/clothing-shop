@@ -13,6 +13,10 @@ class Item extends Model
 		return $this->belongsTo(User::class);
 	}
 
+	public function photos() {
+		return $this->hasMany(ItemsPhoto::class);
+	}
+
 	public function messages() {
 		return $this->hasMany(Message::class);
 	}
