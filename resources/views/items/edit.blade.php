@@ -20,17 +20,17 @@
 			<div class="row">
 				<div class="form-group col-12 col-sm-6">
 					<label>@lang('items.name')</label>
-					<input type="text" value="{{ $item->title }}" name="title" placeholder="@lang('items.name')" class="form-control" required>
+					<input type="text" value="{{ $item->title }}" name="title" placeholder="@lang('items.name')" class="form-control">
 				</div>
 				<div class="form-group col-12 col-sm-6">
 					<label>@lang('items.price')</label>
-					<input type="text" value="{{ $item->price }}" name="price" value="0" placeholder="@lang('items.select')" class="form-control" required>
+					<input type="text" value="{{ $item->price }}" name="price" value="0" placeholder="@lang('items.select')" class="form-control">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label>@lang('items.description')</label>
-				<textarea name="content" placeholder="@lang('items.description')" class="form-control" style="min-height: 200px" required>{{ $item->content }}</textarea>
+				<textarea name="content" placeholder="@lang('items.description')" class="form-control" style="min-height: 200px">{{ $item->content }}</textarea>
 			</div>
 
 			<div class="row">
@@ -57,7 +57,7 @@
 			</div>
 
 			<div class="custom-file">
-				<input type="file" name="image" class="form-control-file" id="src-image">
+				<input type="file" name="photos[]" class="form-control-file" id="src-image" multiple>
 				<label class="custom-file-label" for="src-image">@lang('forms.choose_file')...</label>
 			</div>
 
