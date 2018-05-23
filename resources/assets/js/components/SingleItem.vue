@@ -1,6 +1,6 @@
 <template>
 	<section class="row pb-2">
-		<div class="col-10 col-lg-5 col-xl-4 text-center single-image pr-2">
+		<div class="col-10 col-sm-9 col-lg-5 col-xl-4 text-center single-image pl-1 pr-2">
 			<img v-if="item.photos" :src="'/storage/img/clothes/' + bigPhoto" :alt="item.title">
 	
 			<!-- Edit button -->
@@ -15,9 +15,9 @@
 		</div>
 
 		<!-- Cards -->
-		<div class="col-2 col-lg-1">
-			<div class="row pr-3 images-to-show">
-				<div v-for="(photo, index) in item.photos" v-bind:key="photo.id" class="col-12 mb-2 pl-0 pr-4" v-if="index >= 0 && index < 5">
+		<div class="col-1 col-sm-2 col-lg-1">
+			<div class="row images-to-show">
+				<div v-for="(photo, index) in item.photos" v-bind:key="photo.id" class="col-12 mb-2 pl-0 pr-2" v-if="index >= 0 && index < 5">
 					<img :src="'/storage/img/clothes/' + photo.name" @mouseover="swapPhoto(photo.name, index)" :id="'photo' + index" :class="'small-images ' + giveActiveClass(index)">
 				</div>
 			</div>
@@ -27,12 +27,12 @@
 			<div class="row">
 
 				<!-- Title -->
-				<div class="col-6 p-3">
+				<div class="col-6 pt-3">
 					<span class="display-4">{{ item.title }}</span>
 				</div>
 
 				<!-- Price -->
-				<div class="col-6 p-3">
+				<div class="col-6 pt-3">
 					<p class="single-price">
 						{{ item.price }}
 						<span class="d-block">{{ hryvnia }}</span>
@@ -40,7 +40,7 @@
 				</div>
 
 				<!-- ID -->
-				<span class="col-12 text-secondary">
+				<span class="col-12 text-secondary pb-1">
 					<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
 					{{ numberItem }}: {{ item.id }}
 				</span>

@@ -544,7 +544,7 @@ header {
 }
 
 .item-card-price {
-  width: 140px;
+  min-width: 100%;
   margin: 0 auto;
   font-weight: bold;
   font-size: .9em;
@@ -656,7 +656,7 @@ header {
 }
 
 .single-container .phone-form {
-  margin: .3em 2px;
+  margin: .3em 0;
   color: #646464;
 }
 
@@ -677,7 +677,7 @@ header {
 }
 
 .images-to-show {
-  width: 80px;
+  width: 70px;
 }
 
 .active-photo {
@@ -704,7 +704,6 @@ header {
 
 .single-price span {
   font-size: .5em;
-  margin-right: 3px;
   font-weight: normal;
 }
 
@@ -725,19 +724,19 @@ header {
 
 @media (min-width: 500px) {
   .images-to-show {
-    width: 100px;
+    width: 70px;
   }
 }
 
 @media (max-width: 370px) {
   .images-to-show {
-    width: 70px;
+    width: 45px;
   }
 }
 
 @media (max-width: 290px) {
   .images-to-show {
-    width: 60px;
+    width: 35px;
   }
 }
 

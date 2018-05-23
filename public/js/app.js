@@ -20687,7 +20687,10 @@ var render = function() {
   return _c("section", { staticClass: "row pb-2" }, [
     _c(
       "div",
-      { staticClass: "col-10 col-lg-5 col-xl-4 text-center single-image pr-2" },
+      {
+        staticClass:
+          "col-10 col-sm-9 col-lg-5 col-xl-4 text-center single-image pl-1 pr-2"
+      },
       [
         _vm.item.photos
           ? _c("img", {
@@ -20743,15 +20746,15 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-2 col-lg-1" }, [
+    _c("div", { staticClass: "col-1 col-sm-2 col-lg-1" }, [
       _c(
         "div",
-        { staticClass: "row pr-3 images-to-show" },
+        { staticClass: "row images-to-show" },
         _vm._l(_vm.item.photos, function(photo, index) {
           return index >= 0 && index < 5
             ? _c(
                 "div",
-                { key: photo.id, staticClass: "col-12 mb-2 pl-0 pr-4" },
+                { key: photo.id, staticClass: "col-12 mb-2 pl-0 pr-2" },
                 [
                   _c("img", {
                     class: "small-images " + _vm.giveActiveClass(index),
@@ -20774,13 +20777,13 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "col-12 col-lg-6 col-xl-7" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-6 p-3" }, [
+        _c("div", { staticClass: "col-6 pt-3" }, [
           _c("span", { staticClass: "display-4" }, [
             _vm._v(_vm._s(_vm.item.title))
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-6 p-3" }, [
+        _c("div", { staticClass: "col-6 pt-3" }, [
           _c("p", { staticClass: "single-price" }, [
             _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.item.price) + "\n\t\t\t\t\t"),
             _c("span", { staticClass: "d-block" }, [
@@ -20789,7 +20792,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("span", { staticClass: "col-12 text-secondary" }, [
+        _c("span", { staticClass: "col-12 text-secondary pb-1" }, [
           _c("i", {
             staticClass: "fa fa-shopping-cart",
             attrs: { "aria-hidden": "true" }
@@ -21126,7 +21129,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
-			items: {},
+			randomItems: {},
 			category: 'women'
 		};
 	},
@@ -21154,7 +21157,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					return el.id;
 				}).indexOf(_this.itemid);
 				res.data.splice(removeIdenticalItem, 1);
-				_this.items = res.data;
+				_this.randomItems = res.data;
 			}).catch(function (err) {
 				return console.log(err);
 			});
@@ -21163,11 +21166,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var newSrc = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
 			if (newSrc) {
-				document.getElementById('photo' + index).src = '/storage/img/clothes/' + newSrc;
+				document.getElementById('rand-photo' + index).src = '/storage/img/clothes/' + newSrc;
 			}
 		},
 		changePhotoOut: function changePhotoOut(index, newSrc) {
-			document.getElementById('photo' + index).src = '/storage/img/clothes/' + newSrc;
+			document.getElementById('rand-photo' + index).src = '/storage/img/clothes/' + newSrc;
 		}
 	}
 });
@@ -21184,7 +21187,7 @@ var render = function() {
     _c(
       "section",
       { staticClass: "row pt-4" },
-      _vm._l(_vm.items, function(item, index) {
+      _vm._l(_vm.randomItems, function(item, index) {
         return _c(
           "div",
           {
@@ -21216,7 +21219,7 @@ var render = function() {
                   attrs: {
                     src: "/storage/img/clothes/" + item.photos[0].name,
                     alt: item.title,
-                    id: "photo" + index
+                    id: "rand-photo" + index
                   }
                 })
               ]
