@@ -28,3 +28,30 @@ function styleTimestamp($path) {
 	}
 	return '<link rel="stylesheet" href="' . $path . $timestamp . '">';
 }
+
+/**
+ * This helper helps clean Item controller by separeting
+ * this logic to helper
+ */
+function whatIsCurrent($param) {
+	if (str_contains(request()->fullUrl(), 'women')) {
+		if ($param === 'category') {
+			return 'women';
+		} elseif ($param === 'title') {
+			return trans('items.women_items');
+		}
+	} elseif (str_contains(request()->fullUrl(), 'men')) {
+		if ($param === 'category') {
+			return 'men';
+		} elseif ($param === 'title') {
+			return trans('items.men_items');
+		}
+	} else {
+		if ($param === 'category') {
+			return '';
+		} elseif ($param === 'title') {
+			return trans('items.all_items');
+		}
+	}
+}
+

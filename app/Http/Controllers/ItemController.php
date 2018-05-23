@@ -22,21 +22,15 @@ class ItemController extends Controller
 	
     public function index()
     {
-		if (str_contains(request()->fullUrl(), 'women')) {
-			$current_category = 'women';
-			$title = trans('items.women_items');
-			$sidebar = true;
-		} elseif (str_contains(request()->fullUrl(), 'men')) {
-			$current_category = 'men';
-			$title = trans('items.men_items');
+		$current_category = whatIsCurrent('category');
+
+		if ($current_category === 'women' || $current_category === 'men') {
 			$sidebar = true;
 		} else {
-			$title = trans('items.all_items');
-			$current_category = '';
 			$sidebar = false;
 		}
-		
-        return view('items.index')->with(compact('current_category', 'title', 'sidebar'));
+
+        return view('items.index')->with(compact('current_category', 'sidebar'));
 	}
 
     public function create()

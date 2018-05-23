@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('items.all_items'))
+@section('title', whatIsCurrent('title'))
 
 @section('content')
 
@@ -31,7 +31,7 @@
 		@endif
 
 		<div class="{{ $sidebar ? 'col-md-9' : 'col-md-10 offset-md-1' }}">
-			<section class="display-4 p-4 text-center">{{ $title }}</section>
+			<section class="display-4 p-4 text-center">{{ whatIsCurrent('title') }}</section>
 			<button-show-categories
 				:categories="{{ json_encode(trans('navigation.types')) }}"
 			></button-show-categories>
