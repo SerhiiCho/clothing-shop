@@ -30,6 +30,10 @@ main {
   margin: auto;
 }
 
+.btn {
+  border-radius: 2px;
+}
+
 @media (min-width: 840px) {
   main {
     padding-top: 0;
