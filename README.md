@@ -9,12 +9,12 @@
 
 <h4>Laravel Packages</h4>
 <ol>
-	<li>Intervention / image</li>
-	<li>rap2hpoutre / laravel-log-viewer</li>
-	<li>Crinsane / LaravelShoppingcart</li>
+	<li><a href="http://image.intervention.io/">Intervention/image</a></li>
+	<li><a href="https://github.com/rap2hpoutre/laravel-log-viewer">rap2hpoutre/laravel-log-viewer</a></li>
+	<li><a href="https://github.com/Crinsane/LaravelShoppingcart">Crinsane/LaravelShoppingcart</a></li>
 </ol>
 
 <h4>Packages and Plugins</h4>
 <ol>
-	<li><a href="https://www.tinymce.com/" title="TinyMCE">TinyMCE Editor</a></li>
+	<li><a href="https://www.tinymce.com/">TinyMCE Editor</a></li>
 </ol>
