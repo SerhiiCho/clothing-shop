@@ -19,18 +19,16 @@ class FooterProvider extends ServiceProvider
 			$last_items_for_footer
 				= Item::latest()
 				->take(7)
-				->get(['id', 'title']);
+				->get(['id', 'title', 'category']);
 
 			$categories_women
 				= Item::distinct()
 				->whereCategory('women')
-				->take(10)
 				->get(['type_id']);
 
 			$categories_men
 				= Item::distinct()
 				->whereCategory('men')
-				->take(10)
 				->get(['type_id']);
 
 			view()->composer('*', function ($view) use ($last_items_for_footer, $categories_women, $categories_men) {
