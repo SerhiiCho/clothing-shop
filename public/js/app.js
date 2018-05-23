@@ -20602,6 +20602,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -20660,11 +20679,11 @@ var render = function() {
   return _c("section", { staticClass: "row pb-2" }, [
     _c(
       "div",
-      { staticClass: "col-12 col-sm-6 col-lg-5 text-center single-image" },
+      { staticClass: "col-10 col-lg-5 col-xl-4 text-center single-image pr-2" },
       [
         _c("img", {
           attrs: {
-            src: "/storage/img/clothes/" + _vm.item.image,
+            src: "/storage/img/clothes/" + _vm.item.photos[0].name,
             alt: _vm.item.title
           }
         }),
@@ -20714,7 +20733,41 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-12 col-sm-6 col-lg-7" }, [
+    _c("div", { staticClass: "col-2 col-lg-1" }, [
+      _c("div", { staticClass: "row pr-3 images-to-show" }, [
+        _c("div", { staticClass: "col-12 mb-2 pl-0 pr-4" }, [
+          _c("img", {
+            attrs: { src: "/storage/img/clothes/" + _vm.item.photos[0].name }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 mb-2 pl-0 pr-4" }, [
+          _c("img", {
+            attrs: { src: "/storage/img/clothes/" + _vm.item.photos[0].name }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 mb-2 pl-0 pr-4" }, [
+          _c("img", {
+            attrs: { src: "/storage/img/clothes/" + _vm.item.photos[0].name }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 mb-2 pl-0 pr-4" }, [
+          _c("img", {
+            attrs: { src: "/storage/img/clothes/" + _vm.item.photos[0].name }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 mb-2 pl-0 pr-4" }, [
+          _c("img", {
+            attrs: { src: "/storage/img/clothes/" + _vm.item.photos[0].name }
+          })
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-12 col-lg-6 col-xl-7" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-6 p-3" }, [
           _c("span", { staticClass: "display-4" }, [

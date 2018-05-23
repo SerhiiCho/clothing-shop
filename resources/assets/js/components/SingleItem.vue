@@ -1,8 +1,8 @@
 <template>
 	<section class="row pb-2">
-		<div class="col-12 col-sm-6 col-lg-5 text-center single-image">
-			<img :src="'/storage/img/clothes/' + item.image" :alt="item.title">
-
+		<div class="col-10 col-lg-5 col-xl-4 text-center single-image pr-2">
+			<img :src="'/storage/img/clothes/' + item.photos[0].name" :alt="item.title">
+	
 			<!-- Edit button -->
 			<a v-if="admin == 1" :href="'/items/' + item.id + '/edit'" :title="change" class="btn-change-item" style="top:10px;">
 				<i class="fa fa-pencil" aria-hidden="true"></i>
@@ -13,7 +13,26 @@
 				<i class="fa fa-trash-o" aria-hidden="true" style="color:#fff;"></i>
 			</a>
 		</div>
-		<div class="col-12 col-sm-6 col-lg-7">
+		<div class="col-2 col-lg-1">
+			<div class="row pr-3 images-to-show">
+				<div class="col-12 mb-2 pl-0 pr-4">
+					<img :src="'/storage/img/clothes/' + item.photos[0].name">
+				</div>
+				<div class="col-12 mb-2 pl-0 pr-4">
+					<img :src="'/storage/img/clothes/' + item.photos[0].name">
+				</div>
+				<div class="col-12 mb-2 pl-0 pr-4">
+					<img :src="'/storage/img/clothes/' + item.photos[0].name">
+				</div>
+				<div class="col-12 mb-2 pl-0 pr-4">
+					<img :src="'/storage/img/clothes/' + item.photos[0].name">
+				</div> 
+				<div class="col-12 mb-2 pl-0 pr-4">
+					<img :src="'/storage/img/clothes/' + item.photos[0].name">
+				</div> 
+			</div>
+		</div>
+		<div class="col-12 col-lg-6 col-xl-7">
 			<div class="row">
 
 				<!-- Title -->
