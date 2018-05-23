@@ -48,7 +48,7 @@ export default {
 			}
 		},
 
-		changePhotoOut (index, newSrc ) {
+		changePhotoOut (index, newSrc) {
 			document.getElementById('photo' + index).src = '/storage/img/clothes/' + newSrc
 		}
 	}
