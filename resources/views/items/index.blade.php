@@ -10,12 +10,9 @@
 			<div class="col-md-3 items-sidebar">
 				<div class="list-group mb-5">
 					{{-- Categories --}}
-					<h4 class="list-group-item text-center">
+					<h4 class="list-group-item text-center active">
 						@lang('navigation.types')
 					</h4>
-					<a href="/items?category={{ $current_category }}" class="list-group-item">
-						@lang('items.all')
-					</a>
 					@if($current_category == 'women' && isset($categories_women))
 						@foreach ($categories_women as $item)
 							<a href="/items?category={{ $current_category }}&type={{ $item->type->id }}" class="list-group-item {{ activeIfRouteIs('items', 'type', $item->type->id) }}">
@@ -35,6 +32,9 @@
 
 		<div class="{{ $sidebar ? 'col-md-9' : 'col-md-10 offset-md-1' }}">
 			<section class="display-4 p-4 text-center">{{ $title }}</section>
+			<button-show-categories
+				:categories="{{ json_encode(trans('navigation.types')) }}"
+			></button-show-categories>
 			<items
 				:admin={{ json_encode(optional(auth()->user())->admin) }}
 				:allitems="{{ json_encode(trans('items.all_items')) }}"

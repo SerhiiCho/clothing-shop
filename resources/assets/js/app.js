@@ -15,6 +15,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('button-show-categories', require('./components/ButtonShowCategories.vue'));
 Vue.component('clients-orders', require('./components/ClientsOrders.vue'));
 Vue.component('single-item', require('./components/SingleItem.vue'));
 Vue.component('popular', require('./components/Popular.vue'));

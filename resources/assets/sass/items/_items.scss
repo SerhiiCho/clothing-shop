@@ -42,7 +42,19 @@
 	.list-group-item {
 		padding: .5em 5px;
 		border-radius: 0;
+		transition: background-color 200ms;
+
+		&:hover {
+			background: $pink;
+			transition: background-color 200ms;
+		}
 	}
+}
+
+.category-btn {
+	display: none;
+	min-width:250px;
+	border:solid 2px #e3e5ea;
 }
 
 @media (max-width: 767px) {
@@ -51,6 +63,12 @@
 		position: absolute;
 		z-index: 10;
 		padding: 0;
-		left: -250px;
+		margin-top: 2.5em;
+		left: -270px;
+		transition: left 200ms;
+	}
+
+	.category-btn {
+		display: inline-block;
 	}
 }
