@@ -19,7 +19,7 @@
 					<ul>
 						@foreach ($last_items_for_footer as $item)
 							<li>
-								<a href="/item/{{ $item->id }}" title="{{ $item->title }}">
+								<a href="/item/{{ $item->category }}/{{ $item->id }}" title="{{ $item->title }}">
 									{{ $item->title }}
 								</a>
 							</li>

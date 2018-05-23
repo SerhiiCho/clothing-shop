@@ -3934,6 +3934,7 @@ window.Vue = __webpack_require__(344);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('button-show-categories', __webpack_require__(376));
 Vue.component('clients-orders', __webpack_require__(348));
 Vue.component('single-item', __webpack_require__(351));
 Vue.component('popular', __webpack_require__(354));
@@ -20932,7 +20933,10 @@ var render = function() {
               _c(
                 "a",
                 {
-                  attrs: { href: "/item/" + popular.id, title: popular.title }
+                  attrs: {
+                    href: "/item/" + popular.category + "/" + popular.id,
+                    title: popular.title
+                  }
                 },
                 [
                   _c("img", {
@@ -21099,7 +21103,12 @@ var render = function() {
           [
             _c(
               "a",
-              { attrs: { href: "/item/" + item.id, title: item.title } },
+              {
+                attrs: {
+                  href: "/item/" + item.category + "/" + item.id,
+                  title: item.title
+                }
+              },
               [
                 _c("img", {
                   attrs: {
@@ -21614,6 +21623,145 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */,
+/* 373 */,
+/* 374 */,
+/* 375 */,
+/* 376 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(47)
+/* script */
+var __vue_script__ = __webpack_require__(377)
+/* template */
+var __vue_template__ = __webpack_require__(378)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\ButtonShowCategories.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-267d8b42", Component.options)
+  } else {
+    hotAPI.reload("data-v-267d8b42", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 377 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			opened: false
+		};
+	},
+
+
+	props: ['categories'],
+
+	created: function created() {
+		this.closeSidebar();
+	},
+
+
+	methods: {
+		openSidebar: function openSidebar() {
+			if (this.opened === false) {
+				document.querySelector('.items-sidebar').style.left = '5px';
+				this.opened = true;
+			}
+		},
+		closeSidebar: function closeSidebar() {
+			var _this = this;
+
+			window.addEventListener('mouseup', function (e) {
+				if (_this.opened === true) {
+					document.querySelector('.items-sidebar').style.left = '-270px';
+					_this.opened = false;
+				}
+			});
+		}
+	}
+});
+
+/***/ }),
+/* 378 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "text-center" }, [
+    _c(
+      "button",
+      {
+        staticClass: "category-btn btn btn-lg btn-light mb-4",
+        on: {
+          click: function($event) {
+            _vm.openSidebar()
+          }
+        }
+      },
+      [_vm._v("\n\t\t" + _vm._s(_vm.categories) + " »\n\t")]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-267d8b42", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

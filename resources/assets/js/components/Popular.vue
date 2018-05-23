@@ -4,7 +4,7 @@
 		<div class="container pb-3">
 			<section class="row">
 				<div v-for="popular in populars" v-bind:key="popular.id" class="col-lg-2 col-md-3 col-6 col-sm-4 item-card">
-					<a :href="'/item/' + popular.id" :title="popular.title">
+					<a :href="'/item/' + popular.category + '/' + popular.id" :title="popular.title">
 						<img :src="'storage/img/clothes/' + popular.image" :alt="popular.title">
 					</a>
 					<div class="item-card-price">
