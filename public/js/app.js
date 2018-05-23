@@ -20897,6 +20897,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}).catch(function (err) {
 				return console.log(err);
 			});
+		},
+		changePhotoOver: function changePhotoOver(index) {
+			var newSrc = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+			if (newSrc) {
+				document.getElementById('photo' + index).src = '/storage/img/clothes/' + newSrc;
+			}
+		},
+		changePhotoOut: function changePhotoOut(index, newSrc) {
+			document.getElementById('photo' + index).src = '/storage/img/clothes/' + newSrc;
 		}
 	}
 });
@@ -20923,7 +20933,7 @@ var render = function() {
       _c(
         "section",
         { staticClass: "row" },
-        _vm._l(_vm.populars, function(popular) {
+        _vm._l(_vm.populars, function(popular, index) {
           return _c(
             "div",
             {
@@ -20937,13 +20947,25 @@ var render = function() {
                   attrs: {
                     href: "/item/" + popular.category + "/" + popular.id,
                     title: popular.title
+                  },
+                  on: {
+                    mouseover: function($event) {
+                      _vm.changePhotoOver(
+                        index,
+                        popular.photos[1] ? popular.photos[1].name : ""
+                      )
+                    },
+                    mouseout: function($event) {
+                      _vm.changePhotoOut(index, popular.photos[0].name)
+                    }
                   }
                 },
                 [
                   _c("img", {
                     attrs: {
-                      src: "storage/img/clothes/" + popular.image,
-                      alt: popular.title
+                      src: "storage/img/clothes/" + popular.photos[0].name,
+                      alt: popular.title,
+                      id: "photo" + index
                     }
                   })
                 ]
