@@ -20609,18 +20609,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -20681,12 +20669,14 @@ var render = function() {
       "div",
       { staticClass: "col-10 col-lg-5 col-xl-4 text-center single-image pr-2" },
       [
-        _c("img", {
-          attrs: {
-            src: "/storage/img/clothes/" + _vm.item.photos[0].name,
-            alt: _vm.item.title
-          }
-        }),
+        _vm.item.photos
+          ? _c("img", {
+              attrs: {
+                src: "/storage/img/clothes/" + _vm.item.photos[0].name,
+                alt: _vm.item.title
+              }
+            })
+          : _vm._e(),
         _vm._v(" "),
         _vm.admin == 1
           ? _c(
@@ -20734,37 +20724,23 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { staticClass: "col-2 col-lg-1" }, [
-      _c("div", { staticClass: "row pr-3 images-to-show" }, [
-        _c("div", { staticClass: "col-12 mb-2 pl-0 pr-4" }, [
-          _c("img", {
-            attrs: { src: "/storage/img/clothes/" + _vm.item.photos[0].name }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12 mb-2 pl-0 pr-4" }, [
-          _c("img", {
-            attrs: { src: "/storage/img/clothes/" + _vm.item.photos[0].name }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12 mb-2 pl-0 pr-4" }, [
-          _c("img", {
-            attrs: { src: "/storage/img/clothes/" + _vm.item.photos[0].name }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12 mb-2 pl-0 pr-4" }, [
-          _c("img", {
-            attrs: { src: "/storage/img/clothes/" + _vm.item.photos[0].name }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12 mb-2 pl-0 pr-4" }, [
-          _c("img", {
-            attrs: { src: "/storage/img/clothes/" + _vm.item.photos[0].name }
-          })
-        ])
-      ])
+      _c(
+        "div",
+        { staticClass: "row pr-3 images-to-show" },
+        _vm._l(_vm.item.photos, function(photo, index) {
+          return index > 0 && index < 6
+            ? _c(
+                "div",
+                { key: photo.id, staticClass: "col-12 mb-2 pl-0 pr-4" },
+                [
+                  _c("img", {
+                    attrs: { src: "/storage/img/clothes/" + photo.name }
+                  })
+                ]
+              )
+            : _vm._e()
+        })
+      )
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "col-12 col-lg-6 col-xl-7" }, [
@@ -21303,13 +21279,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -21373,14 +21342,16 @@ var render = function() {
       on: { click: _vm.prev }
     }),
     _vm._v(" "),
-    _c("div", {
-      staticClass: "slider",
-      style:
-        "background-image:url(storage/img/slider/" +
-        _vm.images[Math.abs(_vm.currentNumber) % _vm.images.length] +
-        ");",
-      on: { mouseover: _vm.stopRotation, mouseout: _vm.startRotation }
-    }),
+    _vm.images.length > 0
+      ? _c("div", {
+          staticClass: "slider",
+          style:
+            "background-image:url(storage/img/slider/" +
+            _vm.images[Math.abs(_vm.currentNumber) % _vm.images.length] +
+            ");",
+          on: { mouseover: _vm.stopRotation, mouseout: _vm.startRotation }
+        })
+      : _vm._e(),
     _vm._v(" "),
     _c("div", {
       staticClass: "imgbanbtn imgbanbtn-next",

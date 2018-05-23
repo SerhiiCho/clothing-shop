@@ -1,7 +1,7 @@
 <template>
 	<section class="row pb-2">
 		<div class="col-10 col-lg-5 col-xl-4 text-center single-image pr-2">
-			<img :src="'/storage/img/clothes/' + item.photos[0].name" :alt="item.title">
+			<img v-if="item.photos" :src="'/storage/img/clothes/' + item.photos[0].name" :alt="item.title">
 	
 			<!-- Edit button -->
 			<a v-if="admin == 1" :href="'/items/' + item.id + '/edit'" :title="change" class="btn-change-item" style="top:10px;">
@@ -15,21 +15,9 @@
 		</div>
 		<div class="col-2 col-lg-1">
 			<div class="row pr-3 images-to-show">
-				<div class="col-12 mb-2 pl-0 pr-4">
-					<img :src="'/storage/img/clothes/' + item.photos[0].name">
+				<div v-for="(photo, index) in item.photos" v-bind:key="photo.id" class="col-12 mb-2 pl-0 pr-4" v-if="index > 0 && index < 6">
+					<img :src="'/storage/img/clothes/' + photo.name">
 				</div>
-				<div class="col-12 mb-2 pl-0 pr-4">
-					<img :src="'/storage/img/clothes/' + item.photos[0].name">
-				</div>
-				<div class="col-12 mb-2 pl-0 pr-4">
-					<img :src="'/storage/img/clothes/' + item.photos[0].name">
-				</div>
-				<div class="col-12 mb-2 pl-0 pr-4">
-					<img :src="'/storage/img/clothes/' + item.photos[0].name">
-				</div> 
-				<div class="col-12 mb-2 pl-0 pr-4">
-					<img :src="'/storage/img/clothes/' + item.photos[0].name">
-				</div> 
 			</div>
 		</div>
 		<div class="col-12 col-lg-6 col-xl-7">
