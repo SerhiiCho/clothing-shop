@@ -35,7 +35,7 @@
 					<ul>
 						@foreach ($categories_women as $item)
 						<li>
-							<a href="/items?type={{ $item->type->id }}" title="{{ $item->type->name }}">
+							<a href="/items?category={{ $item->category }}&type={{ $item->type->id }}" title="{{ $item->type->name }}">
 								{{ $item->type->name }}
 							</a>
 						</li>
