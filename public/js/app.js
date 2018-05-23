@@ -20609,11 +20609,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
 			item: [],
+			bigPhoto: 'default.jpg',
 			clicked: false
 		};
 	},
@@ -20635,7 +20639,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			fetch('/api/item/' + itemId).then(function (res) {
 				return res.json();
 			}).then(function (res) {
-				return _this.item = res.data;
+				_this.item = res.data;
+				_this.bigPhoto = res.data.photos[0].name;
 			}).catch(function (err) {
 				return console.log(err);
 			});
@@ -20651,6 +20656,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				}).catch(function (error) {
 					return console.log(error);
 				});
+			}
+		},
+		swapPhoto: function swapPhoto(smallPhoto, index) {
+			var smallPhotoObj = document.getElementById('photo' + index);
+
+			document.querySelectorAll('.small-images').forEach(function (item) {
+				item.classList.remove("active-photo");
+			});
+
+			smallPhotoObj.classList.add("active-photo");
+			this.bigPhoto = smallPhoto;
+		},
+		giveActiveClass: function giveActiveClass(i) {
+			if (i == 0) {
+				return 'active-photo';
 			}
 		}
 	}
@@ -20672,7 +20692,7 @@ var render = function() {
         _vm.item.photos
           ? _c("img", {
               attrs: {
-                src: "/storage/img/clothes/" + _vm.item.photos[0].name,
+                src: "/storage/img/clothes/" + _vm.bigPhoto,
                 alt: _vm.item.title
               }
             })
@@ -20728,13 +20748,22 @@ var render = function() {
         "div",
         { staticClass: "row pr-3 images-to-show" },
         _vm._l(_vm.item.photos, function(photo, index) {
-          return index > 0 && index < 6
+          return index >= 0 && index < 5
             ? _c(
                 "div",
                 { key: photo.id, staticClass: "col-12 mb-2 pl-0 pr-4" },
                 [
                   _c("img", {
-                    attrs: { src: "/storage/img/clothes/" + photo.name }
+                    class: "small-images " + _vm.giveActiveClass(index),
+                    attrs: {
+                      src: "/storage/img/clothes/" + photo.name,
+                      id: "photo" + index
+                    },
+                    on: {
+                      mouseover: function($event) {
+                        _vm.swapPhoto(photo.name, index)
+                      }
+                    }
                   })
                 ]
               )

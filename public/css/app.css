@@ -680,6 +680,12 @@ header {
   width: 80px;
 }
 
+.active-photo {
+  border: solid 1px pink;
+  -webkit-filter: brightness(70%);
+          filter: brightness(70%);
+}
+
 .single-image img {
   width: 80%;
   height: auto;
@@ -688,11 +694,6 @@ header {
   transition: -webkit-transform 300ms;
   transition: transform 300ms;
   transition: transform 300ms, -webkit-transform 300ms;
-}
-
-.single-image img:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
 }
 
 .single-price {
