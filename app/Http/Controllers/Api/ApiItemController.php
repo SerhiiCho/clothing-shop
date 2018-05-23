@@ -67,12 +67,16 @@ class ApiItemController extends Controller
 
     public function destroy($id)
     {
-		$item = Item::findOrFail($id);
+		$item = Item::find($id);
+
+		foreach ($item->photos as $photo) {
+			if ($photo->name != 'default.jpg') {
+				Storage::delete('public/img/clothes/' . $photo->name);
+				$photo->delete();
+			}
+		}
 
 		if ($item->delete()) {
-			if ($item->image != 'default.jpg') {
-				Storage::delete('public/img/clothes/'.$item->image);
-			}
 			return new ItemResource($item);
 		}
     }
