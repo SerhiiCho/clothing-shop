@@ -46,7 +46,7 @@
 				</form>
 
 				<!-- Intro -->
-				<p class="lead pr-4 pl-4">{{ item.content }}</p>
+				<p class="lead pr-4 pl-4" v-html="item.content"></p>
 			</div>
 		</div>
 	</section>
