@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\Type;
 use Illuminate\Http\Request;
-use App\Http\Requests\ItemRequest;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Cookie;
+use App\Http\Requests\StoreItemRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateItemRequest;
 
@@ -46,7 +46,7 @@ class ItemController extends Controller
 		);
     }
 
-    public function store(ItemRequest $request)
+    public function store(StoreItemRequest $request)
     {
 		$image = $request->file('image');
 		$ext = $image->getClientOriginalExtension();
