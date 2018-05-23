@@ -13,3 +13,8 @@
 	<li>rap2hpoutre / laravel-log-viewer</li>
 	<li>Crinsane / LaravelShoppingcart</li>
 </ol>
+
+<h4>Packages and Plugins</h4>
+<ol>
+	<li><a href="https://www.tinymce.com/" title="TinyMCE">TinyMCE Editor</a></li>
+</ol>
