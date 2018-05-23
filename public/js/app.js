@@ -20780,9 +20780,10 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _c("p", { staticClass: "lead pr-4 pl-4" }, [
-          _vm._v(_vm._s(_vm.item.content))
-        ])
+        _c("p", {
+          staticClass: "lead pr-4 pl-4",
+          domProps: { innerHTML: _vm._s(_vm.item.content) }
+        })
       ])
     ])
   ])

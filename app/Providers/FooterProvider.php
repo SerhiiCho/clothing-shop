@@ -24,12 +24,12 @@ class FooterProvider extends ServiceProvider
 			$categories_women
 				= Item::distinct()
 				->whereCategory('women')
-				->get(['type_id']);
+				->get(['type_id', 'category']);
 
 			$categories_men
 				= Item::distinct()
 				->whereCategory('men')
-				->get(['type_id']);
+				->get(['type_id', 'category']);
 
 			view()->composer('*', function ($view) use ($last_items_for_footer, $categories_women, $categories_men) {
 				$view->with(compact('last_items_for_footer', 'categories_men', 'categories_women'));
