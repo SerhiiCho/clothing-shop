@@ -36,7 +36,7 @@ Route::prefix('favorite')->group(function () {
 
 // Items
 Route::resource('items',  'ItemController', ['except' => ['show']]);
-Route::get('item/{item}', 'ItemController@show');
+Route::get('item/{category}/{item}', 'ItemController@show');
 
 // Page Controllers
 Route::get('/', 'PageController@home');

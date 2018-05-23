@@ -1,7 +1,7 @@
 <template>
 	<div class="row">
 		<div v-for="item in items" v-bind:key="item.id" class="col-lg-3 col-6 item-card">
-			<a :href="'/item/' + item.id" :title="item.title">
+			<a :href="'/item/' + item.category + '/' + item.id" :title="item.title">
 				<img :src="'/storage/img/clothes/' + item.image" :alt="item.title">
 			</a>
 			<div class="item-card-price">

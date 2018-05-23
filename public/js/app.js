@@ -21041,7 +21041,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
-			items: {}
+			items: {},
+			category: 'women'
 		};
 	},
 
@@ -21057,7 +21058,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		fetchItems: function fetchItems() {
 			var _this = this;
 
-			fetch('/api/item/random').then(function (res) {
+			if (location.pathname.includes('/men/')) {
+				this.category = 'men';
+			}
+
+			fetch('/api/item/random/' + this.category).then(function (res) {
 				return res.json();
 			}).then(function (res) {
 				var removeIdenticalItem = res.data.map(function (el) {
@@ -21469,7 +21474,12 @@ var render = function() {
           [
             _c(
               "a",
-              { attrs: { href: "/item/" + item.id, title: item.title } },
+              {
+                attrs: {
+                  href: "/item/" + item.category + "/" + item.id,
+                  title: item.title
+                }
+              },
               [
                 _c("img", {
                   attrs: {

@@ -71,7 +71,7 @@ class ItemController extends Controller
     }
 
 
-    public function show(Item $item)
+    public function show($category, Item $item)
     {
 		if (Cookie::get('visited')) {
 			if (Cookie::get('visited') == $item->id) {

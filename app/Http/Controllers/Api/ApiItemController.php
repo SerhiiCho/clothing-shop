@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-
 use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -49,9 +48,12 @@ class ApiItemController extends Controller
 	}
 	
 
-    public function random()
+    public function random($category)
     {
-		$items = Item::inRandomOrder()->take(7)->get();
+		$items = Item::inRandomOrder()
+			->whereCategory($category)
+			->take(7)
+			->get();
 		return ItemResource::collection($items);
 	}
 
