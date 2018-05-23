@@ -38,7 +38,6 @@ return [
 	'change_item' => 'Edit product',
 	'select_change' => 'Enter change',
 	'price' => 'Price',
-	'all' => 'All',
 	'all_items' => 'All product',
 	'select' => 'Enter price',
 	'added_to_cart' => 'Added to cart',
