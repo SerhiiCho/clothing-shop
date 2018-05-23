@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-<head>@include('includes.head')</head>
+<head>
+	@include('includes.head')
+	@yield('head')
+</head>
 <body>
 	<main id="app">
 		<div class="loading" id="loading"></div>

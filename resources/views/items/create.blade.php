@@ -2,6 +2,10 @@
 
 @section('title', trans('items.add_item'))
 
+@section('head')
+	<script src="{{ URL::to('/js/tinymce/tinymce.min.js') }}"></script>
+@endsection
+
 @section('content')
 
 <div class="container pb-4 col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
@@ -66,4 +70,20 @@
 	</div>
 </div>
 
+@endsection
+
+@section('script')
+<script>
+	var editor_config = {
+		path_absolute: "{{ URL::to('/') }}/",
+		selector: "textarea",
+		language: 'ru',
+		plugins: [
+			"autolink lists link preview wordcount fullscreen paste",
+		],
+		toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link",
+		relative_urls: false
+	}
+	tinymce.init(editor_config)
+</script>
 @endsection

@@ -2,6 +2,10 @@
 
 @section('title', trans('items.change_item'))
 
+@section('head')
+	<script src="{{ URL::to('/js/tinymce/tinymce.min.js') }}"></script>
+@endsection
+
 @section('content')
 
 <div class="container pb-4 col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
@@ -58,7 +62,7 @@
 			</div>
 
 			<button type="submit" class="btn btn-dark btn-block mt-3">
-				@lang('items.change_item')
+				@lang('items.save_item')
 			</button>
 			<a href="/items" title="@lang('messages.back')" class="btn btn-dark btn-block mt-2">
 				@lang('messages.back')
@@ -67,8 +71,29 @@
 
 		<div class="col-md-6 col-lg-4 mt-3">
 			<img src="{{ asset('/storage/img/clothes/' . $item->image) }}" alt="{{ $item->title }}" class="rounded mx-auto d-block" id="target-image" style="width:225px; height:338px;">
+			<div class="text-center">
+				<a href="/item/{{ $item->category }}/{{ $item->id }}" class="btn btn-light mt-3 pl-3 pr-3" title="@lang('items.go_to_product_with_title', ['title' => $item->title])">
+					@lang('items.go_to_product') &raquo;
+				</a>
+			</div>
 		</div>
 	</div>
 </div>
 
+@endsection
+
+@section('script')
+<script>
+	var editor_config = {
+		path_absolute: "{{ URL::to('/') }}/",
+		selector: "textarea",
+		language: 'ru',
+		plugins: [
+			"autolink lists link preview wordcount fullscreen paste",
+		],
+		toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link",
+		relative_urls: false
+	}
+	tinymce.init(editor_config)
+</script>
 @endsection
