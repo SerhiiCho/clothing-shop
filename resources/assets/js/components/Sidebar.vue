@@ -18,7 +18,8 @@
 export default {
 	data() {
 		return {
-			items: {}
+			items: {},
+			category: 'women'
 		}
 	},
 
@@ -33,7 +34,11 @@ export default {
 
 	methods: {
 		fetchItems() {
-			fetch('/api/item/random')
+			if (location.pathname.includes('/men/')) {
+				this.category = 'men'
+			}
+
+			fetch('/api/item/random/' + this.category)
 				.then(res => res.json())
 				.then(res => {
 					let removeIdenticalItem = res.data.map(el => el.id).indexOf(this.itemid)
