@@ -50,19 +50,24 @@ class ItemController extends Controller
 			'price' => $request->price,
 			'type_id' => $request->type
 		]);
+			
+		$i = 0;
 
         foreach ($request->photos as $image) {
-			$ext = $image->getClientOriginalExtension();
-			$filename = getFileName($request->title, $ext);
+			$i++;
+			if ($i <= 5) {
+				$ext = $image->getClientOriginalExtension();
+				$filename = getFileName($request->title, $ext);
 
-			(new ImageManager)->make($image)->resize(451, 676)->save(
-				storage_path('app/public/img/clothes/' . $filename
-			));
+				(new ImageManager)->make($image)->resize(451, 676)->save(
+					storage_path('app/public/img/clothes/' . $filename
+				));
 
-            ItemsPhoto::create([
-                'item_id' => $item->id,
-                'name' => $filename
-            ]);
+				ItemsPhoto::create([
+					'item_id' => $item->id,
+					'name' => $filename
+				]);
+			}
 		}
 
 		return redirect('items')->withSuccess(
@@ -111,19 +116,22 @@ class ItemController extends Controller
 				Storage::delete('public/img/clothes/' . $photo->name);
 				$photo->delete();
 			}
+			$i = 0;
 
 			foreach ($request->photos as $image) {
-				$ext = $image->getClientOriginalExtension();
-				$filename = getFileName($request->title, $ext);
-	
-				(new ImageManager)->make($image)->resize(451, 676)->save(
-					storage_path('app/public/img/clothes/' . $filename
-				));
-	
-				ItemsPhoto::create([
-					'item_id' => $item->id,
-					'name' => $filename
-				]);
+				if ($i <= 5) {
+					$ext = $image->getClientOriginalExtension();
+					$filename = getFileName($request->title, $ext);
+		
+					(new ImageManager)->make($image)->resize(451, 676)->save(
+						storage_path('app/public/img/clothes/' . $filename
+					));
+
+					ItemsPhoto::create([
+						'item_id' => $item->id,
+						'name' => $filename
+					]);
+				}
 			}
 		}
 
