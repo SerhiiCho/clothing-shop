@@ -31,6 +31,7 @@ Route::namespace('Api')->group(function () {
 		Route::delete('destroy/{id}', 'ApiMessageController@destroy');
 	});
 
-	// Other
-	Route::get('other/slider', 'ApiOtherController@slider');
+	// Slider
+	Route::get('slider/main', 'ApiSliderController@main');
+	Route::get('slider/cards', 'ApiSliderController@cards');
 });
