@@ -397,14 +397,39 @@ header {
   margin: 5px;
 }
 
-.main-banner {
+.main-slider {
   position: relative;
-  max-height: 1000px;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  border-right: solid 4px #444;
 }
 
-.main-banner:hover .imgbanbtn {
+.main-slider:hover .imgbanbtn {
   display: block;
+}
+
+.slider-items {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.slider-items-card img {
+  max-width: 100%;
+  height: auto;
+  max-height: 200px;
+}
+
+.slider-items-card:first-of-type img {
+  border-bottom: solid 4px #444;
 }
 
 .imgbanbtn {
@@ -435,37 +460,6 @@ header {
 
 .imgbanbtn-next {
   right: .31rem;
-}
-
-.slider {
-  background-size: cover;
-  background-color: #333;
-  background-position: center;
-  height: 600px;
-}
-
-@media (max-width: 992px) {
-  .slider {
-    height: 400px;
-  }
-}
-
-@media (max-width: 768px) {
-  .slider {
-    height: 300px;
-  }
-}
-
-@media (max-width: 576px) {
-  .slider {
-    height: 200px;
-  }
-}
-
-@media (max-width: 480px) {
-  .slider {
-    height: 150px;
-  }
 }
 
 .three-cards {

@@ -1,10 +1,33 @@
-.main-banner {
+.main-slider {
 	position: relative;
-	max-height: 1000px;
 	overflow: hidden;
+	background-size: cover;
+	background-position: center;
+	border-right: $sliderBorder;
 
 	&:hover .imgbanbtn {
 		display: block;
+	}
+}
+
+.slider-items {
+	height: 100%;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-around;
+
+	&-card {
+		img {
+			max-width: 100%;
+			height: auto;
+			max-height: 200px;
+		}
+		
+		&:first-of-type {
+			img {
+				border-bottom: $sliderBorder;
+			}
+		}
 	}
 }
 
@@ -36,15 +59,3 @@
 		right: .31rem;
 	}
 }
-
-.slider {
-	background-size: cover;
-	background-color: #333;
-	background-position: center;
-	height: 600px;
-}
-
-@media (max-width: 992px)  {.slider { height: 400px }}
-@media (max-width: 768px)  {.slider { height: 300px }}
-@media (max-width: 576px)  {.slider { height: 200px }}
-@media (max-width: 480px)  {.slider { height: 150px }}
