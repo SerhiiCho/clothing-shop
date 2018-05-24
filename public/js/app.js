@@ -21933,92 +21933,94 @@ var render = function() {
     { staticClass: "row" },
     [
       _vm._l(_vm.items, function(item, index) {
-        return _c(
-          "div",
-          { key: item.id, staticClass: "col-lg-3 col-6 item-card" },
-          [
-            _c(
-              "a",
-              {
-                attrs: {
-                  href: "/item/" + item.category + "/" + item.id,
-                  title: item.title
-                },
-                on: {
-                  mouseover: function($event) {
-                    _vm.changePhotoOver(
-                      index,
-                      item.photos[1] ? item.photos[1].name : ""
-                    )
-                  },
-                  mouseout: function($event) {
-                    _vm.changePhotoOut(index, item.photos[0].name)
-                  }
-                }
-              },
+        return _vm.items
+          ? _c(
+              "div",
+              { key: item.id, staticClass: "col-lg-3 col-6 item-card" },
               [
-                _c("img", {
-                  attrs: {
-                    src: "/storage/img/clothes/" + item.photos[0].name,
-                    alt: item.title,
-                    id: "photo" + index
-                  }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "item-card-price" }, [
-              _c("span", [_vm._v(_vm._s(item.title))]),
-              _vm._v(" "),
-              _c("span", { staticClass: "hryvnia" }, [
-                _vm._v(_vm._s(item.price) + " " + _vm._s(_vm.hryvnia))
-              ]),
-              _vm._v(" "),
-              _vm.admin == 1
-                ? _c(
-                    "a",
-                    {
-                      staticClass: "btn-change-item",
-                      staticStyle: { top: "10px" },
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href: "/item/" + item.category + "/" + item.id,
+                      title: item.title
+                    },
+                    on: {
+                      mouseover: function($event) {
+                        _vm.changePhotoOver(
+                          index,
+                          item.photos[1] ? item.photos[1].name : ""
+                        )
+                      },
+                      mouseout: function($event) {
+                        _vm.changePhotoOut(index, item.photos[0].name)
+                      }
+                    }
+                  },
+                  [
+                    _c("img", {
                       attrs: {
-                        href: "/items/" + item.id + "/edit",
-                        title: _vm.change
+                        src: "/storage/img/clothes/" + item.photos[0].name,
+                        alt: item.title,
+                        id: "photo" + index
                       }
-                    },
-                    [
-                      _c("i", {
-                        staticClass: "fa fa-pencil",
-                        attrs: { "aria-hidden": "true" }
-                      })
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.admin == 1
-                ? _c(
-                    "a",
-                    {
-                      staticClass: "btn-change-item",
-                      staticStyle: { top: "55px", background: "brown" },
-                      attrs: { href: "#", title: _vm.deleting },
-                      on: {
-                        click: function($event) {
-                          _vm.deleteItem(item.id)
-                        }
-                      }
-                    },
-                    [
-                      _c("i", {
-                        staticClass: "fa fa-trash-o",
-                        staticStyle: { color: "#fff" },
-                        attrs: { "aria-hidden": "true" }
-                      })
-                    ]
-                  )
-                : _vm._e()
-            ])
-          ]
-        )
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "item-card-price" }, [
+                  _c("span", [_vm._v(_vm._s(item.title))]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "hryvnia" }, [
+                    _vm._v(_vm._s(item.price) + " " + _vm._s(_vm.hryvnia))
+                  ]),
+                  _vm._v(" "),
+                  _vm.admin == 1
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "btn-change-item",
+                          staticStyle: { top: "10px" },
+                          attrs: {
+                            href: "/items/" + item.id + "/edit",
+                            title: _vm.change
+                          }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fa fa-pencil",
+                            attrs: { "aria-hidden": "true" }
+                          })
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.admin == 1
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "btn-change-item",
+                          staticStyle: { top: "55px", background: "brown" },
+                          attrs: { href: "#", title: _vm.deleting },
+                          on: {
+                            click: function($event) {
+                              _vm.deleteItem(item.id)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fa fa-trash-o",
+                            staticStyle: { color: "#fff" },
+                            attrs: { "aria-hidden": "true" }
+                          })
+                        ]
+                      )
+                    : _vm._e()
+                ])
+              ]
+            )
+          : _vm._e()
       }),
       _vm._v(" "),
       _c("nav", { staticClass: "col-12" }, [
