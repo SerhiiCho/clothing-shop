@@ -20,9 +20,9 @@ class StoreItemRequest extends FormRequest
 			'content' => 'required|min:4|max:3000',
 			'category' => 'required',
 			'type' => 'required',
-			'price' => 'required|numeric'
+			'price' => 'required|numeric|digits_between:2,6'
 		];
-
+		
 		if (request()->hasFile('photos')) {
 			$photos = count(request('photos'));
 
@@ -46,6 +46,7 @@ class StoreItemRequest extends FormRequest
             'type.required' => trans('items.type_required'),
             'photos.required' => trans('items.image_required'),
             'price.required' => trans('items.price_required'),
+            'price.digits_between' => trans('items.price_digits_between'),
             'title.min' => trans('items.title_min'),
             'content.min' => trans('items.content_min'),
             'title.max' => trans('items.title_max'),

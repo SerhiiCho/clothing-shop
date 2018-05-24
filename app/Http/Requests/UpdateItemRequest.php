@@ -20,7 +20,7 @@ class UpdateItemRequest extends FormRequest
 			'content' => 'required|min:4|max:3000',
 			'category' => 'required',
 			'type' => 'required',
-			'price' => 'required|numeric',
+			'price' => 'required|numeric|digits_between:2,6'
 		];
 	}
 
@@ -36,7 +36,8 @@ class UpdateItemRequest extends FormRequest
             'title.min' => trans('items.title_min'),
             'content.min' => trans('items.content_min'),
             'title.max' => trans('items.title_max'),
-            'content.max' => trans('items.content_max'),
+			'content.max' => trans('items.content_max'),
+			'price.digits_between' => trans('items.price_digits_between'),
             'price.numeric' => trans('items.price_numeric'),
         ];
     }
