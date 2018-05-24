@@ -34,7 +34,7 @@ class SliderController extends Controller
 		$ext = $image->getClientOriginalExtension();
 		$filename = getFileName('slider', $ext);
 
-		(new ImageManager)->make($image)->resize(768, 384)->save(
+		(new ImageManager)->make($image)->resize(1000, 500)->save(
 			storage_path('app/public/img/slider/' . $filename
 		));
 
@@ -63,7 +63,7 @@ class SliderController extends Controller
 			$ext = $image->getClientOriginalExtension();
 			$filename = getFileName('slider', $ext);
 			
-			(new ImageManager)->make($image)->resize(768, 384)->save(
+			(new ImageManager)->make($image)->resize(1000, 500)->save(
 				storage_path('app/public/img/slider/' . $filename
 			));
 

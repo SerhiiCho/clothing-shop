@@ -5,7 +5,25 @@
 @section('content')
 
 <div class="wrapper">
-	<slider></slider>
+	<div class="container">
+		<div class="row">
+			<slider></slider>
+			<div class="col-2 pr-0 pl-0">
+				<div class="slider-items">
+					<div class="slider-items-card">
+						<a href="#">
+							<img src="storage/img/clothes/asdsad-AlfNv68ht2ZbrBbkHpfS.jpg">
+						</a>
+					</div>
+					<div class="slider-items-card">
+						<a href="#">
+							<img src="storage/img/clothes/asdsad-y2iT0Zfcr9MgKsdoJW6u.jpg">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- 3 Cards -->
 	@if (isset($cards) && $cards->count() > 0)
