@@ -42,30 +42,73 @@ window.onscroll = () => {
     }
 }
 
-var src = id("src-image")
-var target = id("target-image")
 /**
  * This function auto updates pictures after selecting them via
  * file input
- * @param {string} src 
- * @param {string} target 
+ * @param {string} src
  */
-function showImage(src, target) {
-	var fr = new FileReader()
-	
+function showImages(src) {
+	let readers = [
+		new FileReader(),
+		new FileReader(),
+		new FileReader(),
+		new FileReader(),
+		new FileReader()
+	]
+
+	src.addEventListener("click", () => {
+		for (let i = 1; i <= 5; i++) {
+			id("target-image" + i).src = '/storage/img/clothes/default.jpg'
+		}
+	})
+
 	src.addEventListener("change", ()=> {
 		if (src.files.length !== 0) {
-			fr.readAsDataURL(src.files[0])
-			fr.onload = function(e) { target.src = this.result }
-		} else {
-			target.src = '/storage/img/clothes/default.jpg'
+			for (let i = 0, num = 1; i < readers.length; i++, num++) {
+				if (src.files[i]) {
+					readers[i].readAsDataURL(src.files[i])
+					readers[i].onload = function(e) { id("target-image" + num).src = this.result }
+				} else {
+					id("target-image" + num).src = '/storage/img/clothes/default.jpg'
+				}
+			}
+			// if (src.files[0]) {
+			// 	fr1.readAsDataURL(src.files[0])
+			// 	fr1.onload = function(e) { id("target-image1").src = this.result }
+			// } else {
+			// 	id("target-image1").src = '/storage/img/clothes/default.jpg'
+			// }
+			// if (src.files[1]) {
+			// 	fr2.readAsDataURL(src.files[1])
+			// 	fr2.onload = function(e) { id("target-image2").src = this.result }
+			// } else {
+			// 	id("target-image2").src = '/storage/img/clothes/default.jpg'
+			// }
+			// if (src.files[2]) {
+			// 	fr3.readAsDataURL(src.files[2])
+			// 	fr3.onload = function(e) { id("target-image3").src = this.result }
+			// } else {
+			// 	id("target-image3").src = '/storage/img/clothes/default.jpg'
+			// }
+			// if (src.files[3]) {
+			// 	fr4.readAsDataURL(src.files[3])
+			// 	fr4.onload = function(e) { id("target-image4").src = this.result }
+			// } else {
+			// 	id("target-image4").src = '/storage/img/clothes/default.jpg'
+			// }
+			// if (src.files[4]) {
+			// 	fr5.readAsDataURL(src.files[4])
+			// 	fr5.onload = function(e) { id("target-image5").src = this.result }
+			// } else {
+			// 	id("target-image5").src = '/storage/img/clothes/default.jpg'
+			// }
 		}
 	})
 }
 
 // User on page where variables:
 // src and target exist, run function
-if (src && target) showImage(src, target)
+if (id("src-image")) showImages(id("src-image"))
 
 if (id('prevent-double-submitting')) {
 	id('prevent-double-submitting').addEventListener('submit', function () {

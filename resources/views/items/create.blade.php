@@ -65,7 +65,21 @@
 		</form>
 
 		<div class="col-md-6 col-lg-4 mt-3">
-			<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image" style="width:225px; height:338px;">
+			<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image1" style="width:225px; height:338px;">
+			<div class="row">
+				<div class="col-6">
+					<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image2" style="width:113; height:164px;">
+				</div>
+				<div class="col-6">
+					<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image3" style="width:113; height:164px;">
+				</div>
+				<div class="col-6">
+					<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image4" style="width:113; height:164px;">
+				</div>
+				<div class="col-6">
+					<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image5" style="width:113; height:164px;">
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
