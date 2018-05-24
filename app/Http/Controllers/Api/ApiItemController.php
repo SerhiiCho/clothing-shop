@@ -17,7 +17,7 @@ class ApiItemController extends Controller
 		} elseif ($category && $type) {
 			$items = Item::where([['category', $category], ['type_id', $type]])->paginate(40);
 		} else {
-			$items = Item::get();
+			$items = Item::paginate(40);
 		}
 		return ItemResource::collection($items);
 	}
