@@ -20,6 +20,7 @@ return [
 	'price_numeric' => 'The price must be a number',
 	'image_image' => 'The image must be a jpg extension, and no more than 2MB',
 	'image_max' => 'The image must be not larger than :max kb',
+	'price_digits_between' => 'Price digits should be between :min and :max',
 
 	// Views
 	'type' => 'Type',
