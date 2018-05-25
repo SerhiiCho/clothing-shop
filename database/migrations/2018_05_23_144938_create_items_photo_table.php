@@ -18,7 +18,6 @@ class CreateItemsPhotoTable extends Migration
 			$table->string('name');
 			$table->integer('item_id')->unsigned();
             $table->foreign('item_id')->references('id')->on('items');
-            $table->timestamps();
         });
     }
 
