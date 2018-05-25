@@ -4,13 +4,7 @@
 
 @section('content')
 
-<div class="container mt-2">
-	<div class="alert alert-info" role="alert">
-		@lang('logs.description')
-	</div>
-</div>
-
-<div class="logs container-fluid">
+<div class="logs container-fluid pt-3">
 	<div class="row">
 		<div class="col-12 col-md-2 sidebar mb-3">
 			<h4>@lang('logs.logs')</h4>
