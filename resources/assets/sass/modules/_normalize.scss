@@ -4,6 +4,7 @@ a:hover { text-decoration: none; }
 li 		{ list-style: none; }
 body {
 	background: $lightPink;
+	font-family: $mainFont;
 }
 main 	{
 	padding-top: 3em;
@@ -12,10 +13,6 @@ main 	{
 .wrapper {
 	max-width: 1200px;
 	margin: auto;
-}
-
-.btn {
-	border-radius: 2px;
 }
 
 @media (min-width: 840px) {
