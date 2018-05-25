@@ -2,6 +2,10 @@
 
 return [
 
-	'url_key' => env('URL_KEY', 'fasd65f4sadf65sdfsdaf4sd5f65afs46sad4f65sd465sf4a65f')
+	// This key is needed for making some operations
+	'url_key' => env('URL_KEY'),
+
+	// Enter the auth paths with this slug
+	'enter_slug' => env('ENTER_SLUG')
 
 ];

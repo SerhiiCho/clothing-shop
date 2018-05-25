@@ -10,8 +10,11 @@ Route::get('logs',
 	'\Rap2hpoutre\LaravelLogViewer\LogViewerController@index'
 )->middleware('auth');
 
+Route::prefix(config('custom.enter_slug'))->group(function () {
+	Auth::routes();
+});
+
 // Resources
-Auth::routes();
 Route::resource('cards',  'CardController', ['except' => ['show']]);
 Route::resource('slider', 'SliderController', ['except' => ['show']]);
 Route::resource('contacts', 'ContactController', ['except' => ['show', 'index']]);
