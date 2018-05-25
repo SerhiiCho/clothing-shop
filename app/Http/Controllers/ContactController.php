@@ -11,7 +11,8 @@ class ContactController extends Controller
 {
 	public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('member')->only(['create', 'store']);
+        $this->middleware('admin')->only(['edit', 'update', 'destroy']);
 	}
 
     // Show the form for creating a new resource

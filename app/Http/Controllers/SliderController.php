@@ -13,7 +13,8 @@ class SliderController extends Controller
 {
 	public function __construct()
     {
-		$this->middleware('auth');
+		$this->middleware('member')->only(['index']);
+        $this->middleware('admin')->only(['edit', 'update', 'destroy']);
 	}
 
     public function index()
