@@ -57,8 +57,8 @@
 			</div>
 
 			<div class="custom-file">
-				<input type="file" name="photos[]" class="form-control-file" id="src-image" multiple>
-				<label class="custom-file-label" for="src-image">@lang('forms.choose_file')...</label>
+				<input type="file" name="photos[]" class="form-control-file" id="multiple-src-image" multiple>
+				<label class="custom-file-label" for="multiple-src-image">@lang('forms.choose_file')...</label>
 			</div>
 
 			<button type="submit" class="btn btn-dark btn-block mt-3">
@@ -70,7 +70,23 @@
 		</form>
 
 		<div class="col-md-6 col-lg-4 mt-3">
-			<img src="{{ asset('/storage/img/clothes/' . $item->image) }}" alt="{{ $item->title }}" class="rounded mx-auto d-block" id="target-image" style="width:225px; height:338px;">
+			<img src="{{ asset('/storage/img/clothes/' . $item->photos[0]->name) }}" alt="{{ $item->title }}" class="rounded mx-auto d-block" id="target-image1" style="width:225px; height:338px;">
+			<div class="row mt-2">
+				@foreach ($item->photos as $photo)
+					@if (! $loop->first)
+						<div class="col-6 mt-2">
+							<img src="{{ asset('/storage/img/clothes/' . $photo->name) }}" alt="default" class="rounded mx-auto d-block" id="target-image{{ $loop->iteration }}" style="width:113; height:164px;">
+						</div>
+					@endif
+				@endforeach
+				@for ($i = 2; $i <= 5; $i++)
+					@if ($i > $item->photos->count())
+						<div class="col-6 mt-2">
+							<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image{{ $i }}" style="width:113; height:164px;">
+						</div>
+					@endif
+				@endfor
+			</div>
 			<div class="text-center">
 				<a href="/item/{{ $item->category }}/{{ $item->id }}" class="btn btn-light mt-3 pl-3 pr-3" title="@lang('items.go_to_product_with_title', ['title' => $item->title])">
 					@lang('items.go_to_product') &raquo;

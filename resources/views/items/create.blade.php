@@ -40,7 +40,6 @@
 						<option value="men">@lang('items.men_items')</option>
 					</select>
 				</div>
-
 				<div class="form-group col-sm-6">
 					<label>@lang('items.type')</label>
 					<select name="type" class="form-control">
@@ -52,8 +51,8 @@
 			</div>
 
 			<div class="custom-file">
-				<input type="file" name="photos[]" class="form-control-file" id="src-image" multiple>
-				<label class="custom-file-label" for="src-image">@lang('forms.choose_file')...</label>
+				<input type="file" name="photos[]" class="form-control-file" id="multiple-src-image" multiple>
+				<label class="custom-file-label" for="multiple-src-image">@lang('forms.choose_file')...</label>
 			</div>
 			
 			<button type="submit" class="btn btn-dark btn-block mt-3">
@@ -66,19 +65,12 @@
 
 		<div class="col-md-6 col-lg-4 mt-3">
 			<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image1" style="width:225px; height:338px;">
-			<div class="row">
-				<div class="col-6">
-					<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image2" style="width:113; height:164px;">
-				</div>
-				<div class="col-6">
-					<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image3" style="width:113; height:164px;">
-				</div>
-				<div class="col-6">
-					<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image4" style="width:113; height:164px;">
-				</div>
-				<div class="col-6">
-					<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image5" style="width:113; height:164px;">
-				</div>
+			<div class="row mt-2">
+				@for ($i = 2; $i <= 5; $i++)
+					<div class="col-6 mt-2">
+						<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image{{ $i }}" style="width:113; height:164px;">
+					</div>
+				@endfor
 			</div>
 		</div>
 	</div>
