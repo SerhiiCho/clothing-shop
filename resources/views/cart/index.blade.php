@@ -6,7 +6,7 @@
 
 <div class="container">
 	@if (Cart::count() > 0)
-		<h5 class="text-center pt-4 font-weight-normal">@lang('cart.cart')</h5>
+		<h4 class="text-center pt-4 pb-3 font-weight-normal">@lang('cart.cart')</h4>
 		<table class="table table-hover table-condensed">
 			<thead>
 				<tr>
