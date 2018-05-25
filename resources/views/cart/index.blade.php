@@ -21,7 +21,7 @@
 						<td>
 							<div class="row">
 								<a href="/item/{{ $item->model->id }}" class="col-12 col-sm-2">
-									<img src="{{ asset('storage/img/clothes/' . $item->model->image) }}" alt="{{ $item->model->title }}" class="img-responsive" style="max-width:50px;" />
+									<img src="{{ asset('storage/img/clothes/' . $item->model->photos[0]->name) }}" alt="{{ $item->model->title }}" class="img-responsive" style="max-width:50px;" />
 								</a>
 								<div class="col-12 col-sm-10 pt-2">
 									<h6 class="nomargin">{{ $item->model->title }}</h6>
@@ -102,7 +102,7 @@
 							<td>
 								<div class="row">
 									<a href="/item/{{ $item->model->id }}" class="col-12 col-sm-2">
-										<img src="{{ asset('storage/img/clothes/' . $item->model->image) }}" alt="{{ $item->model->title }}" class="img-responsive" style="max-width:50px;" />
+										<img src="{{ asset('storage/img/clothes/' . $item->model->photos[0]->name) }}" alt="{{ $item->model->title }}" class="img-responsive" style="max-width:50px;" />
 									</a>
 									<div class="col-12 col-sm-10 pt-2">
 										<h6 class="nomargin">{{ $item->model->title }}</h6>
