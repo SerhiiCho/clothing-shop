@@ -19,7 +19,7 @@ class CreateItemsTable extends Migration
             $table->text('content');
             $table->string('category', 20);
             $table->boolean('stock')->default(1);
-            $table->float('price');
+            $table->integer('price');
             $table->integer('popular')->default(0);
 			$table->timestamps();
         });
