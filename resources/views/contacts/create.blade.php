@@ -22,15 +22,18 @@
 								
 							{{-- Buttons --}}
 							<div class="align-items-right">
-								<a href="/contacts/{{ $contact->id }}/edit" class="btn btn-dark mr-3" title="@lang('contacts.change_contact')">
-									<i class="fa fa-pencil" aria-hidden="true"></i>
-								</a>
-								<form action="{{ action('ContactController@destroy', ['contact' => $contact->id]) }}" method="post" class="d-inline" onsubmit='return confirm("@lang('contacts.confirm_delete')")'>
-									@csrf @method('delete')
-									<button class="btn btn-danger" title="@lang('contacts.delete')">
-										<i class="fa fa-trash-o" aria-hidden="true"></i>
-									</button>
-								</form>
+								@admin
+									<a href="/contacts/{{ $contact->id }}/edit" class="btn btn-dark mr-3" title="@lang('contacts.change_contact')">
+										<i class="fa fa-pencil" aria-hidden="true"></i>
+									</a>
+
+									<form action="{{ action('ContactController@destroy', ['contact' => $contact->id]) }}" method="post" class="d-inline" onsubmit='return confirm("@lang('contacts.confirm_delete')")'>
+										@csrf @method('delete')
+										<button class="btn btn-danger" title="@lang('contacts.delete')">
+											<i class="fa fa-trash-o" aria-hidden="true"></i>
+										</button>
+									</form>
+								@endadmin
 							</div>
 						</li>
 					@empty
