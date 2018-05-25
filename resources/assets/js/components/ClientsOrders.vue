@@ -26,7 +26,8 @@
 							<td>{{ order.total }}</td>
 							<td>{{ order.created_at }}</td>
 							<td> 
-								<a href="#" :title="deletenumber + ' ' + order.phone" class="btn btn-danger" @click="deleteMessage(order.id)">
+								<!-- Delete button -->
+								<a v-if="admin === 1" href="#" :title="deletenumber + ' ' + order.phone" class="btn btn-danger" @click="deleteMessage(order.id)">
 									<i class="fa fa-trash-o" aria-hidden="true"></i>
 								</a>
 							</td>
@@ -55,6 +56,7 @@ export default {
 		'sum',
 		'date',
 		'number',
+		'admin',
 		'product',
 		'noorders',
 		'deletenumber',

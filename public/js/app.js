@@ -21878,6 +21878,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -21887,7 +21888,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 
-	props: ['sum', 'date', 'number', 'product', 'noorders', 'deletenumber', 'deletethisorder'],
+	props: ['sum', 'date', 'number', 'admin', 'product', 'noorders', 'deletenumber', 'deletethisorder'],
 
 	created: function created() {
 		this.getMessages();
@@ -22009,27 +22010,29 @@ var render = function() {
                     _c("td", [_vm._v(_vm._s(order.created_at))]),
                     _vm._v(" "),
                     _c("td", [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-danger",
-                          attrs: {
-                            href: "#",
-                            title: _vm.deletenumber + " " + order.phone
-                          },
-                          on: {
-                            click: function($event) {
-                              _vm.deleteMessage(order.id)
-                            }
-                          }
-                        },
-                        [
-                          _c("i", {
-                            staticClass: "fa fa-trash-o",
-                            attrs: { "aria-hidden": "true" }
-                          })
-                        ]
-                      )
+                      _vm.admin === 1
+                        ? _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-danger",
+                              attrs: {
+                                href: "#",
+                                title: _vm.deletenumber + " " + order.phone
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.deleteMessage(order.id)
+                                }
+                              }
+                            },
+                            [
+                              _c("i", {
+                                staticClass: "fa fa-trash-o",
+                                attrs: { "aria-hidden": "true" }
+                              })
+                            ]
+                          )
+                        : _vm._e()
                     ])
                   ])
                 })
