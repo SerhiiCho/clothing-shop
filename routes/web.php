@@ -8,7 +8,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
  */
 Route::get('logs',
 	'\Rap2hpoutre\LaravelLogViewer\LogViewerController@index'
-)->middleware('auth');
+)->middleware('master');
 
 Route::prefix(config('custom.enter_slug'))->group(function () {
 	Auth::routes();
@@ -51,6 +51,7 @@ Route::post('search', 'SearchController@handleTheRequest');
 
 // User
 Route::view('user/dashboard', 'user.dashboard')->middleware('auth');
+Route::view('user/work', 'user.work')->middleware('member');
 
 // Artisan commands =======
 Route::prefix('php/artisan')->group(function () {
