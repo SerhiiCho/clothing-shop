@@ -7,7 +7,7 @@
 <div class="container pb-5">
 	<h4 class="display-4 text-center p-3">@lang('cards.add_card')</h4>
 	<div>
-		<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image" style="width: 300px; height:410px;">
+		<img src="{{ asset('/storage/img/clothes/default.jpg') }}" alt="default" class="rounded mx-auto d-block" id="target-image" style="width:225px; height:338px;">
 	</div>
 	<div class="col-md-8 offset-md-2">
 
@@ -20,12 +20,23 @@
 				</label>
 			</div>
 
-			<select name="type" class="form-control mt-2" id="type">
-				<option value="none">@lang('forms.choose_category')</option>
-				@foreach ($types as $type)
-					<option value="{{ $type->id }}">{{ $type->name }}</option>
-				@endforeach
-			</select>
+			<div class="row mt-2">
+				<div class="form-group col-sm-6">
+					<label class="mb-1">@lang('forms.choose_category')</label>
+					<select name="category" class="form-control">
+						<option value="women">@lang('items.women_items')</option>
+						<option value="men">@lang('items.men_items')</option>
+					</select>
+				</div>
+				<div class="form-group col-sm-6">
+					<label class="mb-1">@lang('forms.choose_type')</label>
+					<select name="type" class="form-control" id="type">
+						@foreach ($types as $type)
+							<option value="{{ $type->id }}">{{ $type->name }}</option>
+						@endforeach
+					</select>
+				</div>
+			</div>
 
 			<button type="submit" class="btn btn-dark btn-block mt-3">@lang('cards.add_card')</button>
 		</form>
