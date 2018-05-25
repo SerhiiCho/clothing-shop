@@ -44,13 +44,14 @@ class CardController extends Controller
 		$ext = $image->getClientOriginalExtension();
 		$filename = getFileName($request->type, $ext);
 		
-		(new ImageManager)->make($image)->resize(300, 410)->save(
+		(new ImageManager)->make($image)->resize(451, 676)->save(
 			storage_path('app/public/img/cards/' . $filename
 		));
 
 		Card::create([
 			'image' => $filename,
-			'type_id' => $request->type
+			'type_id' => $request->type,
+			'category' => $request->category
 		]);
 
 		return redirect('cards')->withSuccess(
@@ -76,13 +77,16 @@ class CardController extends Controller
 			$ext = $image->getClientOriginalExtension();
 			$filename = getFileName($request->type, $ext);
 			
-			(new ImageManager)->make($image)->resize(300, 410)->save(
+			(new ImageManager)->make($image)->resize(451, 676)->save(
 				storage_path('app/public/img/cards/' . $filename
 			));
 
 			$card->update([ 'image' => $filename ]);
 		}
-		$card->update([ 'type_id' => $request->type ]);
+		$card->update([
+			'type_id' => $request->type,
+			'category' => $request->category
+		]);
 
 		return redirect('cards')->withSuccess(
 			trans('cards.card_changed')
