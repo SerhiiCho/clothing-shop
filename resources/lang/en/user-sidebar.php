@@ -3,7 +3,7 @@
 return [
 
 	// View
-	'profile' => 'Profile',
+	'work' => 'Work',
 	'add_new_item' => 'New item',
 	'all_items' => 'All items',
 	'settings' => 'Settings',

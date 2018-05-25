@@ -1,10 +1,10 @@
 @auth     
 	<nav class="user-sidebar">
 		<ul>
-			<li class="{{ activeIfRouteIs('dashboard') }} red-buttons" {{ $unreaded ?? '' }}>
-				<a href="/user/dashboard" title="@lang('user-sidebar.profile')">
-					<i class="fa fa-user-circle-o icon-profile-menu-line" aria-hidden="true"></i>
-					<span>@lang('user-sidebar.profile')</span>
+			<li class="{{ activeIfRouteIs('user/dashboard') }} red-buttons" {{ $unreaded ?? '' }}>
+				<a href="/user/dashboard" title="@lang('user-sidebar.work')">
+					<i class="fa fa-suitcase icon-profile-menu-line" aria-hidden="true"></i>
+					<span>@lang('user-sidebar.work')</span>
 				</a>
 			</li>
 			<li class="{{ activeIfRouteIs('items/create') }}">
@@ -43,18 +43,6 @@
 					<span>@lang('logs.logs')</span>
 				</a>
 			</li>
-			{{-- <li class="remove-hover">
-				<a href="#">
-					<i class="fa fa-cog icon-profile-menu-line" aria-hidden="true"></i>
-					<span>@lang('user-sidebar.settings')</span>
-				</a>
-			</li>
-			<li class="{{ activeIfRouteIs('settings/general') }}">
-				<a href="/settings/general" title="@lang('user-sidebar.general')">
-					<i class="fa fa-angle-right icon-profile-menu-line" aria-hidden="true"></i>
-					<span>@lang('user-sidebar.general')</span>
-				</a>
-			</li> --}}
 		</ul>
 		<li>
 			<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="@lang('user-sidebar.exit')">
