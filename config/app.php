@@ -163,6 +163,7 @@ return [
         App\Providers\FooterProvider::class,
         App\Providers\EloquentEventProvider::class,
         App\Providers\GsmProvider::class,
+        App\Providers\BladeProvider::class,
 
     ],
 
