@@ -4,13 +4,23 @@ $lightGray: #e0e0e0;
 $gray: #646464;
 $darkGray: #444;
 $pink: #EDE2ED;
-$gsmColor: #EDE3ED;
+$gsmColor: #ecdfec;
 $lightPink: #f9f8f6;
 $darkPink: #ecdcdc;
 $darkestPink: #974c4c;
 
+// Primary Btn
+$btnPrimaryText: #311b28;
+$btnPrimaryBorder: #e8e2d3;
+$btnPrimaryBg: #f7f1f7;
+
+// Success Btn
+$btnSuccessText: darken($color: $btnPrimaryBg, $amount: 70);
+$btnSuccessBorder: darken($color: $btnPrimaryBg, $amount: 3);
+$btnSuccessBg: #ecdcdc;
+
 // Typography
-$mainFont: 'Montserrat', Arial, Helvetica, sans-serif;
+$mainFont: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 
 // Other
 $sliderBorder: solid 4px $darkGray;
