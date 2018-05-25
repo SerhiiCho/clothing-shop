@@ -37,8 +37,7 @@
 		</section>
 		<section v-else class="p-1">
 			<h5 class="text-center pb-4">
-				<i class="fa fa-frown-o" aria-hidden="true"></i> 
-				{{ noorders }}
+				<button-back :title="noorders"></button-back>
 			</h5>
 		</section>
 	</section>
