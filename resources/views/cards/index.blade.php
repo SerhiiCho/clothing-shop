@@ -39,7 +39,14 @@
 		<div class="alert alert-light mb-3" role="alert">
 			@lang('cards.amount_of_cards'): {{ $cards->count() }} / 3
 		</div>
-		<a href="/cards/create" title="@lang('cards.add_card')" class="btn btn-dark">@lang('cards.add_card')</a>
+
+		{{-- Add card btn --}}
+		<a href="/cards/create" title="@lang('cards.add_card')" class="btn btn-dark">
+			@lang('cards.add_card')
+		</a>
+
+		{{-- Back btn --}}
+		<button-back :title="{{ json_encode(trans('messages.back')) }}"></button-back>
 	</div>
 </div>
 

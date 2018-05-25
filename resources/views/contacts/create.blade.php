@@ -67,9 +67,15 @@
 					</div>
 				@endisset
 
-				<button type="submit" class="btn btn-dark btn-block" title="@lang('contacts.add_contact')">
-					@lang('contacts.add_contact')
-				</button>
+				<div class="text-center">
+					{{-- Add contact btn --}}
+					<button type="submit" class="btn btn-dark" title="@lang('contacts.add_contact')">
+						@lang('contacts.add_contact')
+					</button>
+	
+					{{-- Back btn --}}
+					<button-back :title="{{ json_encode(trans('messages.back')) }}"></button-back>
+				</div>
 			</form>
 		</div>
 	</div>

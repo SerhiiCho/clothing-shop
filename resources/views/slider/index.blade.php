@@ -35,6 +35,7 @@
 
 									@csrf @method('delete')
 
+									{{-- Delete slide btn --}}
 									<button type="submit" class="btn btn-danger" title="@lang('slider.delete')">
 										<i class="fa fa-trash-o" aria-hidden="true"></i>
 									</button>
@@ -50,7 +51,13 @@
 		<div class="alert alert-light mb-3" role="alert">
 			@lang('slider.amount_of_slides'): {{ $slider->count() }}
 		</div>
-		<a href="/slider/create" title="@lang('slider.add_slide')" class="btn btn-dark">@lang('slider.add_slide')</a>
+		{{-- Add slide btn --}}
+		<a href="/slider/create" title="@lang('slider.add_slide')" class="btn btn-dark">
+			@lang('slider.add_slide')
+		</a>
+		
+		{{-- Back btn --}}
+		<button-back :title="{{ json_encode(trans('messages.back')) }}"></button-back>
 	</div>
 </div>
 

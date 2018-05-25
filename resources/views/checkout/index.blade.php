@@ -42,9 +42,12 @@
 					</div>
 				</div>
 				<hr class="mb-4">
-				<button class="btn btn-dark btn-lg btn-block" type="submit" id="submit-button" onclick="disableButton()">
+				{{-- Checkout button --}}
+				<button class="btn btn-success pull-right pl-5 pr-5" type="submit" id="submit-button" onclick="disableButton()">
 					@lang('cart.order')
 				</button>
+
+				<button-back :title="{{ json_encode(trans('messages.back')) }}"></button-back>
 			</form>
 		</div>
 	</div>

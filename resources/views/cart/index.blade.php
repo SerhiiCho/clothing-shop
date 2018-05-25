@@ -53,9 +53,7 @@
 			<tfoot>
 				<tr>
 					<td>
-						<a href="#" class="btn btn-dark">
-							<i class="fa fa-angle-left"></i> @lang('messages.back')
-						</a>
+						<button-back :title="{{ json_encode(trans('messages.back')) }}"></button-back>
 					</td>
 					<td class="hidden-xs text-center">
 						<strong>
@@ -73,9 +71,7 @@
 	@else
 		<p class="text-center pt-5">@lang('cart.empty')</p>
 		<p class="text-center pb-5">
-			<a href="{{ url()->previous() }}" class="btn btn-dark" title="@lang('messages.back')">
-				&laquo; @lang('messages.back')
-			</a>
+			<button-back :title="{{ json_encode(trans('messages.back')) }}"></button-back>
 		</p>
 	@endif
 
