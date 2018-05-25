@@ -17,7 +17,7 @@ class CreateItemsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('content');
-            $table->string('category');
+            $table->string('category', 20);
             $table->boolean('stock')->default(1);
             $table->float('price');
             $table->integer('popular')->default(0);
