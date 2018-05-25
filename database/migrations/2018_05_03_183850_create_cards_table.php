@@ -15,8 +15,9 @@ class CreateCardsTable extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('type_id');
+            $table->string('category', 20);
             $table->string('image', 100);
-            $table->string('type_id', 20);
         });
     }
 
