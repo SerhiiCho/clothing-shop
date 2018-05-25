@@ -12,7 +12,7 @@
 			@foreach ($cards as $card)
 				<div class="col-12 col-md-4 one-card position-relative">
 					<img src="{{ asset('storage/img/cards/'. $card->image) }}" alt="">
-					<a href="/items?type={{ $card->type_id }}" title="{{ $card->type->name }}" class="card-btn">
+					<a href="/items?category={{ $card->category }}&type={{ $card->type_id }}" title="{{ $card->type->name }}" class="card-btn">
 						<span>{{ $card->type->name }}</span>
 					</a>
 
