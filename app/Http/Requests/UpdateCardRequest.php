@@ -16,7 +16,8 @@ class UpdateCardRequest extends FormRequest
     public function rules()
     {
         return [
-            'type' => 'required|max:30|numeric'
+            'type' => 'required|digits_between:0,5000|numeric',
+            'category' => 'required|max:30',
         ];
 	}
 	
@@ -24,9 +25,11 @@ class UpdateCardRequest extends FormRequest
 	public function messages()
     {
         return [
-            'type.required' 	=> trans('cards.type_required'),
-            'type.max' 			=> trans('cards.type_max'),
-            'type.numeric' 		=> trans('cards.type_numeric')
+            'type.required' => trans('cards.type_required'),
+            'category.required' => trans('cards.category_required'),
+            'category.max' => trans('cards.category_max'),
+            'type.digits_between' => trans('cards.type_digits_between'),
+            'type.numeric' => trans('cards.type_numeric')
         ];
     }
 }
