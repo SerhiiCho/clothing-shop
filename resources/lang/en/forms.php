@@ -11,6 +11,7 @@ return [
 	'input_name' => 'Name',
 	'confirm_password' => 'Confirm Password',
 	'choose_file' => 'Choose file',
+	'choose_type' => 'Choose type',
 	'choose_category' => 'Choose category',
 
 ];

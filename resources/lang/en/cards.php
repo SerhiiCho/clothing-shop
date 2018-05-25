@@ -15,10 +15,12 @@ return [
 
 	// Validation
 	'img_required' => 'Image field is required',
-	'type_required' => 'Category field is required',
+	'type_required' => '"Type" field is required',
+	'category_required' => '"Category" field is required',
+	'category_max' => 'Value of "Category" field should be maximum :max charecters',
 	'image_max' => 'Image should be maximum :max',
-	'type_numeric' => 'Choose category',
-	'type_max' => 'Max length of category field should be maximum :max',
+	'type_numeric' => 'Choose type',
+	'type_digits_between' => 'Value of "Type" field should be between :min and :max digits',
 
 	// Controller
 	'card_added' => 'The card was added',

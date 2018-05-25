@@ -10,6 +10,7 @@ return [
 	'title_required' => 'Field name is required',
 	'content_required' => 'Field description is required',
 	'category_required' => 'The category field is required',
+	'category_max' => 'Value of the category field should be :max charecters',
 	'type_required' => 'Field type is required',
 	'image_required' => 'Add image',
 	'price_required' => 'Price is required',
