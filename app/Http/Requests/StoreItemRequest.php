@@ -18,7 +18,7 @@ class StoreItemRequest extends FormRequest
 		$rules = [
 			'title' => 'required|min:4|max:80',
 			'content' => 'required|min:4|max:3000',
-			'category' => 'required',
+			'category' => 'required|max:20',
 			'type' => 'required',
 			'price' => 'required|numeric|digits_between:2,6'
 		];
@@ -43,6 +43,7 @@ class StoreItemRequest extends FormRequest
             'title.required' => trans('items.title_required'),
             'content.required' => trans('items.content_required'),
             'category.required' => trans('items.category_required'),
+            'category.max' => trans('items.category_max'),
             'type.required' => trans('items.type_required'),
             'photos.required' => trans('items.image_required'),
             'price.required' => trans('items.price_required'),

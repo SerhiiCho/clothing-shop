@@ -16,8 +16,9 @@ class StoreCardRequest extends FormRequest
     public function rules()
     {
         return [
-            'image'  	 => 'required|max:1999',
-            'type'		 => 'required|max:30|numeric'
+            'image' => 'required|max:1999',
+			'type' => 'required|digits_between:0,5000|numeric',
+			'category' => 'required|max:30',
         ];
 	}
 	
@@ -25,11 +26,13 @@ class StoreCardRequest extends FormRequest
 	public function messages()
     {
         return [
-            'image.required' 	=> trans('cards.img_required'),
-            'type.required' 	=> trans('cards.type_required'),
-            'image.max' 		=> trans('cards.image_max'),
-            'type.max' 			=> trans('cards.type_max'),
-            'type.numeric' 		=> trans('cards.type_numeric')
+			'image.required' => trans('cards.img_required'),
+			'category.required' => trans('cards.category_required'),
+            'category.max' => trans('cards.category_max'),
+            'type.required' => trans('cards.type_required'),
+            'image.max' => trans('cards.image_max'),
+            'type.digits_between' => trans('cards.type_digits_between'),
+            'type.numeric' => trans('cards.type_numeric')
         ];
     }
 }
