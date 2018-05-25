@@ -22,31 +22,12 @@ class ApiItemController extends Controller
 		return ItemResource::collection($items);
 	}
 
-    public function store(Request $request)
-    {
-		$id = $request->item_id;
-		$item
-			= $request->isMethod('put')
-			? Item::findOrFail($id)
-			: new Item;
-
-		$item->id = $request->input('item_id');
-		$item->title = $request->input('title');
-		$item->content = $request->input('content');
-		$item->sex = $request->input('sex');
-		$item->category = $request->input('category');
-		$item->price = $request->input('price');
-		$item->save();
-
-		return new ItemResource($item);
-    }
-
 
     public function show(Item $item)
     {
 		return new ItemResource($item);
 	}
-	
+
 
     public function random($category)
     {
@@ -62,7 +43,7 @@ class ApiItemController extends Controller
     {
 		$items = Item::take(12)->orderBy('popular', 'desc')->get();
 		return ItemResource::collection($items);
-    }
+	}
 
 
     public function destroy($id)
