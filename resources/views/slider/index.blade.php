@@ -26,7 +26,7 @@
 
 							{{-- Edit button --}}
 							@admin
-								<a href="slider/{{ $slide->id }}/edit" class="btn btn-dark" title="@lang('slider.edit')">
+								<a href="slider/{{ $slide->id }}/edit" class="btn btn-success" title="@lang('slider.edit')">
 									<i class="fa fa-pencil" aria-hidden="true"></i>
 								</a>
 
@@ -36,7 +36,7 @@
 									@csrf @method('delete')
 
 									{{-- Delete slide btn --}}
-									<button type="submit" class="btn btn-danger" title="@lang('slider.delete')">
+									<button type="submit" class="btn btn-success" title="@lang('slider.delete')">
 										<i class="fa fa-trash-o" aria-hidden="true"></i>
 									</button>
 								</form>
@@ -52,7 +52,7 @@
 			@lang('slider.amount_of_slides'): {{ $slider->count() }}
 		</div>
 		{{-- Add slide btn --}}
-		<a href="/slider/create" title="@lang('slider.add_slide')" class="btn btn-dark">
+		<a href="/slider/create" title="@lang('slider.add_slide')" class="btn btn-success">
 			@lang('slider.add_slide')
 		</a>
 		

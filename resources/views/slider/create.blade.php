@@ -23,10 +23,13 @@
 				<input type="number" class="form-control" name="order" placeholder="@lang('slider.choose_order_number')">
 			</div>
 
-			<button type="submit" class="btn btn-dark btn-block mt-3">
+			{{-- Add slide button --}}
+			<button type="submit" class="btn btn-success btn-block mt-3">
 				@lang('slider.add_slide')
 			</button>
-			<a href="/slider" title="@lang('messages.back')" class="btn btn-dark btn-block mt-2">
+
+			{{-- Back button --}}
+			<a href="/slider" title="@lang('messages.back')" class="btn btn-primary btn-block mt-2">
 				@lang('messages.back')
 			</a>
 		</form>

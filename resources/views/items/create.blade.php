@@ -55,10 +55,10 @@
 				<label class="custom-file-label" for="multiple-src-image">@lang('forms.choose_file')...</label>
 			</div>
 			
-			<button type="submit" class="btn btn-dark btn-block mt-3">
+			<button type="submit" class="btn btn-success btn-block mt-3">
 				@lang('items.add_item')
 			</button>
-			<a href="/items" title="@lang('messages.back')" class="btn btn-dark btn-block mt-2">
+			<a href="/items" title="@lang('messages.back')" class="btn btn-primary btn-block mt-2">
 				@lang('messages.back')
 			</a>
 		</form>

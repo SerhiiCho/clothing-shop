@@ -29,7 +29,7 @@
 				</div>
 
 				{{-- Save btn --}}
-				<button type="submit" class="btn btn-dark btn-block" title="@lang('contacts.change_contact')">
+				<button type="submit" class="btn btn-success btn-block" title="@lang('contacts.change_contact')">
 					@lang('contacts.save')
 				</button>
 			</form>
@@ -37,13 +37,13 @@
 				@csrf @method('delete')
 
 				{{-- Delete btn --}}
-				<button class="btn btn-danger btn-block" title="@lang('contacts.delete')">
+				<button class="btn btn-primary btn-block" title="@lang('contacts.delete')">
 					@lang('contacts.delete')
 				</button>
 			</form>
 
 			{{-- Back btn --}}
-			<a href="/contacts/create" title="@lang('messages.back')" class="btn btn-dark btn-block mt-2">
+			<a href="/contacts/create" title="@lang('messages.back')" class="btn btn-primary btn-block mt-2">
 				@lang('messages.back')
 			</a>
 		</div>

@@ -61,10 +61,10 @@
 				<label class="custom-file-label" for="multiple-src-image">@lang('forms.choose_file')...</label>
 			</div>
 
-			<button type="submit" class="btn btn-dark btn-block mt-3">
+			<button type="submit" class="btn btn-success btn-block mt-3">
 				@lang('items.save_item')
 			</button>
-			<a href="/items" title="@lang('messages.back')" class="btn btn-dark btn-block mt-2">
+			<a href="/items" title="@lang('messages.back')" class="btn btn-primary btn-block mt-2">
 				@lang('messages.back')
 			</a>
 		</form>
@@ -88,7 +88,7 @@
 				@endfor
 			</div>
 			<div class="text-center">
-				<a href="/item/{{ $item->category }}/{{ $item->id }}" class="btn btn-light mt-3 pl-3 pr-3" title="@lang('items.go_to_product_with_title', ['title' => $item->title])">
+				<a href="/item/{{ $item->category }}/{{ $item->id }}" class="btn btn-primary mt-3 pl-3 pr-3" title="@lang('items.go_to_product_with_title', ['title' => $item->title])">
 					@lang('items.go_to_product') &raquo;
 				</a>
 			</div>

@@ -18,7 +18,7 @@
 
 					{{-- Edit button --}}
 					@admin
-						<a href="/cards/{{ $card->id }}/edit" class="btn btn-dark position-absolute" title="@lang('cards.change_card')" style="left:1.8em; bottom:0; opacity:.8;">
+						<a href="/cards/{{ $card->id }}/edit" class="btn btn-primary position-absolute" title="@lang('cards.change_card')" style="left:1.8em; bottom:0; opacity:.8;">
 							<i class="fa fa-pencil" aria-hidden="true"></i>
 						</a>
 
@@ -26,7 +26,7 @@
 						<form action="{{ action('CardController@destroy', ['id' => $card->id]) }}" method="post" onsubmit='return confirm("@lang('cards.are_you_sure_you_want_delete')")' class="position-absolute" style="right:1.8em; bottom:0; opacity:.8;">
 							@csrf @method('delete')
 
-							<button type="submit" class="btn btn-danger" title="@lang('cards.delete_card')">
+							<button type="submit" class="btn btn-primary" title="@lang('cards.delete_card')">
 								<i class="fa fa-trash-o" aria-hidden="true"></i>
 							</button>
 						</form>
@@ -41,7 +41,7 @@
 		</div>
 
 		{{-- Add card btn --}}
-		<a href="/cards/create" title="@lang('cards.add_card')" class="btn btn-dark">
+		<a href="/cards/create" title="@lang('cards.add_card')" class="btn btn-success">
 			@lang('cards.add_card')
 		</a>
 

@@ -41,7 +41,8 @@
 				</div>
 			</div>
 
-			<button type="submit" class="btn btn-dark btn-block mt-3" title="@lang('cards.save_changes')">
+			{{-- Save button --}}
+			<button type="submit" class="btn btn-success btn-block mt-3" title="@lang('cards.save_changes')">
 				@lang('cards.save_changes')
 			</button>
 		</form>
@@ -51,11 +52,15 @@
 
 			@csrf @method('delete')
 
-			<button type="submit" class="btn btn-danger btn-block" title="@lang('cards.delete_card')">
+			<button type="submit" class="btn btn-primary btn-block" title="@lang('cards.delete_card')">
 				@lang('cards.delete_card')
 			</button>
 		</form>
-		<a href="/cards" title="@lang('messages.back')" class="btn btn-dark btn-block mt-2">@lang('messages.back')</a>
+
+		{{-- Back button --}}
+		<a href="/cards" title="@lang('messages.back')" class="btn btn-primary btn-block mt-2">
+			@lang('messages.back')
+		</a>
 	</div>
 </div>
 
