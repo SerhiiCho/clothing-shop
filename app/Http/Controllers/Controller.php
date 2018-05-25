@@ -12,13 +12,5 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
 	use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-	
-	public function log($message, $file_name = 'errors.log')
-	{
-		$view_log = new Logger('errors');
-		$view_log->pushHandler(new StreamHandler(
-			storage_path('/logs/' . $file_name), Logger::INFO
-		));
-		$view_log->addInfo($message);
-	}
+
 }
