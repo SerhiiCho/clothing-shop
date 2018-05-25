@@ -10,6 +10,5 @@ class DatabaseSeeder extends Seeder
 		$this->call(UserTableSeeder::class);
 		$this->call(TypesSeeder::class);
 		$this->call(AddIconsToIconTable::class);
-		$this->call(AddSlideToSliderTable::class);
     }
 }
