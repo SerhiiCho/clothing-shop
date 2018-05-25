@@ -14,8 +14,8 @@
 				</a>
 
 				<!-- Delete button -->
-				<a v-if="admin == 1" v-on:click="deleteItem(item.id)" href="#" :title="deleting" class="btn-change-item" style="top:55px; background:brown;">
-					<i class="fa fa-trash-o" aria-hidden="true" style="color:#fff;"></i>
+				<a v-if="admin == 1" v-on:click="deleteItem(item.id)" href="#" :title="deleting" class="btn-change-item" style="top:55px;">
+					<i class="fa fa-trash-o" aria-hidden="true"></i>
 				</a>
 			</div>
 		</div>
