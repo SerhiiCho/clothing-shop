@@ -19,6 +19,7 @@ li {
 
 body {
   background: #f9f8f6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 main {
@@ -28,10 +29,6 @@ main {
 .wrapper {
   max-width: 1200px;
   margin: auto;
-}
-
-.btn {
-  border-radius: 2px;
 }
 
 @media (min-width: 840px) {
@@ -364,7 +361,7 @@ header {
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  background: #EDE3ED;
+  background: #f2e9f2;
   font-weight: bold;
   font-size: .9em;
   padding: .4em 0;
