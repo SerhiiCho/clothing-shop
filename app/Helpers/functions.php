@@ -13,7 +13,7 @@ function activeIfRouteIs($route, $request = null, $get = null) {
  * for images than I'm saving in storage
  */
 function getFileName($title, $ext) {
-    return str_slug($title) . '-' . str_random(20) . '.' . $ext;
+    return str_slug($title) . '-' . str_random(7) . '.' . $ext;
 }
 
 /**
