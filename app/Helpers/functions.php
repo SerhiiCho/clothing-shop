@@ -8,6 +8,10 @@ function activeIfRouteIs($route, $request = null, $get = null) {
 	return request()->is($route) ? 'active' : '';
 }
 
+function user() {
+	return auth()->user();
+}
+
 /**
  * This function is needed for getting name
  * for images than I'm saving in storage
