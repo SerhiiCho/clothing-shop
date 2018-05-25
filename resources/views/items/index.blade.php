@@ -33,9 +33,9 @@
 	
 			<div class="{{ $sidebar ? 'col-md-9' : 'col-md-10 offset-md-1' }}">
 				<section class="display-4 p-4 text-center">{{ whatIsCurrent('title') }}</section>
-				<button-show-categories
+				<categories-button
 					:categories="{{ json_encode(trans('navigation.types')) }}"
-				></button-show-categories>
+				></categories-button>
 				<items
 					:admin={{ json_encode(optional(auth()->user())->admin) }}
 					:allitems="{{ json_encode(trans('items.all_items')) }}"
