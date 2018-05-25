@@ -1,5 +1,5 @@
 <template>
-	<a @click="goBack()" href="#" class="btn btn-dark" :title="title">
+	<a @click="goBack()" href="#" class="btn btn-primary" :title="title">
 		&laquo; {{ title }}
 	</a>
 </template>
