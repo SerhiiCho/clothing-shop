@@ -1,22 +1,20 @@
 
 @if (count($errors) > 0)
 	<div class="container mt-3 mb-3">
-		<ul class="alert alert-danger">
-			@foreach ($errors->all() as $error)
-				<li>{{ $error }}</li> 
-			@endforeach
-		</ul>
+		@foreach ($errors->all() as $error)
+			<message state="error">{{ $error }}</message>
+		@endforeach
 	</div>
 @endif
 
 @if (session('success'))
 	<div class="container mt-3 mb-3">
-		<div class="alert alert-success" role="alert">{{ session('success') }}</div>
+		<message state="success">{{ session('success') }}</message>
 	</div>
 @endif
 
 @if (session('error'))
 	<div class="container mt-3 mb-3">
-		<div class="alert alert-danger" role="alert">{{ session('error') }}</div>
+		<message state="error">{{ session('error') }}</message>
 	</div>
 @endif

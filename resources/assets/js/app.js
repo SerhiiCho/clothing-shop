@@ -28,6 +28,7 @@ Vue.component('sidebar', require('./components/items/Sidebar.vue'));
 // Other
 Vue.component('categories-button', require('./components/CategoriesButton.vue'));
 Vue.component('button-back', require('./components/ButtonBack.vue'));
+Vue.component('message', require('./components/Message.vue'));
 Vue.component('clients-orders', require('./components/ClientsOrders.vue'));
 
 
