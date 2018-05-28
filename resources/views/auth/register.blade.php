@@ -31,7 +31,7 @@
 				<input id="password-confirm" class="form-control" type="password" name="password_confirmation" placeholder="@lang('forms.confirm_password')" required>
 			</div>
 
-			<button type="submit" class="btn btn-pink">@lang('forms.register_title')</button>
+			<button type="submit" class="btn btn-success">@lang('forms.register_title')</button>
 		</form>
 	</div>
 </div>

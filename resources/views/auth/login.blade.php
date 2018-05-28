@@ -15,13 +15,12 @@
 				<label for="email">@lang('forms.input_email_address')</label>
 				<input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="@lang('forms.input_email_address')" class="form-control" required autofocus>
 			</div>
-			
+
 			<div class="form-group">
 				<label for="password">@lang('forms.input_password')</label>
 				<input id="password" type="password" name="password" class="form-control" placeholder="@lang('forms.input_password')" required>
 			</div>
-			
-			
+
 			<div class="form-group">
 				<div class="form-check">
 					<input class="form-check-input" type="checkbox" name="remember" id="form-check-input" {{ old('remember') ? 'checked' : '' }}>
@@ -31,7 +30,7 @@
 				</div>
 			</div>
 
-			<button type="submit" class="btn btn-pink">@lang('forms.login_title')</button>
+			<button type="submit" class="btn btn-success">@lang('forms.login_title')</button>
 			
 			{{-- <a href="{{ route('password.request') }}">
 				@lang('forms.forgot_password')
