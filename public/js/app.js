@@ -3907,8 +3907,7 @@ module.exports = function define(target, mixin) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(132);
-__webpack_require__(375);
-module.exports = __webpack_require__(376);
+module.exports = __webpack_require__(375);
 
 
 /***/ }),
@@ -21212,7 +21211,7 @@ var render = function() {
         _c(
           "form",
           {
-            staticClass: "col-12 phone-form",
+            staticClass: "col-12",
             attrs: { action: "/cart/store", method: "post" }
           },
           [
@@ -21236,9 +21235,14 @@ var render = function() {
               domProps: { value: _vm.item.price }
             }),
             _vm._v(" "),
-            _c("button", { attrs: { type: "submit", title: _vm.addToCart } }, [
-              _vm._v(_vm._s(_vm.addToCart))
-            ]),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-success",
+                attrs: { type: "submit", title: _vm.addToCart }
+              },
+              [_vm._v(_vm._s(_vm.addToCart))]
+            ),
             _vm._v(" "),
             _c("hr", { staticClass: "mt-3" })
           ]
@@ -22163,12 +22167,6 @@ if (false) {
 
 /***/ }),
 /* 375 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 376 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
