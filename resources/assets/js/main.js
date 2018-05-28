@@ -36,41 +36,39 @@ window.onscroll = () => {
     }
 }
 
-// This function auto updates pictures after
-// selecting them via file input
+let imagesObj = {
+	fileInput: id("multiple-src-image"),
+	defaultImgPath: '/storage/img/clothes/default.jpg',
+	readers: [
+		new FileReader(),
+		new FileReader(),
+		new FileReader(),
+		new FileReader(),
+		new FileReader()
+	],
+	imgWithNumber: (num) => id("target-image" + num),
+	filesNotEqualNull: () => id("multiple-src-image").files.length <= 0 ? false : true,
+}
+
 if (id("multiple-src-image")) {
-	((function showImages() {
-
-		// For every image, we create FileReader object
-		let src = id("multiple-src-image")
-		let readers = [
-			new FileReader(),
-			new FileReader(),
-			new FileReader(),
-			new FileReader(),
-			new FileReader()
-		]
-
-		// Listen to file input
-		src.addEventListener("change", ()=> {
-			if (src.files.length !== 0) {
-				// For every image on the page we set fake url of the choosen photo
-				// Otherwice we will set the photo with default pic
-				for (let i = 0, num = 1; i < readers.length; i++, num++) {
-					if (src.files[i]) {
-						readers[i].readAsDataURL(src.files[i])
-						readers[i].onload = function(e) { id("target-image" + num).src = this.result }
-					} else {
-						id("target-image" + num).src = '/storage/img/clothes/default.jpg'
+	imagesObj.fileInput.addEventListener('change', () => {
+		if (imagesObj.filesNotEqualNull()) {
+			for (let i = 0, num = 1; i < imagesObj.readers.length; i++, num++) {
+				if (imagesObj.fileInput.files[i]) {
+					imagesObj.readers[i].readAsDataURL(imagesObj.fileInput.files[i])
+					imagesObj.readers[i].onload = function (e) {
+						imagesObj.imgWithNumber(num).src = this.result
 					}
-				}
-			} else {
-				for (let i = 1; i <= 5; i++) {
-					id("target-image" + i).src = '/storage/img/clothes/default.jpg'
+				} else {
+					imagesObj.imgWithNumber(i).src = imagesObj.defaultImgPath
 				}
 			}
-		})
-	})())
+		} else {
+			for (let i = 1; i <= 5; i++) {
+				imagesObj.imgWithNumber(i).src = imagesObj.defaultImgPath
+			}
+		}
+	})
 }
 
 // This object auto updates pictures after

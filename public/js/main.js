@@ -38,41 +38,41 @@ window.onscroll = function () {
 	}
 };
 
-// This function auto updates pictures after
-// selecting them via file input
+var imagesObj = {
+	fileInput: id("multiple-src-image"),
+	defaultImgPath: '/storage/img/clothes/default.jpg',
+	readers: [new FileReader(), new FileReader(), new FileReader(), new FileReader(), new FileReader()],
+	imgWithNumber: function imgWithNumber(num) {
+		return id("target-image" + num);
+	},
+	filesNotEqualNull: function filesNotEqualNull() {
+		return id("multiple-src-image").files.length <= 0 ? false : true;
+	}
+};
+
 if (id("multiple-src-image")) {
-	(function showImages() {
-
-		// For every image, we create FileReader object
-		var src = id("multiple-src-image");
-		var readers = [new FileReader(), new FileReader(), new FileReader(), new FileReader(), new FileReader()];
-
-		// Listen to file input
-		src.addEventListener("change", function () {
-			if (src.files.length !== 0) {
-				var _loop = function _loop(i, num) {
-					if (src.files[i]) {
-						readers[i].readAsDataURL(src.files[i]);
-						readers[i].onload = function (e) {
-							id("target-image" + num).src = this.result;
-						};
-					} else {
-						id("target-image" + num).src = '/storage/img/clothes/default.jpg';
-					}
-				};
-
-				// For every image on the page we set fake url of the choosen photo
-				// Otherwice we will set the photo with default pic
-				for (var i = 0, num = 1; i < readers.length; i++, num++) {
-					_loop(i, num);
+	imagesObj.fileInput.addEventListener('change', function () {
+		if (imagesObj.filesNotEqualNull()) {
+			var _loop = function _loop(i, num) {
+				if (imagesObj.fileInput.files[i]) {
+					imagesObj.readers[i].readAsDataURL(imagesObj.fileInput.files[i]);
+					imagesObj.readers[i].onload = function (e) {
+						imagesObj.imgWithNumber(num).src = this.result;
+					};
+				} else {
+					imagesObj.imgWithNumber(i).src = imagesObj.defaultImgPath;
 				}
-			} else {
-				for (var i = 1; i <= 5; i++) {
-					id("target-image" + i).src = '/storage/img/clothes/default.jpg';
-				}
+			};
+
+			for (var i = 0, num = 1; i < imagesObj.readers.length; i++, num++) {
+				_loop(i, num);
 			}
-		});
-	})();
+		} else {
+			for (var i = 1; i <= 5; i++) {
+				imagesObj.imgWithNumber(i).src = imagesObj.defaultImgPath;
+			}
+		}
+	});
 }
 
 // This object auto updates pictures after
