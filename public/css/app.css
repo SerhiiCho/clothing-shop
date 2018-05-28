@@ -646,27 +646,6 @@ header {
   background: #fff;
 }
 
-.single-container .phone-form {
-  margin: .3em 0;
-  color: #646464;
-}
-
-.single-container .phone-form button {
-  border-radius: 3px;
-  border: solid 1px #ecdcdc;
-  padding: 5px 10px;
-  background: #ecdcdc;
-  cursor: pointer;
-  -webkit-transition: background-color 300ms;
-  transition: background-color 300ms;
-}
-
-.single-container .phone-form button:hover {
-  background: #e3cbcb;
-  -webkit-transition: background-color 300ms;
-  transition: background-color 300ms;
-}
-
 .images-to-show {
   width: 70px;
 }
