@@ -6,8 +6,9 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+	.babel('resources/assets/js/main.js', 'public/js/main.js')
 	.sass('resources/assets/sass/app.scss', 'public/css')
-	.sass('resources/assets/sass/bootstrap.scss', 'public/css')
+	//.sass('resources/assets/sass/bootstrap.scss', 'public/css')
 	.disableNotifications()
 	.browserSync({
 		proxy: 'localhost:8000',
