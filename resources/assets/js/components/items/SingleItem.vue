@@ -46,12 +46,12 @@
 				</span>
 
 				<!-- Add To Cart -->
-				<form action="/cart/store" method="post" class="col-12 phone-form">
+				<form action="/cart/store" method="post" class="col-12">
 					<input type="hidden" name="_token" :value="token">
 					<input type="hidden" name="id" :value="item.id">
 					<input type="hidden" name="title" :value="item.title">
 					<input type="hidden" name="price" :value="item.price">
-					<button type="submit" :title="addToCart">{{ addToCart }}</button>
+					<button type="submit" :title="addToCart" class="btn btn-outline-success">{{ addToCart }}</button>
 					<hr class="mt-3" />
 				</form>
 
