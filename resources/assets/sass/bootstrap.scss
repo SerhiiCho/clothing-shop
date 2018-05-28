@@ -455,75 +455,14 @@ mark,
 	padding-left: 0;
 }
 
-.col-1,
-.col-2,
-.col-3,
-.col-4,
-.col-5,
-.col-6,
-.col-7,
-.col-8,
-.col-9,
-.col-10,
-.col-11,
-.col-12,
-.col,
-.col-auto,
-.col-sm-1,
-.col-sm-2,
-.col-sm-3,
-.col-sm-4,
-.col-sm-5,
-.col-sm-6,
-.col-sm-7,
-.col-sm-8,
-.col-sm-9,
-.col-sm-10,
-.col-sm-11,
-.col-sm-12,
-.col-sm,
-.col-sm-auto,
-.col-md-1,
-.col-md-2,
-.col-md-3,
-.col-md-4,
-.col-md-5,
-.col-md-6,
-.col-md-7,
-.col-md-8,
-.col-md-9,
-.col-md-10,
-.col-md-11,
-.col-md-12,
-.col-md,
-.col-md-auto,
-.col-lg-1,
-.col-lg-2,
-.col-lg-3,
-.col-lg-4,
-.col-lg-5,
-.col-lg-6,
-.col-lg-7,
-.col-lg-8,
-.col-lg-9,
-.col-lg-10,
-.col-lg-11,
-.col-lg-12,
-.col-lg,
-.col-lg-auto,
-.col-xl-1,
-.col-xl-2,
-.col-xl-3,
-.col-xl-4,
-.col-xl-5,
-.col-xl-6,
-.col-xl-7,
-.col-xl-8,
-.col-xl-9,
-.col-xl-10,
-.col-xl-11,
-.col-xl-12,
-.col-xl,
+.col-1,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,
+.col-9,.col-10,.col-11,.col-12,.col,.col-auto,.col-sm-1,.col-sm-2,
+.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-10,.col-sm-11,
+.col-sm-12,.col-sm,.col-sm-auto,.col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,
+.col-md-7,.col-md-8,.col-md-9,.col-md-10,.col-md-11,.col-md-12,.col-md,.col-md-auto,
+.col-lg-1,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,
+.col-lg-10,.col-lg-11,.col-lg-12,.col-lg,.col-lg-auto,.col-xl-1,.col-xl-2,.col-xl-3,.col-xl-4,
+.col-xl-5,.col-xl-6,.col-xl-7,.col-xl-8,.col-xl-9,.col-xl-10,.col-xl-11,.col-xl-12,.col-xl,
 .col-xl-auto {
 	position: relative;
 	width: 100%;
@@ -2544,6 +2483,7 @@ fieldset:disabled a.btn {
 	pointer-events: none;
 }
 
+// Primary button
 .btn-primary {
 	color: $btnPrimaryText;
     background-color: $btnPrimaryBg;
@@ -2565,6 +2505,28 @@ fieldset:disabled a.btn {
     border-color: darken($color: $btnPrimaryBorder, $amount: 5);
 }
 
+.btn-outline-primary {
+	color: $btnPrimaryText;
+	background-color: transparent;
+	background-image: none;
+	border-color: $btnPrimaryBorder;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+	color: darken($color: $btnPrimaryText, $amount: 3);
+	background-color: $btnPrimaryBg;
+	border-color: darken($color: $btnPrimaryBorder, $amount: 3);
+}
+
+.btn-outline-primary.disabled,
+.btn-outline-primary:disabled {
+	color: darken($color: $btnPrimaryText, $amount: 5);
+	background-color: transparent;
+}
+
+// Success button
 .btn-success {
 	color: $btnSuccessText;
     background-color: $btnSuccessBg;
@@ -2576,7 +2538,7 @@ fieldset:disabled a.btn {
 .btn-success.focus {
 	color: darken($color: $btnSuccessText, $amount: 3);
     background-color: darken($color: $btnSuccessBg, $amount: 3);
-    border-color: darken($color: $btnSuccessBorder, $amount: 3)
+    border-color: darken($color: $btnSuccessBorder, $amount: 3);
 }
 
 .btn-success.disabled,
@@ -2586,84 +2548,25 @@ fieldset:disabled a.btn {
     border-color: darken($color: $btnSuccessBorder, $amount: 5);
 }
 
-.btn-outline-primary {
-	color: #007bff;
-	background-color: transparent;
-	background-image: none;
-	border-color: #007bff;
-}
-
-.btn-outline-primary:hover {
-	color: #fff;
-	background-color: #007bff;
-	border-color: #007bff;
-}
-
-.btn-outline-primary:focus,
-.btn-outline-primary.focus {
-	-webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
-	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
-}
-
-.btn-outline-primary.disabled,
-.btn-outline-primary:disabled {
-	color: #007bff;
-	background-color: transparent;
-}
-
-.btn-outline-primary:not(:disabled):not(.disabled):active,
-.btn-outline-primary:not(:disabled):not(.disabled).active,
-.show > .btn-outline-primary.dropdown-toggle {
-	color: #fff;
-	background-color: #007bff;
-	border-color: #007bff;
-}
-
-.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
-.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
-.show > .btn-outline-primary.dropdown-toggle:focus {
-	-webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
-	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
-}
-
 .btn-outline-success {
-	color: #28a745;
+	color: $btnSuccessText;
 	background-color: transparent;
 	background-image: none;
-	border-color: #28a745;
+	border-color: $btnSuccessBorder;
 }
 
-.btn-outline-success:hover {
-	color: #fff;
-	background-color: #28a745;
-	border-color: #28a745;
-}
-
+.btn-outline-success:hover,
 .btn-outline-success:focus,
 .btn-outline-success.focus {
-	-webkit-box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
-	box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+	color: darken($color: $btnSuccessText, $amount: 3);
+	background-color: $btnSuccessBg;
+	border-color: darken($color: $btnSuccessBorder, $amount: 3)
 }
 
 .btn-outline-success.disabled,
 .btn-outline-success:disabled {
-	color: #28a745;
+	color: darken($color: $btnSuccessText, $amount: 5);
 	background-color: transparent;
-}
-
-.btn-outline-success:not(:disabled):not(.disabled):active,
-.btn-outline-success:not(:disabled):not(.disabled).active,
-.show > .btn-outline-success.dropdown-toggle {
-	color: #fff;
-	background-color: #28a745;
-	border-color: #28a745;
-}
-
-.btn-outline-success:not(:disabled):not(.disabled):active:focus,
-.btn-outline-success:not(:disabled):not(.disabled).active:focus,
-.show > .btn-outline-success.dropdown-toggle:focus {
-	-webkit-box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
-	box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
 }
 
 .btn-lg,
