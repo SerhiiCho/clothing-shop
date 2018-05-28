@@ -49,6 +49,7 @@ class ItemController extends Controller
 			'price' => $request->price,
 			'type_id' => $request->type
 		]);
+
 			
 		$i = 0;
 

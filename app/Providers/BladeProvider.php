@@ -9,7 +9,12 @@ class BladeProvider extends ServiceProvider
 {
     public function boot()
     {
-        Blade::if('admin', function() {
+        $this->callMyCustomDirectives();
+	}
+
+	public function callMyCustomDirectives()
+	{
+		Blade::if('admin', function() {
 			return auth()->check() && user()->isAdmin();
 		});
 
@@ -24,5 +29,5 @@ class BladeProvider extends ServiceProvider
 		Blade::if('blogger', function() {
 			return auth()->check() && user()->isBlogger();
 		});
-    }
+	}
 }
