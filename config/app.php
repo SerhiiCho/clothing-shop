@@ -164,6 +164,7 @@ return [
         App\Providers\EloquentEventProvider::class,
         App\Providers\GsmProvider::class,
         App\Providers\BladeProvider::class,
+        App\Providers\DatabaseProvider::class,
 
     ],
 
