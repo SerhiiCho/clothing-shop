@@ -1,25 +1,6 @@
 .single-container {
 	padding-top: .5em;
 	background: #fff;
-	
-	.phone-form {
-		margin: .3em 0;
-		color: $gray;
-
-		button {
-			border-radius: 3px;
-			border: solid 1px $darkPink;
-			padding: 5px 10px;
-			background: $darkPink;
-			cursor: pointer;
-			transition: background-color 300ms;
-
-			&:hover {
-				background: darken($color: $darkPink, $amount: 5);
-				transition: background-color 300ms;
-			}
-		}
-	}
 }
 
 .images-to-show {
