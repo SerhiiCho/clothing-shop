@@ -44,7 +44,7 @@ return [
 	'select_change' => 'Enter change',
 	'price' => 'Price',
 	'all_items' => 'All product',
-	'select' => 'Enter price',
+	'select' => 'Enter price without change',
 	'added_to_cart' => 'Added to cart',
 	'we_will_contact_you' => 'We will contact you as soon as possible',
 	'you_already_send_order' => 'You have already sent your order. Will call you back shortly',
