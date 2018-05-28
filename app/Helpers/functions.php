@@ -1,5 +1,10 @@
 <?php
 
+function user() {
+	return auth()->user();
+}
+
+
 // Helper for giving an active button class "avtive"
 function activeIfRouteIs($route, $request = null, $get = null) {
 	if ($request) {
@@ -8,9 +13,6 @@ function activeIfRouteIs($route, $request = null, $get = null) {
 	return request()->is($route) ? 'active' : '';
 }
 
-function user() {
-	return auth()->user();
-}
 
 /**
  * This function is needed for getting name
@@ -19,6 +21,7 @@ function user() {
 function getFileName($title, $ext) {
     return str_slug($title) . '-' . str_random(7) . '.' . $ext;
 }
+
 
 /**
  * After editing stylesheets this function will update
@@ -32,6 +35,7 @@ function styleTimestamp($path) {
 	}
 	return '<link rel="stylesheet" href="' . $path . $timestamp . '">';
 }
+
 
 /**
  * This helper helps clean Item controller by separeting
@@ -58,4 +62,3 @@ function whatIsCurrent($param) {
 		}
 	}
 }
-
