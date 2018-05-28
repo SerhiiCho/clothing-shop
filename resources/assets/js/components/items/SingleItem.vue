@@ -1,8 +1,13 @@
 <template>
 	<section class="row pb-2">
+		<div id="myModal" class="modal">
+			<span class="close">&times;</span>
+			<img class="modal-content" id="img01">
+			<div id="caption"></div>
+		</div>
 		<div class="col-10 col-sm-9 col-lg-5 col-xl-4 text-center single-image pl-1 pr-2">
 			<img v-if="item.photos" :src="'/storage/img/clothes/' + bigPhoto" :alt="item.title">
-	
+
 			<!-- Edit button -->
 			<a v-if="admin == 1" :href="'/items/' + item.id + '/edit'" :title="change" class="btn-change-item" style="top:10px;">
 				<i class="fa fa-pencil" aria-hidden="true"></i>
@@ -15,7 +20,7 @@
 		</div>
 
 		<!-- Cards -->
-		<div class="col-1 col-sm-2 col-lg-1">
+		<div class="col-1 col-sm-2 col-lg-1" @mouseover="imageHovered = true" @mouseout="imageHovered = false">
 			<div class="row images-to-show">
 				<div v-for="(photo, index) in item.photos" v-bind:key="photo.id" class="col-12 mb-2 pl-0 pr-2" v-if="index >= 0 && index < 5">
 					<img :src="'/storage/img/clothes/' + photo.name" @mouseover="swapPhoto(photo.name, index)" :id="'photo' + index" :class="'small-images ' + giveActiveClass(index)">
@@ -68,23 +73,19 @@ export default {
 	data() {
 		return {
 			item: [],
+			imageHovered: false,
 			bigPhoto: 'default.jpg',
 			clicked: false
 		}
 	},
 
 	props: [
-		'deleteThisProduct',
-		'numberItem',
-		'addToCart',
-		'deleting',
-		'hryvnia',
-		'change',
-		'token',
-		'admin'
+		'deleteThisProduct', 'numberItem',
+		'addToCart', 'deleting', 'hryvnia',
+		'change', 'token', 'admin'
 	],
 
-	created() {
+	mounted () {
 		this.fetchItem()
 	},
 

@@ -548,6 +548,115 @@ module.exports = function (TYPE, $create) {
 
 /***/ }),
 /* 27 */
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
@@ -560,7 +669,7 @@ module.exports = Object.keys || function keys(O) {
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
@@ -607,7 +716,7 @@ module.exports = Object.create || function create(O, Properties) {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -634,7 +743,7 @@ if (__webpack_require__(7)) {
   var isObject = __webpack_require__(3);
   var toObject = __webpack_require__(9);
   var isArrayIter = __webpack_require__(83);
-  var create = __webpack_require__(28);
+  var create = __webpack_require__(29);
   var getPrototypeOf = __webpack_require__(17);
   var gOPN = __webpack_require__(39).f;
   var getIterFn = __webpack_require__(50);
@@ -1094,7 +1203,7 @@ if (__webpack_require__(7)) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Map = __webpack_require__(115);
@@ -1148,115 +1257,6 @@ module.exports = {
   key: toMetaKey,
   exp: exp
 };
-
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports) {
-
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file.
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier /* server only */
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
-
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
-
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = injectStyles
-  }
-
-  if (hook) {
-    var functional = options.functional
-    var existing = functional
-      ? options.render
-      : options.beforeCreate
-
-    if (!functional) {
-      // inject component registration as beforeCreate hook
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    } else {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return existing(h, context)
-      }
-    }
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
-  }
-}
 
 
 /***/ }),
@@ -1732,7 +1732,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 
 "use strict";
 
-var create = __webpack_require__(28);
+var create = __webpack_require__(29);
 var descriptor = __webpack_require__(32);
 var setToStringTag = __webpack_require__(45);
 var IteratorPrototype = {};
@@ -2118,7 +2118,7 @@ module.exports = document && document.documentElement;
 "use strict";
 
 // 19.1.2.1 Object.assign(target, source, ...)
-var getKeys = __webpack_require__(27);
+var getKeys = __webpack_require__(28);
 var gOPS = __webpack_require__(53);
 var pIE = __webpack_require__(49);
 var toObject = __webpack_require__(9);
@@ -3026,7 +3026,7 @@ module.exports = function (object, names) {
 
 var dP = __webpack_require__(6);
 var anObject = __webpack_require__(1);
-var getKeys = __webpack_require__(27);
+var getKeys = __webpack_require__(28);
 
 module.exports = __webpack_require__(7) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
@@ -3347,7 +3347,7 @@ module.exports = __webpack_require__(62)(MAP, function (get) {
 "use strict";
 
 var dP = __webpack_require__(6).f;
-var create = __webpack_require__(28);
+var create = __webpack_require__(29);
 var redefineAll = __webpack_require__(44);
 var ctx = __webpack_require__(19);
 var anInstance = __webpack_require__(43);
@@ -3758,7 +3758,7 @@ module.exports = function (that, maxLength, fillString, left) {
 /* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getKeys = __webpack_require__(27);
+var getKeys = __webpack_require__(28);
 var toIObject = __webpack_require__(11);
 var isEnum = __webpack_require__(49).f;
 module.exports = function (isEntries) {
@@ -3907,7 +3907,7 @@ module.exports = function define(target, mixin) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(132);
-module.exports = __webpack_require__(375);
+module.exports = __webpack_require__(378);
 
 
 /***/ }),
@@ -3947,8 +3947,8 @@ Vue.component('sidebar', __webpack_require__(363));
 // Other
 Vue.component('categories-button', __webpack_require__(366));
 Vue.component('button-back', __webpack_require__(369));
-Vue.component('message', __webpack_require__(385));
-Vue.component('clients-orders', __webpack_require__(372));
+Vue.component('message', __webpack_require__(372));
+Vue.component('clients-orders', __webpack_require__(375));
 
 var app = new Vue({
   el: '#app'
@@ -4206,11 +4206,11 @@ var isObject = __webpack_require__(3);
 var toIObject = __webpack_require__(11);
 var toPrimitive = __webpack_require__(22);
 var createDesc = __webpack_require__(32);
-var _create = __webpack_require__(28);
+var _create = __webpack_require__(29);
 var gOPNExt = __webpack_require__(101);
 var $GOPD = __webpack_require__(16);
 var $DP = __webpack_require__(6);
-var $keys = __webpack_require__(27);
+var $keys = __webpack_require__(28);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -4425,7 +4425,7 @@ setToStringTag(global.JSON, 'JSON', true);
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(27);
+var getKeys = __webpack_require__(28);
 var gOPS = __webpack_require__(53);
 var pIE = __webpack_require__(49);
 module.exports = function (it) {
@@ -4447,7 +4447,7 @@ module.exports = function (it) {
 
 var $export = __webpack_require__(0);
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-$export($export.S, 'Object', { create: __webpack_require__(28) });
+$export($export.S, 'Object', { create: __webpack_require__(29) });
 
 
 /***/ }),
@@ -4504,7 +4504,7 @@ __webpack_require__(25)('getPrototypeOf', function () {
 
 // 19.1.2.14 Object.keys(O)
 var toObject = __webpack_require__(9);
-var $keys = __webpack_require__(27);
+var $keys = __webpack_require__(28);
 
 __webpack_require__(25)('keys', function () {
   return function keys(it) {
@@ -4759,7 +4759,7 @@ var $Number = global[NUMBER];
 var Base = $Number;
 var proto = $Number.prototype;
 // Opera ~12 has broken Object#toString
-var BROKEN_COF = cof(__webpack_require__(28)(proto)) == NUMBER;
+var BROKEN_COF = cof(__webpack_require__(29)(proto)) == NUMBER;
 var TRIM = 'trim' in String.prototype;
 
 // 7.1.3 ToNumber(argument)
@@ -6848,7 +6848,7 @@ $export($export.G + $export.W + $export.F * !__webpack_require__(63).ABV, {
 /* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(29)('Int8', 1, function (init) {
+__webpack_require__(30)('Int8', 1, function (init) {
   return function Int8Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -6859,7 +6859,7 @@ __webpack_require__(29)('Int8', 1, function (init) {
 /* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(29)('Uint8', 1, function (init) {
+__webpack_require__(30)('Uint8', 1, function (init) {
   return function Uint8Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -6870,7 +6870,7 @@ __webpack_require__(29)('Uint8', 1, function (init) {
 /* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(29)('Uint8', 1, function (init) {
+__webpack_require__(30)('Uint8', 1, function (init) {
   return function Uint8ClampedArray(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -6881,7 +6881,7 @@ __webpack_require__(29)('Uint8', 1, function (init) {
 /* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(29)('Int16', 2, function (init) {
+__webpack_require__(30)('Int16', 2, function (init) {
   return function Int16Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -6892,7 +6892,7 @@ __webpack_require__(29)('Int16', 2, function (init) {
 /* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(29)('Uint16', 2, function (init) {
+__webpack_require__(30)('Uint16', 2, function (init) {
   return function Uint16Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -6903,7 +6903,7 @@ __webpack_require__(29)('Uint16', 2, function (init) {
 /* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(29)('Int32', 4, function (init) {
+__webpack_require__(30)('Int32', 4, function (init) {
   return function Int32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -6914,7 +6914,7 @@ __webpack_require__(29)('Int32', 4, function (init) {
 /* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(29)('Uint32', 4, function (init) {
+__webpack_require__(30)('Uint32', 4, function (init) {
   return function Uint32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -6925,7 +6925,7 @@ __webpack_require__(29)('Uint32', 4, function (init) {
 /* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(29)('Float32', 4, function (init) {
+__webpack_require__(30)('Float32', 4, function (init) {
   return function Float32Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -6936,7 +6936,7 @@ __webpack_require__(29)('Float32', 4, function (init) {
 /* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(29)('Float64', 8, function (init) {
+__webpack_require__(30)('Float64', 8, function (init) {
   return function Float64Array(data, byteOffset, length) {
     return init(this, data, byteOffset, length);
   };
@@ -6971,7 +6971,7 @@ $export($export.S + $export.F * !__webpack_require__(4)(function () {
 
 // 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
 var $export = __webpack_require__(0);
-var create = __webpack_require__(28);
+var create = __webpack_require__(29);
 var aFunction = __webpack_require__(10);
 var anObject = __webpack_require__(1);
 var isObject = __webpack_require__(3);
@@ -7985,7 +7985,7 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 /* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(30);
+var metadata = __webpack_require__(31);
 var anObject = __webpack_require__(1);
 var toMetaKey = metadata.key;
 var ordinaryDefineOwnMetadata = metadata.set;
@@ -7999,7 +7999,7 @@ metadata.exp({ defineMetadata: function defineMetadata(metadataKey, metadataValu
 /* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(30);
+var metadata = __webpack_require__(31);
 var anObject = __webpack_require__(1);
 var toMetaKey = metadata.key;
 var getOrCreateMetadataMap = metadata.map;
@@ -8020,7 +8020,7 @@ metadata.exp({ deleteMetadata: function deleteMetadata(metadataKey, target /* , 
 /* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(30);
+var metadata = __webpack_require__(31);
 var anObject = __webpack_require__(1);
 var getPrototypeOf = __webpack_require__(17);
 var ordinaryHasOwnMetadata = metadata.has;
@@ -8045,7 +8045,7 @@ metadata.exp({ getMetadata: function getMetadata(metadataKey, target /* , target
 
 var Set = __webpack_require__(117);
 var from = __webpack_require__(125);
-var metadata = __webpack_require__(30);
+var metadata = __webpack_require__(31);
 var anObject = __webpack_require__(1);
 var getPrototypeOf = __webpack_require__(17);
 var ordinaryOwnMetadataKeys = metadata.keys;
@@ -8068,7 +8068,7 @@ metadata.exp({ getMetadataKeys: function getMetadataKeys(target /* , targetKey *
 /* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(30);
+var metadata = __webpack_require__(31);
 var anObject = __webpack_require__(1);
 var ordinaryGetOwnMetadata = metadata.get;
 var toMetaKey = metadata.key;
@@ -8083,7 +8083,7 @@ metadata.exp({ getOwnMetadata: function getOwnMetadata(metadataKey, target /* , 
 /* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(30);
+var metadata = __webpack_require__(31);
 var anObject = __webpack_require__(1);
 var ordinaryOwnMetadataKeys = metadata.keys;
 var toMetaKey = metadata.key;
@@ -8097,7 +8097,7 @@ metadata.exp({ getOwnMetadataKeys: function getOwnMetadataKeys(target /* , targe
 /* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(30);
+var metadata = __webpack_require__(31);
 var anObject = __webpack_require__(1);
 var getPrototypeOf = __webpack_require__(17);
 var ordinaryHasOwnMetadata = metadata.has;
@@ -8119,7 +8119,7 @@ metadata.exp({ hasMetadata: function hasMetadata(metadataKey, target /* , target
 /* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var metadata = __webpack_require__(30);
+var metadata = __webpack_require__(31);
 var anObject = __webpack_require__(1);
 var ordinaryHasOwnMetadata = metadata.has;
 var toMetaKey = metadata.key;
@@ -8134,7 +8134,7 @@ metadata.exp({ hasOwnMetadata: function hasOwnMetadata(metadataKey, target /* , 
 /* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $metadata = __webpack_require__(30);
+var $metadata = __webpack_require__(31);
 var anObject = __webpack_require__(1);
 var aFunction = __webpack_require__(10);
 var toMetaKey = $metadata.key;
@@ -8418,7 +8418,7 @@ $export($export.G + $export.B, {
 /***/ (function(module, exports, __webpack_require__) {
 
 var $iterators = __webpack_require__(87);
-var getKeys = __webpack_require__(27);
+var getKeys = __webpack_require__(28);
 var redefine = __webpack_require__(15);
 var global = __webpack_require__(2);
 var hide = __webpack_require__(14);
@@ -8487,9 +8487,9 @@ var ctx = __webpack_require__(19);
 var $export = __webpack_require__(0);
 var createDesc = __webpack_require__(32);
 var assign = __webpack_require__(72);
-var create = __webpack_require__(28);
+var create = __webpack_require__(29);
 var getPrototypeOf = __webpack_require__(17);
-var getKeys = __webpack_require__(27);
+var getKeys = __webpack_require__(28);
 var dP = __webpack_require__(6);
 var keyOf = __webpack_require__(332);
 var aFunction = __webpack_require__(10);
@@ -8645,7 +8645,7 @@ $export($export.S, 'Dict', {
 /* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getKeys = __webpack_require__(27);
+var getKeys = __webpack_require__(28);
 var toIObject = __webpack_require__(11);
 module.exports = function (object, el) {
   var O = toIObject(object);
@@ -8735,7 +8735,7 @@ $export($export.S + $export.F, 'Object', { define: define });
 
 var $export = __webpack_require__(0);
 var define = __webpack_require__(130);
-var create = __webpack_require__(28);
+var create = __webpack_require__(29);
 
 $export($export.S + $export.F, 'Object', {
   make: function (proto, mixin) {
@@ -20229,7 +20229,7 @@ process.umask = function() { return 0; };
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(31)
+var normalizeComponent = __webpack_require__(27)
 /* script */
 var __vue_script__ = __webpack_require__(349)
 /* template */
@@ -20389,7 +20389,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(31)
+var normalizeComponent = __webpack_require__(27)
 /* script */
 var __vue_script__ = __webpack_require__(352)
 /* template */
@@ -20562,7 +20562,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(31)
+var normalizeComponent = __webpack_require__(27)
 /* script */
 var __vue_script__ = __webpack_require__(355)
 /* template */
@@ -20902,7 +20902,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(31)
+var normalizeComponent = __webpack_require__(27)
 /* script */
 var __vue_script__ = __webpack_require__(358)
 /* template */
@@ -21015,11 +21015,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
 			item: [],
+			imageHovered: false,
 			bigPhoto: 'default.jpg',
 			clicked: false
 		};
@@ -21028,7 +21034,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 	props: ['deleteThisProduct', 'numberItem', 'addToCart', 'deleting', 'hryvnia', 'change', 'token', 'admin'],
 
-	created: function created() {
+	mounted: function mounted() {
 		this.fetchItem();
 	},
 
@@ -21088,6 +21094,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "row pb-2" }, [
+    _vm._m(0),
+    _vm._v(" "),
     _c(
       "div",
       {
@@ -21149,34 +21157,48 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-1 col-sm-2 col-lg-1" }, [
-      _c(
-        "div",
-        { staticClass: "row images-to-show" },
-        _vm._l(_vm.item.photos, function(photo, index) {
-          return index >= 0 && index < 5
-            ? _c(
-                "div",
-                { key: photo.id, staticClass: "col-12 mb-2 pl-0 pr-2" },
-                [
-                  _c("img", {
-                    class: "small-images " + _vm.giveActiveClass(index),
-                    attrs: {
-                      src: "/storage/img/clothes/" + photo.name,
-                      id: "photo" + index
-                    },
-                    on: {
-                      mouseover: function($event) {
-                        _vm.swapPhoto(photo.name, index)
+    _c(
+      "div",
+      {
+        staticClass: "col-1 col-sm-2 col-lg-1",
+        on: {
+          mouseover: function($event) {
+            _vm.imageHovered = true
+          },
+          mouseout: function($event) {
+            _vm.imageHovered = false
+          }
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "row images-to-show" },
+          _vm._l(_vm.item.photos, function(photo, index) {
+            return index >= 0 && index < 5
+              ? _c(
+                  "div",
+                  { key: photo.id, staticClass: "col-12 mb-2 pl-0 pr-2" },
+                  [
+                    _c("img", {
+                      class: "small-images " + _vm.giveActiveClass(index),
+                      attrs: {
+                        src: "/storage/img/clothes/" + photo.name,
+                        id: "photo" + index
+                      },
+                      on: {
+                        mouseover: function($event) {
+                          _vm.swapPhoto(photo.name, index)
+                        }
                       }
-                    }
-                  })
-                ]
-              )
-            : _vm._e()
-        })
-      )
-    ]),
+                    })
+                  ]
+                )
+              : _vm._e()
+          })
+        )
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "col-12 col-lg-6 col-xl-7" }, [
       _c("div", { staticClass: "row" }, [
@@ -21257,7 +21279,20 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal", attrs: { id: "myModal" } }, [
+      _c("span", { staticClass: "close" }, [_vm._v("×")]),
+      _vm._v(" "),
+      _c("img", { staticClass: "modal-content", attrs: { id: "img01" } }),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "caption" } })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -21272,7 +21307,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(31)
+var normalizeComponent = __webpack_require__(27)
 /* script */
 var __vue_script__ = __webpack_require__(361)
 /* template */
@@ -21469,7 +21504,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(31)
+var normalizeComponent = __webpack_require__(27)
 /* script */
 var __vue_script__ = __webpack_require__(364)
 /* template */
@@ -21661,7 +21696,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(31)
+var normalizeComponent = __webpack_require__(27)
 /* script */
 var __vue_script__ = __webpack_require__(367)
 /* template */
@@ -21791,7 +21826,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(31)
+var normalizeComponent = __webpack_require__(27)
 /* script */
 var __vue_script__ = __webpack_require__(370)
 /* template */
@@ -21892,11 +21927,135 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(31)
+var normalizeComponent = __webpack_require__(27)
 /* script */
 var __vue_script__ = __webpack_require__(373)
 /* template */
 var __vue_template__ = __webpack_require__(374)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Message.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-37652940", Component.options)
+  } else {
+    hotAPI.reload("data-v-37652940", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 373 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			visible: true,
+			successMessage: 'alert alert-success alert-dismissible fade show',
+			errorMessage: 'alert alert-danger alert-dismissible fade show'
+		};
+	},
+
+	props: ['state'],
+
+	methods: {
+		currentClass: function currentClass() {
+			return this.state == 'success' ? this.successMessage : this.errorMessage;
+		}
+	}
+});
+
+/***/ }),
+/* 374 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.visible
+    ? _c(
+        "li",
+        { class: _vm.currentClass(), attrs: { role: "alert" } },
+        [
+          _vm._t("default"),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "close",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  _vm.visible = false
+                }
+              }
+            },
+            [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+          )
+        ],
+        2
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-37652940", module.exports)
+  }
+}
+
+/***/ }),
+/* 375 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(27)
+/* script */
+var __vue_script__ = __webpack_require__(376)
+/* template */
+var __vue_template__ = __webpack_require__(377)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -21935,7 +22094,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 373 */
+/* 376 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22037,7 +22196,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 374 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -22167,143 +22326,10 @@ if (false) {
 }
 
 /***/ }),
-/* 375 */
+/* 378 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 376 */,
-/* 377 */,
-/* 378 */,
-/* 379 */,
-/* 380 */,
-/* 381 */,
-/* 382 */,
-/* 383 */,
-/* 384 */,
-/* 385 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(31)
-/* script */
-var __vue_script__ = __webpack_require__(386)
-/* template */
-var __vue_template__ = __webpack_require__(387)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\Message.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-37652940", Component.options)
-  } else {
-    hotAPI.reload("data-v-37652940", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 386 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-	data: function data() {
-		return {
-			visible: true,
-			successMessage: 'alert alert-success alert-dismissible fade show',
-			errorMessage: 'alert alert-danger alert-dismissible fade show'
-		};
-	},
-
-	props: ['state'],
-
-	methods: {
-		currentClass: function currentClass() {
-			return this.state == 'success' ? this.successMessage : this.errorMessage;
-		}
-	}
-});
-
-/***/ }),
-/* 387 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm.visible
-    ? _c(
-        "li",
-        { class: _vm.currentClass(), attrs: { role: "alert" } },
-        [
-          _vm._t("default"),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "close",
-              attrs: { type: "button" },
-              on: {
-                click: function($event) {
-                  _vm.visible = false
-                }
-              }
-            },
-            [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-          )
-        ],
-        2
-      )
-    : _vm._e()
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-37652940", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);
