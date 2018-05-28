@@ -19,17 +19,19 @@
 			<div class="row">
 				<div class="form-group col-12 col-sm-6">
 					<label>@lang('items.name')</label>
-					<input type="text" name="title" placeholder="@lang('items.name')" class="form-control">
+					<input type="text" value="{{ old('title') }}" name="title" placeholder="@lang('items.name')" class="form-control">
 				</div>
 				<div class="form-group col-12 col-sm-6">
 					<label>@lang('items.price')</label>
-					<input type="text" name="price" value="0" placeholder="@lang('items.select')" class="form-control">
+					<input type="text" value="{{ old('price') }}" name="price" placeholder="@lang('items.select')" class="form-control">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label>@lang('items.description')</label>
-				<textarea name="content" placeholder="@lang('items.description')" class="form-control" style="min-height: 200px"></textarea>
+				<textarea name="content" placeholder="@lang('items.description')" class="form-control" style="min-height: 200px">
+					{{ old('content') }}
+				</textarea>
 			</div>
 
 			<div class="row">
