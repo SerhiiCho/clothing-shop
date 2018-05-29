@@ -13,10 +13,7 @@ export default {
 			opened: false
 		}
 	},
-
-	props: [
-		'categories'
-	],
+	props: ['categories'],
 
 	created() {
 		this.closeSidebar()

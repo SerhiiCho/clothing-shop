@@ -20655,12 +20655,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			items: [],
 			pagination: {},
-			title: this.allitems
+			title: this.allItems
 		};
 	},
 
 
-	props: ['category', 'allitems', 'deleting', 'hryvnia', 'change', 'admin'],
+	props: ['category', 'allItems', 'deleting', 'hryvnia', 'change', 'admin'],
 
 	created: function created() {
 		this.fetchItems();
@@ -21382,7 +21382,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		};
 	},
 
-
 	props: ['hryvnia', 'popular'],
 
 	created: function created() {
@@ -21578,7 +21577,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 
-	props: ['hryvnia', 'itemid'],
+	props: ['hryvnia', 'itemId'],
 
 	created: function created() {
 		this.fetchItems();
@@ -21598,7 +21597,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}).then(function (res) {
 				var removeIdenticalItem = res.data.map(function (el) {
 					return el.id;
-				}).indexOf(_this.itemid);
+				}).indexOf(_this.itemId);
 				res.data.splice(removeIdenticalItem, 1);
 				_this.randomItems = res.data;
 			}).catch(function (err) {
@@ -21759,7 +21758,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			opened: false
 		};
 	},
-
 
 	props: ['categories'],
 
@@ -22142,8 +22140,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -22153,7 +22149,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 
-	props: ['sum', 'date', 'number', 'admin', 'product', 'noorders', 'deletenumber', 'deletethisorder'],
+	props: ['sum', 'date', 'number', 'admin', 'product', 'noOrders', 'deleteNumber', 'deleteThisOrder'],
 
 	created: function created() {
 		this.getMessages();
@@ -22167,7 +22163,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			fetch('/api/clients_orders/index').then(function (res) {
 				return res.json();
 			}).then(function (data) {
-				_this.orders.push(data);
+				_this.orders.push(data.data);
 			}).catch(function (err) {
 				return console.log(err);
 			});
@@ -22175,22 +22171,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		deleteMessage: function deleteMessage(id) {
 			var _this2 = this;
 
-			if (confirm(this.deletethisorder)) {
+			if (confirm(this.deleteThisOrder)) {
 				fetch('/api/clients_orders/destroy/' + id, {
 					method: 'delete'
 				}).then(function (res) {
 					return res.json();
 				}).then(function (data) {
 					_this2.orders = [];
-					_this2.orders.push(data);
+					_this2.orders.push(data.data);
 					_this2.getMessages();
 				}).catch(function (error) {
 					return console.log(error);
 				});
 			}
-		},
-		convertToArray: function convertToArray(item) {
-			return item.split(' || ').splice(1, item.length);
 		}
 	}
 });
@@ -22246,24 +22239,21 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "td",
-                      _vm._l(_vm.convertToArray(order.order), function(item) {
+                      _vm._l(order.items, function(item) {
                         return _c(
                           "a",
-                          { key: item, attrs: { href: "/item/" + item } },
+                          {
+                            key: item.id,
+                            attrs: {
+                              href: "/item/" + item.category + "/" + item.id,
+                              title: item.title
+                            }
+                          },
                           [
-                            _c(
-                              "span",
-                              {
-                                staticClass:
-                                  "badge badge-dark d-block mt-1 mb-1 p-2"
-                              },
-                              [
-                                _vm._v(
-                                  "\n\t\t\t\t\t\t\t\t\t# " +
-                                    _vm._s(item) +
-                                    "\n\t\t\t\t\t\t\t\t"
-                                )
-                              ]
+                            _vm._v(
+                              "\n\t\t\t\t\t\t\t\t#" +
+                                _vm._s(item.id) +
+                                ", \n\t\t\t\t\t\t\t"
                             )
                           ]
                         )
@@ -22279,10 +22269,10 @@ var render = function() {
                         ? _c(
                             "a",
                             {
-                              staticClass: "btn btn-danger",
+                              staticClass: "btn btn-primary",
                               attrs: {
                                 href: "#",
-                                title: _vm.deletenumber + " " + order.phone
+                                title: _vm.deleteNumber + " " + order.phone
                               },
                               on: {
                                 click: function($event) {
@@ -22308,7 +22298,7 @@ var render = function() {
             _c(
               "h5",
               { staticClass: "text-center pb-4" },
-              [_c("button-back", { attrs: { title: _vm.noorders } })],
+              [_c("button-back", { attrs: { title: _vm.noOrders } })],
               1
             )
           ])
