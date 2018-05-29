@@ -31,11 +31,13 @@
 				</div>
 			@endif
 	
-			<div class="{{ $sidebar ? 'col-md-9' : 'col-md-10 offset-md-1' }}">
+			<div class="col-md-{{ $sidebar ? '9' : '10 offset-md-1' }}">
 				<section class="display-4 p-4 text-center">{{ whatIsCurrent('title') }}</section>
-				<categories-button
-					:categories="{{ json_encode(trans('navigation.types')) }}"
-				></categories-button>
+				@if ($sidebar)
+					<categories-button
+						:categories="{{ json_encode(trans('navigation.types')) }}"
+					></categories-button>
+				@endif
 				<items
 					:admin={{ json_encode(optional(auth()->user())->admin) }}
 					:all-items="{{ json_encode(trans('items.all_items')) }}"
