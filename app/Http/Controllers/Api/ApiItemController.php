@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
+use App\Contracts\ItemHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ItemResource;
 use Illuminate\Support\Facades\Storage;
 
 class ApiItemController extends Controller
 {
+	use ItemHelpers;
+
     public function index($category = null, $type = null)
     {
 		if ($category && !$type) {
@@ -58,12 +61,7 @@ class ApiItemController extends Controller
     {
 		$item = Item::find($id);
 
-		foreach ($item->photos as $photo) {
-			if ($photo->name != 'default.jpg') {
-				Storage::delete('public/img/clothes/' . $photo->name);
-				$photo->delete();
-			}
-		}
+		$this->deleteOldPhotos($item->photos);
 
 		if ($item->delete()) {
 			return new ItemResource($item);
