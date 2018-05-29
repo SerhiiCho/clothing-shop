@@ -20519,7 +20519,7 @@ var render = function() {
         }
       },
       _vm._l(_vm.cards, function(card) {
-        return _vm.cards
+        return _vm.cards.length == 2
           ? _c("div", { key: card.id, staticClass: "slider-items-card" }, [
               _c(
                 "a",
