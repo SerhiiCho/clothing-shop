@@ -59,3 +59,6 @@
 		right: .31rem;
 	}
 }
+
+@media(min-width: 1000px) { .main-slider { min-height: 400px; }}
+@media(max-width: 1000px) { .main-slider { min-height: 0; }}
