@@ -13,21 +13,19 @@
 					</tr>
 				</thead>
 					<tbody>
-						<tr v-for="order in orders[0]" v-bind:key="order.id">
+						<tr v-for="order in orders[0]" :key="order.id">
 							<th scope="row">{{ order.id }}</th>
 							<td>{{ order.phone }}</td>
 							<td>
-								<a v-for="item in convertToArray(order.order)" v-bind:key="item" :href="'/item/' + item">
-									<span class="badge badge-dark d-block mt-1 mb-1 p-2">
-										# {{ item }}
-									</span>
+								<a v-for="item in order.items" :key="item.id" :href="'/item/' + item.category + '/' + item.id" :title="item.title">
+									#{{ item.id }}, 
 								</a>
 							</td>
 							<td>{{ order.total }}</td>
 							<td>{{ order.created_at }}</td>
 							<td> 
 								<!-- Delete button -->
-								<a v-if="admin === 1" href="#" :title="deletenumber + ' ' + order.phone" class="btn btn-danger" @click="deleteMessage(order.id)">
+								<a v-if="admin === 1" href="#" :title="deleteNumber + ' ' + order.phone" class="btn btn-primary" @click="deleteMessage(order.id)">
 									<i class="fa fa-trash-o" aria-hidden="true"></i>
 								</a>
 							</td>
@@ -37,7 +35,7 @@
 		</section>
 		<section v-else class="p-1">
 			<h5 class="text-center pb-4">
-				<button-back :title="noorders"></button-back>
+				<button-back :title="noOrders"></button-back>
 			</h5>
 		</section>
 	</section>
@@ -52,14 +50,8 @@ export default {
 	},
 
 	props: [
-		'sum',
-		'date',
-		'number',
-		'admin',
-		'product',
-		'noorders',
-		'deletenumber',
-		'deletethisorder'
+		'sum', 'date', 'number', 'admin', 'product',
+		'noOrders', 'deleteNumber', 'deleteThisOrder'
 	],
 
 	created() {
@@ -71,30 +63,24 @@ export default {
 			fetch('/api/clients_orders/index')
 				.then(res => res.json())
 				.then(data => {
-					this.orders.push(data)
+					this.orders.push(data.data)
 				})
 				.catch(err => console.log(err))
 		},
 
 		deleteMessage(id) {
-			if (confirm(this.deletethisorder)) {
+			if (confirm(this.deleteThisOrder)) {
 				fetch(`/api/clients_orders/destroy/${id}`, {
 					method: 'delete'
 				})
 					.then(res => res.json())
 					.then(data => {
 						this.orders = []
-						this.orders.push(data)
+						this.orders.push(data.data)
 						this.getMessages()
 					})
 					.catch(error => console.log(error))
 			}
-		},
-
-		convertToArray(item) {
-			return item
-					.split(' || ')
-					.splice(1, item.length);
 		}
 	}
 }

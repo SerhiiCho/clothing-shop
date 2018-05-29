@@ -24,11 +24,7 @@ export default {
 			populars: {}
 		}
 	},
-
-	props: [
-		'hryvnia',
-		'popular'
-	],
+	props: [ 'hryvnia', 'popular' ],
 
 	created() {
 		this.fetchPopularItems()

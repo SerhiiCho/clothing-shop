@@ -24,8 +24,7 @@ export default {
 	},
 
 	props: [
-		'hryvnia',
-		'itemid'
+		'hryvnia', 'itemId'
 	],
 
 	created() {
@@ -41,7 +40,7 @@ export default {
 			fetch('/api/item/random/' + this.category)
 				.then(res => res.json())
 				.then(res => {
-					let removeIdenticalItem = res.data.map(el => el.id).indexOf(this.itemid)
+					let removeIdenticalItem = res.data.map(el => el.id).indexOf(this.itemId)
 					res.data.splice(removeIdenticalItem, 1)
 					this.randomItems = res.data
 				})

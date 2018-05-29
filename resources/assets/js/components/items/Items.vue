@@ -43,13 +43,13 @@ export default {
 		return {
 			items: [],
 			pagination: {},
-			title: this.allitems
+			title: this.allItems
 		}
 	},
 
 	props: [
 		'category',
-		'allitems',
+		'allItems',
 		'deleting',
 		'hryvnia',
 		'change',

@@ -38,7 +38,7 @@
 				></categories-button>
 				<items
 					:admin={{ json_encode(optional(auth()->user())->admin) }}
-					:allitems="{{ json_encode(trans('items.all_items')) }}"
+					:all-items="{{ json_encode(trans('items.all_items')) }}"
 					:category="{{ json_encode(trans('items.category')) }}"
 					:hryvnia="{{ json_encode(trans('items.hryvnia')) }}"
 					:deleting="{{ json_encode(trans('items.delete')) }}"
