@@ -21020,6 +21020,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -21032,7 +21038,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 
-	props: ['deleteThisProduct', 'numberItem', 'addToCart', 'deleting', 'hryvnia', 'change', 'token', 'admin'],
+	props: ['deleteThisProduct', 'codeOfTheItem', 'addToCart', 'deleting', 'hryvnia', 'change', 'token', 'admin', 'allAmount1', 'allAmount2'],
 
 	mounted: function mounted() {
 		this.fetchItem();
@@ -21137,7 +21143,7 @@ var render = function() {
               "a",
               {
                 staticClass: "btn-change-item",
-                staticStyle: { top: "55px", background: "brown" },
+                staticStyle: { top: "55px" },
                 attrs: { href: "#", title: _vm.deleting },
                 on: {
                   click: function($event) {
@@ -21148,7 +21154,6 @@ var render = function() {
               [
                 _c("i", {
                   staticClass: "fa fa-trash-o",
-                  staticStyle: { color: "#fff" },
                   attrs: { "aria-hidden": "true" }
                 })
               ]
@@ -21218,17 +21223,35 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("span", { staticClass: "col-12 text-secondary pb-1" }, [
-          _c("i", {
-            staticClass: "fa fa-shopping-cart",
-            attrs: { "aria-hidden": "true" }
-          }),
-          _vm._v(
-            " \n\t\t\t\t" +
-              _vm._s(_vm.numberItem) +
-              ": " +
-              _vm._s(_vm.item.id) +
-              "\n\t\t\t"
-          )
+          _c("span", { staticClass: "d-block mb-2" }, [
+            _c("i", {
+              staticClass: "fa fa-shopping-cart",
+              attrs: { "aria-hidden": "true" }
+            }),
+            _vm._v(
+              " \n\t\t\t\t\t" +
+                _vm._s(_vm.codeOfTheItem) +
+                " " +
+                _vm._s(_vm.item.id) +
+                "\n\t\t\t\t"
+            )
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "d-block mb-2" }, [
+            _c("i", {
+              staticClass: "fa fa-shopping-basket",
+              attrs: { "aria-hidden": "true" }
+            }),
+            _vm._v(
+              " \n\t\t\t\t\t" +
+                _vm._s(_vm.allAmount1) +
+                " " +
+                _vm._s(_vm.item.stock) +
+                " " +
+                _vm._s(_vm.allAmount2) +
+                "\n\t\t\t\t"
+            )
+          ])
         ]),
         _vm._v(" "),
         _c(

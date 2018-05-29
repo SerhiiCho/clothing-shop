@@ -14,8 +14,8 @@
 			</a>
 
 			<!-- Delete button -->
-			<a v-if="admin == 1" v-on:click="deleteItem(item.id)" href="#" :title="deleting" class="btn-change-item" style="top:55px; background:brown;">
-				<i class="fa fa-trash-o" aria-hidden="true" style="color:#fff;"></i>
+			<a v-if="admin == 1" v-on:click="deleteItem(item.id)" href="#" :title="deleting" class="btn-change-item" style="top:55px;">
+				<i class="fa fa-trash-o" aria-hidden="true"></i>
 			</a>
 		</div>
 
@@ -46,8 +46,14 @@
 
 				<!-- ID -->
 				<span class="col-12 text-secondary pb-1">
-					<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
-					{{ numberItem }}: {{ item.id }}
+					<span class="d-block mb-2">
+						<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
+						{{ codeOfTheItem }} {{ item.id }}
+					</span>
+					<span class="d-block mb-2">
+						<i class="fa fa-shopping-basket" aria-hidden="true"></i> 
+						{{ allAmount1 }} {{ item.stock }} {{ allAmount2 }}
+					</span>
 				</span>
 
 				<!-- Add To Cart -->
@@ -80,8 +86,8 @@ export default {
 	},
 
 	props: [
-		'deleteThisProduct', 'numberItem', 'addToCart', 'deleting',
-		'hryvnia', 'change', 'token', 'admin'
+		'deleteThisProduct', 'codeOfTheItem', 'addToCart', 'deleting',
+		'hryvnia', 'change', 'token', 'admin', 'allAmount1', 'allAmount2'
 	],
 
 	mounted () {
