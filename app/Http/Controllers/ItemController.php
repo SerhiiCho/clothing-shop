@@ -6,10 +6,9 @@ use App\Models\Item;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use App\Contracts\ItemHelpers;
+use App\Http\Requests\ItemRequest;
 use Illuminate\Support\Facades\Cookie;
-use App\Http\Requests\StoreItemRequest;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\UpdateItemRequest;
 
 class ItemController extends Controller
 {
@@ -29,6 +28,7 @@ class ItemController extends Controller
 		]);
 	}
 
+
     public function create()
     {
         return view('items.create')->withTypes(
@@ -36,7 +36,8 @@ class ItemController extends Controller
 		);
     }
 
-    public function store(StoreItemRequest $request)
+
+    public function store(ItemRequest $request)
     {
 		$item = $this->createOrUpdateItem($request);
 		$this->uploadPhotos($request, $item->id);
@@ -79,14 +80,11 @@ class ItemController extends Controller
     }
 
 
-    public function update(UpdateItemRequest $request, Item $item)
+    public function update(ItemRequest $request, Item $item)
     {
 		if ($request->hasFile('photos'))
 		{
-			foreach ($item->photos as $photo) {
-				Storage::delete('public/img/clothes/' . $photo->name);
-				$photo->delete();
-			}
+			$this->deleteOldPhotos($item->photos);
 			$this->uploadPhotos($request, $item->id);
 		}
 		$this->createOrUpdateItem($request, $item);
