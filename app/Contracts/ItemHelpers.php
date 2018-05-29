@@ -5,6 +5,7 @@ namespace App\Contracts;
 use App\Models\ItemsPhoto;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Storage;
 
 trait ItemHelpers
 {
@@ -14,20 +15,24 @@ trait ItemHelpers
 	 */
 	public function uploadPhotos($request, $item_id)
 	{
-		$i = 0;
-		foreach ($request->photos as $image) {
-			$i++;
+		if (request()->hasFile('photos')) {
+			$i = 0;
+			foreach ($request->photos as $image) {
+				$i++;
 
-			if ($i <= 5) {
-				$ext = $image->getClientOriginalExtension();
-				$filename = getFileName($request->title, $ext);
+				if ($i <= 5) {
+					$ext = $image->getClientOriginalExtension();
+					$filename = getFileName($request->title, $ext);
 
-				(new ImageManager)->make($image)->resize(451, 676)->save(
-					storage_path('app/public/img/clothes/' . $filename
-				));
+					(new ImageManager)->make($image)->resize(451, 676)->save(
+						storage_path('app/public/img/clothes/' . $filename
+					));
 
-				$this->createPhotoInDatabase($item_id, $filename);
+					$this->createPhotoInDatabase($item_id, $filename);
+				}
 			}
+		} else {
+			$this->createPhotoInDatabase($item_id, 'default.jpg');
 		}
 	}
 
@@ -51,6 +56,7 @@ trait ItemHelpers
 			'title' => $request->title,
 			'content' => $request->content,
 			'category' => $request->category,
+			'stock' => $request->stock,
 			'price' => $request->price,
 			'type_id' => $request->type
 		];
@@ -66,5 +72,16 @@ trait ItemHelpers
 		return ($current_category === 'women' || $current_category === 'men')
 			? true
 			: false;
+	}
+
+
+	public function deleteOldPhotos($photos)
+	{
+		foreach ($photos as $photo) {
+			if ($photo->name != 'default.jpg') {
+				Storage::delete('public/img/clothes/' . $photo->name);
+			}
+			$photo->delete();
+		}
 	}
 }
