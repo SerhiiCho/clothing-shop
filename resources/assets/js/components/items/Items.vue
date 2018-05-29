@@ -1,6 +1,6 @@
 <template>
 	<div class="row">
-		<div v-if="items" v-for="(item, index) in items" v-bind:key="item.id" class="col-lg-3 col-6 item-card">
+		<div v-if="items" v-for="(item, index) in items" :key="item.id" class="col-lg-3 col-6 item-card">
 			<a :href="'/item/' + item.category + '/' + item.id" :title="item.title" @mouseover="changePhotoOver(index, item.photos[1] ? item.photos[1].name : '')" @mouseout="changePhotoOut(index, item.photos[0].name)">
 				<img  :src="'/storage/img/clothes/' + item.photos[0].name" :alt="item.title" :id="'photo' + index">
 			</a>
@@ -47,14 +47,7 @@ export default {
 		}
 	},
 
-	props: [
-		'category',
-		'allItems',
-		'deleting',
-		'hryvnia',
-		'change',
-		'admin'
-	],
+	props: ['category', 'allItems', 'deleting', 'hryvnia', 'change', 'admin'],
 
 	created() {
 		this.fetchItems()

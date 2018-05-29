@@ -6,7 +6,7 @@
 
 <script>
 export default {
-	props: [ 'title' ],
+	props: ['title'],
 	methods: {
 		goBack() {
 			window.history.back();

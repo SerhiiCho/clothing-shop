@@ -1,7 +1,7 @@
 <template>
 	<div class="col-2 pr-0 pl-0">
 		<div class="slider-items" @mouseover="stopUpdating()" @mouseout="startUpdating()">
-			<div v-if="cards" v-for="card in cards" v-bind:key="card.id" class="slider-items-card">
+			<div v-if="cards" v-for="card in cards" :key="card.id" class="slider-items-card">
 				<a :href="'/item/' + card.category + '/' + card.id" :title="card.title">
 					<img v-if="card.photos" :src="'storage/img/clothes/' + card.photos[rand(card.photos.length)].name">
 				</a>
