@@ -9,8 +9,8 @@ class Message extends Model
 	protected $guarded = ['id'];
 	const UPDATED_AT = null;
 	
-	public function item() {
-		return $this->belongsTo(Item::class);
+	public function items() {
+		return $this->belongsToMany(Item::class);
 	}
 
 	public function getCreatedAtAttribute($value)
