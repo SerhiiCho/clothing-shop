@@ -34,7 +34,11 @@
 			</div>
 
 			<div class="row">
-				<div class="form-group col-sm-6">
+				<div class="form-group col-sm-2">
+					<label>@lang('items.stock')</label>
+					<input type="number" name="stock" value="{{ $item->stock }}" min="0" max="99"class="form-control">
+				</div>
+				<div class="form-group col-sm-5">
 					<label>@lang('items.category')</label>
 					<select name="category" class="form-control">
 						<option value="{{ $item->category }}">{{ $category }}</option>
@@ -43,8 +47,7 @@
 						<option value="men">@lang('items.men_items')</option>
 					</select>
 				</div>
-
-				<div class="form-group col-sm-6">
+				<div class="form-group col-sm-5">
 					<label>@lang('items.type')</label>
 					<select name="type" value="{{ $item->id }}" class="form-control">
 						<option value="{{ $item->type->id }}">{{ $item->type->name }}</option>

@@ -22,8 +22,8 @@
 					<input type="text" value="{{ old('title') }}" name="title" placeholder="@lang('items.name')" class="form-control">
 				</div>
 				<div class="form-group col-12 col-sm-6">
-					<label>@lang('items.price')</label>
-					<input type="text" value="{{ old('price') }}" name="price" placeholder="@lang('items.select')" class="form-control">
+					<label>@lang('items.select_price')</label>
+					<input type="text" value="{{ old('price', '0') }}" name="price" placeholder="@lang('items.price')" class="form-control">
 				</div>
 			</div>
 
@@ -35,14 +35,18 @@
 			</div>
 
 			<div class="row">
-				<div class="form-group col-sm-6">
+				<div class="form-group col-sm-2">
+					<label>@lang('items.stock')</label>
+					<input type="number" name="stock" value="{{ old('price', '1') }}" min="0" max="99"class="form-control">
+				</div>
+				<div class="form-group col-sm-5">
 					<label>@lang('items.category')</label>
 					<select name="category" class="form-control">
 						<option value="women">@lang('items.women_items')</option>
 						<option value="men">@lang('items.men_items')</option>
 					</select>
 				</div>
-				<div class="form-group col-sm-6">
+				<div class="form-group col-sm-5">
 					<label>@lang('items.type')</label>
 					<select name="type" class="form-control">
 						@foreach ($types as $type)
