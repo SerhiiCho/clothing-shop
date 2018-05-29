@@ -17,7 +17,7 @@ class ApiSliderController extends Controller
 
     public function cards()
 	{
-		$cards = Item::inRandomOrder()->take(2)->get();
+		$cards = Item::inStock()->inRandomOrder()->take(2)->get();
 		return ItemResource::collection($cards);
 	}
 }
