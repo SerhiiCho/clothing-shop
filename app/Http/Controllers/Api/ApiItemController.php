@@ -13,13 +13,17 @@ class ApiItemController extends Controller
     public function index($category = null, $type = null)
     {
 		if ($category && !$type) {
-			$items = Item::where('category', $category)->paginate(40);
+			$query = [['category', $category]];
 		} elseif ($category && $type) {
-			$items = Item::where([['category', $category], ['type_id', $type]])->paginate(40);
+			$query = [['category', $category], ['type_id', $type]];
 		} else {
-			$items = Item::paginate(40);
+			$query = [];
 		}
-		return ItemResource::collection($items);
+		return ItemResource::collection(
+			Item::where($query)
+				->inStock()
+				->paginate(40)
+		);
 	}
 
 
@@ -33,6 +37,7 @@ class ApiItemController extends Controller
     {
 		$items = Item::inRandomOrder()
 			->whereCategory($category)
+			->inStock()
 			->take(7)
 			->get();
 		return ItemResource::collection($items);
@@ -41,7 +46,10 @@ class ApiItemController extends Controller
 
     public function popular()
     {
-		$items = Item::take(12)->orderBy('popular', 'desc')->get();
+		$items = Item::inStock()
+			->take(12)
+			->orderBy('popular', 'desc')
+			->get();
 		return ItemResource::collection($items);
 	}
 

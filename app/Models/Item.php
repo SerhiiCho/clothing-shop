@@ -25,6 +25,11 @@ class Item extends Model
 		return $this->belongsTo(Type::class);
 	}
 
+	public function scopeInStock($query)
+	{
+		return $query->where('stock', '>', 0);
+	}
+
 	public function getByTitleOrTypeName($word)
 	{
 		return self::whereHas('type', function ($query) use ($word) {

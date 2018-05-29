@@ -28,6 +28,7 @@ class FooterProvider extends ServiceProvider
 				$view->with('categories_men',
 					Item::distinct()
 						->whereCategory('men')
+						->inStock()
 						->get(['type_id', 'category'])
 				);
 			});
@@ -42,6 +43,7 @@ class FooterProvider extends ServiceProvider
 				$view->with('categories_women',
 					Item::distinct()
 						->whereCategory('women')
+						->inStock()
 						->get(['type_id', 'category'])
 				);
 			});
@@ -55,6 +57,7 @@ class FooterProvider extends ServiceProvider
 			view()->composer('includes.footer', function ($view){
 				$view->with('last_items_for_footer',
 					Item::latest()
+						->inStock()
 						->take(7)
 						->get(['id', 'title', 'category'])
 				);
