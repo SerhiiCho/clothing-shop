@@ -10,6 +10,8 @@ class SliderObserver
 	// Deleting slide image if slide is being deleted
 	public function deleting(Slider $slider)
 	{
-		Storage::delete('public/img/slider/'.$slider->image);
+		if ($slider->image != 'default.jpg') {
+			Storage::delete('public/img/slider/'.$slider->image);
+		}
 	}
 }

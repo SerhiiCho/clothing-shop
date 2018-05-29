@@ -10,6 +10,8 @@ class CardObserver
 	// Deleting card image if card is being deleted
 	public function deleting(Card $card)
 	{
-		Storage::delete('public/img/cards/'.$card->image);
+		if ($card->image != 'default.jpg') {
+			Storage::delete('public/img/cards/'.$card->image);
+		}
 	}
 }
