@@ -64,7 +64,7 @@ if (id("multiple-src-image")) {
 				}
 			};
 
-			for (var i = 0, num = 1; i < imagesObj.readers.length; i++, num++) {
+			for (var i = 0, num = 1; i <= 5; i++, num++) {
 				_loop(i, num);
 			}
 		} else {

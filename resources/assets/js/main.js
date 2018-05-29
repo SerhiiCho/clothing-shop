@@ -53,7 +53,7 @@ let imagesObj = {
 if (id("multiple-src-image")) {
 	imagesObj.fileInput.addEventListener('change', () => {
 		if (imagesObj.filesNotEqualNull()) {
-			for (let i = 0, num = 1; i < imagesObj.readers.length; i++, num++) {
+			for (let i = 0, num = 1; i <= 5; i++, num++) {
 				if (imagesObj.fileInput.files[i]) {
 					imagesObj.readers[i].readAsDataURL(imagesObj.fileInput.files[i])
 					imagesObj.readers[i].onload = function (e) {
