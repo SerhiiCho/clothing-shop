@@ -59,7 +59,9 @@ class SliderController extends Controller
     public function update(UpdateSliderRequest $request, Slider $slider)
     {
         if ($request->hasFile('image')) {
-			Storage::delete('public/img/slider/'.$slider->image);
+			if ($slider->image != 'default.jpg') {
+				Storage::delete('public/img/slider/'.$slider->image);
+			}
 			$image = $request->file('image');
 			$ext = $image->getClientOriginalExtension();
 			$filename = getFileName('slider', $ext);

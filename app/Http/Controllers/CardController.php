@@ -73,7 +73,9 @@ class CardController extends Controller
     public function update(UpdateCardRequest $request, Card $card)
     {
 		if ($request->hasFile('image')) {
-			Storage::delete('public/img/cards/'.$card->image);
+			if ($card->image != 'default.jpg') {
+				Storage::delete('public/img/cards/'.$card->image);
+			}
 			$image = $request->file('image');
 			$ext = $image->getClientOriginalExtension();
 			$filename = getFileName($request->type, $ext);
