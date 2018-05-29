@@ -25,21 +25,22 @@ class CheckoutController extends Controller
 		}
 
 		try {
-			$data = '{';
-			foreach (Cart::content() as $item) {
-				$data .= ' || ' . $item->id;
-			}
-
-			$send = Message::create([
+			$message = Message::create([
 				'ip' => $request->ip(),
 				'phone' => $request->phone,
 				'name' => $request->name,
-				'total' => str_replace(' ', '', Cart::total()),
-				'order' => $data,
+				'total' => str_replace(' ', '', Cart::total())
 			]);
 
-				Cart::instance('default')->destroy();
-				return redirect('/cart')->withSuccess(trans('checkout.order_sent'));
+			$item_ids = array_map(function($item) {
+				return $item['id'];
+			}, Cart::content()->toArray());
+
+			$message->items()->attach($item_ids);
+			Cart::instance('default')->destroy();
+
+			return redirect('/cart')->withSuccess(trans('checkout.order_sent'));
+
 		} catch (Exception $e) {
 			return back()->withError(
 				trans('checkout.error') . ' ' . $e->getMessage()
