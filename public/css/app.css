@@ -1239,6 +1239,10 @@ footer a:hover {
   content: "\F002";
 }
 
+.fa-shopping-basket:before {
+  content: "\F291";
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
