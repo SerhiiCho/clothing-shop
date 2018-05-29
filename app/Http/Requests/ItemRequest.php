@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreItemRequest extends FormRequest
+class ItemRequest extends FormRequest
 {
     // Determine if the user is authorized to make this request.
     public function authorize()
@@ -20,6 +20,7 @@ class StoreItemRequest extends FormRequest
 			'content' => 'required|min:4|max:3000',
 			'category' => 'required|max:20',
 			'type' => 'required',
+			'stock' => 'required|numeric|digits_between:1,99',
 			'price' => 'required|numeric|digits_between:2,6'
 		];
 		
@@ -29,10 +30,7 @@ class StoreItemRequest extends FormRequest
 			foreach(range(0, $photos) as $i) {
 				$rules['photos.' . $i] = 'image|nullable|max:1999';
 			}
-		} else {
-			$rules['photos'] = 'required';
 		}
-
         return $rules;
 	}
 
@@ -45,14 +43,16 @@ class StoreItemRequest extends FormRequest
             'category.required' => trans('items.category_required'),
             'category.max' => trans('items.category_max'),
             'type.required' => trans('items.type_required'),
-            'photos.required' => trans('items.image_required'),
             'price.required' => trans('items.price_required'),
             'price.digits_between' => trans('items.price_digits_between'),
+            'price.numeric' => trans('items.price_numeric'),
+            'stock.required' => trans('items.stock_required'),
+            'stock.digits_between' => trans('items.stock_digits_between'),
+            'stock.numeric' => trans('items.stock_numeric'),
             'title.min' => trans('items.title_min'),
             'content.min' => trans('items.content_min'),
             'title.max' => trans('items.title_max'),
             'content.max' => trans('items.content_max'),
-            'price.numeric' => trans('items.price_numeric'),
             'photos.image' => trans('items.image_image'),
             'photos.max' => trans('items.image_max')
         ];
