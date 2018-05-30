@@ -20,7 +20,7 @@
 					<tr>
 						<td>
 							<div class="row">
-								<a href="/item/{{ $item->model->id }}" class="col-12 col-sm-2">
+								<a href="/item/{{ $item->model->category }}/{{ $item->model->id }}" class="col-12 col-sm-2">
 									<img src="{{ asset('storage/img/clothes/' . $item->model->photos[0]->name) }}" alt="{{ $item->model->title }}" class="img-responsive" style="max-width:50px;" />
 								</a>
 								<div class="col-12 col-sm-10 pt-2">
@@ -97,7 +97,7 @@
 						<tr>
 							<td>
 								<div class="row">
-									<a href="/item/{{ $item->model->id }}" class="col-12 col-sm-2">
+									<a href="/item/{{ $item->model->category }}/{{ $item->model->id }}" class="col-12 col-sm-2">
 										<img src="{{ asset('storage/img/clothes/' . $item->model->photos[0]->name) }}" alt="{{ $item->model->title }}" class="img-responsive" style="max-width:50px;" />
 									</a>
 									<div class="col-12 col-sm-10 pt-2">

@@ -1235,6 +1235,10 @@ footer a:hover {
   content: "\F07A";
 }
 
+.fa-cart-plus:before {
+  content: "\F217";
+}
+
 .fa-pencil:before {
   content: "\F040";
 }
