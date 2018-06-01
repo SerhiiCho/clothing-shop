@@ -10,7 +10,7 @@
 <h4>Laravel Packages</h4>
 <ol>
 	<li><a href="http://image.intervention.io/">Intervention/image</a></li>
-	<li><a href="https://github.com/rap2hpoutre/laravel-log-viewer">rap2hpoutre/laravel-log-viewer</a></li>
+	<li><a href="https://github.com/rap2hpoutre/laravel-log-viewer">rap2hpoutre/laravel-log-viewer</a> which is sucks, but whatever</li>
 	<li><a href="https://github.com/Crinsane/LaravelShoppingcart">Crinsane/LaravelShoppingcart</a></li>
 </ol>
 
