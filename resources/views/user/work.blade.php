@@ -6,14 +6,14 @@
 <div class="container">
 	<h4 class="text-center p-3">@lang('dashboard.your_orders'):</h4>
 	<clients-orders
-		:admin="{{ json_encode(user()->admin) }}"
-		:sum="{{ json_encode(trans('dashboard.sum')) }}"
-		:date="{{ json_encode(trans('dashboard.date')) }}"
-		:number="{{ json_encode(trans('dashboard.number')) }}"
-		:product="{{ json_encode(trans('dashboard.product')) }}"
-		:no-orders="{{ json_encode(trans('dashboard.no_orders')) }}"
-		:delete-number="{{ json_encode(trans('dashboard.delete_number')) }}"
-		:delete-this-order="{{ json_encode(trans('dashboard.delete_this_order')) }}"
-	></clients-orders>
+		admin="{{ user()->admin }}"
+		sum="@lang('dashboard.sum')"
+		date="@lang('dashboard.date')"
+		number="@lang('dashboard.number')"
+		product="@lang('dashboard.product')"
+		no-orders="@lang('dashboard.no_orders')"
+		delete-number="@lang('dashboard.delete_number')"
+		delete-this-order="@lang('dashboard.delete_this_order')">
+	</clients-orders>
 </div>
 @endsection

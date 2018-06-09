@@ -53,7 +53,7 @@
 			<tfoot>
 				<tr>
 					<td>
-						<button-back :title="{{ json_encode(trans('messages.back')) }}"></button-back>
+						<button-back title="@lang('messages.back')"></button-back>
 					</td>
 					<td class="hidden-xs text-center">
 						<strong>
@@ -71,7 +71,7 @@
 	@else
 		<p class="text-center pt-5">@lang('cart.empty')</p>
 		<p class="text-center pb-5">
-			<button-back :title="{{ json_encode(trans('messages.back')) }}"></button-back>
+			<button-back title="@lang('messages.back')"></button-back>
 		</p>
 	@endif
 

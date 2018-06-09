@@ -28,9 +28,9 @@
 	@endif
 
 	<popular
-		:hryvnia="{{ json_encode(trans('items.hryvnia')) }}"
-		:popular="{{ json_encode(trans('cards.popular')) }}"
-	></popular>
+		hryvnia="@lang('items.hryvnia')"
+		popular="@lang('cards.popular')">
+	</popular>
 </div>
 
 @endsection

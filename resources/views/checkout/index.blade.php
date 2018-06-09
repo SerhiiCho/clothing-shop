@@ -47,7 +47,7 @@
 					@lang('cart.order')
 				</button>
 
-				<button-back :title="{{ json_encode(trans('messages.back')) }}"></button-back>
+				<button-back title="@lang('messages.back')"></button-back>
 			</form>
 		</div>
 	</div>

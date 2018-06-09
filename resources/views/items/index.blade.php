@@ -35,17 +35,17 @@
 				<section class="display-4 p-4 text-center">{{ whatIsCurrent('title') }}</section>
 				@if ($sidebar)
 					<categories-button
-						:categories="{{ json_encode(trans('navigation.types')) }}"
-					></categories-button>
+						categories="@lang('navigation.types')">
+					</categories-button>
 				@endif
 				<items
-					:admin={{ json_encode(optional(auth()->user())->admin) }}
-					:all-items="{{ json_encode(trans('items.all_items')) }}"
-					:category="{{ json_encode(trans('items.category')) }}"
-					:hryvnia="{{ json_encode(trans('items.hryvnia')) }}"
-					:deleting="{{ json_encode(trans('items.delete')) }}"
-					:change="{{ json_encode(trans('items.change')) }}"
-				></items>
+					admin="{{ optional(auth()->user())->admin }}"
+					all-items="@lang('items.all_items')"
+					category="@lang('items.category')"
+					hryvnia="@lang('items.hryvnia')"
+					deleting="@lang('items.delete')"
+					change="@lang('items.change')">
+				</items>
 			</div>
 		</section>
 	</div>

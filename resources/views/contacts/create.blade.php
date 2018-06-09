@@ -74,7 +74,7 @@
 					</button>
 	
 					{{-- Back btn --}}
-					<button-back :title="{{ json_encode(trans('messages.back')) }}"></button-back>
+					<button-back title="@lang('messages.back')"></button-back>
 				</div>
 			</form>
 		</div>
