@@ -32,6 +32,7 @@ return [
 	'hryvnia' => 'UAH',
 	'name' => 'Title',
 	'order' => 'Order',
+	'clients_order' => 'Order',
 	'stock' => 'Amount',
 	'change' => 'Edit',
 	'category' => 'Category',
