@@ -50,13 +50,13 @@ Route::view('search', 'search');
 Route::post('search', 'SearchController@handleTheRequest');
 
 // User
-Route::view('user/dashboard', 'user.dashboard')->middleware('auth');
-Route::view('user/work', 'user.work')->middleware('member');
+Route::get('user/dashboard', 'UserController@dashboard');
+Route::get('user/work', 'UserController@work');
 
 // Artisan commands =======
 Route::prefix('php/artisan')->group(function () {
-	Route::get('cache/{url_key}',		  'ArtisanController@cache');
-	Route::get('clear/{url_key}',		  'ArtisanController@clear');
+	Route::get('cache/{url_key}', 'ArtisanController@cache');
+	Route::get('clear/{url_key}', 'ArtisanController@clear');
 	Route::get('storage/link/{url_key}',  'ArtisanController@link');
 	Route::get('migrate/fresh/{url_key}', 'ArtisanController@migrate');
 });
