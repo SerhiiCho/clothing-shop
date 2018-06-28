@@ -13,6 +13,6 @@ mix.js('resources/assets/js/app.js', 'public/js')
 	.sourceMaps()
 	.browserSync({
 		proxy: 'localhost:8000',
-		browser: 'chrome',
+		browser: 'firefox',
 		files: [ 'public/css/*.css' ]
 	})
