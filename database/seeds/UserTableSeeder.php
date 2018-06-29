@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
 			'blogger' => 0,
 			'name' => 'Кристина',
 			'email' => 'kris@kris.com',
-			'password' => bcrypt('111111')
+			'password' => bcrypt(config('custom.pwd1'))
 		]);
 
         User::create([
@@ -25,7 +25,7 @@ class UserTableSeeder extends Seeder
 			'blogger' => 1,
 			'name' => 'Серый',
 			'email' => 'ser@ser.com',
-			'password' => bcrypt('111111')
+			'password' => bcrypt(config('custom.pwd2'))
 		]);
     }
 }
