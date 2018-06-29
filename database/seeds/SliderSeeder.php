@@ -7,6 +7,6 @@ class SliderSeeder extends Seeder
 {
     public function run()
     {
-        factory(Slider::class)->create();
+        //
     }
 }
