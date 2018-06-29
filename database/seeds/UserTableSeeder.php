@@ -10,11 +10,21 @@ class UserTableSeeder extends Seeder
     {
         User::create([
 			'member' => 1,
+			'master' => 0,
+			'admin' => 1,
+			'blogger' => 0,
+			'name' => 'Кристина',
+			'email' => 'kris@kris.com',
+			'password' => bcrypt('111111')
+		]);
+
+        User::create([
+			'member' => 1,
 			'master' => 1,
 			'admin' => 1,
 			'blogger' => 1,
-			'name' => 'Admin',
-			'email' => '11@11.com',
+			'name' => 'Серый',
+			'email' => 'ser@ser.com',
 			'password' => bcrypt('111111')
 		]);
     }
