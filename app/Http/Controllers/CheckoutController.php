@@ -35,8 +35,6 @@ class CheckoutController extends Controller
 			$item_ids = array_map(function($item) {
 				return $item['id'];
 			}, Cart::content()->toArray());
-				
-			//event(new RecivedOrdeEvent($request->phone));
 
 			$message->items()->attach($item_ids);
 			Cart::instance('default')->destroy();
