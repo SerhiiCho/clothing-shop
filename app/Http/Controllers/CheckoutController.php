@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
-use App\Events\RecivedOrdeEvent;
 use App\Http\Requests\CheckoutRequest;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -37,7 +36,7 @@ class CheckoutController extends Controller
 				return $item['id'];
 			}, Cart::content()->toArray());
 				
-			event(new RecivedOrdeEvent($request->phone));
+			//event(new RecivedOrdeEvent($request->phone));
 
 			$message->items()->attach($item_ids);
 			Cart::instance('default')->destroy();
