@@ -465,7 +465,7 @@ header {
 
 @media (max-width: 1000px) {
   .main-slider {
-    min-height: 0;
+    min-height: 200px;
   }
 }
 
