@@ -7,7 +7,6 @@
 
 <title>@yield('title') | {{ config('app.name', 'Clothing Shop') }}</title>
 
-{!! styleTimestamp('/css/bootstrap.css') !!}
 {!! styleTimestamp('/css/app.css') !!}
 
 <link rel="shortcut icon" href="{{ asset('storage/img/favicon.png') }}" type="image/x-icon">
