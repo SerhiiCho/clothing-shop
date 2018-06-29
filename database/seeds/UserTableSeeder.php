@@ -19,7 +19,7 @@ class UserTableSeeder extends Seeder
 		]);
 
         User::create([
-			'member' => 1,
+			'member' => 0,
 			'master' => 1,
 			'admin' => 1,
 			'blogger' => 1,
