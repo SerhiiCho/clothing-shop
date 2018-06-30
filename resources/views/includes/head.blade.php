@@ -9,4 +9,4 @@
 
 {!! styleTimestamp('/css/app.css') !!}
 
-<link rel="shortcut icon" href="{{ asset('storage/img/favicon.png') }}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
