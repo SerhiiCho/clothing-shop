@@ -165,6 +165,7 @@ return [
         App\Providers\GsmProvider::class,
         App\Providers\BladeProvider::class,
         App\Providers\DatabaseProvider::class,
+        App\Providers\HeaderProvider::class,
 
     ],
 

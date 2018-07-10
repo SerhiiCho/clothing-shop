@@ -14,10 +14,11 @@ class AppServiceProvider extends ServiceProvider
     {
 		$this->swichLanguage();
 
-		// Header for javascript if needed
-		//header('Access-Control-Allow-Origin: *');
+		if (app()->env === 'production') {
+			\URL::forceScheme('https');
+		}
 	}
-	
+
 	public function swichLanguage()
 	{
 		if (Cookie::get('lang')) {
