@@ -10,8 +10,5 @@ class DatabaseSeeder extends Seeder
 		$this->call(AddIconsToIconTable::class);
 		$this->call(TypesSeeder::class);
 		$this->call(UserTableSeeder::class);
-		$this->call(SliderSeeder::class);
-		$this->call(ItemSeeder::class);
-		$this->call(CardSeeder::class);
     }
 }
