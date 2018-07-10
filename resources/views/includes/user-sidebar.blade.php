@@ -55,14 +55,15 @@
 			@endmaster
 		</ul>
 		<li>
-			<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="@lang('user-sidebar.exit')">
+			<a href="{{ route('logout') }}" title="@lang('user-sidebar.exit')" id="logout-btn">
 				<i class="fa fa-power-off icon-profile-menu-line" aria-hidden="true"></i>
 				<span class="nav-text">@lang('user-sidebar.exit')</span>
 			</a>
 		</li>
 	</nav>
 
-	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
-		@csrf
+	{{-- logout-form --}}
+	<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+		@csrf <button type="submit"></button>
 	</form>
 @endauth

@@ -12,6 +12,12 @@ window.onload = function () {
 	id('loading-title').innerHTML = '';
 };
 
+// Submit logout form after clicking #logout-btn
+id('logout-btn').addEventListener('click', function (e) {
+	e.preventDefault();
+	id('logout-form').submit();
+});
+
 id('hamburger').addEventListener('click', function () {
 	id('nav-menu').style.top = 0;
 	id('hamburger-container').style.opacity = 0;
