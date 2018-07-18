@@ -16,8 +16,8 @@
 		all-amount2="@lang('items.all_amount_2')"
 		added-to-cart="@lang('items.added_to_cart')"
 		code-of-the-item="@lang('items.code_of_the_item')"
-		delete-this-product="@lang('items.delete_this_product')">
-		you-already-send-order="@lang('items.you_already_send_order')"
+		delete-this-product="@lang('items.delete_this_product')"
+		you-already-send-order="@lang('items.you_already_send_order')">
 	</single-item>
 </div>
 
