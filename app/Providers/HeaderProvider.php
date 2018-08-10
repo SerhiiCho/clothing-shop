@@ -12,8 +12,8 @@ class HeaderProvider extends ServiceProvider
      */
     public function boot()
     {
-		if (app()->env === 'production') {
-			header("Strict-Transport-Security: max-age=31536000");
-		}
-	}
+        if (app()->env === 'production') {
+            header("Strict-Transport-Security: max-age=31536000");
+        }
+    }
 }

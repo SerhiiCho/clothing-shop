@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
@@ -16,50 +16,50 @@ class CartController extends Controller
     // Store a newly created resource in storage
     public function store(Request $request)
     {
-		$dublicates = Cart::search(function ($cartItem, $rowId) use ($request) {
-			return $cartItem->id === $request->id;
-		});
+        $dublicates = Cart::search(function ($cartItem, $rowId) use ($request) {
+            return $cartItem->id === $request->id;
+        });
 
-		if ($dublicates->isNotEmpty()) {
-			return back()->withError(
-				trans('cart.item_is_in_your_cart', ['item' => $request->title])
-			);
-		}
+        if ($dublicates->isNotEmpty()) {
+            return back()->withError(
+                trans('cart.item_is_in_your_cart', ['item' => $request->title])
+            );
+        }
 
-		Cart::add($request->id, $request->title, 1, $request->price)
-			->associate('App\Models\Item');
+        Cart::add($request->id, $request->title, 1, $request->price)
+            ->associate('App\Models\Item');
 
-		return back()->withSuccess(
-			trans('cart.added_to_cart', ['item' => $request->title])
-		);
+        return back()->withSuccess(
+            trans('cart.added_to_cart', ['item' => $request->title])
+        );
     }
-	
-	public function addToFavorite($id)
-	{
-		$item = Cart::get($id);
 
-		Cart::remove($id);
+    public function addToFavorite($id)
+    {
+        $item = Cart::get($id);
 
-		$dublicates = Cart::instance('favorite')->search(function ($cartItem, $rowId) use ($id) {
-			return $rowId === $id;
-		});
+        Cart::remove($id);
 
-		if ($dublicates->isNotEmpty()) {
-			return back()->withError(trans('cart.item_is_in_favorite'));
-		}
+        $dublicates = Cart::instance('favorite')->search(function ($cartItem, $rowId) use ($id) {
+            return $rowId === $id;
+        });
 
-		Cart::instance('favorite')->add($item->id, $item->name, 1, $item->price)
-			->associate('App\Models\Item');
+        if ($dublicates->isNotEmpty()) {
+            return back()->withError(trans('cart.item_is_in_favorite'));
+        }
 
-		return back()->withSuccess(
-			trans('cart.added_to_favorite', ['item' => $item->name])
-		);
-	}
+        Cart::instance('favorite')->add($item->id, $item->name, 1, $item->price)
+            ->associate('App\Models\Item');
+
+        return back()->withSuccess(
+            trans('cart.added_to_favorite', ['item' => $item->name])
+        );
+    }
 
     // Remove the specified resource from storage
     public function destroy($id)
     {
-		Cart::remove($id);
-		return back()->withSuccess(trans('cart.was_deleted'));
+        Cart::remove($id);
+        return back()->withSuccess(trans('cart.was_deleted'));
     }
 }

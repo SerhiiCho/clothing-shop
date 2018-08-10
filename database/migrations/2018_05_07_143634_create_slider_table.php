@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateSliderTable extends Migration
 {
@@ -14,8 +14,8 @@ class CreateSliderTable extends Migration
     public function up()
     {
         Schema::create('slider', function (Blueprint $table) {
-			$table->increments('id');
-			$table->string('image', 100);
+            $table->increments('id');
+            $table->string('image', 100);
             $table->integer('order')->nullable();
         });
     }

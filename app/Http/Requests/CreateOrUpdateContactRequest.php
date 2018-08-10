@@ -19,9 +19,9 @@ class CreateOrUpdateContactRequest extends FormRequest
             'icon' => 'nullable|numeric|max:20',
             'phone' => 'required|min:10|max:20',
         ];
-	}
-	
-	// Make custom messages for validation rules
+    }
+
+    // Make custom messages for validation rules
     public function messages()
     {
         return [

@@ -17,20 +17,20 @@ class CheckoutRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:30',
-            'phone' => 'required|min:10|max:30|unique:messages'
+            'phone' => 'required|min:10|max:30|unique:messages',
         ];
-	}
+    }
 
-	public function messages()
+    public function messages()
     {
         return [
-			'name.required' => trans('checkout.name_required'),
+            'name.required' => trans('checkout.name_required'),
             'phone.required' => trans('checkout.phone_required'),
             'phone.min' => trans('checkout.phone_min'),
             'name.min' => trans('checkout.name_min'),
             'phone.max' => trans('checkout.phone_max'),
             'phone.unique' => trans('checkout.phone_unique'),
-            'name.max' => trans('checkout.name_max')
+            'name.max' => trans('checkout.name_max'),
         ];
     }
 }

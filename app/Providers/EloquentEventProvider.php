@@ -12,11 +12,11 @@ class EloquentEventProvider extends ServiceProvider
     public function boot()
     {
         $this->callModelObservers();
-	}
-	
-	public function callModelObservers()
-	{
-		Card::observe(\App\Observers\CardObserver::class);
+    }
+
+    public function callModelObservers()
+    {
+        Card::observe(\App\Observers\CardObserver::class);
         Slider::observe(\App\Observers\SliderObserver::class);
-	}
+    }
 }

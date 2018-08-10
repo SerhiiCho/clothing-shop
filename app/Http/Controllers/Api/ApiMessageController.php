@@ -2,30 +2,28 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Message;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\MessageResource;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Models\Message;
 
 class ApiMessageController extends Controller
 {
-	public function index()
-	{
-		return MessageResource::collection(Message::get());
-	}
-
-	public function destroy($id)
+    public function index()
     {
-		$message = Message::with('items')->find($id);
+        return MessageResource::collection(Message::get());
+    }
 
-		$item_ids = array_map(function($item) {
-			return $item['id'];
-		}, $message->items->toArray());
+    public function destroy($id)
+    {
+        $message = Message::with('items')->find($id);
 
-		$message->items()->detach($item_ids);
-		$message->delete();
+        $item_ids = array_map(function ($item) {
+            return $item['id'];
+        }, $message->items->toArray());
 
-		return MessageResource::collection(Message::get());
+        $message->items()->detach($item_ids);
+        $message->delete();
+
+        return MessageResource::collection(Message::get());
     }
 }

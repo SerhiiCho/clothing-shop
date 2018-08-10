@@ -6,15 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-	protected $guarded = ['id'];
-	const UPDATED_AT = null;
-	
-	public function items() {
-		return $this->belongsToMany(Item::class);
-	}
+    protected $guarded = ['id'];
+    const UPDATED_AT = null;
 
-	public function getCreatedAtAttribute($value)
-	{
-		return facebookTimeAgo($value);
-	}
+    public function items()
+    {
+        return $this->belongsToMany(Item::class);
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return facebookTimeAgo($value);
+    }
 }

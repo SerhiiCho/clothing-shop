@@ -9,9 +9,9 @@ class ItemLightResource extends JsonResource
     public function toArray($request)
     {
         return [
-			'id' => $this->id,
-			'title' => $this->title,
-			'category' => $this->category
-		];
+            'id' => $this->id,
+            'title' => $this->title,
+            'category' => $this->category,
+        ];
     }
 }

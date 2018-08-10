@@ -17,22 +17,22 @@ class StoreCardRequest extends FormRequest
     {
         return [
             'image' => 'required|max:1999',
-			'type' => 'required|digits_between:0,5000|numeric',
-			'category' => 'required|max:30',
+            'type' => 'required|digits_between:0,5000|numeric',
+            'category' => 'required|max:30',
         ];
-	}
-	
-	// Custom messages
-	public function messages()
+    }
+
+    // Custom messages
+    public function messages()
     {
         return [
-			'image.required' => trans('cards.img_required'),
-			'category.required' => trans('cards.category_required'),
+            'image.required' => trans('cards.img_required'),
+            'category.required' => trans('cards.category_required'),
             'category.max' => trans('cards.category_max'),
             'type.required' => trans('cards.type_required'),
             'image.max' => trans('cards.image_max'),
             'type.digits_between' => trans('cards.type_digits_between'),
-            'type.numeric' => trans('cards.type_numeric')
+            'type.numeric' => trans('cards.type_numeric'),
         ];
     }
 }

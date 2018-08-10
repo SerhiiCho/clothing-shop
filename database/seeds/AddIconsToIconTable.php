@@ -9,12 +9,12 @@ class AddIconsToIconTable extends Seeder
     public function run()
     {
         DB::table('icons')->insert([
-			[ 'name' => 'Life', 		'image' => 'life.png' ],
-			[ 'name' => 'Kyevstar', 	'image' => 'kyevstar.png' ],
-			[ 'name' => 'MTC', 			'image' => 'mts.png' ],
-			[ 'name' => 'Viber', 		'image' => 'viber.png' ],
-			[ 'name' => 'Telegram',		'image' => 'telegram.png' ],
-			[ 'name' => 'Vodafone',		'image' => 'vodafone.png' ],
-		]);
+            ['name' => 'Life', 'image' => 'life.png'],
+            ['name' => 'Kyevstar', 'image' => 'kyevstar.png'],
+            ['name' => 'MTC', 'image' => 'mts.png'],
+            ['name' => 'Viber', 'image' => 'viber.png'],
+            ['name' => 'Telegram', 'image' => 'telegram.png'],
+            ['name' => 'Vodafone', 'image' => 'vodafone.png'],
+        ]);
     }
 }

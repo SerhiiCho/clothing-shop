@@ -16,16 +16,16 @@ class UpdateSliderRequest extends FormRequest
     public function rules()
     {
         return [
-            'order' => 'nullable|numeric|max:99'
+            'order' => 'nullable|numeric|max:99',
         ];
-	}
-	
-	// Custom messages
-	public function messages()
+    }
+
+    // Custom messages
+    public function messages()
     {
         return [
             'order.numeric' => trans('slider.order_numeric'),
-            'order.max' => trans('slider.order_max')
+            'order.max' => trans('slider.order_max'),
         ];
     }
 }

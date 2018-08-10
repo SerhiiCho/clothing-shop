@@ -2,19 +2,18 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
-use App\Models\Card;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\TestCase;
 
 class UserTest extends TestCase
 {
-	use DatabaseTransactions;
+    use DatabaseTransactions;
 
     /** @test */
     public function userCanBeFoundByName()
     {
-		$user = factory(User::class)->create(['name' => 'John']);
-		$this->assertDatabaseHas('users', ['name' => 'John']);
+        $user = factory(User::class)->create(['name' => 'John']);
+        $this->assertDatabaseHas('users', ['name' => 'John']);
     }
 }

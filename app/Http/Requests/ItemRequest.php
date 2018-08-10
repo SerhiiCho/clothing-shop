@@ -15,27 +15,27 @@ class ItemRequest extends FormRequest
     // Get the validation rules that apply to the request.
     public function rules()
     {
-		$rules = [
-			'title' => 'required|min:4|max:80',
-			'content' => 'required|min:4|max:3000',
-			'category' => 'required|max:20',
-			'type' => 'required',
-			'stock' => 'required|numeric|digits_between:1,99',
-			'price' => 'required|numeric|digits_between:2,6'
-		];
-		
-		if (request()->hasFile('photos')) {
-			$photos = count(request('photos'));
+        $rules = [
+            'title' => 'required|min:4|max:80',
+            'content' => 'required|min:4|max:3000',
+            'category' => 'required|max:20',
+            'type' => 'required',
+            'stock' => 'required|numeric|digits_between:1,99',
+            'price' => 'required|numeric|digits_between:2,6',
+        ];
 
-			foreach(range(0, $photos) as $i) {
-				$rules['photos.' . $i] = 'image|nullable|max:1999';
-			}
-		}
+        if (request()->hasFile('photos')) {
+            $photos = count(request('photos'));
+
+            foreach (range(0, $photos) as $i) {
+                $rules['photos.' . $i] = 'image|nullable|max:1999';
+            }
+        }
         return $rules;
-	}
+    }
 
-	// Custom messages
-	public function messages()
+    // Custom messages
+    public function messages()
     {
         return [
             'title.required' => trans('items.title_required'),
@@ -54,7 +54,7 @@ class ItemRequest extends FormRequest
             'title.max' => trans('items.title_max'),
             'content.max' => trans('items.content_max'),
             'photos.image' => trans('items.image_image'),
-            'photos.max' => trans('items.image_max')
+            'photos.max' => trans('items.image_max'),
         ];
     }
 }

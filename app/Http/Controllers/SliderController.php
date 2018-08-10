@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Slider;
-use Illuminate\Http\Request;
-use Intervention\Image\ImageManager;
-use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\UpdateSliderRequest;
 use App\Http\Requests\StoreSlideImageRequest;
+use App\Http\Requests\UpdateSliderRequest;
+use App\Models\Slider;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
 
 class SliderController extends Controller
 {
-	public function __construct()
+    public function __construct()
     {
-		$this->middleware('member')->only(['index']);
+        $this->middleware('member')->only(['index']);
         $this->middleware('admin')->only(['edit', 'update', 'destroy']);
-	}
+    }
 
     public function index()
     {
@@ -31,22 +30,22 @@ class SliderController extends Controller
     // Store a newly created resource in storage
     public function store(StoreSlideImageRequest $request)
     {
-		$image = $request->file('image');
-		$ext = $image->getClientOriginalExtension();
-		$filename = getFileName('slider', $ext);
+        $image = $request->file('image');
+        $ext = $image->getClientOriginalExtension();
+        $filename = getFileName('slider', $ext);
 
-		(new ImageManager)->make($image)->resize(1000, 500)->save(
-			storage_path('app/public/img/slider/' . $filename
-		));
+        (new ImageManager)->make($image)->resize(1000, 500)->save(
+            storage_path('app/public/img/slider/' . $filename
+            ));
 
-		Slider::create([
-			'image' => $filename,
-			'order' => $request ? $request->order : ''
-		]);
-		
-		return redirect('slider')->withSuccess(
-			trans('slider.slide_added')
-		);
+        Slider::create([
+            'image' => $filename,
+            'order' => $request ? $request->order : '',
+        ]);
+
+        return redirect('slider')->withSuccess(
+            trans('slider.slide_added')
+        );
     }
 
     // Show the form for editing the specified resource
@@ -59,30 +58,30 @@ class SliderController extends Controller
     public function update(UpdateSliderRequest $request, Slider $slider)
     {
         if ($request->hasFile('image')) {
-			if ($slider->image != 'default.jpg') {
-				Storage::delete('public/img/slider/'.$slider->image);
-			}
-			$image = $request->file('image');
-			$ext = $image->getClientOriginalExtension();
-			$filename = getFileName('slider', $ext);
-			
-			(new ImageManager)->make($image)->resize(1000, 500)->save(
-				storage_path('app/public/img/slider/' . $filename
-			));
+            if ($slider->image != 'default.jpg') {
+                Storage::delete('public/img/slider/' . $slider->image);
+            }
+            $image = $request->file('image');
+            $ext = $image->getClientOriginalExtension();
+            $filename = getFileName('slider', $ext);
 
-			$slider->update([ 'image' => $filename ]);
-		}
-		$slider->update([ 'order' => $request->order ]);
+            (new ImageManager)->make($image)->resize(1000, 500)->save(
+                storage_path('app/public/img/slider/' . $filename
+                ));
 
-		return redirect('slider')->withSuccess(
-			trans('slider.slider_changed')
-		);
+            $slider->update(['image' => $filename]);
+        }
+        $slider->update(['order' => $request->order]);
+
+        return redirect('slider')->withSuccess(
+            trans('slider.slider_changed')
+        );
     }
 
     // Remove the specified resource from storage
     public function destroy(Slider $slider)
     {
-		$slider->delete();
-		return redirect('slider')->withSuccess(trans('slider.deleted'));
+        $slider->delete();
+        return redirect('slider')->withSuccess(trans('slider.deleted'));
     }
 }

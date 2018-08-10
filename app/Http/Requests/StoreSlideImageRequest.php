@@ -17,19 +17,19 @@ class StoreSlideImageRequest extends FormRequest
     {
         return [
             'image' => 'required|image|max:1999',
-            'order' => 'nullable|numeric|max:99'
+            'order' => 'nullable|numeric|max:99',
         ];
-	}
-	
-	// Custom messages
-	public function messages()
+    }
+
+    // Custom messages
+    public function messages()
     {
         return [
             'image.required' => trans('slider.image_required'),
             'image.image' => trans('slider.image_image'),
             'image.max' => trans('slider.image_max'),
             'order.numeric' => trans('slider.order_numeric'),
-            'order.max' => trans('slider.order_max')
+            'order.max' => trans('slider.order_max'),
         ];
     }
 }
