@@ -38,9 +38,11 @@ export default {
 			fetch('/api/item/random/' + this.category)
 				.then(res => res.json())
 				.then(res => {
-					let removeIdenticalItem = res.data.map(el => el.id).indexOf(this.itemId)
-					res.data.splice(removeIdenticalItem, 1)
-					this.randomItems = res.data
+					let data = []
+					res.data.map(el => {
+						if (el.id != this.itemId) data.push(el)
+					})
+					this.randomItems = data.slice(0, 6)
 				})
 				.catch(err => console.log(err))
 		},

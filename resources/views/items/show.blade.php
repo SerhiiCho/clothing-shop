@@ -5,6 +5,7 @@
 @section('content')
 
 <div class="single-container container">
+	<img src="/storage/img/clothes/default.jpg" v-cloak class="v-cloak">
 	<single-item
 		admin="{{ optional(auth()->user())->admin }}"
 		token="{{ csrf_token() }}"
