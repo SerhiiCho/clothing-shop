@@ -1,5 +1,5 @@
 <template>
-    <div class="col-10 pr-0 main-slider" v-if="images.length > 0" :style="'background-image:url(storage/img/slider/' + images[Math.abs(currentNumber) % images.length] + ');'" v-on:mouseover="stopRotation" v-on:mouseout="startRotation">
+	<div class="col-10 pr-0 main-slider" v-if="images.length > 0" :style="'background-image:url(storage/img/slider/' + images[Math.abs(currentNumber) % images.length] + ');'" v-on:mouseover="stopRotation" v-on:mouseout="startRotation">
 
 		<div @click="prev" class="imgbanbtn imgbanbtn-prev" style="background-image:url(storage/img/arrow-left.png);"></div>
 

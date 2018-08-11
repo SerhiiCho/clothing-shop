@@ -26,3 +26,6 @@
 @import 'animations';
 
 @import 'font-awesome/font-awesome';
+
+.v-cloak { display: none; }
+[v-cloak] { display: block; }

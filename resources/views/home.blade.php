@@ -7,7 +7,9 @@
 <div class="wrapper">
 	<div class="container">
 		<div class="row">
+			<div v-cloak class="col-10 pr-0 main-slider v-cloak"></div>
 			<slider></slider>
+			<div v-cloak class="col-2 pr-0 pl-0 v-cloak"></div>
 			<cards></cards>
 		</div>
 	</div>
@@ -27,6 +29,11 @@
 		</div>
 	@endif
 
+	<section v-cloak class="v-cloak">
+		<h3 class="display-4 text-center p-4" style="background:#F2F2F2">
+			@lang('cards.popular')
+		</h3>
+	</section>
 	<popular
 		hryvnia="@lang('items.hryvnia')"
 		popular="@lang('cards.popular')">
