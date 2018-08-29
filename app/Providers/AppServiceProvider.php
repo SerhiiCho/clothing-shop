@@ -11,6 +11,8 @@ class AppServiceProvider extends ServiceProvider
     // Bootstrap any application services
     public function boot()
     {
+        \Schema::defaultStringLength(191);
+        //\Artisan::call('migrate');
         $this->swichLanguage();
 
         if (app()->env === 'production') {
