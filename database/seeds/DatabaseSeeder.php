@@ -12,7 +12,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTableSeeder::class);
 
         if (app()->env != 'production') {
-            $this->call(ItemSeeder::class);
             $this->call(SliderSeeder::class);
             $this->call(CardSeeder::class);
         }
