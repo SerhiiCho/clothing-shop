@@ -22,7 +22,9 @@ class CartController extends Controller
 
         if ($dublicates->isNotEmpty()) {
             return back()->withError(
-                trans('cart.item_is_in_your_cart', ['item' => $request->title])
+                trans('cart.item_is_in_your_cart', [
+                    'item' => $request->title,
+                ])
             );
         }
 

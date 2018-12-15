@@ -44,9 +44,10 @@ class CardController extends Controller
         $ext = $image->getClientOriginalExtension();
         $filename = getFileName($request->type, $ext);
 
-        (new ImageManager)->make($image)->resize(451, 676)->save(
-            storage_path('app/public/img/cards/' . $filename
-            ));
+        (new ImageManager)
+            ->make($image)
+            ->resize(451, 676)
+            ->save(storage_path('app/public/img/cards/' . $filename));
 
         Card::create([
             'image' => $filename,
@@ -63,6 +64,7 @@ class CardController extends Controller
     public function edit(Card $card)
     {
         $types = Type::orderBy('name')->get();
+
         return view('cards.edit')->with(
             compact('card', 'types')
         );
@@ -79,9 +81,10 @@ class CardController extends Controller
             $ext = $image->getClientOriginalExtension();
             $filename = getFileName($request->type, $ext);
 
-            (new ImageManager)->make($image)->resize(451, 676)->save(
-                storage_path('app/public/img/cards/' . $filename
-                ));
+            (new ImageManager)
+                ->make($image)
+                ->resize(451, 676)
+                ->save(storage_path("app/public/img/cards/{$filename}"));
 
             $card->update(['image' => $filename]);
         }

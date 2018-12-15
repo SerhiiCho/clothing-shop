@@ -9,23 +9,23 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         User::create([
-			'member' => 1,
-			'master' => 0,
-			'admin' => 1,
-			'blogger' => 0,
-			'name' => 'Кристина',
-			'email' => 'kris@kris.com',
-			'password' => bcrypt(config('custom.pwd1'))
-		]);
+            'member' => 1,
+            'master' => 0,
+            'admin' => 1,
+            'blogger' => 0,
+            'name' => 'Кристина',
+            'email' => 'kris@kris.com',
+            'password' => bcrypt(config('custom.pwd1')),
+        ]);
 
         User::create([
-			'member' => 0,
-			'master' => 1,
-			'admin' => 1,
-			'blogger' => 1,
-			'name' => 'Серый',
-			'email' => 'ser@ser.com',
-			'password' => bcrypt(config('custom.pwd2'))
-		]);
+            'member' => 1,
+            'master' => 1,
+            'admin' => 1,
+            'blogger' => 1,
+            'name' => 'Серый',
+            'email' => 'ser@ser.com',
+            'password' => bcrypt(config('custom.pwd2')),
+        ]);
     }
 }
