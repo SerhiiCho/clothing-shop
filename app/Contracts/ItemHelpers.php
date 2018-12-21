@@ -4,6 +4,7 @@ namespace App\Contracts;
 
 use App\Models\ItemsPhoto;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 
@@ -24,10 +25,7 @@ trait ItemHelpers
                     $ext = $image->getClientOriginalExtension();
                     $filename = getFileName($request->title, $ext);
 
-                    (new ImageManager)->make($image)->resize(451, 676)->save(
-                        storage_path('app/public/img/clothes/' . $filename
-                        ));
-
+                    $this->makeItemImage($image, $filename);
                     $this->createPhotoInDatabase($item_id, $filename);
                 }
             }
@@ -79,5 +77,20 @@ trait ItemHelpers
             }
             $photo->delete();
         }
+    }
+
+    /**
+     * @param \Illuminate\Http\UploadedFile $image_inst
+     * @param string $filename
+     * @return void
+     */
+    public function makeItemImage(UploadedFile $image_inst, string $filename): void
+    {
+        (new ImageManager)
+            ->make($image_inst)
+            ->fit(360, 540, function ($constraint) {
+                $constraint->upsize();
+            })
+            ->save(storage_path("app/public/img/clothes/{$filename}"));
     }
 }

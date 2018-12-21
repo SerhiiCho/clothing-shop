@@ -1,11 +1,13 @@
 <template>
     <div class="row">
-        <div v-if="items" v-for="(item, index) in items"
+        <div v-if="items"
+            v-for="(item, index) in items"
             :key="item.id"
             class="col-lg-3 col-6 item-card"
         >
             <a :href="'/item/' + item.category + '/' + item.id"
                 :title="item.title"
+                v-if="item.photos.length > 0"
                 @mouseover="changePhotoOver(index, item.photos[1] ? item.photos[1].name : '')"
                 @mouseout="changePhotoOut(index, item.photos[0].name)"
             >
@@ -101,6 +103,7 @@ export default {
             .then(res => res.json())
             .then(res => {
                 this.items = res.data
+                console.log(res.data)
                 vm.makePagination(res.meta, res.links)
             })
             .catch(error => console.log(error))
