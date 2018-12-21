@@ -14,11 +14,11 @@ mix.js('resources/js/app.js', 'public/js/vendor')
 	.sass('resources/sass/app.scss', 'public/css')
 	.disableNotifications()
 	.sourceMaps()
-	.browserSync({
-		proxy: 'localhost:8000',
-		browser: 'firefox',
-		files: [
-			'public/css/*.css',
-			'public/js/*.js',
-		]
-	})
+	// .browserSync({
+	// 	proxy: 'localhost:8000',
+	// 	browser: 'firefox',
+	// 	files: [
+	// 		'public/css/*.css',
+	// 		'public/js/*.js',
+	// 	]
+	// })
