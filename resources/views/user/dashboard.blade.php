@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container pt-3 pb-5 text-center">
-	<h3>@lang('messages.smile') {{ user()->name }} :)</h3>
-	<h5>@lang('messages.all_items', ['items' => $all_items])</h5>
+    <h3>{{ user()->name }}</h3>
+    <h5>@lang('messages.all_items', ['items' => $all_items])</h5>
 </div>
 @endsection
