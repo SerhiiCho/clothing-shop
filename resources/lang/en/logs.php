@@ -2,15 +2,15 @@
 
 return [
 
-	'logs' => 'Logs',
-	'more_than_50_mb' => 'The file is more than 50 Mb, please download it',
-	'level' => 'Level',
-	'context' => 'Context',
-	'date' => 'Date',
-	'content' => 'Content',
-	'download' => 'Download',
-	'delete_all_files' => 'Delete all',
-	'delete' => 'Delete',
-	'are_u_sure' => 'Are you sure?',
+    'logs' => 'Logs',
+    'more_than_50_mb' => 'The file is more than 50 Mb, please download it',
+    'level' => 'Level',
+    'context' => 'Context',
+    'date' => 'Date',
+    'content' => 'Content',
+    'download' => 'Download',
+    'delete_all_files' => 'Delete all',
+    'delete' => 'Delete',
+    'are_u_sure' => 'Are you sure?',
 
 ];
