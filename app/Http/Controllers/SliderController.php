@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSlideImageRequest;
 use App\Http\Requests\UpdateSliderRequest;
 use App\Models\Slider;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 
@@ -34,9 +35,7 @@ class SliderController extends Controller
         $ext = $image->getClientOriginalExtension();
         $filename = getFileName('slider', $ext);
 
-        (new ImageManager)->make($image)->resize(1000, 500)->save(
-            storage_path('app/public/img/slider/' . $filename
-            ));
+        $this->makeSliderImage($image, $filename);
 
         Slider::create([
             'image' => $filename,
@@ -65,9 +64,7 @@ class SliderController extends Controller
             $ext = $image->getClientOriginalExtension();
             $filename = getFileName('slider', $ext);
 
-            (new ImageManager)->make($image)->resize(1000, 500)->save(
-                storage_path('app/public/img/slider/' . $filename
-                ));
+            $this->makeSliderImage($image, $filename);
 
             $slider->update(['image' => $filename]);
         }
@@ -83,5 +80,20 @@ class SliderController extends Controller
     {
         $slider->delete();
         return redirect('slider')->withSuccess(trans('slider.deleted'));
+    }
+
+    /**
+     * @param \Illuminate\Http\UploadedFile $image_inst
+     * @param string $filename
+     * @return void
+     */
+    public function makeSliderImage(UploadedFile $image_inst, string $filename): void
+    {
+        (new ImageManager)
+            ->make($image_inst)
+            ->fit(1000, 500, function ($constraint) {
+                $constraint->upsize();
+            }, 'top')
+            ->save(storage_path("app/public/img/slider/{$filename}"));
     }
 }
