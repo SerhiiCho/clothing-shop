@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Views\Items;
 
 use App\Models\Item;
 use App\Models\ItemsPhoto;
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class CrudItemTest extends TestCase
+class ItemsShowPageTest extends TestCase
 {
     use DatabaseTransactions;
 
