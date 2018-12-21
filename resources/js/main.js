@@ -1,51 +1,57 @@
 // Shortcut functions
-function $(el) {
+function id(el) {
 	return document.getElementById(el)
 }
 
-var openedNav = false
 
-// After page has been loaded, it will
-// remove the loading animation
-window.onload = () => {
-	$('loading').classList.remove("loading")
-	$('loading-title').innerHTML = ''
-}
+(function RemoveLoadingSpinner() {
+    window.onload = () => {
+        id('loading').classList.remove("loading")
+        id('loading-title').innerHTML = ''
+    }
+})();
 
-// Submit logout form after clicking #logout-btn
-if ($('logout-btn')) {
-	$('logout-btn').addEventListener('click', (e) => {
-		e.preventDefault()
-		$('logout-form').submit()
-	})
-}
+(function SubmitLogoutFormAfterCliking() {
+    if (id('logout-btn')) {
+        id('logout-btn').addEventListener('click', (e) => {
+            e.preventDefault()
+            id('logout-form').submit()
+        })
+    }
+})();
 
-$('hamburger').addEventListener('click', () => {
-	$('nav-menu').style.top = 0
-	$('hamburger-container').style.opacity = 0
-    openedNav = true
-})
+var openedNav = false;
 
-$('close-nav-menu').addEventListener('click', () => {
-	$('nav-menu').style.top = '-25em'
-	$('hamburger-container').style.opacity = 0.9
-    openedNav = false
-})
+(function ShowSidebarAfterClickHamburger() {
+    id('hamburger').addEventListener('click', () => {
+        id('nav-menu').style.top = 0
+        id('hamburger-container').style.opacity = 0
+        openedNav = true
+    })
+})();
+
+(function HideSidebarAfterClickHamburger() {
+    id('close-nav-menu').addEventListener('click', () => {
+        id('nav-menu').style.top = '-25em'
+        id('hamburger-container').style.opacity = 0.9
+        openedNav = false
+    })
+})();
 
 window.onscroll = () => {
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-		$('logo-clothing').style.opacity = 0
-		$('logo-clothing').style.display = 'none'
-		$('hamburger-container').classList.add('hamburger-down')
+		id('logo-clothing').style.opacity = 0
+		id('logo-clothing').style.display = 'none'
+		id('hamburger-container').classList.add('hamburger-down')
     } else {
-		$('logo-clothing').style.opacity = 1
-		$('hamburger-container').classList.remove('hamburger-down')
-		setTimeout(() => $('logo-clothing').style.display = 'block', 250)
+		id('logo-clothing').style.opacity = 1
+		id('hamburger-container').classList.remove('hamburger-down')
+		setTimeout(() => id('logo-clothing').style.display = 'block', 250)
     }
 }
 
 let imagesObj = {
-	fileInput: $("multiple-src-image"),
+	fileInput: id("multiple-src-image"),
 	defaultImgPath: '/storage/img/clothes/default.jpg',
 	readers: [
 		new FileReader(),
@@ -54,11 +60,11 @@ let imagesObj = {
 		new FileReader(),
 		new FileReader()
 	],
-	imgWithNumber: (num) => $("target-image" + num),
-	filesNotEqualNull: () => $("multiple-src-image").files.length <= 0 ? false : true,
+	imgWithNumber: (num) => id("target-image" + num),
+	filesNotEqualNull: () => id("multiple-src-image").files.length <= 0 ? false : true,
 }
 
-if ($("multiple-src-image")) {
+if (id("multiple-src-image")) {
 	imagesObj.fileInput.addEventListener('change', () => {
 		if (imagesObj.filesNotEqualNull()) {
 			for (let i = 0, num = 1; i <= 5; i++, num++) {
@@ -82,8 +88,8 @@ if ($("multiple-src-image")) {
 // This object auto updates pictures after
 // selecting them via file input
 let imageUploader = {
-	target: $("target-image"),
-	src: $("src-image"),
+	target: id("target-image"),
+	src: id("src-image"),
 	fr: new FileReader(),
 	showImage: function () {
 		this.src.addEventListener("change", ()=> {
@@ -98,15 +104,18 @@ let imageUploader = {
 			}
 		})
 	}
-}
+};
 
-// Run showImage function
-if (imageUploader.src && imageUploader.target) {
-	imageUploader.showImage()
-}
+(function RunShowImageFunction() {
+    if (imageUploader.src && imageUploader.target) {
+        imageUploader.showImage()
+    }
+})();
 
-if ($('prevent-double-submitting')) {
-	$('prevent-double-submitting').addEventListener('submit', function () {
-		$('submit-button').disabled = true
-	})
-}
+(function PreventDoubleSubmittingForms() {
+    if (id('prevent-double-submitting')) {
+        id('prevent-double-submitting').addEventListener('submit', function () {
+            id('submit-button').disabled = true
+        })
+    }
+})();

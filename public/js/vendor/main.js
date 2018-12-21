@@ -1,64 +1,69 @@
 // Shortcut functions
-function $(el) {
+function id(el) {
 	return document.getElementById(el);
 }
 
+(function RemoveLoadingSpinner() {
+	window.onload = function () {
+		id('loading').classList.remove("loading");
+		id('loading-title').innerHTML = '';
+	};
+})();
+
+(function SubmitLogoutFormAfterCliking() {
+	if (id('logout-btn')) {
+		id('logout-btn').addEventListener('click', function (e) {
+			e.preventDefault();
+			id('logout-form').submit();
+		});
+	}
+})();
+
 var openedNav = false;
 
-// After page has been loaded, it will
-// remove the loading animation
-window.onload = function () {
-	$('loading').classList.remove("loading");
-	$('loading-title').innerHTML = '';
-};
-
-// Submit logout form after clicking #logout-btn
-if ($('logout-btn')) {
-	$('logout-btn').addEventListener('click', function (e) {
-		e.preventDefault();
-		$('logout-form').submit();
+(function ShowSidebarAfterClickHamburger() {
+	id('hamburger').addEventListener('click', function () {
+		id('nav-menu').style.top = 0;
+		id('hamburger-container').style.opacity = 0;
+		openedNav = true;
 	});
-}
+})();
 
-$('hamburger').addEventListener('click', function () {
-	$('nav-menu').style.top = 0;
-	$('hamburger-container').style.opacity = 0;
-	openedNav = true;
-});
-
-$('close-nav-menu').addEventListener('click', function () {
-	$('nav-menu').style.top = '-25em';
-	$('hamburger-container').style.opacity = 0.9;
-	openedNav = false;
-});
+(function HideSidebarAfterClickHamburger() {
+	id('close-nav-menu').addEventListener('click', function () {
+		id('nav-menu').style.top = '-25em';
+		id('hamburger-container').style.opacity = 0.9;
+		openedNav = false;
+	});
+})();
 
 window.onscroll = function () {
 	if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-		$('logo-clothing').style.opacity = 0;
-		$('logo-clothing').style.display = 'none';
-		$('hamburger-container').classList.add('hamburger-down');
+		id('logo-clothing').style.opacity = 0;
+		id('logo-clothing').style.display = 'none';
+		id('hamburger-container').classList.add('hamburger-down');
 	} else {
-		$('logo-clothing').style.opacity = 1;
-		$('hamburger-container').classList.remove('hamburger-down');
+		id('logo-clothing').style.opacity = 1;
+		id('hamburger-container').classList.remove('hamburger-down');
 		setTimeout(function () {
-			return $('logo-clothing').style.display = 'block';
+			return id('logo-clothing').style.display = 'block';
 		}, 250);
 	}
 };
 
 var imagesObj = {
-	fileInput: $("multiple-src-image"),
+	fileInput: id("multiple-src-image"),
 	defaultImgPath: '/storage/img/clothes/default.jpg',
 	readers: [new FileReader(), new FileReader(), new FileReader(), new FileReader(), new FileReader()],
 	imgWithNumber: function imgWithNumber(num) {
-		return $("target-image" + num);
+		return id("target-image" + num);
 	},
 	filesNotEqualNull: function filesNotEqualNull() {
-		return $("multiple-src-image").files.length <= 0 ? false : true;
+		return id("multiple-src-image").files.length <= 0 ? false : true;
 	}
 };
 
-if ($("multiple-src-image")) {
+if (id("multiple-src-image")) {
 	imagesObj.fileInput.addEventListener('change', function () {
 		if (imagesObj.filesNotEqualNull()) {
 			var _loop = function _loop(i, num) {
@@ -86,8 +91,8 @@ if ($("multiple-src-image")) {
 // This object auto updates pictures after
 // selecting them via file input
 var imageUploader = {
-	target: $("target-image"),
-	src: $("src-image"),
+	target: id("target-image"),
+	src: id("src-image"),
 	fr: new FileReader(),
 	showImage: function showImage() {
 		var _this = this;
@@ -104,14 +109,18 @@ var imageUploader = {
 			}
 		});
 	}
+};
 
-	// Run showImage function
-};if (imageUploader.src && imageUploader.target) {
-	imageUploader.showImage();
-}
+(function RunShowImageFunction() {
+	if (imageUploader.src && imageUploader.target) {
+		imageUploader.showImage();
+	}
+})();
 
-if ($('prevent-double-submitting')) {
-	$('prevent-double-submitting').addEventListener('submit', function () {
-		$('submit-button').disabled = true;
-	});
-}
+(function PreventDoubleSubmittingForms() {
+	if (id('prevent-double-submitting')) {
+		id('prevent-double-submitting').addEventListener('submit', function () {
+			id('submit-button').disabled = true;
+		});
+	}
+})();
