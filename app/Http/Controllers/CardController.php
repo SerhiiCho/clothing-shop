@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCardRequest;
 use App\Http\Requests\UpdateCardRequest;
 use App\Models\Card;
 use App\Models\Type;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 
@@ -44,10 +45,7 @@ class CardController extends Controller
         $ext = $image->getClientOriginalExtension();
         $filename = getFileName($request->type, $ext);
 
-        (new ImageManager)
-            ->make($image)
-            ->resize(451, 676)
-            ->save(storage_path('app/public/img/cards/' . $filename));
+        $this->makeCardImage($image, $filename);
 
         Card::create([
             'image' => $filename,
@@ -81,10 +79,7 @@ class CardController extends Controller
             $ext = $image->getClientOriginalExtension();
             $filename = getFileName($request->type, $ext);
 
-            (new ImageManager)
-                ->make($image)
-                ->resize(451, 676)
-                ->save(storage_path("app/public/img/cards/{$filename}"));
+            $this->makeCardImage($image, $filename);
 
             $card->update(['image' => $filename]);
         }
@@ -108,5 +103,20 @@ class CardController extends Controller
         return ($card->delete())
         ? redirect('cards')->withSuccess(trans('cards.card_deleted'))
         : redirect('cards')->withError(trans('cards.deleted_fail'));
+    }
+
+    /**
+     * @param \Illuminate\Http\UploadedFile $image_inst
+     * @param string $filename
+     * @return void
+     */
+    public function makeCardImage(UploadedFile $image_inst, string $filename): void
+    {
+        (new ImageManager)
+            ->make($image_inst)
+            ->fit(451, 676, function ($constraint) {
+                $constraint->upsize();
+            }, 'top')
+            ->save(storage_path("app/public/img/cards/{$filename}"));
     }
 }
