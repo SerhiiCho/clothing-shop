@@ -92,6 +92,7 @@ class ItemController extends Controller
             $this->deleteOldPhotos($item->photos);
             $this->uploadPhotos($request, $item->id);
         }
+
         $this->createOrUpdateItem($request, $item);
 
         return back()->withSuccess(trans('items.item_changed'));
