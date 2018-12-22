@@ -18,12 +18,14 @@ class UserSidebarProvider extends ServiceProvider
      */
     public function showAllOrderMessages()
     {
-        $messages = Message::all()->count();
-        $has_messages = 'data-notif=' . $messages . '';
-        $unreaded = ($messages !== 0) ? $has_messages : '';
+        if (auth()->check()) {
+            $messages = Message::all()->count();
+            $has_messages = 'data-notif=' . $messages . '';
+            $unreaded = ($messages !== 0) ? $has_messages : '';
 
-        view()->composer('includes.user-sidebar', function ($view) use ($unreaded) {
-            $view->with(compact('unreaded'));
-        });
+            view()->composer('includes.user-sidebar', function ($view) use ($unreaded) {
+                $view->with(compact('unreaded'));
+            });
+        }
     }
 }
