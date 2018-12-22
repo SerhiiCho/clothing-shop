@@ -38,7 +38,7 @@
                                 </a>
 
                                 {{-- Delete button --}}
-                                <form action="{{ action('SliderController@destroy', ['slider' => $slide->id]) }}" 
+                                <form action="{{ action('User\SliderController@destroy', ['slider' => $slide->id]) }}" 
                                     method="post" 
                                     onsubmit='return confirm("@lang('slider.are_you_sure')")' 
                                     class="d-inline"
@@ -63,7 +63,7 @@
             @lang('slider.amount_of_slides'): {{ $slider->count() }}
         </div>
         {{-- Add slide btn --}}
-        <a href="/slider/create" title="@lang('slider.add_slide')" class="btn btn-success">
+        <a href="/user/slider/create" title="@lang('slider.add_slide')" class="btn btn-success">
             @lang('slider.add_slide')
         </a>
         

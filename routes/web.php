@@ -14,7 +14,6 @@ Route::prefix(config('custom.enter_slug'))->group(function () {
 
 // Resources
 Route::resource('cards', 'CardController', ['except' => ['show']]);
-Route::resource('slider', 'SliderController', ['except' => ['show']]);
 Route::resource('contacts', 'ContactController', ['except' => ['show', 'index']]);
 
 // Cart
@@ -48,9 +47,10 @@ Route::view('search', 'search');
 Route::post('search', 'SearchController@handleTheRequest');
 
 // User
-Route::namespace ('User')->prefix('user')->group(function () {
+Route::prefix('user')->namespace('User')->group(function () {
     Route::get('dashboard', 'DashboardController@index');
     Route::get('work', 'WorkController@index');
+    Route::resource('slider', 'SliderController', ['except' => ['show']]);
 });
 
 // Artisan commands =======

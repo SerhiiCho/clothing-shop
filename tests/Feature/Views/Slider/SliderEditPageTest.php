@@ -29,7 +29,7 @@ class SliderEditPageTest extends TestCase
     public function page_is_not_accessable_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
-            ->get("/slider/{$this->slider->id}/edit")
+            ->get("/user/slider/{$this->slider->id}/edit")
             ->assertRedirect();
     }
 
@@ -39,7 +39,7 @@ class SliderEditPageTest extends TestCase
      */
     public function page_is_not_accessable_by_guest(): void
     {
-        $this->get("/slider/{$this->slider->id}/edit")
+        $this->get("/user/slider/{$this->slider->id}/edit")
             ->assertRedirect();
     }
 
@@ -50,8 +50,8 @@ class SliderEditPageTest extends TestCase
     public function page_is_accessable_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
-            ->get("/slider/{$this->slider->id}/edit")
+            ->get("/user/slider/{$this->slider->id}/edit")
             ->assertOk()
-            ->assertViewIs('slider.edit');
+            ->assertViewIs('user.slider.edit');
     }
 }

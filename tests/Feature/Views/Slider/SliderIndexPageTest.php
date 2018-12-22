@@ -16,7 +16,7 @@ class SliderIndexPageTest extends TestCase
      */
     public function page_is_not_accessable_by_guest(): void
     {
-        $this->get('/slider')
+        $this->get('/user/slider')
             ->assertRedirect();
     }
 
@@ -27,7 +27,7 @@ class SliderIndexPageTest extends TestCase
     public function page_is_not_accessable_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
-            ->get('/slider')
+            ->get('/user/slider')
             ->assertRedirect();
     }
 
@@ -38,8 +38,8 @@ class SliderIndexPageTest extends TestCase
     public function page_is_accessable_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
-            ->get('/slider')
+            ->get('/user/slider')
             ->assertOk()
-            ->assertViewIs('slider.index');
+            ->assertViewIs('user.slider.index');
     }
 }

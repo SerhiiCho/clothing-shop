@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-8 offset-md-2">
 
-        <form action="{{ action('SliderController@update', ['slider' => $slider->id]) }}" 
+        <form action="{{ action('User\SliderController@update', ['slider' => $slider->id]) }}" 
             method="post"
             enctype="multipart/form-data" 
             class="row"
@@ -47,7 +47,7 @@
         </form>
 
         {{-- Delete button --}}
-        <form action="{{ action('SliderController@destroy', ['slider' => $slider->id]) }}" 
+        <form action="{{ action('User\SliderController@destroy', ['slider' => $slider->id]) }}" 
             method="post" 
             onsubmit='return confirm("@lang('slider.are_you_sure')")' 
             class="my-2 row"
@@ -61,7 +61,7 @@
             </button>
 
             {{-- Back button --}}
-            <a href="/slider" title="@lang('messages.back')" class="btn btn-primary btn-block mt-2">
+            <a href="/user/slider" title="@lang('messages.back')" class="btn btn-primary btn-block mt-2">
                 @lang('messages.back')
             </a>
         </form>

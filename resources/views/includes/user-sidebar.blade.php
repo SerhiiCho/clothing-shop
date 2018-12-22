@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="{{ activeIfRouteIs('slider') }}">
-                <a href="/slider" title="@lang('user-sidebar.slider')">
+                <a href="/user/slider" title="@lang('user-sidebar.slider')">
                     <i class="fas fa-images icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('user-sidebar.slider')</span>
                 </a>
