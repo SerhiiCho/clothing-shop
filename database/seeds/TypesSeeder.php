@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\DB;
 
 class TypesSeeder extends Seeder
 {
-    // Run the database seeds
     public function run()
     {
         DB::table('types')->insert([

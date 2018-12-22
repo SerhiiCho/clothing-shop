@@ -3,9 +3,8 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AddIconsToIconTable extends Seeder
+class IconSeeder extends Seeder
 {
-    // Run the database seeds
     public function run()
     {
         DB::table('icons')->insert([

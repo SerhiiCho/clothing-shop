@@ -4,12 +4,11 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    // Seed the application's database
     public function run()
     {
-        $this->call(AddIconsToIconTable::class);
+        $this->call(IconSeeder::class);
         $this->call(TypesSeeder::class);
-        $this->call(UserTableSeeder::class);
+        $this->call(UserSeeder::class);
 
         if (app()->env != 'production') {
             $this->call(SliderSeeder::class);
