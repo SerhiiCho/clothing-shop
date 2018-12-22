@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateOrUpdateContactRequest;
 use App\Models\Contact;
 use App\Models\Icon;
@@ -25,7 +26,7 @@ class ContactController extends Controller
      */
     public function create(): View
     {
-        return view('contacts.create')->with([
+        return view('admin.contacts.create', [
             'icons' => Icon::orderBy('name')->get(),
         ]);
     }
@@ -58,7 +59,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact): View
     {
-        return view('contacts.edit')->with([
+        return view('admin.contacts.edit')->with([
             'contact' => $contact,
             'icons' => Icon::orderBy('name')->get(),
         ]);
@@ -94,7 +95,7 @@ class ContactController extends Controller
         cache()->forget('nav_contacts');
 
         return ($contact->delete())
-        ? redirect('contacts/create')->withSuccess(trans('contacts.deleted'))
-        : redirect('contacts/create')->withError(trans('contacts.deleted_fail'));
+        ? redirect('/admin/contacts/create')->withSuccess(trans('contacts.deleted'))
+        : redirect('/admin/contacts/create')->withError(trans('contacts.deleted_fail'));
     }
 }

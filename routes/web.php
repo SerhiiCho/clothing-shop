@@ -12,9 +12,6 @@ Route::prefix(config('custom.enter_slug'))->group(function () {
     Auth::routes();
 });
 
-// Resources
-Route::resource('contacts', 'ContactController', ['except' => ['show', 'index']]);
-
 // Cart
 Route::prefix('cart')->group(function () {
     Route::get('/', 'CartController@index');
@@ -51,6 +48,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('work', 'WorkController@index');
     Route::resource('slider', 'SliderController', ['except' => ['show']]);
     Route::resource('cards', 'CardController', ['except' => ['show']]);
+    Route::resource('contacts', 'ContactController', ['except' => ['show', 'index']]);
 });
 
 // Artisan commands =======
