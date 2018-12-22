@@ -6,6 +6,7 @@ use App\Contracts\ItemHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ItemResource;
 use App\Models\Item;
+use Illuminate\Database\QueryException;
 
 class ApiItemController extends Controller
 {
@@ -26,12 +27,17 @@ class ApiItemController extends Controller
             $query = [];
         }
 
-        return ItemResource::collection(
-            Item::where($query)
-                ->inStock()
-                ->latest()
-                ->paginate(40)
-        );
+        try {
+            return ItemResource::collection(
+                Item::where($query)
+                    ->inStock()
+                    ->latest()
+                    ->paginate(40)
+            );
+        } catch (QueryException $e) {
+            logs()->error($e->getMessage());
+            return collect();
+        }
     }
 
     /**
@@ -50,13 +56,18 @@ class ApiItemController extends Controller
      */
     public function random($category)
     {
-        $items = Item::inRandomOrder()
-            ->whereCategory($category)
-            ->inStock()
-            ->take(7)
-            ->get();
+        try {
+            $items = Item::inRandomOrder()
+                ->whereCategory($category)
+                ->inStock()
+                ->take(7)
+                ->get();
 
-        return ItemResource::collection($items);
+            return ItemResource::collection($items);
+        } catch (QueryException $e) {
+            return collect();
+            logs()->error($e->getMessage());
+        }
     }
 
     /**
@@ -64,12 +75,16 @@ class ApiItemController extends Controller
      */
     public function popular()
     {
-        $items = Item::inStock()
-            ->take(12)
-            ->orderBy('popular', 'desc')
-            ->get();
-
-        return ItemResource::collection($items);
+        try {
+            $items = Item::inStock()
+                ->take(12)
+                ->orderBy('popular', 'desc')
+                ->get();
+            return ItemResource::collection($items);
+        } catch (QueryException $e) {
+            logs()->error($e->getMessage());
+            return collect();
+        }
     }
 
     /**
@@ -77,15 +92,19 @@ class ApiItemController extends Controller
      */
     public function destroy($id)
     {
-        $item = Item::find($id);
+        try {
+            $item = Item::find($id);
+        } catch (QueryException $e) {
+            logs()->error($e->getMessage());
+            return [];
+        }
 
         $this->deleteOldPhotos($item->photos);
 
         cache()->forget('categories_men');
         cache()->forget('categories_women');
 
-        if ($item->delete()) {
-            return new ItemResource($item);
-        }
+        $item->delete();
+        return new ItemResource($item);
     }
 }

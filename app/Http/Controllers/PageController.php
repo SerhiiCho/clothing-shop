@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Card;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\QueryException;
 
 class PageController extends Controller
 {
@@ -15,7 +16,12 @@ class PageController extends Controller
     public function home(): View
     {
         $cards = cache()->rememberForever('home_cards', function () {
-            return Card::with('type')->get()->take(3)->toArray();
+            try {
+                return Card::with('type')->get()->take(3)->toArray();
+            } catch (QueryException $e) {
+                logs()->error($e->getMessage());
+                return [];
+            }
         });
 
         return view('home', compact('cards'));
