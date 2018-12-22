@@ -5,10 +5,13 @@
 @section('content')
 
 <div class="container pb-5">
-    <h4 class="display-4 text-center p-3">@lang('contacts.change_contact')</h4>
+    <h4 class="display-4 text-center p-3">
+        @lang('contacts.change_contact')
+    </h4>
+
     <div class="row">
         <div class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-            <form action="{{ action('ContactController@update', ['contact' => $contact->id]) }}"
+            <form action="{{ action('Admin\ContactController@update', ['contact' => $contact->id]) }}"
                 method="POST"
             >
                 @csrf @method('put')
@@ -49,7 +52,7 @@
                     @lang('contacts.save')
                 </button>
             </form>
-            <form action="{{ action('ContactController@destroy', ['contact' => $contact->id]) }}"
+            <form action="{{ action('Admin\ContactController@destroy', ['contact' => $contact->id]) }}"
                 method="post" 
                 class="mt-2" 
                 onsubmit='return confirm("@lang('contacts.confirm_delete')")'

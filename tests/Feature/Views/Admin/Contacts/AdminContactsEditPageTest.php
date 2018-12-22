@@ -12,6 +12,7 @@ class ContactsEditPageTest extends TestCase
     use DatabaseTransactions;
 
     private $contact;
+    private $url;
 
     /**
      * @author Cho
@@ -20,6 +21,7 @@ class ContactsEditPageTest extends TestCase
     {
         parent::setUp();
         $this->contact = factory(Contact::class)->create();
+        $this->url = "/contacts/{$this->contact->id}/edit";
     }
 
     /**
@@ -29,7 +31,7 @@ class ContactsEditPageTest extends TestCase
     public function page_is_not_accessable_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
-            ->get("/contacts/{$this->contact->id}/edit")
+            ->get($this->url)
             ->assertRedirect();
     }
 
@@ -39,8 +41,7 @@ class ContactsEditPageTest extends TestCase
      */
     public function page_is_not_accessable_by_guest(): void
     {
-        $this->get("/contacts/{$this->contact->id}/edit")
-            ->assertRedirect();
+        $this->get($this->url)->assertRedirect();
     }
 
     /**
@@ -50,8 +51,8 @@ class ContactsEditPageTest extends TestCase
     public function page_is_accessable_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
-            ->get("/contacts/{$this->contact->id}/edit")
+            ->get($this->url)
             ->assertOk()
-            ->assertViewIs('contacts.edit');
+            ->assertViewIs('admin.contacts.edit');
     }
 }

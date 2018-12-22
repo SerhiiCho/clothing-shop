@@ -1,14 +1,25 @@
 <?php
 
-namespace Tests\Feature\Views\Contacts;
+namespace Tests\Feature\Views\Admin\Contacts;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class ContactsCreatePageTest extends TestCase
+class AdminContactsCreatePageTest extends TestCase
 {
     use DatabaseTransactions;
+
+    private $url;
+
+    /**
+     * @author Cho
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->url = '/admin/contacts/create';
+    }
 
     /**
      * @author Cho
@@ -17,7 +28,7 @@ class ContactsCreatePageTest extends TestCase
     public function page_is_not_accessable_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
-            ->get("/contacts/create")
+            ->get($this->url)
             ->assertRedirect();
     }
 
@@ -27,8 +38,7 @@ class ContactsCreatePageTest extends TestCase
      */
     public function page_is_not_accessable_by_guest(): void
     {
-        $this->get("/contacts/create")
-            ->assertRedirect();
+        $this->get($this->url)->assertRedirect();
     }
 
     /**
@@ -38,8 +48,8 @@ class ContactsCreatePageTest extends TestCase
     public function page_is_accessable_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
-            ->get("/contacts/create")
+            ->get($this->url)
             ->assertOk()
-            ->assertViewIs('contacts.create');
+            ->assertViewIs('admin.contacts.create');
     }
 }
