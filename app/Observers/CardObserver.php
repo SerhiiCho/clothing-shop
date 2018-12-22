@@ -7,11 +7,15 @@ use Illuminate\Support\Facades\Storage;
 
 class CardObserver
 {
-    // Deleting card image if card is being deleted
-    public function deleting(Card $card)
+    /**
+     * Deleting card image if card is being deleted
+     *
+     * @return void
+     */
+    public function deleting(Card $card): void
     {
         if ($card->image != 'default.jpg') {
-            Storage::delete('public/img/cards/' . $card->image);
+            Storage::delete("public/img/cards/{$card->image}");
         }
     }
 }
