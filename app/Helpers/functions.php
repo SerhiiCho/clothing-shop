@@ -63,3 +63,19 @@ function whatIsCurrent($param)
         }
     }
 }
+
+/**
+ * Function for debuging queries
+ * @codeCoverageIgnore
+ * @param bool|null $show_data
+ * @return void
+ */
+function dump_sql(?bool $show_data = false): void
+{
+    \DB::listen(function ($query) use ($show_data) {
+        dump($query->sql);
+        if ($show_data) {
+            dump($query->bindings);
+        }
+    });
+}
