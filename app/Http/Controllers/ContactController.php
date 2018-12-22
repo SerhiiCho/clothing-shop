@@ -8,7 +8,7 @@ use App\Models\Icon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
-class GsmController extends Controller
+class ContactController extends Controller
 {
     /**
      * @return void
