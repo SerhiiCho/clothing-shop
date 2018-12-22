@@ -72,7 +72,7 @@ return [
         App\Providers\UserSidebarProvider::class,
         App\Providers\FooterProvider::class,
         App\Providers\EloquentEventProvider::class,
-        App\Providers\GsmProvider::class,
+        App\Providers\ContactProvider::class,
         App\Providers\BladeProvider::class,
         App\Providers\HeaderProvider::class,
 

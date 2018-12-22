@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Models\Contact;
 use Illuminate\Support\ServiceProvider;
 
-class GsmProvider extends ServiceProvider
+class ContactProvider extends ServiceProvider
 {
     /**
      * @return void
