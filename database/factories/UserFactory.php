@@ -10,3 +10,9 @@ $factory->define(User::class, function () {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->state(User::class, 'admin', function () {
+    return [
+        'admin' => 1,
+    ];
+});
