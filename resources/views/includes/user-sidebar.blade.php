@@ -13,8 +13,8 @@
                     <span>@lang('user-sidebar.add_new_item')</span>
                 </a>
             </li>
-            <li class="{{ activeIfRouteIs('cards') }}">
-                <a href="/cards" title="@lang('user-sidebar.cards')">
+            <li class="{{ activeIfRouteIs('admin/cards') }}">
+                <a href="/admin/cards" title="@lang('user-sidebar.cards')">
                     <i class="fas fa-portrait icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('user-sidebar.cards')</span>
                 </a>

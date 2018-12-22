@@ -30,7 +30,7 @@ class CardController extends Controller
      */
     public function index(): View
     {
-        return view('cards.index', [
+        return view('admin.cards.index', [
             'cards' => Card::get(),
         ]);
     }
@@ -42,7 +42,7 @@ class CardController extends Controller
      */
     public function create(): View
     {
-        return view('cards.create', [
+        return view('admin.cards.create', [
             'types' => Type::orderBy('name')->get(),
         ]);
     }
@@ -73,7 +73,7 @@ class CardController extends Controller
 
         cache()->forget('home_cards');
 
-        return redirect('cards')->withSuccess(
+        return redirect('/admin/cards')->withSuccess(
             trans('cards.card_added')
         );
     }
@@ -88,7 +88,7 @@ class CardController extends Controller
     {
         $types = Type::orderBy('name')->get();
 
-        return view('cards.edit')->with(
+        return view('admin.cards.edit')->with(
             compact('card', 'types')
         );
     }
@@ -122,7 +122,7 @@ class CardController extends Controller
 
         cache()->forget('home_cards');
 
-        return redirect('cards')->withSuccess(
+        return redirect('admin/cards')->withSuccess(
             trans('cards.card_changed')
         );
     }
@@ -140,8 +140,8 @@ class CardController extends Controller
         cache()->forget('home_cards');
 
         return ($card->delete())
-        ? redirect('cards')->withSuccess(trans('cards.card_deleted'))
-        : redirect('cards')->withError(trans('cards.deleted_fail'));
+        ? redirect('admin/cards')->withSuccess(trans('cards.card_deleted'))
+        : redirect('admin/cards')->withError(trans('cards.deleted_fail'));
     }
 
     /**
