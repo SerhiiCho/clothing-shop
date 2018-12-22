@@ -14,29 +14,28 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center">
 
                             {{-- Icon --}}
-                            @empty(! $contact->icon_id)
-                                <img src="{{ asset("storage/img/gsm/{$contact->icon->image}") }}" 
-                                    alt="{{ $contact->icon->name }}" 
-                                    title="{{ $contact->icon->name }}" 
+                            @empty(! $contact['icon_id'])
+                                <img src="{{ asset("storage/img/gsm/{$contact['icon']['image']}") }}"
+                                    alt="{{ $contact['icon']['name'] }}"
                                     width="35" 
                                     height="35" 
                                     class="gsm-operator"
-                                />
+                                >
                             @endempty
 
-                            <strong>{{ $contact->phone }}</strong>
+                            <strong>{{ $contact['phone'] }}</strong>
                                 
                             {{-- Buttons --}}
                             <div class="align-items-right">
                                 @admin
-                                    <a href="/contacts/{{ $contact->id }}/edit" 
+                                    <a href="/contacts/{{ $contact['id'] }}/edit" 
                                         class="btn btn-primary mr-3" 
                                         title="@lang('contacts.change_contact')"
                                     >
                                         <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                                     </a>
 
-                                    <form action="{{ action('ContactController@destroy', ['contact' => $contact->id]) }}" 
+                                    <form action="{{ action('ContactController@destroy', ['contact' => $contact['id']]) }}" 
                                         method="post" 
                                         class="d-inline" 
                                         onsubmit='return confirm("@lang('contacts.confirm_delete')")'

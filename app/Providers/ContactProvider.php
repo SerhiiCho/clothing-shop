@@ -24,8 +24,6 @@ class ContactProvider extends ServiceProvider
             return Contact::with('icon')->get()->toArray();
         });
 
-        view()->composer('includes.gsm', function ($view) use ($contacts) {
-            $view->withContacts($contacts);
-        });
+        view()->share(compact('contacts'));
     }
 }

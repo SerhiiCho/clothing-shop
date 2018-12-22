@@ -26,7 +26,6 @@ class ContactController extends Controller
     public function create(): View
     {
         return view('contacts.create')->with([
-            'contacts' => Contact::get(),
             'icons' => Icon::orderBy('name')->get(),
         ]);
     }
