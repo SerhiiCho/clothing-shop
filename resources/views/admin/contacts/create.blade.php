@@ -31,7 +31,7 @@
                             {{-- Buttons --}}
                             <div class="align-items-right">
                                 @admin
-                                    <a href="/contacts/{{ $contact['id'] }}/edit" 
+                                    <a href="/admin/contacts/{{ $contact['id'] }}/edit" 
                                         class="btn btn-primary mr-3" 
                                         title="@lang('contacts.change_contact')"
                                     >

@@ -21,7 +21,7 @@ class ContactsEditPageTest extends TestCase
     {
         parent::setUp();
         $this->contact = factory(Contact::class)->create();
-        $this->url = "/contacts/{$this->contact->id}/edit";
+        $this->url = "/admin/contacts/{$this->contact->id}/edit";
     }
 
     /**

@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li class="{{ activeIfRouteIs('contacts') }}">
-                <a href="/contacts/create" title="@lang('user-sidebar.contacts')">
+                <a href="/admin/contacts/create" title="@lang('user-sidebar.contacts')">
                     <i class="fas fa-phone icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('user-sidebar.contacts')</span>
                 </a>
