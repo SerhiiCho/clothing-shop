@@ -29,41 +29,26 @@
 	margin-top: .5em;
 }
 
-.loading,
-.loading::before {
-	width: 40px;
-	height: 40px;
-	position: absolute;
-	top: 10em;
-	left: 50%;
-	margin-left: -20px;
-	border: 3px solid transparent;
-	border-top: 3px solid $gray;
-	border-bottom: 3px solid $gray;
-	border-radius: 50%;
-	animation: loadingRotate 1.1s infinite linear;
-	z-index: 100;
+.loader {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    border: 4px solid $pink;
+    border-radius: 50%;
+    border-top: 4px solid $darkestPink;
+    -webkit-animation: spin 700ms linear infinite; /* Safari */
+    animation: spin 700ms linear infinite;
 }
 
-.loading::before {
-	width: 20px;
-	height: 20px;
-	content: '';
-	top: 7px;
-	left: 7px;
-	margin: 0;
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
 }
 
-.loading-title {
-	position: absolute;
-	top: 11em;
-	left: 50%;
-	font-size: 1.2em;
-	margin-left: -40px;
-	animation: none;
-	border: none;
-	color: $gray;
-	z-index: 100;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .alert-pink {

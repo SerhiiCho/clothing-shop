@@ -7,17 +7,10 @@
 <div class="wrapper">
     <div class="container">
         <div class="row">
-            <slider inline-template>
-                <div class="col-10 pr-0 main-slider"
-                    v-if="images.length > 0"
-                    :style="sliderBg" 
-                    v-on:mouseover="stopRotation"
-                    v-on:mouseout="startRotation"
-                >
-                    <div v-on:click="prev" class="imgbanbtn imgbanbtn-prev"></div>
-                    <div v-on:click="next" class="imgbanbtn imgbanbtn-next"></div>
-                </div>
-            </slider>
+            <div class="col-10 pr-0 main-slider text-center" v-if="false">
+                <div class="loader mt-5"></div>
+            </div>
+            <slider></slider>
             <cards></cards>
         </div>
     </div>

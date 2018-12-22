@@ -1,14 +1,3 @@
-(function RemoveLoadingSpinner() {
-    let icon = document.getElementById('loading')
-    let title = document.getElementById('loading-title')
-
-    window.onload = () => {
-        icon.classList.remove("loading")
-        title.innerHTML = ''
-    }
-})();
-
-
 (function SubmitLogoutFormAfterCliking() {
     let btn = document.getElementById('logout-btn')
     let form = document.getElementById('logout-form')

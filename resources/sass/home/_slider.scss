@@ -1,63 +1,63 @@
 .main-slider {
-	position: relative;
-	overflow: hidden;
-	background-size: cover;
-	background-position: center;
-	border-right: $sliderBorder;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    border-right: $sliderBorder;
 
-	&:hover .imgbanbtn {
-		display: block;
-	}
+    &:hover .imgbanbtn {
+        opacity: 0.8;
+    }
 }
 
 .slider-items {
-	height: 100%;
-	display: flex;
-	flex-flow: column;
-	justify-content: space-around;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
 
-	&-card {
-		img {
-			max-width: 100%;
-			height: auto;
-			max-height: 200px;
-		}
-		
-		&:first-of-type {
-			img {
-				border-bottom: $sliderBorder;
-			}
-		}
-	}
+    &-card {
+        img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
+        }
+        
+        &:first-of-type {
+            img {
+                border-bottom: $sliderBorder;
+            }
+        }
+    }
 }
 
 .imgbanbtn {
-    width: 3rem;
+    width: 2rem;
     height: 3rem;
-    background: #000;
-    border-radius: .25rem;
+    background: $darkestPink;
+    border-radius: .1rem;
     position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 2000;
-    opacity: 0.6;
+    opacity: 0;
     cursor: pointer;
     background-size: 40%;
     background-position: center;
     background-repeat: no-repeat;
-	display: none;
+    transition: opacity 200ms;
 
-	&:hover {
-		opacity: 0.8;
-	}
-	
-	&-prev {
-		left: .31rem;
-	}
-	
-	&-next {
-		right: .31rem;
-	}
+    &:hover {
+        opacity: 1 !important;
+    }
+    
+    &-prev {
+        left: .31rem;
+    }
+    
+    &-next {
+        right: .31rem;
+    }
 }
 
 @media(min-width: 1000px) { .main-slider { min-height: 400px; }}
