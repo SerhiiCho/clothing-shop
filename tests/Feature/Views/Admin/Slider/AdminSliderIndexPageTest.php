@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Feature\Views\Slider;
+namespace Tests\Feature\Views\Admin\Slider;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class SliderIndexPageTest extends TestCase
+class AdminSliderIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
