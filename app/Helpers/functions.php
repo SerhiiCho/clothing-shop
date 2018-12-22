@@ -72,10 +72,12 @@ function whatIsCurrent($param)
  */
 function dump_sql(?bool $show_data = false): void
 {
-    \DB::listen(function ($query) use ($show_data) {
-        dump($query->sql);
-        if ($show_data) {
-            dump($query->bindings);
-        }
-    });
+    if (app()->env == 'local') {
+        \DB::listen(function ($query) use ($show_data) {
+            dump($query->sql);
+            if ($show_data) {
+                dump($query->bindings);
+            }
+        });
+    }
 }
