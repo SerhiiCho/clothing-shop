@@ -24,7 +24,7 @@
 
                     {{-- Edit button --}}
                     @admin
-                        <a href="/cards/{{ $card->id }}/edit"
+                        <a href="/admin/cards/{{ $card->id }}/edit"
                             class="btn btn-primary position-absolute" 
                             title="@lang('cards.change_card')" 
                             style="left:1.8em; bottom:0; opacity:.8"
@@ -59,7 +59,7 @@
         </div>
 
         {{-- Add card btn --}}
-        <a href="/cards/create" 
+        <a href="/admin/cards/create" 
             title="@lang('cards.add_card')" 
             class="btn btn-success"
         >
