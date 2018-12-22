@@ -44,7 +44,7 @@ class ContactController extends Controller
             'phone' => $request->phone,
         ]);
 
-        cache()->forget('nav_gsm');
+        cache()->forget('nav_contacts');
 
         return back()->withSuccess(
             trans('contacts.contact_added')
@@ -77,7 +77,7 @@ class ContactController extends Controller
         $contact->icon_id = $request->icon;
         $contact->phone = $request->phone;
 
-        cache()->forget('nav_gsm');
+        cache()->forget('nav_contacts');
 
         return ($contact->save())
         ? back()->withSuccess(trans('contacts.changed'))
@@ -92,7 +92,7 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact): RedirectResponse
     {
-        cache()->forget('nav_gsm');
+        cache()->forget('nav_contacts');
 
         return ($contact->delete())
         ? redirect('contacts/create')->withSuccess(trans('contacts.deleted'))

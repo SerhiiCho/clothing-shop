@@ -20,12 +20,12 @@ class ContactProvider extends ServiceProvider
      */
     public function showPhoneNumbersInHeader()
     {
-        $gsm = cache()->rememberForever('nav_gsm', function () {
+        $contacts = cache()->rememberForever('nav_contacts', function () {
             return Contact::with('icon')->get()->toArray();
         });
 
-        view()->composer('includes.gsm', function ($view) use ($gsm) {
-            $view->withGsm($gsm);
+        view()->composer('includes.gsm', function ($view) use ($contacts) {
+            $view->withContacts($contacts);
         });
     }
 }
