@@ -15,7 +15,7 @@ Route::prefix(config('custom.enter_slug'))->group(function () {
 // Resources
 Route::resource('cards', 'CardController', ['except' => ['show']]);
 Route::resource('slider', 'SliderController', ['except' => ['show']]);
-Route::resource('contacts', 'ContactController', ['except' => ['show', 'index']]);
+Route::resource('contacts', 'GsmController', ['except' => ['show', 'index']]);
 
 // Cart
 Route::prefix('cart')->group(function () {

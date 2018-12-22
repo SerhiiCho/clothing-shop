@@ -36,7 +36,7 @@
                                         <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                                     </a>
 
-                                    <form action="{{ action('ContactController@destroy', ['contact' => $contact->id]) }}" 
+                                    <form action="{{ action('GsmController@destroy', ['contact' => $contact->id]) }}" 
                                         method="post" 
                                         class="d-inline" 
                                         onsubmit='return confirm("@lang('contacts.confirm_delete')")'
@@ -62,7 +62,7 @@
     <h4 class="display-4 text-center p-3">@lang('contacts.add_contact')</h4>
     <div class="row">
         <div class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-            <form action="{{ action('ContactController@store') }}" method="POST">
+            <form action="{{ action('GsmController@store') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="phone">@lang('contacts.write_phone_number')</label>
