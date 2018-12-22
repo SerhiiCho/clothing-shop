@@ -4,7 +4,7 @@ return [
 
     // View
     'sum' => 'Сумма',
-    'date' => 'Число',
+    'date' => 'Время',
     'number' => 'Номер',
     'product' => 'Товар',
     'no_orders' => 'Нет заказов',

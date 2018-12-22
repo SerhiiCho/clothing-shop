@@ -27,7 +27,7 @@
                         <tr>
                             <th>@lang('logs.level')</th>
                             <th>@lang('logs.context')</th>
-                            <th>@lang('logs.date')</th>
+                            <th>@lang('dashboard.date')</th>
                             <th>@lang('logs.content')</th>
                         </tr>
                     </thead>
