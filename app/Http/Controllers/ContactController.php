@@ -10,8 +10,7 @@ class ContactController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('member')->only(['create', 'store']);
-        $this->middleware('admin')->only(['edit', 'update', 'destroy']);
+        $this->middleware('admin');
     }
 
     // Show the form for creating a new resource

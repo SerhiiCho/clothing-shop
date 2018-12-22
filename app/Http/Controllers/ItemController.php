@@ -14,8 +14,7 @@ class ItemController extends Controller
 
     public function __construct()
     {
-        $this->middleware('member')->only(['create', 'store']);
-        $this->middleware('admin')->only(['edit', 'update']);
+        $this->middleware('admin');
     }
 
     public function index()

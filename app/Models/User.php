@@ -20,23 +20,8 @@ class User extends Authenticatable
         return $this->hasMany(Item::class);
     }
 
-    public function isMember()
-    {
-        return $this->member === 1 ? true : false;
-    }
-
     public function isAdmin()
     {
         return $this->admin === 1 ? true : false;
-    }
-
-    public function isMaster()
-    {
-        return $this->master === 1 ? true : false;
-    }
-
-    public function isBlogger()
-    {
-        return $this->blogger === 1 ? true : false;
     }
 }

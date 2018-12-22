@@ -14,8 +14,7 @@ class CardController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('member')->only(['index', 'create', 'store']);
-        $this->middleware('admin')->only(['edit', 'update', 'destroy']);
+        $this->middleware('admin');
     }
 
     // Display a listing of the resource

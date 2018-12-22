@@ -1,44 +1,42 @@
 <?php
 
-use Gloudemans\Shoppingcart\Facades\Cart;
-
 /**
  * These routes are loaded by the RouteServiceProvider within
  * a group which contains the "web" middleware group.
  */
 Route::get('logs',
-	'\Rap2hpoutre\LaravelLogViewer\LogViewerController@index'
-)->middleware('master');
+    '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index'
+)->middleware('admin');
 
 Route::prefix(config('custom.enter_slug'))->group(function () {
-	Auth::routes();
+    Auth::routes();
 });
 
 // Resources
-Route::resource('cards',  'CardController', ['except' => ['show']]);
+Route::resource('cards', 'CardController', ['except' => ['show']]);
 Route::resource('slider', 'SliderController', ['except' => ['show']]);
 Route::resource('contacts', 'ContactController', ['except' => ['show', 'index']]);
 
 // Cart
 Route::prefix('cart')->group(function () {
-	Route::get('/','CartController@index');
-	Route::post('/store','CartController@store');
-	Route::delete('/{item}','CartController@destroy');
-	Route::post('/addToFavorite/{id}','CartController@addToFavorite');
+    Route::get('/', 'CartController@index');
+    Route::post('/store', 'CartController@store');
+    Route::delete('/{item}', 'CartController@destroy');
+    Route::post('/addToFavorite/{id}', 'CartController@addToFavorite');
 });
 
 Route::prefix('checkout')->group(function () {
-	Route::get('/','CheckoutController@index');
-	Route::post('/','CheckoutController@store');
+    Route::get('/', 'CheckoutController@index');
+    Route::post('/', 'CheckoutController@store');
 });
 
 Route::prefix('favorite')->group(function () {
-	Route::post('/addToCart/{id}','FavoriteItemController@addToCart');
-	Route::delete('/{id}','FavoriteItemController@destroy');
+    Route::post('/addToCart/{id}', 'FavoriteItemController@addToCart');
+    Route::delete('/{id}', 'FavoriteItemController@destroy');
 });
 
 // Items
-Route::resource('items',  'ItemController', ['except' => ['show']]);
+Route::resource('items', 'ItemController', ['except' => ['show']]);
 Route::get('item/{category}/{item}', 'ItemController@show');
 
 // Page Controllers
@@ -55,8 +53,8 @@ Route::get('user/work', 'UserController@work');
 
 // Artisan commands =======
 Route::prefix('php/artisan')->group(function () {
-	Route::get('cache/{url_key}', 'ArtisanController@cache');
-	Route::get('clear/{url_key}', 'ArtisanController@clear');
-	Route::get('storage/link/{url_key}',  'ArtisanController@link');
-	Route::get('migrate/fresh/{url_key}', 'ArtisanController@migrate');
+    Route::get('cache/{url_key}', 'ArtisanController@cache');
+    Route::get('clear/{url_key}', 'ArtisanController@clear');
+    Route::get('storage/link/{url_key}', 'ArtisanController@link');
+    Route::get('migrate/fresh/{url_key}', 'ArtisanController@migrate');
 });
