@@ -17,7 +17,7 @@ class SliderCreatePageTest extends TestCase
     public function page_is_not_accessable_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
-            ->get("/user/slider/create")
+            ->get("/admin/slider/create")
             ->assertRedirect();
     }
 
@@ -27,7 +27,7 @@ class SliderCreatePageTest extends TestCase
      */
     public function page_is_not_accessable_by_guest(): void
     {
-        $this->get("/user/slider/create")
+        $this->get("/admin/slider/create")
             ->assertRedirect();
     }
 
@@ -38,8 +38,8 @@ class SliderCreatePageTest extends TestCase
     public function page_is_accessable_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
-            ->get("/user/slider/create")
+            ->get("/admin/slider/create")
             ->assertOk()
-            ->assertViewIs('user.slider.create');
+            ->assertViewIs('admin.slider.create');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSlideImageRequest;
@@ -29,7 +29,7 @@ class SliderController extends Controller
      */
     public function index(): View
     {
-        return view('user.slider.index')->withSlider(Slider::all());
+        return view('admin.slider.index')->withSlider(Slider::all());
     }
 
     /**
@@ -39,7 +39,7 @@ class SliderController extends Controller
      */
     public function create(): View
     {
-        return view('user.slider.create');
+        return view('admin.slider.create');
     }
 
     /**
@@ -60,7 +60,7 @@ class SliderController extends Controller
             'order' => $request ? $request->order : '',
         ]);
 
-        return redirect('/user/slider')->withSuccess(
+        return redirect('/admin/slider')->withSuccess(
             trans('slider.slide_added')
         );
     }
@@ -73,7 +73,7 @@ class SliderController extends Controller
      */
     public function edit(Slider $slider): View
     {
-        return view('user.slider.edit')->withSlider($slider);
+        return view('admin.slider.edit')->withSlider($slider);
     }
 
     /**
@@ -100,7 +100,7 @@ class SliderController extends Controller
         }
         $slider->update(['order' => $request->order]);
 
-        return redirect('/user/slider')->withSuccess(
+        return redirect('/admin/slider')->withSuccess(
             trans('slider.slider_changed')
         );
     }
@@ -114,7 +114,7 @@ class SliderController extends Controller
     public function destroy(Slider $slider): RedirectResponse
     {
         $slider->delete();
-        return redirect('/user/slider')->withSuccess(trans('slider.deleted'));
+        return redirect('/admin/slider')->withSuccess(trans('slider.deleted'));
     }
 
     /**

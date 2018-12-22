@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Feature\Views\User\Dashboard;
+namespace Tests\Feature\Views\Admin\Dashboard;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class UserDashboardIndexPageTest extends TestCase
+class AdminDashboardIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -17,7 +17,7 @@ class UserDashboardIndexPageTest extends TestCase
     public function page_is_not_accessable_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
-            ->get('/user/dashboard')
+            ->get('/admin/dashboard')
             ->assertRedirect();
     }
 
@@ -27,7 +27,7 @@ class UserDashboardIndexPageTest extends TestCase
      */
     public function page_is_not_accessable_by_guest(): void
     {
-        $this->get('/user/dashboard')
+        $this->get('/admin/dashboard')
             ->assertRedirect();
     }
 
@@ -38,8 +38,8 @@ class UserDashboardIndexPageTest extends TestCase
     public function page_is_accessable_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
-            ->get('/user/dashboard')
+            ->get('/admin/dashboard')
             ->assertOk()
-            ->assertViewIs('user.dashboard.index');
+            ->assertViewIs('admin.dashboard.index');
     }
 }

@@ -1,8 +1,8 @@
 @admin     
     <nav class="user-sidebar">
         <ul>
-            <li class="{{ activeIfRouteIs('user/work') }} red-buttons" {{ $unreaded ?? '' }}>
-                <a href="/user/work" title="@lang('user-sidebar.work')">
+            <li class="{{ activeIfRouteIs('admin/work') }} red-buttons" {{ $unreaded ?? '' }}>
+                <a href="/admin/work" title="@lang('user-sidebar.work')">
                     <i class="fas fa-suitcase icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('user-sidebar.work')</span>
                 </a>
@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="{{ activeIfRouteIs('slider') }}">
-                <a href="/user/slider" title="@lang('user-sidebar.slider')">
+                <a href="/admin/slider" title="@lang('user-sidebar.slider')">
                     <i class="fas fa-images icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('user-sidebar.slider')</span>
                 </a>
@@ -43,8 +43,8 @@
                     <span>@lang('logs.logs')</span>
                 </a>
             </li>
-            <li class="{{ activeIfRouteIs('user/dashboard') }}">
-                <a href="/user/dashboard" title="@lang('dashboard.dashboard')">
+            <li class="{{ activeIfRouteIs('admin/dashboard') }}">
+                <a href="/admin/dashboard" title="@lang('dashboard.dashboard')">
                     <i class="fas fa-cog icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('dashboard.dash')</span>
                 </a>

@@ -46,8 +46,8 @@ Route::get('language/{lang}', 'PageController@lang');
 Route::view('search', 'search');
 Route::post('search', 'SearchController@handleTheRequest');
 
-// User
-Route::prefix('user')->namespace('User')->group(function () {
+// Admin
+Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('dashboard', 'DashboardController@index');
     Route::get('work', 'WorkController@index');
     Route::resource('slider', 'SliderController', ['except' => ['show']]);

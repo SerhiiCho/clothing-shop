@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Feature\Views\User\Work;
+namespace Tests\Feature\Views\Admin\Work;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class UserWorkIndexPageTest extends TestCase
+class AdminWorkIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -17,7 +17,7 @@ class UserWorkIndexPageTest extends TestCase
     public function page_is_not_accessable_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
-            ->get('/user/work')
+            ->get('/admin/work')
             ->assertRedirect();
     }
 
@@ -27,7 +27,7 @@ class UserWorkIndexPageTest extends TestCase
      */
     public function page_is_not_accessable_by_guest(): void
     {
-        $this->get('/user/work')
+        $this->get('/admin/work')
             ->assertRedirect();
     }
 
@@ -38,8 +38,8 @@ class UserWorkIndexPageTest extends TestCase
     public function page_is_accessable_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
-            ->get('/user/work')
+            ->get('/admin/work')
             ->assertOk()
-            ->assertViewIs('user.work.index');
+            ->assertViewIs('admin.work.index');
     }
 }

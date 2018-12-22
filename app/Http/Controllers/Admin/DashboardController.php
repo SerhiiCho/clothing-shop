@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Item;
@@ -21,7 +21,7 @@ class DashboardController extends Controller
      */
     public function index(): View
     {
-        return view('user.dashboard.index', [
+        return view('admin.dashboard.index', [
             'all_items' => Item::where('stock', '>', 0)->count(),
         ]);
     }
