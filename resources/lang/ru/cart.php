@@ -18,7 +18,7 @@ return [
     'favorite_empty' => 'Нет избранных вещей',
 
     // Controller
-    'added_to_cart' => ':item добавлено а корзину',
+    'added_to_cart' => ':item добавлено а корзину. <a href="' . url()->to('/cart') . '">Перейти к корзине</a>',
     'was_deleted' => 'Удалено с корзины',
     'was_deleted_from_favs' => 'Удалено с избранного',
     'item_is_in_your_cart' => ':item уже в вашей корзине',

@@ -8,7 +8,7 @@
 
 @if (session('success'))
     <div class="container mt-3 mb-3">
-        <message state="success">{{ session('success') }}</message>
+        <message state="success">{!! session('success') !!}</message>
     </div>
 @endif
 
