@@ -1,8 +1,7 @@
 <?php
 
 use App\Models\Slider;
-use Faker\Generator as Faker;
 
-$factory->define(Slider::class, function (Faker $faker) {
+$factory->define(Slider::class, function () {
     return ['image' => 'default.jpg'];
 });
