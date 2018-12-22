@@ -8,6 +8,10 @@ class PageController extends Controller
 {
     public function home()
     {
-        return view('home')->withCards(Card::all()->take(3));
+        $cards = cache()->rememberForever('home_cards', function () {
+            return Card::with('type')->get()->take(3)->toArray();
+        });
+
+        return view('home', compact('cards'));
     }
 }

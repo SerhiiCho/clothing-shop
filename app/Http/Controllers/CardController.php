@@ -20,17 +20,17 @@ class CardController extends Controller
     // Display a listing of the resource
     public function index()
     {
-        return view('cards.index')->withCards(
-            Card::all()
-        );
+        return view('cards.index', [
+            'cards' => Card::get(),
+        ]);
     }
 
     // Show the form for creating a new resource
     public function create()
     {
-        return view('cards.create')->withTypes(
-            Type::orderBy('name')->get()
-        );
+        return view('cards.create', [
+            'types' => Type::orderBy('name')->get(),
+        ]);
     }
 
     // Store a newly created resource in storage
@@ -51,6 +51,8 @@ class CardController extends Controller
             'type_id' => $request->type,
             'category' => $request->category,
         ]);
+
+        cache()->forget('home_cards');
 
         return redirect('cards')->withSuccess(
             trans('cards.card_added')
@@ -82,10 +84,13 @@ class CardController extends Controller
 
             $card->update(['image' => $filename]);
         }
+
         $card->update([
             'type_id' => $request->type,
             'category' => $request->category,
         ]);
+
+        cache()->forget('home_cards');
 
         return redirect('cards')->withSuccess(
             trans('cards.card_changed')
@@ -99,6 +104,8 @@ class CardController extends Controller
      */
     public function destroy(Card $card)
     {
+        cache()->forget('home_cards');
+
         return ($card->delete())
         ? redirect('cards')->withSuccess(trans('cards.card_deleted'))
         : redirect('cards')->withError(trans('cards.deleted_fail'));
