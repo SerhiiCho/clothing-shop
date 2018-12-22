@@ -2,6 +2,7 @@
 
 namespace App\Contracts;
 
+use App\Models\Item;
 use App\Models\ItemsPhoto;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -43,10 +44,13 @@ trait ItemHelpers
     }
 
     /**
-     * This contract creates new item in database if @param $item is null,
+     * This contract creates new item in database if param $item is null,
      * if it's not, than it will update the item that is passed
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Item|null $item
      */
-    public function createOrUpdateItem($request, $item = null)
+    public function createOrUpdateItem(Request $request, ?Item $item = null)
     {
         $items = [
             'title' => $request->title,
@@ -56,6 +60,9 @@ trait ItemHelpers
             'price' => $request->price,
             'type_id' => $request->type,
         ];
+
+        cache()->forget('categories_men');
+        cache()->forget('categories_women');
 
         return $item
         ? $item->update($items)

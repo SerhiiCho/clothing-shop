@@ -14,20 +14,21 @@
                         <h4 class="list-group-item text-center active">
                             @lang('navigation.types')
                         </h4>
+
                         @if($current_category == 'women' && isset($categories_women))
                             @foreach ($categories_women as $item)
-                                <a href="/items?category={{ $current_category }}&type={{ $item->type->id }}" 
-                                    class="list-group-item {{ activeIfRouteIs('items', 'type', $item->type->id) }}"
+                                <a href="/items?category={{ $current_category }}&type={{ $item['type_id'] }}" 
+                                    class="list-group-item {{ activeIfRouteIs('items', 'type', $item['type_id']) }}"
                                 >
-                                    {{ $item->type->name }}
+                                    {{ $item['type']['name'] }}
                                 </a>
                             @endforeach
                         @elseif ($current_category == 'men' && isset($categories_men))
                             @foreach ($categories_men as $item)
-                                <a href="/items?category={{ $current_category }}&type={{ $item->type->id }}" 
-                                    class="list-group-item {{ activeIfRouteIs('items', 'type', $item->type->id) }}"
+                                <a href="/items?category={{ $current_category }}&type={{ $item['type_id'] }}" 
+                                    class="list-group-item {{ activeIfRouteIs('items', 'type', $item['type_id']) }}"
                                 >
-                                    {{ $item->type->name }}
+                                    {{ $item['type']['name'] }}
                                 </a>
                             @endforeach
                         @endisset

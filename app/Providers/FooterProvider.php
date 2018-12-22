@@ -23,14 +23,17 @@ class FooterProvider extends ServiceProvider
      */
     public function categoriesMen(): void
     {
-        view()->composer('*', function ($view) {
-            $view->with('categories_men',
-                Item::distinct()
-                    ->whereCategory('men')
-                    ->inStock()
-                    ->get(['type_id', 'category'])
-            );
+        // cache()->put('hello', 'world', 1);
+        $categories_men = cache()->rememberForever('categories_men', function () {
+            return Item::distinct()
+                ->with('type')
+                ->whereCategory('men')
+                ->inStock()
+                ->get(['type_id', 'category'])
+                ->toArray();
         });
+
+        view()->share(compact('categories_men'));
     }
 
     /**
@@ -38,14 +41,16 @@ class FooterProvider extends ServiceProvider
      */
     public function categoriesWomen(): void
     {
-        view()->composer('*', function ($view) {
-            $view->with('categories_women',
-                Item::distinct()
-                    ->whereCategory('women')
-                    ->inStock()
-                    ->get(['type_id', 'category'])
-            );
+        $categories_women = cache()->rememberForever('categories_women', function () {
+            return Item::distinct()
+                ->with('type')
+                ->whereCategory('women')
+                ->inStock()
+                ->get(['type_id', 'category'])
+                ->toArray();
         });
+
+        view()->share(compact('categories_women'));
     }
 
     /**

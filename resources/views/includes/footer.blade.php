@@ -31,17 +31,17 @@
                 </nav>
             @endisset
 
-            {{-- Categories --}}
+            {{-- Categories women --}}
             @isset($categories_women)
                 <nav class="col-6 col-md-3">
-                    <h4>@lang('navigation.types')</h4>
+                    <h4>@lang('navigation.women')</h4>
                     <ul>
                         @foreach ($categories_women as $item)
                         <li>
-                            <a href="/items?category={{ $item->category }}&type={{ $item->type->id }}" 
-                                title="{{ $item->type->name }}"
+                            <a href="/items?category={{ $item['category'] }}&type={{ $item['type_id'] }}" 
+                                title="{{ $item['type_id'] }}"
                             >
-                                {{ $item->type->name }}
+                                {{ $item['type']['name'] }}
                             </a>
                         </li>
                         @endforeach
@@ -49,10 +49,23 @@
                 </nav>
             @endisset
 
-            {{-- Languages --}}
-            <div class="col-6 col-md-3 languages">
-                Пусто
-            </div>
+            {{-- Categories men --}}
+            @isset($categories_men)
+                <nav class="col-6 col-md-3">
+                    <h4>@lang('navigation.men')</h4>
+                    <ul>
+                        @foreach ($categories_men as $item)
+                        <li>
+                            <a href="/items?category={{ $item['category'] }}&type={{ $item['type_id'] }}" 
+                                title="{{ $item['type']['name'] }}"
+                            >
+                                {{ $item['type']['name'] }}
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </nav>
+            @endisset
         </div>
         <div class="row">
             <h6 class="col-12 pt-5 text-center copyright">
