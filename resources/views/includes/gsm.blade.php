@@ -1,5 +1,5 @@
-@if (isset($gsm) && count($gsm) > 0)
-    <section class="contact-container">
+<section class="contact-container">
+    @if (isset($gsm) && count($gsm) > 0)
         @foreach ($gsm as $contact)
             <div class="contact-item mr-3">
                 @empty(! $contact['icon_id'])
@@ -13,5 +13,5 @@
                 <span>{{ $contact['phone'] }}</span>
             </div>
         @endforeach
-    </section>
-@endif
+    @endif
+</section>
