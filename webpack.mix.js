@@ -1,8 +1,8 @@
 let mix = require('laravel-mix');
 
-const css = 1;
+const css = 0;
 const js = 1;
-const server = 0;
+const server = 1;
 
 if (css === 1) {
     mix.sass('resources/sass/app.scss', 'public/css/app.css').options({
@@ -25,7 +25,7 @@ if (js === 1) {
 
 if (server === 1) {
     mix.browserSync({
-        proxy: 'localhost:8000',
+        proxy: 'clothing-shop.test',
         files: [
             'public/css/*.css',
             'public/js/*.js',
