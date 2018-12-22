@@ -14,7 +14,11 @@
     </div>
     <div class="col-md-8 offset-md-2">
 
-        <form action="{{ action('Admin\SliderController@store') }}" method="post" enctype="multipart/form-data" class="row">
+        <form action="{{ action('Admin\SliderController@store') }}"
+            method="post" 
+            enctype="multipart/form-data" 
+            class="row"
+        >
             @csrf
             <div class="custom-file mt-3 col-12 col-md-6">
                 <input type="file" 

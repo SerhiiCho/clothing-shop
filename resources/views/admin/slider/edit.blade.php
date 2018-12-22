@@ -31,7 +31,7 @@
             <div class="form-group mt-3 col-12 col-md-6">
                 <input type="number" 
                     value="{{ $slider->order }}" 
-                    lass="form-control" 
+                    class="form-control" 
                     name="order" 
                     placeholder="@lang('slider.choose_order_number')"
                 >
