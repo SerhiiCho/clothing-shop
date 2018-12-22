@@ -14,7 +14,7 @@ class ItemController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('admin')->except(['index', 'show']);
     }
 
     public function index()
@@ -32,6 +32,9 @@ class ItemController extends Controller
         );
     }
 
+    /**
+     * @param \App\Http\Requests\ItemRequest $request
+     */
     public function store(ItemRequest $request)
     {
         $item = $this->createOrUpdateItem($request);
@@ -42,6 +45,10 @@ class ItemController extends Controller
         );
     }
 
+    /**
+     * @param string $category
+     * @param \App\Models\Item $item
+     */
     public function show($category, Item $item)
     {
         // If page has been just visited just return view
@@ -61,6 +68,9 @@ class ItemController extends Controller
         ]);
     }
 
+    /**
+     * @param \App\Models\Item $item
+     */
     public function edit(Item $item)
     {
         $types = (new Type)->orderBy('name')->get();
@@ -72,6 +82,10 @@ class ItemController extends Controller
         return view('items.edit')->with(compact('item', 'types', 'category'));
     }
 
+    /**
+     * @param \App\Http\Requests\ItemRequest $request
+     * @param \App\Models\Item $item
+     */
     public function update(ItemRequest $request, Item $item)
     {
         if ($request->hasFile('photos')) {

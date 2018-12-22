@@ -7,13 +7,19 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    // Display a listing of the resource
+    /**
+     * Display a listing of the resource
+     */
     public function index()
     {
         return view('cart.index');
     }
 
-    // Store a newly created resource in storage
+    /**
+     * Store a newly created resource in storage
+     *
+     * @param \Illuminate\Http\Request $request
+     */
     public function store(Request $request)
     {
         $dublicates = Cart::search(function ($cartItem, $rowId) use ($request) {
@@ -36,6 +42,9 @@ class CartController extends Controller
         );
     }
 
+    /**
+     * @param int $id
+     */
     public function addToFavorite($id)
     {
         $item = Cart::get($id);
@@ -58,7 +67,11 @@ class CartController extends Controller
         );
     }
 
-    // Remove the specified resource from storage
+    /**
+     * Remove the specified resource from storage
+     *
+     * @param int $id
+     */
     public function destroy($id)
     {
         Cart::remove($id);
