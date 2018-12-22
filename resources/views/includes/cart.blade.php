@@ -1,5 +1,5 @@
 <a href="/cart" class="text-dark mt-1 cart">
-    <i class="fa fa-shopping-cart" aria-hidden="true"></i>  
+    <i class="fas fa-shopping-cart" aria-hidden="true"></i>  
     @lang('cart.cart')
     
     @if (Cart::instance('default')->count() > 0)

@@ -1,6 +1,6 @@
 let mix = require('laravel-mix');
 
-const css = 0;
+const css = 1;
 const js = 1;
 const server = 0;
 

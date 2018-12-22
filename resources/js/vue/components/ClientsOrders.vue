@@ -13,7 +13,7 @@
                         class="btn btn-success btn-sm"
                         @click="deleteMessage(order.id)"
                     >
-                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        <i class="fas fa-trash-alt" aria-hidden="true"></i>
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">

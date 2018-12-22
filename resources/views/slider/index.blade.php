@@ -34,7 +34,7 @@
                                     class="btn btn-success" 
                                     title="@lang('slider.edit')"
                                 >
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                                 </a>
 
                                 {{-- Delete button --}}
@@ -48,7 +48,7 @@
 
                                     {{-- Delete slide btn --}}
                                     <button type="submit" class="btn btn-success" title="@lang('slider.delete')">
-                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        <i class="fas fa-trash-alt" aria-hidden="true"></i>
                                     </button>
                                 </form>
                             @endadmin

@@ -25,7 +25,8 @@
 @import 'footer';
 @import 'animations';
 
-@import 'font-awesome/font-awesome';
+@import 'font-awesome/scss/fontawesome.scss';
+@import 'font-awesome/scss/solid.scss';
 
 .v-cloak { display: none; }
 [v-cloak] { display: block; }

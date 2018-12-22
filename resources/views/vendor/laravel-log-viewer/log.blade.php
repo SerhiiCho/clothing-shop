@@ -35,7 +35,7 @@
                         @foreach($logs as $key => $log)
                             <tr data-display="stack{{{$key}}}">
                                 <td class="text-{{{$log['level_class']}}}">
-                                    <span class="fa fa-{{{$log['level_img']}}}" aria-hidden="true"></span> 
+                                    <span class="fas fa-{{{$log['level_img']}}}" aria-hidden="true"></span> 
                                     &nbsp;{{$log['level']}}
                                 </td>
                                 <td class="text">{{$log['context']}}</td>
@@ -43,7 +43,7 @@
                                 <td class="text">
                                     @if ($log['stack'])
                                         <button type="button" class="float-right expand btn btn-outline-dark btn-sm mb-2 ml-2" data-display="stack{{{$key}}}">
-                                            <span class="fa fa-search"></span>
+                                            <span class="fas fa-search"></span>
                                         </button>
                                     @endif
                                     {{{ $log['text'] }}}
@@ -64,16 +64,16 @@
             <div class="p-3">
                 @if($current_file)
                     <a href="?dl={{ \Illuminate\Support\Facades\Crypt::encrypt($current_file) }}" class="mr-1 p-2 badge badge-dark">
-                        <span class="fa fa-download mr-1"></span> 
+                        <span class="fas fa-download mr-1"></span> 
                         @lang('logs.download')
                     </a>
                     <a id="delete-log" href="?del={{ \Illuminate\Support\Facades\Crypt::encrypt($current_file) }}" class="mr-1 p-2 badge badge-danger">
-                        <span class="fa fa-trash mr-1"></span> 
+                        <span class="fas fa-trash-alt mr-1"></span> 
                         @lang('logs.delete')
                     </a>
                     @if(count($files) > 1)
                         <a id="delete-all-log" href="?delall=true" class="mr-1 p-2 badge badge-danger">
-                            <span class="fa fa-trash mr-1"></span> 
+                            <span class="fas fa-trash-alt mr-1"></span> 
                             @lang('logs.delete_all_files')
                         </a>
                     @endif

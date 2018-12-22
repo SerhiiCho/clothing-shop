@@ -29,7 +29,7 @@
                             title="@lang('cards.change_card')" 
                             style="left:1.8em; bottom:0; opacity:.8"
                         >
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            <i class="fas fa-pencil-alt" aria-hidden="true"></i>
                         </a>
 
                         {{-- Delete button --}}
@@ -45,7 +45,7 @@
                                 class="btn btn-primary" 
                                 title="@lang('cards.delete_card')"
                             >
-                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                <i class="fas fa-trash-alt" aria-hidden="true"></i>
                             </button>
                         </form>
                     @endadmin

@@ -51,7 +51,7 @@
                                     class="btn btn-dark btn-sm" 
                                     title="@lang('cart.add_to_favorite')"
                                 >
-                                    <i class="fa fa-star-o"></i>
+                                    <i class="fas fa-star"></i>
                                 </button>
                             </form>
                             <form action="{{ action('CartController@destroy', ['item' => $item->rowId]) }}" 
@@ -64,7 +64,7 @@
                                     class="btn btn-danger btn-sm" 
                                     title="@lang('cart.delete')"
                                 >
-                                    <i class="fa fa-trash-o"></i>
+                                    <i class="fas fa-trash-alt"></i>
                                 </button>
                             </form>
                         </td>
@@ -85,7 +85,7 @@
                     </td>
                     <td>
                         <a href="/checkout" class="btn btn-success btn-block">
-                            @lang('cart.order') <i class="fa fa-angle-right"></i>
+                            @lang('cart.order') <i class="fas fa-angle-right"></i>
                         </a>
                     </td>
                 </tr>
@@ -150,7 +150,7 @@
                                         class="btn btn-dark btn-sm" 
                                         title="@lang('cart.add_to_cart')"
                                     >
-                                        <i class="fa fa-cart-plus"></i>
+                                        <i class="fas fa-cart-plus"></i>
                                     </button>
                                 </form>
                                 <form class="d-inline" 
@@ -163,7 +163,7 @@
                                         class="btn btn-danger btn-sm" 
                                         title="@lang('cart.delete')"
                                     >
-                                        <i class="fa fa-trash-o"></i>
+                                        <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </form>
                             </td>
