@@ -37,10 +37,9 @@ export default {
     
     methods: {
         getCards() {
-            fetch('/api/slider/cards')
-                .then(res => res.json())
-                .then(res => this.cards = res.data)
-                .catch(err => console.log(err))
+            this.$axios.get('/api/slider/cards')
+                .then(res => this.cards = res.data.data)
+                .catch(err => console.error(err))
         },
 
         startUpdating() {

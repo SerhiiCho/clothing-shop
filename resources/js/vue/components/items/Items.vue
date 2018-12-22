@@ -99,14 +99,12 @@ export default {
 
             url = url || '/api/items' + addToUrl
 
-            fetch(url)
-            .then(res => res.json())
-            .then(res => {
-                this.items = res.data
-                console.log(res.data)
-                vm.makePagination(res.meta, res.links)
-            })
-            .catch(error => console.log(error))
+            this.$axios.get(url)
+                .then(res => {
+                    this.items = res.data.data
+                    vm.makePagination(res.data.meta, res.data.links)
+                })
+                .catch(error => console.error(error))
         },
 
         makePagination(meta, links) {
@@ -122,12 +120,9 @@ export default {
 
         deleteItem(id) {
             if (confirm('Удалить этот товар?')) {
-                fetch(`api/item/${id}`, {
-                    method: 'delete'
-                })
-                .then(res => res.json())
-                .then(data => this.fetchItems())
-                .catch(error => console.log(error))
+                this.$axios.delete('api/item/' + id)
+                    .then(res => this.fetchItems())
+                    .catch(error => console.error(error))
             }
         },
 

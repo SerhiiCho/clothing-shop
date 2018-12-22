@@ -70,24 +70,20 @@ export default {
     
     methods: {
         getMessages() {
-            fetch('/api/clients_orders/index')
-                .then(res => res.json())
-                .then(data => this.orders.push(data.data))
-                .catch(err => console.log(err))
+            this.$axios('/api/clients_orders/index')
+                .then(res => this.orders.push(res.data.data))
+                .catch(err => console.error(err))
         },
 
         deleteMessage(id) {
             if (confirm(this.deleteThisOrder)) {
-                fetch(`/api/clients_orders/destroy/${id}`, {
-                    method: 'delete'
-                })
-                    .then(res => res.json())
-                    .then(data => {
+                this.$axios.delete(`/api/clients_orders/destroy/${id}`)
+                    .then(res => {
                         this.orders = []
-                        this.orders.push(data.data)
+                        this.orders.push(res.data.data)
                         this.getMessages()
                     })
-                    .catch(error => console.log(error))
+                    .catch(error => console.error(error))
             }
         }
     }

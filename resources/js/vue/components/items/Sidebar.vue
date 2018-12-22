@@ -45,16 +45,17 @@ export default {
                 this.category = 'men'
             }
 
-            fetch('/api/item/random/' + this.category)
-                .then(res => res.json())
+            this.$axios.get('/api/item/random/' + this.category)
                 .then(res => {
                     let data = []
-                    res.data.map(el => {
-                        if (el.id != this.itemId) data.push(el)
+                    res.data.data.map(el => {
+                        if (el.id != this.itemId) {
+                            data.push(el)
+                        }
                     })
                     this.randomItems = data.slice(0, 6)
                 })
-                .catch(err => console.log(err))
+                .catch(err => console.error(err))
         },
 
         changePhotoOver (index, newSrc = null) {

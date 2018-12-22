@@ -1,40 +1,40 @@
 <template>
-	<div class="col-10 pr-0 main-slider"
+    <div class="col-10 pr-0 main-slider"
         v-if="images.length > 0"
         :style="'background-image:url(storage/img/slider/' + images[Math.abs(currentNumber) % images.length] + ');'" 
         v-on:mouseover="stopRotation"
         v-on:mouseout="startRotation"
     >
-		<div @click="prev"
+        <div @click="prev"
             class="imgbanbtn imgbanbtn-prev"
             style="background-image:url(storage/img/arrow-left.png);"
         ></div>
 
-		<div @click="next"
+        <div @click="next"
             class="imgbanbtn imgbanbtn-next"
             style="background-image:url(storage/img/arrow-right.png);"
         ></div>
-	</div>
+    </div>
 </template>
 
 <script>
 export default {
-	data() {
-		return {
-			images: [],
-			order: [],
-			timer: null,
-			currentNumber: 0
-		}
-	},
+    data() {
+        return {
+            images: [],
+            order: [],
+            timer: null,
+            currentNumber: 0
+        }
+    },
 
-	created() {
-		this.startRotation(),
-		this.fetchSlides()
-	},
+    created() {
+        this.startRotation(),
+        this.fetchSlides()
+    },
 
-	methods: {
-		startRotation: function() {
+    methods: {
+        startRotation: function() {
             this.timer = setInterval(this.next, 5000)
         },
 
@@ -45,22 +45,21 @@ export default {
 
         next: function() {
             this.currentNumber += 1
-		},
-		
+        },
+        
         prev: function() {
             this.currentNumber -= 1
-		},
-		
-		fetchSlides() {
-			fetch('/api/slider/main')
-				.then(res => res.json())
-				.then(data => {
-					for (let i = 0; i < data.length; i++) {
-						this.images.push(data[i].image)
-					}
-				})
-				.catch(err => console.log(err))
-		}
-	}
+        },
+        
+        fetchSlides() {
+            this.$axios.get('/api/slider/main')
+                .then(res => {
+                    for (let i = 0; i < res.data.length; i++) {
+                        this.images.push(res.data[i].image)
+                    }
+                })
+                .catch(err => console.error(err))
+        }
+    }
 }
 </script>

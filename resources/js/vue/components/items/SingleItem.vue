@@ -135,12 +135,9 @@ export default {
 
         deleteItem (id) {
             if (confirm(this.deleteThisProduct)) {
-                fetch(`/api/item/${id}`, {
-                    method: 'delete'
-                })
-                .then(res => res.json())
-                .then(data => window.location.href = '/items')
-                .catch(error => console.log(error))
+                this.$axios.delete('/api/item/' + id)
+                    .then(data => window.location.href = '/items')
+                    .catch(error => console.error(error))
             }
         },
 

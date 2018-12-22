@@ -44,10 +44,9 @@ export default {
 
     methods: {
         fetchPopularItems() {
-            fetch('/api/item/popular')
-            .then(res => res.json())
-            .then(res => this.populars = res.data)
-            .catch(err => console.log(err))
+            this.$axios.get('/api/item/popular')
+                .then(res => this.populars = res.data.data)
+                .catch(err => console.error(err))
         },
 
         changePhotoOver (index, newSrc = null) {

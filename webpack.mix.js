@@ -1,24 +1,35 @@
 let mix = require('laravel-mix');
 
-/*
- | By default, we are compiling the Sass
- | file for the application as well as bundling up all the JS files.
- */
+const css = 0;
+const js = 1;
+const server = 0;
 
-mix.js('resources/js/app.js', 'public/js/vendor')
-	.babel('resources/js/main.js', 'public/js/vendor/main.js')
-	.combine([
-		'public/js/vendor/app.js',
-		'public/js/vendor/main.js',
-	], 'public/js/app.js')
-	.sass('resources/sass/app.scss', 'public/css')
-	.disableNotifications()
-	.sourceMaps()
-	// .browserSync({
-	// 	proxy: 'localhost:8000',
-	// 	browser: 'firefox',
-	// 	files: [
-	// 		'public/css/*.css',
-	// 		'public/js/*.js',
-	// 	]
-	// })
+if (css === 1) {
+    mix.sass('resources/sass/app.scss', 'public/css/app.css').options({
+        processCssUrls: false,
+    })
+}
+
+if (js === 1) {
+    mix.js('resources/js/app.js', 'public/js/app.js')
+        .options({
+            uglify: {
+                uglifyOptions: {
+                    compress: {
+                        drop_console: true
+                    }
+                }
+            }
+        })
+}
+
+if (server === 1) {
+    mix.browserSync({
+        proxy: 'localhost:8000',
+        files: [
+            'public/css/*.css',
+            'public/js/*.js',
+        ],
+        notify: false,
+    })
+}
