@@ -57,7 +57,7 @@
             <div class="row">
 
                 <!-- Title -->
-                <div class="col-6 pt-3">
+                <div class="col-6 pt-3 pb-3">
                     <span class="display-4">{{ item.title }}</span>
                 </div>
 
