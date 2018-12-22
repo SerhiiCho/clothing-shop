@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Item;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\ServiceProvider;
 
 class FooterProvider extends ServiceProvider
@@ -23,17 +24,19 @@ class FooterProvider extends ServiceProvider
      */
     public function categoriesMen(): void
     {
-        // cache()->put('hello', 'world', 1);
-        $categories_men = cache()->rememberForever('categories_men', function () {
-            return Item::distinct()
-                ->with('type')
-                ->whereCategory('men')
-                ->inStock()
-                ->get(['type_id', 'category'])
-                ->toArray();
-        });
-
-        view()->share(compact('categories_men'));
+        try {
+            $categories_men = cache()->rememberForever('categories_men', function () {
+                return Item::distinct()
+                    ->with('type')
+                    ->whereCategory('men')
+                    ->inStock()
+                    ->get(['type_id', 'category'])
+                    ->toArray();
+            });
+            view()->share(compact('categories_men'));
+        } catch (QueryException $e) {
+            logs()->error($e->getMessage());
+        }
     }
 
     /**
@@ -41,16 +44,19 @@ class FooterProvider extends ServiceProvider
      */
     public function categoriesWomen(): void
     {
-        $categories_women = cache()->rememberForever('categories_women', function () {
-            return Item::distinct()
-                ->with('type')
-                ->whereCategory('women')
-                ->inStock()
-                ->get(['type_id', 'category'])
-                ->toArray();
-        });
-
-        view()->share(compact('categories_women'));
+        try {
+            $categories_women = cache()->rememberForever('categories_women', function () {
+                return Item::distinct()
+                    ->with('type')
+                    ->whereCategory('women')
+                    ->inStock()
+                    ->get(['type_id', 'category'])
+                    ->toArray();
+            });
+            view()->share(compact('categories_women'));
+        } catch (QueryException $e) {
+            logs()->error($e->getMessage());
+        }
     }
 
     /**
@@ -58,13 +64,17 @@ class FooterProvider extends ServiceProvider
      */
     public function lastItems(): void
     {
-        view()->composer('includes.footer', function ($view) {
-            $view->with('last_items_for_footer',
-                Item::latest()
-                    ->inStock()
-                    ->take(7)
-                    ->get(['id', 'title', 'category'])
-            );
-        });
+        try {
+            view()->composer('includes.footer', function ($view) {
+                $view->with('last_items_for_footer',
+                    Item::latest()
+                        ->inStock()
+                        ->take(7)
+                        ->get(['id', 'title', 'category'])
+                );
+            });
+        } catch (QueryException $e) {
+            logs()->error($e->getMessage());
+        }
     }
 }

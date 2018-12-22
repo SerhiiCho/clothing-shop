@@ -7,8 +7,8 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
-        'App\Events\RecivedOrdeEvent' => [
-            'App\Listeners\SendSmsListener',
+        \App\Events\RecivedOrdeEvent::class => [
+            \App\Listeners\SendSmsListener::class,
         ],
     ];
 
