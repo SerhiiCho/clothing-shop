@@ -50,6 +50,6 @@ class AdminCardsIndexPageTest extends TestCase
         $this->actingAs(factory(User::class)->state('admin')->create())
             ->get($this->url)
             ->assertOk()
-            ->assertViewIs('cards.index');
+            ->assertViewIs('admin.cards.index');
     }
 }
