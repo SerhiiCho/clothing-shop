@@ -119,13 +119,25 @@
             </a>
         </form>
 
+        {{-- Big first image --}}
         <div class="col-md-6 col-lg-4 mt-3">
-            <img src="{{ asset("/storage/img/clothes/{$item->photos[0]->name}") }}"
-                alt="{{ $item->title }}"
-                class="rounded mx-auto d-block"
-                id="target-image1"
-                style="width:225px; height:338px; object-fit:cover"
-            >
+            @isset ($item->photos[0])
+                <img src="{{ asset("/storage/img/clothes/{$item->photos[0]->name}") }}"
+                    alt="{{ $item->title }}"
+                    class="rounded mx-auto d-block"
+                    id="target-image1"
+                    style="width:225px; height:338px; object-fit:cover"
+                >
+            @else
+                <img src="{{ asset('/storage/img/clothes/default.jpg') }}"
+                    alt="{{ $item->title }}"
+                    class="rounded mx-auto d-block"
+                    id="target-image1"
+                    style="width:225px; height:338px; object-fit:cover"
+                >
+            @endisset
+
+            {{-- Small images --}}
             <div class="row mt-2">
                 @foreach ($item->photos as $photo)
                     @if (! $loop->first)
