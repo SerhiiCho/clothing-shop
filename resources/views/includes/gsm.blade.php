@@ -1,6 +1,6 @@
-@if (isset($contacts) && count($contacts) > 0)
+@if (isset($gsm) && count($gsm) > 0)
     <section class="contact-container">
-        @foreach ($contacts as $contact)
+        @foreach ($gsm as $contact)
             <div class="contact-item mr-3">
                 @empty(! $contact['icon_id'])
                     <img src="{{ asset("storage/img/gsm/{$contact['icon']['image']}") }}"

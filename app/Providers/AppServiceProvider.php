@@ -10,6 +10,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \Schema::defaultStringLength(191);
+
+        // dump_sql();
+
         //\Artisan::call('migrate');
 
         // if (app()->env === 'production') {
