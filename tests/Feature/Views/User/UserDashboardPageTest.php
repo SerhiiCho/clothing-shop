@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class UserStatisticsPageTest extends TestCase
+class UserDashboardPageTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -17,7 +17,7 @@ class UserStatisticsPageTest extends TestCase
     public function page_is_not_accessable_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
-            ->get('/user/statistics')
+            ->get('/user/dashboard')
             ->assertRedirect();
     }
 
@@ -27,7 +27,7 @@ class UserStatisticsPageTest extends TestCase
      */
     public function page_is_not_accessable_by_guest(): void
     {
-        $this->get('/user/statistics')
+        $this->get('/user/dashboard')
             ->assertRedirect();
     }
 
@@ -38,8 +38,8 @@ class UserStatisticsPageTest extends TestCase
     public function page_is_accessable_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
-            ->get('/user/statistics')
+            ->get('/user/dashboard')
             ->assertOk()
-            ->assertViewIs('user.statistics');
+            ->assertViewIs('user.dashboard');
     }
 }
