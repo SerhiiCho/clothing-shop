@@ -14,7 +14,6 @@ return [
     'types' => 'Categories',
     'search' => 'Search',
     'menu' => 'Menu',
-    'available_languages' => 'Available languages',
     'last_posts' => 'Last',
 
 ];

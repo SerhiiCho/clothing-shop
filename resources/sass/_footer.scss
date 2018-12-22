@@ -25,19 +25,3 @@ footer {
 	color: #999;
 	font-size: .8em;
 }
-
-.languages {
-	a {
-		display: block;
-
-		img {
-			transition: transform 200ms;
-			margin: .7em 4px;
-
-			&:hover {
-				transform: scale(1.2);
-				transition: transform 200ms;
-			}
-		}
-	}
-}

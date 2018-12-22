@@ -10,10 +10,4 @@ class PageController extends Controller
     {
         return view('home')->withCards(Card::all()->take(3));
     }
-
-    // 518400 = 1 year
-    public function lang($lang)
-    {
-        return back()->withCookie(cookie('lang', $lang, 518400));
-    }
 }

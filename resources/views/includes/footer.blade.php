@@ -51,16 +51,7 @@
 
             {{-- Languages --}}
             <div class="col-6 col-md-3 languages">
-                <h4>@lang('navigation.available_languages')</h4>
-
-                <a href="/language/en" title="English">
-                    <img src="{{ asset('storage/img/en.png') }}" alt="English">
-                    <span>English</span>
-                </a>
-                <a href="/language/ru" title="Русский">
-                    <img src="{{ asset('storage/img/ru.png') }}" alt="Русский">
-                    <span>Русский</span>
-                </a>
+                Пусто
             </div>
         </div>
         <div class="row">
