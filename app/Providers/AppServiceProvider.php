@@ -12,8 +12,8 @@ class AppServiceProvider extends ServiceProvider
         \Schema::defaultStringLength(191);
         //\Artisan::call('migrate');
 
-        if (app()->env === 'production') {
-            \URL::forceScheme('https');
-        }
+        // if (app()->env === 'production') {
+        //     \URL::forceScheme('https');
+        // }
     }
 }
