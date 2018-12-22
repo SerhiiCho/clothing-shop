@@ -18,7 +18,7 @@
     </div>
 
     <div class="col-md-8 offset-md-2">
-        <form action="{{ action('CardController@store') }}"
+        <form action="{{ action('Admin\CardController@store') }}"
             method="post"
             enctype="multipart/form-data"
         >

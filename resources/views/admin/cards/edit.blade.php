@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-8 offset-md-2">
 
-        <form action="{{ action('CardController@update', ['card' => $card->id]) }}"
+        <form action="{{ action('Admin\CardController@update', ['card' => $card->id]) }}"
             method="post"
             enctype="multipart/form-data"
         >
@@ -68,7 +68,7 @@
         </form>
 
         {{-- Delete button --}}
-        <form action="{{ action('CardController@destroy', ['card' => $card->id]) }}"
+        <form action="{{ action('Admin\CardController@destroy', ['card' => $card->id]) }}"
             method="post"
             onsubmit='return confirm("@lang('cards.are_you_sure_you_want_delete')")'
             class="my-2"

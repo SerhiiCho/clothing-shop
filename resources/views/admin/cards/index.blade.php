@@ -33,7 +33,7 @@
                         </a>
 
                         {{-- Delete button --}}
-                        <form action="{{ action('CardController@destroy', ['id' => $card->id]) }}"
+                        <form action="{{ action('Admin\CardController@destroy', ['id' => $card->id]) }}"
                             method="post" 
                             onsubmit='return confirm("@lang('cards.are_you_sure_you_want_delete')")' 
                             class="position-absolute" 
