@@ -2,9 +2,9 @@
     <nav class="user-sidebar">
         <ul>
             <li class="{{ activeIfRouteIs('user/dashboard') }}">
-                <a href="/user/dashboard" title="@lang('user-sidebar.profile')">
-                    <i class="fas fa-user icon-profile-menu-line" aria-hidden="true"></i>
-                    <span>@lang('user-sidebar.profile')</span>
+                <a href="/user/dashboard" title="@lang('messages.stats')">
+                    <i class="fas fa-chart-bar icon-profile-menu-line" aria-hidden="true"></i>
+                    <span>@lang('messages.stats')</span>
                 </a>
             </li>
             <li class="{{ activeIfRouteIs('user/work') }} red-buttons" {{ $unreaded ?? '' }}>
