@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class RegisterPageTest extends TestCase
+class LoginPageTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -16,9 +16,9 @@ class RegisterPageTest extends TestCase
      */
     public function page_is_accessable_by_guest(): void
     {
-        $this->get('/' . config('custom.enter_slug') . '/register')
+        $this->get('/' . config('custom.enter_slug') . '/login')
             ->assertOk()
-            ->assertViewIs('auth.register');
+            ->assertViewIs('auth.login');
     }
 
     /**
@@ -28,7 +28,7 @@ class RegisterPageTest extends TestCase
     public function page_is_not_accessable_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
-            ->get('/' . config('custom.enter_slug') . '/register')
+            ->get('/' . config('custom.enter_slug') . '/login')
             ->assertRedirect();
     }
 }
