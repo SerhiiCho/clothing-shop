@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Feature\Views\User;
+namespace Tests\Feature\Views\User\Dashboard;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class UserDashboardPageTest extends TestCase
+class UserDashboardIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -40,6 +40,6 @@ class UserDashboardPageTest extends TestCase
         $this->actingAs(factory(User::class)->state('admin')->create())
             ->get('/user/dashboard')
             ->assertOk()
-            ->assertViewIs('user.dashboard');
+            ->assertViewIs('user.dashboard.index');
     }
 }

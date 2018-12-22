@@ -48,8 +48,10 @@ Route::view('search', 'search');
 Route::post('search', 'SearchController@handleTheRequest');
 
 // User
-Route::get('user/dashboard', 'UserController@dashboard');
-Route::get('user/work', 'UserController@work');
+Route::namespace ('User')->prefix('user')->group(function () {
+    Route::get('dashboard', 'DashboardController@index');
+    Route::get('work', 'WorkController@index');
+});
 
 // Artisan commands =======
 Route::prefix('php/artisan')->group(function () {

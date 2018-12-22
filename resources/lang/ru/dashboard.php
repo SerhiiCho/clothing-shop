@@ -11,4 +11,8 @@ return [
     'your_orders' => 'Ваши заказы',
     'delete_number' => 'Удалить номер',
     'delete_this_order' => 'Удалить этот заказ?',
+    'dashboard' => 'Панель управления',
+    'dash' => 'Панель',
+    'lock_registration' => 'Блокировать регистрацию',
+
 ];
