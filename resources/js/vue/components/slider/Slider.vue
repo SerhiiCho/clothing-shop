@@ -1,22 +1,3 @@
-<template>
-    <div class="col-10 pr-0 main-slider"
-        v-if="images.length > 0"
-        :style="'background-image:url(storage/img/slider/' + images[Math.abs(currentNumber) % images.length] + ');'" 
-        v-on:mouseover="stopRotation"
-        v-on:mouseout="startRotation"
-    >
-        <div @click="prev"
-            class="imgbanbtn imgbanbtn-prev"
-            style="background-image:url(storage/img/arrow-left.png);"
-        ></div>
-
-        <div @click="next"
-            class="imgbanbtn imgbanbtn-next"
-            style="background-image:url(storage/img/arrow-right.png);"
-        ></div>
-    </div>
-</template>
-
 <script>
 export default {
     data() {
@@ -28,7 +9,7 @@ export default {
         }
     },
 
-    created() {
+    mounted() {
         this.startRotation(),
         this.fetchSlides()
     },
@@ -59,7 +40,24 @@ export default {
                     }
                 })
                 .catch(err => console.error(err))
-        }
-    }
+        },
+    },
+
+    computed: {
+        sliderBg() {
+            return 'background-image:url(storage/img/slider/' +
+                this.images[Math.abs(this.currentNumber) % this.images.length] +
+            ')';
+        },
+    },
 }
 </script>
+
+<style scoped>
+.imgbanbtn-prev {
+    background-image: url('/storage/img/arrow-left.png');
+}
+.imgbanbtn-next {
+    background-image: url('/storage/img/arrow-right.png');
+}
+</style>

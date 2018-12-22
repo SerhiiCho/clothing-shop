@@ -7,9 +7,17 @@
 <div class="wrapper">
     <div class="container">
         <div class="row">
-            <div v-cloak class="col-10 pr-0 main-slider v-cloak"></div>
-            <slider></slider>
-            <div v-cloak class="col-2 pr-0 pl-0 v-cloak"></div>
+            <slider inline-template>
+                <div class="col-10 pr-0 main-slider"
+                    v-if="images.length > 0"
+                    :style="sliderBg" 
+                    v-on:mouseover="stopRotation"
+                    v-on:mouseout="startRotation"
+                >
+                    <div v-on:click="prev" class="imgbanbtn imgbanbtn-prev"></div>
+                    <div v-on:click="next" class="imgbanbtn imgbanbtn-next"></div>
+                </div>
+            </slider>
             <cards></cards>
         </div>
     </div>
