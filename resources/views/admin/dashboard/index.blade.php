@@ -9,9 +9,9 @@
             <h5 class="mb-4">@lang('dashboard.dashboard')</h5>
             <table class="table">
                 <tr>
-                    <td>@lang('dashboard.lock_registration')</td>
+                    <td>@lang('options.lock_registration')</td>
                     <td>
-                        <form action="{{ action('Admin\DashboardController@blockRegistration') }}" method="post">
+                        <form action="{{ action('Admin\OptionController@registration') }}" method="post">
                             @csrf
                             @method('put')
                             <input type="checkbox" name="block">
