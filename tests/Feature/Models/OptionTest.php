@@ -23,14 +23,4 @@ class OptionTest extends TestCase
             'value' => 'off',
         ]);
     }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function Get_method_returns_value_of_needed_option(): void
-    {
-        $output = Option::get('registration');
-        $this->assertEquals('on', $output);
-    }
 }

@@ -29,13 +29,4 @@ class Option extends Model
     {
         self::whereOption($option)->update(compact('option', 'value'));
     }
-
-    /**
-     * @param string $option
-     * @return string
-     */
-    public static function get(string $option): string
-    {
-        return self::whereOption($option)->value('value');
-    }
 }
