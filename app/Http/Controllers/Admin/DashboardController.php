@@ -22,11 +22,15 @@ class DashboardController extends Controller
      */
     public function index(): View
     {
-        $registration = Option::whereOption('registration')->value('value');
+        $options = Option::get();
 
         return view('admin.dashboard.index', [
             'all_items' => Item::where('stock', '>', 0)->count(),
-            'registration' => $registration === 'on' ? true : false,
+            'options' => [
+                'registration' => $options->where('option', 'registration')->first()->value,
+                'men_category' => $options->where('option', 'men_category')->first()->value,
+                'women_category' => $options->where('option', 'women_category')->first()->value,
+            ],
         ]);
     }
 }

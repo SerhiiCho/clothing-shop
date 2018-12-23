@@ -8,15 +8,36 @@
         <div class="col-md-6">
             <h5 class="mb-4">@lang('dashboard.dashboard')</h5>
             <table class="table">
-                <tr>
+                <tr> {{-- Registration option --}}
                     <td>@lang('options.allow_registration')</td>
                     <td>
                         <form action="{{ action('Admin\OptionController@registration') }}" method="post">
-                            @csrf
-                            @method('put')
-
-                            <input type="checkbox" name="option" {{ $registration ? 'checked' : '' }}>
-
+                            @csrf @method('put')
+                            <input type="checkbox" name="option" {{ $options['registration'] ? 'checked' : '' }}>
+                            <button type="submit" class="btn btn-sm btn-success ml-3">
+                                <i class="fas fa-save"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                <tr> {{-- Men category option --}}
+                    <td>@lang('options.turn_on_men_category')</td>
+                    <td>
+                        <form action="{{ action('Admin\OptionController@menCategory') }}" method="post">
+                            @csrf @method('put')
+                            <input type="checkbox" name="option" {{ $options['men_category'] ? 'checked' : '' }}>
+                            <button type="submit" class="btn btn-sm btn-success ml-3">
+                                <i class="fas fa-save"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                <tr> {{-- Women category option --}}
+                    <td>@lang('options.turn_on_women_category')</td>
+                    <td>
+                        <form action="{{ action('Admin\OptionController@womenCategory') }}" method="post">
+                            @csrf @method('put')
+                            <input type="checkbox" name="option" {{ $options['women_category'] ? 'checked' : '' }}>
                             <button type="submit" class="btn btn-sm btn-success ml-3">
                                 <i class="fas fa-save"></i>
                             </button>
@@ -24,7 +45,7 @@
                     </td>
                 </tr>
             </table>
-            
+
         </div>
         <div class="col-md-6">
             <h5 class="mb-4">@lang('dashboard.stats')</h5>
