@@ -47,6 +47,8 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('dashboard', 'DashboardController@index');
     Route::get('work', 'WorkController@index');
     Route::put('registration', 'OptionController@registration');
+    Route::put('men-category', 'OptionController@menCategory');
+    Route::put('women-category', 'OptionController@womenCategory');
     Route::resource('slider', 'SliderController', ['except' => ['show']]);
     Route::resource('cards', 'CardController', ['except' => ['show']]);
     Route::resource('contacts', 'ContactController', ['except' => ['show', 'index']]);
