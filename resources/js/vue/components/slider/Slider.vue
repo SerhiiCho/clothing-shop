@@ -60,7 +60,7 @@ export default {
 
     computed: {
         sliderBg() {
-            return 'background-image:url(storage/img/slider/' +
+            return 'background-image:url(storage/img/big/slider/' +
                 this.images[Math.abs(this.currentNumber) % this.images.length] +
             ')';
         },

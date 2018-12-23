@@ -7,7 +7,7 @@
         </div>
         <div class="col-10 col-sm-9 col-lg-5 col-xl-4 text-center single-image pl-1 pr-2">
             <img v-if="item.photos"
-                :src="'/storage/img/clothes/' + bigPhoto"
+                :src="'/storage/img/big/clothes/' + bigPhoto"
                 :alt="item.title"
             >
 
@@ -44,7 +44,7 @@
                     class="col-12 mb-2 pl-0 pr-2"
                     v-if="index >= 0 && index < 5"
                 >
-                    <img :src="'/storage/img/clothes/' + photo.name"
+                    <img :src="'/storage/img/small/clothes/' + photo.name"
                         @mouseover="swapPhoto(photo.name, index)"
                         :id="'photo' + index"
                         :class="'small-images ' + giveActiveClass(index)"

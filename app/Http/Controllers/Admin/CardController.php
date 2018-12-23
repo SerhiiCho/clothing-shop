@@ -104,7 +104,7 @@ class CardController extends Controller
     {
         if ($request->hasFile('image')) {
             if ($card->image != 'default.jpg') {
-                Storage::delete('public/img/cards/' . $card->image);
+                Storage::delete('public/img/big/cards/' . $card->image);
             }
             $image = $request->file('image');
             $ext = $image->getClientOriginalExtension();
@@ -158,6 +158,6 @@ class CardController extends Controller
             ->fit(451, 676, function ($constraint) {
                 $constraint->upsize();
             }, 'top')
-            ->save(storage_path("app/public/img/cards/{$filename}"));
+            ->save(storage_path("app/public/img/big/cards/{$filename}"));
     }
 }

@@ -107,7 +107,7 @@
         </form>
 
         <div class="col-md-6 col-lg-4 mt-3">
-            <img src="{{ asset('/storage/img/clothes/default.jpg') }}"
+            <img src="{{ asset('/storage/img/small/clothes/default.jpg') }}"
                 alt="default"
                 class="rounded mx-auto d-block"
                 id="target-image1"
@@ -116,7 +116,7 @@
             <div class="row mt-2">
                 @for ($i = 2; $i <= 5; $i++)
                     <div class="col-6 mt-2">
-                        <img src="{{ asset('/storage/img/clothes/default.jpg') }}"
+                        <img src="{{ asset('/storage/img/small/clothes/default.jpg') }}"
                             alt="default"
                             class="rounded mx-auto d-block"
                             id="target-image{{ $i }}"

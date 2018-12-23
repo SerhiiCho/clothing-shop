@@ -15,7 +15,7 @@ class SliderObserver
     public function deleting(Slider $slider): void
     {
         if ($slider->image != 'default.jpg') {
-            Storage::delete("public/img/slider/{$slider->image}");
+            Storage::delete("public/img/big/slider/{$slider->image}");
         }
     }
 }

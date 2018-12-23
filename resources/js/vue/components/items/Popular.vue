@@ -14,7 +14,7 @@
                         @mouseover="changePhotoOver(index, popular.photos[1] ? popular.photos[1].name : '')" 
                         @mouseout="changePhotoOut(index, popular.photos[0].name)"
                     >
-                        <img :src="'storage/img/clothes/' + popular.photos[0].name"
+                        <img :src="'storage/img/small/clothes/' + popular.photos[0].name"
                             :alt="popular.title"
                             :id="'photo' + index"
                         >
@@ -51,12 +51,12 @@ export default {
 
         changePhotoOver (index, newSrc = null) {
             if (newSrc) {
-                document.getElementById('photo' + index).src = '/storage/img/clothes/' + newSrc
+                document.getElementById('photo' + index).src = '/storage/img/small/clothes/' + newSrc
             }
         },
 
         changePhotoOut (index, newSrc) {
-            document.getElementById('photo' + index).src = '/storage/img/clothes/' + newSrc
+            document.getElementById('photo' + index).src = '/storage/img/small/clothes/' + newSrc
         }
     }
 }

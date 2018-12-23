@@ -13,7 +13,7 @@
                     :title="card.title"
                 >
                     <img v-if="card.photos"
-                        :src="'storage/img/clothes/' + card.photos[rand(card.photos.length)].name"
+                        :src="'storage/img/small/clothes/' + card.photos[rand(card.photos.length)].name"
                     >
                 </a>
             </div>

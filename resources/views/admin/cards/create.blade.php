@@ -9,7 +9,7 @@
         @lang('cards.add_card')
     </h4>
     <div>
-        <img src="{{ asset('/storage/img/clothes/default.jpg') }}"
+        <img src="{{ asset('/storage/img/big/clothes/default.jpg') }}"
             alt="default"
             class="rounded mx-auto d-block"
             id="target-image"
@@ -60,7 +60,7 @@
         </form>
 
         {{-- Back button --}}
-        <a href="/cards"
+        <a href="/admin/cards"
             title="@lang('messages.back')"
             class="btn btn-primary btn-block mt-2"
         >

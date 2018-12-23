@@ -21,7 +21,7 @@
                 @foreach ($slider->reverse() as $slide)
                     <tr>
                         <td>
-                            <img src="{{ asset("storage/img/slider/{$slide->image}") }}" 
+                            <img src="{{ asset("storage/img/big/slider/{$slide->image}") }}" 
                                 style="max-width:100px"
                             />
                         </td>

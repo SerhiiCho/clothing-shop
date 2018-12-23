@@ -122,14 +122,14 @@
         {{-- Big first image --}}
         <div class="col-md-6 col-lg-4 mt-3">
             @isset ($item->photos[0])
-                <img src="{{ asset("/storage/img/clothes/{$item->photos[0]->name}") }}"
+                <img src="{{ asset("/storage/img/small/clothes/{$item->photos[0]->name}") }}"
                     alt="{{ $item->title }}"
                     class="rounded mx-auto d-block"
                     id="target-image1"
                     style="width:225px; height:338px; object-fit:cover"
                 >
             @else
-                <img src="{{ asset('/storage/img/clothes/default.jpg') }}"
+                <img src="{{ asset('/storage/img/small/clothes/default.jpg') }}"
                     alt="{{ $item->title }}"
                     class="rounded mx-auto d-block"
                     id="target-image1"
@@ -142,7 +142,7 @@
                 @foreach ($item->photos as $photo)
                     @if (! $loop->first)
                         <div class="col-6 mt-2">
-                            <img src="{{ asset("/storage/img/clothes/{$photo->name}") }}"
+                            <img src="{{ asset("/storage/img/small/clothes/{$photo->name}") }}"
                                 alt="default"
                                 class="rounded mx-auto d-block"
                                 id="target-image{{ $loop->iteration }}"
@@ -154,7 +154,7 @@
                 @for ($i = 2; $i <= 5; $i++)
                     @if ($i > $item->photos->count())
                         <div class="col-6 mt-2">
-                            <img src="{{ asset('/storage/img/clothes/default.jpg') }}"
+                            <img src="{{ asset('/storage/img/small/clothes/default.jpg') }}"
                                 alt="default"
                                 class="rounded mx-auto d-block"
                                 id="target-image{{ $i }}"

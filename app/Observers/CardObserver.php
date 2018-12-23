@@ -15,7 +15,7 @@ class CardObserver
     public function deleting(Card $card): void
     {
         if ($card->image != 'default.jpg') {
-            Storage::delete("public/img/cards/{$card->image}");
+            Storage::delete("public/img/big/cards/{$card->image}");
         }
     }
 }

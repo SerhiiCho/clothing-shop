@@ -24,7 +24,7 @@
         <div class="row center three-cards">
             @foreach ($cards as $card)
                 <div class="col-12 col-md-4 one-card">
-                    <img src="{{ asset("storage/img/cards/{$card['image']}") }}" 
+                    <img src="{{ asset("storage/img/big/cards/{$card['image']}") }}" 
                         alt="{{ $card['type']['name'] }}"
                     />
 

@@ -87,7 +87,7 @@ class SliderController extends Controller
     {
         if ($request->hasFile('image')) {
             if ($slider->image != 'default.jpg') {
-                Storage::delete('public/img/slider/' . $slider->image);
+                Storage::delete('public/img/big/slider/' . $slider->image);
             }
 
             $image = $request->file('image');
@@ -131,6 +131,6 @@ class SliderController extends Controller
             ->fit(1000, 500, function ($constraint) {
                 $constraint->upsize();
             }, 'top')
-            ->save(storage_path("app/public/img/slider/{$filename}"));
+            ->save(storage_path("app/public/img/big/slider/{$filename}"));
     }
 }

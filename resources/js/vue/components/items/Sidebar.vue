@@ -10,7 +10,7 @@
                     @mouseover="changePhotoOver(index, item.photos[1] ? item.photos[1].name : '')"
                     @mouseout="changePhotoOut(index, item.photos[0].name)"
                 >
-                    <img :src="'/storage/img/clothes/' + item.photos[0].name"
+                    <img :src="'/storage/img/small/clothes/' + item.photos[0].name"
                         :alt="item.title"
                         :id="'rand-photo' + index"
                     >
@@ -60,12 +60,12 @@ export default {
 
         changePhotoOver (index, newSrc = null) {
             if (newSrc) {
-                document.getElementById('rand-photo' + index).src = '/storage/img/clothes/' + newSrc
+                document.getElementById('rand-photo' + index).src = '/storage/img/small/clothes/' + newSrc
             }
         },
 
         changePhotoOut (index, newSrc) {
-            document.getElementById('rand-photo' + index).src = '/storage/img/clothes/' + newSrc
+            document.getElementById('rand-photo' + index).src = '/storage/img/small/clothes/' + newSrc
         }
     }
 }
