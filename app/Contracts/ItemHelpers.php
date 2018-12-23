@@ -2,8 +2,8 @@
 
 namespace App\Contracts;
 
+use App\Http\Requests\ItemRequest;
 use App\Models\Item;
-use App\Models\ItemsPhoto;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -12,35 +12,67 @@ use Intervention\Image\ImageManager;
 trait ItemHelpers
 {
     /**
-     * @param $request
-     * @param $item_id for creating relationship between item and item_photo
+     * @param \App\Http\Requests\ItemRequest $request
+     * @param int $item_id
+     * @return array|null
      */
-    public function uploadPhotos($request, $item_id)
+    public function uploadPhotos(ItemRequest $request, int $item_id): ?array
     {
-        if (request()->hasFile('photos')) {
-            $i = 0;
+        if (!$request->has('photos')) {
+            return null;
+        }
+
+        $i = 0;
+        $image_names = [];
+
+        if ($i <= 5) {
             foreach ($request->photos as $image) {
                 $i++;
+                $ext = $image->getClientOriginalExtension();
+                $filename = getFileName($request->title, $ext);
+                $path_big = storage_path("app/public/img/big/clothes/{$filename}");
+                $path_small = storage_path("app/public/img/small/clothes/{$filename}");
 
-                if ($i <= 5) {
-                    $ext = $image->getClientOriginalExtension();
-                    $filename = getFileName($request->title, $ext);
-
-                    $this->makeItemImage($image, $filename);
-                    $this->createPhotoInDatabase($item_id, $filename);
-                }
+                $this->uploadImages($image, $filename, [
+                    [
+                        'path' => $path_big,
+                        'width' => 360,
+                        'height' => 540,
+                    ],
+                    [
+                        'path' => $path_small,
+                        'width' => 180,
+                        'height' => 270,
+                    ],
+                ]);
+                $image_names[] = $filename;
             }
-        } else {
-            $this->createPhotoInDatabase($item_id, 'default.jpg');
+            return $image_names;
         }
     }
 
-    public function createPhotoInDatabase($item_id, $filename)
+    /**
+     * @param array|null $image_names
+     * @param int $item_id
+     * @return void
+     */
+    public function updateImagesInDb(?array $image_names, int $item_id): void
     {
-        return ItemsPhoto::create([
-            'item_id' => $item_id,
-            'name' => $filename,
-        ]);
+        if (is_null($image_names)) {
+            ItemsPhoto::create([
+                'item_id' => $item_id,
+                'name' => 'default.jpg',
+            ]);
+        } else {
+            $dataSet = array_map(function ($image) use ($item_id) {
+                return [
+                    'item_id' => $item_id,
+                    'name' => $image,
+                ];
+            }, $image_names);
+
+            \DB::table('items_photos')->insert($dataSet);
+        }
     }
 
     /**
@@ -69,7 +101,10 @@ trait ItemHelpers
         : user()->items()->create($items);
     }
 
-    public function currentStateOfSidebar($current_category)
+    /**
+     * @return bool
+     */
+    public function currentStateOfSidebar($current_category): bool
     {
         return ($current_category === 'women' || $current_category === 'men')
         ? true
@@ -80,24 +115,28 @@ trait ItemHelpers
     {
         foreach ($photos as $photo) {
             if ($photo->name != 'default.jpg') {
-                Storage::delete('public/img/clothes/' . $photo->name);
+                Storage::delete("public/img/big/clothes/{$photo->name}");
+                Storage::delete("public/img/small/clothes/{$photo->name}");
             }
             $photo->delete();
         }
     }
 
     /**
-     * @param \Illuminate\Http\UploadedFile $image_inst
-     * @param string $filename
+     * @param \Illuminate\Http\UploadedFile $image
+     * @param string $image_name
+     * @param array $image_data
      * @return void
      */
-    public function makeItemImage(UploadedFile $image_inst, string $filename): void
+    public function uploadImages(UploadedFile $image, string $image_name, array $image_data): void
     {
-        (new ImageManager)
-            ->make($image_inst)
-            ->fit(360, 540, function ($constraint) {
-                $constraint->upsize();
-            })
-            ->save(storage_path("app/public/img/clothes/{$filename}"));
+        foreach ($image_data as $data) {
+            $image_inst = (new ImageManager)
+                ->make($image)
+                ->fit($data['width'], $data['height'], function ($constraint) {
+                    $constraint->upsize();
+                }, 'top')
+                ->save($data['path']);
+        }
     }
 }

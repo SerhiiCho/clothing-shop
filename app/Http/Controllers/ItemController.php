@@ -56,7 +56,9 @@ class ItemController extends Controller
     public function store(ItemRequest $request): RedirectResponse
     {
         $item = $this->createOrUpdateItem($request);
-        $this->uploadPhotos($request, $item->id);
+
+        $image_names = $this->uploadPhotos($request, $item->id);
+        $this->updateImagesInDb($image_names, $item->id);
 
         return redirect('items')->withSuccess(
             trans('items.item_added')
@@ -115,7 +117,8 @@ class ItemController extends Controller
     {
         if ($request->hasFile('photos')) {
             $this->deleteOldPhotos($item->photos);
-            $this->uploadPhotos($request, $item->id);
+            $image_names = $this->uploadPhotos($request, $item->id);
+            $this->updateImagesInDb($image_names, $item->id);
         }
 
         $this->createOrUpdateItem($request, $item);
