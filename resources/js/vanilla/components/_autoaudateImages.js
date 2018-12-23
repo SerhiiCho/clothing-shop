@@ -1,6 +1,6 @@
 let imagesObj = {
     fileInput: document.getElementById("multiple-src-image"),
-    defaultImgPath: '/storage/img/clothes/default.jpg',
+    defaultImgPath: '/storage/img/big/clothes/default.jpg',
     readers: [
         new FileReader(),
         new FileReader(),
@@ -34,5 +34,34 @@ let imagesObj = {
                 }
             }
         })
+    }
+})();
+
+/**
+ * This object auto updates pictures after
+ * selecting them via file input
+ */
+(function RunShowImageFunction() {
+    let imageUploader = {
+        target: document.getElementById("target-image"),
+        src: document.getElementById("src-image"),
+        fr: new FileReader(),
+
+        showImage: function () {
+            this.src.addEventListener("change", ()=> {
+                if (this.src.files.length !== 0) {
+                    var that = this
+                    this.fr.readAsDataURL(this.src.files[0])
+                    this.fr.onload = function(e) {
+                        that.target.src = this.result
+                    }
+                } else {
+                    this.target.src = '/storage/img/big/clothes/default.jpg'
+                }
+            })
+        }
+    };
+    if (imageUploader.src && imageUploader.target) {
+        imageUploader.showImage()
     }
 })();
