@@ -13,10 +13,11 @@
                     <td>
                         <form action="{{ action('Admin\OptionController@registration') }}" method="post">
                             @csrf @method('put')
-                            <input type="checkbox" name="option" {{ $options['registration'] ? 'checked' : '' }}>
-                            <button type="submit" class="btn btn-sm btn-success ml-3">
-                                <i class="fas fa-save"></i>
-                            </button>
+                            <input type="checkbox"
+                                class="auto-submit-cb"
+                                name="option"
+                                {{ $options['registration'] ? 'checked' : '' }}
+                            >
                         </form>
                     </td>
                 </tr>
@@ -25,10 +26,11 @@
                     <td>
                         <form action="{{ action('Admin\OptionController@menCategory') }}" method="post">
                             @csrf @method('put')
-                            <input type="checkbox" name="option" {{ $options['men_category'] ? 'checked' : '' }}>
-                            <button type="submit" class="btn btn-sm btn-success ml-3">
-                                <i class="fas fa-save"></i>
-                            </button>
+                            <input type="checkbox"
+                                name="option" 
+                                class="auto-submit-cb"
+                                {{ $options['men_category'] ? 'checked' : '' }}
+                            >
                         </form>
                     </td>
                 </tr>
@@ -37,10 +39,11 @@
                     <td>
                         <form action="{{ action('Admin\OptionController@womenCategory') }}" method="post">
                             @csrf @method('put')
-                            <input type="checkbox" name="option" {{ $options['women_category'] ? 'checked' : '' }}>
-                            <button type="submit" class="btn btn-sm btn-success ml-3">
-                                <i class="fas fa-save"></i>
-                            </button>
+                            <input type="checkbox"
+                                name="option" 
+                                class="auto-submit-cb"
+                                {{ $options['women_category'] ? 'checked' : '' }}
+                            >
                         </form>
                     </td>
                 </tr>
