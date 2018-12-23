@@ -1,27 +1,28 @@
 footer {
-	padding-top: 2em;
-	background: #3C3C3C;
+    padding-top: 2em;
+    padding-bottom: 10%;
+    background: #3C3C3C;
 
-	h4 {
-		widows: 100%;
-		color: #fff;
-		font-size: 0.9em;
-		text-transform: uppercase;
-	}
-	
-	a {
-		color: #9e9e9e;
-		font-size: 0.85em;
+    h4 {
+        widows: 100%;
+        color: #fff;
+        font-size: 0.9em;
+        text-transform: uppercase;
+    }
+    
+    a {
+        color: #9e9e9e;
+        font-size: 0.85em;
 
-		&:hover {
-			color: #fff;
-		}
-	}
-	
+        &:hover {
+            color: #fff;
+        }
+    }
+    
 }
 
 .copyright {
-	padding: 1em 0;
-	color: #999;
-	font-size: .8em;
+    padding: 1em 0;
+    color: #999;
+    font-size: .8em;
 }

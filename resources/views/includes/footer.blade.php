@@ -1,4 +1,4 @@
-<footer class="pb-5">
+<footer>
     <div class="container">
         <div class="row">
 
