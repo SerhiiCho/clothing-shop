@@ -70,12 +70,15 @@
                     <label>@lang('items.category')</label>
                     <select name="category" class="form-control">
                         <option value="{{ $item->category }}">{{ $category }}</option>
+                        <option>------------------------</option>
 
-                        <option>
-                            ------------------------
-                        </option>
-                        <option value="women">@lang('items.women_items')</option>
-                        <option value="men">@lang('items.men_items')</option>
+                        @if ($admin_options['women_category'])
+                            <option value="women">@lang('items.women_items')</option>
+                        @endif
+
+                        @if ($admin_options['men_category'])
+                            <option value="men">@lang('items.men_items')</option>
+                        @endif
                     </select>
                 </div>
                 <div class="form-group col-sm-5">

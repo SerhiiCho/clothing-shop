@@ -30,27 +30,39 @@
             {{ config('app.name') }}
         </a>
 
+        {{-- Mobile search form --}}
         <li class="nav-search" title="@lang('navigation.search')">
             @include('includes.search-form')
         </li>
 
         <li class="hide-on-desktop">@include('includes.cart')</li>
 
+        {{-- Home --}}
         <li class="{{ activeIfRouteIs('/') }}" title="@lang('navigation.home')">
             <a href="/">@lang('navigation.home')</a>
         </li>
 
-        <li class="{{ activeIfRouteIs('items', 'category', 'men') }}" 
-            title="@lang('navigation.men')"
-        >
-            <a href="/items?category=men">@lang('navigation.men')</a>
-        </li>
-        <li class="{{ activeIfRouteIs('items', 'category', 'women') }}" 
-            title="@lang('navigation.women')"
-        >
-            <a href="/items?category=women">@lang('navigation.women')</a>
-        </li>
+        {{-- Items / men --}}
+        @if ($admin_options['men_category'])
+            <li class="{{ activeIfRouteIs('items', 'category', 'men') }}" 
+                title="@lang('navigation.men')"
+            >
+                <a href="/items?category=men">
+                    @lang('navigation.men')
+                </a>
+            </li>
+        @endif
 
+        {{-- Items / women --}}
+        @if ($admin_options['women_category'])
+            <li class="{{ activeIfRouteIs('items', 'category', 'women') }}" 
+                title="@lang('navigation.women')"
+            >
+                <a href="/items?category=women">@lang('navigation.women')</a>
+            </li>
+        @endif
+
+        {{-- Close mobile nav menu button --}}
         <a href="#" 
             title="@lang('navigation.close')" 
             id="close-nav-menu"

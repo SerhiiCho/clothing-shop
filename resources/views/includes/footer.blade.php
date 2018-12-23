@@ -7,8 +7,15 @@
                 <h4>@lang('navigation.menu')</h4>
                 <ul>
                     <li><a href="/">@lang('navigation.home')</a></li>
-                    <li><a href="/items?category=men">@lang('navigation.men')</a></li>
-                    <li><a href="/items?category=women">@lang('navigation.women')</a></li>
+
+                    @if ($admin_options['men_category'])
+                        <li><a href="/items?category=men">@lang('navigation.men')</a></li>
+                    @endif
+
+                    @if ($admin_options['women_category'])
+                        <li><a href="/items?category=women">@lang('navigation.women')</a></li>
+                    @endif
+
                     <li><a href="/search">@lang('navigation.search')</a></li>
                 </ul>
             </nav>
@@ -32,7 +39,7 @@
             @endisset
 
             {{-- Categories women --}}
-            @isset($categories_women)
+            @if (isset($categories_women) && $admin_options['women_category'])
                 <nav class="col-6 col-md-3">
                     <h4>@lang('navigation.women')</h4>
                     <ul>
@@ -47,10 +54,10 @@
                         @endforeach
                     </ul>
                 </nav>
-            @endisset
+            @endif
 
             {{-- Categories men --}}
-            @isset($categories_men)
+            @if (isset($categories_men) && $admin_options['men_category'])
                 <nav class="col-6 col-md-3">
                     <h4>@lang('navigation.men')</h4>
                     <ul>
@@ -65,7 +72,7 @@
                         @endforeach
                     </ul>
                 </nav>
-            @endisset
+            @endif
         </div>
         <div class="row">
             <h6 class="col-12 pt-5 text-center copyright">
