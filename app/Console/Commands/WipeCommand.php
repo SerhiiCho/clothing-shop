@@ -36,6 +36,12 @@ class WipeCommand extends Command
         $this->call('cache:clear');
         $this->call('route:clear');
         $this->call('view:clear');
+
+        cache()->forget('home_cards');
+        cache()->forget('categories_men');
+        cache()->forget('categories_women');
+        cache()->forget('nav_contacts');
+
         $this->call('migrate:fresh');
         $this->call('db:seed');
         $this->info('Cache and database data had been cleared');
