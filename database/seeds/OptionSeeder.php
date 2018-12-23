@@ -14,7 +14,6 @@ class OptionSeeder extends Seeder
     {
         DB::table('options')->insert([
             ['option' => 'registration', 'value' => 'on'],
-            ['option' => 'app_name', 'value' => 'Одежда'],
         ]);
     }
 }
