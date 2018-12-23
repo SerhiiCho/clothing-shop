@@ -37,11 +37,7 @@ class WipeCommand extends Command
         $this->call('route:clear');
         $this->call('view:clear');
 
-        cache()->forget('home_cards');
-        cache()->forget('categories_men');
-        cache()->forget('categories_women');
-        cache()->forget('nav_contacts');
-        cache()->forget('admin_options');
+        forgetAllCache();
 
         $this->call('migrate:fresh');
         $this->call('db:seed');

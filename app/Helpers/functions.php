@@ -81,3 +81,13 @@ function dump_sql(?bool $show_data = false): void
         });
     }
 }
+
+/**
+ * @return void
+ */
+function forgetAllCache(): void
+{
+    array_map(function ($name) {
+        cache()->forget($name);
+    }, config('cache.cache_names'));
+}
