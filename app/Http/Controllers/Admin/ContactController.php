@@ -39,12 +39,12 @@ class ContactController extends Controller
      */
     public function store(CreateOrUpdateContactRequest $request): RedirectResponse
     {
+        cache()->forget('nav_contacts');
+
         Contact::create([
             'icon_id' => $request->icon,
             'phone' => $request->phone,
         ]);
-
-        cache()->forget('nav_contacts');
 
         return back()->withSuccess(
             trans('contacts.contact_added')
@@ -74,10 +74,10 @@ class ContactController extends Controller
      */
     public function update(CreateOrUpdateContactRequest $request, Contact $contact): RedirectResponse
     {
+        cache()->forget('nav_contacts');
+
         $contact->icon_id = $request->icon;
         $contact->phone = $request->phone;
-
-        cache()->forget('nav_contacts');
 
         return ($contact->save())
         ? back()->withSuccess(trans('contacts.changed'))
