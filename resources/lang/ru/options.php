@@ -9,5 +9,6 @@ return [
 
     // View
     'allow_registration' => 'Разрешить регистрацию',
+    'registration_is_not_on' => 'Регистрация не доступна',
 
 ];
