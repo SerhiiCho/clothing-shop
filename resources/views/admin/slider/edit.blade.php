@@ -6,9 +6,9 @@
 
 <div class="container pb-5">
     <h4 class="display-4 text-center p-3">@lang('slider.edit_slide')</h4>
-    <div>
+    <div class="row">
         <img src="{{ asset("/storage/img/big/slider/{$slider->image}") }}" 
-            class="rounded mx-auto d-block" 
+            class="rounded mx-auto d-block slider-preview-img" 
             id="target-image"
         />
     </div>

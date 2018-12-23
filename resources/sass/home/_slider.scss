@@ -62,3 +62,17 @@
 
 @media(min-width: 1000px) { .main-slider { min-height: 400px; }}
 @media(max-width: 1000px) { .main-slider { min-height: 200px; }}
+
+.slider-preview-img {
+    width: 1000px;
+    height: 500px;
+    object-fit: cover;
+    object-position: top;
+}
+
+@media(max-width: 1000px) {
+    .slider-preview-img { width: 500px; height: 250px; }
+}
+@media(max-width: 600px) {
+    .slider-preview-img { width: 250px; height: 125px; }
+}
