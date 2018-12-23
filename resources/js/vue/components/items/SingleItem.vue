@@ -1,15 +1,23 @@
 <template>
     <section class="row pb-2">
-        <div id="myModal" class="modal">
+        <div class="modal">
             <span class="close">&times;</span>
-            <img class="modal-content" id="img01">
+            <img class="modal-content">
             <div id="caption"></div>
         </div>
         <div class="col-10 col-sm-9 col-lg-5 col-xl-4 text-center single-image pl-1 pr-2">
-            <img v-if="item.photos"
-                :src="'/storage/img/big/clothes/' + bigPhoto"
-                :alt="item.title"
-            >
+            <div v-if="imageNotLoaded">
+                <section class="text-center" style="min-height:500px">
+                    <div class="loader mt-5"></div>
+                </section>
+            </div>
+            <transition name="fade" mode="out-in" appear>
+                <img v-if="item.photos"
+                    :src="'/storage/img/big/clothes/' + bigPhoto"
+                    :alt="item.title"
+                    @load="imageNotLoaded = false"
+                >
+            </transition>
 
             <!-- Edit button -->
             <a v-if="admin == 1"
@@ -44,11 +52,13 @@
                     class="col-12 mb-2 pl-0 pr-2"
                     v-if="index >= 0 && index < 5"
                 >
-                    <img :src="'/storage/img/small/clothes/' + photo.name"
-                        @mouseover="swapPhoto(photo.name, index)"
-                        :id="'photo' + index"
-                        :class="'small-images ' + giveActiveClass(index)"
-                    >
+                    <transition name="fade-slide" mode="out-in" appear>
+                        <img :src="'/storage/img/small/clothes/' + photo.name"
+                            @mouseover="swapPhoto(photo.name, index)"
+                            :id="'photo' + index"
+                            :class="'small-images ' + giveActiveClass(index)"
+                        >
+                    </transition>
                 </div>
             </div>
         </div>
@@ -106,8 +116,9 @@ export default {
         return {
             item: [],
             imageHovered: false,
+            imageNotLoaded: true,
             bigPhoto: 'default.jpg',
-            clicked: false
+            clicked: false,
         }
     },
 
@@ -160,3 +171,32 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.fade {
+    &-enter-active {
+        transition: transform 300ms, opacity 800ms;
+    }
+    &-enter {
+        opacity: 0;
+        transform: translateY(300px);
+    }
+    &-enter-to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.fade-slide {
+    &-enter-active {
+        transition: transform 400ms, opacity 800ms;
+    }
+    &-enter {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    &-enter-to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+</style>

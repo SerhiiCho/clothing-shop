@@ -5,7 +5,10 @@
 @section('content')
 
 <div class="single-container container">
-    <img src="/storage/img/small/clothes/default.jpg" v-cloak class="v-cloak">
+    <section class="text-center" style="min-height:500px" v-if="false">
+        <div class="loader mt-5"></div>
+    </section>
+
     <single-item
         admin="{{ optional(auth()->user())->admin }}"
         token="{{ csrf_token() }}"

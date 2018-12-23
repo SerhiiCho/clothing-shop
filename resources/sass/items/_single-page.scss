@@ -1,51 +1,50 @@
 .single-container {
-	padding-top: .5em;
-	background: #fff;
+    padding-top: .5em;
+    background: #fff;
 }
 
 .images-to-show {
-	width: 70px;
+    width: 70px;
 }
 
 .active-photo {
-	border:solid 1px pink;
-	filter: brightness(70%);
+    border:solid 1px pink;
+    filter: brightness(70%);
 }
 
 .single-image {
-	img {
-		width: 80%;
-		height: auto;
-		border: 1px dotted $darkPink;
-		transition: transform 300ms;
-	}
+    img {
+        width: 80%;
+        height: auto;
+        border: 2px solid $darkPink;
+    }
 }
 
 .single-price {
-	font-size: 2em;
-	line-height: .9;
-	text-align: right;
+    font-size: 2em;
+    line-height: .9;
+    text-align: right;
 
-	span {
-		font-size: .5em;
-		font-weight: normal;
-	}
+    span {
+        font-size: .5em;
+        font-weight: normal;
+    }
 }
 
 .sidebar {
-	background:#F2F2F2;
-	border-top: 1px dotted $darkPink;
+    background:#F2F2F2;
+    border-top: 1px dotted $darkPink;
 }
 
 
 @media (min-width: 500px) {
-	.single-image img {
-		width: 100%;
-	}
+    .single-image img {
+        width: 100%;
+    }
 
-	.single-price {
-		font-size: 2.5em;
-	}
+    .single-price {
+        font-size: 2.5em;
+    }
 }
 @media (min-width: 500px) { .images-to-show { width: 70px; }}
 @media (max-width: 370px) { .images-to-show { width: 45px; }}
