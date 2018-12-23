@@ -2,7 +2,7 @@ let mix = require('laravel-mix');
 
 const css = 0;
 const js = 1;
-const server = 1;
+const server = 0;
 
 if (css === 1) {
     mix.sass('resources/sass/app.scss', 'public/css/app.css').options({

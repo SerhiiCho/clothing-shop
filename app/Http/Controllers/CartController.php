@@ -3,24 +3,29 @@
 namespace App\Http\Controllers;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class CartController extends Controller
 {
     /**
      * Display a listing of the resource
+     *
+     * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(): View
     {
         return view('cart.index');
     }
 
     /**
-     * Store a newly created resource in storage
+     * Store a newly created cart item in session
      *
      * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $dublicates = Cart::search(function ($cartItem, $rowId) use ($request) {
             return $cartItem->id === $request->id;
@@ -43,9 +48,12 @@ class CartController extends Controller
     }
 
     /**
+     * Add cart item to favorites and remove from cart
+     *
      * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function addToFavorite($id)
+    public function addToFavorite(int $id): RedirectResponse
     {
         $item = Cart::get($id);
 
@@ -59,7 +67,8 @@ class CartController extends Controller
             return back()->withError(trans('cart.item_is_in_favorite'));
         }
 
-        Cart::instance('favorite')->add($item->id, $item->name, 1, $item->price)
+        Cart::instance('favorite')
+            ->add($item->id, $item->name, 1, $item->price)
             ->associate('App\Models\Item');
 
         return back()->withSuccess(
@@ -68,11 +77,12 @@ class CartController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage
+     * Remove the specified cart item from session
      *
      * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
         Cart::remove($id);
         return back()->withSuccess(trans('cart.was_deleted'));
