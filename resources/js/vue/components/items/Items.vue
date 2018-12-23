@@ -5,41 +5,43 @@
             :key="item.id"
             class="col-lg-3 col-6 item-card"
         >
-            <a :href="'/item/' + item.category + '/' + item.id"
-                :title="item.title"
-                v-if="item.photos.length > 0"
-                @mouseover="changePhotoOver(index, item.photos[1] ? item.photos[1].name : '')"
-                @mouseout="changePhotoOut(index, item.photos[0].name)"
-            >
-                <img  :src="'/storage/img/small/clothes/' + item.photos[0].name"
-                    :alt="item.title"
-                    :id="'photo' + index"
+            <transition name="fade" mode="out-in" appear>
+                <a :href="'/item/' + item.category + '/' + item.id"
+                    :title="item.title"
+                    v-if="item.photos.length > 0"
+                    @mouseover="changePhotoOver(index, item.photos[1] ? item.photos[1].name : '')"
+                    @mouseout="changePhotoOut(index, item.photos[0].name)"
                 >
-            </a>
-            <div class="item-card-price">
-                <span>{{ item.title }}</span>
-                <span class="hryvnia">{{ item.price }} {{ hryvnia }}</span>
-
-                <!-- Edit button -->
-                <a v-if="admin == 1"
-                    :href="'/items/' + item.id + '/edit'"
-                    :title="change"
-                    class="btn-change-item"
-                    style="top:10px;"
-                >
-                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    <img :src="'/storage/img/small/clothes/' + item.photos[0].name"
+                        :alt="item.title"
+                        :id="'photo' + index"
+                    >
                 </a>
+                <div class="item-card-price">
+                    <span>{{ item.title }}</span>
+                    <span class="hryvnia">{{ item.price }} {{ hryvnia }}</span>
 
-                <!-- Delete button -->
-                <a v-if="admin == 1" href="#"
-                    v-on:click="deleteItem(item.id)"
-                    :title="deleting"
-                    class="btn-change-item"
-                    style="top:55px;"
-                >
-                    <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                </a>
-            </div>
+                    <!-- Edit button -->
+                    <a v-if="admin == 1"
+                        :href="'/items/' + item.id + '/edit'"
+                        :title="change"
+                        class="btn-change-item"
+                        style="top:10px;"
+                    >
+                        <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    </a>
+
+                    <!-- Delete button -->
+                    <a v-if="admin == 1" href="#"
+                        v-on:click="deleteItem(item.id)"
+                        :title="deleting"
+                        class="btn-change-item"
+                        style="top:55px;"
+                    >
+                        <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </transition>
         </div>
 
         <!-- Pagination -->
@@ -140,3 +142,16 @@ export default {
 }
 </script>
 
+<style lang="scss" scoped>
+.fade {
+    &-enter-active {
+        transition: opacity 800ms;
+    }
+    &-enter {
+        opacity: 0;
+    }
+    &-enter-to {
+        opacity: 1;
+    }
+}
+</style>

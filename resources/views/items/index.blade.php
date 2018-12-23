@@ -35,7 +35,7 @@
                     </div>
                 </div>
             @endif
-    
+
             <div class="col-md-{{ $sidebar ? '9' : '10 offset-md-1' }}">
                 <section class="display-4 p-4 text-center">
                     {{ whatIsCurrent('title') }}
@@ -53,8 +53,13 @@
                     category="@lang('items.category')"
                     hryvnia="@lang('items.hryvnia')"
                     deleting="@lang('cart.delete')"
-                    change="@lang('items.change')">
+                    change="@lang('items.change')"
+                >
+                    <section class="text-center" style="min-height:300px">
+                        <div class="loader mt-5"></div>
+                    </section>
                 </items>
+
             </div>
         </section>
     </div>

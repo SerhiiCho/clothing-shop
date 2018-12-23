@@ -5,10 +5,6 @@
 @section('content')
 
 <div class="single-container container">
-    <section class="text-center" style="min-height:500px" v-if="false">
-        <div class="loader mt-5"></div>
-    </section>
-
     <single-item
         admin="{{ optional(auth()->user())->admin }}"
         token="{{ csrf_token() }}"
@@ -21,7 +17,11 @@
         added-to-cart="@lang('items.added_to_cart')"
         code-of-the-item="@lang('items.code_of_the_item')"
         delete-this-product="@lang('items.delete_this_product')"
-        you-already-send-order="@lang('items.you_already_send_order')">
+        you-already-send-order="@lang('items.you_already_send_order')"
+    >
+        <section class="text-center" style="min-height:500px">
+            <div class="loader mt-5"></div>
+        </section>
     </single-item>
 </div>
 
