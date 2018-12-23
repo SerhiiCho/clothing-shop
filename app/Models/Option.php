@@ -23,9 +23,19 @@ class Option extends Model
     /**
      * @param string $option
      * @param string $value
+     * @return void
      */
-    public static function set(string $option, string $value)
+    public static function set(string $option, string $value): void
     {
-        return self::whereOption($option)->update(compact('option', 'value'));
+        self::whereOption($option)->update(compact('option', 'value'));
+    }
+
+    /**
+     * @param string $option
+     * @return string
+     */
+    public static function get(string $option): string
+    {
+        return self::whereOption($option)->value('value');
     }
 }
