@@ -45,6 +45,7 @@ Route::post('search', 'SearchController@handleTheRequest');
 // Admin
 Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('dashboard', 'DashboardController@index');
+    Route::put('block-registration', 'DashboardController@blockRegistration');
     Route::get('work', 'WorkController@index');
     Route::resource('slider', 'SliderController', ['except' => ['show']]);
     Route::resource('cards', 'CardController', ['except' => ['show']]);
