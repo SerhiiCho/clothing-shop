@@ -93,9 +93,6 @@
         </table>
     @else
         <p class="text-center pt-5">@lang('cart.empty')</p>
-        <p class="text-center pb-5">
-            <button-back title="@lang('messages.back')"></button-back>
-        </p>
     @endif
 
     {{-- Favorite --}}
@@ -171,10 +168,6 @@
                     @endforeach
                 </tbody>
             </table>
-        @else
-            <p class="text-center col-12 pt-5 pb-5">
-                @lang('cart.favorite_empty')
-            </p>
         @endif
     </section>
 </div>

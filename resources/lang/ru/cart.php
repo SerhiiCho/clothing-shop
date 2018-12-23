@@ -15,7 +15,6 @@ return [
     'add_to_cart' => 'Добавить в корзину',
     'favorite' => 'Избранное',
     'add_to_favorite' => 'Добавить в избранное',
-    'favorite_empty' => 'Нет избранных вещей',
 
     // Controller
     'added_to_cart' => ':item добавлено а корзину. <a href="' . url()->to('/cart') . '">Перейти к корзине</a>',
