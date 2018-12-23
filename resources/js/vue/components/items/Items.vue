@@ -17,31 +17,31 @@
                         :id="'photo' + index"
                     >
                 </a>
-                <div class="item-card-price">
-                    <span>{{ item.title }}</span>
-                    <span class="hryvnia">{{ item.price }} {{ hryvnia }}</span>
-
-                    <!-- Edit button -->
-                    <a v-if="admin == 1"
-                        :href="'/items/' + item.id + '/edit'"
-                        :title="change"
-                        class="btn-change-item"
-                        style="top:10px;"
-                    >
-                        <i class="fas fa-pencil-alt" aria-hidden="true"></i>
-                    </a>
-
-                    <!-- Delete button -->
-                    <a v-if="admin == 1" href="#"
-                        v-on:click="deleteItem(item.id)"
-                        :title="deleting"
-                        class="btn-change-item"
-                        style="top:55px;"
-                    >
-                        <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                    </a>
-                </div>
             </transition>
+            <div class="item-card-price">
+                <span>{{ item.title }}</span>
+                <span class="hryvnia">{{ item.price }} {{ hryvnia }}</span>
+
+                <!-- Edit button -->
+                <a v-if="admin == 1"
+                    :href="'/items/' + item.id + '/edit'"
+                    :title="change"
+                    class="btn-change-item"
+                    style="top:10px;"
+                >
+                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                </a>
+
+                <!-- Delete button -->
+                <a v-if="admin == 1" href="#"
+                    v-on:click="deleteItem(item.id)"
+                    :title="deleting"
+                    class="btn-change-item"
+                    style="top:55px;"
+                >
+                    <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                </a>
+            </div>
         </div>
 
         <!-- Pagination -->
