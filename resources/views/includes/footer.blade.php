@@ -69,7 +69,7 @@
         </div>
         <div class="row">
             <h6 class="col-12 pt-5 text-center copyright">
-                {{ date('Y') }} &copy; @lang('navigation.shop_name')
+                {{ date('Y') }} &copy; {{ config('app.name') }}
             </h6>
         </div>
     </div>

@@ -11,14 +11,14 @@
         id="logo-clothing" 
         style="color:#000;"
     >
-        @lang('navigation.shop_name')
+        {{ config('app.name') }}
     </a>
 </div>
 
 <!-- Header -->
 <header class="wrapper">
     <a href="/" title="@lang('navigation.home')" class="header-logo">
-        @lang('navigation.shop_name')
+        {{ config('app.name') }}
     </a>
     @include('includes.search-form')
         <div class="ml-5">@include('includes.cart')</div>
@@ -27,7 +27,7 @@
 <nav id="nav-menu" class="top-nav">
     <ul>
         <a href="/" title="@lang('navigation.home')" class="nav-logo">
-            @lang('navigation.shop_name')
+            {{ config('app.name') }}
         </a>
 
         <li class="nav-search" title="@lang('navigation.search')">
