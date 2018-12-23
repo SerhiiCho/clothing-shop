@@ -15,7 +15,8 @@ class CreateOptionsTable extends Migration
     {
         Schema::create('options', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('registration')->default(1);
+            $table->string('option');
+            $table->string('value');
         });
     }
 
