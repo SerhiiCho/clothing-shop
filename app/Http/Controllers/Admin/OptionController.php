@@ -23,6 +23,8 @@ class OptionController extends Controller
      */
     public function registration(Request $request): RedirectResponse
     {
+        cache()->forget('admin_options');
+
         if ($request->has('option') && $request->option === 'on') {
             Option::set('registration', 1);
             return redirect('/admin/dashboard')->withSuccess(
@@ -43,6 +45,8 @@ class OptionController extends Controller
      */
     public function menCategory(Request $request): RedirectResponse
     {
+        cache()->forget('admin_options');
+
         if ($request->has('option') && $request->option === 'on') {
             Option::set('men_category', 1);
             return redirect('/admin/dashboard')->withSuccess(
@@ -63,6 +67,8 @@ class OptionController extends Controller
      */
     public function womenCategory(Request $request): RedirectResponse
     {
+        cache()->forget('admin_options');
+
         if ($request->has('option') && $request->option === 'on') {
             Option::set('women_category', 1);
             return redirect('/admin/dashboard')->withSuccess(

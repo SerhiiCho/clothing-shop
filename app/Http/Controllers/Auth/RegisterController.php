@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Option;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -23,19 +22,6 @@ class RegisterController extends Controller
      */
 
     use RegistersUsers;
-
-    /**
-     * Overwriting laraval's method
-     * Show the application registration form.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showRegistrationForm()
-    {
-        return view('auth.register', [
-            'registration' => Option::whereOption('registration')->value('value'),
-        ]);
-    }
 
     /**
      * Where to redirect users after registration.

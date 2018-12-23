@@ -16,7 +16,7 @@
                             <input type="checkbox"
                                 class="auto-submit-cb"
                                 name="option"
-                                {{ $options['registration'] ? 'checked' : '' }}
+                                {{ $admin_options['registration'] ? 'checked' : '' }}
                             >
                         </form>
                     </td>
@@ -29,7 +29,7 @@
                             <input type="checkbox"
                                 name="option" 
                                 class="auto-submit-cb"
-                                {{ $options['men_category'] ? 'checked' : '' }}
+                                {{ $admin_options['men_category'] ? 'checked' : '' }}
                             >
                         </form>
                     </td>
@@ -42,7 +42,7 @@
                             <input type="checkbox"
                                 name="option" 
                                 class="auto-submit-cb"
-                                {{ $options['women_category'] ? 'checked' : '' }}
+                                {{ $admin_options['women_category'] ? 'checked' : '' }}
                             >
                         </form>
                     </td>

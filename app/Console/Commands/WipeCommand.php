@@ -41,6 +41,7 @@ class WipeCommand extends Command
         cache()->forget('categories_men');
         cache()->forget('categories_women');
         cache()->forget('nav_contacts');
+        cache()->forget('admin_options');
 
         $this->call('migrate:fresh');
         $this->call('db:seed');
