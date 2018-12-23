@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Option;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -21,13 +22,17 @@ class OptionController extends Controller
      */
     public function registration(Request $request): RedirectResponse
     {
-        if ($request->has('block') && $request->block === 'on') {
+        if ($request->has('option') && $request->option === 'on') {
+            Option::set('registration', 'on');
             return redirect('/admin/dashboard')->withSuccess(
-                trans('options.registration_disabled')
+                trans('options.registration_enabled')
             );
         }
+
+        Option::set('registration', 'off');
+
         return redirect('/admin/dashboard')->withSuccess(
-            trans('options.registration_enabled')
+            trans('options.registration_disabled')
         );
     }
 }

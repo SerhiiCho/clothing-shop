@@ -19,4 +19,13 @@ class Option extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * @param string $option
+     * @param string $value
+     */
+    public static function set(string $option, string $value)
+    {
+        return self::whereOption($option)->update(compact('option', 'value'));
+    }
 }

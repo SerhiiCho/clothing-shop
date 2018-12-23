@@ -9,12 +9,12 @@
             <h5 class="mb-4">@lang('dashboard.dashboard')</h5>
             <table class="table">
                 <tr>
-                    <td>@lang('options.lock_registration')</td>
+                    <td>@lang('options.allow_registration')</td>
                     <td>
                         <form action="{{ action('Admin\OptionController@registration') }}" method="post">
                             @csrf
                             @method('put')
-                            <input type="checkbox" name="block">
+                            <input type="checkbox" name="option">
                             <button type="submit" class="btn btn-sm btn-success ml-3">
                                 <i class="fas fa-save"></i>
                             </button>

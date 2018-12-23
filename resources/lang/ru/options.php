@@ -8,6 +8,6 @@ return [
     'registration_enabled' => 'Регистрация разблокирована',
 
     // View
-    'lock_registration' => 'Блокировать регистрацию',
+    'allow_registration' => 'Разрешить регистрацию',
 
 ];
