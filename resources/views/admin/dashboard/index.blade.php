@@ -14,7 +14,9 @@
                         <form action="{{ action('Admin\OptionController@registration') }}" method="post">
                             @csrf
                             @method('put')
-                            <input type="checkbox" name="option">
+
+                            <input type="checkbox" name="option" {{ $registration ? 'checked' : '' }}>
+
                             <button type="submit" class="btn btn-sm btn-success ml-3">
                                 <i class="fas fa-save"></i>
                             </button>
