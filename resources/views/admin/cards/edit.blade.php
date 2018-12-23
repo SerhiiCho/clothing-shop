@@ -7,7 +7,7 @@
 <div class="container pb-5">
     <h4 class="display-4 text-center p-3">@lang('cards.change_card')</h4>
     <div>
-        <img src="{{ asset("/storage/img/cards/{$card->image}") }}"
+        <img src="{{ asset("/storage/img/big/cards/{$card->image}") }}"
             alt="{{ $card->type->type }}"
             class="rounded mx-auto d-block"
             id="target-image"
@@ -85,7 +85,7 @@
         </form>
 
         {{-- Back button --}}
-        <a href="/cards"
+        <a href="/admin/cards"
             title="@lang('messages.back')"
             class="btn btn-primary btn-block mt-2"
         >
