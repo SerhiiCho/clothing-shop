@@ -78,66 +78,20 @@ class OptionControllerTest extends TestCase
      * @author Cho
      * @test
      */
-    public function auth_user_cant_turn_off_men_category(): void
+    public function admin_can_remove_cache_data(): void
     {
-        $this->actingAs(factory(User::class)->create())
-            ->put(action('Admin\OptionController@menCategory'));
+        $this->get('/');
 
-        $this->assertOptionHasValue('men_category', 1);
-    }
+        array_map(function ($name) {
+            $this->assertNotNull(cache()->get($name));
+        }, config('cache.cache_names'));
 
-    /**
-     * @author Cho
-     * @test
-     */
-    public function auth_user_cant_turn_off_women_category(): void
-    {
-        $this->actingAs(factory(User::class)->create())
-            ->put(action('Admin\OptionController@womenCategory'));
+        $this->actingAs(factory(User::class)->state('admin')->create())
+            ->put(action('Admin\OptionController@cacheForget'));
 
-        $this->assertOptionHasValue('women_category', 1);
-    }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function auth_user_cant_turn_off_registration(): void
-    {
-        $this->actingAs(factory(User::class)->create())
-            ->put(action('Admin\OptionController@registration'));
-
-        $this->assertOptionHasValue('registration', 1);
-    }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function guest_cant_turn_off_registration(): void
-    {
-        $this->put(action('Admin\OptionController@registration'));
-        $this->assertOptionHasValue('registration', 1);
-    }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function guest_cant_turn_off_men_category(): void
-    {
-        $this->put(action('Admin\OptionController@menCategory'));
-        $this->assertOptionHasValue('men_category', 1);
-    }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function guest_cant_turn_off_women_category(): void
-    {
-        $this->put(action('Admin\OptionController@womenCategory'));
-        $this->assertOptionHasValue('women_category', 1);
+        array_map(function ($name) {
+            $this->assertNull(cache()->get($name));
+        }, config('cache.cache_names'));
     }
 
     /**

@@ -47,6 +47,17 @@
                         </form>
                     </td>
                 </tr>
+                <tr> {{-- Forget cache --}}
+                    <td>@lang('options.forget_cache')</td>
+                    <td>
+                        <form action="{{ action('Admin\OptionController@cacheForget') }}" method="post">
+                            @csrf @method('put')
+                            <button type="submit" style="background:none; border:none; cursor:pointer">
+                                <i class="fas fa-trash-alt fa-1x" style="color:brown"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
             </table>
 
         </div>
