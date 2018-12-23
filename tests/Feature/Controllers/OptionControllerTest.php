@@ -17,7 +17,7 @@ class OptionControllerTest extends TestCase
      */
     public function option_Registration_is_on_by_default(): void
     {
-        $this->assertOptionHasValue('registration', 'on');
+        $this->assertOptionHasValue('registration', 1);
     }
 
     /**
@@ -26,7 +26,7 @@ class OptionControllerTest extends TestCase
      */
     public function option_MenCategory_is_on_by_default(): void
     {
-        $this->assertOptionHasValue('men_category', 'on');
+        $this->assertOptionHasValue('men_category', 1);
     }
 
     /**
@@ -35,7 +35,7 @@ class OptionControllerTest extends TestCase
      */
     public function option_WomenCategory_is_on_by_default(): void
     {
-        $this->assertOptionHasValue('women_category', 'on');
+        $this->assertOptionHasValue('women_category', 1);
     }
 
     /**
@@ -47,7 +47,7 @@ class OptionControllerTest extends TestCase
         $this->actingAs(factory(User::class)->state('admin')->create())
             ->put(action('Admin\OptionController@registration'));
 
-        $this->assertOptionHasValue('registration', 'off');
+        $this->assertOptionHasValue('registration', 0);
     }
 
     /**
@@ -59,7 +59,7 @@ class OptionControllerTest extends TestCase
         $this->actingAs(factory(User::class)->state('admin')->create())
             ->put(action('Admin\OptionController@menCategory'));
 
-        $this->assertOptionHasValue('men_category', 'off');
+        $this->assertOptionHasValue('men_category', 0);
     }
 
     /**
@@ -71,7 +71,7 @@ class OptionControllerTest extends TestCase
         $this->actingAs(factory(User::class)->state('admin')->create())
             ->put(action('Admin\OptionController@womenCategory'));
 
-        $this->assertOptionHasValue('women_category', 'off');
+        $this->assertOptionHasValue('women_category', 0);
     }
 
     /**
@@ -83,7 +83,7 @@ class OptionControllerTest extends TestCase
         $this->actingAs(factory(User::class)->create())
             ->put(action('Admin\OptionController@menCategory'));
 
-        $this->assertOptionHasValue('men_category', 'on');
+        $this->assertOptionHasValue('men_category', 1);
     }
 
     /**
@@ -95,7 +95,7 @@ class OptionControllerTest extends TestCase
         $this->actingAs(factory(User::class)->create())
             ->put(action('Admin\OptionController@womenCategory'));
 
-        $this->assertOptionHasValue('women_category', 'on');
+        $this->assertOptionHasValue('women_category', 1);
     }
 
     /**
@@ -107,7 +107,7 @@ class OptionControllerTest extends TestCase
         $this->actingAs(factory(User::class)->create())
             ->put(action('Admin\OptionController@registration'));
 
-        $this->assertOptionHasValue('registration', 'on');
+        $this->assertOptionHasValue('registration', 1);
     }
 
     /**
@@ -117,7 +117,7 @@ class OptionControllerTest extends TestCase
     public function guest_cant_turn_off_registration(): void
     {
         $this->put(action('Admin\OptionController@registration'));
-        $this->assertOptionHasValue('registration', 'on');
+        $this->assertOptionHasValue('registration', 1);
     }
 
     /**
@@ -127,7 +127,7 @@ class OptionControllerTest extends TestCase
     public function guest_cant_turn_off_men_category(): void
     {
         $this->put(action('Admin\OptionController@menCategory'));
-        $this->assertOptionHasValue('men_category', 'on');
+        $this->assertOptionHasValue('men_category', 1);
     }
 
     /**
@@ -137,17 +137,17 @@ class OptionControllerTest extends TestCase
     public function guest_cant_turn_off_women_category(): void
     {
         $this->put(action('Admin\OptionController@womenCategory'));
-        $this->assertOptionHasValue('women_category', 'on');
+        $this->assertOptionHasValue('women_category', 1);
     }
 
     /**
      * Method helper
      *
      * @param string $option
-     * @param string $value
-     * @return bool
+     * @param int $value
+     * @return void
      */
-    public function assertOptionHasValue(string $option, string $value)
+    public function assertOptionHasValue(string $option, int $value)
     {
         $this->assertDatabaseHas('options', compact('option', 'value'));
     }

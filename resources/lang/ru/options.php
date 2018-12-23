@@ -13,6 +13,8 @@ return [
 
     // View
     'allow_registration' => 'Разрешить регистрацию',
+    'turn_on_men_category' => 'Включить мужскую категорию',
+    'turn_on_women_category' => 'Включить женскую категорию',
     'registration_is_not_on' => 'Регистрация не доступна',
 
 ];

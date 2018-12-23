@@ -6,7 +6,7 @@
 
 
 <div class="container">
-    @if (isset($registration) && $registration === 'on')
+    @if ($registration)
         <h3 class="text-center pt-4">@lang('forms.register_title')</h3>
 
         <div class="col-12 offset-md-3 col-md-6 pb-5">

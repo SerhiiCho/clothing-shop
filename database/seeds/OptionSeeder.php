@@ -13,9 +13,9 @@ class OptionSeeder extends Seeder
     public function run()
     {
         DB::table('options')->insert([
-            ['option' => 'registration', 'value' => 'on'],
-            ['option' => 'men_category', 'value' => 'on'],
-            ['option' => 'women_category', 'value' => 'on'],
+            ['option' => 'registration', 'value' => 1],
+            ['option' => 'men_category', 'value' => 1],
+            ['option' => 'women_category', 'value' => 1],
         ]);
     }
 }

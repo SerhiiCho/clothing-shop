@@ -51,7 +51,7 @@ class RegisterPageTest extends TestCase
     public function register_form_is_hidded_if_in_db_table_options_set_value_to_off(): void
     {
         $this->get($this->url)->assertSeeText(trans('forms.input_password'));
-        Option::set('registration', 'off');
+        Option::set('registration', 0);
         $this->get($this->url)->assertDontSeeText(trans('forms.input_password'));
     }
 }

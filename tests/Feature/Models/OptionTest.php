@@ -16,11 +16,11 @@ class OptionTest extends TestCase
      */
     public function Set_method_returns_value_of_needed_option(): void
     {
-        Option::set('registration', 'off');
+        Option::set('registration', 0);
 
         $this->assertDatabaseHas('options', [
             'option' => 'registration',
-            'value' => 'off',
+            'value' => 0,
         ]);
     }
 }
