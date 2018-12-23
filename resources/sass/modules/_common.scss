@@ -1,15 +1,15 @@
 .unstyled-list {
-	list-style: none;
+    list-style: none;
 }
 
 @media(min-width: 840px) {
-	.hide-on-desktop {
-		display: none !important;
-	}
+    .hide-on-desktop {
+        display: none !important;
+    }
 }
 
 .custom-file {
-	overflow: hidden;
+    overflow: hidden;
 }
 
 .fa-15x {
@@ -18,15 +18,15 @@
 }
 
 .message {
-	display: inline-block;
-	padding: .5em 1em;
-	transition: transform 300ms;
-	animation: appearFromLeft 8s;
-	animation-fill-mode: forwards;
-	font-size: .9em;
-	color: #fff;
-	border-radius: 5px;
-	margin-top: .5em;
+    display: inline-block;
+    padding: .5em 1em;
+    transition: transform 300ms;
+    animation: appearFromLeft 8s;
+    animation-fill-mode: forwards;
+    font-size: .9em;
+    color: #fff;
+    border-radius: 5px;
+    margin-top: .5em;
 }
 
 .loader {
@@ -52,12 +52,12 @@
 }
 
 .alert-pink {
-	background: $pink;
-	border: 1px solid $darkPink;
-	color: #000;
-	font-weight: normal;
+    background: $pink;
+    border: 1px solid $darkPink;
+    color: #000;
+    font-weight: normal;
 }
 
 .display-4 {
-	font-size: 1.8rem;
+    font-size: 1.8rem;
 }

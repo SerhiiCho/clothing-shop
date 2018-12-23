@@ -83,7 +83,7 @@ class ItemController extends Controller
         Cookie::queue('visited', $item->id, 1);
         $item->increment('popular');
 
-        return view('items.show')->with([
+        return view('items.show', [
             'item_id' => $item->id,
             'item_title' => $item->title,
         ]);
