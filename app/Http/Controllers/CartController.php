@@ -50,10 +50,10 @@ class CartController extends Controller
     /**
      * Add cart item to favorites and remove from cart
      *
-     * @param int $id
+     * @param string $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function addToFavorite(int $id): RedirectResponse
+    public function addToFavorite(string $id): RedirectResponse
     {
         $item = Cart::get($id);
 
@@ -79,10 +79,10 @@ class CartController extends Controller
     /**
      * Remove the specified cart item from session
      *
-     * @param int $id
+     * @param string $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(int $id): RedirectResponse
+    public function destroy(string $id): RedirectResponse
     {
         Cart::remove($id);
         return back()->withSuccess(trans('cart.was_deleted'));
