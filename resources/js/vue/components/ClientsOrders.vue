@@ -50,9 +50,7 @@
             </div>
         </div>
         <section v-else class="p-1">
-            <h5 class="text-center pb-4">
-                <button-back :title="noOrders"></button-back>
-            </h5>
+            <h5 class="text-center pb-4" v-text="noOrders"></h5>
         </section>
     </div>
 </template>

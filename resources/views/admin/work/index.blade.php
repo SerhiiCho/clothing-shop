@@ -5,6 +5,9 @@
 @section('content')
 <div class="container">
     <h4 class="text-center p-3">@lang('dashboard.your_orders'):</h4>
+    <div class="row text-center pb-5" v-if="false">
+        <div class="loader mx-auto mt-4"></div>
+    </div>
     <clients-orders
         :admin="{{ json_encode(user()->admin) }}"
         sum="@lang('dashboard.sum')"
