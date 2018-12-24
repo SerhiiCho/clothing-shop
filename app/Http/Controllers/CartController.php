@@ -27,64 +27,61 @@ class CartController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $dublicates = Cart::search(function ($cartItem, $rowId) use ($request) {
-            return $cartItem->id === $request->id;
+        $dublicates = Cart::search(function ($cart_item, $row_id) use ($request) {
+            return $cart_item->id === $request->id;
         });
 
         if ($dublicates->isNotEmpty()) {
-            return back()->withError(
-                trans('cart.item_is_in_your_cart', [
-                    'item' => $request->title,
-                ])
-            );
+            return back()->withError(trans('cart.item_is_in_your_cart'));
         }
 
+        // id, name, amount and price
         Cart::add($request->id, $request->title, 1, $request->price)
             ->associate('App\Models\Item');
 
-        return back()->withSuccess(
-            trans('cart.added_to_cart', ['item' => $request->title])
-        );
+        return back()->withSuccess(trans('cart.added_to_cart', [
+            'item' => $request->title,
+        ]));
     }
 
     /**
      * Add cart item to favorites and remove from cart
      *
-     * @param string $id
+     * @param string $cart_id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function addToFavorite(string $id): RedirectResponse
+    public function addToFavorite(string $cart_id): RedirectResponse
     {
-        $item = Cart::get($id);
+        $cart_item = Cart::get($cart_id);
+        Cart::remove($cart_id);
 
-        Cart::remove($id);
-
-        $dublicates = Cart::instance('favorite')->search(function ($cartItem, $rowId) use ($id) {
-            return $rowId === $id;
-        });
+        $dublicates = Cart::instance('favorite')
+            ->search(function ($cart_item, $row_id) use ($cart_id) {
+                return $row_id === $cart_id;
+            });
 
         if ($dublicates->isNotEmpty()) {
             return back()->withError(trans('cart.item_is_in_favorite'));
         }
 
         Cart::instance('favorite')
-            ->add($item->id, $item->name, 1, $item->price)
+            ->add($cart_item->id, $cart_item->name, 1, $cart_item->price)
             ->associate('App\Models\Item');
 
-        return back()->withSuccess(
-            trans('cart.added_to_favorite', ['item' => $item->name])
-        );
+        return back()->withSuccess(trans('cart.added_to_favorite', [
+            'item' => $cart_item->name,
+        ]));
     }
 
     /**
      * Remove the specified cart item from session
      *
-     * @param string $id
+     * @param string $rowId The id of a cart item
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(string $id): RedirectResponse
+    public function destroy(string $rowId): RedirectResponse
     {
-        Cart::remove($id);
+        Cart::remove($rowId);
         return back()->withSuccess(trans('cart.was_deleted'));
     }
 }
