@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="wrapper pb-3">
+<div class="wrapper pb-5" id="items-page">
     <div class="container">
         <section class="row">
             @if ($sidebar)

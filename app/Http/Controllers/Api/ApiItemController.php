@@ -32,7 +32,7 @@ class ApiItemController extends Controller
                 Item::where($query)
                     ->inStock()
                     ->latest()
-                    ->paginate(40)
+                    ->paginate(20)
             );
         } catch (QueryException $e) {
             logs()->error($e->getMessage());

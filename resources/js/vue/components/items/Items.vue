@@ -43,31 +43,10 @@
                 </a>
             </div>
         </div>
-
-        <!-- Pagination -->
-        <nav class="col-12">
-            <ul class="pagination"
-                v-if="pagination.next_page_url || pagination.prev_page_url"
-            >
-                <li v-if="pagination.prev_page_url" class="page-item">
-                    <a @click="fetchItems(pagination.prev_page_url)"
-                        class="page-link"
-                        href="#"
-                    >&laquo;</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        {{ pagination.current_page }} / {{ pagination.last_page }}
-                    </a>
-                </li>
-                <li v-if="pagination.next_page_url" class="page-item">
-                    <a @click="fetchItems(pagination.next_page_url)"
-                        class="page-link"
-                        href="#"
-                    >&raquo;</a>
-                </li>
-            </ul>
-        </nav>
+        <!-- Preloader -->
+        <div class="col-12 text-center py-5" v-if="loading">
+            <div class="loader mx-auto"></div>
+        </div>
     </div>
 </template>
 
@@ -75,20 +54,30 @@
 export default {
     data() {
         return {
+            title: this.allItems,
             items: [],
-            pagination: {},
-            title: this.allItems
+            loading: false,
+            url: null,
+            theEnd: false,
         }
     },
 
     props: ['category', 'allItems', 'deleting', 'hryvnia', 'change', 'admin'],
 
     created() {
-        this.fetchItems()
+        this.fetchItems(true)
+
+        window.addEventListener('scroll', () => {
+            if (!this.theEnd) {
+                this.onScroll()
+            }
+        })
     },
 
     methods: {
-        fetchItems(url) {
+        fetchItems(reload = false) {
+            this.loading = true
+
             let vm = this
             let category = '/' + location.search.split('category=')[1]
             let type = '/' + location.search.split('type=')[1]
@@ -99,14 +88,22 @@ export default {
                 addToUrl = ''
             }
 
-            url = url || '/api/items' + addToUrl
+            let url = this.url === null ? '/api/items' + addToUrl : this.url
 
             this.$axios.get(url)
                 .then(res => {
-                    this.items = res.data.data
-                    vm.makePagination(res.data.meta, res.data.links)
+                    if (res.data.links.next !== null) {
+                        this.url = res.data.links.next
+                    } else {
+                        this.theEnd = true
+                    }
+                    this.items = reload ? res.data.data : this.items.concat(res.data.data)
+                    this.loading = false
                 })
-                .catch(error => console.error(error))
+                .catch(error => {
+                    console.error(error)
+                    this.loading = false
+                })
         },
 
         makePagination(meta, links) {
@@ -131,6 +128,17 @@ export default {
         changePhotoOver (index, newSrc = null) {
             if (newSrc) {
                 document.getElementById('photo' + index).src = '/storage/img/small/clothes/' + newSrc
+            }
+        },
+
+        onScroll() {
+            let wrap = document.getElementById('items-page')
+            let contentHeight = wrap.offsetHeight
+            let yOffset = window.pageYOffset
+            let currentPosition = yOffset + window.innerHeight
+
+            if (currentPosition >= contentHeight && !this.loading) {
+                this.fetchItems()
             }
         },
 
