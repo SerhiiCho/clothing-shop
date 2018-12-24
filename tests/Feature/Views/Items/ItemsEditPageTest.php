@@ -12,6 +12,7 @@ class ItemsEditPageTest extends TestCase
     use DatabaseTransactions;
 
     private $item;
+    private $url;
 
     /**
      * @author Cho
@@ -20,6 +21,7 @@ class ItemsEditPageTest extends TestCase
     {
         parent::setUp();
         $this->item = factory(Item::class)->create();
+        $this->url = "/items/{$this->item->slug}/edit";
     }
 
     /**
@@ -29,7 +31,7 @@ class ItemsEditPageTest extends TestCase
     public function page_is_not_accessable_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
-            ->get("/items/{$this->item->id}/edit")
+            ->get($this->url)
             ->assertRedirect();
     }
 
@@ -39,8 +41,7 @@ class ItemsEditPageTest extends TestCase
      */
     public function page_is_not_accessable_by_guest(): void
     {
-        $this->get("/items/{$this->item->id}/edit")
-            ->assertRedirect();
+        $this->get($this->url)->assertRedirect();
     }
 
     /**
@@ -50,7 +51,7 @@ class ItemsEditPageTest extends TestCase
     public function page_is_accessable_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
-            ->get("/items/{$this->item->id}/edit")
+            ->get($this->url)
             ->assertOk()
             ->assertViewIs('items.edit');
     }
