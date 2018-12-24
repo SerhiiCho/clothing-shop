@@ -6,7 +6,7 @@
             class="col-lg-3 col-6 item-card"
         >
             <transition name="fade" mode="out-in" appear>
-                <a :href="'/item/' + item.category + '/' + item.id"
+                <a :href="'/item/' + item.category + '/' + item.slug"
                     :title="item.title"
                     v-if="item.photos.length > 0"
                     @mouseover="changePhotoOver(index, item.photos[1] ? item.photos[1].name : '')"
@@ -24,7 +24,7 @@
 
                 <!-- Edit button -->
                 <a v-if="admin == 1"
-                    :href="'/items/' + item.id + '/edit'"
+                    :href="'/items/' + item.slug + '/edit'"
                     :title="change"
                     class="btn-change-item"
                     style="top:10px;"
@@ -34,7 +34,7 @@
 
                 <!-- Delete button -->
                 <a v-if="admin == 1" href="#"
-                    v-on:click="deleteItem(item.id)"
+                    v-on:click="deleteItem(item.slug)"
                     :title="deleting"
                     class="btn-change-item"
                     style="top:55px;"
@@ -120,9 +120,9 @@ export default {
             this.pagination = pagination
         },
 
-        deleteItem(id) {
+        deleteItem(slug) {
             if (confirm('Удалить этот товар?')) {
-                this.$axios.delete('api/item/' + id)
+                this.$axios.delete('api/item/' + slug)
                     .then(res => this.fetchItems())
                     .catch(error => console.error(error))
             }

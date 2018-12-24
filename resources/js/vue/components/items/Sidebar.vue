@@ -5,7 +5,7 @@
                 :key="item.id"
                 class="col-lg-2 col-md-3 col-6 col-sm-4 item-card"
             >
-                <a :href="'/item/' + item.category + '/' + item.id"
+                <a :href="'/item/' + item.category + '/' + item.slug"
                     :title="item.title"
                     @mouseover="changePhotoOver(index, item.photos[1] ? item.photos[1].name : '')"
                     @mouseout="changePhotoOut(index, item.photos[0].name)"
@@ -33,7 +33,7 @@ export default {
         }
     },
 
-    props: ['hryvnia', 'itemId'],
+    props: ['hryvnia', 'itemSlug'],
 
     created() {
         this.fetchItems()
@@ -49,7 +49,7 @@ export default {
                 .then(res => {
                     let data = []
                     res.data.data.map(el => {
-                        if (el.id != this.itemId) {
+                        if (el.id != this.itemSlug) {
                             data.push(el)
                         }
                     })

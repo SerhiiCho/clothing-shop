@@ -32,7 +32,7 @@
     </h5>
     <sidebar
         hryvnia="@lang('items.hryvnia')"
-        item-id="{{ $item_id ?? '' }}">
+        item-slug="{{ $item_slug ?? '' }}">
     </sidebar>
 </div>
 

@@ -14,7 +14,7 @@
     </h5>
 
     <div class="row">
-        <form action="{{ action('ItemController@update', ['id' => $item->id]) }}"
+        <form action="{{ action('ItemController@update', ['id' => $item->slug]) }}"
             method="post"
             enctype="multipart/form-data"
             class="col-md-6 col-lg-8"
@@ -168,7 +168,7 @@
                 @endfor
             </div>
             <div class="text-center">
-                <a href="/item/{{ $item->category }}/{{ $item->id }}"
+                <a href="/item/{{ $item->category }}/{{ $item->slug }}"
                     class="btn btn-primary mt-3 pl-3 pr-3"
                     title="@lang('items.go_to_product_with_title', ['title' => $item->title])"
                 >

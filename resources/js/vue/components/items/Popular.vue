@@ -6,10 +6,10 @@
         <div class="container pb-3">
             <section class="row">
                 <div v-for="(popular, index) in populars"
-                    :key="popular.id"
+                    :key="popular.slug"
                     class="col-lg-2 col-md-3 col-6 col-sm-4 item-card"
                 >
-                    <a :href="'/item/' + popular.category + '/' + popular.id"
+                    <a :href="'/item/' + popular.category + '/' + popular.slug"
                         :title="popular.title"
                         @mouseover="changePhotoOver(index, popular.photos[1] ? popular.photos[1].name : '')" 
                         @mouseout="changePhotoOut(index, popular.photos[0].name)"

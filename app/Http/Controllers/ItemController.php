@@ -67,15 +67,17 @@ class ItemController extends Controller
 
     /**
      * @param string $category
-     * @param \App\Models\Item $item
+     * @param string $slug
      * @return \Illuminate\View\View
      */
-    public function show($category, Item $item): View
+    public function show(string $category, string $slug): View
     {
-        // If page has been just visited just return view
+        $item = Item::whereSlug($slug)->first();
+
+        // If page has been just visited return view
         if (Cookie::get('visited') && Cookie::get('visited') == $item->id) {
             return view('items.show')->with([
-                'item_id' => $item->id,
+                'item_slug' => $item->slug,
                 'item_title' => $item->title,
             ]);
         }
@@ -84,7 +86,7 @@ class ItemController extends Controller
         $item->increment('popular');
 
         return view('items.show', [
-            'item_id' => $item->id,
+            'item_slug' => $item->slug,
             'item_title' => $item->title,
         ]);
     }
@@ -92,11 +94,12 @@ class ItemController extends Controller
     /**
      * Show page with form
      *
-     * @param \App\Models\Item $item
+     * @param string $slug
      * @return \Illuminate\View\View
      */
-    public function edit(Item $item): View
+    public function edit(string $slug): View
     {
+        $item = Item::whereSlug($slug)->first();
         $types = (new Type)->orderBy('name')->get();
 
         $category = ($item->category === 'men')
@@ -110,11 +113,13 @@ class ItemController extends Controller
      * Update specific item
      *
      * @param \App\Http\Requests\ItemRequest $request
-     * @param \App\Models\Item $item
+     * @param string $slug
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ItemRequest $request, Item $item): RedirectResponse
+    public function update(ItemRequest $request, string $slug): RedirectResponse
     {
+        $item = Item::whereSlug($slug)->first();
+
         if ($request->hasFile('photos')) {
             $this->deleteOldPhotos($item->photos);
             $image_names = $this->uploadPhotos($request, $item->id);
