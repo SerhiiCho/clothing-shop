@@ -6,7 +6,7 @@ return [
     'sum' => 'Сумма',
     'date' => 'Время',
     'number' => 'Номер',
-    'product' => 'Товар',
+    'products' => 'Товары',
     'no_orders' => 'Нет заказов',
     'your_orders' => 'Ваши заказы',
     'delete_number' => 'Удалить номер',

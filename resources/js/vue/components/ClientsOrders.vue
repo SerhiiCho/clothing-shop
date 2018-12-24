@@ -31,14 +31,20 @@
                         </p>
                         <hr />
 
-                        {{ product }}:
+                        <div class="text-center">
+                            <h5>{{ products }}:</h5>
+                        </div>
 
-                        <a v-for="item in order.items"
-                            :key="item.id"
-                            :href="'/item/' + item.category + '/' + item.id"
-                            :title="item.title"
-                            class="btn btn-primary ml-2 p-1"
-                        >#{{ item.id }}</a>
+                        <div v-for="(item, i) in order.items" :key="item.id">
+                            <hr v-if="i !== 0">
+                            <a :href="'/item/' + item.category + '/' + item.slug"
+                                :title="item.title"
+                                class="d-block"
+                            >
+                                <i class="fas fa-angle-right"></i> 
+                                {{ item.title }}
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -60,7 +66,7 @@ export default {
     },
 
     props: [
-        'sum', 'date', 'number', 'admin', 'product', 'clientsOrder',
+        'sum', 'date', 'number', 'admin', 'products', 'clientsOrder',
         'noOrders', 'deleteNumber', 'deleteThisOrder', 'hryvnia'
     ],
 

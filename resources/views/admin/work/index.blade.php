@@ -12,10 +12,11 @@
         date="@lang('dashboard.date')"
         hryvnia="@lang('items.hryvnia')"
         number="@lang('dashboard.number')"
-        product="@lang('dashboard.product')"
+        products="@lang('dashboard.products')"
         no-orders="@lang('dashboard.no_orders')"
         delete-number="@lang('dashboard.delete_number')"
-        delete-this-order="@lang('dashboard.delete_this_order')">
+        delete-this-order="@lang('dashboard.delete_this_order')"
+    >
     </clients-orders>
 </div>
 @endsection
