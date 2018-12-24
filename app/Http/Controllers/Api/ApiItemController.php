@@ -54,7 +54,7 @@ class ApiItemController extends Controller
      *
      * @param string $category
      */
-    public function random($category)
+    public function random(string $category)
     {
         try {
             $items = Item::inRandomOrder()
@@ -77,7 +77,7 @@ class ApiItemController extends Controller
     {
         try {
             $items = Item::inStock()
-                ->take(12)
+                ->take(18)
                 ->orderBy('popular', 'desc')
                 ->get();
             return ItemResource::collection($items);

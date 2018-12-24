@@ -44,10 +44,11 @@
             @lang('cards.popular')
         </h3>
     </section>
-    <popular
+    <items-api
         hryvnia="@lang('items.hryvnia')"
-        popular="@lang('cards.popular')">
-    </popular>
+        headline="@lang('cards.popular')"
+        to="/api/item/popular"
+    ></items-api>
 </div>
 
 @endsection

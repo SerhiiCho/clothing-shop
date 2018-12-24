@@ -7,7 +7,7 @@ Vue.component('cards', require('./components/slider/Cards.vue'));
 // Items
 Vue.component('items', require('./components/items/Items.vue'));
 Vue.component('single-item', require('./components/items/SingleItem.vue'));
-Vue.component('popular', require('./components/items/Popular.vue'));
+Vue.component('items-api', require('./components/items/ItemsApi.vue'));
 Vue.component('sidebar', require('./components/items/Sidebar.vue'));
 
 // Other
