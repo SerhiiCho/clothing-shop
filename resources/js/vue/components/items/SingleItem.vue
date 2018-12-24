@@ -74,12 +74,8 @@
                     </p>
                 </div>
 
-                <!-- ID -->
+                <!-- In stock -->
                 <span class="col-12 text-secondary pb-1">
-                    <span class="d-block mb-2">
-                        <i class="fas fa-shopping-cart" aria-hidden="true"></i> 
-                        {{ codeOfTheItem }} {{ item.id }}
-                    </span>
                     <span class="d-block mb-2">
                         <i class="fas fa-shopping-basket" aria-hidden="true"></i> 
                         {{ allAmount1 }} {{ item.stock }} {{ allAmount2 }}
