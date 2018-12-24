@@ -4,6 +4,7 @@ namespace App\Contracts;
 
 use App\Http\Requests\ItemRequest;
 use App\Models\Item;
+use App\Models\ItemsPhoto;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -90,6 +91,7 @@ trait ItemHelpers
             'category' => $request->category,
             'stock' => $request->stock,
             'price' => $request->price,
+            'slug' => $item ? $item->slug : $this->makeSlug($request->title),
             'type_id' => $request->type,
         ];
 
@@ -138,5 +140,18 @@ trait ItemHelpers
                 }, 'top')
                 ->save($data['path']);
         }
+    }
+
+    /**
+     * Method helper
+     *
+     * @param string $title
+     * @return string
+     */
+    public function makeSlug(string $title): string
+    {
+        $slug = str_slug($title);
+        $time = time();
+        return str_limit("{$slug}_{$time}", 250);
     }
 }
