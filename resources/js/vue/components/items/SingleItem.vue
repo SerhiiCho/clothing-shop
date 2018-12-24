@@ -1,10 +1,5 @@
 <template>
     <section class="row pb-2">
-        <div class="modal">
-            <span class="close">&times;</span>
-            <img class="modal-content">
-            <div id="caption"></div>
-        </div>
         <div class="col-10 col-sm-9 col-lg-5 col-xl-4 text-center single-image pl-1 pr-2">
             <div v-if="imageNotLoaded">
                 <section class="text-center" style="min-height:500px">
@@ -21,7 +16,7 @@
 
             <!-- Edit button -->
             <a v-if="admin == 1"
-                :href="'/items/' + item.id + '/edit'"
+                :href="'/items/' + item.slug + '/edit'"
                     :title="change"
                     class="btn-change-item"
                     style="top:10px;"
@@ -31,7 +26,7 @@
 
             <!-- Delete button -->
             <a v-if="admin == 1"
-                v-on:click="deleteItem(item.id)"
+                v-on:click="deleteItem(item.slug)"
                 href="#"
                 :title="deleting"
                 class="btn-change-item"
@@ -133,9 +128,9 @@ export default {
 
     methods: {
         fetchItem () {
-            let itemId = window.location.pathname.split("/").slice(-1)
+            let itemSlug = window.location.pathname.split("/").slice(-1)
 
-            fetch ('/api/item/' + itemId)
+            fetch ('/api/item/' + itemSlug)
                 .then(res => res.json())
                 .then(res => {
                     this.item = res.data
@@ -144,9 +139,9 @@ export default {
                 .catch(err => console.log(err))
         },
 
-        deleteItem (id) {
+        deleteItem (slug) {
             if (confirm(this.deleteThisProduct)) {
-                this.$axios.delete('/api/item/' + id)
+                this.$axios.delete('/api/item/' + slug)
                     .then(data => window.location.href = '/items')
                     .catch(error => console.error(error))
             }
