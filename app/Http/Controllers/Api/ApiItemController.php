@@ -41,12 +41,12 @@ class ApiItemController extends Controller
     }
 
     /**
-     * @param \App\Models\Item $item
+     * @param string $slug
      * @return \App\Http\Resources\ItemResource
      */
-    public function show(Item $item)
+    public function show(string $slug)
     {
-        return new ItemResource($item);
+        return new ItemResource(Item::whereSlug($slug)->first());
     }
 
     /**
@@ -88,12 +88,12 @@ class ApiItemController extends Controller
     }
 
     /**
-     * @param int $id
+     * @param string $slug
      */
-    public function destroy($id)
+    public function destroy(string $slug)
     {
         try {
-            $item = Item::find($id);
+            $item = Item::whereSlug($slug)->first();
         } catch (QueryException $e) {
             logs()->error($e->getMessage());
             return [];

@@ -10,6 +10,7 @@ class ItemLightResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'slug' => $this->slug,
             'title' => $this->title,
             'category' => $this->category,
         ];
