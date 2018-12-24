@@ -22,7 +22,8 @@ class DashboardController extends Controller
     public function index(): View
     {
         return view('admin.dashboard.index', [
-            'all_items' => Item::where('stock', '>', 0)->count(),
+            'all_men_items' => Item::whereCategory('men')->sum('stock'),
+            'all_women_items' => Item::whereCategory('women')->sum('stock'),
         ]);
     }
 }

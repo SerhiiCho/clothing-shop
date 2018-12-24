@@ -29,6 +29,8 @@ return [
     'type' => 'Тип',
     'all_amount_1' => 'В наличии:',
     'all_amount_2' => 'шт.',
+    'all_men_items' => 'Всего мужской одежды',
+    'all_women_items' => 'Всего женской одежды',
     'hryvnia' => 'грн',
     'name' => 'Название',
     'stock' => 'Кол-во',
