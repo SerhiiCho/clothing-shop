@@ -17,17 +17,17 @@ Route::prefix('cart')->group(function () {
     Route::get('/', 'CartController@index');
     Route::post('/store', 'CartController@store');
     Route::delete('/{item}', 'CartController@destroy');
-    Route::post('/addToFavorite/{id}', 'CartController@addToFavorite');
+    Route::post('/add-to-favorite/{item}', 'CartController@addToFavorite');
+});
+
+Route::prefix('favorite')->group(function () {
+    Route::post('/switch-to-cart/{item}', 'FavoriteItemController@switchToCart');
+    Route::delete('/{item}', 'FavoriteItemController@destroy');
 });
 
 Route::prefix('checkout')->group(function () {
     Route::get('/', 'CheckoutController@index');
     Route::post('/', 'CheckoutController@store');
-});
-
-Route::prefix('favorite')->group(function () {
-    Route::post('/addToCart/{id}', 'FavoriteItemController@addToCart');
-    Route::delete('/{id}', 'FavoriteItemController@destroy');
 });
 
 // Items
