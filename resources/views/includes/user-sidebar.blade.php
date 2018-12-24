@@ -45,7 +45,7 @@
             </li>
             <li class="{{ activeIfRouteIs('admin/dashboard') }}">
                 <a href="/admin/dashboard" title="@lang('dashboard.dashboard')">
-                    <i class="fas fa-cog icon-profile-menu-line" aria-hidden="true"></i>
+                    <i class="fas fa-wrench icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('dashboard.dash')</span>
                 </a>
             </li>
