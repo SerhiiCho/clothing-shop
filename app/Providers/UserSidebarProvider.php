@@ -8,6 +8,9 @@ use Illuminate\Support\ServiceProvider;
 
 class UserSidebarProvider extends ServiceProvider
 {
+    /**
+     * @return void
+     */
     public function boot()
     {
         $this->showAllOrderMessages();
@@ -19,20 +22,18 @@ class UserSidebarProvider extends ServiceProvider
      *
      * @return void
      */
-    public function showAllOrderMessages()
+    public function showAllOrderMessages(): void
     {
-        if (auth()->check()) {
-            try {
-                $messages = Message::all()->count();
-                $has_messages = 'data-notif=' . $messages . '';
-                $unreaded = ($messages !== 0) ? $has_messages : '';
+        try {
+            $messages = Message::count();
+            $has_messages = "data-notif={$messages}";
+            $unreaded = ($messages !== 0) ? $has_messages : '';
 
-                view()->composer('includes.user-sidebar', function ($view) use ($unreaded) {
-                    $view->with(compact('unreaded'));
-                });
-            } catch (QueryException $e) {
-                logs()->error($e->getMessage());
-            }
+            view()->composer('includes.user-sidebar', function ($view) use ($unreaded) {
+                $view->with(compact('unreaded'));
+            });
+        } catch (QueryException $e) {
+            logs()->error($e->getMessage());
         }
     }
 }
