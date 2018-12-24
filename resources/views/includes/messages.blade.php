@@ -14,6 +14,6 @@
 
 @if (session('error'))
     <div class="container mt-3 mb-3">
-        <message state="error">{{ session('error') }}</message>
+        <message state="error">{!! session('error') !!}</message>
     </div>
 @endif
