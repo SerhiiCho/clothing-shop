@@ -12,7 +12,7 @@
         <div class="row">
             @forelse ($result as $item)
                 <div class="col-lg-2 col-md-3 col-6 col-sm-4 item-card">
-                    <a href="item/{{ $item->category }}/{{ $item->id }}" title="{{ $item->title }}">
+                    <a href="item/{{ $item->category }}/{{ $item->slug }}" title="{{ $item->title }}">
                         <img src="{{ asset("storage/img/small/clothes/{$item->photos()->first()->name}") }}" 
                             alt="{{ $item->title }}"
                         />
