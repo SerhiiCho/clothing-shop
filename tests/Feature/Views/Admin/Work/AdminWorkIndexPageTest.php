@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Views\Admin\Work;
 
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -9,6 +10,17 @@ use Tests\TestCase;
 class AdminWorkIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
+
+    private $admin;
+
+    /**
+     * @author Cho
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->admin = factory(User::class)->state('admin')->create();
+    }
 
     /**
      * @author Cho
@@ -27,8 +39,7 @@ class AdminWorkIndexPageTest extends TestCase
      */
     public function page_is_not_accessable_by_guest(): void
     {
-        $this->get('/admin/work')
-            ->assertRedirect();
+        $this->get('/admin/work')->assertRedirect();
     }
 
     /**
@@ -37,9 +48,22 @@ class AdminWorkIndexPageTest extends TestCase
      */
     public function page_is_accessable_by_admin(): void
     {
-        $this->actingAs(factory(User::class)->state('admin')->create())
+        $this->actingAs($this->admin)
             ->get('/admin/work')
             ->assertOk()
             ->assertViewIs('admin.work.index');
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_can_see_order_messages(): void
+    {
+        $message = factory(Message::class)->create();
+
+        $this->actingAs($this->admin)
+            ->get('/admin/work')
+            ->assertSeeText($message->phone);
     }
 }
