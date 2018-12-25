@@ -105,6 +105,6 @@ class ApiItemController extends Controller
         cache()->forget('categories_women');
 
         $item->delete();
-        return new ItemResource($item);
+        return response(['status' => 'ok'], 200);
     }
 }

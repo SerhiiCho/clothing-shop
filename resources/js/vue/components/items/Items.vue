@@ -33,7 +33,7 @@
                 </a>
 
                 <!-- Delete button -->
-                <a v-if="admin == 1" href="#"
+                <a v-if="admin == 1" href="#!"
                     v-on:click="deleteItem(item.slug)"
                     :title="deleting"
                     class="btn-change-item"
@@ -106,26 +106,18 @@ export default {
                 })
         },
 
-        makePagination(meta, links) {
-            let pagination = {
-                current_page: meta.current_page,
-                last_page: meta.last_page,
-                next_page_url: links.next,
-                prev_page_url: links.prev
-            }
-
-            this.pagination = pagination
-        },
-
         deleteItem(slug) {
             if (confirm('Удалить этот товар?')) {
                 this.$axios.delete('api/item/' + slug)
-                    .then(res => this.fetchItems())
+                    .then(res => {
+                        this.url = null
+                        this.fetchItems(true)
+                    })
                     .catch(error => console.error(error))
             }
         },
 
-        changePhotoOver (index, newSrc = null) {
+        changePhotoOver(index, newSrc = null) {
             if (newSrc) {
                 document.getElementById('photo' + index).src = '/storage/img/small/clothes/' + newSrc
             }
