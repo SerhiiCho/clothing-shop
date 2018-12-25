@@ -22,7 +22,7 @@ class WorkController extends Controller
     public function index(): View
     {
         return view('admin.work.index', [
-            'messages' => Message::paginate(20),
+            'messages' => Message::latest()->paginate(24),
         ]);
     }
 }
