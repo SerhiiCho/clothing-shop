@@ -17,7 +17,7 @@
                         @csrf @method('delete')
                         <button type="submit"
                             class="confirm btn btn-success btn-sm btn-block"
-                            data-confirm="@lang('dashboard.delete_this_order')"
+                            data-confirm="@lang('messages.close_this_order')"
                         >
                             <i class="fas fa-ban" aria-hidden="true"></i> 
                             @lang('messages.close_order')
