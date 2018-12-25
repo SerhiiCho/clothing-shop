@@ -45,8 +45,9 @@ Route::post('search', 'SearchController@handleTheRequest');
 // Admin
 Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('dashboard', 'DashboardController@index');
-    Route::get('work', 'WorkController@index');
-    Route::delete('message/{message}', 'MessageController@destroy');
+    Route::get('work/{tab?}', 'WorkController@index');
+    Route::put('messages/{message}', 'MessageController@softDelete');
+    Route::delete('messages/{message}', 'MessageController@destroy');
     Route::put('registration', 'OptionController@registration');
     Route::put('men-category', 'OptionController@menCategory');
     Route::put('women-category', 'OptionController@womenCategory');

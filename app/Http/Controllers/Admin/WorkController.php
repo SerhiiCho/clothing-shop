@@ -17,12 +17,17 @@ class WorkController extends Controller
     }
 
     /**
+     * @param string|null $tab
      * @return \Illuminate\View\View
      */
-    public function index(): View
+    public function index(?string $tab = null): View
     {
-        return view('admin.work.index', [
-            'messages' => Message::latest()->paginate(24),
-        ]);
+        if ($tab && $tab === 'closed') {
+            $messages = Message::onlyTrashed()->latest()->paginate(24);
+        } else {
+            $messages = Message::latest()->paginate(24);
+        }
+
+        return view('admin.work.index', compact('messages', 'tab'));
     }
 }
