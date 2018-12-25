@@ -6,10 +6,16 @@ use App\Events\RecivedOrdeEvent;
 use App\Http\Requests\CheckoutRequest;
 use App\Models\Message;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Database\QueryException;
+use Illuminate\Http\RedirectResponse;
 
 class CheckoutController extends Controller
 {
-    // Display a listing of the resource
+    /**
+     * If client didn't make the order, redirect to cart page
+     *
+     * @return mixed
+     */
     public function index()
     {
         return (Cart::instance('default')->count() > 0)
@@ -17,8 +23,13 @@ class CheckoutController extends Controller
         : redirect('/cart');
     }
 
-    // Store a newly created resource in storage
-    public function store(CheckoutRequest $request)
+    /**
+     * Handle the client's order and save in database
+     *
+     * @param \App\Http\Requests\CheckoutRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(CheckoutRequest $request): RedirectResponse
     {
         if (Message::whereIp($request->ip())->count() > 0) {
             return back()->withError(trans('checkout.olready_did_order'));
@@ -41,11 +52,12 @@ class CheckoutController extends Controller
 
             event(new RecivedOrdeEvent($request->phone));
 
-            return redirect('/cart')->withSuccess(trans('checkout.order_sent'));
-
-        } catch (Exception $e) {
-            return back()->withError(trans('checkout.error') . ' ' . $e->getMessage());
+            return redirect('/cart')->withSuccess(
+                trans('checkout.order_sent')
+            );
+        } catch (Exception | QueryException $e) {
+            logger()->error($e->getMessage());
+            return back()->withError(trans('checkout.error'));
         }
-
     }
 }
