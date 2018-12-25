@@ -19,6 +19,7 @@ class CreateMessagesTable extends Migration
             $table->string('phone', 20)->unique();
             $table->string('name', 30);
             $table->float('total');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
