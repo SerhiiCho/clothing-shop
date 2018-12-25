@@ -19,7 +19,8 @@
                             class="confirm btn btn-success btn-sm btn-block"
                             data-confirm="@lang('dashboard.delete_this_order')"
                         >
-                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                            <i class="fas fa-ban" aria-hidden="true"></i> 
+                            @lang('messages.close_order')
                         </button>
                     </form>
                     <div class="card-body">
