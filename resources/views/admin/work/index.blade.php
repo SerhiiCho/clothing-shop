@@ -9,7 +9,7 @@
 
     <div class="row pb-5">
         @forelse ($messages as $order)
-            <div class="col-sm-6 col-xl-4">
+            <div class="col-sm-6 col-xl-4 mb-4">
                 <div class="card">
                     <form action="{{ action('Admin\MessageController@destroy', ['id' => $order->id]) }}"
                         method="post"
@@ -76,7 +76,9 @@
     </div>
 
     {{-- Pagination --}}
-    <nav>{{ $messages->links() }}</nav>
+    <section class="text-center pb-4">
+        <div class="mx-auto d-inline-block">{{ $messages->links() }}</div>
+    </section>
 </div>
 
 @endsection
