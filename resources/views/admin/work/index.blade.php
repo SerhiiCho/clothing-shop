@@ -3,23 +3,80 @@
 @section('title', trans('user-sidebar.work'))
 
 @section('content')
+
 <div class="container">
-    <h4 class="text-center p-3">@lang('dashboard.your_orders'):</h4>
-    <div class="row text-center pb-5" v-if="false">
-        <div class="loader mx-auto mt-4"></div>
+    <h4 class="text-center py-3">@lang('dashboard.your_orders'):</h4>
+
+    <div class="row pb-5">
+        @forelse ($messages as $order)
+            <div class="col-sm-6 col-xl-4">
+                <div class="card">
+                    <form action="{{ action('Admin\MessageController@destroy', ['id' => $order->id]) }}"
+                        method="post"
+                    >
+                        @csrf @method('delete')
+                        <button type="submit"
+                            class="confirm btn btn-success btn-sm btn-block"
+                            data-confirm="@lang('dashboard.delete_this_order')"
+                        >
+                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            @lang('items.clients_order') 
+                            # {{ $order->id }}
+                        </h5>
+                        <hr />
+                        <p class="card-text mb-1">
+                            @lang('dashboard.number'): 
+                            <strong>{{ $order->phone }}</strong>
+                        </p>
+                        <p class="card-text mb-1">
+                            @lang('dashboard.sum'): 
+                            <strong>
+                                {{ $order->total }} 
+                                @lang('items.hryvnia')
+                            </strong>
+                        </p>
+                        <p class="card-text mb-1">
+                            @lang('dashboard.date'):
+                            <strong>{{ $order->created_at }}</strong>
+                        </p>
+                        <hr />
+
+                        <div class="text-center">
+                            <h5>@lang('dashboard.products'):</h5>
+                        </div>
+
+                        @foreach ($order->items as $item)
+                            <div>
+                                @if ($loop->index !== 0)
+                                    <hr>
+                                @endif
+                                <a href="/item/{{ $item->category }}/{{ $item->slug}}"
+                                    title="{{ $item->title }}"
+                                    class="d-block"
+                                >
+                                    <i class="fas fa-angle-right"></i> 
+                                    {{ $item->title }}
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        @empty
+            <div class="col-12">
+                <h5 class="pb-4 text-center">
+                    @lang('dashboard.no_orders')
+                </h5>
+            </div>
+        @endforelse
     </div>
-    <clients-orders
-        :admin="{{ json_encode(user()->admin) }}"
-        sum="@lang('dashboard.sum')"
-        clients-order="@lang('items.clients_order')"
-        date="@lang('dashboard.date')"
-        hryvnia="@lang('items.hryvnia')"
-        number="@lang('dashboard.number')"
-        products="@lang('dashboard.products')"
-        no-orders="@lang('dashboard.no_orders')"
-        delete-number="@lang('dashboard.delete_number')"
-        delete-this-order="@lang('dashboard.delete_this_order')"
-    >
-    </clients-orders>
+
+    {{-- Pagination --}}
+    <nav>{{ $messages->links() }}</nav>
 </div>
+
 @endsection
