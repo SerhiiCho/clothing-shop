@@ -2,6 +2,9 @@
 
 return [
 
+    // Controllers
+    'message_deleted' => 'Заказ удален',
+
     // Views
     'more_clothes' => 'Еще товары',
     'welcome' => 'Добро пожаловать',
