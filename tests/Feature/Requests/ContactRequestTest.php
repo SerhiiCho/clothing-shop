@@ -31,7 +31,7 @@ class ConractRequestTest extends TestCase
     public function icon_is_not_required(): void
     {
         $this->form_data['icon'] = '';
-        $this->assertNoPhoneInDatabaseFound();
+        $this->makeRequestAndCheckDatabase();
     }
 
     /**
@@ -41,7 +41,7 @@ class ConractRequestTest extends TestCase
     public function icon_must_be_numeric(): void
     {
         $this->form_data['icon'] = 'text';
-        $this->assertNoPhoneInDatabaseFound();
+        $this->makeRequestAndCheckDatabase();
     }
 
     /**
@@ -51,7 +51,7 @@ class ConractRequestTest extends TestCase
     public function icon_must_be_beetween_two_numbers(): void
     {
         $this->form_data['icon'] = config('valid.contact.icon.max') + 1;
-        $this->assertNoPhoneInDatabaseFound();
+        $this->makeRequestAndCheckDatabase();
     }
 
     /**
@@ -63,7 +63,7 @@ class ConractRequestTest extends TestCase
         $phone_min = config('valid.contact.phone.min');
 
         $this->form_data['phone'] = str_random($phone_min - 1);
-        $this->assertNoPhoneInDatabaseFound();
+        $this->makeRequestAndCheckDatabase();
     }
 
     /**
@@ -75,7 +75,7 @@ class ConractRequestTest extends TestCase
         $phone_max = config('valid.contact.phone.max');
 
         $this->form_data['phone'] = str_random($phone_max + 1);
-        $this->assertNoPhoneInDatabaseFound();
+        $this->makeRequestAndCheckDatabase();
     }
 
     /**
@@ -85,7 +85,7 @@ class ConractRequestTest extends TestCase
     public function phone_is_required(): void
     {
         $this->form_data['phone'] = '';
-        $this->assertNoPhoneInDatabaseFound();
+        $this->makeRequestAndCheckDatabase();
     }
 
     /**
@@ -93,7 +93,7 @@ class ConractRequestTest extends TestCase
      *
      * @return void
      */
-    private function assertNoPhoneInDatabaseFound(): void
+    private function makeRequestAndCheckDatabase(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
             ->post(action('Admin\ContactController@store'), $this->form_data);
