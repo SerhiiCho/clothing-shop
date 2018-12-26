@@ -129,9 +129,8 @@ class CardController extends Controller
 
     /**
      * Remove the specified resource from storage,
-     * App\Observers\CardObserver will delete image
-     * file while database record is being deleted
      *
+     * @see I use observer for this method \App\Observers\CardObserver
      * @param \App\Models\Card $card
      * @return \Illuminate\Http\RedirectResponse
      */

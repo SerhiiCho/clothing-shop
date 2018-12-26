@@ -87,8 +87,8 @@ class SliderController extends Controller
     public function update(UpdateSliderRequest $request, Slider $slider): RedirectResponse
     {
         if ($request->hasFile('image')) {
-            if ($slider->image != 'default.jpg') {
-                Storage::delete('public/img/big/slider/' . $slider->image);
+            if ($slider->image != 'default.jpg' && $slider->image != 'slider.png') {
+                Storage::delete("public/img/big/slider/{$slider->image}");
             }
 
             $image = $request->file('image');
@@ -109,6 +109,7 @@ class SliderController extends Controller
     /**
      * Remove slider from database
      *
+     * @see I use observer for this method \App\Observers\SliderObserver
      * @param \App\Models\Slider $slider
      * @return \Illuminate\Http\RedirectResponse
      */
