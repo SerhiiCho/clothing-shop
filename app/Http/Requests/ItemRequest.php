@@ -15,20 +15,30 @@ class ItemRequest extends FormRequest
     // Get the validation rules that apply to the request.
     public function rules()
     {
+        $title_min = config('valid.item.title.min');
+        $title_max = config('valid.item.title.max');
+        $content_min = config('valid.item.content.min');
+        $content_max = config('valid.item.content.max');
+        $category_max = config('valid.item.category.max');
+        $stock_min = config('valid.item.stock.min');
+        $stock_max = config('valid.item.stock.max');
+        $price_min = config('valid.item.price.min');
+        $price_max = config('valid.item.price.max');
+
         $rules = [
-            'title' => 'required|min:4|max:80',
-            'content' => 'required|min:4|max:3000',
-            'category' => 'required|max:20',
+            'title' => "required|min:{$title_min}|max:{$title_max}",
+            'content' => "required|min:{$content_min}|max:{$content_max}",
+            'category' => "required|max:{$category_max}",
             'type' => 'required',
-            'stock' => 'required|numeric|digits_between:1,99',
-            'price' => 'required|numeric|digits_between:2,6',
+            'stock' => "required|numeric|between:{$stock_min},{$stock_max}",
+            'price' => "required|numeric|digits_between:{$price_min},{$price_max}",
         ];
 
         if (request()->hasFile('photos')) {
             $photos = count(request('photos'));
 
             foreach (range(0, $photos) as $i) {
-                $rules['photos.' . $i] = 'image|nullable|max:1999';
+                $rules["photos.$i"] = 'image|nullable|max:1999';
             }
         }
         return $rules;

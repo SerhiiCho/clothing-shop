@@ -15,9 +15,11 @@ class StoreSlideImageRequest extends FormRequest
     // Get the validation rules that apply to the request
     public function rules()
     {
+        $order_max = config('valid.slider.order.max');
+
         return [
             'image' => 'required|image|max:1999',
-            'order' => 'nullable|numeric|max:99',
+            'order' => "nullable|numeric|max:{$order_max}",
         ];
     }
 

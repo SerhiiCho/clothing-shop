@@ -15,8 +15,10 @@ class SearchRequest extends FormRequest
     // Get the validation rules that apply to the request
     public function rules()
     {
+        $word_max = config('valid.search.word.max');
+
         return [
-            'word' => 'required|max:100',
+            'word' => "required|max:{$word_max}",
         ];
     }
 

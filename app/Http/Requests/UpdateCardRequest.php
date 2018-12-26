@@ -15,9 +15,12 @@ class UpdateCardRequest extends FormRequest
     // Get the validation rules that apply to the request
     public function rules()
     {
+        $type_max = config('valid.card.type.max');
+        $category_max = config('valid.card.category.max');
+
         return [
-            'type' => 'required|digits_between:0,5000|numeric',
-            'category' => 'required|max:30',
+            'type' => "required|numeric|between:1,{$type_max}",
+            'category' => "required|max:{$category_max}",
         ];
     }
 
@@ -28,7 +31,7 @@ class UpdateCardRequest extends FormRequest
             'type.required' => trans('cards.type_required'),
             'category.required' => trans('cards.category_required'),
             'category.max' => trans('cards.category_max'),
-            'type.digits_between' => trans('cards.type_digits_between'),
+            'type.between' => trans('cards.type_between'),
             'type.numeric' => trans('cards.type_numeric'),
         ];
     }

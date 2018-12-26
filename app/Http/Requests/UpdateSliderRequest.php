@@ -15,8 +15,10 @@ class UpdateSliderRequest extends FormRequest
     // Get the validation rules that apply to the request
     public function rules()
     {
+        $order_max = config('valid.slider.order.max');
+
         return [
-            'order' => 'nullable|numeric|max:99',
+            'order' => "nullable|numeric|max:{$order_max}",
         ];
     }
 

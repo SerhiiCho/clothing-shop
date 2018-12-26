@@ -15,10 +15,13 @@ class StoreCardRequest extends FormRequest
     // Get the validation rules that apply to the request
     public function rules()
     {
+        $type_max = config('valid.card.type.max');
+        $category_max = config('valid.card.category.max');
+
         return [
             'image' => 'required|max:1999',
-            'type' => 'required|digits_between:0,5000|numeric',
-            'category' => 'required|max:30',
+            'type' => "required|numeric|between:1,{$type_max}",
+            'category' => "required|max:{$category_max}",
         ];
     }
 
@@ -31,7 +34,7 @@ class StoreCardRequest extends FormRequest
             'category.max' => trans('cards.category_max'),
             'type.required' => trans('cards.type_required'),
             'image.max' => trans('cards.image_max'),
-            'type.digits_between' => trans('cards.type_digits_between'),
+            'type.between' => trans('cards.type_between'),
             'type.numeric' => trans('cards.type_numeric'),
         ];
     }

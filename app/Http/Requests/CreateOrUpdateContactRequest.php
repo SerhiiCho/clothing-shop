@@ -15,9 +15,13 @@ class CreateOrUpdateContactRequest extends FormRequest
     // Get the validation rules that apply to the request
     public function rules()
     {
+        $icon_max = config('valid.contact.icon.max');
+        $phone_min = config('valid.contact.phone.min');
+        $phone_max = config('valid.contact.phone.max');
+
         return [
-            'icon' => 'nullable|numeric|max:20',
-            'phone' => 'required|min:10|max:20',
+            'icon' => "nullable|numeric|between:1,{$icon_max}",
+            'phone' => "required|min:{$phone_min}|max:{$phone_max}",
         ];
     }
 
@@ -26,7 +30,7 @@ class CreateOrUpdateContactRequest extends FormRequest
     {
         return [
             'icon.numeric' => trans('contacts.icon_numeric'),
-            'icon.max' => trans('contacts.icon_max'),
+            'icon.between' => trans('contacts.icon_between'),
             'phone.required' => trans('contacts.phone_required'),
             'phone.max' => trans('contacts.phone_max'),
             'phone.min' => trans('contacts.phone_min'),

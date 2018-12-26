@@ -15,9 +15,14 @@ class CheckoutRequest extends FormRequest
     // Get the validation rules that apply to the request
     public function rules()
     {
+        $name_min = config('valid.checkout.name.min');
+        $name_max = config('valid.checkout.name.max');
+        $phone_min = config('valid.checkout.phone.min');
+        $phone_max = config('valid.checkout.phone.max');
+
         return [
-            'name' => 'required|min:3|max:30',
-            'phone' => 'required|min:10|max:30|unique:orders',
+            'name' => "required|min:{$name_min}|max:{$name_max}",
+            'phone' => "required|min:{$phone_min}|max:{$phone_max}|unique:orders",
         ];
     }
 
