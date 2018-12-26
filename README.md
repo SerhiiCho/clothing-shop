@@ -1,10 +1,11 @@
+<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 # Clothing shop
 
 ### Using
 
-* PHP Laravel framework
-* Vue.js
-* Bootstrap 4
+* **Laravel** *(PHP framework)*
+* **Vue.js** *(JavaScript framework)*
+* **Bootstrap 4** *(CSS framework)*
 
 ### Laravel Packages
 * [Intervention/image](http://image.intervention.io/)
