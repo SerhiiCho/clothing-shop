@@ -15,8 +15,6 @@ class AppServiceProvider extends ServiceProvider
 
         $this->fetchAdminOptionsFromDb();
 
-        //\Artisan::call('migrate');
-
         // if (app()->env === 'production') {
         //     \URL::forceScheme('https');
         // }
