@@ -15,8 +15,8 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->ipAddress('ip')->unique();
-            $table->string('phone', 20)->unique();
+            $table->ipAddress('ip');
+            $table->string('phone', 20);
             $table->string('name', 30);
             $table->float('total');
             $table->softDeletes();
