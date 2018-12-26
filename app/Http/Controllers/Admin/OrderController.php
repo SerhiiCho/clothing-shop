@@ -9,6 +9,14 @@ use Illuminate\Http\RedirectResponse;
 class OrderController extends Controller
 {
     /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
+    /**
      * @param \App\Models\Order $order
      * @return \Illuminate\Http\RedirectResponse
      */
