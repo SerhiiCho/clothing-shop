@@ -15,11 +15,11 @@ class ChangeItemsTable extends Migration
     {
         Schema::table('items', function (Blueprint $table) {
             // Index for users table
-            $table->integer('user_id')->unsigned()->default(1);
+            $table->unsignedInteger('user_id')->default(1);
             $table->foreign('user_id')->references('id')->on('users');
 
             // Index for types table
-            $table->integer('type_id')->unsigned()->default(1);
+            $table->unsignedInteger('type_id')->default(1);
             $table->foreign('type_id')->references('id')->on('types');
         });
     }

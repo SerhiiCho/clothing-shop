@@ -10,9 +10,9 @@ class CreateTableItemOrder extends Migration
     {
         Schema::create('item_order', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('item_id')->unsigned();
+            $table->unsignedInteger('item_id')->unsigned();
             $table->foreign('item_id')->references('id')->on('items');
-            $table->integer('order_id')->unsigned();
+            $table->unsignedInteger('order_id')->unsigned();
             $table->foreign('order_id')->references('id')->on('orders');
         });
     }

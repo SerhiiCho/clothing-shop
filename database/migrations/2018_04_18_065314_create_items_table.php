@@ -18,10 +18,10 @@ class CreateItemsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('category', 20);
-            $table->boolean('stock')->default(1);
-            $table->integer('price');
+            $table->unsignedSmallInteger('stock')->default(1);
+            $table->unsignedInteger('price');
             $table->string('slug');
-            $table->integer('popular')->default(0);
+            $table->unsignedInteger('popular')->default(0);
             $table->timestamps();
         });
     }
