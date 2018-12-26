@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreSlideImageRequest;
 use App\Http\Requests\UpdateSliderRequest;
 use App\Models\Slider;
 use Illuminate\Http\RedirectResponse;
@@ -45,9 +44,10 @@ class SliderController extends Controller
     /**
      * Store new slider in database
      *
+     * @param \App\Http\Requests\StoreSliderRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreSlideImageRequest $request): RedirectResponse
+    public function store(StoreSliderRequest $request): RedirectResponse
     {
         $image = $request->file('image');
         $ext = $image->getClientOriginalExtension();

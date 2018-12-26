@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateOrUpdateContactRequest;
+use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 use App\Models\Icon;
 use Illuminate\Http\RedirectResponse;
@@ -34,10 +34,10 @@ class ContactController extends Controller
     /**
      * Store a newly created cantact in database
      *
-     * @param \App\Http\Requests\CreateOrUpdateContactRequest $request
+     * @param \App\Http\Requests\ContactRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(CreateOrUpdateContactRequest $request): RedirectResponse
+    public function store(ContactRequest $request): RedirectResponse
     {
         cache()->forget('nav_contacts');
 
@@ -68,11 +68,11 @@ class ContactController extends Controller
     /**
      * Update contact in db
      *
-     * @param \App\Http\Requests\CreateOrUpdateContactRequest $request
+     * @param \App\Http\Requests\ContactRequest $request
      * @param \App\Models\Contact $contact
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(CreateOrUpdateContactRequest $request, Contact $contact): RedirectResponse
+    public function update(ContactRequest $request, Contact $contact): RedirectResponse
     {
         cache()->forget('nav_contacts');
 

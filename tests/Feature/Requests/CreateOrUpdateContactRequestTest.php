@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class CreateOrUpdateConractRequestTest extends TestCase
+class ConractRequestTest extends TestCase
 {
     use DatabaseTransactions;
 
