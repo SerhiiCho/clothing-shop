@@ -52,4 +52,20 @@ class AdminContactsCreatePageTest extends TestCase
             ->assertOk()
             ->assertViewIs('admin.contacts.create');
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_can_add_new_contact(): void
+    {
+        $form_data = [
+            'phone' => '(095) 777-77-' . rand(10, 99),
+        ];
+
+        $this->actingAs(factory(User::class)->state('admin')->create())
+            ->post(action('Admin\ContactController@store'), $form_data);
+
+        $this->assertDatabaseHas('contacts', $form_data);
+    }
 }
