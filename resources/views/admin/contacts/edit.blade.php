@@ -55,12 +55,14 @@
             <form action="{{ action('Admin\ContactController@destroy', ['contact' => $contact->id]) }}"
                 method="post" 
                 class="mt-2" 
-                onsubmit='return confirm("@lang('contacts.confirm_delete')")'
             >
                 @csrf @method('delete')
 
                 {{-- Delete btn --}}
-                <button class="btn btn-primary btn-block" title="@lang('contacts.delete')">
+                <button class="btn btn-primary btn-block confirm"
+                    title="@lang('contacts.delete')"
+                    data-confirm="@lang('contacts.confirm_delete')"
+                >
                     @lang('contacts.delete')
                 </button>
             </form>

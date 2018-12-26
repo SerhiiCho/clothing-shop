@@ -35,15 +35,15 @@
                         {{-- Delete button --}}
                         <form action="{{ action('Admin\CardController@destroy', ['id' => $card->id]) }}"
                             method="post" 
-                            onsubmit='return confirm("@lang('cards.are_you_sure_you_want_delete')")' 
                             class="position-absolute" 
                             style="right:1.8em; bottom:0; opacity:.8"
                         >
                             @csrf @method('delete')
 
                             <button type="submit"
-                                class="btn btn-primary" 
+                                class="btn btn-primary confirm" 
                                 title="@lang('cards.delete_card')"
+                                data-confirm="@lang('cards.are_you_sure_you_want_delete')"
                             >
                                 <i class="fas fa-trash-alt" aria-hidden="true"></i>
                             </button>

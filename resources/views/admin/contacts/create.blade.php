@@ -41,11 +41,13 @@
                                     <form action="{{ action('Admin\ContactController@destroy', ['contact' => $contact['id']]) }}" 
                                         method="post" 
                                         class="d-inline" 
-                                        onsubmit='return confirm("@lang('contacts.confirm_delete')")'
                                     >
                                         @csrf @method('delete')
 
-                                        <button class="btn btn-primary" title="@lang('contacts.delete')">
+                                        <button class="btn btn-primary confirm"
+                                            title="@lang('contacts.delete')"
+                                            data-confirm="@lang('contacts.confirm_delete')")"
+                                        >
                                             <i class="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>
                                     </form>

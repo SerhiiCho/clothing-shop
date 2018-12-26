@@ -40,14 +40,17 @@
                                 {{-- Delete button --}}
                                 <form action="{{ action('Admin\SliderController@destroy', ['slider' => $slide->id]) }}" 
                                     method="post" 
-                                    onsubmit='return confirm("@lang('slider.are_you_sure')")' 
                                     class="d-inline"
                                 >
 
                                     @csrf @method('delete')
 
                                     {{-- Delete slide btn --}}
-                                    <button type="submit" class="btn btn-success" title="@lang('slider.delete')">
+                                    <button type="submit" 
+                                        class="btn btn-success confirm" 
+                                        title="@lang('slider.delete')"
+                                        data-confirm="@lang('slider.are_you_sure')"
+                                    >
                                         <i class="fas fa-trash-alt" aria-hidden="true"></i>
                                     </button>
                                 </form>
