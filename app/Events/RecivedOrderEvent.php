@@ -6,7 +6,7 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class RecivedOrdeEvent
+class RecivedOrderEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 

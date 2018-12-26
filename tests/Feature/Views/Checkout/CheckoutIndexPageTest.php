@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Views\Checkout;
 
-use App\Events\RecivedOrdeEvent;
+use App\Events\RecivedOrderEvent;
 use App\Models\User;
 use Event;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -62,7 +62,7 @@ class CheckoutIndexPageTest extends TestCase
     {
         Event::fake();
         $this->clientMakesCheckoutPostRequest();
-        Event::assertDispatched(RecivedOrdeEvent::class);
+        Event::assertDispatched(RecivedOrderEvent::class);
     }
 
     /**

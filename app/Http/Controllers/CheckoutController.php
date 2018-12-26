@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\RecivedOrdeEvent;
+use App\Events\RecivedOrderEvent;
 use App\Http\Requests\CheckoutRequest;
 use App\Models\Order;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -50,7 +50,7 @@ class CheckoutController extends Controller
             $order->items()->attach($item_ids);
             Cart::instance('default')->destroy();
 
-            event(new RecivedOrdeEvent($request->phone));
+            event(new RecivedOrderEvent($request->phone));
 
             return redirect('/cart')->withSuccess(
                 trans('checkout.order_sent')
