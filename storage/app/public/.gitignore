@@ -1,5 +1,8 @@
 *
 !.gitignore
-!/img/cards/default.jpg
-!/img/slider/default.jpg
-!/img/clothes/default.jpg
+!/img/big/cards/default.jpg
+!/img/big/slider/default.jpg
+!/img/big/clothes/default.jpg
+!/img/small/clothes/default.jpg
+!/img/gsm
+
