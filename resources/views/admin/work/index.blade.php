@@ -51,10 +51,9 @@
                         </form>
                     @endif
                     <div class="card-body">
-                        <h5 class="card-title">
-                            @lang('items.clients_order') 
-                            # {{ $order->id }}
-                        </h5>
+                        <h6 class="card-title">
+                            @lang('items.clients_order') # {{ $order->id }}
+                        </h6>
                         <hr />
                         <p class="card-text mb-1">
                             @lang('dashboard.number'): 
@@ -74,7 +73,7 @@
                         <hr />
 
                         <div class="text-center">
-                            <h5>@lang('dashboard.products'):</h5>
+                            <h6>@lang('dashboard.products'):</h6>
                         </div>
 
                         @foreach ($order->items as $item)
