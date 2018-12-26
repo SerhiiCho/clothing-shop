@@ -67,6 +67,22 @@ class OrderControllerTest extends TestCase
     }
 
     /**
+     * @author Cho
+     * @test
+     */
+    public function order_appears_in_db_after_guest_makes_successful_checkout_request(): void
+    {
+        $client_data = [
+            'name' => str_random(5),
+            'phone' => '3809' . rand(1000, 9999) . rand(1000, 9999),
+        ];
+
+        $this->withoutEvents();
+        $this->post(action('CheckoutController@store'), $client_data);
+        $this->assertDatabaseHas('orders', $client_data);
+    }
+
+    /**
      * Method helper
      *
      * @param \App\Models\Order $order
