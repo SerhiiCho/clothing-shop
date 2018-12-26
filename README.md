@@ -1,21 +1,15 @@
-<h2>Clothing shop</h2>
+# Clothing shop
 
-<h4>Using</h4>
+### Using
 
-<ol>
-	<li>PHP Laravel framework</li>
-	<li>Vue.js</li>
-  	<li>Bootstrap 4</li>
-</ol>
+* PHP Laravel framework
+* Vue.js
+* Bootstrap 4
 
-<h4>Laravel Packages</h4>
-<ol>
-	<li><a href="http://image.intervention.io/">Intervention/image</a></li>
-	<li><a href="https://github.com/rap2hpoutre/laravel-log-viewer">rap2hpoutre/laravel-log-viewer</a> which is sucks, but whatever</li>
-	<li><a href="https://github.com/Crinsane/LaravelShoppingcart">Crinsane/LaravelShoppingcart</a></li>
-</ol>
+### Laravel Packages
+* [Intervention/image](http://image.intervention.io/)
+* [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer)
+* [Crinsane/LaravelShoppingcart](https://github.com/Crinsane/LaravelShoppingcart)
 
-<h4>Packages and Plugins</h4>
-<ol>
-	<li><a href="https://www.tinymce.com/">TinyMCE Editor</a></li>
-</ol>
+### Other Packages
+* [TinyMCE Editor](https://www.tinymce.com/)
