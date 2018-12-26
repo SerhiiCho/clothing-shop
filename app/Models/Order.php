@@ -19,13 +19,22 @@ class Order extends Model
      */
     protected $dates = ['deleted_at'];
 
+    /**
+     * Disable updated_at field
+     */
     const UPDATED_AT = null;
 
+    /**
+     * Relation with Item model
+     */
     public function items()
     {
         return $this->belongsToMany(Item::class);
     }
 
+    /**
+     * Accessor that formats created_at record to readable format
+     */
     public function getCreatedAtAttribute($value)
     {
         return facebookTimeAgo($value);
