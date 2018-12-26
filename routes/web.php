@@ -4,9 +4,8 @@
  * These routes are loaded by the RouteServiceProvider within
  * a group which contains the "web" middleware group.
  */
-Route::get('logs',
-    '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index'
-)->middleware('admin');
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')
+    ->middleware('admin');
 
 Route::prefix(config('custom.enter_slug'))->group(function () {
     Auth::routes();
