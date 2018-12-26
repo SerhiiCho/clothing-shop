@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\RecivedOrdeEvent;
 use App\Http\Requests\CheckoutRequest;
-use App\Models\Message;
+use App\Models\Order;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
@@ -31,12 +31,12 @@ class CheckoutController extends Controller
      */
     public function store(CheckoutRequest $request): RedirectResponse
     {
-        if (Message::whereIp($request->ip())->count() > 0) {
+        if (Order::whereIp($request->ip())->count() > 0) {
             return back()->withError(trans('checkout.olready_did_order'));
         }
 
         try {
-            $message = Message::create([
+            $order = Order::create([
                 'ip' => $request->ip(),
                 'phone' => $request->phone,
                 'name' => $request->name,
@@ -47,7 +47,7 @@ class CheckoutController extends Controller
                 return $item['id'];
             }, Cart::content()->toArray());
 
-            $message->items()->attach($item_ids);
+            $order->items()->attach($item_ids);
             Cart::instance('default')->destroy();
 
             event(new RecivedOrdeEvent($request->phone));

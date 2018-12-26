@@ -4,21 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableItemMessage extends Migration
+class CreateTableItemOrder extends Migration
 {
     public function up()
     {
-        Schema::create('item_message', function (Blueprint $table) {
+        Schema::create('item_order', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('item_id')->unsigned();
             $table->foreign('item_id')->references('id')->on('items');
-            $table->integer('message_id')->unsigned();
-            $table->foreign('message_id')->references('id')->on('messages');
+            $table->integer('order_id')->unsigned();
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('item_message');
+        Schema::dropIfExists('item_order');
     }
 }

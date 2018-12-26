@@ -19,9 +19,9 @@ class Item extends Model
         return $this->hasMany(ItemsPhoto::class);
     }
 
-    public function messages()
+    public function orders()
     {
-        return $this->belongsToMany(Message::class);
+        return $this->belongsToMany(Order::class);
     }
 
     public function type()

@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Views\Admin\Work;
 
-use App\Models\Message;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -60,10 +60,10 @@ class AdminWorkIndexPageTest extends TestCase
      */
     public function admin_can_see_order_messages(): void
     {
-        $message = factory(Message::class)->create();
+        $order = factory(Order::class)->create();
 
         $this->actingAs($this->admin)
             ->get('/admin/work')
-            ->assertSeeText($message->phone);
+            ->assertSeeText($order->phone);
     }
 }

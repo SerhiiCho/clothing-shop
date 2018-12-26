@@ -12,19 +12,19 @@
         <li class="nav-item">
             <a class="nav-link {{ is_null($tab) ? 'active' : '' }}" href="/admin/work">
                 @lang('messages.opened_orders') 
-                <b style="color:brown">{{ is_null($tab) ? $messages->count() : '' }}</b>
+                <b style="color:brown">{{ is_null($tab) ? $orders->count() : '' }}</b>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link {{ $tab == 'closed' ? 'active' : '' }}" href="/admin/work/closed">
                 @lang('messages.closed_orders')
-                <b style="color:brown">{{ $tab == 'closed' ? $messages->count() : '' }}</b>
+                <b style="color:brown">{{ $tab == 'closed' ? $orders->count() : '' }}</b>
             </a>
         </li>
     </ul>
 
     <div class="row pb-5">
-        @forelse ($messages as $order)
+        @forelse ($orders as $order)
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
                 <div class="card" style="border-top:4px solid {{ $tab == 'closed' ? '#e56114' : 'green' }}">
                     @if ($tab == 'closed')
@@ -104,7 +104,7 @@
 
     {{-- Pagination --}}
     <section class="text-center pb-4">
-        <div class="mx-auto d-inline-block">{{ $messages->links() }}</div>
+        <div class="mx-auto d-inline-block">{{ $orders->links() }}</div>
     </section>
 </div>
 

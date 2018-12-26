@@ -17,7 +17,7 @@ class CheckoutRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:30',
-            'phone' => 'required|min:10|max:30|unique:messages',
+            'phone' => 'required|min:10|max:30|unique:orders',
         ];
     }
 

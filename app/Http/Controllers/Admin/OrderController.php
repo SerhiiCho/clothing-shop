@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Message;
+use App\Models\Order;
 use Illuminate\Http\RedirectResponse;
 
-class MessageController extends Controller
+class OrderController extends Controller
 {
     /**
-     * @param \App\Models\Message $message
+     * @param \App\Models\Order $order
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function softDelete(Message $message): RedirectResponse
+    public function softDelete(Order $order): RedirectResponse
     {
-        $message->delete();
+        $order->delete();
 
         return redirect('/admin/work')->withSuccess(
             trans('messages.order_closed')
@@ -27,14 +27,14 @@ class MessageController extends Controller
      */
     public function destroy(int $id): RedirectResponse
     {
-        $message = Message::onlyTrashed()->whereId($id)->first();
+        $order = Order::onlyTrashed()->whereId($id)->first();
 
         $item_ids = array_map(function ($item) {
             return $item['id'];
-        }, $message->items->toArray());
+        }, $order->items->toArray());
 
-        $message->items()->detach($item_ids);
-        $message->forceDelete();
+        $order->items()->detach($item_ids);
+        $order->forceDelete();
 
         return redirect('/admin/work/closed')->withSuccess(
             trans('messages.order_deleted')

@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Message;
+use App\Models\Order;
 
-$factory->define(Message::class, function () {
+$factory->define(Order::class, function () {
     return [
         'ip' => rand(1, 255) . '.0.0.1',
         'phone' => '38063' . rand(1, 9) . rand(1, 9) . '91212',

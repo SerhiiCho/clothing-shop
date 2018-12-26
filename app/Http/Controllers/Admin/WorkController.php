@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Message;
+use App\Models\Order;
 use Illuminate\View\View;
 
 class WorkController extends Controller
@@ -23,11 +23,11 @@ class WorkController extends Controller
     public function index(?string $tab = null): View
     {
         if ($tab && $tab === 'closed') {
-            $messages = Message::onlyTrashed()->latest()->paginate(24);
+            $orders = Order::onlyTrashed()->latest()->paginate(24);
         } else {
-            $messages = Message::latest()->paginate(24);
+            $orders = Order::latest()->paginate(24);
         }
 
-        return view('admin.work.index', compact('messages', 'tab'));
+        return view('admin.work.index', compact('orders', 'tab'));
     }
 }
