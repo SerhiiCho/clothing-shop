@@ -28,7 +28,7 @@
             <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
                 <div class="card" style="border-top:4px solid {{ $tab == 'closed' ? '#e56114' : 'green' }}">
                     @if ($tab == 'closed')
-                        <form action="{{ action('Admin\MessageController@destroy', ['id' => $order->id]) }}" method="post">
+                        <form action="{{ action('Admin\OrderController@destroy', ['id' => $order->id]) }}" method="post">
                             @csrf @method('delete')
                             <button type="submit"
                                 class="py-2 confirm btn btn-sm btn-block"
@@ -39,7 +39,7 @@
                             </button>
                         </form>
                     @else
-                        <form action="{{ action('Admin\MessageController@softDelete', ['id' => $order->id]) }}" method="post">
+                        <form action="{{ action('Admin\OrderController@softDelete', ['id' => $order->id]) }}" method="post">
                             @csrf @method('put')
                             <button type="submit"
                                 class="py-2 confirm btn btn-sm btn-block"
