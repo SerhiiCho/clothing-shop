@@ -6,14 +6,22 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ItemRequest extends FormRequest
 {
-    // Determine if the user is authorized to make this request.
-    public function authorize()
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
     {
         return true;
     }
 
-    // Get the validation rules that apply to the request.
-    public function rules()
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
     {
         $title_min = config('valid.item.title.min');
         $title_max = config('valid.item.title.max');
@@ -44,8 +52,12 @@ class ItemRequest extends FormRequest
         return $rules;
     }
 
-    // Custom messages
-    public function messages()
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array
+     */
+    public function messages(): array
     {
         return [
             'title.required' => trans('items.title_required'),

@@ -6,14 +6,22 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateCardRequest extends FormRequest
 {
-    // Determine if the user is authorized to make this request
-    public function authorize()
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
     {
         return true;
     }
 
-    // Get the validation rules that apply to the request
-    public function rules()
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
     {
         $type_max = config('valid.card.type.max');
         $category_max = config('valid.card.category.max');
@@ -24,8 +32,12 @@ class UpdateCardRequest extends FormRequest
         ];
     }
 
-    // Custom messages
-    public function messages()
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array
+     */
+    public function messages(): array
     {
         return [
             'type.required' => trans('cards.type_required'),

@@ -6,14 +6,22 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CheckoutRequest extends FormRequest
 {
-    // Determine if the user is authorized to make this request
-    public function authorize()
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
     {
         return true;
     }
 
-    // Get the validation rules that apply to the request
-    public function rules()
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
     {
         $name_min = config('valid.checkout.name.min');
         $name_max = config('valid.checkout.name.max');
@@ -26,7 +34,12 @@ class CheckoutRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array
+     */
+    public function messages(): array
     {
         return [
             'name.required' => trans('checkout.name_required'),
