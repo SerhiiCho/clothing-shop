@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
 
         if (app()->env != 'production') {
-            $this->call(SliderSeeder::class);
+            // $this->call(SliderSeeder::class);
             $this->call(CardSeeder::class);
         }
     }
