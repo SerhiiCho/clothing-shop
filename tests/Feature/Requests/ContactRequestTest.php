@@ -48,7 +48,7 @@ class ConractRequestTest extends TestCase
      * @author Cho
      * @test
      */
-    public function icon_must_be_beetween_two_numbers(): void
+    public function icon_must_be_between_two_numbers(): void
     {
         $this->form_data['icon'] = config('valid.contact.icon.max') + 1;
         $this->makeRequestAndCheckDatabase();
