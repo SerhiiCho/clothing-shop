@@ -8,7 +8,7 @@ class SliderSeeder extends Seeder
     public function run()
     {
         Slider::create([
-            'image' => 'slider.png',
+            'image' => 'slider.jpg',
         ]);
     }
 }
