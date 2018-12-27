@@ -33,6 +33,13 @@ The app supports only russian language, but can be easily translated. Just by co
 * [Crinsane/LaravelShoppingcart](https://github.com/Crinsane/LaravelShoppingcart)
 * [TinyMCE Editor](https://www.tinymce.com/)
 
+## You need to know and have on your machine
+
+* [Composer](https://getcomposer.org/)
+* [Node](https://nodejs.org/en/)
+* [PHP >= 7.2](http://php.net/)
+* Unix based system
+
 ## Get started
 
 1. `git clone https://github.com/SerhiiCho/clothing_shop.git`
