@@ -11,7 +11,7 @@ class UserSeeder extends Seeder
             'admin' => 1,
             'name' => 'Админ',
             'email' => 'ser@ser.com',
-            'password' => bcrypt(config('custom.pwd2')),
+            'password' => bcrypt(config('custom.admin_password')),
         ]);
     }
 }

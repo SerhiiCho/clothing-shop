@@ -9,7 +9,6 @@ return [
     'enter_slug' => env('ENTER_SLUG'),
 
     // Passwords for users
-    'pwd1' => env('PWD1'),
-    'pwd2' => env('PWD2'),
+    'admin_password' => env('ADMIN_PASSWORD'),
 
 ];
