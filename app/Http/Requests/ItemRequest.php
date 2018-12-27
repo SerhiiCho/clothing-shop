@@ -39,7 +39,7 @@ class ItemRequest extends FormRequest
             'category' => "required|max:{$category_max}",
             'type' => 'required|numeric',
             'stock' => "required|numeric|between:{$stock_min},{$stock_max}",
-            'price' => "required|numeric|digits_between:{$price_min},{$price_max}",
+            'price' => "required|numeric|between:{$price_min},{$price_max}",
         ];
 
         if (request()->hasFile('photos')) {
@@ -67,7 +67,7 @@ class ItemRequest extends FormRequest
             'type.required' => trans('items.type_required'),
             'type.numeric' => trans('items.type_numeric'),
             'price.required' => trans('items.price_required'),
-            'price.digits_between' => trans('items.price_digits_between'),
+            'price.between' => trans('items.price_between'),
             'price.numeric' => trans('items.price_numeric'),
             'stock.required' => trans('items.stock_required'),
             'stock.digits_between' => trans('items.stock_digits_between'),
