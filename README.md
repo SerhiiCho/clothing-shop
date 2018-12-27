@@ -34,9 +34,16 @@ The app supports only russian language, but can be easily translated. Just by co
 * [TinyMCE Editor](https://www.tinymce.com/)
 
 ## Get started
+
 1. `git clone https://github.com/SerhiiCho/clothing_shop.git`
-2. Rename *.env.example* to *.env* and put your database information.
-3. `npm install` to create node_modules folder
-4. `composer install` to install or PHP packages
-5. `npm run dev` to create js and css files in public folder
-6. `php artisan wipe`, it should migrate all migrations and seed the database
+2. `cd clothing_shop` Enter cloned folder
+3. `mv .env.example .env` Rename the env.example file to .env
+4. `vim .env` Open .env file and fill credentials
+5. Create database **clothing_shop** or other name if you changed it in .env file
+6. `npm install` to create node_modules folder
+7. `composer install` to install or PHP packages
+8. `npm run dev` to create js and css files in public folder
+9. `php artisan key:generate` to generate app key
+10. `php artisan wipe`, it should migrate all migrations and seed the database
+11. `php artisan storage:link`, it should create a link in public folder to storage
+12. `php artisan serve` and go to localhost:8000
