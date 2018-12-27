@@ -28,7 +28,6 @@
                     name="image"
                     class="custom-file-input"
                     id="src-image"
-                    required
                 >
                 <label class="custom-file-label" for="src-image">
                     @lang('forms.choose_file')...

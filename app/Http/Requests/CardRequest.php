@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCardRequest extends FormRequest
+class CardRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,10 +26,16 @@ class UpdateCardRequest extends FormRequest
         $type_max = config('valid.card.type.max');
         $category_max = config('valid.card.category.max');
 
-        return [
+        $rules = [
             'type' => "required|numeric|between:1,{$type_max}",
             'category' => "required|max:{$category_max}",
         ];
+
+        if (request()->hasFile('image')) {
+            $rules['image'] = ['image'];
+        }
+
+        return $rules;
     }
 
     /**
@@ -45,6 +51,7 @@ class UpdateCardRequest extends FormRequest
             'category.max' => trans('cards.category_max'),
             'type.between' => trans('cards.type_between'),
             'type.numeric' => trans('cards.type_numeric'),
+            'image.image' => trans('cards.image_image'),
         ];
     }
 }

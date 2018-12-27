@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCardRequest;
-use App\Http\Requests\UpdateCardRequest;
+use App\Http\Requests\CardRequest;
 use App\Models\Card;
 use App\Models\Type;
 use Illuminate\Http\RedirectResponse;
@@ -50,32 +49,33 @@ class CardController extends Controller
     /**
      * Store new card in database
      *
-     * @param \App\Http\Requests\StoreCardRequest $request
+     * @param \App\Http\Requests\CardRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreCardRequest $request): RedirectResponse
+    public function store(CardRequest $request): RedirectResponse
     {
         if (Card::count() >= 3) {
             return back()->withError(trans('cards.already_3_cards'));
         }
 
-        $image = $request->file('image');
-        $ext = $image->getClientOriginalExtension();
-        $filename = getFileName($request->type, $ext);
+        $img = $request->file('image');
 
-        $this->uploadCardImage($image, $filename);
+        if ($img) {
+            $ext = $img->getClientOriginalExtension();
+            $filename = getFileName($request->type, $ext);
+
+            $this->uploadCardImage($img, $filename);
+        }
 
         Card::create([
-            'image' => $filename,
+            'image' => $img ? $filename : 'default.jpg',
             'type_id' => $request->type,
             'category' => $request->category,
         ]);
 
         cache()->forget('home_cards');
 
-        return redirect('/admin/cards')->withSuccess(
-            trans('cards.card_added')
-        );
+        return redirect('/admin/cards')->withSuccess(trans('cards.card_added'));
     }
 
     /**
@@ -96,11 +96,11 @@ class CardController extends Controller
     /**
      * Update card in database
      *
-     * @param \App\Http\Requests\UpdateCardRequest $request
+     * @param \App\Http\Requests\CardRequest $request
      * @param \App\Models\Card $card
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateCardRequest $request, Card $card): RedirectResponse
+    public function update(CardRequest $request, Card $card): RedirectResponse
     {
         if ($request->hasFile('image')) {
             if ($card->image != 'default.jpg') {
