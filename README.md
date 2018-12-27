@@ -59,3 +59,4 @@ The app supports only russian language, but can be easily translated. Just by co
 10. `php artisan wipe`, it should migrate all migrations and seed the database
 11. `php artisan storage:link`, it should create a link in public folder to storage
 12. `php artisan serve` and go to localhost:8000
+13. `vendor/bin/phpunit` Make sure tests are green
