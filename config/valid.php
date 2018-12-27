@@ -25,11 +25,11 @@ return [
 
     'item' => [
         'title' => [
-            'min' => 4,
+            'min' => 5,
             'max' => 80,
         ],
         'content' => [
-            'min' => 4,
+            'min' => 10,
             'max' => 3000,
         ],
         'category' => [
