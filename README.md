@@ -24,7 +24,7 @@ Here is what admin can choose on the dashboard.
 
 ## Language
 
-The app supports only russian language, but can be easily translated. Just by copying /resources/lang/ru folder and translating all files to whatever language you want. There are no hard coded word, everything is using laravel translations via functions *lang()* and *trans()*.
+The app supports only russian language, but can be easily translated. Just by copying /resources/lang/ru folder and translating all files to whatever language you want. Also translate couple seeders. There are no hard coded word, everything is using laravel translations via functions *lang()* and *trans()*.
 
 ## Technologies
 
