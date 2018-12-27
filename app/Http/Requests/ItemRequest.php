@@ -37,7 +37,7 @@ class ItemRequest extends FormRequest
             'title' => "required|min:{$title_min}|max:{$title_max}",
             'content' => "required|min:{$content_min}|max:{$content_max}",
             'category' => "required|max:{$category_max}",
-            'type' => 'required',
+            'type' => 'required|numeric',
             'stock' => "required|numeric|between:{$stock_min},{$stock_max}",
             'price' => "required|numeric|digits_between:{$price_min},{$price_max}",
         ];
@@ -65,6 +65,7 @@ class ItemRequest extends FormRequest
             'category.required' => trans('items.category_required'),
             'category.max' => trans('items.category_max'),
             'type.required' => trans('items.type_required'),
+            'type.numeric' => trans('items.type_numeric'),
             'price.required' => trans('items.price_required'),
             'price.digits_between' => trans('items.price_digits_between'),
             'price.numeric' => trans('items.price_numeric'),
