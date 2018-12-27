@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
         User::create([
             'admin' => 1,
             'name' => 'Админ',
-            'email' => 'ser@ser.com',
+            'email' => config('custom.admin_email'),
             'password' => bcrypt(config('custom.admin_password')),
         ]);
     }

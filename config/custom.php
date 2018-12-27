@@ -8,7 +8,8 @@ return [
     // Enter the auth paths with this slug
     'enter_slug' => env('ENTER_SLUG'),
 
-    // Passwords for users
+    // Passwords for admin
+    'admin_email' => env('ADMIN_EMAIL'),
     'admin_password' => env('ADMIN_PASSWORD'),
 
 ];
