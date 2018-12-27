@@ -2,7 +2,13 @@
 
 ## About
 
-Simple E-commerce clothing shop. It has men's and women's categories and convenient filtering with [vue.js](https://github.com/vuejs/vue) by types of clothes like pents, short, skirts etc. In this web app is implemented infinite pagination without npm packages, just [vue.js](https://github.com/vuejs/vue) and little bit of effort. The app is pretty fast and optimized and the code is well written. Afcourse like any E-commerce web app it has admin panel.
+Simple Callback E-commerce clothing shop. It has men's and women's categories and convenient filtering with [vue.js](https://github.com/vuejs/vue) by types of clothes like pents, short, skirts etc. In this web app is implemented infinite pagination without npm packages, just [vue.js](https://github.com/vuejs/vue) and little bit of effort. The app is pretty fast and optimize. It has PHPUnit tests and code itself is well written. I'm a typification person (if you can say that), I'm using return types and typehinting.
+
+## Checkout
+
+Client can add items to a cart, and checkout. When client makes an order, he or she fills in the form with 2 fields. One for the phone number, and the second is for a name. After submitting the form, admin will see small red notification in his admin panel navigation menu. It shows that there is an order. If nexmo credentials are provided, then after client submits the checkout form you will receive SMS. This way you will be always notified when new order is waiting for you.
+
+## Admin panel.
 
 * Admin can add, delete or edit **clothes items**.
 * Admin can add, delete or edit **home page cards**.
