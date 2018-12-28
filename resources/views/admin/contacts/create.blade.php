@@ -46,7 +46,7 @@
 
                                         <button class="btn btn-primary confirm"
                                             title="@lang('contacts.delete')"
-                                            data-confirm="@lang('contacts.confirm_delete')")"
+                                            data-confirm="@lang('contacts.confirm_delete')"
                                         >
                                             <i class="fas fa-trash-alt" aria-hidden="true"></i>
                                         </button>

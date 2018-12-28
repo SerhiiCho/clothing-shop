@@ -35,7 +35,7 @@
                 >
             </div>
 
-            <div class="form-group">
+            <div class="form-group pb-4">
                 <input class="switch"
                     type="checkbox"
                     name="remember"
