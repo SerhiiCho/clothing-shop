@@ -1,6 +1,6 @@
 <form method="post" 
     class="header-search" 
-    action="{{ action('SearchController@handleTheRequest') }}"
+    action="{{ action('PageController@search') }}"
 >
     @csrf
     <input type="search" name="word" placeholder="@lang('navigation.search')"/>
