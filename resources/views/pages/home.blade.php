@@ -60,6 +60,19 @@
             'anchor' => 'home_down',
         ])
     @endisset
+
+    <items-api
+        hryvnia="@lang('items.hryvnia')"
+        headline="@lang('messages.more_clothes')"
+
+        @if ($admin_options['men_category'] && !$admin_options['women_category'])
+            to="/api/item/random/men"
+        @elseif (!$admin_options['men_category'] && $admin_options['women_category'])
+            to="/api/item/random/women"
+        @else
+            to="/api/item/random"
+        @endif
+    ></items-api>
 </div>
 
 @endsection
