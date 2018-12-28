@@ -27,16 +27,19 @@ class PageController extends Controller
             }
         });
 
-        $home_section = cache()->rememberForever('home_section', function () {
+        $home_sections = cache()->rememberForever('home_sections', function () {
             try {
-                return Section::whereName('home')->first()->toArray();
+                return Section::where('name', 'home_up')
+                    ->orWhere('name', 'home_down')
+                    ->get()
+                    ->toArray();
             } catch (QueryException $e) {
                 logs()->error($e->getMessage());
                 return [];
             }
         });
 
-        return view('pages.home', compact('cards', 'home_section'));
+        return view('pages.home', compact('cards', 'home_sections'));
     }
 
     /**
