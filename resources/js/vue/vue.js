@@ -8,7 +8,6 @@ Vue.component('cards', require('./components/slider/Cards.vue'));
 Vue.component('items', require('./components/items/Items.vue'));
 Vue.component('single-item', require('./components/items/SingleItem.vue'));
 Vue.component('items-api', require('./components/items/ItemsApi.vue'));
-Vue.component('sidebar', require('./components/items/Sidebar.vue'));
 
 // Other
 Vue.component('categories-button', require('./components/CategoriesButton.vue'));
