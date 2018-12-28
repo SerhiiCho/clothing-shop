@@ -13,8 +13,8 @@ class SectionSeeder extends Seeder
     public function run()
     {
         Section::create([
-            'title' => 'Lorem, ipsum dolor.',
-            'content' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste nostrum quisquam amet vero qui voluptates voluptas aliquam fugit ipsam! Quibusdam culpa ipsa doloremque repudiandae iusto ducimus veniam nihil laboriosam sunt! Officia voluptates sunt voluptas debitis, aliquid ullam, consectetur nulla rem, tenetur a harum voluptatum impedit iusto. Hic consequuntur obcaecati aut.',
+            'title' => 'Акции — брендовая одежда',
+            'content' => "Любой женщине свойственно стремление эффектно выглядеть – для этого она использует множество самых разнообразных средств. Ну а стильная одежда для девушек и женщин стоит на одном и первых мест в их списке. Она служит не просто для того, чтобы прикрыть наготу и защитить себя от холода – это скорее важная составляющая вашего образа. \n\nВы только представьте себе – тысячи дизайнеров создают интересные коллекции, работают над революционными направлениями и стилями в мире моды, предлагают новые тенденции и подходы к пошиву обуви и одежды для того, чтобы дать женщине возможность подчеркнуть свою красоту.",
             'name' => 'home',
         ]);
     }

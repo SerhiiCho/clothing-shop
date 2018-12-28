@@ -27,6 +27,9 @@ class SectionController extends Controller
             'name' => $section->name,
         ]);
 
+        if ($section->name === 'home') {
+            return redirect('/#title');
+        }
         return back();
     }
 }

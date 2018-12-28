@@ -45,6 +45,9 @@
         to="/api/item/popular"
     ></items-api>
 
+    {{-- Anchor --}}
+    <a name="title"></a>
+
     {{-- Home Section --}}
     @isset($home_section)
         <section class="position-relative">
@@ -57,8 +60,8 @@
                     <i class="fas fa-pen fa-1x"></i>
                 </a>
             @endadmin
-            {{-- Form --}}
             @admin
+                {{-- Form --}}
                 <form action="{{ action('Admin\SectionController@update', ['section' => $home_section['id']]) }}"
                     class="px-4 d-none mt-3 editing-form"
                     method="post"
@@ -98,7 +101,7 @@
                 {{-- Content --}}
                 @if (!empty($home_section['content']))
                     <p class="text-justify px-5 pb-5" style="font-size:1.2em">
-                        {{ $home_section['content'] }}
+                        {!! nl2br($home_section['content']) !!}
                     </p>
                 @endif
             </div>
