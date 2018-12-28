@@ -36,7 +36,7 @@ Route::get('item/{category}/{item}', 'ItemController@show');
 // Page Controllers
 Route::get('/', 'PageController@home');
 Route::post('search', 'PageController@search');
-Route::view('search', 'search');
+Route::view('search', 'pages.search');
 
 // Admin
 Route::prefix('admin')->namespace('Admin')->group(function () {
