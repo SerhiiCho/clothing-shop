@@ -42,4 +42,27 @@ class ItemsCreatePageTest extends TestCase
             ->assertOk()
             ->assertViewIs('items.create');
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_can_add_new_items(): void
+    {
+        $form_data = [
+            'title' => str_random(7),
+            'content' => str_random(12),
+            'category' => 'men',
+            'type' => rand(1, 10),
+            'stock' => rand(1, config('valid.item.stock.max')),
+            'price' => rand(1, 10000),
+        ];
+
+        $this->actingAs(factory(User::class)->state('admin')->create())
+            ->post(action('ItemController@store'), $form_data);
+
+        $this->assertDatabaseHas('items', [
+            'title' => $form_data['title'],
+        ]);
+    }
 }
