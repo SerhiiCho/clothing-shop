@@ -33,7 +33,7 @@ return [
             'max' => 3000,
         ],
         'category' => [
-            'max' => 20,
+            'max' => 10,
         ],
         'stock' => [
             'min' => 1,
@@ -56,7 +56,7 @@ return [
             'max' => 1000,
         ],
         'category' => [
-            'max' => 30,
+            'max' => 10,
         ],
     ],
 
