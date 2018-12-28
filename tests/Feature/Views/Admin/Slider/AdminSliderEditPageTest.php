@@ -61,14 +61,29 @@ class AdminSliderEditPageTest extends TestCase
      */
     public function admin_can_update_slider(): void
     {
-        $slider_id = factory(Slider::class)->create()->id;
+        $slider = factory(Slider::class)->create();
         $admin = factory(User::class)->state('admin')->create();
 
         $this->actingAs($admin)
-            ->put(action('Admin\SliderController@update', ['id' => $slider_id]), [
+            ->put(action('Admin\SliderController@update', ['id' => $slider->id]), [
                 'order' => 11,
             ]);
 
         $this->assertDatabaseHas('slider', ['order' => 11]);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_can_remove_slider(): void
+    {
+        $slider = factory(Slider::class)->create();
+        $admin = factory(User::class)->state('admin')->create();
+
+        $this->actingAs($admin)
+            ->delete(action('Admin\SliderController@destroy', ['id' => $slider->id]));
+
+        $this->assertDatabaseMissing('slider', ['id' => $slider->id]);
     }
 }
