@@ -27,13 +27,11 @@
 
 <!-- Sidebar -->
 <div class="col-12 sidebar pb-4">
-    <h5 class="text-center pt-3 font-weight-normal">
-        @lang('messages.more_clothes')
-    </h5>
-    <sidebar
+    <items-api
         hryvnia="@lang('items.hryvnia')"
-        item-slug="{{ $item_slug ?? '' }}">
-    </sidebar>
+        headline="@lang('messages.more_clothes')"
+        to="/api/item/random/{{ $item_category }}"
+    ></items-api>
 </div>
 
 @endsection

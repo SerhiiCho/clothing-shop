@@ -73,22 +73,21 @@ class ItemController extends Controller
     public function show(string $category, string $slug): View
     {
         $item = Item::whereSlug($slug)->first();
+        $data = [
+            'item_slug' => $item->slug,
+            'item_category' => $item->category,
+            'item_title' => $item->title,
+        ];
 
         // If page has been just visited return view
         if (Cookie::get('visited') && Cookie::get('visited') == $item->id) {
-            return view('items.show')->with([
-                'item_slug' => $item->slug,
-                'item_title' => $item->title,
-            ]);
+            return view('items.show', $data);
         }
 
         Cookie::queue('visited', $item->id, 1);
         $item->increment('popular');
 
-        return view('items.show', [
-            'item_slug' => $item->slug,
-            'item_title' => $item->title,
-        ]);
+        return view('items.show', $data);
     }
 
     /**
