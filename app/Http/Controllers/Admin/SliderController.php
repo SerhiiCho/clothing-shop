@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreSliderRequest;
-use App\Http\Requests\UpdateSliderRequest;
+use App\Http\Requests\SliderRequest;
 use App\Models\Slider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\UploadedFile;
@@ -45,19 +44,22 @@ class SliderController extends Controller
     /**
      * Store new slider in database
      *
-     * @param \App\Http\Requests\StoreSliderRequest $request
+     * @param \App\Http\Requests\liderRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreSliderRequest $request): RedirectResponse
+    public function store(SliderRequest $request): RedirectResponse
     {
-        $image = $request->file('image');
-        $ext = $image->getClientOriginalExtension();
-        $filename = getFileName('slider', $ext);
+        $img = $request->file('image');
 
-        $this->uploadImageInStorage($image, $filename);
+        if ($img) {
+            $ext = $img->getClientOriginalExtension();
+            $filename = getFileName('slider', $ext);
+
+            $this->uploadImageInStorage($img, $filename);
+        }
 
         Slider::create([
-            'image' => $filename,
+            'image' => $img ? $filename : 'default.jpg',
             'order' => $request ? $request->order : '',
         ]);
 
@@ -80,11 +82,11 @@ class SliderController extends Controller
     /**
      * Update the slider in database
      *
-     * @param \App\Http\Requests\UpdateSliderRequest $request
+     * @param \App\Http\Requests\SliderRequest $request
      * @param \App\Models\Slider $slider
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateSliderRequest $request, Slider $slider): RedirectResponse
+    public function update(SliderRequest $request, Slider $slider): RedirectResponse
     {
         if ($request->hasFile('image')) {
             if ($slider->image != 'default.jpg' && $slider->image != 'slider.png') {
