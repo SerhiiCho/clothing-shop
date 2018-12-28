@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Item;
+use App\Models\Order;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
@@ -24,6 +25,8 @@ class DashboardController extends Controller
         return view('admin.dashboard.index', [
             'all_men_items' => Item::whereCategory('men')->sum('stock'),
             'all_women_items' => Item::whereCategory('women')->sum('stock'),
+            'all_closed_orders' => Order::onlyTrashed()->count(),
+            'all_open_orders' => Order::count(),
         ]);
     }
 }

@@ -12,4 +12,12 @@
         <td>@lang('items.all_women_items'):</td>
         <td>{{ $all_women_items }}</td>
     </tr>
+    <tr>
+        <td>@lang('items.all_open_orders'):</td>
+        <td>{{ $all_open_orders }}</td>
+    </tr>
+    <tr>
+        <td>@lang('items.all_closed_orders'):</td>
+        <td>{{ $all_closed_orders }}</td>
+    </tr>
 </table>
