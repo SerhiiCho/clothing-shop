@@ -80,4 +80,19 @@ class AdminCardsEditPageTest extends TestCase
             'category' => $form_data['category'],
         ]);
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_can_remove_card(): void
+    {
+        $card = factory(Card::class)->create();
+        $admin = factory(User::class)->state('admin')->create();
+
+        $this->actingAs($admin)
+            ->delete(action('Admin\CardController@destroy', ['id' => $card->id]));
+
+        $this->assertDatabaseMissing('cards', ['id' => $card->id]);
+    }
 }
