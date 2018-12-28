@@ -1,3 +1,7 @@
+input.switch {
+    display: none;
+}
+
 input.switch:empty {
     margin-left: -999px;
 }
