@@ -1,0 +1,54 @@
+input.switch:empty {
+    margin-left: -999px;
+}
+
+input.switch:empty ~ label {
+    position: relative;
+    float: left;
+    line-height: 1.6em;
+    text-indent: 4em;
+    margin: 0.2em 0;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+input.switch:empty ~ label:before, 
+input.switch:empty ~ label:after {
+    position: absolute;
+    display: block;
+    top: 4px;
+    bottom: 0;
+    left: 0;
+    content: ' ';
+    width: 43px;
+    height: 16px;
+    background-color: #a8a8a8;
+    border-radius: 1em;
+    transition: all 100ms ease-in;
+}
+
+input.switch:empty ~ label:after {
+    width: 23px;
+    height: 23px;
+    top: 0;
+    bottom: 0.1em;
+    margin-left: -4px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: inset 0 -0.2em 0 rgba(0,0,0,0.2);
+}
+
+input.switch:empty:checked ~ label:after {
+    background-color: #468bfa;
+}
+
+input.switch:checked ~ label:after {
+    margin-left: 1.5em;
+}
+
+.clean-cache-btn {
+    background-color: #468bfa;
+    color: white;
+}
