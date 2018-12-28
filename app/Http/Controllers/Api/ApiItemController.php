@@ -52,13 +52,18 @@ class ApiItemController extends Controller
     /**
      * Get list of random items
      *
-     * @param string $category
+     * @param string|null $category
      */
-    public function random(string $category)
+    public function random(?string $category = null)
     {
         try {
-            $items = Item::inRandomOrder()
-                ->whereCategory($category)
+            $items = Item::query();
+
+            if ($category) {
+                $items = $items->whereCategory($category);
+            }
+
+            $items = $items->inRandomOrder()
                 ->inStock()
                 ->take(7)
                 ->get();
