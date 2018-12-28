@@ -9,7 +9,7 @@
                 :key="card.id"
                 class="slider-items-card"
             >
-                <a :href="'/item/' + card.category + '/' + card.id"
+                <a :href="'/item/' + card.category + '/' + card.slug"
                     :title="card.title"
                 >
                     <img v-if="card.photos"
