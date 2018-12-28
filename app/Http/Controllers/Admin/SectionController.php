@@ -19,11 +19,14 @@ class SectionController extends Controller
      */
     public function update(SectionRequest $request, Section $section): RedirectResponse
     {
+        cache()->forget('home_section');
+
         $section->update([
             'title' => request('title'),
             'content' => request('content'),
             'name' => $section->name,
         ]);
+
         return back();
     }
 }
