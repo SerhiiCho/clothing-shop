@@ -63,6 +63,8 @@ class ItemsEditPageTest extends TestCase
     public function admin_can_update_items(): void
     {
         $item = factory(Item::class)->create();
+        $admin = factory(User::class)->state('admin')->create();
+
         $form_data = [
             'title' => str_random(7),
             'content' => str_random(12),
@@ -72,7 +74,7 @@ class ItemsEditPageTest extends TestCase
             'price' => rand(1, 10000),
         ];
 
-        $this->actingAs(factory(User::class)->state('admin')->create())
+        $this->actingAs($admin)
             ->put(action('ItemController@update', [
                 'item' => $item->id,
             ]), $form_data);

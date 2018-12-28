@@ -37,7 +37,9 @@ class ItemsCreatePageTest extends TestCase
      */
     public function page_is_accessable_by_admin(): void
     {
-        $this->actingAs(factory(User::class)->state('admin')->create())
+        $admin = factory(User::class)->state('admin')->create();
+
+        $this->actingAs($admin)
             ->get("/items/create")
             ->assertOk()
             ->assertViewIs('items.create');
@@ -49,6 +51,7 @@ class ItemsCreatePageTest extends TestCase
      */
     public function admin_can_add_new_items(): void
     {
+        $admin = factory(User::class)->state('admin')->create();
         $form_data = [
             'title' => str_random(7),
             'content' => str_random(12),
@@ -58,7 +61,7 @@ class ItemsCreatePageTest extends TestCase
             'price' => rand(1, 10000),
         ];
 
-        $this->actingAs(factory(User::class)->state('admin')->create())
+        $this->actingAs($admin)
             ->post(action('ItemController@store'), $form_data);
 
         $this->assertDatabaseHas('items', [

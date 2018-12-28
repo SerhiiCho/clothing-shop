@@ -64,12 +64,13 @@ class AdminCardsEditPageTest extends TestCase
     public function admin_can_update_card(): void
     {
         $card = factory(Card::class)->create();
+        $admin = factory(User::class)->state('admin')->create();
         $form_data = [
             'category' => 'men',
             'type' => rand(1, 10),
         ];
 
-        $this->actingAs(factory(User::class)->state('admin')->create())
+        $this->actingAs($admin)
             ->put(action('Admin\CardController@update', [
                 'card' => $card->id,
             ]), $form_data);

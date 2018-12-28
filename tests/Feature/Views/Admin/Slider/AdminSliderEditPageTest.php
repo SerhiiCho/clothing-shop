@@ -62,8 +62,9 @@ class AdminSliderEditPageTest extends TestCase
     public function admin_can_update_slider(): void
     {
         $slider_id = factory(Slider::class)->create()->id;
+        $admin = factory(User::class)->state('admin')->create();
 
-        $this->actingAs(factory(User::class)->state('admin')->create())
+        $this->actingAs($admin)
             ->put(action('Admin\SliderController@update', ['id' => $slider_id]), [
                 'order' => 11,
             ]);
