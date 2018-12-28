@@ -42,4 +42,24 @@ class AdminCardsCreatePageTest extends TestCase
             ->assertOk()
             ->assertViewIs('admin.cards.create');
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_can_add_new_card(): void
+    {
+        $form_data = [
+            'category' => 'men',
+            'type' => rand(1, 10),
+        ];
+
+        $this->actingAs(factory(User::class)->state('admin')->create())
+            ->post(action('Admin\CardController@store'), $form_data);
+
+        $this->assertDatabaseHas('cards', [
+            'type_id' => $form_data['type'],
+            'category' => $form_data['category'],
+        ]);
+    }
 }

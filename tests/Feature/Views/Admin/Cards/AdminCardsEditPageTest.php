@@ -56,4 +56,27 @@ class AdminCardsEditPageTest extends TestCase
             ->assertOk()
             ->assertViewIs('admin.cards.edit');
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_can_update_card(): void
+    {
+        $card = factory(Card::class)->create();
+        $form_data = [
+            'category' => 'men',
+            'type' => rand(1, 10),
+        ];
+
+        $this->actingAs(factory(User::class)->state('admin')->create())
+            ->put(action('Admin\CardController@update', [
+                'card' => $card->id,
+            ]), $form_data);
+
+        $this->assertDatabaseHas('cards', [
+            'type_id' => $form_data['type'],
+            'category' => $form_data['category'],
+        ]);
+    }
 }
