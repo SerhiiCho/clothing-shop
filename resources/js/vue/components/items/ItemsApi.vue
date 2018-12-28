@@ -14,9 +14,9 @@
                         @mouseover="changePhotoOver(index, item.photos[1] ? item.photos[1].name : '')" 
                         @mouseout="changePhotoOut(index, item.photos[0].name)"
                     >
-                        <img :src="'storage/img/small/clothes/' + item.photos[0].name"
+                        <img :src="'/storage/img/small/clothes/' + item.photos[0].name"
                             :alt="item.title"
-                            :id="'photo' + index"
+                            :id="'photo' + index + uniqueNumber"
                         >
                     </a>
                     <div class="item-card-price">
@@ -34,6 +34,7 @@ export default {
     data() {
         return {
             items: {},
+            uniqueNumber: Math.floor((Math.random() * 100) + 1),
         }
     },
     props: ['hryvnia', 'headline', 'to'],
@@ -51,12 +52,12 @@ export default {
 
         changePhotoOver(index, newSrc = null) {
             if (newSrc) {
-                document.getElementById('photo' + index).src = '/storage/img/small/clothes/' + newSrc
+                document.getElementById('photo' + index + this.uniqueNumber).src = '/storage/img/small/clothes/' + newSrc
             }
         },
 
         changePhotoOut(index, newSrc) {
-            document.getElementById('photo' + index).src = '/storage/img/small/clothes/' + newSrc
+            document.getElementById('photo' + index + this.uniqueNumber).src = '/storage/img/small/clothes/' + newSrc
         }
     }
 }
