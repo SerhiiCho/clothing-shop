@@ -55,4 +55,40 @@ class ContactsEditPageTest extends TestCase
             ->assertOk()
             ->assertViewIs('admin.contacts.edit');
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_can_update_contact(): void
+    {
+        $contact = factory(Contact::class)->create();
+        $admin = factory(User::class)->state('admin')->create();
+
+        $this->actingAs($admin)
+            ->put(action('Admin\ContactController@update', ['id' => $contact->id]), [
+                'icon' => 5,
+                'phone' => '380787656543',
+            ]);
+
+        $this->assertDatabaseHas('contacts', [
+            'icon_id' => 5,
+            'phone' => '380787656543',
+        ]);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_can_remove_contact(): void
+    {
+        $contact = factory(Contact::class)->create();
+        $admin = factory(User::class)->state('admin')->create();
+
+        $this->actingAs($admin)
+            ->delete(action('Admin\ContactController@destroy', ['id' => $contact->id]));
+
+        $this->assertDatabaseMissing('contacts', ['id' => $contact->id]);
+    }
 }
