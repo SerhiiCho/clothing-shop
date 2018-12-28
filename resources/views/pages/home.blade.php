@@ -48,7 +48,7 @@
     {{-- Home Section --}}
     @isset($home_section)
         <section class="position-relative">
-            @if (user() && user()->isAdmin())
+            @admin
                 <a href="#!" class="btn btn-success position-absolute rounded-circle edit-form-btn"
                     style="top:20px; right:20px;"
                     data-form="home-form"
@@ -56,9 +56,9 @@
                 >
                     <i class="fas fa-pen fa-1x"></i>
                 </a>
-            @endif
+            @endadmin
             {{-- Form --}}
-            @if (user() && user()->isAdmin())
+            @admin
                 <form action="{{ action('Admin\SectionController@update', ['section' => $home_section['id']]) }}"
                     class="px-4 d-none mt-3 editing-form"
                     method="post"
@@ -87,7 +87,7 @@
                         </button>
                     </div>
                 </form>
-            @endif
+            @endadmin
             <div id="home-section">
                 {{-- Title --}}
                 @if (!empty($home_section['title']))

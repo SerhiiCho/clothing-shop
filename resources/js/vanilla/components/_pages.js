@@ -34,6 +34,10 @@
                 form.classList.remove('d-none')
                 section.style.display = 'none'
                 formIsHidden = false
+
+                // Make textarea full height
+                let text = form.querySelector('textarea')
+                text.style.height = text.scrollHeight + 'px'
             } else if (!formIsHidden) {
                 form.classList.add('d-none')
                 section.style.display = 'none'
