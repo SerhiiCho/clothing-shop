@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SearchRequest;
 use App\Models\Card;
 use App\Models\Item;
+use App\Models\Section;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\QueryException;
 
@@ -26,7 +27,16 @@ class PageController extends Controller
             }
         });
 
-        return view('pages.home', compact('cards'));
+        $home_section = cache()->rememberForever('home_section', function () {
+            try {
+                return Section::whereName('home')->first()->toArray();
+            } catch (QueryException $e) {
+                logs()->error($e->getMessage());
+                return [];
+            }
+        });
+
+        return view('pages.home', compact('cards', 'home_section'));
     }
 
     /**

@@ -39,16 +39,27 @@
         </div>
     @endif
 
-    <section v-cloak class="v-cloak">
-        <h3 class="display-4 text-center p-4" style="background:#F2F2F2">
-            @lang('cards.popular')
-        </h3>
-    </section>
     <items-api
         hryvnia="@lang('items.hryvnia')"
         headline="@lang('cards.popular')"
         to="/api/item/popular"
     ></items-api>
+
+    {{-- Home Section --}}
+    @isset($home_section)
+        <section>
+            @if (!empty($home_section['title']))
+                <h3 class="display-4 text-center p-4">
+                    {{ $home_section['title'] }}
+                </h3>
+            @endif
+            @if (!empty($home_section['content']))
+                <p class="text-justify px-5 pb-5" style="font-size:1.2em">
+                    {{ $home_section['content'] }}
+                </p>
+            @endif
+        </section>
+    @endisset
 </div>
 
 @endsection
