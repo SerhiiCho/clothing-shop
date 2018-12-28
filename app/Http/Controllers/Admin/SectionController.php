@@ -19,7 +19,7 @@ class SectionController extends Controller
      */
     public function update(SectionRequest $request, Section $section): RedirectResponse
     {
-        cache()->forget('home_section');
+        cache()->forget('home_sections');
 
         $section->update([
             'title' => request('title'),
@@ -27,9 +27,12 @@ class SectionController extends Controller
             'name' => $section->name,
         ]);
 
-        if ($section->name === 'home') {
-            return redirect('/#title');
+        $anchors = ['home_up', 'home_down'];
+
+        if (in_array($section->name, $anchors)) {
+            return redirect("/#{$section->name}");
         }
+
         return back();
     }
 }
