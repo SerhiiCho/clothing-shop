@@ -88,8 +88,12 @@ class CardController extends Controller
     {
         $types = Type::orderBy('name')->get();
 
+        $category = ($card->category === 'men')
+        ? trans('items.men_items')
+        : trans('items.women_items');
+
         return view('admin.cards.edit')->with(
-            compact('card', 'types')
+            compact('card', 'types', 'category')
         );
     }
 
