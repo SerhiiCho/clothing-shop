@@ -54,4 +54,20 @@ class AdminSliderEditPageTest extends TestCase
             ->assertOk()
             ->assertViewIs('admin.slider.edit');
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_can_update_slider(): void
+    {
+        $slider_id = factory(Slider::class)->create()->id;
+
+        $this->actingAs(factory(User::class)->state('admin')->create())
+            ->put(action('Admin\SliderController@update', ['id' => $slider_id]), [
+                'order' => 11,
+            ]);
+
+        $this->assertDatabaseHas('slider', ['order' => 11]);
+    }
 }

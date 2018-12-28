@@ -42,4 +42,16 @@ class AdminSliderCreatePageTest extends TestCase
             ->assertOk()
             ->assertViewIs('admin.slider.create');
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_can_add_new_slider(): void
+    {
+        $this->actingAs(factory(User::class)->state('admin')->create())
+            ->post(action('Admin\SliderController@store'), ['order' => 10]);
+
+        $this->assertDatabaseHas('slider', ['order' => 10]);
+    }
 }
