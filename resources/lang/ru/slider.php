@@ -4,7 +4,7 @@ return [
 
     // View
     'are_you_sure' => 'Вы точно хотите удалить этот слайд?',
-    'choose_order_number' => 'Выберите номер порядка',
+    'choose_order_number' => 'Номер порядка',
     'amount_of_slides' => 'Количество слайдов',
     'edit_slide' => 'Редактировать слайд',
     'slider_changed' => 'Слайд изменен',
