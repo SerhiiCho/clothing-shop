@@ -20,3 +20,26 @@
         });
     }
 })();
+
+(function ShowEditFormAndHideTextAfterClickingTheButton() {
+   let buttons = document.querySelectorAll('.edit-form-btn')
+   let formIsHidden = true
+
+   buttons.forEach(btn => {
+       let form = document.getElementById(btn.getAttribute('data-form'))
+       let section = document.getElementById(btn.getAttribute('data-section'))
+
+        btn.addEventListener('click', () => {
+            if (formIsHidden) {
+                form.classList.remove('d-none')
+                section.style.display = 'none'
+                formIsHidden = false
+            } else if (!formIsHidden) {
+                form.classList.add('d-none')
+                section.style.display = 'none'
+                section.style.display = 'block'
+                formIsHidden = true
+            }
+        })
+   })
+})();

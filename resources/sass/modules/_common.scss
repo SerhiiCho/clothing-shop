@@ -65,3 +65,17 @@
 .grey {
     color: #333;
 }
+
+.editing-form {
+    input[type=text] {
+        font-size: 1.8em;
+        border: 0;
+        background: transparent;
+    }
+    textarea {
+        min-height: 120px;
+        font-size: 1.2em;
+        border: 0;
+        background: transparent;
+    }
+}

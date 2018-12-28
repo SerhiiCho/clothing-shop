@@ -47,17 +47,61 @@
 
     {{-- Home Section --}}
     @isset($home_section)
-        <section>
-            @if (!empty($home_section['title']))
-                <h3 class="display-4 text-center p-4">
-                    {{ $home_section['title'] }}
-                </h3>
+        <section class="position-relative">
+            @if (user() && user()->isAdmin())
+                <a href="#!" class="btn btn-success position-absolute rounded-circle edit-form-btn"
+                    style="top:20px; right:20px;"
+                    data-form="home-form"
+                    data-section="home-section"
+                >
+                    <i class="fas fa-pen fa-1x"></i>
+                </a>
             @endif
-            @if (!empty($home_section['content']))
-                <p class="text-justify px-5 pb-5" style="font-size:1.2em">
-                    {{ $home_section['content'] }}
-                </p>
+            {{-- Form --}}
+            @if (user() && user()->isAdmin())
+                <form action="{{ action('Admin\SectionController@update', ['section' => $home_section['id']]) }}"
+                    class="px-4 d-none mt-3 editing-form"
+                    method="post"
+                    id="home-form"
+                >
+                    @csrf @method('put')
+                    <div class="form-group">
+                        <input type="text" 
+                            name="title"
+                            value="{{ $home_section['title'] }}"
+                            class="form-control text-center"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <textarea name="content"
+                            class="form-control"
+                        >{{ $home_section['content'] }}</textarea>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit"
+                            class="btn btn-success position-absolute rounded-circle edit-form-btn" 
+                            title="@lang('contacts.save')"
+                            style="top:20px; right:75px;"
+                        >
+                            <i class="fas fa-save fa-1x"></i>
+                        </button>
+                    </div>
+                </form>
             @endif
+            <div id="home-section">
+                {{-- Title --}}
+                @if (!empty($home_section['title']))
+                    <h3 class="display-4 text-center p-4">
+                        {{ $home_section['title'] }}
+                    </h3>
+                @endif
+                {{-- Content --}}
+                @if (!empty($home_section['content']))
+                    <p class="text-justify px-5 pb-5" style="font-size:1.2em">
+                        {{ $home_section['content'] }}
+                    </p>
+                @endif
+            </div>
         </section>
     @endisset
 </div>
