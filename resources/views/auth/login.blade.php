@@ -36,21 +36,20 @@
             </div>
 
             <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input"
-                        type="checkbox"
-                        name="remember"
-                        id="form-check-input" {{ old('remember') ? 'checked' : '' }}
-                    >
-                    <label class="form-check-label" for="form-check-input">
-                        @lang('forms.input_remember_me')
-                    </label>
-                </div>
+                <input class="switch"
+                    type="checkbox"
+                    name="remember"
+                    id="form-check-input" {{ old('remember') ? 'checked' : '' }}
+                >
+                <label for="form-check-input">@lang('forms.input_remember_me')</label>
             </div>
 
-            <button type="submit" class="btn btn-success">
-                @lang('forms.login_title')
-            </button>
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-success">
+                    <div class="fas fa-sign-in-alt"></div>
+                    @lang('forms.login_title')
+                </button>
+            </div>
 
             {{-- <a href="{{ route('password.request') }}">
                 @lang('forms.forgot_password')
