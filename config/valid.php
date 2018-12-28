@@ -66,4 +66,13 @@ return [
         ],
     ],
 
+    'section' => [
+        'title' => [
+            'max' => 250,
+        ],
+        'content' => [
+            'max' => 7000,
+        ],
+    ],
+
 ];
