@@ -40,7 +40,7 @@
     @endif
 
     {{-- Home Up Section --}}
-    @isset($home_sections)
+    @isset($home_sections[0])
         @include('includes.section', [
             'section' => $home_sections[0],
             'anchor' => 'home_up'
@@ -54,7 +54,7 @@
     ></items-api>
 
     {{-- Home Down Section --}}
-    @isset($home_sections)
+    @isset($home_sections[1])
         @include('includes.section', [
             'section' => $home_sections[1],
             'anchor' => 'home_down',
