@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  server:
+    build: ./server
+    environment: 
+      - APACHE_RUN_USER=#1000
+    volumes: 
+      - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
+      - ./server/sites-available:/etc/apache2/sites-available
+    ports: 
+      - 80:80
+    working_dir: ${APP_PATH_CONTAINER}
+
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 111111
+      MYSQL_DATABASE: clothing_shop
+    volumes: 
+      - ${DB_PATH_HOST}:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 5080:8080
+
+  composer:
+    image: composer
+    volumes: 
+      - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
+    working_dir: ${APP_PATH_CONTAINER}
+    command: composer install
