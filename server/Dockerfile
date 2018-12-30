@@ -20,7 +20,7 @@ RUN docker-php-ext-install \
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - \
     && apt-get install npm
 
-COPY ./src /var/ww
+COPY ./src /var/www
 
 RUN mv /var/www/.env.example /var/www/.env \
     && /var/www/artisan key:generate \
