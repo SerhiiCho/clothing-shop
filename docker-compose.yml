@@ -12,7 +12,8 @@ services:
       - 80:80
     working_dir: /var/www
     command: /tmp/run.sh
-    depends_on: db
+    depends_on: 
+      - db
 
   db:
     image: mysql:8.0
