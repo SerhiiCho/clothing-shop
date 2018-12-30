@@ -45,10 +45,10 @@ The app supports only russian language, but can be easily translated. Just by co
 * [Node](https://nodejs.org/en/)
 * [PHP >= 7.2](http://php.net/)
 
-## Get started
+## Get started (without Docker)
 
 1. `git clone https://github.com/SerhiiCho/clothing_shop.git`
-2. `cd clothing_shop` Enter cloned folder
+2. `cd clothing_shop/src` Enter cloned folder
 3. `mv .env.example .env` Rename the env.example file to .env
 4. `vim .env` Open .env file and fill credentials
 5. Create database with the name that you filled in .env file in DB_DATABASE field
