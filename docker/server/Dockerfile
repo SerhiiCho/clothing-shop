@@ -17,3 +17,5 @@ RUN docker-php-ext-install \
         nodejs yarn -y \
         && curl -sL https://deb.nodesource.com/setup_11.x | bash - \
         && apt-get install npm
+
+COPY ./run.sh /tmp/

@@ -11,6 +11,7 @@ services:
     ports: 
       - 80:80
     working_dir: /var/www
+    command: /tmp/run.sh
 
   db:
     image: mysql:8.0
