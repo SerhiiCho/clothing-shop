@@ -2,15 +2,15 @@ version: '3'
 
 services:
   server:
-    build: ./server
+    build: ./docker/server
     environment: 
       - APACHE_RUN_USER=#1000
     volumes: 
-      - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
+      - ./:/var/www
       - ./docker/server/sites-available:/etc/apache2/sites-available
     ports: 
       - 80:80
-    working_dir: ${APP_PATH_CONTAINER}
+    working_dir: /var/www
 
   db:
     image: mysql:8.0
@@ -20,7 +20,7 @@ services:
       MYSQL_ROOT_PASSWORD: 111111
       MYSQL_DATABASE: clothing_shop
     volumes: 
-      - ${DB_PATH_HOST}:/var/lib/mysql
+      - ./docker/db:/var/lib/mysql
 
   adminer:
     image: adminer
@@ -31,6 +31,6 @@ services:
   composer:
     image: composer
     volumes: 
-      - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
-    working_dir: ${APP_PATH_CONTAINER}
+      - ./:/var/www
+    working_dir: /var/www
     command: composer install
