@@ -22,6 +22,6 @@ RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - \
 
 COPY ${APP_PATH_HOST} ${APP_PATH_CONTAINER}
 
-RUN mv /var/www/.env.example /var/www/.env \
-    && /var/www/artisan key:generate \
-    && /var/www/artisan wipe
+# RUN mv /var/www/.env.example /var/www/.env \
+#     && /var/www/artisan key:generate \
+#     && /var/www/artisan wipe
