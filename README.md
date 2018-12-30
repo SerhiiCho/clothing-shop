@@ -45,6 +45,8 @@ The app supports only russian language, but can be easily translated. Just by co
 * [Node](https://nodejs.org/en/)
 * [PHP >= 7.2](http://php.net/)
 
+> Note that if you now how to use docker, you can always go and test any docker app on free and awesome [Play with Docker](https://labs.play-with-docker.com/) website.
+
 ## Get started (without Docker)
 
 1. `$ git clone https://github.com/SerhiiCho/clothing_shop.git`
@@ -60,6 +62,7 @@ The app supports only russian language, but can be easily translated. Just by co
 11. `$ vendor/bin/phpunit` Make sure tests are green
 
 ## Get started with Docker
+
 1. `$ git clone https://github.com/SerhiiCho/clothing_shop.git`
 2. `$ cd clothing_shop` Enter cloned folder
 3. `$ docker-compose up -d` and wait untill it's done
