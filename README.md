@@ -49,21 +49,21 @@ The app supports only russian language, but can be easily translated. Just by co
 
 ## Get started (without Docker)
 
-1. `$ git clone https://github.com/SerhiiCho/clothing_shop.git`
-2. `$ cd clothing_shop` Enter cloned folder
-3. `$ mv .env.example .env` Rename the env.example file to .env
-4. `$ vim .env` Open .env file and fill credentials
+1. `git clone https://github.com/SerhiiCho/clothing_shop.git`
+2. `cd clothing_shop` enter cloned folder
+3. `mv .env.example .env` rename the env.example file to .env
+4. `vim .env` open .env file and fill credentials
 5. Create database with the name that you filled in .env file in DB_DATABASE field
-6. `$ composer install` to install all PHP packages
-7. `$ php artisan key:generate` to generate laravel app key
-8. `$ php artisan wipe`, it should migrate all migrations and seed the database
-9. `$ php artisan storage:link`, it should create a link in public folder to storage
-10. `$ php artisan serve` and go to localhost:8000
-11. `$ vendor/bin/phpunit` Make sure tests are green
+6. `composer install` to install all PHP packages
+7. `php artisan key:generate` to generate laravel app key
+8. `php artisan wipe`, it should migrate all migrations and seed the database
+9. `php artisan storage:link`, it should create a link in public folder to storage
+10. `php artisan serve` and go to localhost:8000
+11. `vendor/bin/phpunit` make sure tests are green
 
 ## Get started with Docker
 
-1. `$ git clone https://github.com/SerhiiCho/clothing_shop.git`
-2. `$ cd clothing_shop` Enter cloned folder
-3. `$ docker-compose up -d` and wait untill it's done
-4. `$ docker-compose exec server /start.sh` it will setup everything for you
+1. `git clone https://github.com/SerhiiCho/clothing_shop.git`
+2. `cd clothing_shop` enter cloned folder
+3. `docker-compose up -d` and wait untill it's done
+4. `docker-compose exec server /start.sh` and go to localhost
