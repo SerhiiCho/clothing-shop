@@ -17,8 +17,7 @@ RUN docker-php-ext-install \
         gnupg1 \
         nodejs yarn -y
 
-WORKDIR /var/www
-
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - \
-    && apt-get install npm \
-    && npm install
+    && apt-get install npm
+
+RUN  npm install /var/www
