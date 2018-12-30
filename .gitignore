@@ -2,7 +2,6 @@
 .idea
 .vscode
 .vagrant
-docker/db
 node_modules
 public/hot
 public/mix-manifest.json
