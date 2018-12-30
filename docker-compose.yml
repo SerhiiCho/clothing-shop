@@ -7,7 +7,7 @@ services:
       - APACHE_RUN_USER=#1000
     volumes: 
       - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
-      - ./server/sites-available:/etc/apache2/sites-available
+      - ./docker/server/sites-available:/etc/apache2/sites-available
     ports: 
       - 80:80
     working_dir: ${APP_PATH_CONTAINER}

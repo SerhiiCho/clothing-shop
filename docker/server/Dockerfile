@@ -1,5 +1,7 @@
 FROM php:7.3-apache
 
+COPY ${APP_PATH_HOST}* ${APP_PATH_CONTAINER}
+
 RUN docker-php-ext-install \
     pdo_mysql \
     && a2enmod rewrite \
@@ -10,7 +12,6 @@ RUN docker-php-ext-install \
         libcurl3-dev \
         build-essential \
         vim \
-        curl \
         software-properties-common \
         gnupg \
         gnupg2 \
@@ -20,8 +21,6 @@ RUN docker-php-ext-install \
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - \
     && apt-get install npm
 
-COPY ${APP_PATH_HOST} ${APP_PATH_CONTAINER}
-
-# RUN mv /var/www/.env.example /var/www/.env \
-#     && /var/www/artisan key:generate \
-#     && /var/www/artisan wipe
+RUN mv /var/www/.env.example /var/www/.env \
+    && /var/www/artisan key:generate \
+    && /var/www/artisan wipe
