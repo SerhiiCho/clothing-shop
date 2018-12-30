@@ -5,4 +5,5 @@ if [ ! -f /var/www/.env ]; then
     cp .env.example .env
     php artisan key:generate
     php artisan wipe
+    ./vendor/bin/phpunit
 fi
