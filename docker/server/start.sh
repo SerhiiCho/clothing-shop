@@ -7,5 +7,5 @@ if [ ! -f /var/www/.env ] && [ -f /var/www/vendor/autoload.php ]; then
     php artisan wipe
     ./vendor/bin/phpunit
 else
-    echo 'Try again, because composer is not done yet'
+    echo 'Try again, because composer is still installing dependencies'
 fi

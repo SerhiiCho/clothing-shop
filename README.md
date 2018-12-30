@@ -58,3 +58,9 @@ The app supports only russian language, but can be easily translated. Just by co
 9. `$ php artisan storage:link`, it should create a link in public folder to storage
 10. `$ php artisan serve` and go to localhost:8000
 11. `$ vendor/bin/phpunit` Make sure tests are green
+
+## Get started with Docker
+1. `$ git clone https://github.com/SerhiiCho/clothing_shop.git`
+2. `$ cd clothing_shop` Enter cloned folder
+3. `$ docker-compose up -d` and wait untill it's done
+4. `$ docker-compose exec server /start.sh` it will setup everything for you
