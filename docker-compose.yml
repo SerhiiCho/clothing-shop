@@ -11,9 +11,6 @@ services:
     ports: 
       - 80:80
     working_dir: /var/www
-    command: /tmp/run.sh
-    depends_on: 
-      - db
 
   db:
     image: mysql:8.0
@@ -36,4 +33,4 @@ services:
     volumes: 
       - ./:/var/www
     working_dir: /var/www
-    command: composer install
+    command: bash -c "/tmp/run.sh && composer install"
