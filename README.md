@@ -47,16 +47,16 @@ The app supports only russian language, but can be easily translated. Just by co
 
 ## Get started (without Docker)
 
-1. `git clone https://github.com/SerhiiCho/clothing_shop.git`
-2. `cd clothing_shop/src` Enter cloned folder
-3. `mv .env.example .env` Rename the env.example file to .env
-4. `vim .env` Open .env file and fill credentials
+1. `> git clone https://github.com/SerhiiCho/clothing_shop.git`
+2. `> cd clothing_shop/src` Enter cloned folder
+3. `> mv .env.example .env` Rename the env.example file to .env
+4. `> vim .env` Open .env file and fill credentials
 5. Create database with the name that you filled in .env file in DB_DATABASE field
-6. `npm install` to create node_modules folder
-7. `composer install` to install all PHP packages
-8. `npm run dev` to create app.js and app.css files in public folder
-9. `php artisan key:generate` to generate laravel app key
-10. `php artisan wipe`, it should migrate all migrations and seed the database
-11. `php artisan storage:link`, it should create a link in public folder to storage
-12. `php artisan serve` and go to localhost:8000
-13. `vendor/bin/phpunit` Make sure tests are green
+6. `> npm install` to create node_modules folder
+7. `> composer install` to install all PHP packages
+8. `> npm run dev` to create app.js and app.css files in public folder
+9. `> php artisan key:generate` to generate laravel app key
+10. `> php artisan wipe`, it should migrate all migrations and seed the database
+11. `> php artisan storage:link`, it should create a link in public folder to storage
+12. `> php artisan serve` and go to localhost:8000
+13. `> vendor/bin/phpunit` Make sure tests are green
