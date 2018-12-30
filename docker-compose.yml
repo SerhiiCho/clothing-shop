@@ -33,4 +33,4 @@ services:
     volumes: 
       - ./:/var/www
     working_dir: /var/www
-    command: bash -c "/tmp/run.sh && composer install"
+    command: composer install
