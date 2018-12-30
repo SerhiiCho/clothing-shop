@@ -2,8 +2,6 @@ db
 src/node_modules
 src/public/hot
 src/public/storage
-src/public/css/app.css
-src/public/js/app.js
 src/public/mix-manifest.json
 src/storage/*.key
 src/vendor
