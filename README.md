@@ -45,7 +45,9 @@ The app supports only russian language, but can be easily translated. Just by co
 * [Node](https://nodejs.org/en/)
 * [PHP >= 7.2](http://php.net/)
 
-> Note that if you know how to use docker, you can always go and test any docker app on free and awesome [Play with Docker](https://labs.play-with-docker.com/) website.
+------------
+
+> Note that if you know how to use docker, you can always go and test any docker app on a free and awesome website [Play with Docker](https://labs.play-with-docker.com/)
 
 ## Get started (without Docker)
 
