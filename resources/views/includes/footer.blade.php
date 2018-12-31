@@ -21,16 +21,16 @@
             </nav>
 
             {{-- Last items --}}
-            @isset($last_items_for_footer)
+            @isset($footer_latest)
                 <nav class="col-6 col-md-3">
                     <h4>@lang('navigation.last_posts')</h4>
                     <ul>
-                        @foreach ($last_items_for_footer as $item)
+                        @foreach ($footer_latest as $item)
                             <li>
-                                <a href="/item/{{ $item->category }}/{{ $item->slug }}"
-                                    title="{{ $item->title }}"
+                                <a href="/item/{{ $item['category'] }}/{{ $item['slug'] }}"
+                                    title="{{ $item['title'] }}"
                                 >
-                                    {{ $item->title }}
+                                    {{ $item['title'] }}
                                 </a>
                             </li>
                         @endforeach

@@ -55,6 +55,8 @@ class ItemController extends Controller
      */
     public function store(ItemRequest $request): RedirectResponse
     {
+        cache()->forget('footer_latest');
+
         $item = $this->createOrUpdateItem($request);
 
         $image_names = $this->uploadPhotos($request, $item->id);
@@ -117,6 +119,8 @@ class ItemController extends Controller
      */
     public function update(ItemRequest $request, string $slug): RedirectResponse
     {
+        cache()->forget('footer_latest');
+
         $item = Item::whereSlug($slug)->first();
 
         if ($request->hasFile('photos')) {

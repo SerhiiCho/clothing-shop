@@ -97,6 +97,8 @@ class ApiItemController extends Controller
      */
     public function destroy(string $slug)
     {
+        cache()->forget('footer_latest');
+
         try {
             $item = Item::whereSlug($slug)->first();
         } catch (QueryException $e) {

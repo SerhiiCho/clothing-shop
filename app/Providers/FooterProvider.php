@@ -69,17 +69,19 @@ class FooterProvider extends ServiceProvider
     public function lastItems(): void
     {
         try {
-            $items = Item::latest()
-                ->instock()
-                ->take(7)
-                ->get(['id', 'title', 'category']);
+            $items = cache()->rememberForever('footer_latest', function () {
+                return Item::latest()
+                    ->instock()
+                    ->take(7)
+                    ->get(['id', 'title', 'category', 'slug'])
+                    ->toArray();
+            });
         } catch (QueryException $e) {
-            $items = collect();
             logs()->error($e->getMessage());
         }
 
         view()->composer('includes.footer', function ($view) use ($items) {
-            $view->with('last_items_for_footer', $items);
+            $view->with('footer_latest', $items ?? collect());
         });
     }
 }
