@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\RecivedOrdeEvent;
+use App\Events\RecivedOrderEvent;
 
 class SendSmsListener
 {
-    public function handle(RecivedOrdeEvent $event)
+    public function handle(RecivedOrderEvent $event)
     {
         if (!is_null(config('services.nexmo.secret'))) {
             $client = new \Nexmo\Client(
