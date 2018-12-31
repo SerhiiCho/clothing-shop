@@ -34,3 +34,8 @@ services:
       - ./:/var/www
     working_dir: /var/www
     command: composer install
+
+  cache:
+    image: redis:5.0
+    ports:
+      - 6379:6379
