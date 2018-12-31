@@ -23,6 +23,7 @@ class OrderController extends Controller
     public function softDelete(Order $order): RedirectResponse
     {
         $order->delete();
+        cache()->forget('orders');
 
         return redirect('/admin/work')->withSuccess(
             trans('messages.order_closed')

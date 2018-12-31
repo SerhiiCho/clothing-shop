@@ -25,9 +25,11 @@ class UserSidebarProvider extends ServiceProvider
     public function showAllOrderMessages(): void
     {
         try {
-            $orders = Order::count();
+            $orders = cache()->rememberForever('orders', function () {
+                return Order::count();
+            });
             $has_orders = "data-notif={$orders}";
-            $unreaded = ($orders !== 0) ? $has_orders : '';
+            $unreaded = ($orders != 0) ? $has_orders : '';
 
             view()->composer('includes.user-sidebar', function ($view) use ($unreaded) {
                 $view->with(compact('unreaded'));

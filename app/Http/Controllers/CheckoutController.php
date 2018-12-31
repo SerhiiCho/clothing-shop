@@ -36,6 +36,8 @@ class CheckoutController extends Controller
         }
 
         try {
+            cache()->forget('orders');
+
             $order = Order::create([
                 'ip' => $request->ip(),
                 'phone' => $request->phone,
