@@ -16,6 +16,7 @@ RUN docker-php-ext-install \
         gnupg1 \
         nodejs yarn -y \
         && curl -sL https://deb.nodesource.com/setup_11.x | bash - \
-        && apt-get install npm
+        && apt-get install npm \
+        && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 COPY ./start.sh /
