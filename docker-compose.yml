@@ -20,13 +20,7 @@ services:
       MYSQL_ROOT_PASSWORD: 111111
       MYSQL_DATABASE: clothing_shop
     volumes: 
-      - ./docker/db:/var/lib/mysql
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 5080:8080
+      - ./docker/db/mysql:/var/lib/mysql
 
   composer:
     image: composer
