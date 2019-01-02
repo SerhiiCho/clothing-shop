@@ -6,8 +6,18 @@ RUN docker-php-ext-install \
     && apt-get update \
     && apt-get install \
         apt-utils \
+        libpng-dev \
+        libjpeg-dev \
+        libjpeg62-turbo-dev \
+        libfreetype6-dev \
+        libbz2-dev \
+        libmcrypt-dev \
         libcurl3 \
         libcurl3-dev \
+        libzip-dev \
+        libcurl3 \
+        libcurl3-dev \
+        mysql-client \
         build-essential \
         vim \
         software-properties-common \
@@ -15,9 +25,15 @@ RUN docker-php-ext-install \
         gnupg2 \
         gnupg1 \
         nodejs yarn -y \
-        && curl -sL https://deb.nodesource.com/setup_11.x | bash - \
-        && apt-get install npm \
-        && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    && curl -sL https://deb.nodesource.com/setup_11.x | bash - \
+    && apt-get install npm \
+    && curl -sS https://getcomposer.org/installer | \
+        php -- --install-dir=/usr/local/bin --filename=composer \
+    && docker-php-ext-configure gd \
+        --with-freetype-dir=/usr/include/ \
+        --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd \
+    && echo 'alias phpunit="vendor/bin/phpunit"' >> ~/.bashrc \
+    && echo 'alias pa="php artisan"' >> ~/.bashrc
 
 COPY ./start.sh /
-COPY ./.bashrc ~/.bashrc
