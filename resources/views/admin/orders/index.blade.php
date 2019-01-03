@@ -5,7 +5,9 @@
 @section('content')
 
 <div class="container">
-    <h4 class="text-center py-3">@lang('dashboard.your_orders'):</h4>
+    <h4 class="text-center py-3">
+        @lang('dashboard.your_orders')
+    </h4>
 
     {{-- Tabs --}}
     <ul class="nav nav-tabs nav-fill mb-4">

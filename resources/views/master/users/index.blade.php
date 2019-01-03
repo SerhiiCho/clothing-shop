@@ -5,7 +5,10 @@
 @section('content')
 
 <div class="container">
-    <h4 class="text-center py-3">@lang('users.users'):</h4>
+    <h4 class="text-center py-3">
+        @lang('users.users'): 
+        <strong>{{ $users->count() }}</strong>
+    </h4>
 
     {{-- Cards --}}
     <div class="row pb-5">
@@ -21,7 +24,7 @@
 
                         <div class="row">
                             {{-- Add user to admin button --}}
-                            <div class="col-12 col-lg-6">
+                            <div class="col-12 col-md-6 mb-1">
                                 <form action="{{ action('Master\UserController@update', ['id' => $user->id]) }}" method="post">
                                     @csrf @method('put')
                                     <button type="submit"
@@ -36,7 +39,7 @@
                             </div>
 
                             {{-- Delete user button --}}
-                            <div class="col-12 col-lg-6">
+                            <div class="col-12 col-md-6 mb-1">
                                 <form action="{{ action('Master\UserController@destroy', ['id' => $user->id]) }}" method="post">
                                     @csrf @method('delete')
                                     <button type="submit"
