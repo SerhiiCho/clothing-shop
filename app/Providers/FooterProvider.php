@@ -78,10 +78,11 @@ class FooterProvider extends ServiceProvider
             });
         } catch (QueryException $e) {
             logs()->error($e->getMessage());
+            $items = [];
         }
 
         view()->composer('includes.footer', function ($view) use ($items) {
-            $view->with('footer_latest', $items ?? collect());
+            $view->with('footer_latest', $items);
         });
     }
 }
