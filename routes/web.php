@@ -50,7 +50,10 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::put('cache-forget', 'OptionController@cacheForget');
     Route::resource('slider', 'SliderController', ['except' => ['show']]);
     Route::resource('cards', 'CardController', ['except' => ['show']]);
-    Route::resource('users', 'UserController', ['only' => ['index', 'destroy', 'update']]);
     Route::resource('contacts', 'ContactController', ['except' => ['show', 'index']]);
     Route::put('sections/{section}', 'SectionController@update');
+});
+
+Route::prefix('master')->namespace('Master')->group(function () {
+    Route::resource('users', 'UserController', ['only' => ['index', 'destroy', 'update']]);
 });

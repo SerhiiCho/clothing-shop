@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('master');
     }
 
     /**
@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function index(): View
     {
-        return view('admin.users.index', [
+        return view('master.users.index', [
             'users' => User::paginate(20),
         ]);
     }
@@ -38,12 +38,12 @@ class UserController extends Controller
     public function update(User $user): RedirectResponse
     {
         if ($user->isAdmin()) {
-            return redirect('admin/users');
+            return redirect('master/users');
         }
 
         $user->update(['admin' => 1]);
 
-        return redirect('admin/users')->withSuccess(
+        return redirect('master/users')->withSuccess(
             trans('users.user_was_added_to_admins', ['name' => $user->name])
         );
     }
@@ -56,12 +56,12 @@ class UserController extends Controller
      */
     public function destroy(User $user): RedirectResponse
     {
-        if ($user->id == 1) {
-            return redirect('admin/users');
+        if ($user->isMaster()) {
+            return redirect('master/users');
         }
 
         return ($user->delete())
-        ? redirect('admin/users')->withSuccess(trans('users.user_deleted'))
-        : redirect('admin/users')->withError(trans('users.user_deleted_fail'));
+        ? redirect('master/users')->withSuccess(trans('users.user_deleted'))
+        : redirect('master/users')->withError(trans('users.user_deleted_fail'));
     }
 }

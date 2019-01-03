@@ -15,8 +15,9 @@
                     <div class="card-body py-2">
 
                         <div class="row">
+                            {{-- Add user to admin button --}}
                             <div class="col-12 col-lg-6">
-                                <form action="{{ action('Admin\UserController@update', ['id' => $user->id]) }}" method="post">
+                                <form action="{{ action('Master\UserController@update', ['id' => $user->id]) }}" method="post">
                                     @csrf @method('put')
                                     <button type="submit"
                                         class="confirm btn btn-sm btn-primary btn-block"
@@ -27,8 +28,10 @@
                                     </button>
                                 </form>
                             </div>
+
+                            {{-- Delete user button --}}
                             <div class="col-12 col-lg-6">
-                                <form action="{{ action('Admin\UserController@destroy', ['id' => $user->id]) }}" method="post">
+                                <form action="{{ action('Master\UserController@destroy', ['id' => $user->id]) }}" method="post">
                                     @csrf @method('delete')
                                     <button type="submit"
                                         class="confirm btn btn-sm btn-primary btn-block"
@@ -39,6 +42,7 @@
                                     </button>
                                 </form>
                             </div>
+
                         </div>
 
 
