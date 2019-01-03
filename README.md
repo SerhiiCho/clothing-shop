@@ -21,7 +21,7 @@ Here is what admin can choose on the dashboard.
 1. **Allow registration** Admin can turn this option off, and register form will disappear.
 2. **Turn on men's category** Admin can turn this off, and men's category will disappear.
 3. **Turn on women's category** Admin can turn this off, and women's category will disappear.
-4. **Clear all cahce** By clicking this button admin deletes all file cache data that is widely used in this app.
+4. **Clear all cache** By clicking this button admin deletes all file cache data that is widely used in this app.
 
 ## Language
 
@@ -42,9 +42,9 @@ The app supports only russian language, but can be easily translated. Just by co
 * [vuejs/vue](https://github.com/vuejs/vue) | JavaScript framework
 * [twbs/bootstrap](https://github.com/twbs/bootstrap)
 
-> Register page is going to be at localhost/hello/register <br />
-> Login page is going to be at localhost/hello/login <br />
-> There is a registered admin user with email *ser@ser.com* and password *111111* <br />
+> Register page is going to be at **localhost/hello/register** <br />
+> Login page is going to be at **localhost/hello/login** <br />
+> There is a registered admin user with email *ser@ser.com* and password **111111** <br />
 > In order to add new user with admin role, you need to register a new user and main admin has to add user to admin list in admin menu
 
 ## Get started (without Docker)
