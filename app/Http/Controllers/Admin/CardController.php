@@ -132,7 +132,7 @@ class CardController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage,
+     * Remove the specified carc from database
      *
      * @see I use observer for this method \App\Observers\CardObserver
      * @param \App\Models\Card $card
