@@ -65,9 +65,6 @@
         >
             @lang('cards.add_card')
         </a>
-
-        {{-- Back btn --}}
-        <button-back title="@lang('messages.back')"></button-back>
     </div>
 </div>
 

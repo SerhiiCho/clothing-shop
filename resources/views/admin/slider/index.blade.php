@@ -69,9 +69,6 @@
         <a href="/admin/slider/create" title="@lang('slider.add_slide')" class="btn btn-success">
             @lang('slider.add_slide')
         </a>
-        
-        {{-- Back btn --}}
-        <button-back title="@lang('messages.back')"></button-back>
     </div>
 </div>
 

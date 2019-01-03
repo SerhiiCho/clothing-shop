@@ -75,9 +75,7 @@
             {{-- Table Footer --}}
             <tfoot>
                 <tr>
-                    <td>
-                        <button-back title="@lang('messages.back')"></button-back>
-                    </td>
+                    <td></td>
                     <td class="hidden-xs text-center">
                         <strong>
                             @lang('cart.total')  {{ Cart::total() }} @lang('items.hryvnia')
