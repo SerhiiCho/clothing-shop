@@ -4,7 +4,7 @@ return [
 
     // Controllers
     'order_deleted' => 'Заказ удален',
-    'order_closed' => 'Заказ удален',
+    'order_closed' => 'Заказ закрыт',
 
     // Views
     'more_clothes' => 'Еще товары',
