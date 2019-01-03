@@ -6,7 +6,7 @@ Simple Callback E-commerce clothing shop. It has men's and women's categories an
 
 ## Checkout
 
-Client can add items to a cart, and checkout. When client makes an order, he or she fills in the form with 2 fields. One for the phone number, and the second is for a name. After submitting the form, admin will see small red notification in his admin panel navigation menu. It shows that there is an order. If nexmo credentials are provided, then after client submits the checkout form you will receive SMS. This way you will be always notified when new order is waiting for you.
+Client can add items to a cart, and checkout. When client makes an order, he or she fills in the form with 2 fields. One for the phone number, and the second is for a name. After submitting the form, admin will see small red notification in his admin panel navigation menu. It shows that there is an order.
 
 ## Admin panel.
 

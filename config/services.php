@@ -12,7 +12,7 @@ return [
     | default location for this type of information, allowing packages
     | to have a conventional place to find your various credentials.
     |
-    */
+     */
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
@@ -33,12 +33,6 @@ return [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
-	],
-	'nexmo' => [
-		'key' => env('NEXMO_KEY'),
-		'secret' => env('NEXMO_SECRET'),
-		'sms_from' => env('NEXMO_FROM'),
-		'sms_to' => env('NEXMO_TO'),
-	],
+    ],
 
 ];

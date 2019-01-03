@@ -20,6 +20,8 @@ RUN docker-php-ext-install \
         mysql-client \
         build-essential \
         vim \
+        zip \
+        unzip \
         software-properties-common \
         gnupg \
         gnupg2 \
