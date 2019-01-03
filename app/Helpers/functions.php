@@ -1,11 +1,16 @@
 <?php
 
+/**
+ * Alias for auth() helper
+ */
 function user()
 {
     return auth()->user();
 }
 
-// Helper for giving an active button class "avtive"
+/**
+ * Helper for giving an active button class "avtive"
+ */
 function activeIfRouteIs($route, $request = null, $get = null)
 {
     if ($request) {
@@ -17,8 +22,12 @@ function activeIfRouteIs($route, $request = null, $get = null)
 /**
  * This function is needed for getting name
  * for images than I'm saving in storage
+ *
+ * @param string $title
+ * @param string $ext - extention
+ * @return string
  */
-function getFileName($title, $ext)
+function getFileName(string $title, string $ext): string
 {
     return str_slug($title) . '-' . str_random(7) . '.' . $ext;
 }
@@ -26,8 +35,10 @@ function getFileName($title, $ext)
 /**
  * After editing stylesheets this function will update
  * timestamp on its file, it prevents browser caching
+ *
+ * @param string $path
  */
-function styleTimestamp($path)
+function styleTimestamp(string $path)
 {
     try {
         $timestamp = '?v=' . File::lastModified(public_path() . $path);
@@ -40,8 +51,11 @@ function styleTimestamp($path)
 /**
  * This helper helps clean Item controller by separeting
  * this logic to helper
+ *
+ * @param string $path
+ * @return string
  */
-function whatIsCurrent($param)
+function whatIsCurrent(string $param): string
 {
     if (str_contains(request()->fullUrl(), 'women')) {
         if ($param === 'category') {
@@ -67,6 +81,7 @@ function whatIsCurrent($param)
 /**
  * Function for debuging queries
  * @codeCoverageIgnore
+ *
  * @param bool|null $show_data
  * @return void
  */
@@ -83,6 +98,8 @@ function dump_sql(?bool $show_data = false): void
 }
 
 /**
+ * Removes all cache
+ *
  * @return void
  */
 function forgetAllCache(): void
