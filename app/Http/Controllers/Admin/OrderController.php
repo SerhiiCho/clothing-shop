@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Order;
-use Illuminate\View\View;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class OrderController extends Controller
 {
@@ -28,8 +28,44 @@ class OrderController extends Controller
         } else {
             $orders = Order::latest()->paginate(24);
         }
-
         return view('admin.orders.index', compact('orders', 'tab'));
+    }
+
+    /**
+     * Take order
+     *
+     * @param \App\Models\Order $order
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(Order $order): RedirectResponse
+    {
+        // Delete from taken
+        if ($order->isTakenBy(user())) {
+            $order->update(['user_id' => null]);
+
+            return redirect('admin/orders')->withSuccess(
+                trans('messages.you_deleted_the_order', [
+                    'order' => $order->id,
+                ])
+            );
+        }
+
+        // Check if order is already has user
+        if ($order->user()->exists()) {
+            return redirect('admin/orders')->withError(
+                trans('messages.order_already_has_user', [
+                    'user' => $order->user->name,
+                ])
+            );
+        }
+
+        $order->update(['user_id' => user()->id]);
+
+        return redirect('admin/orders')->withSuccess(
+            trans('messages.you_took_the_order', [
+                'order' => $order->id,
+            ])
+        );
     }
 
     /**
@@ -38,11 +74,17 @@ class OrderController extends Controller
      */
     public function softDelete(Order $order): RedirectResponse
     {
-        $order->delete();
-        cache()->forget('orders');
+        if ($order->isTakenBy(user())) {
+            $order->delete();
 
-        return redirect('/admin/orders')->withSuccess(
-            trans('messages.order_closed')
+            cache()->forget('orders');
+
+            return redirect('/admin/orders')->withSuccess(
+                trans('messages.order_closed')
+            );
+        }
+        return redirect('/admin/orders')->withError(
+            trans('messages.cant_close_order')
         );
     }
 

@@ -43,6 +43,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('dashboard', 'DashboardController@index');
     Route::get('orders/{tab?}', 'OrderController@index');
     Route::put('orders/{order}', 'OrderController@softDelete');
+    Route::post('orders/{order}', 'OrderController@store');
     Route::delete('orders/{order}', 'OrderController@destroy');
     Route::put('registration', 'OptionController@registration');
     Route::put('men-category', 'OptionController@menCategory');
