@@ -11,7 +11,12 @@
     <div class="row pb-5">
         @foreach ($users as $user)
             <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="card" style="border-top:4px solid {{ $user->isAdmin() ? 'green' : '#e56114' }}">
+                <div class="card"
+                    style="
+                        border-top: 4px solid {{ $user->isAdmin() ? 'green' : '#e56114' }};
+                        background: {{ $user->isAdmin() ? '#f4fff4' : '#fff4f4' }};
+                    "
+                >
                     <div class="card-body py-2">
 
                         <div class="row">
@@ -21,6 +26,7 @@
                                     @csrf @method('put')
                                     <button type="submit"
                                         class="confirm btn btn-sm btn-primary btn-block"
+                                        style="border:2px inset #73b773"
                                         data-confirm="@lang('users.add_to_admin_this_user')"
                                         {{ $user->isAdmin() ? 'disabled' : '' }}
                                     >
@@ -35,6 +41,7 @@
                                     @csrf @method('delete')
                                     <button type="submit"
                                         class="confirm btn btn-sm btn-primary btn-block"
+                                        style="border:2px inset #cc5e5e"
                                         data-confirm="@lang('users.delete_this_user')"
                                         {{ $user->id == 1 ? 'disabled' : '' }}
                                     >
