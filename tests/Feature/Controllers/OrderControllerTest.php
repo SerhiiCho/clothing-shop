@@ -11,8 +11,8 @@ class OrderControllerTest extends TestCase
 {
     use DatabaseTransactions;
 
-    private $order;
     private $admin;
+    private $order;
 
     /**
      * @author Cho
@@ -20,8 +20,10 @@ class OrderControllerTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->order = factory(Order::class)->create();
         $this->admin = factory(User::class)->state('admin')->create();
+        $this->order = factory(Order::class)->create([
+            'user_id' => $this->admin->id,
+        ]);
     }
 
     /**
@@ -34,6 +36,22 @@ class OrderControllerTest extends TestCase
 
         $this->assertSoftDeleted('orders', [
             'id' => $this->order->id,
+        ]);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function open_order_cant_be_soft_deleted_by_admin_if_admin_hasnt_taken_this_order(): void
+    {
+        $order = factory(Order::class)->create();
+
+        $this->softDeleteOrder($order);
+
+        $this->assertDatabaseHas('orders', [
+            'id' => $order->id,
+            'deleted_at' => null,
         ]);
     }
 
