@@ -31,6 +31,12 @@
                     <span>@lang('user-sidebar.contacts')</span>
                 </a>
             </li>
+            <li class="{{ active_if_route_is('users') }}">
+                <a href="/admin/users" title="@lang('users.users')">
+                    <i class="fas fa-users icon-profile-menu-line" aria-hidden="true"></i>
+                    <span>@lang('users.users')</span>
+                </a>
+            </li>
             <li class="{{ active_if_route_is('items') }}" >
                 <a href="/items" title="@lang('user-sidebar.all_items')">
                     <i class="fas fa-tshirt icon-profile-menu-line" aria-hidden="true"></i>
