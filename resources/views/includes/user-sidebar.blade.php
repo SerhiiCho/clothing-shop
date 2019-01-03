@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li class="{{ active_if_route_is('contacts') }}">
-                <a href="/admin/contacts/create" title="@lang('user-sidebar.contacts')">
+                <a href="/admin/contacts" title="@lang('user-sidebar.contacts')">
                     <i class="fas fa-phone icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('user-sidebar.contacts')</span>
                 </a>

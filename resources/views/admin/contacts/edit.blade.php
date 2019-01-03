@@ -68,11 +68,11 @@
             </form>
 
             {{-- Back btn --}}
-            <a href="/admin/contacts/create" 
+            <a href="/admin/contacts" 
                 title="@lang('messages.back')"
                 class="btn btn-primary btn-block mt-2"
             >
-                @lang('messages.back')
+                &laquo; @lang('messages.back')
             </a>
         </div>
     </div>

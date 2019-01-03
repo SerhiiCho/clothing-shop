@@ -20,6 +20,16 @@ class ContactController extends Controller
     }
 
     /**
+     * Show list of all contacts
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index(): View
+    {
+        return view('admin.contacts.index');
+    }
+
+    /**
      * Show the form for creating a new contact
      *
      * @return \Illuminate\View\View
@@ -46,7 +56,7 @@ class ContactController extends Controller
             'phone' => $request->phone,
         ]);
 
-        return back()->withSuccess(
+        return redirect('admin/contacts')->withSuccess(
             trans('contacts.contact_added')
         );
     }
@@ -80,8 +90,8 @@ class ContactController extends Controller
         $contact->phone = $request->phone;
 
         return ($contact->save())
-        ? back()->withSuccess(trans('contacts.changed'))
-        : back()->withError(trans('contacts.changing_fails'));
+        ? redirect('admin/contacts')->withSuccess(trans('contacts.changed'))
+        : redirect('admin/contacts')->withError(trans('contacts.changing_fails'));
     }
 
     /**
@@ -95,7 +105,7 @@ class ContactController extends Controller
         cache()->forget('nav_contacts');
 
         return ($contact->delete())
-        ? redirect('/admin/contacts/create')->withSuccess(trans('contacts.deleted'))
-        : redirect('/admin/contacts/create')->withError(trans('contacts.deleted_fail'));
+        ? redirect('/admin/contacts')->withSuccess(trans('contacts.deleted'))
+        : redirect('/admin/contacts')->withError(trans('contacts.deleted_fail'));
     }
 }
