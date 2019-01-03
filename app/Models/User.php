@@ -21,13 +21,31 @@ class User extends Authenticatable
      */
     protected $hidden = ['password', 'remember_token'];
 
+    /**
+     * Relationships with Item model
+     */
     public function items()
     {
         return $this->hasMany(Item::class);
     }
 
-    public function isAdmin()
+    /**
+     * Check if user is admin
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
     {
         return $this->admin === 1 ? true : false;
+    }
+
+    /**
+     * Check if user is master
+     *
+     * @return bool
+     */
+    public function isMaster(): bool
+    {
+        return $this->id === 1 ? true : false;
     }
 }
