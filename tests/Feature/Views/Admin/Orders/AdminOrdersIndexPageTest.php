@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Feature\Views\Admin\Work;
+namespace Tests\Feature\Views\Admin\Orders;
 
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class AdminWorkIndexPageTest extends TestCase
+class AdminOrdersIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -29,7 +29,7 @@ class AdminWorkIndexPageTest extends TestCase
     public function page_is_not_accessable_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
-            ->get('/admin/work')
+            ->get('/admin/orders')
             ->assertRedirect();
     }
 
@@ -39,7 +39,7 @@ class AdminWorkIndexPageTest extends TestCase
      */
     public function page_is_not_accessable_by_guest(): void
     {
-        $this->get('/admin/work')->assertRedirect();
+        $this->get('/admin/orders')->assertRedirect();
     }
 
     /**
@@ -49,9 +49,9 @@ class AdminWorkIndexPageTest extends TestCase
     public function page_is_accessable_by_admin(): void
     {
         $this->actingAs($this->admin)
-            ->get('/admin/work')
+            ->get('/admin/orders')
             ->assertOk()
-            ->assertViewIs('admin.work.index');
+            ->assertViewIs('admin.orders.index');
     }
 
     /**
@@ -63,7 +63,7 @@ class AdminWorkIndexPageTest extends TestCase
         $order = factory(Order::class)->create();
 
         $this->actingAs($this->admin)
-            ->get('/admin/work')
+            ->get('/admin/orders')
             ->assertSeeText($order->phone);
     }
 }

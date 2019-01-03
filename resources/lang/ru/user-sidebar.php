@@ -3,7 +3,7 @@
 return [
 
     // View
-    'work' => 'Работа',
+    'orders' => 'Заказы',
     'profile' => 'Профиль',
     'add_new_item' => 'Новый товар',
     'all_items' => 'Весь товар',

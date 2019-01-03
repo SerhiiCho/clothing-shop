@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Order;
+use Illuminate\View\View;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 class OrderController extends Controller
@@ -17,6 +18,21 @@ class OrderController extends Controller
     }
 
     /**
+     * @param string|null $tab
+     * @return \Illuminate\View\View
+     */
+    public function index(?string $tab = null): View
+    {
+        if ($tab && $tab === 'closed') {
+            $orders = Order::onlyTrashed()->latest()->paginate(24);
+        } else {
+            $orders = Order::latest()->paginate(24);
+        }
+
+        return view('admin.orders.index', compact('orders', 'tab'));
+    }
+
+    /**
      * @param \App\Models\Order $order
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -25,7 +41,7 @@ class OrderController extends Controller
         $order->delete();
         cache()->forget('orders');
 
-        return redirect('/admin/work')->withSuccess(
+        return redirect('/admin/orders')->withSuccess(
             trans('messages.order_closed')
         );
     }
@@ -45,7 +61,7 @@ class OrderController extends Controller
         $order->items()->detach($item_ids);
         $order->forceDelete();
 
-        return redirect('/admin/work/closed')->withSuccess(
+        return redirect('/admin/orders/closed')->withSuccess(
             trans('messages.order_deleted')
         );
     }

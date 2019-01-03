@@ -1,16 +1,16 @@
 @admin
     <nav class="user-sidebar">
         <ul>
-            <li class="{{ active_if_route_is('admin/work') }} red-buttons" {{ $unreaded ?? '' }}>
-                <a href="/admin/work" title="@lang('user-sidebar.work')">
-                    <i class="fas fa-suitcase icon-profile-menu-line" aria-hidden="true"></i>
-                    <span>@lang('user-sidebar.work')</span>
-                </a>
-            </li>
             <li class="{{ active_if_route_is('items/create') }}">
                 <a href="/items/create" title="@lang('user-sidebar.add_new_item')">
                     <i class="fas fa-plus-circle icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('user-sidebar.add_new_item')</span>
+                </a>
+            </li>
+            <li class="{{ active_if_route_is('admin/orders') }} red-buttons" {{ $unreaded ?? '' }}>
+                <a href="/admin/orders" title="@lang('user-sidebar.orders')">
+                    <i class="fas fa-envelope icon-profile-menu-line" aria-hidden="true"></i>
+                    <span>@lang('user-sidebar.orders')</span>
                 </a>
             </li>
             <li class="{{ active_if_route_is('admin/cards') }}">

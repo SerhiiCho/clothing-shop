@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('user-sidebar.work'))
+@section('title', trans('user-sidebar.orders'))
 
 @section('content')
 
@@ -10,13 +10,13 @@
     {{-- Tabs --}}
     <ul class="nav nav-tabs nav-fill mb-4">
         <li class="nav-item">
-            <a class="nav-link {{ is_null($tab) ? 'active' : '' }}" href="/admin/work">
+            <a class="nav-link {{ is_null($tab) ? 'active' : '' }}" href="/admin/orders">
                 @lang('messages.opened_orders') 
                 <b style="color:brown">{{ is_null($tab) ? $orders->count() : '' }}</b>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ $tab == 'closed' ? 'active' : '' }}" href="/admin/work/closed">
+            <a class="nav-link {{ $tab == 'closed' ? 'active' : '' }}" href="/admin/orders/closed">
                 @lang('messages.closed_orders')
                 <b style="color:brown">{{ $tab == 'closed' ? $orders->count() : '' }}</b>
             </a>
