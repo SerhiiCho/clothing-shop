@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', whatIsCurrent('title'))
+@section('title', what_is_current('title'))
 
 @section('content')
 
@@ -18,7 +18,7 @@
                         @if($current_category == 'women' && isset($categories_women))
                             @foreach ($categories_women as $item)
                                 <a href="/items?category={{ $current_category }}&type={{ $item['type_id'] }}" 
-                                    class="list-group-item {{ activeIfRouteIs('items', 'type', $item['type_id']) }}"
+                                    class="list-group-item {{ active_if_route_is('items', 'type', $item['type_id']) }}"
                                 >
                                     {{ $item['type']['name'] }}
                                 </a>
@@ -26,7 +26,7 @@
                         @elseif ($current_category == 'men' && isset($categories_men))
                             @foreach ($categories_men as $item)
                                 <a href="/items?category={{ $current_category }}&type={{ $item['type_id'] }}" 
-                                    class="list-group-item {{ activeIfRouteIs('items', 'type', $item['type_id']) }}"
+                                    class="list-group-item {{ active_if_route_is('items', 'type', $item['type_id']) }}"
                                 >
                                     {{ $item['type']['name'] }}
                                 </a>
@@ -38,7 +38,7 @@
 
             <div class="col-md-{{ $sidebar ? '9' : '10 offset-md-1' }}">
                 <section class="display-4 p-4 text-center">
-                    {{ whatIsCurrent('title') }}
+                    {{ what_is_current('title') }}
                 </section>
 
                 @if ($sidebar)

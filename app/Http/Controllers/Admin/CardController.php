@@ -62,7 +62,7 @@ class CardController extends Controller
 
         if ($img) {
             $ext = $img->getClientOriginalExtension();
-            $filename = getFileName($request->type, $ext);
+            $filename = get_file_name($request->type, $ext);
 
             $this->uploadCardImage($img, $filename);
         }
@@ -112,7 +112,7 @@ class CardController extends Controller
             }
             $image = $request->file('image');
             $ext = $image->getClientOriginalExtension();
-            $filename = getFileName($request->type, $ext);
+            $filename = get_file_name($request->type, $ext);
 
             $this->uploadCardImage($image, $filename);
 

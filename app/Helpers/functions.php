@@ -2,6 +2,7 @@
 
 /**
  * Alias for auth() helper
+ * @codeCoverageIgnore
  */
 function user()
 {
@@ -11,7 +12,7 @@ function user()
 /**
  * Helper for giving an active button class "avtive"
  */
-function activeIfRouteIs($route, $request = null, $get = null)
+function active_if_route_is($route, $request = null, $get = null)
 {
     if ($request) {
         return request($request) == $get ? 'active' : '';
@@ -23,11 +24,12 @@ function activeIfRouteIs($route, $request = null, $get = null)
  * This function is needed for getting name
  * for images than I'm saving in storage
  *
+ * @codeCoverageIgnore
  * @param string $title
  * @param string $ext - extention
  * @return string
  */
-function getFileName(string $title, string $ext): string
+function get_file_name(string $title, string $ext): string
 {
     return str_slug($title) . '-' . str_random(7) . '.' . $ext;
 }
@@ -36,9 +38,10 @@ function getFileName(string $title, string $ext): string
  * After editing stylesheets this function will update
  * timestamp on its file, it prevents browser caching
  *
+ * @codeCoverageIgnore
  * @param string $path
  */
-function styleTimestamp(string $path)
+function style_tymestamp(string $path)
 {
     try {
         $timestamp = '?v=' . File::lastModified(public_path() . $path);
@@ -55,7 +58,7 @@ function styleTimestamp(string $path)
  * @param string $path
  * @return string
  */
-function whatIsCurrent(string $param): string
+function what_is_current(string $param): string
 {
     if (str_contains(request()->fullUrl(), 'women')) {
         if ($param === 'category') {
@@ -80,8 +83,8 @@ function whatIsCurrent(string $param): string
 
 /**
  * Function for debuging queries
- * @codeCoverageIgnore
  *
+ * @codeCoverageIgnore
  * @param bool|null $show_data
  * @return void
  */
@@ -102,7 +105,7 @@ function dump_sql(?bool $show_data = false): void
  *
  * @return void
  */
-function forgetAllCache(): void
+function forget_all_cache(): void
 {
     array_map(function ($name) {
         cache()->forget($name);

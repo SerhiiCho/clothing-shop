@@ -82,7 +82,7 @@ class OptionController extends Controller
      */
     public function cacheForget(): RedirectResponse
     {
-        forgetAllCache();
+        forget_all_cache();
 
         return redirect('/admin/dashboard')->withSuccess(
             trans('options.cache_deleted')

@@ -1,49 +1,49 @@
 @admin     
     <nav class="user-sidebar">
         <ul>
-            <li class="{{ activeIfRouteIs('admin/work') }} red-buttons" {{ $unreaded ?? '' }}>
+            <li class="{{ active_if_route_is('admin/work') }} red-buttons" {{ $unreaded ?? '' }}>
                 <a href="/admin/work" title="@lang('user-sidebar.work')">
                     <i class="fas fa-suitcase icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('user-sidebar.work')</span>
                 </a>
             </li>
-            <li class="{{ activeIfRouteIs('items/create') }}">
+            <li class="{{ active_if_route_is('items/create') }}">
                 <a href="/items/create" title="@lang('user-sidebar.add_new_item')">
                     <i class="fas fa-plus-circle icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('user-sidebar.add_new_item')</span>
                 </a>
             </li>
-            <li class="{{ activeIfRouteIs('admin/cards') }}">
+            <li class="{{ active_if_route_is('admin/cards') }}">
                 <a href="/admin/cards" title="@lang('user-sidebar.cards')">
                     <i class="fas fa-portrait icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('user-sidebar.cards')</span>
                 </a>
             </li>
-            <li class="{{ activeIfRouteIs('slider') }}">
+            <li class="{{ active_if_route_is('slider') }}">
                 <a href="/admin/slider" title="@lang('user-sidebar.slider')">
                     <i class="fas fa-images icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('user-sidebar.slider')</span>
                 </a>
             </li>
-            <li class="{{ activeIfRouteIs('contacts') }}">
+            <li class="{{ active_if_route_is('contacts') }}">
                 <a href="/admin/contacts/create" title="@lang('user-sidebar.contacts')">
                     <i class="fas fa-phone icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('user-sidebar.contacts')</span>
                 </a>
             </li>
-            <li class="{{ activeIfRouteIs('items') }}" >
+            <li class="{{ active_if_route_is('items') }}" >
                 <a href="/items" title="@lang('user-sidebar.all_items')">
                     <i class="fas fa-tshirt icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('user-sidebar.all_items')</span>
                 </a>
             </li>
-            <li class="{{ activeIfRouteIs('logs') }}" >
+            <li class="{{ active_if_route_is('logs') }}" >
                 <a href="/logs" title="@lang('logs.logs')">
                     <i class="fas fa-file-contract icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('logs.logs')</span>
                 </a>
             </li>
-            <li class="{{ activeIfRouteIs('admin/dashboard') }}">
+            <li class="{{ active_if_route_is('admin/dashboard') }}">
                 <a href="/admin/dashboard" title="@lang('dashboard.dashboard')">
                     <i class="fas fa-wrench icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('dashboard.dash')</span>

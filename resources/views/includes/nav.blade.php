@@ -38,13 +38,13 @@
         <li class="hide-on-desktop">@include('includes.cart')</li>
 
         {{-- Home --}}
-        <li class="{{ activeIfRouteIs('/') }}" title="@lang('navigation.home')">
+        <li class="{{ active_if_route_is('/') }}" title="@lang('navigation.home')">
             <a href="/">@lang('navigation.home')</a>
         </li>
 
         {{-- Items / men --}}
         @if ($admin_options['men_category'])
-            <li class="{{ activeIfRouteIs('items', 'category', 'men') }}" 
+            <li class="{{ active_if_route_is('items', 'category', 'men') }}" 
                 title="@lang('navigation.men')"
             >
                 <a href="/items?category=men">
@@ -55,7 +55,7 @@
 
         {{-- Items / women --}}
         @if ($admin_options['women_category'])
-            <li class="{{ activeIfRouteIs('items', 'category', 'women') }}" 
+            <li class="{{ active_if_route_is('items', 'category', 'women') }}" 
                 title="@lang('navigation.women')"
             >
                 <a href="/items?category=women">@lang('navigation.women')</a>

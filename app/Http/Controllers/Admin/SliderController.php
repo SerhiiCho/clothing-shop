@@ -53,7 +53,7 @@ class SliderController extends Controller
 
         if ($img) {
             $ext = $img->getClientOriginalExtension();
-            $filename = getFileName('slider', $ext);
+            $filename = get_file_name('slider', $ext);
 
             $this->uploadImageInStorage($img, $filename);
         }
@@ -95,7 +95,7 @@ class SliderController extends Controller
 
             $image = $request->file('image');
             $ext = $image->getClientOriginalExtension();
-            $filename = getFileName('slider', $ext);
+            $filename = get_file_name('slider', $ext);
 
             $this->uploadImageInStorage($image, $filename);
 

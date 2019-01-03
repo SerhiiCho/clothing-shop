@@ -30,7 +30,7 @@ trait ItemHelpers
             foreach ($request->photos as $image) {
                 $i++;
                 $ext = $image->getClientOriginalExtension();
-                $filename = getFileName($request->title, $ext);
+                $filename = get_file_name($request->title, $ext);
                 $path_big = storage_path("app/public/img/big/clothes/{$filename}");
                 $path_small = storage_path("app/public/img/small/clothes/{$filename}");
 
