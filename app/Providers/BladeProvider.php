@@ -7,10 +7,17 @@ use Illuminate\Support\ServiceProvider;
 
 class BladeProvider extends ServiceProvider
 {
-    public function boot()
+    /**
+     * @return void
+     */
+    public function boot(): void
     {
         Blade::if('admin', function () {
             return auth()->check() && user()->isAdmin();
+        });
+
+        Blade::if('master', function () {
+            return auth()->check() && user()->isMaster();
         });
     }
 }
