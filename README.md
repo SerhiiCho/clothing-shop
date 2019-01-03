@@ -26,18 +26,20 @@ Here is what admin can choose on the dashboard.
 
 The app supports only russian language, but can be easily translated. Just by copying /resources/lang/ru folder and translating all files to whatever language you want. Also translate couple seeders. There are no hard coded word, everything is using laravel translations via functions *lang()* and *trans()*.
 
-## Technologies
+## What we are using
+##### Technologies
 
-* [Laravel - PHP framework](https://github.com/laravel/laravel)
-* [Vue.js - JavaScript framework](https://github.com/vuejs/vue)
-* [Bootstrap 4 - CSS framework](https://getbootstrap.com/)
+* [PHP](http://php.net/)
+* [Redis](https://redis.io/)
+* [MySQL](https://www.mysql.com/)
+* [JavaScript](https://www.javascript.com/)
+* [Docker](https://www.docker.com/)
 
-## Packages
+##### Frameworks
 
-* [Intervention/image](http://image.intervention.io/)
-* [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer)
-* [Crinsane/LaravelShoppingcart](https://github.com/Crinsane/LaravelShoppingcart)
-* [TinyMCE Editor](https://www.tinymce.com/)
+* [laravel/laravel](https://github.com/laravel/laravel) | PHP framework
+* [vuejs/vue](https://github.com/vuejs/vue) | JavaScript framework
+* [twbs/bootstrap](https://github.com/twbs/bootstrap)
 
 ## Get started (without Docker)
 
@@ -55,3 +57,7 @@ The app supports only russian language, but can be easily translated. Just by co
 
 1. `docker-compose up -d` and wait untill it's done
 2. `docker-compose exec server /start.sh` *(go to localhost)*
+
+> Register page is going to be at localhost/hello/register
+> Login page is going to be at localhost/hello/login
+> There is a registered admin user with email *ser@ser.com* and password *111111*
