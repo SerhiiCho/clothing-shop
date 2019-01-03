@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Contracts;
+namespace App\Helpers\Traits;
 
+use App\Helpers\Traits\ItemHelpers;
 use App\Http\Requests\ItemRequest;
 use App\Models\Item;
 use App\Models\ItemsPhoto;

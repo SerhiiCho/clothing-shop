@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\ItemHelpers;
+use App\Helpers\Traits\ItemHelpers;
 use App\Http\Requests\ItemRequest;
 use App\Models\Item;
 use App\Models\Type;

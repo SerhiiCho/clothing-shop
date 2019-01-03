@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Contracts\ItemHelpers;
+use App\Helpers\Traits\ItemHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ItemResource;
 use App\Models\Item;
