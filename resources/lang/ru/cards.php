@@ -10,7 +10,6 @@ return [
     'save_changes' => 'Сохранить изменения',
     'change_card' => 'Изменить карту',
     'delete_card' => 'Удалить карту',
-    'amount_of_cards' => 'Текущее количество карт',
     'are_you_sure_you_want_delete' => 'Вы точно хотите удалить эту карту?',
 
     // Validation

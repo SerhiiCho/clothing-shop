@@ -5,9 +5,11 @@
 @section('content')
 
 <div class="container">
-    
     @if ($slider->count() > 0)
-        <h3 class="display-4 text-center pt-3 pb-3">@lang('slider.slider')</h3>
+        <h3 class="display-4 text-center pt-3 pb-3">
+            @lang('slider.slider'): 
+            {{ $slider->count() }}
+        </h3>
 
         <table class="table">
             <thead class="thead-light">
@@ -61,11 +63,9 @@
             </tbody>
         </table>
     @endif
+
+    {{-- Add slide btn --}}
     <div class="text-center pb-5">
-        <div class="alert alert-light mb-3" role="alert">
-            @lang('slider.amount_of_slides'): {{ $slider->count() }}
-        </div>
-        {{-- Add slide btn --}}
         <a href="/admin/slider/create" title="@lang('slider.add_slide')" class="btn btn-success">
             @lang('slider.add_slide')
         </a>

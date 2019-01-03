@@ -7,7 +7,10 @@
 <div class="container">
     <!-- 3 Cards -->
     @if ($cards->count() > 0)
-        <h3 class="display-4 text-center pt-3">@lang('cards.cards')</h3>
+        <h3 class="display-4 text-center pt-3">
+            @lang('cards.cards'):
+            {{ $cards->count() }} / 3
+        </h3>
 
         <div class="row center three-cards p-3">
             @foreach ($cards as $card)
@@ -53,12 +56,9 @@
             @endforeach
         </div>
     @endif
-    <div class="text-center pb-5">
-        <div class="alert alert-light mb-3" role="alert">
-            @lang('cards.amount_of_cards'): {{ $cards->count() }} / 3
-        </div>
 
-        {{-- Add card btn --}}
+    {{-- Add card btn --}}
+    <div class="text-center pb-5">
         <a href="/admin/cards/create" 
             title="@lang('cards.add_card')" 
             class="btn btn-success"

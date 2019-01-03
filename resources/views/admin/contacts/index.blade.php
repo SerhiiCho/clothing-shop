@@ -7,7 +7,8 @@
 <div class="container pb-5">
     @isset($contacts)
         <h4 class="display-4 text-center p-3">
-            @lang('user-sidebar.contacts')
+            @lang('user-sidebar.contacts'): 
+            {{ count($contacts) }}
         </h4>
 
         <div class="row">
