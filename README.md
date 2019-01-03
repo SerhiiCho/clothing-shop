@@ -1,21 +1,22 @@
-<p align="center"><img src="https://raw.githubusercontent.com/SerhiiCho/clothing_shop/master/storage/app/public/img/big/slider/slider.jpg"></p>
+![clothing shop](https://raw.githubusercontent.com/SerhiiCho/clothing_shop/master/storage/app/public/img/big/slider/slider.jpg)
 
 ## About
 
-Simple Callback E-commerce clothing shop. It has men's and women's categories and convenient filtering with [vue.js](https://github.com/vuejs/vue) by types of clothes like pents, short, skirts etc. In this web app is implemented infinite pagination without npm packages, just [vue.js](https://github.com/vuejs/vue) and little bit of effort. The app is pretty fast and optimize. It has PHPUnit tests and code itself is well written. I'm a typification person (if you can say that), I'm using return types and typehinting.
+Simple Callback E-commerce clothing shop. It has men's and women's categories and convenient filtering with [vue.js](https://github.com/vuejs/vue) by types of clothes like pents, short, skirts etc. In this web app is implemented infinite pagination without npm packages, just [vue.js](https://github.com/vuejs/vue) and little bit of effort. The app is pretty fast and optimize. It has PHPUnit tests and code itself is well written. But of course there are places where code needs to be refactored and tested.
 
 ## Checkout
 
 Client can add items to a cart, and checkout. When client makes an order, he or she fills in the form with 2 fields. One for the phone number, and the second is for a name. After submitting the form, admin will see small red notification in his admin panel navigation menu. It shows that there is an order.
 
-## Admin panel.
-
-* Admin can add, delete or edit **clothes items**.
-* Admin can add, delete or edit **home page cards**.
-* Admin can add, delete or edit **home page slider**.
-* Admin can add, delete or edit **contact information** that is visible on all pages.
-* Admin can see **logs** and some basic **statistics**.
-* Admin can add new users to admin list, or delete them.
+## Admin panel
+##### Admin can ...
+* delete or edit **clothes items**.
+* delete or edit **home page cards**.
+* delete or edit **home page slider**.
+* add, delete or edit **contact information** that is visible on all pages.
+* see **logs** and some basic **statistics**.
+* add new users to admin list, or delete them.
+* close and delete client's orders
 
 Here is what admin can choose on the dashboard.
 1. **Allow registration** Admin can turn this option off, and register form will disappear.
@@ -42,10 +43,13 @@ The app supports only russian language, but can be easily translated. Just by co
 * [vuejs/vue](https://github.com/vuejs/vue) | JavaScript framework
 * [twbs/bootstrap](https://github.com/twbs/bootstrap)
 
-> Register page is going to be at **localhost/hello/register** <br />
-> Login page is going to be at **localhost/hello/login** <br />
-> There is a registered admin user with email *ser@ser.com* and password **111111** <br />
-> In order to add a new user with admin role, you need to register a new user and then main admin has to add new user to admin list in admin panel
+## Before downloading
+
+* Register page is going to be at **localhost/hello/register**
+
+* Login page is going to be at **localhost/hello/login**
+
+* There is a registered admin user with email **ser@ser.com** and password **111111**
 
 ## Get started (without Docker)
 
