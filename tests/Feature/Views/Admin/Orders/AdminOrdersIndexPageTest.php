@@ -66,4 +66,66 @@ class AdminOrdersIndexPageTest extends TestCase
             ->get('/admin/orders')
             ->assertSeeText($order->phone);
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_can_take_order(): void
+    {
+        $order = factory(Order::class)->create();
+
+        $this->actingAs($this->admin)
+            ->post(action('Admin\OrderController@store', [
+                'order' => $order->id,
+            ]));
+
+        $this->assertDatabaseHas('orders', [
+            'id' => $order->id,
+            'user_id' => $this->admin->id,
+        ]);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_cant_take_order_if_other_admin_took_it(): void
+    {
+        $other_admin = factory(User::class)->state('admin')->create();
+        $order = factory(Order::class)->create([
+            'user_id' => $other_admin->id,
+        ]);
+
+        $this->actingAs($this->admin)
+            ->post(action('Admin\OrderController@store', [
+                'order' => $order->id,
+            ]));
+
+        $this->assertDatabaseHas('orders', [
+            'id' => $order->id,
+            'user_id' => $other_admin->id,
+        ]);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_can_untake_order(): void
+    {
+        $order = factory(Order::class)->create([
+            'user_id' => $this->admin->id,
+        ]);
+
+        $this->actingAs($this->admin)
+            ->post(action('Admin\OrderController@store', [
+                'order' => $order->id,
+            ]));
+
+        $this->assertDatabaseHas('orders', [
+            'id' => $order->id,
+            'user_id' => null,
+        ]);
+    }
 }
