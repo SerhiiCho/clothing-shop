@@ -53,11 +53,3 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::resource('contacts', 'ContactController', ['except' => ['show', 'index']]);
     Route::put('sections/{section}', 'SectionController@update');
 });
-
-// Artisan commands =======
-Route::prefix('php/artisan')->group(function () {
-    Route::get('cache/{url_key}', 'ArtisanController@cache');
-    Route::get('clear/{url_key}', 'ArtisanController@clear');
-    Route::get('storage/link/{url_key}', 'ArtisanController@link');
-    Route::get('migrate/fresh/{url_key}', 'ArtisanController@migrate');
-});
