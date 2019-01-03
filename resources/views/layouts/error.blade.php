@@ -5,6 +5,6 @@
     <main id="app">
         @yield('content')
     </main>
-    @include('includes.script')
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
