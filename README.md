@@ -14,7 +14,8 @@ Client can add items to a cart, and checkout. When client makes an order, he or 
 * Admin can add, delete or edit **home page cards**.
 * Admin can add, delete or edit **home page slider**.
 * Admin can add, delete or edit **contact information** that is visible on all pages.
-* Admin can check see **logs** and some basic **statistics**.
+* Admin can see **logs** and some basic **statistics**.
+* Admin can add new users to admin list, or delete them.
 
 Here is what admin can choose on the dashboard.
 1. **Allow registration** Admin can turn this option off, and register form will disappear.
@@ -41,6 +42,11 @@ The app supports only russian language, but can be easily translated. Just by co
 * [vuejs/vue](https://github.com/vuejs/vue) | JavaScript framework
 * [twbs/bootstrap](https://github.com/twbs/bootstrap)
 
+> Register page is going to be at localhost/hello/register <br />
+> Login page is going to be at localhost/hello/login <br />
+> There is a registered admin user with email *ser@ser.com* and password *111111* <br />
+> In order to add new user with admin role, you need to register a new user and main admin has to add user to admin list in admin menu
+
 ## Get started (without Docker)
 
 1. `cp .env.example .env` copy the *env.example* and create *.env*
@@ -57,7 +63,3 @@ The app supports only russian language, but can be easily translated. Just by co
 
 1. `docker-compose up -d` and wait untill it's done
 2. `docker-compose exec server /start.sh` *(go to localhost)*
-
-> Register page is going to be at localhost/hello/register
-> Login page is going to be at localhost/hello/login
-> There is a registered admin user with email *ser@ser.com* and password *111111*
