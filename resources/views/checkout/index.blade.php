@@ -69,7 +69,10 @@
                     @lang('cart.order')
                 </button>
 
-                <button-back title="@lang('messages.back')"></button-back>
+                {{-- Back btn --}}
+                <a href="/cart" class="btn btn-primary" title="@lang('messages.back')">
+                    &laquo; @lang('messages.back')
+                </a>
             </form>
         </div>
     </div>
