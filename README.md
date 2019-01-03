@@ -45,7 +45,7 @@ The app supports only russian language, but can be easily translated. Just by co
 > Register page is going to be at **localhost/hello/register** <br />
 > Login page is going to be at **localhost/hello/login** <br />
 > There is a registered admin user with email *ser@ser.com* and password **111111** <br />
-> In order to add new user with admin role, you need to register a new user and main admin has to add user to admin list in admin menu
+> In order to add a new user with admin role, you need to register a new user and then main admin has to add new user to admin list in admin panel
 
 ## Get started (without Docker)
 
