@@ -33,10 +33,30 @@ class Order extends Model
     }
 
     /**
+     * Relatinship with User model
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
      * Accessor that formats created_at record to readable format
      */
     public function getCreatedAtAttribute($value)
     {
         return facebookTimeAgo($value);
+    }
+
+    /**
+     * @param $user
+     * @return bool
+     */
+    public function isTakenBy($user): bool
+    {
+        if ($this->user()->exists() && $this->user->id == $user->id) {
+            return true;
+        }
+        return false;
     }
 }

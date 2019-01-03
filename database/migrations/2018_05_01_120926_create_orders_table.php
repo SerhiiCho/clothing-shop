@@ -21,6 +21,9 @@ class CreateOrdersTable extends Migration
             $table->float('total');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->unsignedInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
