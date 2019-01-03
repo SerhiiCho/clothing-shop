@@ -11,6 +11,8 @@ services:
     ports: 
       - 80:80
     working_dir: /var/www
+    depends_on: 
+      - db
 
   db:
     image: mysql:8.0
