@@ -3,12 +3,16 @@
 .vscode
 .vagrant
 node_modules
+vendor
+
 public/hot
 public/mix-manifest.json
+
 storage/*.key
-vendor
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
 docker/db
+
+!resources/views/vendor
