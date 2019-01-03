@@ -60,24 +60,28 @@ function style_tymestamp(string $path)
  */
 function what_is_current(string $param): string
 {
-    if (str_contains(request()->fullUrl(), 'women')) {
-        if ($param === 'category') {
-            return 'women';
-        } elseif ($param === 'title') {
-            return trans('items.women_items');
-        }
-    } elseif (str_contains(request()->fullUrl(), 'men')) {
-        if ($param === 'category') {
-            return 'men';
-        } elseif ($param === 'title') {
-            return trans('items.men_items');
-        }
-    } else {
-        if ($param === 'category') {
-            return '';
-        } elseif ($param === 'title') {
-            return trans('items.all_items');
-        }
+    if (str_contains(request()->fullUrl(), 'women') && $param === 'category') {
+        return 'women';
+    }
+
+    if (str_contains(request()->fullUrl(), 'women') && $param === 'title') {
+        return trans('items.women_items');
+    }
+
+    if (str_contains(request()->fullUrl(), 'men') && $param === 'category') {
+        return 'men';
+    }
+
+    if (str_contains(request()->fullUrl(), 'men') && $param === 'title') {
+        return trans('items.men_items');
+    }
+
+    if ($param === 'category') {
+        return '';
+    }
+
+    if ($param === 'title') {
+        return trans('items.all_items');
     }
 }
 
