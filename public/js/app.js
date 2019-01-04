@@ -14562,6 +14562,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -14588,11 +14595,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var itemSlug = window.location.pathname.split("/").slice(-1);
 
-            fetch('/api/item/' + itemSlug).then(function (res) {
-                return res.json();
-            }).then(function (res) {
-                _this.item = res.data;
-                _this.bigPhoto = res.data.photos[0].name;
+            this.$axios.get('/api/item/' + itemSlug).then(function (res) {
+                _this.item = res.data.data;
+                _this.bigPhoto = res.data.data.photos[0].name;
             }).catch(function (err) {
                 return console.log(err);
             });
@@ -14725,12 +14730,12 @@ var render = function() {
           "div",
           { staticClass: "row images-to-show" },
           _vm._l(_vm.item.photos, function(photo, index) {
-            return index >= 0 && index < 5
-              ? _c(
-                  "div",
-                  { key: photo.id, staticClass: "col-12 mb-2 pl-0 pr-2" },
-                  [
-                    _c(
+            return _c(
+              "div",
+              { key: photo.id, staticClass: "col-12 mb-2 pl-0 pr-2" },
+              [
+                index >= 0 && index < 5
+                  ? _c(
                       "transition",
                       {
                         attrs: {
@@ -14754,10 +14759,10 @@ var render = function() {
                         })
                       ]
                     )
-                  ],
-                  1
-                )
-              : _vm._e()
+                  : _vm._e()
+              ],
+              1
+            )
           })
         )
       ]
@@ -14822,6 +14827,21 @@ var render = function() {
             _c("input", {
               attrs: { type: "hidden", name: "title" },
               domProps: { value: _vm.item.title }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "slug" },
+              domProps: { value: _vm.item.slug }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "photo" },
+              domProps: { value: _vm.bigPhoto }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "category" },
+              domProps: { value: _vm.item.category }
             }),
             _vm._v(" "),
             _c("input", {

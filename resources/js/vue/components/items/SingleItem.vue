@@ -41,13 +41,16 @@
             @mouseover="imageHovered = true"
             @mouseout="imageHovered = false"
         >
-            <div class="row images-to-show">
+            <div class="row images-to-show" >
                 <div v-for="(photo, index) in item.photos"
                     :key="photo.id"
                     class="col-12 mb-2 pl-0 pr-2"
-                    v-if="index >= 0 && index < 5"
                 >
-                    <transition name="fade-slide" mode="out-in" appear>
+                    <transition name="fade-slide"
+                        v-if="index >= 0 && index < 5"
+                        mode="out-in"
+                        appear
+                    >
                         <img :src="'/storage/img/small/clothes/' + photo.name"
                             @mouseover="swapPhoto(photo.name, index)"
                             :id="'photo' + index"
@@ -87,6 +90,10 @@
                     <input type="hidden" name="_token" :value="token">
                     <input type="hidden" name="id" :value="item.id">
                     <input type="hidden" name="title" :value="item.title">
+                    <input type="hidden" name="slug" :value="item.slug">
+                    <input type="hidden" name="photo" :value="bigPhoto">
+
+                    <input type="hidden" name="category" :value="item.category">
                     <input type="hidden" name="price" :value="item.price">
                     <button type="submit" :title="addToCart" class="btn btn-outline-success">
                         {{ addToCart }}
@@ -126,11 +133,10 @@ export default {
         fetchItem () {
             let itemSlug = window.location.pathname.split("/").slice(-1)
 
-            fetch ('/api/item/' + itemSlug)
-                .then(res => res.json())
+            this.$axios.get('/api/item/' + itemSlug)
                 .then(res => {
-                    this.item = res.data
-                    this.bigPhoto = res.data.photos[0].name
+                    this.item = res.data.data
+                    this.bigPhoto = res.data.data.photos[0].name
                 })
                 .catch(err => console.log(err))
         },
