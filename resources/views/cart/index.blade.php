@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container">
-    @if (Cart::count() > 0)
+    @if (Cart::getTotal() > 0)
         <h4 class="text-center pt-4 pb-3 font-weight-normal">
             @lang('cart.cart')
         </h4>
@@ -42,18 +42,6 @@
                             <h6>{{ $item->model->price }} @lang('items.hryvnia')</h6>
                         </td>
                         <td class="text-center">
-                            <form action="{{ action('CartController@addToFavorite', ['id' => $item->rowId]) }}" 
-                                method="post" 
-                                class="d-inline"
-                            >
-                                @csrf
-                                <button type="submit"
-                                    class="btn btn-dark btn-sm" 
-                                    title="@lang('cart.add_to_favorite')"
-                                >
-                                    <i class="fas fa-star grey"></i>
-                                </button>
-                            </form>
                             <form action="{{ action('CartController@destroy', ['item' => $item->rowId]) }}" 
                                 method="post" 
                                 class="d-inline"
@@ -78,7 +66,7 @@
                     <td></td>
                     <td class="hidden-xs text-center">
                         <strong>
-                            @lang('cart.total')  {{ Cart::total() }} @lang('items.hryvnia')
+                            @lang('cart.total')  {{ Cart::getTotal() }} @lang('items.hryvnia')
                         </strong>
                     </td>
                     <td>
@@ -92,8 +80,6 @@
     @else
         <p class="text-center pt-5">@lang('cart.empty')</p>
     @endif
-
-    @include('cart.partials.favorites')
 </div>
 
 @endsection
