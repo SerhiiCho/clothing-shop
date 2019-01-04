@@ -1,5 +1,7 @@
 FROM php:7.3-apache
 
+COPY ./start.sh /
+
 RUN docker-php-ext-install \
     pdo_mysql \
     && a2enmod rewrite \
@@ -26,6 +28,7 @@ RUN docker-php-ext-install \
         gnupg \
         gnupg2 \
         gnupg1 \
+        supervisor \
     && curl -sS https://getcomposer.org/installer | \
         php -- --install-dir=/usr/local/bin --filename=composer \
     && docker-php-ext-configure gd \
@@ -33,6 +36,8 @@ RUN docker-php-ext-install \
         --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && echo 'alias phpunit="vendor/bin/phpunit"' >> ~/.bashrc \
-    && echo 'alias pa="php artisan"' >> ~/.bashrc
+    && echo 'alias pa="php artisan"' >> ~/.bashrc \
+    && chmod u+x /start.sh
 
-COPY ./start.sh /
+COPY laravel-worker.conf /etc/supervisor/conf.d/laravel-worker.conf
+RUN /usr/bin/supervisord -c /etc/supervisor/conf.d/laravel-worker.conf
