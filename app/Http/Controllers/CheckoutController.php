@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CheckoutRequest;
 use App\Models\Order;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Cart;
+use Darryldecode\Cart\Exceptions\InvalidConditionException;
+use Darryldecode\Cart\Exceptions\InvalidItemException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 
@@ -17,9 +19,9 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return (Cart::instance('default')->count() > 0)
-        ? view('checkout.index')
-        : redirect('/cart');
+        return (Cart::isEmpty())
+        ? redirect('/cart')
+        : view('checkout.index');
     }
 
     /**
@@ -41,20 +43,20 @@ class CheckoutController extends Controller
                 'ip' => $request->ip(),
                 'phone' => $request->phone,
                 'name' => $request->name,
-                'total' => str_replace(' ', '', Cart::total()),
+                'total' => str_replace(' ', '', Cart::getTotal()),
             ]);
 
             $item_ids = array_map(function ($item) {
                 return $item['id'];
-            }, Cart::content()->toArray());
+            }, Cart::getContent()->toArray());
 
             $order->items()->attach($item_ids);
-            Cart::instance('default')->destroy();
+            Cart::clear();
 
             return redirect('/cart')->withSuccess(
                 trans('checkout.order_sent')
             );
-        } catch (Exception | QueryException $e) {
+        } catch (InvalidConditionException | InvalidItemException | QueryException $e) {
             logger()->error($e->getMessage());
             return back()->withError(trans('checkout.error'));
         }

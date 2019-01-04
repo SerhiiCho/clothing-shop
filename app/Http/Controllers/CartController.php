@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Cart;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -26,17 +27,15 @@ class CartController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $dublicates = Cart::search(function ($cart_item, $row_id) use ($request) {
-            return $cart_item->id === $request->id;
-        });
-
-        if ($dublicates->isNotEmpty()) {
+        if (Cart::get($request->id)) {
             return back()->withError(trans('cart.item_is_in_your_cart'));
         }
 
-        // id, name, amount and price
-        Cart::add($request->id, $request->title, 1, $request->price)
-            ->associate('App\Models\Item');
+        Cart::add($request->id, $request->title, $request->price, 1, [
+            'slug' => $request->slug,
+            'category' => $request->category,
+            'photo' => $request->photo,
+        ]);
 
         return back()->withSuccess(trans('cart.added_to_cart', [
             'item' => $request->title,
@@ -46,12 +45,12 @@ class CartController extends Controller
     /**
      * Remove the specified cart item from session
      *
-     * @param string $rowId The id of a cart item
+     * @param string $item_id The id of a cart item
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(string $rowId): RedirectResponse
+    public function destroy(string $item_id): RedirectResponse
     {
-        Cart::remove($rowId);
+        Cart::remove($item_id);
         return back()->withSuccess(trans('cart.was_deleted'));
     }
 }
