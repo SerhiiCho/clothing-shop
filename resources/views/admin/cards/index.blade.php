@@ -58,14 +58,16 @@
     @endif
 
     {{-- Add card btn --}}
-    <div class="text-center pb-5">
-        <a href="/admin/cards/create" 
-            title="@lang('cards.add_card')" 
-            class="btn btn-success"
-        >
-            @lang('cards.add_card')
-        </a>
-    </div>
+    @if ($cards->count() < 3)
+        <div class="text-center pb-5">
+            <a href="/admin/cards/create" 
+                title="@lang('cards.add_card')" 
+                class="btn btn-success"
+            >
+                @lang('cards.add_card')
+            </a>
+        </div>
+    @endif
 </div>
 
 @endsection
