@@ -5,6 +5,7 @@
 node_modules
 vendor
 
+supervisord.pid
 public/hot
 public/mix-manifest.json
 
