@@ -2,6 +2,9 @@ public/hot
 storage/*.key
 .idea
 .vscode
+.git
+node_modules
+vendor
 .vagrant
 Homestead.json
 Homestead.yaml
