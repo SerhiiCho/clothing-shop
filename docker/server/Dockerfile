@@ -2,10 +2,7 @@ FROM php:7.3-apache
 
 COPY ./start.sh /
 
-RUN docker-php-ext-install \
-    pdo_mysql \
-    && a2enmod rewrite \
-    && apt-get update \
+RUN apt-get update \
     && apt-get install -y \
         apt-utils \
         libpng-dev \
@@ -35,6 +32,10 @@ RUN docker-php-ext-install \
         --with-freetype-dir=/usr/include/ \
         --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
+    && docker-php-ext-install  \
+    pdo_mysql \
+    zip \
+    && a2enmod rewrite \
     && echo 'alias phpunit="vendor/bin/phpunit"' >> ~/.bashrc \
     && echo 'alias pa="php artisan"' >> ~/.bashrc \
     && chmod u+x /start.sh

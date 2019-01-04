@@ -28,6 +28,7 @@ services:
       MYSQL_DATABASE: clothing_shop
     volumes: 
       - ./docker/db/mysql:/var/lib/mysql
+      - ./docker/db/db-dumps:/var/backups
 
   composer:
     image: composer
