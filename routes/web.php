@@ -7,6 +7,10 @@
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')
     ->middleware('admin');
 
+Route::get('test', function () {
+    \App\Jobs\BackupJob::dispatch();
+});
+
 Route::prefix(config('custom.enter_slug'))->group(function () {
     Auth::routes();
 });
