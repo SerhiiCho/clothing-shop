@@ -65,7 +65,8 @@
                                         class="py-2 btn btn-sm btn-block bg-transparent"
                                         style="color:#e56114"
                                     >
-                                        <i class="fas fa-times"></i> @lang('messages.untake_order')
+                                        <i class="fas fa-sync-alt fa-spin"></i> 
+                                        @lang('messages.untake_order')
                                     </button>
                                 @else
                                     {{-- Take order --}}
