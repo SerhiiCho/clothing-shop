@@ -9,23 +9,23 @@
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">@lang('checkout.your_order')</span>
                 <span class="badge badge-secondary badge-pill">
-                    {{ Cart::content()->count() }}
+                    {{ Cart::getTotalQuantity() }}
                 </span>
             </h4>
             <ul class="list-group mb-3">
-                @foreach (Cart::content() as $item)
+                @foreach (Cart::getContent() as $item)
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
-                            <h6 class="my-0">{{ $item->model->title }}</h6>
+                            <h6 class="my-0">{{ $item->name }}</h6>
                         </div>
                         <span class="text-muted text-right" style="min-width:80px">
-                            {{ $item->model->price }} @lang('items.hryvnia')
+                            {{ $item->price }} @lang('items.hryvnia')
                         </span>
                     </li>
                 @endforeach
                 <li class="list-group-item d-flex justify-content-between">
                     <span>@lang('cart.total')</span>
-                    <strong>{{ Cart::total() }} @lang('items.hryvnia')</strong>
+                    <strong>{{ Cart::getTotal() }} @lang('items.hryvnia')</strong>
                 </li>
             </ul>
         </div>

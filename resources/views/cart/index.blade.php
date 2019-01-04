@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container">
-    @if (Cart::getTotal() > 0)
+    @if (!Cart::isEmpty())
         <h4 class="text-center pt-4 pb-3 font-weight-normal">
             @lang('cart.cart')
         </h4>
@@ -20,39 +20,40 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (Cart::content() as $item)
+                @foreach (Cart::getContent() as $item)
                     <tr>
                         <td>
                             <div class="row">
-                                <a href="/item/{{ $item->model->category }}/{{ $item->model->slug }}"
+                                <a href="/item/{{ $item->attributes->category }}/{{ $item->attributes->slug }}"
                                     class="col-12 col-sm-2"
                                 >
-                                    <img src="{{ asset("storage/img/small/clothes/{$item->model->photos[0]->name}") }}"
-                                        alt="{{ $item->model->title }}"
+                                    <img src="{{ asset("storage/img/small/clothes/{$item->attributes->photo}") }}"
+                                        alt="{{ $item->name }}"
                                         class="img-responsive" 
                                         style="max-width:50px;"
                                     />
                                 </a>
                                 <div class="col-12 col-sm-10 pt-2">
-                                    <h6 class="nomargin">{{ $item->model->title }}</h6>
+                                    <h6 class="nomargin">{{ $item->name }}</h6>
                                 </div>
                             </div>
                         </td>
                         <td class="text-center">
-                            <h6>{{ $item->model->price }} @lang('items.hryvnia')</h6>
+                            <h6>{{ $item->price }} @lang('items.hryvnia')</h6>
                         </td>
+                        {{-- Remove item --}}
                         <td class="text-center">
-                            <form action="{{ action('CartController@destroy', ['item' => $item->rowId]) }}" 
+                            <form action="{{ action('CartController@destroy', ['item' => $item->id]) }}" 
                                 method="post" 
                                 class="d-inline"
                             >
                                 @csrf @method('delete')
 
                                 <button type="submit"
-                                    class="btn btn-danger btn-sm" 
+                                    class="btn btn-success btn-sm" 
                                     title="@lang('cart.delete')"
                                 >
-                                    <i class="fas fa-trash-alt grey"></i>
+                                    @lang('cart.delete')
                                 </button>
                             </form>
                         </td>
@@ -78,7 +79,7 @@
             </tfoot>
         </table>
     @else
-        <p class="text-center pt-5">@lang('cart.empty')</p>
+        <h5 class="text-center py-5 grey">@lang('cart.empty')</h5>
     @endif
 </div>
 
