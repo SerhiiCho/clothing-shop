@@ -29,6 +29,8 @@ RUN docker-php-ext-install \
         gnupg2 \
         gnupg1 \
         supervisor \
+    && mkdir -p /var/log/supervisor \
+    && mkdir -p /etc/supervisor/conf.d \
     && curl -sS https://getcomposer.org/installer | \
         php -- --install-dir=/usr/local/bin --filename=composer \
     && docker-php-ext-configure gd \
@@ -40,4 +42,3 @@ RUN docker-php-ext-install \
     && chmod u+x /start.sh
 
 COPY laravel-worker.conf /etc/supervisor/conf.d/laravel-worker.conf
-RUN /usr/bin/supervisord -c /etc/supervisor/conf.d/laravel-worker.conf
