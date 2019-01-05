@@ -6,7 +6,6 @@ sleep 5
 if [ -f /var/www/vendor/autoload.php ]; then
     cd /var/www
     php artisan wipe
-    supervisord -c /etc/supervisor/conf.d/laravel-worker.conf
 
     if [ ! -f /var/www/.env ]; then
         cp .env.example .env

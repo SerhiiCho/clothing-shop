@@ -25,9 +25,6 @@ RUN apt-get update \
         gnupg \
         gnupg2 \
         gnupg1 \
-        supervisor \
-    && mkdir -p /var/log/supervisor \
-    && mkdir -p /etc/supervisor/conf.d \
     && docker-php-ext-configure gd \
         --with-freetype-dir=/usr/include/ \
         --with-jpeg-dir=/usr/include/ \
@@ -39,5 +36,3 @@ RUN apt-get update \
     && echo 'alias phpunit="vendor/bin/phpunit"' >> ~/.bashrc \
     && echo 'alias pa="php artisan"' >> ~/.bashrc \
     && chmod u+x /start.sh
-
-COPY laravel-worker.conf /etc/supervisor/conf.d/laravel-worker.conf
