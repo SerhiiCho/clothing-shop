@@ -38,12 +38,6 @@ services:
     working_dir: /var/www
     command: composer install
 
-  cache:
-    image: redis:5.0
-    container_name: ch-cache
-    ports:
-      - 6379:6379
-
   node:
     image: node:8-alpine
     container_name: ch-node
