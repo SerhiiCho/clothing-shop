@@ -1,8 +1,8 @@
 <form method="post" 
-    class="header-search" 
+    class="header-search"
     action="{{ action('PageController@search') }}"
 >
     @csrf
-    <input type="search" name="word" placeholder="@lang('navigation.search')"/>
-    <input type="submit" style="display:none;" />
+    <input type="search" name="word" placeholder="@lang('navigation.search')" />
+    <input type="submit" class="d-none" />
 </form>

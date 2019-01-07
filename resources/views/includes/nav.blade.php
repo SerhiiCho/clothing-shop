@@ -21,7 +21,7 @@
         {{ config('app.name') }}
     </a>
     @include('includes.search-form')
-        <div class="ml-5">@include('includes.cart')</div>
+    <div class="ml-5">@include('includes.cart')</div>
 </header>
 
 <nav id="nav-menu" class="top-nav">

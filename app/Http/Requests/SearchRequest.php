@@ -24,10 +24,7 @@ class SearchRequest extends FormRequest
     public function rules(): array
     {
         $word_max = config('valid.search.word.max');
-
-        return [
-            'word' => "required|max:{$word_max}",
-        ];
+        return ['word' => "required|max:{$word_max}"];
     }
 
     /**
