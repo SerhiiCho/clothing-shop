@@ -20,8 +20,12 @@
     <a href="/" title="@lang('navigation.home')" class="header-logo">
         {{ config('app.name') }}
     </a>
-    @include('includes.search-form')
-    <div class="ml-5">@include('includes.cart')</div>
+    <div class="header-search">
+        @include('includes.search-form')
+    </div>
+    <div class="ml-5">
+        @include('includes.cart')
+    </div>
 </header>
 
 <nav id="nav-menu" class="top-nav">
