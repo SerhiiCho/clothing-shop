@@ -18,12 +18,7 @@ class MasterUsersIndexPageTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-
-        if (User::whereId(1)->doesntExist()) {
-            $this->master = factory(User::class)->state('admin')->create(['id' => 1]);
-        } else {
-            $this->master = User::whereId(1)->first();
-        }
+        $this->master = User::first();
     }
 
     /**
