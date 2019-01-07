@@ -53,7 +53,7 @@ class PageController extends Controller
     {
         if ($request->has('word')) {
             return view('pages.search', [
-                'result' => (new Item)->getByTitleOrTypeName($request->word),
+                'result' => Item::getByTitleOrTypeName($request->word),
                 'word' => $request->word,
             ]);
         }

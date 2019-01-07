@@ -54,6 +54,7 @@ class Item extends Model
     /**
      * Eloquent scope
      *
+     * @param $query
      * @return object
      */
     public function scopeInStock($query): object
@@ -64,14 +65,14 @@ class Item extends Model
     /**
      * Method for search
      *
+     * @param string $word
      * @return object
      */
-    public function getByTitleOrTypeName($word)
+    public static function getByTitleOrTypeName(string $word)
     {
         return self::whereHas('type', function ($query) use ($word) {
-            $query
-                ->where('name', 'like', '%' . $word . '%')
-                ->orWhere('title', 'like', '%' . $word . '%');
+            $query->where('name', 'like', "%{$word}%")
+                ->orWhere('title', 'like', "%{$word}%");
         })->simplePaginate(20);
     }
 }
