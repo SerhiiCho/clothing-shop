@@ -6,9 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class ItemsPhoto extends Model
 {
+    /**
+     * @var bool $timestamps
+     */
     public $timestamps = false;
-    protected $fillable = ['item_id', 'name'];
 
+    /**
+     * @var array $guarded
+     */
+    protected $guarded = ['id'];
+
+    /**
+     * Relationship with Item model
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function item()
     {
         return $this->belongsTo(Item::class);

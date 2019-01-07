@@ -26,6 +26,8 @@ class Order extends Model
 
     /**
      * Relation with Item model
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function items()
     {
@@ -33,7 +35,9 @@ class Order extends Model
     }
 
     /**
-     * Relatinship with User model
+     * Relationship with User model
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {

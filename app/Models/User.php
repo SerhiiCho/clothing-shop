@@ -22,7 +22,9 @@ class User extends Authenticatable
     protected $hidden = ['password', 'remember_token'];
 
     /**
-     * Relationships with Item model
+     * Relationship with Item model
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function items()
     {
