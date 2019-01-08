@@ -47,3 +47,16 @@
         })
    })
 })();
+
+(function PreventMultipleFormSubmitting() {
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', e => {
+                let button = e.target.querySelector('button[type=submit]')
+                button.setAttribute('disabled', 'disabled')
+                button.classList.add('disabled')
+                button.innerHTML =
+                    '<i class="fas fa-circle-notch fa-1x fa-spin"></i>'
+            }, false,
+        );
+    });
+})();
