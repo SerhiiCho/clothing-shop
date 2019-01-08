@@ -14135,7 +14135,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -14240,13 +14239,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "row" },
-    [
-      _vm._l(_vm.items, function(item, index) {
-        return _vm.items
-          ? _c(
+  return _vm.items
+    ? _c(
+        "div",
+        { staticClass: "row" },
+        [
+          _vm._l(_vm.items, function(item, index) {
+            return _c(
               "div",
               { key: item.id, staticClass: "col-lg-3 col-6 item-card" },
               [
@@ -14308,12 +14307,7 @@ var render = function() {
                             title: _vm.change
                           }
                         },
-                        [
-                          _c("i", {
-                            staticClass: "fas fa-pencil-alt",
-                            attrs: { "aria-hidden": "true" }
-                          })
-                        ]
+                        [_c("i", { staticClass: "fas fa-pencil-alt" })]
                       )
                     : _vm._e(),
                   _vm._v(" "),
@@ -14330,29 +14324,24 @@ var render = function() {
                             }
                           }
                         },
-                        [
-                          _c("i", {
-                            staticClass: "fas fa-trash-alt",
-                            attrs: { "aria-hidden": "true" }
-                          })
-                        ]
+                        [_c("i", { staticClass: "fas fa-trash-alt" })]
                       )
                     : _vm._e()
                 ])
               ],
               1
             )
-          : _vm._e()
-      }),
-      _vm._v(" "),
-      _vm.loading
-        ? _c("div", { staticClass: "col-12 text-center py-5" }, [
-            _c("div", { staticClass: "loader mx-auto" })
-          ])
-        : _vm._e()
-    ],
-    2
-  )
+          }),
+          _vm._v(" "),
+          _vm.loading
+            ? _c("div", { staticClass: "col-12 text-center py-5" }, [
+                _c("div", { staticClass: "loader mx-auto" })
+              ])
+            : _vm._e()
+        ],
+        2
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -14680,12 +14669,7 @@ var render = function() {
                   title: _vm.change
                 }
               },
-              [
-                _c("i", {
-                  staticClass: "fas fa-pencil-alt",
-                  attrs: { "aria-hidden": "true" }
-                })
-              ]
+              [_c("i", { staticClass: "fas fa-pencil-alt" })]
             )
           : _vm._e(),
         _vm._v(" "),
@@ -14702,12 +14686,7 @@ var render = function() {
                   }
                 }
               },
-              [
-                _c("i", {
-                  staticClass: "fas fa-trash-alt",
-                  attrs: { "aria-hidden": "true" }
-                })
-              ]
+              [_c("i", { staticClass: "fas fa-trash-alt" })]
             )
           : _vm._e()
       ],
@@ -14793,10 +14772,7 @@ var render = function() {
         _vm._v(" "),
         _c("span", { staticClass: "col-12 text-secondary pb-1" }, [
           _c("span", { staticClass: "d-block mb-2" }, [
-            _c("i", {
-              staticClass: "fas fa-shopping-basket",
-              attrs: { "aria-hidden": "true" }
-            }),
+            _c("i", { staticClass: "fas fa-shopping-basket" }),
             _vm._v(
               " \n                    " +
                 _vm._s(_vm.allAmount1) +
@@ -15351,7 +15327,7 @@ var render = function() {
                 }
               }
             },
-            [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+            [_c("span", [_vm._v("×")])]
           )
         ],
         2

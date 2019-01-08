@@ -1,7 +1,6 @@
 <template>
-    <div class="row">
-        <div v-if="items"
-            v-for="(item, index) in items"
+    <div class="row" v-if="items">
+        <div v-for="(item, index) in items"
             :key="item.id"
             class="col-lg-3 col-6 item-card"
         >
