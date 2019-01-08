@@ -1,91 +1,80 @@
 .user-sidebar {
-	background: #222;
-	position: fixed;
-	top: 0;
-	height: 100%;
-	bottom: 0;
-	width: 43px;
-	overflow: hidden;
-	-webkit-transition: width 200ms, opacity 200ms;
-	transition: width 200ms, opacity 200ms;
-	transform: translateZ(0) scale(1, 1);
-	opacity: .5;
-	z-index: 10;
-	padding-top: 51px;
+    background: #222;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    bottom: 0;
+    width: 43px;
+    overflow: hidden;
+    -webkit-transition: width 200ms, opacity 200ms;
+    transition: width 200ms, opacity 200ms;
+    transform: translateZ(0) scale(1, 1);
+    opacity: .5;
+    z-index: 10;
+    padding-top: 51px;
 
-	&:hover {
-		overflow: visible;
-		width: 200px;
-		height: 100%;
-		overflow-y: scroll;
-		opacity: .95;
-	}
+    &:hover {
+        overflow: visible;
+        width: 200px;
+        height: 100%;
+        overflow-y: scroll;
+        opacity: .95;
+    }
 
-	&::-webkit-scrollbar {
-		width: 0px;
-		background: transparent;
-	}
+    &::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+    }
 
-	ul { margin: 7px 0; }
+    ul { margin: 7px 0; }
 
-	.active {
-		background: $darkestPink;
-	}
-	
-	li {
-		position: relative;
-		display: block;
-		width: 200px;
-		line-height: 40px;
-		margin: auto;
+    .active {
+        background: $darkestPink;
+    }
+    
+    li {
+        position: relative;
+        display: block;
+        width: 200px;
+        line-height: 40px;
+        margin: auto;
 
-		&:hover {
-			color: #fff;
-			background: $darkestPink;
-		}
+        &:hover {
+            color: #fff;
+            background: $darkestPink;
+        }
 
-		a {
-			position: relative;
-			display: table;
-			border-collapse: collapse;
-			border-spacing: 0;
-			color: #fff;
-			font-family: arial;
-			font-size: 14px;
-			text-decoration: none;
-			transform: translateZ(0) scale(1, 1);
-		}
-	}
+        a {
+            position: relative;
+            display: table;
+            border-collapse: collapse;
+            border-spacing: 0;
+            color: #fff;
+            font-family: arial;
+            font-size: 14px;
+            text-decoration: none;
+            transform: translateZ(0) scale(1, 1);
+        }
+    }
 
-	.remove-hover:hover {
-		background: none;
-	}
+    .remove-hover:hover {
+        background: none;
+    }
 
-	.red-buttons[data-notif]::after {
-		content: attr(data-notif);
-		font-family: Arial, Helvetica;
-		min-width: 16px;
-		height: 16px;
-		line-height: 15px;
-		text-align: center;
-		font-size: 11px;
-		display: inline-block;
-		position: absolute;
-		left: 23px;
-		top: 5px;
-		color: #fff;
-		text-shadow: none;
-		background: #860101;
-		border: solid 1px #fff;
-		border-radius: 50%;
-	}
-	
+    
+}
+
+.red-button {
+    position: absolute;
+    top: 3px;
+    z-index: 5;
+    left: 25px;
 }
 
 .icon-profile-menu-line {
-	width: 25px;
-	font-size: 1.6em !important;
-	text-align: center;
-	margin: 0 10px;
-	vertical-align: middle;
+    width: 25px;
+    font-size: 1.6em !important;
+    text-align: center;
+    margin: 0 10px;
+    vertical-align: middle;
 }

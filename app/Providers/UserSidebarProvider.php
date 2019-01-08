@@ -28,11 +28,9 @@ class UserSidebarProvider extends ServiceProvider
             $orders = cache()->rememberForever('orders', function () {
                 return Order::count();
             });
-            $has_orders = "data-notif={$orders}";
-            $unreaded = ($orders != 0) ? $has_orders : '';
 
-            view()->composer('includes.user-sidebar', function ($view) use ($unreaded) {
-                $view->with(compact('unreaded'));
+            view()->composer('includes.user-sidebar', function ($view) use ($orders) {
+                $view->with(compact('orders'));
             });
         } catch (QueryException $e) {
             logs()->error($e->getMessage());

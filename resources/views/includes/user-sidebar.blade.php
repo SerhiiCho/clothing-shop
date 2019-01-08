@@ -7,7 +7,10 @@
                     <span>@lang('user-sidebar.add_new_item')</span>
                 </a>
             </li>
-            <li class="{{ active_if_route_is('admin/orders') }} red-buttons" {{ $unreaded ?? '' }}>
+            <li class="{{ active_if_route_is('admin/orders') }}">
+                @if ($orders > 0)
+                    <span class="badge badge-danger position-absolute red-button">{{ $orders }}</span>
+                @endif
                 <a href="/admin/orders" title="@lang('user-sidebar.orders')">
                     <i class="fas fa-envelope icon-profile-menu-line" aria-hidden="true"></i>
                     <span>@lang('user-sidebar.orders')</span>

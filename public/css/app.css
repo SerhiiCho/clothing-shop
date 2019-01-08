@@ -8292,23 +8292,11 @@ header {
   background: none;
 }
 
-.user-sidebar .red-buttons[data-notif]::after {
-  content: attr(data-notif);
-  font-family: Arial, Helvetica;
-  min-width: 16px;
-  height: 16px;
-  line-height: 15px;
-  text-align: center;
-  font-size: 11px;
-  display: inline-block;
+.red-button {
   position: absolute;
-  left: 23px;
-  top: 5px;
-  color: #fff;
-  text-shadow: none;
-  background: #860101;
-  border: solid 1px #fff;
-  border-radius: 50%;
+  top: 3px;
+  z-index: 5;
+  left: 25px;
 }
 
 .icon-profile-menu-line {
