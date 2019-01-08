@@ -39,6 +39,8 @@ class OrderController extends Controller
      */
     public function store(Order $order): RedirectResponse
     {
+        cache()->forget('orders');
+
         // Delete from taken
         if ($order->isTakenBy(user())) {
             $order->update(['user_id' => null]);

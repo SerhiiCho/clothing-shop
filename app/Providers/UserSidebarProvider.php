@@ -30,7 +30,7 @@ class UserSidebarProvider extends ServiceProvider
             view()->composer('includes.user-sidebar', function ($view) {
                 $view->with([
                     'orders' => cache()->rememberForever('orders', function () {
-                        return Order::count();
+                        return Order::whereUserId(null)->count();
                     }),
                 ]);
             });
