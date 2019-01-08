@@ -14,17 +14,35 @@
         <div class="row">
             @foreach ($slider->reverse() as $slide)
                 <div class="col-md-6 col-xl-4">
-                    <div class="card p-0">
+                    <div class="card p-0 position-relative">
                         <img class="card-img-top"
                             src="{{ asset("storage/img/big/slider/{$slide->image}") }}"
                             alt="@lang('slider.image')"
                             title="@lang('slider.image')"
                         >
+
+                            {{-- Order badges --}}
+                            <div class="position-absolute m-1">
+                                <h5>
+                                    @if ($slide->order)
+                                        <span class="badge badge-success">
+                                            <i class="fas fa-check"></i>
+                                            @lang('slider.choose_order_number'): {{ $slide->order }}
+                                        </span>
+                                    @else
+                                        <span class="badge badge-danger">
+                                            <i class="fas fa-times"></i>
+                                            @lang('slider.no_order')
+                                        </span>
+                                    @endif
+                                </h5>
+                            </div>
+
                         <div class="card-body row py-2">
                             @admin
                                 {{-- Edit button --}}
                                 <a href="slider/{{ $slide->id }}/edit" 
-                                    class="btn btn-primary col-6 px-2" 
+                                    class="btn btn-sm btn-primary col-6 px-2" 
                                     title="@lang('slider.edit')"
                                 >
                                     @lang('slider.edit')
@@ -40,7 +58,7 @@
 
                                     {{-- Delete slide btn --}}
                                     <button type="submit" 
-                                        class="btn btn-success btn-block confirm" 
+                                        class="btn btn-sm btn-success btn-block confirm" 
                                         title="@lang('slider.delete')"
                                         data-confirm="@lang('slider.are_you_sure')"
                                     >
