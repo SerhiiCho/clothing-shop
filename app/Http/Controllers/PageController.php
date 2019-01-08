@@ -20,7 +20,7 @@ class PageController extends Controller
     {
         $cards = cache()->rememberForever('home_cards', function () {
             try {
-                return Card::with('type')->get()->take(3)->toArray();
+                return Card::getCards();
             } catch (QueryException $e) {
                 logs()->error($e->getMessage());
                 return [];

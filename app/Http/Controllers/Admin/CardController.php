@@ -30,7 +30,7 @@ class CardController extends Controller
     public function index(): View
     {
         return view('admin.cards.index', [
-            'cards' => Card::get(),
+            'cards' => Card::getCards(),
         ]);
     }
 

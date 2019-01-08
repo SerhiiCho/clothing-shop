@@ -20,24 +20,12 @@
         <h3 class="display-4 text-center p-4">
             @lang('cards.season_categories')
         </h3>
-
-        <div class="row center three-cards">
-            @foreach ($cards as $card)
-                <div class="col-12 col-md-4 one-card">
-                    <img src="{{ asset("storage/img/big/cards/{$card['image']}") }}" 
-                        alt="{{ $card['type']['name'] }}"
-                    />
-
-                    <a href="/items?category={{ $card['category'] }}&type={{ $card['type_id'] }}" 
-                        title="{{ $card['type']['name'] }}" 
-                        class="card-btn"
-                    >
-                        <span>{{ $card['type']['name'] }}</span>
-                    </a>
-                </div>
-            @endforeach
-        </div>
+        @include('includes.cards', [
+            'cards' => $cards,
+            'controls' => auth()->check() && user()->isAdmin(),
+        ])
     @endif
+
 
     {{-- Home Up Section --}}
     @isset($home_sections[0])

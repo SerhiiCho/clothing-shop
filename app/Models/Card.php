@@ -25,4 +25,12 @@ class Card extends Model
     {
         return $this->belongsTo(Type::class);
     }
+
+    /**
+     * @return array
+     */
+    public static function getCards(): array
+    {
+        return self::with('type')->get()->take(3)->toArray();
+    }
 }
