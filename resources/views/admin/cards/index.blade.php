@@ -16,11 +16,14 @@
             'cards' => $cards,
             'controls' => true,
         ])
+
+    @else
+        <p class="text-center py-4">@lang('cards.no_cards')</p>
     @endif
 
     {{-- Add card btn --}}
     @if (count($cards) < 3)
-        <div class="text-center py-5">
+        <div class="text-center pb-4">
             <a href="/admin/cards/create" 
                 title="@lang('cards.add_card')" 
                 class="btn btn-success"

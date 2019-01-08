@@ -6,6 +6,7 @@ return [
     'season_categories' => 'Сезонные категории',
     'popular' => 'Популярное',
     'cards' => 'Карты',
+    'no_cards' => 'У вас пока нет карт',
     'add_card' => 'Добавить карту',
     'save_changes' => 'Сохранить изменения',
     'change_card' => 'Изменить карту',

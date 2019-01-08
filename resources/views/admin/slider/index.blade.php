@@ -71,6 +71,8 @@
                 </div>
             @endforeach
         </div>
+    @else
+        <p class="text-center pt-5">@lang('slider.no_slides')</p>
     @endif
 
     {{-- Add slide btn --}}
