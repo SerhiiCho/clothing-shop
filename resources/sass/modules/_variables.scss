@@ -1,13 +1,11 @@
-// Body
-$paperColor: #f5f8fa;
-$lightGray: #e0e0e0;
-$gray: #646464;
-$darkGray: #444;
-$pink: #EDE2ED;
-$gsmColor: #ecdfec;
-$lightPink: #f9f8f6;
-$darkPink: #ecdcdc;
-$darkestPink: #974c4c;
+$colors: (
+    pink-light: #f9f8f6,
+    pink: #EDE2ED,
+    pink-dark: #ecdcdc,
+    pink-darkest: #974c4c,
+    grey: #646464,
+    grey-dark: #444
+);
 
 // Primary Btn
 $btnPrimaryText: #311b28;
@@ -15,12 +13,9 @@ $btnPrimaryBorder: #e8e2d3;
 $btnPrimaryBg: #f7f1f7;
 
 // Success Btn
-$btnSuccessText: darken($color: $btnPrimaryBg, $amount: 70);
-$btnSuccessBorder: darken($color: $btnPrimaryBg, $amount: 3);
+$btnSuccessText: darken($btnPrimaryBg, 70);
+$btnSuccessBorder: darken($btnPrimaryBg, 3);
 $btnSuccessBg: #ecdcdc;
 
 // Typography
-$mainFont: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-
-// Other
-$sliderBorder: solid 4px $darkGray;
+$mainFont: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;

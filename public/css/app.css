@@ -7333,7 +7333,7 @@ a.text-dark:focus, a.text-dark:hover {
 
 a.text-success:hover,
 a.text-success:focus {
-  color: #904949 !important;
+  color: #974c4c !important;
 }
 
 .text-danger {
@@ -7428,7 +7428,7 @@ li {
 
 body {
   background: #f9f8f6;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 main {
@@ -7759,7 +7759,7 @@ header {
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  background: #f2e9f2;
+  background: #EDE2ED;
   font-weight: bold;
   font-size: .9em;
   padding: .4em 0;

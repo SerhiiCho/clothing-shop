@@ -1,9 +1,11 @@
-@import 'bootstrap';
 
 // Modules
+@import 'modules/functions';
 @import 'modules/variables';
+@import 'bootstrap';
 @import 'modules/normalize';
 @import 'modules/common';
+
 
 // Nav
 @import 'nav/hamburger';
@@ -12,7 +14,7 @@
 @import 'nav/gsm';
 
 // Home
-@import 'home/_slider';
+@import 'home/slider';
 @import 'home/three-cards';
 
 // Items

@@ -29,7 +29,7 @@
     ul { margin: 7px 0; }
 
     .active {
-        background: $darkestPink;
+        background: color(pink-darkest);
     }
     
     li {
@@ -41,7 +41,7 @@
 
         &:hover {
             color: #fff;
-            background: $darkestPink;
+            background: color(pink-darkest);
         }
 
         a {

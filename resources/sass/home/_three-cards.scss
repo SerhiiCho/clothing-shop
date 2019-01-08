@@ -23,7 +23,7 @@
 	color: #fff;
 	opacity: .8;
 	transition: opacity 400ms;
-	border: solid 1px $darkGray;
+	border: solid 1px color(grey-dark);
 
 	&:hover {
 		opacity: .9;

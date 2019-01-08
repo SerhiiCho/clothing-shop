@@ -1780,7 +1780,7 @@ mark,
 
 .table .thead-light th {
     color: #495057;
-    background-color: $darkPink;
+    background-color: color(pink-dark);
     border-color: #dee2e6;
 }
 
@@ -1861,7 +1861,7 @@ mark,
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid $darkPink;
+    border: 1px solid color(pink-dark);
     border-radius: 0.25rem;
     -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -1905,7 +1905,7 @@ mark,
 
 .form-control:disabled,
 .form-control[readonly] {
-    background-color: $darkPink;
+    background-color: color(pink-dark);
     opacity: 1;
 }
 
@@ -2473,18 +2473,18 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary:hover {
-    color: darken($color: $btnPrimaryText, $amount: 3);
-    background-color: darken($color: $btnPrimaryBg, $amount: 3);
-    border-color: darken($color: $btnPrimaryBorder, $amount: 3);
+    color: darken($btnPrimaryText, 3);
+    background-color: darken($btnPrimaryBg, 3);
+    border-color: darken($btnPrimaryBorder, 3);
 }
 
 .btn-primary:focus,
 .btn-primary.focus,
 .btn-primary.disabled,
 .btn-primary:disabled {
-    color: darken($color: $btnPrimaryText, $amount: 5);
-    background-color: darken($color: $btnPrimaryBg, $amount: 5);
-    border-color: darken($color: $btnPrimaryBorder, $amount: 5);
+    color: darken($btnPrimaryText, 5);
+    background-color: darken($btnPrimaryBg, 5);
+    border-color: darken($btnPrimaryBorder, 5);
 }
 
 .btn-outline-primary {
@@ -2497,14 +2497,14 @@ fieldset:disabled a.btn {
 .btn-outline-primary:hover,
 .btn-outline-primary:focus,
 .btn-outline-primary.focus {
-    color: darken($color: $btnPrimaryText, $amount: 3);
+    color: darken($btnPrimaryText, 3);
     background-color: $btnPrimaryBg;
-    border-color: darken($color: $btnPrimaryBorder, $amount: 3);
+    border-color: darken($btnPrimaryBorder,  3);
 }
 
 .btn-outline-primary.disabled,
 .btn-outline-primary:disabled {
-    color: darken($color: $btnPrimaryText, $amount: 5);
+    color: darken($btnPrimaryText, 5);
     background-color: transparent;
 }
 
@@ -2518,16 +2518,16 @@ fieldset:disabled a.btn {
 .btn-success:hover,
 .btn-success:focus,
 .btn-success.focus {
-    color: darken($color: $btnSuccessText, $amount: 3);
-    background-color: darken($color: $btnSuccessBg, $amount: 3);
-    border-color: darken($color: $btnSuccessBorder, $amount: 3);
+    color: darken($btnSuccessText, 3);
+    background-color: darken($btnSuccessBg, 3);
+    border-color: darken($btnSuccessBorder, 3);
 }
 
 .btn-success.disabled,
 .btn-success:disabled {
-    color: darken($color: $btnSuccessText, $amount: 5);
-    background-color: darken($color: $btnSuccessBg, $amount: 5);
-    border-color: darken($color: $btnSuccessBorder, $amount: 5);
+    color: darken($btnSuccessText, 5);
+    background-color: darken($btnSuccessBg, 5);
+    border-color: darken($btnSuccessBorder, 5);
 }
 
 .btn-outline-success {
@@ -2540,14 +2540,14 @@ fieldset:disabled a.btn {
 .btn-outline-success:hover,
 .btn-outline-success:focus,
 .btn-outline-success.focus {
-    color: darken($color: $btnSuccessText, $amount: 3);
+    color: darken($btnSuccessText, 3);
     background-color: $btnSuccessBg;
-    border-color: darken($color: $btnSuccessBorder, $amount: 3)
+    border-color: darken($btnSuccessBorder, 3)
 }
 
 .btn-outline-success.disabled,
 .btn-outline-success:disabled {
-    color: darken($color: $btnSuccessText, $amount: 5);
+    color: darken($btnSuccessText, 5);
     background-color: transparent;
 }
 
@@ -2747,7 +2747,7 @@ tbody.collapse.show {
     height: 0;
     margin: 0.5rem 0;
     overflow: hidden;
-    border-top: 1px solid $darkPink;
+    border-top: 1px solid color(pink-dark);
 }
 
 .dropdown-item {
@@ -3065,8 +3065,8 @@ tbody.collapse.show {
     color: #495057;
     text-align: center;
     white-space: nowrap;
-    background-color: $darkPink;
-    border: 1px solid $darkPink;
+    background-color: color(pink-dark);
+    border: 1px solid color(pink-dark);
     border-radius: 0.25rem;
 }
 
@@ -3135,7 +3135,7 @@ tbody.collapse.show {
 }
 
 .custom-control-input:disabled ~ .custom-control-label::before {
-    background-color: $darkPink;
+    background-color: color(pink-dark);
 }
 
 .custom-control-label {
@@ -3225,7 +3225,7 @@ tbody.collapse.show {
     vertical-align: middle;
     background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
     background-size: 8px 10px;
-    border: 1px solid $darkPink;
+    border: 1px solid color(pink-dark);
     border-radius: 0.25rem;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -3253,7 +3253,7 @@ tbody.collapse.show {
 
 .custom-select:disabled {
     color: #6c757d;
-    background-color: $darkPink;
+    background-color: color(pink-dark);
 }
 
 .custom-select::-ms-expand {
@@ -3316,7 +3316,7 @@ tbody.collapse.show {
     line-height: 1.5;
     color: #495057;
     background-color: #fff;
-    border: 1px solid $darkPink;
+    border: 1px solid color(pink-dark);
     border-radius: 0.25rem;
 }
 
@@ -3332,8 +3332,8 @@ tbody.collapse.show {
     line-height: 1.5;
     color: #495057;
     content: "Browse";
-    background-color: $darkPink;
-    border-left: 1px solid $darkPink;
+    background-color: color(pink-dark);
+    border-left: 1px solid color(pink-dark);
     border-radius: 0 0.25rem 0.25rem 0;
 }
 
@@ -3378,7 +3378,7 @@ tbody.collapse.show {
 
 .nav-tabs .nav-link:hover,
 .nav-tabs .nav-link:focus {
-    border-color: $darkPink $darkPink #dee2e6;
+    border-color: color(pink-dark) color(pink-dark) #dee2e6;
 }
 
 .nav-tabs .nav-link.disabled {
@@ -3391,7 +3391,7 @@ tbody.collapse.show {
 .nav-tabs .nav-item.show .nav-link {
     color: #495057;
     background-color: transparent;
-    border-color: #dee2e6 #dee2e6 $lightPink;
+    border-color: #dee2e6 #dee2e6 color(pink-light);
     border-width: 1px 1px 1px 1px;
 }
 
@@ -3718,7 +3718,7 @@ tbody.collapse.show {
     padding: 0.75rem 1rem;
     margin-bottom: 1rem;
     list-style: none;
-    background-color: $darkPink;
+    background-color: color(pink-dark);
     border-radius: 0.25rem;
 }
 
@@ -3757,15 +3757,15 @@ tbody.collapse.show {
     padding: 0.5rem 0.75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: $darkestPink;
+    color: color(pink-darkest);
     background-color: #fff;
     border: 1px solid #dee2e6;
 }
 
 .page-link:hover {
-    color: $darkestPink;
+    color: color(pink-darkest);
     text-decoration: none;
-    background-color: $darkPink;
+    background-color: color(pink-dark);
     border-color: #dee2e6;
 }
 
@@ -3794,8 +3794,8 @@ tbody.collapse.show {
 .page-item.active .page-link {
     z-index: 1;
     color: #fff;
-    background-color: $darkestPink;
-    border-color: $darkPink;
+    background-color: color(pink-darkest);
+    border-color: color(pink-dark);
 }
 
 .page-item.disabled .page-link {
@@ -3917,7 +3917,7 @@ tbody.collapse.show {
 .jumbotron {
     padding: 2rem 1rem;
     margin-bottom: 2rem;
-    background-color: $darkPink;
+    background-color: color(pink-dark);
     border-radius: 0.3rem;
 }
 
@@ -4030,7 +4030,7 @@ tbody.collapse.show {
     height: 1rem;
     overflow: hidden;
     font-size: 0.75rem;
-    background-color: $darkPink;
+    background-color: color(pink-dark);
     border-radius: 0.25rem;
 }
 
@@ -4104,7 +4104,7 @@ tbody.collapse.show {
 
 .list-group-item-action:active {
     color: #212529;
-    background-color: $darkPink;
+    background-color: color(pink-dark);
 }
 
 .list-group-item {
@@ -4340,7 +4340,7 @@ button.close {
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 1rem;
-    border-bottom: 1px solid $darkPink;
+    border-bottom: 1px solid color(pink-dark);
     border-top-left-radius: 0.3rem;
     border-top-right-radius: 0.3rem;
 }
@@ -4374,7 +4374,7 @@ button.close {
     -ms-flex-pack: end;
     justify-content: flex-end;
     padding: 1rem;
-    border-top: 1px solid $darkPink;
+    border-top: 1px solid color(pink-dark);
 }
 
 .modal-footer > :not(:first-child) {
@@ -7935,12 +7935,12 @@ a.text-dark:focus,a.text-dark:hover{
 }
 
 .text-success {
-    color: $darkestPink !important;
+    color: color(pink-darkest) !important;
 }
 
 a.text-success:hover,
 a.text-success:focus {
-    color: darken($color: $darkestPink, $amount: 2) !important;
+    color: color(pink-darkest) !important;
 }
 
 .text-danger {

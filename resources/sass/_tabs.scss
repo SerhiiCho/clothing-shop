@@ -4,15 +4,15 @@
     &__ul {
         border-radius: 5px 5px 0 0;
         padding: 7px 7px 0 7px;
-        background: $darkPink;
+        background: color(pink-dark);
 
         .nav-link {
             color: #333;
 
             &.active {
-                background: $lightPink;
+                background: color(pink-light);
                 border-radius: 5px 5px 0 0;
-                border-color: $lightPink;
+                border-color: color(pink-light);
             }
 
             b {

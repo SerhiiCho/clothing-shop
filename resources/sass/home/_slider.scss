@@ -3,7 +3,7 @@
     overflow: hidden;
     background-size: cover;
     background-position: center;
-    border-right: $sliderBorder;
+    border-right: solid 4px color(grey-dark);
 
     &:hover .imgbanbtn {
         opacity: 0.8;
@@ -25,7 +25,7 @@
         
         &:first-of-type {
             img {
-                border-bottom: $sliderBorder;
+                border-bottom: solid 4px color(grey-dark);
             }
         }
     }
@@ -34,7 +34,7 @@
 .imgbanbtn {
     width: 2rem;
     height: 3rem;
-    background: $darkestPink;
+    background: color(pink-darkest);
     border-radius: .1rem;
     position: absolute;
     top: 50%;

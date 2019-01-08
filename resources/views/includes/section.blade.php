@@ -5,7 +5,7 @@
     <a name="{{ $anchor ?? '' }}"></a>
 
     @admin
-        <a href="#!" class="btn btn-success position-absolute rounded-circle edit-form-btn"
+        <a href="#!" class="btn btn-success position-absolute rounded-circle"
             style="top:20px; right:20px;"
             data-form="home-form-{{ $section['id'] }}"
             data-section="home-section-{{ $section['id'] }}"

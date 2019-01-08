@@ -12,7 +12,7 @@
 		height: auto;
 		transition: transform 300ms;
 		border-radius: 2px;
-		border: 1px dotted $darkPink;
+		border: 1px dotted color(pink-dark);
 		margin-bottom: 5px;
 
 		&:hover {
@@ -29,7 +29,7 @@
 	
 		span {
 			display: block;
-			color: $gray;
+			color: color(grey);
 			font-size: .9em;
 			padding: 0 6px;
 		}
@@ -37,7 +37,7 @@
 		.hryvnia {
 			display: inline-block;
 			font-size: 1.3em;
-			color: $darkestPink;
+			color: color(pink-darkest);
 			margin-right: -13px;
 		}
 	}

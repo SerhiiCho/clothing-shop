@@ -2,7 +2,7 @@
     display: inline-block;
     line-height: 2em;
     height: 2em;
-    border: 1px solid $darkPink;
+    border: 1px solid color(pink-dark);
     border-radius: 2em;
     padding: 0 1em;
 
@@ -16,7 +16,7 @@
         border: none;
         background: transparent;
         font-size: 1rem;
-        color: $darkGray;
+        color: color(grey-dark);
 
         &:focus {
             outline: none;
@@ -32,7 +32,7 @@
         border: 0;
         color: #383838;
         padding: 0 8px 0 10px;
-        border-left: solid 1px $darkPink;
+        border-left: solid 1px color(pink-dark);
         cursor: pointer;
 
         &:hover {

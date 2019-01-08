@@ -16,7 +16,7 @@
     img {
         width: 80%;
         height: auto;
-        border: 2px solid $darkPink;
+        border: 2px solid color(pink-dark);
     }
 }
 
@@ -33,7 +33,7 @@
 
 .sidebar {
     background:#F2F2F2;
-    border-top: 1px dotted $darkPink;
+    border-top: 1px dotted color(pink-dark);
 }
 
 
