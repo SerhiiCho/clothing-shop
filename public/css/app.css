@@ -3231,8 +3231,8 @@ tbody.collapse.show {
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
   background-color: transparent;
-  border-color: #dee2e6 #dee2e6 #fff;
-  border-width: 2px 2px 1px 2px;
+  border-color: #dee2e6 #dee2e6 #f9f8f6;
+  border-width: 1px 1px 1px 1px;
 }
 
 .nav-tabs .dropdown-menu {
@@ -8189,6 +8189,31 @@ header {
   .nav-search .search-form {
     display: none;
   }
+}
+
+.order-tabs {
+  border-bottom: none;
+}
+
+.order-tabs__ul {
+  border-radius: 5px 5px 0 0;
+  padding: 7px 7px 0 7px;
+  background: #f3ebf3;
+}
+
+.order-tabs__ul .nav-link {
+  color: #333;
+}
+
+.order-tabs__ul .nav-link.active {
+  background: #f9f8f6;
+  border-radius: 5px 5px 0 0;
+  border-color: #f9f8f6;
+}
+
+.order-tabs__ul .nav-link b {
+  color: brown;
+  font-size: .9em;
 }
 
 #table-log {

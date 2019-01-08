@@ -15483,10 +15483,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "order-tabs" }, [
     _c(
       "ul",
-      { staticClass: "nav nav-tabs mb-4" },
+      { staticClass: "nav nav-tabs order-tabs__ul mb-4" },
       _vm._l(_vm.tabs, function(tab, i) {
         return _c("li", { key: i, staticClass: "nav-item" }, [
           _c("a", {
@@ -15504,7 +15504,7 @@ var render = function() {
       })
     ),
     _vm._v(" "),
-    _c("div", [_vm._t("default")], 2)
+    _c("div", { staticClass: "px-3" }, [_vm._t("default")], 2)
   ])
 }
 var staticRenderFns = []

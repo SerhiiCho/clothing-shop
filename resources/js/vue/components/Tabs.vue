@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <ul class="nav nav-tabs mb-4">
+    <div class="order-tabs">
+        <ul class="nav nav-tabs order-tabs__ul mb-4">
             <li v-for="(tab, i) in tabs" :key="i" class="nav-item">
                 <a :href="'#!tab-' + (i + 1)"
                     class="nav-link"
@@ -11,7 +11,7 @@
                 </a>
             </li>
         </ul>
-        <div>
+        <div class="px-3">
             <slot></slot>
         </div>
     </div>

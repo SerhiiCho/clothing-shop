@@ -4,27 +4,26 @@
 
 @section('content')
 
-<div class="container">
-    <h4 class="text-center py-3">
-        @lang('dashboard.your_orders')
-    </h4>
-
+<div class="container pt-2">
+    <div class="text-center" v-if="false">
+        <div class="loader mt-1"></div>
+    </div>
     <tabs>
         @for ($i = 1; $i <= 3; $i++)
             <tab 
                 @if ($i == 1)
                     hash="!tab-1"
                     name="@lang('messages.opened_orders') 
-                    <b style='color:brown'>{{ $open_orders->count() }}</b>"
+                    <b>{{ $open_orders->count() }}</b>"
                     :selected="true"
                 @elseif ($i == 2)
                     hash="!tab-2"
                     name="@lang('messages.taken_orders') 
-                    <b style='color:brown'>{{ $taken_orders->count() }}</b>"
+                    <b>{{ $taken_orders->count() }}</b>"
                 @elseif ($i == 3)
                     hash="!tab-3"
                     name="@lang('messages.closed_orders') 
-                    <b style='color:brown'>{{ $closed_orders->count() }}</b>"
+                    <b>{{ $closed_orders->count() }}</b>"
                 @endif
             >
                 @include('admin.orders.partials.tab-content')
