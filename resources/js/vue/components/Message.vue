@@ -9,7 +9,7 @@
             class="close"
             @click="visible = false"
         >
-            <span aria-hidden="true">&times;</span>
+            <span>&times;</span>
         </button>
     </li>
 </template>

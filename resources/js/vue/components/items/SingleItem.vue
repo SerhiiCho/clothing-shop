@@ -21,7 +21,7 @@
                     class="btn-change-item"
                     style="top:10px;"
                 >
-                <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                <i class="fas fa-pencil-alt"></i>
             </a>
 
             <!-- Delete button -->
@@ -32,7 +32,7 @@
                 class="btn-change-item"
                 style="top:55px;"
             >
-                <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                <i class="fas fa-trash-alt"></i>
             </a>
         </div>
 
@@ -80,7 +80,7 @@
                 <!-- In stock -->
                 <span class="col-12 text-secondary pb-1">
                     <span class="d-block mb-2">
-                        <i class="fas fa-shopping-basket" aria-hidden="true"></i> 
+                        <i class="fas fa-shopping-basket"></i> 
                         {{ allAmount1 }} {{ item.stock }} {{ allAmount2 }}
                     </span>
                 </span>

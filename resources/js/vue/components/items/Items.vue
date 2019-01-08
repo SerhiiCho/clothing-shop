@@ -29,7 +29,7 @@
                     class="btn-change-item"
                     style="top:10px;"
                 >
-                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    <i class="fas fa-pencil-alt"></i>
                 </a>
 
                 <!-- Delete button -->
@@ -39,7 +39,7 @@
                     class="btn-change-item"
                     style="top:55px;"
                 >
-                    <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                    <i class="fas fa-trash-alt"></i>
                 </a>
             </div>
         </div>

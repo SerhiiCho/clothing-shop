@@ -35,7 +35,7 @@
                         @foreach($logs as $key => $log)
                             <tr data-display="stack{{{$key}}}">
                                 <td class="text-{{{$log['level_class']}}}">
-                                    <span class="fas fa-{{{$log['level_img']}}}" aria-hidden="true"></span> 
+                                    <span class="fas fa-{{{$log['level_img']}}}"></span> 
                                     &nbsp;{{$log['level']}}
                                 </td>
                                 <td class="text">{{$log['context']}}</td>

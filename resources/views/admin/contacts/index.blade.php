@@ -36,7 +36,7 @@
                                         class="btn btn-primary mr-3" 
                                         title="@lang('contacts.change_contact')"
                                     >
-                                        <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                                        <i class="fas fa-pencil-alt"></i>
                                     </a>
 
                                     <form action="{{ action('Admin\ContactController@destroy', ['contact' => $contact['id']]) }}" 
@@ -49,7 +49,7 @@
                                             title="@lang('contacts.delete')"
                                             data-confirm="@lang('contacts.confirm_delete')"
                                         >
-                                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                                            <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </form>
                                 @endadmin
