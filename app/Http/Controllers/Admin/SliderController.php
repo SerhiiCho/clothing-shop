@@ -28,7 +28,9 @@ class SliderController extends Controller
      */
     public function index(): View
     {
-        return view('admin.slider.index')->withSlider(Slider::all());
+        return view('admin.slider.index', [
+            'slider' => Slider::orderBy('order', 'desc')->get(),
+        ]);
     }
 
     /**
