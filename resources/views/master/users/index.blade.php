@@ -40,7 +40,7 @@
                                     data-confirm="@lang('users.add_to_admin_this_user')"
                                     {{ $user->isAdmin() ? 'disabled' : '' }}
                                 >
-                                    <i class="fas fa-plus"></i>
+                                    @lang('users.add')
                                 </button>
                             </form>
                         </td>
@@ -55,7 +55,7 @@
                                     title="@lang('cart.delete')"
                                     {{ $user->id == 1 ? 'disabled' : '' }}
                                 >
-                                    <i class="fas fa-trash-alt"></i>
+                                    @lang('cart.delete')
                                 </button>
                             </form>
                         </td>
