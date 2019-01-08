@@ -44,7 +44,7 @@ class OrderController extends Controller
         if ($order->isTakenBy(user())) {
             $order->update(['user_id' => null]);
 
-            return redirect('admin/orders')->withSuccess(
+            return redirect('admin/orders#!tab-2')->withSuccess(
                 trans('messages.you_deleted_the_order', [
                     'order' => $order->id,
                 ])
@@ -62,7 +62,7 @@ class OrderController extends Controller
 
         $order->update(['user_id' => user()->id]);
 
-        return redirect('admin/orders')->withSuccess(
+        return redirect('admin/orders#!tab-1')->withSuccess(
             trans('messages.you_took_the_order', [
                 'order' => $order->id,
             ])
@@ -80,11 +80,11 @@ class OrderController extends Controller
 
             cache()->forget('orders');
 
-            return redirect('/admin/orders')->withSuccess(
+            return redirect('/admin/orders#!tab-2')->withSuccess(
                 trans('messages.order_closed')
             );
         }
-        return redirect('/admin/orders')->withError(
+        return redirect('/admin/orders#!tab-2')->withError(
             trans('messages.cant_close_order')
         );
     }
@@ -104,7 +104,7 @@ class OrderController extends Controller
         $order->items()->detach($item_ids);
         $order->forceDelete();
 
-        return redirect('/admin/orders/closed')->withSuccess(
+        return redirect('/admin/orders#!tab-3')->withSuccess(
             trans('messages.order_deleted')
         );
     }
