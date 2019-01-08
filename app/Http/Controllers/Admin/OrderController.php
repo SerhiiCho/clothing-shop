@@ -21,14 +21,13 @@ class OrderController extends Controller
      * @param string|null $tab
      * @return \Illuminate\View\View
      */
-    public function index(?string $tab = null): View
+    public function index(): View
     {
-        if ($tab && $tab === 'closed') {
-            $orders = Order::onlyTrashed()->latest()->paginate(24);
-        } else {
-            $orders = Order::latest()->paginate(24);
-        }
-        return view('admin.orders.index', compact('orders', 'tab'));
+        return view('admin.orders.index', [
+            'open_orders' => Order::whereNull('user_id')->latest()->paginate(24),
+            'taken_orders' => Order::whereNotNull('user_id')->latest()->paginate(24),
+            'closed_orders' => Order::onlyTrashed()->latest()->paginate(24),
+        ]);
     }
 
     /**

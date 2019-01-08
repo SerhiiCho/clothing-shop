@@ -35,7 +35,7 @@ Route::view('search', 'pages.search');
 // Admin
 Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('dashboard', 'DashboardController@index');
-    Route::get('orders/{tab?}', 'OrderController@index');
+    Route::get('orders', 'OrderController@index');
     Route::put('orders/{order}', 'OrderController@softDelete');
     Route::post('orders/{order}', 'OrderController@store');
     Route::delete('orders/{order}', 'OrderController@destroy');
