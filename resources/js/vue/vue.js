@@ -12,6 +12,8 @@ Vue.component('items-api', require('./components/items/ItemsApi.vue'));
 // Other
 Vue.component('categories-button', require('./components/CategoriesButton.vue'));
 Vue.component('message', require('./components/Message.vue'));
+Vue.component('tabs', require('./components/Tabs.vue'));
+Vue.component('tab', require('./components/Tab.vue'));
 
 const app = new Vue({
 	el: '#app'
