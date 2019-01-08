@@ -40,7 +40,7 @@ The app supports only russian language, but can be easily translated. Just by co
 
 * [laravel/laravel](https://github.com/laravel/laravel) | PHP framework
 * [vuejs/vue](https://github.com/vuejs/vue) | JavaScript framework
-* [twbs/bootstrap](https://github.com/twbs/bootstrap)
+* [twbs/bootstrap](https://github.com/twbs/bootstrap) | CSS framework
 
 ## Before downloading
 
