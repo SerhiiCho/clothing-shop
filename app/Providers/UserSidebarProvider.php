@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\ServiceProvider;
 
@@ -13,7 +14,8 @@ class UserSidebarProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->showAllOrderMessages();
+        $this->countAllOrderMessages();
+        $this->countAllNonAdminUsers();
     }
 
     /**
@@ -22,15 +24,33 @@ class UserSidebarProvider extends ServiceProvider
      *
      * @return void
      */
-    public function showAllOrderMessages(): void
+    public function countAllOrderMessages(): void
     {
         try {
-            $orders = cache()->rememberForever('orders', function () {
-                return Order::count();
+            view()->composer('includes.user-sidebar', function ($view) {
+                $view->with([
+                    'orders' => cache()->rememberForever('orders', function () {
+                        return Order::count();
+                    }),
+                ]);
             });
+        } catch (QueryException $e) {
+            logs()->error($e->getMessage());
+        }
+    }
 
-            view()->composer('includes.user-sidebar', function ($view) use ($orders) {
-                $view->with(compact('orders'));
+    /**
+     * @return void
+     */
+    public function countAllNonAdminUsers(): void
+    {
+        try {
+            view()->composer('includes.user-sidebar', function ($view) {
+                $view->with([
+                    'non_admin_users' => cache()->rememberForever('non_admin_users', function () {
+                        return User::whereAdmin(0)->count();
+                    }),
+                ]);
             });
         } catch (QueryException $e) {
             logs()->error($e->getMessage());

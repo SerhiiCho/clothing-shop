@@ -41,6 +41,7 @@ class UserController extends Controller
             return redirect('master/users');
         }
 
+        cache()->forget('non_admin_users');
         $user->update(['admin' => 1]);
 
         return redirect('master/users')->withSuccess(
@@ -59,6 +60,8 @@ class UserController extends Controller
         if ($user->isMaster()) {
             return redirect('master/users');
         }
+
+        cache()->forget('non_admin_users');
 
         return ($user->delete())
         ? redirect('master/users')->withSuccess(trans('users.user_deleted'))

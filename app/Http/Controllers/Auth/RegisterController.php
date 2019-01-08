@@ -63,6 +63,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        cache()->forget('non_admin_users');
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

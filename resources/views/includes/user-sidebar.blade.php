@@ -37,6 +37,11 @@
 
             @master
                 <li class="{{ active_if_route_is('users') }}">
+                    @if ($non_admin_users > 0)
+                        <span class="badge badge-danger position-absolute red-button">
+                            {{ $non_admin_users }}
+                        </span>
+                    @endif
                     <a href="/master/users" title="@lang('users.users')">
                         <i class="fas fa-users icon-profile-menu-line" aria-hidden="true"></i>
                         <span>@lang('users.users')</span>
