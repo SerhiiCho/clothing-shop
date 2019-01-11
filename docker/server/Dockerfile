@@ -4,6 +4,7 @@ COPY ./start.sh /
 
 RUN apt-get update \
     && apt-get install -y \
+        software-properties-common \
         apt-utils \
         libpng-dev \
         libjpeg-dev \
@@ -18,10 +19,10 @@ RUN apt-get update \
         libcurl3-dev \
         mysql-client \
         build-essential \
+        supervisor \
         vim \
         zip \
         unzip \
-        software-properties-common \
         gnupg \
         gnupg2 \
         gnupg1 \
@@ -36,3 +37,6 @@ RUN apt-get update \
     && echo 'alias phpunit="vendor/bin/phpunit"' >> ~/.bashrc \
     && echo 'alias pa="php artisan"' >> ~/.bashrc \
     && chmod u+x /start.sh
+
+########## Supervisor ##########
+COPY ./laravel-worker.conf /etc/supervisor/conf.d/
