@@ -15,9 +15,9 @@ if [ -f /var/www/vendor/autoload.php ]; then
         echo 'Seems like .env file is already created'
     fi
 
-    if [ -f /etc/supervisor/conf.d/laravel-worker.conf ]; then
-        supervisord && supervisorctl update && supervisorctl start laravel-worker:*
-    fi
+    # if [ -f /etc/supervisor/conf.d/laravel-worker.conf ]; then
+    #     supervisord && supervisorctl update && supervisorctl start laravel-worker:*
+    # fi
 else
     echo 'Wait couple seconds and try again. vendor/autoload.php file is not created yet, composer is currently installing it.'
 fi

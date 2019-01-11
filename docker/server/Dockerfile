@@ -19,7 +19,7 @@ RUN apt-get update \
         libcurl3-dev \
         mysql-client \
         build-essential \
-        supervisor \
+        # supervisor \
         vim \
         zip \
         unzip \
@@ -39,4 +39,4 @@ RUN apt-get update \
     && chmod u+x /start.sh
 
 ########## Supervisor ##########
-COPY ./laravel-worker.conf /etc/supervisor/conf.d/
+# COPY ./laravel-worker.conf /etc/supervisor/conf.d/
