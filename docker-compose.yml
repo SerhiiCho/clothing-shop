@@ -43,3 +43,9 @@ services:
     volumes:
       - ./:/var/www
     command: sh -c "npm rebuild node-sass && npm install && npm run prod"
+
+  cache:
+    image: redis:5.0
+    container_name: cache
+    ports:
+      - 6379:6379
