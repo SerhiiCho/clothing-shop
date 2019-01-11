@@ -2,8 +2,8 @@ version: '3'
 
 services:
   server:
-    image: ch-server
-    container_name: ch-server
+    image: server
+    container_name: server
     build:
       context: ./docker/server
     environment: 
@@ -19,7 +19,7 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: ch-db
+    container_name: db
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
@@ -30,7 +30,7 @@ services:
 
   composer:
     image: composer
-    container_name: ch-composer
+    container_name: composer
     volumes: 
       - ./:/var/www
     working_dir: /var/www
@@ -38,8 +38,8 @@ services:
 
   node:
     image: node:8-alpine
-    container_name: ch-node
+    container_name: node
     working_dir: /var/www
     volumes:
       - ./:/var/www
-    command: sh -c "npm rebuild node-sass && npm install && npm run dev"
+    command: sh -c "npm rebuild node-sass && npm install && npm run prod"
