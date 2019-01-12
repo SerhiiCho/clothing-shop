@@ -2,8 +2,8 @@
 
 return [
 
-    //Application Name
     'name' => env('APP_NAME', 'ClothingShop'),
+    'version' => env('APP_VERSION', 0),
 
     ///Application Environment
     'env' => env('APP_ENV', 'production'),

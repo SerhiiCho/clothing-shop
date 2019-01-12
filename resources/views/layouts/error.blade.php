@@ -5,6 +5,6 @@
     <main id="app">
         @yield('content')
     </main>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js?').config('app.version') }}"></script>
 </body>
 </html>

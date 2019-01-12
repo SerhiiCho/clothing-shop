@@ -35,23 +35,6 @@ function get_file_name(string $title, string $ext): string
 }
 
 /**
- * After editing stylesheets this function will update
- * timestamp on its file, it prevents browser caching
- *
- * @codeCoverageIgnore
- * @param string $path
- */
-function style_tymestamp(string $path)
-{
-    try {
-        $timestamp = '?v=' . File::lastModified(public_path() . $path);
-    } catch (Exception $e) {
-        $timestamp = '';
-    }
-    return '<link rel="stylesheet" href="' . $path . $timestamp . '">';
-}
-
-/**
  * This helper helps clean Item controller by separeting
  * this logic to helper
  *
