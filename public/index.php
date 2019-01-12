@@ -7,14 +7,11 @@
  */
 define('LARAVEL_START', microtime(true));
 
-
 // Register The Auto Loader
-require __DIR__.'/../vendor/autoload.php';
-
+require __DIR__ . '/../vendor/autoload.php';
 
 // Turn On The Lights
-$app = require_once __DIR__.'/../bootstrap/app.php';
-
+$app = require_once __DIR__ . '/../bootstrap/app.php';
 
 // Run The Application
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
@@ -22,7 +19,6 @@ $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 $response = $kernel->handle(
     $request = Illuminate\Http\Request::capture()
 );
-
 
 $response->send();
 
