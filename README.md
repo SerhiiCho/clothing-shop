@@ -32,7 +32,9 @@ The app supports only russian language, but can be easily translated. Just by co
 ##### Technologies
 
 * [PHP](http://php.net/)
+* [NGINX](https://nginx.org/)
 * [MySQL](https://www.mysql.com/)
+* [REDIS](https://redis.io/)
 * [JavaScript](https://www.javascript.com/)
 * [Docker](https://www.docker.com/)
 
