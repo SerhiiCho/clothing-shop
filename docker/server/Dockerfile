@@ -1,4 +1,4 @@
-FROM php:7.3-apache
+FROM php:7.3-fpm
 
 COPY ./start.sh /
 
@@ -33,7 +33,6 @@ RUN apt-get update \
     && docker-php-ext-install  \
     pdo_mysql \
     zip \
-    && a2enmod rewrite \
     && echo 'alias phpunit="vendor/bin/phpunit"' >> ~/.bashrc \
     && echo 'alias pa="php artisan"' >> ~/.bashrc \
     && chmod u+x /start.sh

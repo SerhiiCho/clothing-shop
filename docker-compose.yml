@@ -1,19 +1,27 @@
 version: '3'
 
 services:
-  server:
-    image: server
-    container_name: server
-    build:
-      context: ./docker/server
-    environment: 
-      - APACHE_RUN_USER=#1000
-    volumes: 
-      - ./:/var/www
-      - ./docker/server/sites-available:/etc/apache2/sites-available
-    ports: 
-      - 80:80
+  nginx:
+    image: nginx:1.15
+    container_name: nginx
     working_dir: /var/www
+    ports:
+      - "80:80"
+    links:
+      - php
+    volumes:
+      - ./:/var/www
+      - ./docker/server/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/server/default.conf:/etc/nginx/conf.d/default.conf
+
+  php:
+    build: ./docker/server
+    container_name: php
+    working_dir: /var/www
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./:/var/www
     depends_on: 
       - db
 
