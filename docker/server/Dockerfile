@@ -18,7 +18,7 @@ RUN apt-get update \
         libcurl3 \
         libcurl3-dev \
         mysql-client \
-        build-essential \
+        curl \
         # supervisor \
         vim \
         zip \
@@ -35,7 +35,11 @@ RUN apt-get update \
     zip \
     && echo 'alias phpunit="vendor/bin/phpunit"' >> ~/.bashrc \
     && echo 'alias pa="php artisan"' >> ~/.bashrc \
-    && chmod u+x /start.sh
+    && chmod u+x /start.sh \
+    && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+    && apt-get install \
+        build-essential \
+        nodejs
 
 ########## Supervisor ##########
 # COPY ./laravel-worker.conf /etc/supervisor/conf.d/

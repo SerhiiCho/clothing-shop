@@ -5,12 +5,14 @@ sleep 3
 
 if [ -f /var/www/vendor/autoload.php ]; then
     cd /var/www
+    chown -R www-data:www-data /var/www
 
     if [ ! -f /var/www/.env ]; then
         cp .env.example .env
         php artisan key:generate
         php artisan storage:link
         php artisan wipe
+        npm rebuild node-sass --force && npm install && npm run prod
     else
         echo 'Seems like .env file is already created'
     fi

@@ -44,14 +44,6 @@ services:
     working_dir: /var/www
     command: composer install
 
-  node:
-    image: node:8-alpine
-    container_name: node
-    working_dir: /var/www
-    volumes:
-      - ./:/var/www
-    command: sh -c "npm rebuild node-sass && npm install && npm run prod"
-
   cache:
     image: redis:5.0
     container_name: cache
