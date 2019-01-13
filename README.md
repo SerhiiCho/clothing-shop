@@ -67,4 +67,4 @@ The app supports only russian language, but can be easily translated. Just by co
 ## Get started with Docker
 
 1. `docker-compose up -d` and wait untill it's done
-2. `docker-compose exec server /start.sh` *(go to localhost)*
+2. `docker-compose exec php /start.sh` *(go to localhost)*

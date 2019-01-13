@@ -6,6 +6,7 @@ node_modules
 vendor
 supervisord.pid
 public/hot
+public/storage
 public/css/app.css
 public/js/app.js
 public/mix-manifest.json
