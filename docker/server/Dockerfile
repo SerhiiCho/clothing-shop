@@ -37,7 +37,7 @@ RUN apt-get update \
     && echo 'alias pa="php artisan"' >> ~/.bashrc \
     && chmod u+x /start.sh \
     && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
-    && apt-get install \
+    && apt-get install -y \
         build-essential \
         nodejs
 
