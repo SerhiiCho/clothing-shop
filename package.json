@@ -19,6 +19,7 @@
     "dependencies": {
         "axios": "^0.18.0",
         "browser-sync-webpack-plugin": "^2.0.1",
+        "node-libpng": "^0.2.7",
         "yarn": "^1.6.0",
         "yarn-install": "^1.0.0"
     }
