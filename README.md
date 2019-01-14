@@ -54,6 +54,8 @@ The app supports only russian language, but can be easily translated. Just by co
 
 ## Get started (without Docker)
 
+> Clone files and enter clothing_shop folder. Now make these steps:
+
 1. `cp .env.example .env` copy the *env.example* and create *.env*
 2. Open just created *.env* file and fill database credentials
 3. Create database with the name that you filled in *.env* file in DB_DATABASE field
@@ -66,5 +68,4 @@ The app supports only russian language, but can be easily translated. Just by co
 
 ## Get started with Docker
 
-1. `docker-compose up -d` and wait untill it's done
-2. `docker-compose exec php /start.sh` *(go to localhost)*
+> Clone files and enter clothing_shop folder. Now just run `./start.sh`
