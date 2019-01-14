@@ -6,7 +6,7 @@ services:
     container_name: nginx
     working_dir: /var/www
     depends_on: 
-      - mysql
+      - db
     ports:
       - "80:80"
     links:
@@ -25,19 +25,19 @@ services:
     volumes:
       - ./:/var/www
     depends_on: 
-      - mysql
+      - db
 
-  mysql:
+  db:
     image: mysql:8.0
-    container_name: mysql
+    container_name: db
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 111111
       MYSQL_DATABASE: clothing_shop
     volumes:
-      - ./docker/mysql/storage:/var/lib/mysql
-      - ./docker/mysql/custom.cnf:/etc/mysql/conf.d/custom.cnf
+      - ./docker/db/storage:/var/lib/mysql
+      - ./docker/db/custom.cnf:/etc/mysql/conf.d/custom.cnf
 
   composer:
     image: composer

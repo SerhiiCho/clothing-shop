@@ -1,7 +1,7 @@
 #! /bin/bash
 
 echo 'Setting everything up...'
-sleep 2
+sleep 10
 
 if [ -f /var/www/vendor/autoload.php ]; then
     cd /var/www
@@ -12,12 +12,12 @@ if [ -f /var/www/vendor/autoload.php ]; then
         php artisan key:generate
         php artisan storage:link
         php artisan wipe
-        npm rebuild node-sass --force && npm install && npm run prod
         echo 'DONE!! Go to localhost'
-    else
-        echo 'Seems like .env file is already created'
     fi
 
+    if [ ! -f /var/www/public/js/app.js && ! -f /var/www/public/css/app.css ]; then
+        npm rebuild node-sass --force && npm install && npm run prod
+    fi
     # if [ -f /etc/supervisor/conf.d/laravel-worker.conf ]; then
     #     supervisord && supervisorctl update && supervisorctl start laravel-worker:*
     # fi
