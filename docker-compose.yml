@@ -36,7 +36,7 @@ services:
       MYSQL_DATABASE: clothing_shop
     volumes:
       - ./docker/mysql/storage:/var/lib/mysql
-      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/mysql/custom.cnf:/etc/mysql/conf.d/custom.cnf
 
   composer:
     image: composer
