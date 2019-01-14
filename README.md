@@ -68,4 +68,4 @@ The app supports only russian language, but can be easily translated. Just by co
 
 ## Get started with Docker
 
-> Clone files and enter clothing_shop folder. Now just run `./start.sh`
+> Clone files and enter clothing_shop folder. Now just run `./run.sh`

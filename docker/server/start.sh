@@ -13,6 +13,7 @@ if [ -f /var/www/vendor/autoload.php ]; then
         php artisan storage:link
         php artisan wipe
         npm rebuild node-sass --force && npm install && npm run prod
+        echo 'DONE!! Go to localhost'
     else
         echo 'Seems like .env file is already created'
     fi
