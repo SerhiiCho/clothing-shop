@@ -1,7 +1,7 @@
 #! /bin/bash
 
-echo 'Waiting for 3 seconds'
-sleep 3
+echo 'Setting everything up...'
+sleep 2
 
 if [ -f /var/www/vendor/autoload.php ]; then
     cd /var/www
