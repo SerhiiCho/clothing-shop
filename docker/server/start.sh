@@ -22,5 +22,5 @@ if [ -f /var/www/vendor/autoload.php ]; then
     #     supervisord && supervisorctl update && supervisorctl start laravel-worker:*
     # fi
 else
-    echo 'Wait couple seconds and try again. vendor/autoload.php file is not created yet, composer is currently installing it.'
+    echo 'WAIT COUPLE SECONDS AND TRY AGAIN. vendor/autoload.php file is not created yet, composer is currently installing it.'
 fi
