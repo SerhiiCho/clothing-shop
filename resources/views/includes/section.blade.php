@@ -15,9 +15,10 @@
 
         <form action="{{ action('Admin\SectionController@update', ['section' => $section['id']]) }}"
             class="px-4 d-none mt-3 editing-form"
-                method="post"
-                id="home-form-{{ $section['id'] }}"
-            >
+            method="post"
+            id="home-form-{{ $section['id'] }}"
+            autocomplete="off"
+        >
                 @csrf @method('put')
                 <div class="form-group">
                     <input type="text" 
