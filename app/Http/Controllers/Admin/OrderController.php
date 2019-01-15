@@ -62,7 +62,7 @@ class OrderController extends Controller
 
         $order->update(['user_id' => user()->id]);
 
-        return redirect('admin/orders#!tab-1')->withSuccess(
+        return redirect('admin/orders#!tab-2')->withSuccess(
             trans('messages.you_took_the_order', [
                 'order' => $order->id,
             ])

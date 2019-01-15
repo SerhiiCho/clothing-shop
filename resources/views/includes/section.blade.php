@@ -5,7 +5,7 @@
     <a name="{{ $anchor ?? '' }}"></a>
 
     @admin
-        <a href="#!" class="btn btn-success position-absolute rounded-circle"
+        <a href="#!" class="btn btn-success position-absolute rounded-circle edit-form-btn"
             style="top:20px; right:20px;"
             data-form="home-form-{{ $section['id'] }}"
             data-section="home-section-{{ $section['id'] }}"
@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group text-center">
                     <button type="submit"
-                        class="btn btn-success position-absolute rounded-circle edit-form-btn" 
+                        class="btn btn-success position-absolute rounded-circle" 
                         title="@lang('contacts.save')"
                         style="top:20px; right:75px;"
                     >

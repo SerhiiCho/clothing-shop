@@ -2,22 +2,27 @@
 # This script will run untill composer done with creating autoload.php file
 # in laravel vendor folder
 
-printf 'Setting everything up... \n'
+printf 'Waiting until composer will create autoload.php file... \n'
+cd /var/www
 
 while [ true ]; do
-    if [ -f /var/www/vendor/autoload.php ] && [ ! -f /var/www/.env ]; then
-        cd /var/www
+    if [ -f /var/www/vendor/autoload.php ]; then
+        if [ ! -f /var/www/.env ]; then
+            cp .env.example .env
+            php artisan key:generate
+            php artisan storage:link
+        else
+            printf '.env file is already exists \n'
+        fi
+
         chown -R www-data:www-data $(ls | awk '{if($1 != "docker"){ print $1 }}')
-        cp .env.example .env
-        php artisan key:generate
-        php artisan storage:link
         php artisan wipe
 
         if [ ! -f /var/www/public/js/app.js ] && [ ! -f /var/www/public/css/app.css ]; then
             npm rebuild node-sass --force && npm install && npm run prod
         fi
 
-        printf 'DONE!! Go to a localhost \n'
+        printf 'DONE! You can go to a localhost \n'
         break;
     fi
 done
