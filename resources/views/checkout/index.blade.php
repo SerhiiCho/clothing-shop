@@ -45,6 +45,7 @@
                             id="name" 
                             placeholder="@lang('checkout.name')" 
                             name="name" 
+                            value="{{ old('name') }}"
                             required
                         >
                     </div>
@@ -55,6 +56,7 @@
                             id="phone" 
                             placeholder="@lang('checkout.phone')" 
                             name="phone" 
+                            value="{{ old('phone') }}"
                             required
                         >
                     </div>

@@ -16,6 +16,8 @@ return [
     'more_clothes' => 'Еще товары',
     'welcome' => 'Добро пожаловать',
     'back' => 'Назад',
+    'error' => 'Ошибка',
+    'success' => 'Выполнено',
     'close_order' => 'Закрыть заказ',
     'untake_order' => 'Убрать заказ',
     'close_this_order' => 'Закрыть этот заказ?',

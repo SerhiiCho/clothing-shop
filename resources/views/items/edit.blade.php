@@ -38,7 +38,7 @@
                         value="{{ $item->price }}"
                         name="price"
                         value="0"
-                        placeholder="@lang('items.select')"
+                        placeholder="@lang('items.select_price')"
                         class="form-control"
                     >
                 </div>

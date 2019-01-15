@@ -1,19 +1,19 @@
 @if (count($errors) > 0)
-    <div class="container mt-3 mb-3">
+    <message state="error" header="@lang('messages.error')">
         @foreach ($errors->all() as $error)
-            <message state="error">{{ $error }}</message>
+            <hr> {{ $error }}
         @endforeach
-    </div>
+    </message>
 @endif
 
 @if (session('success'))
-    <div class="container mt-3 mb-3">
-        <message state="success">{!! session('success') !!}</message>
-    </div>
+    <message state="success" header="@lang('messages.success')">
+        {!! session('success') !!}
+    </message>
 @endif
 
 @if (session('error'))
-    <div class="container mt-3 mb-3">
-        <message state="error">{!! session('error') !!}</message>
-    </div>
+    <message state="error" header="@lang('messages.error')">
+        {!! session('error') !!}
+    </message>
 @endif
