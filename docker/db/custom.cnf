@@ -13,6 +13,7 @@ innodb_checksum_algorithm=crc32
 # To avoid DNS resolution on connect
 skip_name_resolve
 
-# If mysql server has no slaves and doesn't do backups, then set to 0, 
-# it will increase performance.
-# sync_binlog=0
+# If mysql server has no slaves and doesn't do backups, then set to 0,
+# it will increase performance. Don't want to keep a record of the comitted
+# transactions on the disk
+sync_binlog=0
