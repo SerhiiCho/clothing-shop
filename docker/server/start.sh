@@ -1,26 +1,27 @@
 #! /bin/bash
+# This script will run untill composer done with creating autoload.php file
+# in laravel vendor folder
 
-echo 'Setting everything up...'
-sleep 17
+printf 'Setting everything up... \n'
 
-if [ -f /var/www/vendor/autoload.php ]; then
-    cd /var/www
-    chown -R www-data:www-data $(ls | awk '{if($1 != "docker"){ print $1 }}')
-
-    if [ ! -f /var/www/.env ]; then
+while [ true ]; do
+    if [ -f /var/www/vendor/autoload.php ] && [ ! -f /var/www/.env ]; then
+        cd /var/www
+        chown -R www-data:www-data $(ls | awk '{if($1 != "docker"){ print $1 }}')
         cp .env.example .env
         php artisan key:generate
         php artisan storage:link
         php artisan wipe
-        echo 'DONE!! Go to localhost'
-    fi
 
-    if [ ! -f /var/www/public/js/app.js && ! -f /var/www/public/css/app.css ]; then
-        npm rebuild node-sass --force && npm install && npm run prod
+        if [ ! -f /var/www/public/js/app.js ] && [ ! -f /var/www/public/css/app.css ]; then
+            npm rebuild node-sass --force && npm install && npm run prod
+        fi
+
+        printf 'DONE!! Go to a localhost \n'
+        break;
     fi
-    # if [ -f /etc/supervisor/conf.d/laravel-worker.conf ]; then
-    #     supervisord && supervisorctl update && supervisorctl start laravel-worker:*
-    # fi
-else
-    echo 'WAIT COUPLE SECONDS AND TRY AGAIN. vendor/autoload.php file is not created yet, composer is currently installing it.'
-fi
+done
+
+# if [ -f /etc/supervisor/conf.d/laravel-worker.conf ]; then
+#     supervisord && supervisorctl update && supervisorctl start laravel-worker:*
+# fi
