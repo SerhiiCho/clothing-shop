@@ -5,7 +5,7 @@ sleep 17
 
 if [ -f /var/www/vendor/autoload.php ]; then
     cd /var/www
-    chmod -R www-data:www-data $(ls | awk '{if($1 != "docker"){ print $1 }}')
+    chown -R www-data:www-data $(ls | awk '{if($1 != "docker"){ print $1 }}')
 
     if [ ! -f /var/www/.env ]; then
         cp .env.example .env
