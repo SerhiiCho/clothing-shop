@@ -22,6 +22,14 @@ class Item extends Model
     }
 
     /**
+     * Relation with View model
+     */
+    public function views()
+    {
+        return $this->hasMany(View::class);
+    }
+
+    /**
      * Relationship with ItemsPhoto model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
