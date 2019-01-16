@@ -47,6 +47,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::resource('cards', 'CardController', ['except' => ['show']]);
     Route::resource('contacts', 'ContactController', ['except' => ['show']]);
     Route::put('sections/{section}', 'SectionController@update');
+    Route::get('table', 'TableController@index');
 });
 
 Route::prefix('master')->namespace('Master')->group(function () {
