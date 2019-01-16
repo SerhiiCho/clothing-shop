@@ -6,6 +6,7 @@ use App\Helpers\Traits\ItemHelpers;
 use App\Http\Requests\ItemRequest;
 use App\Models\Item;
 use App\Models\Type;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\View\View;
@@ -80,6 +81,17 @@ class ItemController extends Controller
             'item_category' => $item->category,
             'item_title' => $item->title,
         ];
+
+        // Mark that visitor saw the item if he didn't
+        if ($item->views()->whereVisitorId(visitor_id())->doesntExist()) {
+            try {
+                $item->views()->create(['visitor_id' => visitor_id()]);
+            } catch (QueryException $e) {
+                logger()->error("Cant add visitor view to item. {$e->getMessage()}");
+            }
+        } else {
+            $item->views()->whereVisitorId(visitor_id())->increment('visits');
+        }
 
         // If page has been just visited return view
         if (Cookie::get('visited') && Cookie::get('visited') == $item->id) {
