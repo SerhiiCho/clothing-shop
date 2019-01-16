@@ -84,7 +84,7 @@
                             </th>
                             <td title="{{ $item->title }}">
                                 <a href="/item/{{ $item->category }}/{{ $item->slug }}" class="grey">
-                                    {{ str_limit($item->title, 14) }}
+                                    {{ str_limit($item->title, 30) }}
                                 </a>
                             </td>
                             <td>{{ $item->popular }}</td>
@@ -92,7 +92,7 @@
                             <td>{{ $item->price }}</td>
                             <td title="{{ $item->type->name }}">{{ str_limit($item->type->name, 14) }}</td>
                             <td>
-                                {{ $item->category == 'men' ? trans('items.men_items') : trans('items.women_items') }}
+                                {{ $item->category == 'men' ? trans('navigation.men') : trans('navigation.women') }}
                             </td>
                             <td>
                                 <a href="/items/{{ $item->slug }}/edit"
