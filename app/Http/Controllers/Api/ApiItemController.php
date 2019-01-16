@@ -106,12 +106,16 @@ class ApiItemController extends Controller
             return [];
         }
 
-        $this->deleteOldPhotos($item->photos);
-
         cache()->forget('categories_men');
         cache()->forget('categories_women');
 
-        $item->delete();
-        return response(['status' => 'ok'], 200);
+        $this->deleteOldPhotos($item->photos);
+
+        if ($item->delete()) {
+            return response(['status' => 'ok'], 200);
+        } else {
+            return response(['status' => 'error'], 417);
+        }
+
     }
 }
