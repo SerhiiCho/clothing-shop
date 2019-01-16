@@ -1,6 +1,6 @@
 <h5 class="mb-4">
     <i class="fas fa-chart-line grey"></i>
-    @lang('dashboard.stats')
+    @lang('dashboard.statistics')
 </h5>
 
 <table class="table table-hover">
