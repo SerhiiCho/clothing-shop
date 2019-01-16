@@ -9,7 +9,7 @@ Route::namespace ('Api')->group(function () {
     // Item
     Route::prefix('item')->group(function () {
         Route::post('/', 'ApiItemController@store');
-        Route::get('random/{category?}', 'ApiItemController@random');
+        Route::get('random/{visitor_id}/{category?}', 'ApiItemController@random');
         Route::put('{id}', 'ApiItemController@edit');
         Route::get('popular', 'ApiItemController@popular');
         Route::get('{item}', 'ApiItemController@show');

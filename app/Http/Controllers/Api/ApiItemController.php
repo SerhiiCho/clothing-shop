@@ -53,21 +53,16 @@ class ApiItemController extends Controller
      * Get list of random items
      *
      * @param string|null $category
+     * @param int $visitor_id
      */
-    public function random(?string $category = null)
+    public function random(int $visitor_id, ?string $category = null)
     {
         try {
-            $items = Item::query();
-
             if ($category) {
-                $items = $items->whereCategory($category);
+                $items = Item::getRandomUnseen($visitor_id, $category);
+            } else {
+                $items = Item::getRandomUnseen($visitor_id);
             }
-
-            $items = $items->inRandomOrder()
-                ->inStock()
-                ->take(7)
-                ->get();
-
             return ItemResource::collection($items);
         } catch (QueryException $e) {
             return collect();
@@ -110,6 +105,9 @@ class ApiItemController extends Controller
         cache()->forget('categories_women');
 
         $this->deleteOldPhotos($item->photos);
+
+        $item->views()->delete();
+        $item->photos()->delete();
 
         if ($item->delete()) {
             return response(['status' => 'ok'], 200);

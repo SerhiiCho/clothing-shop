@@ -83,4 +83,43 @@ class Item extends Model
                 ->orWhere('title', 'like', "%{$word}%");
         })->simplePaginate(20);
     }
+
+    /**
+     * Returns only those items that user haven't seen, if there no items
+     * the he haven't seen, shows just random
+     *
+     * @param null $visitor_id
+     * @param string|null $category
+     * @return object
+     */
+    public static function getRandomUnseen(int $visitor_id = null, ?string $category = null): object
+    {
+        $seen = View::whereVisitorId($visitor_id ?? visitor_id())->pluck('item_id');
+        $random = self::query();
+
+        if ($category) {
+            $random = $random->whereCategory($category);
+        }
+
+        $random = $random->inRandomOrder()
+            ->where($seen->map(function ($id) {
+                return ['id', '!=', $id];
+            })->toArray())
+            ->inStock()
+            ->limit(12)
+            ->get();
+
+        // If not enough items to display, show just random items
+        if ($random->count() < 6) {
+            if ($category) {
+                return self::inRandomOrder()
+                    ->whereCategory($category)
+                    ->inStock()
+                    ->limit(12)
+                    ->get();
+            }
+            return self::inRandomOrder()->inStock()->limit(12)->get();
+        }
+        return $random;
+    }
 }

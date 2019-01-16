@@ -121,7 +121,6 @@ trait ItemHelpers
                 Storage::delete("public/img/big/clothes/{$photo->name}");
                 Storage::delete("public/img/small/clothes/{$photo->name}");
             }
-            $photo->delete();
         }
     }
 

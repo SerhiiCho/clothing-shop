@@ -54,11 +54,11 @@
         headline="@lang('messages.more_clothes')"
 
         @if ($admin_options['men_category'] && !$admin_options['women_category'])
-            to="/api/item/random/men"
+            to="/api/item/random/{{ visitor_id() }}/men"
         @elseif (!$admin_options['men_category'] && $admin_options['women_category'])
-            to="/api/item/random/women"
+            to="/api/item/random/{{ visitor_id() }}/women"
         @else
-            to="/api/item/random"
+            to="/api/item/random/{{ visitor_id() }}"
         @endif
     ></items-api>
 </div>

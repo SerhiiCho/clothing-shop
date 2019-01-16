@@ -30,7 +30,7 @@
     <items-api
         hryvnia="@lang('items.hryvnia')"
         headline="@lang('messages.more_clothes')"
-        to="/api/item/random/{{ $item_category }}"
+        to="/api/item/random/{{ visitor_id() }}/{{ $item_category }}"
     ></items-api>
 </div>
 
