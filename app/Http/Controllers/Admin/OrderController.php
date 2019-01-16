@@ -18,7 +18,6 @@ class OrderController extends Controller
     }
 
     /**
-     * @param string|null $tab
      * @return \Illuminate\View\View
      */
     public function index(): View
