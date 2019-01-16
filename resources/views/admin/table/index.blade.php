@@ -6,17 +6,11 @@
 
 <div class="container">
     @if ($items->count() > 0)
-        <h3 class="display-4 text-center pt-3">
-            @lang('table.table')
-        </h3>
-
-        @if ($items->count() > 0)
-            <section class="text-center pt-1">
-                <div class="mx-auto d-inline-block">
-                    {{ $items->appends(request()->input())->links() }}
-                </div>
-            </section>
-        @endif
+        <section class="text-center pt-3">
+            <div class="mx-auto d-inline-block">
+                {{ $items->appends(request()->input())->links() }}
+            </div>
+        </section>
 
         {{-- Table --}}
         <div class="table-responsive-md">
