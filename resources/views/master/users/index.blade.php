@@ -6,16 +6,15 @@
 
 <div class="container">
     <h4 class="text-center py-3">
-        @lang('users.users'): 
-        <strong>{{ $users->count() }}</strong>
+        @lang('users.users')
     </h4>
 
     {{-- Users --}}
     <div class="table-responsive-sm pb-5">
-        <table class="table">
+        <table class="table compact-table">
             <thead>
                 <tr>
-                    <th scope="col">@lang('users.user_id')</th>
+                    <th scope="col" title="@lang('users.user_id')">#</th>
                     <th scope="col">@lang('forms.input_name')</th>
                     <th scope="col">@lang('forms.input_email_address')</th>
                     <th scope="col">@lang('users.add')</th>
