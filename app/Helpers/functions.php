@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Visitor;
+
 /**
  * Alias for auth() helper
  * @codeCoverageIgnore
@@ -81,6 +83,31 @@ function dump_sql(?bool $show_data = false): void
             }
         });
     }
+}
+
+/**
+ * @param $exception
+ * @param string $file
+ * @return void
+ */
+function no_connection_error($exception, string $file): void
+{
+    logger()->error($exception->getMessage() . " in file $file.php");
+    session()->flash('error', trans('messages.query_error'));
+}
+
+/**
+ * It returns visitor_id even if cookie is not set
+ */
+function visitor_id()
+{
+    if (request()->cookie('cs_rotsiv')) {
+        return request()->cookie('cs_rotsiv');
+    }
+    $visitor_id = Visitor::whereIp(request()->ip())->value('id');
+    \Cookie::queue('cs_rotsiv', $visitor_id, 218400);
+
+    return $visitor_id;
 }
 
 /**
