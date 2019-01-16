@@ -97,6 +97,8 @@ return [
         'categories_women',
         'nav_contacts',
         'admin_options',
+        'non_admin_users',
+        'orders',
     ],
 
 ];
