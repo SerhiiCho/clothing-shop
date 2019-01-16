@@ -8,6 +8,6 @@ $factory->define(Order::class, function () {
         'phone' => '38063' . rand(1, 9) . rand(1, 9) . '91212',
         'name' => str_random(7),
         'user_id' => null,
-        'total' => 100.15,
+        'total' => rand(80, 1700),
     ];
 });

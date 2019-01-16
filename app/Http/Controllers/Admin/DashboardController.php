@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Item;
-use App\Models\Order;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
