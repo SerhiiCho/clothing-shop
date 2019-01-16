@@ -75,6 +75,7 @@ return [
         App\Providers\ContactProvider::class,
         App\Providers\BladeProvider::class,
         App\Providers\HeaderProvider::class,
+        App\Providers\VisitorProvider::class,
 
     ],
 
