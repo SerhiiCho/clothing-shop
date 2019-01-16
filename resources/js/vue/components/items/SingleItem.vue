@@ -25,15 +25,13 @@
             </a>
 
             <!-- Delete button -->
-            <a v-if="admin == 1"
-                v-on:click="deleteItem(item.slug)"
-                href="#"
-                :title="deleting"
-                class="btn-change-item"
-                style="top:55px;"
-            >
-                <i class="fas fa-trash-alt"></i>
-            </a>
+            <div v-if="admin == 1" class="btn-change-item" style="top:55px">
+                <delete-item-btn
+                    :title="deleting"
+                    :slug="item.slug"
+                    redirect="/items"
+                ></delete-item-btn>
+            </div>
         </div>
 
         <!-- Cards -->
@@ -109,6 +107,8 @@
 </template>
 
 <script>
+import DeleteItemBtn from "./DeleteItemBtn";
+
 export default {
     data() {
         return {
@@ -141,14 +141,6 @@ export default {
                 .catch(err => console.log(err))
         },
 
-        deleteItem (slug) {
-            if (confirm(this.deleteThisProduct)) {
-                this.$axios.delete('/api/item/' + slug)
-                    .then(data => window.location.href = '/items')
-                    .catch(error => console.error(error))
-            }
-        },
-
         swapPhoto (smallPhoto, index) {
             let smallPhotoObj = document.getElementById('photo' + index)
 
@@ -165,7 +157,10 @@ export default {
                 return 'active-photo'
             }
         }
-    }
+    },
+    components: {
+        DeleteItemBtn,
+    },
 }
 </script>
 

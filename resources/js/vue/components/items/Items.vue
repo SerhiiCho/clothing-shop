@@ -32,14 +32,12 @@
                 </a>
 
                 <!-- Delete button -->
-                <a v-if="admin == 1" href="#!"
-                    v-on:click="deleteItem(item.slug)"
-                    :title="deleting"
-                    class="btn-change-item"
-                    style="top:55px;"
-                >
-                    <i class="fas fa-trash-alt"></i>
-                </a>
+                <div v-if="admin == 1" class="btn-change-item" style="top:55px">
+                    <delete-item-btn
+                        :title="deleting"
+                        :slug="item.slug"
+                    ></delete-item-btn>
+                </div>
             </div>
         </div>
         <!-- Preloader -->
@@ -50,6 +48,8 @@
 </template>
 
 <script>
+import DeleteItemBtn from "./DeleteItemBtn";
+
 export default {
     data() {
         return {
@@ -70,7 +70,12 @@ export default {
             if (!this.theEnd) {
                 this.onScroll()
             }
-        })
+        });
+
+        Event.$on('item-deleted', () => {
+            this.url = null
+            this.fetchItems(true)
+        });
     },
 
     methods: {
@@ -105,17 +110,6 @@ export default {
                 })
         },
 
-        deleteItem(slug) {
-            if (confirm('Удалить этот товар?')) {
-                this.$axios.delete('api/item/' + slug)
-                    .then(res => {
-                        this.url = null
-                        this.fetchItems(true)
-                    })
-                    .catch(error => console.error(error))
-            }
-        },
-
         changePhotoOver(index, newSrc = null) {
             if (newSrc) {
                 document.getElementById('photo' + index).src = '/storage/img/small/clothes/' + newSrc
@@ -136,8 +130,10 @@ export default {
         changePhotoOut (index, newSrc) {
             document.getElementById('photo' + index).src = '/storage/img/small/clothes/' + newSrc
         }
-
-    }
+    },
+    components: {
+        DeleteItemBtn,
+    },
 }
 </script>
 
