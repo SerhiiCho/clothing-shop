@@ -70,7 +70,7 @@ return [
 
         'redis' => [
             'driver' => 'redis',
-            'connection' => 'default',
+            'connection' => 'cache',
         ],
 
     ],
@@ -86,10 +86,7 @@ return [
     |
      */
 
-    'prefix' => env(
-        'CACHE_PREFIX',
-        str_slug(env('APP_NAME', 'laravel'), '_') . '_cache'
-    ),
+    'prefix' => 'cs_cache',
 
     'cache_names' => [
         'home_cards',
