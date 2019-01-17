@@ -9,12 +9,11 @@ use Illuminate\Support\ServiceProvider;
 class FooterProvider extends ServiceProvider
 {
     /**
-     * Take 7 last items from database and displat them
-     * in the footer
+     * Take 7 last items from database and display them in the footer
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->categoriesWomen();
         $this->categoriesMen();
@@ -24,7 +23,7 @@ class FooterProvider extends ServiceProvider
     /**
      * @return void
      */
-    public function categoriesMen(): void
+    private function categoriesMen(): void
     {
         $categories_men = cache()->rememberForever('categories_men', function () {
             try {
@@ -45,7 +44,7 @@ class FooterProvider extends ServiceProvider
     /**
      * @return void
      */
-    public function categoriesWomen(): void
+    private function categoriesWomen(): void
     {
         $categories_women = cache()->rememberForever('categories_women', function () {
             try {
@@ -66,7 +65,7 @@ class FooterProvider extends ServiceProvider
     /**
      * @return void
      */
-    public function lastItems(): void
+    private function lastItems(): void
     {
         try {
             $items = cache()->rememberForever('footer_latest', function () {
@@ -78,11 +77,10 @@ class FooterProvider extends ServiceProvider
             });
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
-            $items = [];
         }
 
         view()->composer('includes.footer', function ($view) use ($items) {
-            $view->with('footer_latest', $items);
+            $view->with('footer_latest', $items ?? []);
         });
     }
 }

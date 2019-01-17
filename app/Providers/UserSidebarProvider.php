@@ -10,9 +10,11 @@ use Illuminate\Support\ServiceProvider;
 class UserSidebarProvider extends ServiceProvider
 {
     /**
+     * Bootstrap services
+     *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->countAllOrderMessages();
         $this->countAllNonAdminUsers();
@@ -24,7 +26,7 @@ class UserSidebarProvider extends ServiceProvider
      *
      * @return void
      */
-    public function countAllOrderMessages(): void
+    private function countAllOrderMessages(): void
     {
         try {
             view()->composer('includes.user-sidebar', function ($view) {
@@ -42,7 +44,7 @@ class UserSidebarProvider extends ServiceProvider
     /**
      * @return void
      */
-    public function countAllNonAdminUsers(): void
+    private function countAllNonAdminUsers(): void
     {
         try {
             view()->composer('includes.user-sidebar', function ($view) {

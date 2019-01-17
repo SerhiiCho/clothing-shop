@@ -7,13 +7,19 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 
 class EventServiceProvider extends ServiceProvider
 {
+    /**
+     * @var array
+     */
     protected $listen = [
         \App\Events\RecivedOrderEvent::class => [
             \App\Listeners\SendSmsListener::class,
         ],
     ];
 
-    public function boot()
+    /**
+     * @return void
+     */
+    public function boot(): void
     {
         parent::boot();
     }

@@ -7,10 +7,11 @@ use Illuminate\Support\ServiceProvider;
 class HeaderProvider extends ServiceProvider
 {
     /**
-     * Bootstrap services.
+     * Add headers
+     *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         if (app()->env === 'production') {
             header("Strict-Transport-Security: max-age=31536000");

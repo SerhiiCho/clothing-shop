@@ -9,9 +9,11 @@ use Illuminate\Support\ServiceProvider;
 class ContactProvider extends ServiceProvider
 {
     /**
+     * Bootstrap any application services
+     *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->showPhoneNumbersInHeader();
     }
@@ -19,7 +21,7 @@ class ContactProvider extends ServiceProvider
     /**
      * @return void
      */
-    public function showPhoneNumbersInHeader()
+    private function showPhoneNumbersInHeader(): void
     {
         try {
             $contacts = cache()->rememberForever('nav_contacts', function () {

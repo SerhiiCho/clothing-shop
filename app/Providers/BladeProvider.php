@@ -8,6 +8,8 @@ use Illuminate\Support\ServiceProvider;
 class BladeProvider extends ServiceProvider
 {
     /**
+     * Bootstrap services
+     *
      * @return void
      */
     public function boot(): void

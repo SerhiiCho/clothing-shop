@@ -9,12 +9,12 @@ use Illuminate\Support\ServiceProvider;
 class VisitorProvider extends ServiceProvider
 {
     /**
-     * Bootstrap services
+     * If visitor doesn't have a cookie it will set it
+     *
      * @return void
      */
     public function boot(): void
     {
-        // If visitor doesn't have a cookie it will set it
         if (!request()->cookie('cs_rotsiv')) {
             try {
                 Visitor::updateOrCreateNewVisitor();
