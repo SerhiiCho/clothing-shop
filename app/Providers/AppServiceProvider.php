@@ -14,10 +14,7 @@ class AppServiceProvider extends ServiceProvider
         \Schema::defaultStringLength(191);
 
         $this->fetchAdminOptionsFromDb();
-
-        // if (app()->env === 'production') {
-        //     \URL::forceScheme('https');
-        // }
+        // $this->enableHttps();
     }
 
     /**
@@ -34,9 +31,19 @@ class AppServiceProvider extends ServiceProvider
                     'women_category' => $options->where('option', 'women_category')->first()->value,
                 ];
             } catch (QueryException $e) {
-                logs()->error($e->getMessage());
+                no_connection_error($e, __CLASS__);
             }
         });
         view()->share(compact('admin_options'));
+    }
+
+    /**
+     * @return void
+     */
+    public function enableHttps(): void
+    {
+        if (app()->env === 'production') {
+            \URL::forceScheme('https');
+        }
     }
 }
