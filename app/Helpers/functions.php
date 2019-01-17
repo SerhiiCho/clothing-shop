@@ -70,17 +70,14 @@ function what_is_current(string $param): string
  * Function for debuging queries
  *
  * @codeCoverageIgnore
- * @param bool|null $show_data
  * @return void
  */
-function dump_sql(?bool $show_data = false): void
+function dump_sql(): void
 {
     if (app()->env == 'local') {
-        \DB::listen(function ($query) use ($show_data) {
-            dump($query->sql);
-            if ($show_data) {
-                dump($query->bindings);
-            }
+        \DB::listen(function ($query) {
+            dump($query->sql, $query->time, $query->bindings);
+            dump('__________________________________________');
         });
     }
 }
@@ -92,7 +89,7 @@ function dump_sql(?bool $show_data = false): void
  */
 function no_connection_error($exception, string $file): void
 {
-    logger()->error($exception->getMessage() . " in file $file.php");
+    logger()->error("{$exception->getMessage()} in file $file.php");
     session()->flash('error', trans('messages.query_error'));
 }
 
