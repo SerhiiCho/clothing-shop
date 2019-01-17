@@ -8,19 +8,24 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    // Bootstrap any application services
+    /**
+     * Bootstrap any application services
+     *
+     * @return void
+     */
     public function boot()
     {
         \Schema::defaultStringLength(191);
 
+        $this->enableSqlQueryLogging(false);
+        $this->enableHttps(false);
         $this->fetchAdminOptionsFromDb();
-        // $this->enableHttps();
     }
 
     /**
      * @return void
      */
-    public function fetchAdminOptionsFromDb(): void
+    private function fetchAdminOptionsFromDb(): void
     {
         $admin_options = cache()->rememberForever('admin_options', function () {
             try {
@@ -38,12 +43,31 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
+     * @codeCoverageIgnore
+     * @param bool $enable
      * @return void
      */
-    public function enableHttps(): void
+    private function enableHttps(bool $enable): void
     {
-        if (app()->env === 'production') {
+        if (app()->env === 'production' && $enable) {
             \URL::forceScheme('https');
+        }
+    }
+
+    /**
+     * Method for debuging sql queries
+     *
+     * @codeCoverageIgnore
+     * @param bool $enable
+     * @return void
+     */
+    private function enableSqlQueryLogging(bool $enable): void
+    {
+        if (app()->env == 'local' && $enable) {
+            \DB::listen(function ($query) {
+                dump($query->sql, $query->time, $query->bindings);
+                dump('__________________________________________');
+            });
         }
     }
 }

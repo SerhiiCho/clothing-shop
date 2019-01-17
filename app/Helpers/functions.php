@@ -67,22 +67,6 @@ function what_is_current(string $param): string
 }
 
 /**
- * Function for debuging queries
- *
- * @codeCoverageIgnore
- * @return void
- */
-function dump_sql(): void
-{
-    if (app()->env == 'local') {
-        \DB::listen(function ($query) {
-            dump($query->sql, $query->time, $query->bindings);
-            dump('__________________________________________');
-        });
-    }
-}
-
-/**
  * @param $exception
  * @param string $file
  * @return void
