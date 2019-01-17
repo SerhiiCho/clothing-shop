@@ -35,7 +35,7 @@ class FooterProvider extends ServiceProvider
                     ->get(['type_id', 'category'])
                     ->toArray();
             } catch (QueryException $e) {
-                logs()->error($e->getMessage());
+                no_connection_error($e, __CLASS__);
                 return [];
             }
         });
@@ -56,8 +56,8 @@ class FooterProvider extends ServiceProvider
                     ->get(['type_id', 'category'])
                     ->toArray();
             } catch (QueryException $e) {
+                no_connection_error($e, __CLASS__);
                 return [];
-                logs()->error($e->getMessage());
             }
         });
         view()->share(compact('categories_women'));
@@ -77,7 +77,7 @@ class FooterProvider extends ServiceProvider
                     ->toArray();
             });
         } catch (QueryException $e) {
-            logs()->error($e->getMessage());
+            no_connection_error($e, __CLASS__);
             $items = [];
         }
 

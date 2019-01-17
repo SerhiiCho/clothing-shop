@@ -10,6 +10,7 @@ return [
     'you_took_the_order' => 'Вы взяли заказ # :order',
     'cant_close_order' => 'Для того чтобы закрыть заказ, его нужно добавить в список выполняемых',
     'you_deleted_the_order' => 'Вы убрали заказ # :order',
+    'query_error' => 'Некоторые данные невозможно отобразить',
 
     // Views
     'taken_by' => 'Выполняет',

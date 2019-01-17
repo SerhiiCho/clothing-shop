@@ -27,7 +27,7 @@ class ContactProvider extends ServiceProvider
             });
             view()->share(compact('contacts'));
         } catch (QueryException $e) {
-            logs()->error($e->getMessage());
+            no_connection_error($e, __CLASS__);
         }
     }
 }

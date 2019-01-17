@@ -57,8 +57,8 @@ class CheckoutController extends Controller
                 trans('checkout.order_sent')
             );
         } catch (InvalidConditionException | InvalidItemException | QueryException $e) {
-            logger()->error($e->getMessage());
-            return back()->withError(trans('checkout.error'));
+            no_connection_error($e, __CLASS__);
+            return back();
         }
     }
 }

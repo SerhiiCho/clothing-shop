@@ -35,7 +35,7 @@ class UserSidebarProvider extends ServiceProvider
                 ]);
             });
         } catch (QueryException $e) {
-            logs()->error($e->getMessage());
+            no_connection_error($e, __CLASS__);
         }
     }
 
@@ -53,7 +53,7 @@ class UserSidebarProvider extends ServiceProvider
                 ]);
             });
         } catch (QueryException $e) {
-            logs()->error($e->getMessage());
+            no_connection_error($e, __CLASS__);
         }
     }
 }
