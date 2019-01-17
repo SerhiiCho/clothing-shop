@@ -122,7 +122,7 @@ return [
     |
      */
 
-    'cookie' => env('SESSION_COOKIE', 'cs_session'),
+    'cookie' => env('SESSION_COOKIE', 's'),
 
     /*
     |--------------------------------------------------------------------------

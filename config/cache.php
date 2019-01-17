@@ -86,7 +86,7 @@ return [
     |
      */
 
-    'prefix' => 'cs_cache',
+    'prefix' => 'c',
 
     'cache_names' => [
         'home_cards',
@@ -96,6 +96,8 @@ return [
         'admin_options',
         'non_admin_users',
         'orders',
+        'all_women_items',
+        'all_men_items',
     ],
 
 ];
