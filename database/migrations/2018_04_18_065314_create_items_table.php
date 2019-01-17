@@ -21,7 +21,6 @@ class CreateItemsTable extends Migration
             $table->unsignedSmallInteger('stock')->default(1);
             $table->unsignedInteger('price');
             $table->string('slug');
-            $table->unsignedInteger('popular')->default(0);
             $table->timestamps();
         });
     }

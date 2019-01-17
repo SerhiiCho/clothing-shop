@@ -13,7 +13,6 @@ class CreateViewsTable extends Migration
     {
         Schema::create('views', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedSmallInteger('visits')->default(1);
 
             $table->unsignedInteger('visitor_id');
             $table->foreign('visitor_id')->references('id')->on('visitors');
