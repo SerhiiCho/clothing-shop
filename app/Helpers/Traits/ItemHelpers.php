@@ -96,9 +96,6 @@ trait ItemHelpers
             'type_id' => $request->type,
         ];
 
-        cache()->forget('categories_men');
-        cache()->forget('categories_women');
-
         return $item
         ? $item->update($items)
         : user()->items()->create($items);

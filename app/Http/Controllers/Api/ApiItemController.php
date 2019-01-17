@@ -93,17 +93,18 @@ class ApiItemController extends Controller
      */
     public function destroy(string $slug)
     {
-        cache()->forget('footer_latest');
-
         try {
             $item = Item::whereSlug($slug)->first();
         } catch (QueryException $e) {
-            logs()->error($e->getMessage());
+            no_connection_error($e, __CLASS__);
             return [];
         }
 
+        cache()->forget('footer_latest');
         cache()->forget('categories_men');
         cache()->forget('categories_women');
+        cache()->forget('all_women_items');
+        cache()->forget('all_men_items');
 
         $this->deleteOldPhotos($item->photos);
 
