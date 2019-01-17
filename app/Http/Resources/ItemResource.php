@@ -19,7 +19,6 @@ class ItemResource extends JsonResource
             'category' => $this->category,
             'price' => $this->price,
             'stock' => $this->stock,
-            'popular' => $this->popular,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'user_id' => $this->user_id,

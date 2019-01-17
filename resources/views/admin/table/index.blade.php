@@ -33,10 +33,10 @@
                             </a>
                         </th>
 
-                        {{-- Popular --}}
+                        {{-- Unique Views --}}
                         <th scope="col" title="@lang('table.views')">
-                            <a href="/admin/table?order=popular">
-                                <i class="fas fa-eye {{ $order == 'popular' ? 'text-success' : 'grey' }}"></i>
+                            <a href="/admin/table?order=views_count">
+                                <i class="fas fa-eye {{ $order == 'views_count' ? 'text-success' : 'grey' }}"></i>
                             </a>
                         </th>
 
@@ -87,7 +87,7 @@
                                     {{ str_limit($item->title, 30) }}
                                 </a>
                             </td>
-                            <td>{{ $item->popular }}</td>
+                            <td>{{ $item->views()->count() }}</td>
                             <td>{{ $item->stock }}</td>
                             <td>{{ $item->price }}</td>
                             <td title="{{ $item->type->name }}">{{ str_limit($item->type->name, 14) }}</td>

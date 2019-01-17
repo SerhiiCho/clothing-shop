@@ -22,13 +22,21 @@ class TableController extends Controller
     public function index(): View
     {
         $order = request('order') ?? 'id';
-        $allowed = ['title', 'id', 'popular', 'stock', 'category', 'price'];
+        $allowed = [
+            'id',
+            'title',
+            'stock',
+            'price',
+            'category',
+            'views_count',
+        ];
 
         if (!in_array($order, $allowed)) {
             $order = 'id';
         }
 
         $items = Item::with('type')
+            ->withCount('views')
             ->orderBy($order, 'desc')
             ->paginate(70)
             ->onEachSide(1);

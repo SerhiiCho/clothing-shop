@@ -77,8 +77,9 @@ class ApiItemController extends Controller
     {
         try {
             $items = Item::inStock()
+                ->withCount('views')
                 ->take(18)
-                ->orderBy('popular', 'desc')
+                ->orderBy('views_count', 'desc')
                 ->get();
             return ItemResource::collection($items);
         } catch (QueryException $e) {
