@@ -18,28 +18,22 @@ class PageController extends Controller
      */
     public function home(): View
     {
-        $cards = cache()->rememberForever('home_cards', function () {
-            try {
-                return Card::getCards();
-            } catch (QueryException $e) {
-                logs()->error($e->getMessage());
-                return [];
-            }
-        });
-
-        $home_sections = cache()->rememberForever('home_sections', function () {
-            try {
-                return Section::where('name', 'home_up')
-                    ->orWhere('name', 'home_down')
-                    ->get()
-                    ->toArray();
-            } catch (QueryException $e) {
-                logs()->error($e->getMessage());
-                return [];
-            }
-        });
-
-        return view('pages.home', compact('cards', 'home_sections'));
+        try {
+            return view('pages.home', [
+                'cards' => cache()->rememberForever('home_cards', function () {
+                    return Card::getCards();
+                }),
+                'home_sections' => cache()->rememberForever('home_sections', function () {
+                    return Section::where('name', 'home_up')
+                        ->orWhere('name', 'home_down')
+                        ->get()
+                        ->toArray();
+                }),
+            ]);
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
+            return view('pages.home');
+        }
     }
 
     /**
