@@ -8,7 +8,6 @@ use App\Models\Item;
 use App\Models\Type;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\View\View;
 
 class ItemController extends Controller
@@ -76,11 +75,6 @@ class ItemController extends Controller
     public function show(string $category, string $slug): View
     {
         $item = Item::whereSlug($slug)->first();
-        $data = [
-            'item_slug' => $item->slug,
-            'item_category' => $item->category,
-            'item_title' => $item->title,
-        ];
 
         // Mark that visitor saw the item if he didn't
         if ($item->views()->whereVisitorId(visitor_id())->doesntExist()) {
@@ -89,19 +83,13 @@ class ItemController extends Controller
             } catch (QueryException $e) {
                 logger()->error("Cant add visitor view to item. {$e->getMessage()}");
             }
-        } else {
-            $item->views()->whereVisitorId(visitor_id())->increment('visits');
         }
 
-        // If page has been just visited return view
-        if (Cookie::get('visited') && Cookie::get('visited') == $item->id) {
-            return view('items.show', $data);
-        }
-
-        Cookie::queue('visited', $item->id, 1);
-        $item->increment('popular');
-
-        return view('items.show', $data);
+        return view('items.show', [
+            'item_slug' => $item->slug,
+            'item_category' => $item->category,
+            'item_title' => $item->title,
+        ]);
     }
 
     /**
