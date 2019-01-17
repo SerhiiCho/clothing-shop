@@ -51,8 +51,8 @@ services:
     working_dir: /var/www
     command: composer install
 
-  cache:
+  redis:
     image: redis:5.0
-    container_name: cache
+    container_name: redis
     ports:
       - 6379:6379
