@@ -65,7 +65,9 @@ class AppServiceProvider extends ServiceProvider
     {
         if (app()->env == 'local' && $enable) {
             \DB::listen(function ($query) {
-                dump($query->sql, $query->time, $query->bindings);
+                dump($query->sql);
+                // dump($query->time);
+                // dump($query->bindings);
                 dump('__________________________________________');
             });
         }
