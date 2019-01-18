@@ -27,10 +27,7 @@ export default {
 
     created() {
         this.tabs = this.$children;
-
-        window.onload = () => {
-            this.selectedTab()
-        };
+        this.selectedTab()
     },
 
     methods: {
