@@ -58,19 +58,6 @@ class AdminOrdersIndexPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function admin_can_see_order_messages(): void
-    {
-        $order = factory(Order::class)->create();
-
-        $this->actingAs($this->admin)
-            ->get('/admin/orders')
-            ->assertSeeText($order->phone);
-    }
-
-    /**
-     * @author Cho
-     * @test
-     */
     public function admin_can_take_order(): void
     {
         $order = factory(Order::class)->create();

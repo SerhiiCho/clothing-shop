@@ -82,10 +82,6 @@ class OptionControllerTest extends TestCase
     {
         $this->get('/');
 
-        array_map(function ($name) {
-            $this->assertNotNull(cache()->get($name));
-        }, config('cache.cache_names'));
-
         $this->actingAs(factory(User::class)->state('admin')->create())
             ->put(action('Admin\OptionController@cacheForget'));
 
