@@ -4,45 +4,30 @@
 
 @section('content')
 
-<div class="container pt-2">
+<div class="container pt-2" id="orders-page">
     <div class="text-center" v-if="false">
         <div class="loader mt-1"></div>
     </div>
-    <tabs>
-        @for ($i = 1; $i <= 3; $i++)
-            <tab 
-                @if ($i == 1)
-                    hash="!tab-1"
-                    name="@lang('messages.opened_orders') 
-                    <b>{{ $open_orders->count() }}</b>"
-                    :selected="true"
-                @elseif ($i == 2)
-                    hash="!tab-2"
-                    name="@lang('messages.taken_orders') 
-                    <b>{{ $taken_orders->count() }}</b>"
-                @elseif ($i == 3)
-                    hash="!tab-3"
-                    name="@lang('messages.closed_orders') 
-                    <b>{{ $closed_orders->count() }}</b>"
-                @endif
-            >
-                @include('admin.orders.partials.tab-content')
-            </tab>
-        @endfor
-    </tabs>
 
-    {{-- Pagination --}}
-    <section class="text-center pb-4">
-        <div class="mx-auto d-inline-block">
-            @if ($i == 1)
-                {{ $open_orders->links() }}
-            @elseif($i == 2)
-                {{ $taken_orders->links() }}
-            @elseif($i == 3)
-                {{ $closed_orders->links() }}
-            @endif
-        </div>
-    </section>
+    <orders 
+        opened-orders="@lang('messages.opened_orders')"
+        taken-orders="@lang('messages.taken_orders')"
+        closed-orders="@lang('messages.closed_orders')"
+        take-order="@lang('messages.take_order')"
+        untake-order="@lang('messages.untake_order')"
+        close-order="@lang('messages.close_order')"
+        delete-order="@lang('messages.delete_order')"
+        delete-this-order="@lang('messages.delete_this_order')"
+        close-this-order="@lang('messages.close_this_order')"
+        client-order="@lang('items.clients_order')"
+        number="@lang('dashboard.number')"
+        sum="@lang('dashboard.sum')"
+        date="@lang('dashboard.date')"
+        products="@lang('dashboard.products')"
+        hryvnia="@lang('items.hryvnia')"
+        taken-by="@lang('messages.taken_by')"
+        user-id="{{ user()->id }}"
+    ></orders>
 </div>
 
 @endsection
