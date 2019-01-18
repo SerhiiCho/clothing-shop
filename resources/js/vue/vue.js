@@ -15,6 +15,8 @@ Vue.component('delete-item-btn', require('./components/items/DeleteItemBtn.vue')
 // Other
 Vue.component('categories-button', require('./components/CategoriesButton.vue'));
 Vue.component('message', require('./components/Message.vue'));
+Vue.component('orders', require('./components/Orders.vue'));
+Vue.component('order', require('./components/Order.vue'));
 Vue.component('tabs', require('./components/Tabs.vue'));
 Vue.component('tab', require('./components/Tab.vue'));
 
