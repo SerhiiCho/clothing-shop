@@ -11,3 +11,9 @@ $factory->define(Order::class, function () {
         'total' => rand(80, 1700),
     ];
 });
+
+$factory->state(Order::class, 'taken', function () {
+    return [
+        'user_id' => 1,
+    ];
+});
