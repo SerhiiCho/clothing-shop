@@ -58,7 +58,7 @@ class Order extends Model
      */
     public function isTakenBy($user): bool
     {
-        if ($this->user()->exists() && $this->user->id == $user->id) {
+        if ($this->user && $this->user->id == $user->id) {
             return true;
         }
         return false;
