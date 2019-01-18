@@ -6,7 +6,6 @@
  */
 
 Route::namespace ('Api')->group(function () {
-    // Item
     Route::prefix('item')->group(function () {
         Route::post('/', 'ApiItemController@store');
         Route::get('random/{visitor_id}/{category?}', 'ApiItemController@random');
@@ -14,6 +13,12 @@ Route::namespace ('Api')->group(function () {
         Route::get('popular', 'ApiItemController@popular');
         Route::get('{item}', 'ApiItemController@show');
         Route::delete('{id}', 'ApiItemController@destroy');
+    });
+
+    Route::prefix('orders')->group(function () {
+        Route::post('open', 'ApiOrderController@open');
+        Route::post('taken', 'ApiOrderController@taken');
+        Route::post('closed', 'ApiOrderController@closed');
     });
 
     Route::get('items/{category?}/{type?}', 'ApiItemController@index');

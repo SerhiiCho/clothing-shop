@@ -22,11 +22,7 @@ class OrderController extends Controller
      */
     public function index(): View
     {
-        return view('admin.orders.index', [
-            'open_orders' => Order::whereNull('user_id')->latest()->paginate(24),
-            'taken_orders' => Order::whereNotNull('user_id')->latest()->paginate(24),
-            'closed_orders' => Order::onlyTrashed()->latest()->paginate(24),
-        ]);
+        return view('admin.orders.index');
     }
 
     /**
