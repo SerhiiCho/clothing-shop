@@ -32,15 +32,23 @@ export default {
 
     methods: {
         selectedTab(selectedTab = null) {
-            let hash = window.location.hash.substring(1);
+            setTimeout(() => {
+                let hash = window.location.hash.substring(0);
 
-            this.tabs.forEach(tab => {
-                if (selectedTab == null && hash != '') {
-                    tab.active = tab.$attrs.hash == hash;
-                } else {
-                    tab.active = tab.name == selectedTab.name;
+                if (hash) {
+                    Event.$emit("tab-changed", hash)
                 }
-            });
+
+                this.tabs.forEach(tab => {
+                    if (!selectedTab && hash) {
+                        tab.active = tab.$attrs.hash == hash;
+                    } else if (!hash && !selectedTab) {
+                        tab.active = tab.$attrs.hash == '#!tab-1';
+                    } else {
+                        tab.active = tab.name == selectedTab.name;
+                    }
+                });
+            }, 20);
         },
     },
 };
