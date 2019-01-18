@@ -3,47 +3,53 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\OrderResource;
 use App\Models\Order;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class ApiOrderController extends Controller
 {
     /**
      * Open orders
      *
-     * @return \Illuminate\Pagination\LengthAwarePaginator
+     * @return object
      */
-    public function opened(): LengthAwarePaginator
+    public function opened(): object
     {
-        return Order::with('items')
-            ->whereNull('user_id')
-            ->latest()
-            ->paginate(24);
+        return OrderResource::collection(
+            Order::with('items')
+                ->whereNull('user_id')
+                ->latest()
+                ->paginate(24)
+        );
     }
 
     /**
      * Taken orders
      *
-     * @return \Illuminate\Pagination\LengthAwarePaginator
+     * @return object
      */
-    public function taken(): LengthAwarePaginator
+    public function taken(): object
     {
-        return Order::with(['items', 'user'])
-            ->whereNotNull('user_id')
-            ->latest()
-            ->paginate(24);
+        return OrderResource::collection(
+            Order::with('items', 'user')
+                ->whereNotNull('user_id')
+                ->latest()
+                ->paginate(24)
+        );
     }
 
     /**
      * Closed orders
      *
-     * @return \Illuminate\Pagination\LengthAwarePaginator
+     * @return object
      */
-    public function closed(): LengthAwarePaginator
+    public function closed(): object
     {
-        return Order::with('items')
-            ->onlyTrashed()
-            ->latest()
-            ->paginate(24);
+        return OrderResource::collection(
+            Order::with('items')
+                ->onlyTrashed()
+                ->latest()
+                ->paginate(24)
+        );
     }
 }
