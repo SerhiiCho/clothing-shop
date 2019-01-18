@@ -18,7 +18,7 @@ class OptionControllerTest extends TestCase
     {
         $order = factory(Order::class)->create();
 
-        $this->json('POST', '/api/orders/open')
+        $this->json('POST', '/api/orders/opened')
             ->assertStatus(200)
             ->assertJsonFragment(['phone' => $order->phone]);
     }

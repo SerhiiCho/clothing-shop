@@ -13,7 +13,7 @@ class ApiOrderController extends Controller
      *
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
-    public function open(): LengthAwarePaginator
+    public function opened(): LengthAwarePaginator
     {
         return Order::with('items')
             ->whereNull('user_id')
