@@ -16,7 +16,7 @@ Route::namespace ('Api')->group(function () {
     });
 
     Route::prefix('orders')->group(function () {
-        Route::post('opened', 'ApiOrderController@open');
+        Route::post('opened', 'ApiOrderController@opened');
         Route::post('taken', 'ApiOrderController@taken');
         Route::post('closed', 'ApiOrderController@closed');
     });
