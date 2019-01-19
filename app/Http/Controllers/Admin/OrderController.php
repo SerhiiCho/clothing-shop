@@ -39,7 +39,7 @@ class OrderController extends Controller
         if ($order->isTakenBy(user())) {
             $order->update(['user_id' => null]);
 
-            return redirect('admin/orders#!tab-2')->withSuccess(
+            return redirect('admin/orders')->withSuccess(
                 trans('messages.you_deleted_the_order', [
                     'order' => $order->id,
                 ])

@@ -5,7 +5,6 @@ return [
     // View
     'cart' => 'Корзина',
     'add_or_delete' => 'Сохранить | Удалить',
-    'product' => 'Продукт',
     'price' => 'Цена',
     'total' => 'Всего',
     'delete' => 'Удалить',

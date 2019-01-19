@@ -12,7 +12,7 @@
         <table class="table table-hover table-condensed">
             <thead>
                 <tr>
-                    <th style="width:50%">@lang('cart.product')</th>
+                    <th style="width:50%">@lang('dashboard.products')</th>
                     <th style="width:20%" class="text-center">
                         @lang('cart.price')
                     </th>
