@@ -16,11 +16,12 @@ while [ true ]; do
         fi
 
         chown -R www-data:www-data $(ls | awk '{if($1 != "docker"){ print $1 }}')
-        php artisan wipe
 
         if [ ! -f /var/www/public/js/app.js ] && [ ! -f /var/www/public/css/app.css ]; then
             npm rebuild node-sass --force && npm install && npm run prod
         fi
+
+        php artisan wipe
 
         printf 'DONE! You can go to a localhost \n'
         break;
