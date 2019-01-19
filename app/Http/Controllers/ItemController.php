@@ -60,7 +60,7 @@ class ItemController extends Controller
         $item = $this->createOrUpdateItem($request);
 
         $image_names = $this->uploadPhotos($request, $item->id);
-        $this->updateImagesInDb($image_names, $item->id);
+        $this->updateImagesInDb($image_names, $item);
 
         return redirect('items')->withSuccess(
             trans('items.item_added')
