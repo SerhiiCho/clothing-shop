@@ -15,14 +15,14 @@ while [ true ]; do
             printf '.env file is already exists \n'
         fi
 
-        chown -R www-data:www-data $(ls | awk '{if($1 != "docker"){ print $1 }}')
-        rm storage/logs/laravel-*
-
         if [ ! -f /var/www/public/js/app.js ] && [ ! -f /var/www/public/css/app.css ]; then
             npm rebuild node-sass --force && npm install && npm run prod
         fi
 
+        rm storage/logs/laravel-*
         php artisan wipe
+        chown -R www-data:www-data $(ls | awk '{if($1 != "docker"){ print $1 }}')
+        chmod -R 775 storage
 
         printf 'DONE! You can go to a localhost \n'
         break;
