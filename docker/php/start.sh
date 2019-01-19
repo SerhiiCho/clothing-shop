@@ -16,6 +16,7 @@ while [ true ]; do
         fi
 
         chown -R www-data:www-data $(ls | awk '{if($1 != "docker"){ print $1 }}')
+        rm storage/logs/laravel-*
 
         if [ ! -f /var/www/public/js/app.js ] && [ ! -f /var/www/public/css/app.css ]; then
             npm rebuild node-sass --force && npm install && npm run prod
