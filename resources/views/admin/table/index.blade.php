@@ -62,13 +62,15 @@
                         </th>
 
                         {{-- Category --}}
-                        <th scope="col">
-                            <a href="/admin/table?order=category">
-                                <span class="{{ $order == 'category' ? 'text-success' : 'grey' }}">
-                                    @lang('items.category')
-                                </span>
-                            </a>
-                        </th>
+                        @if ($admin_options['men_category'] && $admin_options['women_category'])
+                            <th scope="col">
+                                <a href="/admin/table?order=category">
+                                    <span class="{{ $order == 'category' ? 'text-success' : 'grey' }}">
+                                        @lang('items.category')
+                                    </span>
+                                </a>
+                            </th>
+                        @endif
 
                         <th scope="col"></th>
                         <th scope="col"></th>
@@ -77,23 +79,37 @@
                 <tbody>
                     @foreach ($items as $item)
                         <tr>
+                            {{-- Number ID --}}
                             <th scope="row">
                                 <a href="/item/{{ $item->category }}/{{ $item->slug }}" class="text-success">
                                     {{ $item->id }}
                                 </a>
                             </th>
+
+                            {{-- Item Title --}}
                             <td title="{{ $item->title }}">
                                 <a href="/item/{{ $item->category }}/{{ $item->slug }}" class="grey">
                                     {{ str_limit($item->title, 30) }}
                                 </a>
                             </td>
+
+                            {{-- Views --}}
                             <td>{{ $item->views()->count() }}</td>
+
                             <td>{{ $item->stock }}</td>
                             <td>{{ $item->price }}</td>
+
+                            {{-- Type --}}
                             <td title="{{ $item->type->name }}">{{ str_limit($item->type->name, 14) }}</td>
-                            <td>
-                                {{ $item->category == 'men' ? trans('navigation.men') : trans('navigation.women') }}
-                            </td>
+
+                            {{-- Category --}}
+                            @if ($admin_options['men_category'] && $admin_options['women_category'])
+                                <td>
+                                    {{ $item->category == 'men' ? trans('navigation.men') : trans('navigation.women') }}
+                                </td>
+                            @endif
+
+                            {{-- Edit button --}}
                             <td>
                                 <a href="/items/{{ $item->slug }}/edit"
                                     title="@lang('items.change')"
@@ -102,6 +118,8 @@
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
                             </td>
+
+                            {{-- Delete button --}}
                             <td>
                                 <div class="btn btn-success btn-sm">
                                     <delete-item-btn
