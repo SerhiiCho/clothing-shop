@@ -125,7 +125,7 @@ class ItemController extends Controller
         if ($request->hasFile('photos')) {
             $this->deleteOldPhotos($item->photos);
             $image_names = $this->uploadPhotos($request, $item->id);
-            $this->updateImagesInDb($image_names, $item->id);
+            $this->updateImagesInDb($image_names, $item);
         }
 
         $this->createOrUpdateItem($request, $item);

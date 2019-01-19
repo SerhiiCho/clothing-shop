@@ -55,24 +55,25 @@ trait ItemHelpers
 
     /**
      * @param array|null $image_names
-     * @param int $item_id
+     * @param \App\Models\Item $item
      * @return void
      */
-    public function updateImagesInDb(?array $image_names, int $item_id): void
+    public function updateImagesInDb(?array $image_names, Item $item): void
     {
         if (is_null($image_names)) {
             ItemsPhoto::create([
-                'item_id' => $item_id,
+                'item_id' => $item->id,
                 'name' => 'default.jpg',
             ]);
         } else {
-            $dataSet = array_map(function ($image) use ($item_id) {
+            $dataSet = array_map(function ($image) use ($item) {
                 return [
-                    'item_id' => $item_id,
+                    'item_id' => $item->id,
                     'name' => $image,
                 ];
             }, $image_names);
 
+            $item->photos()->delete();
             \DB::table('items_photos')->insert($dataSet);
         }
     }
