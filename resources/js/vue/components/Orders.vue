@@ -1,49 +1,3 @@
-<template>
-    <div>
-        <tabs>
-            <tab v-for="tab in tabs"
-                :key="tab.hash" 
-                :name="tab.title" 
-                :hash="tab.hash"
-                :selected="tab.hash == '#!tab-1'"
-            >
-                <div class="col-12" v-if="!loading && orders.length <= 0">
-                    <h5 class="pt-4 pb-3 text-center">
-                        {{ noOrders }}
-                    </h5>
-                </div>
-                <div class="row pb-5">
-                    <order v-for="(order, i) in orders"
-                        :key="i"
-                        :color="tab.color"
-                        :order="order"
-                        :slug="tab.slug"
-                        :take-order="takeOrder"
-                        :delete-order="deleteOrder"
-                        :delete-this-order="deleteThisOrder"
-                        :close-this-order="closeThisOrder"
-                        :taken-by="takenBy"
-                        :client-order="clientOrder"
-                        :number="number"
-                        :sum="sum"
-                        :date="date"
-                        :products="products"
-                        :hryvnia="hryvnia"
-                        :close-order="closeOrder"
-                        :user-id="userId"
-                        :untake-order="untakeOrder"
-                    ></order>
-                </div>
-            </tab>
-
-            <!-- Preloader -->
-            <div class="col-12 text-center pt-2 pb-5" v-if="loading">
-                <div class="loader mx-auto"></div>
-            </div>
-        </tabs>
-    </div>
-</template>
-
 <script>
 import Order from "./Order";
 import Tabs from "./Tabs";
@@ -84,21 +38,6 @@ export default {
         'openedOrders',
         'takenOrders',
         'closedOrders',
-        'takeOrder',
-        'untakeOrder',
-        'closeOrder',
-        'deleteThisOrder',
-        'closeThisOrder',
-        'clientOrder',
-        'number',
-        'deleteOrder',
-        'noOrders',
-        'takenBy',
-        'sum',
-        'date',
-        'hryvnia',
-        'products',
-        'userId',
     ],
 
     created() {
