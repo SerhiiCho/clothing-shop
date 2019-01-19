@@ -21,6 +21,7 @@
         close-this-order="@lang('messages.close_this_order')"
         client-order="@lang('items.clients_order')"
         number="@lang('dashboard.number')"
+        no-orders="@lang('dashboard.no_orders')"
         sum="@lang('dashboard.sum')"
         date="@lang('dashboard.date')"
         products="@lang('dashboard.products')"

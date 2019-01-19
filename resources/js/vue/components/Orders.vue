@@ -7,6 +7,11 @@
                 :hash="tab.hash"
                 :selected="tab.hash == '#!tab-1'"
             >
+                <div class="col-12" v-if="!loading && orders.length <= 0">
+                    <h5 class="pt-4 pb-3 text-center">
+                        {{ noOrders }}
+                    </h5>
+                </div>
                 <div class="row pb-5">
                     <order v-for="(order, i) in orders"
                         :key="i"
@@ -87,6 +92,7 @@ export default {
         'clientOrder',
         'number',
         'deleteOrder',
+        'noOrders',
         'takenBy',
         'sum',
         'date',
