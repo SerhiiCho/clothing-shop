@@ -35,7 +35,7 @@ export default {
             setTimeout(() => {
                 let hash = window.location.hash.substring(0);
 
-                if (hash) {
+                if (selectedTab && hash) {
                     Event.$emit("tab-changed", hash)
                 }
 
