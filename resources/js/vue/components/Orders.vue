@@ -53,6 +53,7 @@ export default {
         Event.$on('tab-changed', hash => {
             this.orders = []
             this.loading = true
+            this.theEnd = false
             this.url = null
             this.currentSlug = this.tabs.filter(tab => tab.hash == hash)[0].slug;
             this.fetchOrders(true);
