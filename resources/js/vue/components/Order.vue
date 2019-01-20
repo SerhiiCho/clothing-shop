@@ -76,29 +76,41 @@
             </div>
 
             <div class="card-body">
+                <!-- Order ID -->
                 <h6 class="card-title">
                     {{ clientOrder }} # {{ order.id }}
                 </h6>
-                <hr />
-                <p class="card-text mb-1">
-                    {{ number }}: 
-                    <strong>{{ order.phone }}</strong>
-                </p>
-                <p class="card-text mb-1">
-                    {{ sum }}: 
-                    <strong>
-                        {{ order.total }} 
-                        {{ hryvnia }}
-                    </strong>
-                </p>
-                <p class="card-text mb-1">
-                    {{ date }}:
-                    <strong>{{ order.created_at }}</strong>
-                </p>
+
                 <hr />
 
-                <div class="text-center">
-                    <h6>{{ products }}:</h6>
+                <!-- Name -->
+                <h6 class="card-title">
+                    {{ name }}: <strong>{{ order.name }}</strong>
+                </h6>
+
+                <!-- Phone number -->
+                <p class="card-text mb-1">
+                    {{ number }}: <strong>{{ order.phone }}</strong>
+                </p>
+
+                <!-- Sum -->
+                <p class="card-text mb-1">
+                    {{ sum }}: <strong>{{ order.total }} {{ hryvnia }}</strong>
+                </p>
+
+                <!-- Date -->
+                <p class="card-text mb-1">
+                    {{ date }}: <strong>{{ order.created_at }}</strong>
+                </p>
+
+                <hr />
+
+                <!-- Items -->
+                <div class="text-center pb-2">
+                    <h6>
+                        {{ products }}: 
+                        <b :style="'color:' + color">{{ order.items.length }}</b>
+                    </h6>
                 </div>
 
                 <div v-for="(item, i) in order.items" :key="item.id">
@@ -106,6 +118,7 @@
                     <a :href="'/item/' + item.category + '/' + item.slug"
                         :title="item.title"
                         class="d-block"
+                        :style="'color:' + color"
                     >
                         <i class="fas fa-angle-right"></i> 
                         {{ item.title }}
@@ -137,6 +150,7 @@ export default {
         'clientOrder',
         'takenBy',
         'number',
+        'name',
         'sum',
         'date',
         'products',
