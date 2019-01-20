@@ -50,12 +50,6 @@ export default {
         this.fetchOrders(true);
         this.countOrders()
 
-        window.addEventListener('scroll', () => {
-            if (!this.theEnd) {
-                this.onScroll()
-            }
-        })
-
         Event.$on('tab-changed', hash => {
             this.orders = []
             this.loading = true
@@ -97,13 +91,8 @@ export default {
             return tab.title + ' <b style=\'color:' + tab.color + '\'>' + this.countedOrders[i] + '</b>'
         },
 
-        onScroll() {
-            let wrap = document.getElementById('orders-page')
-            let contentHeight = wrap.offsetHeight
-            let yOffset = window.pageYOffset
-            let currentPosition = yOffset + window.innerHeight
-
-            if (currentPosition >= contentHeight && !this.theEnd) {
+        showMoreOrders() {
+            if (!this.theEnd) {
                 this.fetchOrders()
             }
         },

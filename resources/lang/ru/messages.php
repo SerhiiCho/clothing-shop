@@ -14,6 +14,7 @@ return [
 
     // Views
     'taken_by' => 'Выполняет',
+    'show_more' => 'Показать больше',
     'more_clothes' => 'Еще товары',
     'welcome' => 'Добро пожаловать',
     'back' => 'Назад',

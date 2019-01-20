@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container pt-2" id="orders-page">
+<div class="container pt-2">
     <orders inline-template
         opened-orders="@lang('messages.opened_orders')"
         taken-orders="@lang('messages.taken_orders')"
@@ -47,10 +47,15 @@
                 </div>
             </tab>
 
-            <!-- Preloader -->
-            <div class="col-12 text-center pt-2 pb-5" v-if="loading">
-                <div class="loader mx-auto"></div>
+            <div class="text-center pb-5" v-if="!theEnd">
+                <div class="col-12 text-center pt-2 pb-5" v-if="loading">
+                    <div class="loader mx-auto"></div>
+                </div>
+                <div v-else class="btn btn-success" v-on:click="showMoreOrders()">
+                    <i class="fas fa-sync-alt"></i> @lang('messages.show_more')
+                </div>
             </div>
+
         </tabs>
     </orders>
 </div>
