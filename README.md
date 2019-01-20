@@ -2,7 +2,7 @@
 
 ## About
 
-Simple Callback E-commerce clothing shop. It has men's and women's categories and convenient filtering with [vue.js](https://github.com/vuejs/vue) by types of clothes like pents, short, skirts etc. In this web app is implemented infinite pagination without npm packages, just [vue.js](https://github.com/vuejs/vue) and little bit of effort. The app is pretty fast and optimize. It has PHPUnit tests and code itself is well written. But of course there are places where code needs to be refactored and tested.
+Simple Callback E-commerce clothing shop. It has men's and women's categories and convenient filtering with [vue.js](https://github.com/vuejs/vue) by types of clothes like pents, short, skirts etc. The app is pretty fast and optimize. It has PHPUnit tests and code itself is well written. But of course there are places where code needs to be refactored and tested.
 
 ## Checkout
 
