@@ -52,4 +52,20 @@ class ApiOrderController extends Controller
                 ->paginate(24)
         );
     }
+
+    /**
+     * Count all orders
+     *
+     * @return array
+     */
+    public function count(): array
+    {
+        return cache()->rememberForever('counted_orders', function () {
+            return [
+                Order::whereNull('user_id')->count(),
+                Order::whereNotNull('user_id')->count(),
+                Order::onlyTrashed()->count(),
+            ];
+        });
+    }
 }

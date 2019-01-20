@@ -38,6 +38,7 @@ class CheckoutController extends Controller
 
         try {
             cache()->forget('orders');
+            cache()->forget('counted_orders');
 
             $order = Order::create([
                 'ip' => $request->ip(),

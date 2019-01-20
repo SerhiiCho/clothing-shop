@@ -98,6 +98,7 @@ return [
         'orders',
         'all_women_items',
         'all_men_items',
+        'counted_orders',
     ],
 
 ];

@@ -34,6 +34,7 @@ class OrderController extends Controller
     public function store(Order $order): RedirectResponse
     {
         cache()->forget('orders');
+        cache()->forget('counted_orders');
 
         // Delete from taken
         if ($order->isTakenBy(user())) {
@@ -74,8 +75,9 @@ class OrderController extends Controller
             $order->delete();
 
             cache()->forget('orders');
+            cache()->forget('counted_orders');
 
-            return redirect('/admin/orders#!tab-2')->withSuccess(
+            return redirect('/admin/orders#!tab-3')->withSuccess(
                 trans('messages.order_closed')
             );
         }
@@ -98,6 +100,8 @@ class OrderController extends Controller
 
         $order->items()->detach($item_ids);
         $order->forceDelete();
+
+        cache()->forget('counted_orders');
 
         return redirect('/admin/orders#!tab-3')->withSuccess(
             trans('messages.order_deleted')

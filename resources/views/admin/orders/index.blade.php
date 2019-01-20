@@ -11,9 +11,9 @@
         closed-orders="@lang('messages.closed_orders')"
     >
         <tabs>
-            <tab v-for="tab in tabs"
+            <tab v-for="(tab, i) in tabs"
                 :key="tab.hash"
-                :name="tab.title"
+                :name="tab.title + ' <b style=\'color:brown\'>' + countedOrders[i] + '</b>'"
                 :hash="tab.hash"
                 :selected="tab.hash == '#!tab-1'"
             >

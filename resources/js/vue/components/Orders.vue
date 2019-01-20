@@ -8,6 +8,7 @@ export default {
         return {
             loading: false,
             theEnd: false,
+            countedOrders: ['-', '-', '-'],
             url: null,
             currentSlug: 'opened',
             orders: [],
@@ -45,7 +46,9 @@ export default {
         if (hash) {
             this.currentSlug = this.tabs.filter(tab => tab.hash == hash)[0].slug;
         }
+
         this.fetchOrders(true);
+        this.countOrders()
 
         window.addEventListener('scroll', () => {
             if (!this.theEnd) {
@@ -82,6 +85,12 @@ export default {
                     console.error(err)
                     this.loading = false
                 })
+        },
+
+        countOrders() {
+            this.$axios.post('/api/orders/count')
+                .then(res => this.countedOrders = res.data)
+                .catch(err => console.error(err))
         },
 
         onScroll() {

@@ -19,6 +19,7 @@ Route::namespace ('Api')->group(function () {
         Route::post('opened', 'ApiOrderController@opened');
         Route::post('taken', 'ApiOrderController@taken');
         Route::post('closed', 'ApiOrderController@closed');
+        Route::post('count', 'ApiOrderController@count');
     });
 
     Route::get('items/{category?}/{type?}', 'ApiItemController@index');
