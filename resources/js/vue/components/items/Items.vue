@@ -16,6 +16,9 @@
                         :id="'photo' + index"
                     >
                 </a>
+                <a v-else :href="'/item/' + item.category + '/' + item.slug" :title="item.title">
+                    <img src="/storage/img/small/clothes/default.jpg" :alt="item.title">
+                </a>
             </transition>
             <div class="item-card-price">
                 <span>{{ item.title }}</span>
