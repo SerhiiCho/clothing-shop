@@ -1,8 +1,11 @@
 <template>
     <section class="main-content">
         <h3 class="display-4 text-center p-4"
-            style="background:#F2F2F2;"
-        >{{ headline }}</h3>
+            style="background:#F2F2F2"
+        >
+            {{ headline }}
+        </h3>
+
         <div class="container pb-3">
             <section class="row">
                 <div v-for="(item, index) in items"
@@ -10,6 +13,7 @@
                     class="col-lg-2 col-md-3 col-6 col-sm-4 item-card"
                 >
                     <a :href="'/item/' + item.category + '/' + item.slug"
+                        v-if="item.photos[0]"
                         :title="item.title"
                         @mouseover="changePhotoOver(index, item.photos[1] ? item.photos[1].name : '')" 
                         @mouseout="changePhotoOut(index, item.photos[0].name)"
@@ -19,6 +23,11 @@
                             :id="'photo' + index + uniqueNumber"
                         >
                     </a>
+
+                    <a v-else :href="'/item/' + item.category + '/' + item.slug" :title="item.title">
+                        <img src="/storage/img/small/clothes/default.jpg" alt="item.title">
+                    </a>
+
                     <div class="item-card-price">
                         <span>{{ item.title }}</span>
                         <span class="hryvnia">{{ item.price }} {{ hryvnia }}</span>

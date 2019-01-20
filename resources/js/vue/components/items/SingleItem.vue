@@ -135,8 +135,9 @@ export default {
 
             this.$axios.get('/api/item/' + itemSlug)
                 .then(res => {
+                    let photo = res.data.data.photos[0]
                     this.item = res.data.data
-                    this.bigPhoto = res.data.data.photos[0].name
+                    this.bigPhoto = photo ? res.data.data.photos[0].name : 'default.jpg'
                 })
                 .catch(err => console.log(err))
         },
