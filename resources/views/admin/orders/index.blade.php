@@ -45,17 +45,19 @@
                         user-id="{{ user()->id }}"
                     ></order>
                 </div>
-            </tab>
 
-            {{-- Load more --}}
-            <div class="col-12 text-center pb-5" v-if="!theEnd">
-                <div class="text-center pt-2 pb-5" v-if="loading">
-                    <div class="loader mx-auto"></div>
+                {{-- Load more --}}
+                <div class="col-12 text-center pb-5" v-if="!theEnd">
+                    <div class="text-center pt-2 pb-5" v-if="loading">
+                        <div class="loader mx-auto"></div>
+                    </div>
+                    <div v-else class="btn btn-sm btn-success" v-on:click="showMoreOrders()">
+                        <i class="fas fa-sync-alt"></i> 
+                        @lang('messages.show_else') 
+                        <b v-text="countedOrders[i] - orders.length"></b>
+                    </div>
                 </div>
-                <div v-else class="btn btn-sm btn-success" v-on:click="showMoreOrders()">
-                    <i class="fas fa-sync-alt"></i> @lang('messages.show_more')
-                </div>
-            </div>
+            </tab>
 
         </tabs>
     </orders>
