@@ -43,9 +43,15 @@
                 </div>
             </div>
         </div>
-        <!-- Preloader -->
-        <div class="col-12 text-center py-5" v-if="loading">
-            <div class="loader mx-auto"></div>
+
+        <!-- Load more -->
+        <div class="col-12 text-center pt-5 pb-3" v-if="!theEnd">
+            <div class="text-center" v-if="loading">
+                <div class="loader mx-auto"></div>
+            </div>
+            <div v-else class="btn btn-sm btn-success" v-on:click="showMoreItems()">
+                <i class="fas fa-sync-alt"></i> {{ showMore }}
+            </div>
         </div>
     </div>
 </template>
@@ -64,16 +70,10 @@ export default {
         }
     },
 
-    props: ['category', 'allItems', 'deleting', 'hryvnia', 'change', 'admin'],
+    props: ['category', 'allItems', 'deleting', 'hryvnia', 'change', 'admin', 'showMore'],
 
     created() {
         this.fetchItems(true)
-
-        window.addEventListener('scroll', () => {
-            if (!this.theEnd) {
-                this.onScroll()
-            }
-        });
 
         Event.$on('item-deleted', () => {
             this.url = null
@@ -119,13 +119,8 @@ export default {
             }
         },
 
-        onScroll() {
-            let wrap = document.getElementById('items-page')
-            let contentHeight = wrap.offsetHeight
-            let yOffset = window.pageYOffset
-            let currentPosition = yOffset + window.innerHeight
-
-            if (currentPosition >= contentHeight && !this.loading) {
+        showMoreItems() {
+            if (!this.theEnd) {
                 this.fetchItems()
             }
         },

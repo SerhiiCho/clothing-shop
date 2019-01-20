@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="wrapper pb-5" id="items-page">
+<div class="wrapper pb-5">
     <div class="container">
         <section class="row">
             @if ($sidebar)
@@ -54,12 +54,12 @@
                     hryvnia="@lang('items.hryvnia')"
                     deleting="@lang('cart.delete')"
                     change="@lang('items.change')"
+                    show-more="@lang('messages.show_more')"
                 >
                     <section class="text-center" style="min-height:300px">
                         <div class="loader mt-5"></div>
                     </section>
                 </items>
-
             </div>
         </section>
     </div>
