@@ -93,6 +93,10 @@ export default {
                 .catch(err => console.error(err))
         },
 
+        tabTitle(tab, i) {
+            return tab.title + ' <b style=\'color:' + tab.color + '\'>' + this.countedOrders[i] + '</b>'
+        },
+
         onScroll() {
             let wrap = document.getElementById('orders-page')
             let contentHeight = wrap.offsetHeight

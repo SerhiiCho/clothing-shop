@@ -13,7 +13,7 @@
         <tabs>
             <tab v-for="(tab, i) in tabs"
                 :key="tab.hash"
-                :name="tab.title + ' <b style=\'color:brown\'>' + countedOrders[i] + '</b>'"
+                :name="tabTitle(tab, i)"
                 :hash="tab.hash"
                 :selected="tab.hash == '#!tab-1'"
             >
@@ -34,6 +34,7 @@
                         taken-by="@lang('messages.taken_by')"
                         client-order="@lang('items.clients_order')"
                         number="@lang('dashboard.number')"
+                        name="@lang('checkout.name')"
                         sum="@lang('dashboard.sum')"
                         date="@lang('dashboard.date')"
                         products="@lang('dashboard.products')"
