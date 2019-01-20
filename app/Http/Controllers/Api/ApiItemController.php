@@ -108,13 +108,16 @@ class ApiItemController extends Controller
 
         $this->deleteOldPhotos($item->photos);
 
+        $item->orders->map(function ($order) use ($item) {
+            $order->items()->detach($item->id);
+        });
         $item->views()->delete();
         $item->photos()->delete();
 
         if ($item->delete()) {
             return response(['status' => 'ok'], 200);
         } else {
-            return response(['status' => 'error'], 417);
+            return response(['status' => 'error'], 500);
         }
 
     }
