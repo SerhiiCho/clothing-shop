@@ -10,10 +10,8 @@ class ApiOrderController extends Controller
 {
     /**
      * Open orders
-     *
-     * @return object
      */
-    public function opened(): object
+    public function opened()
     {
         return OrderResource::collection(
             Order::with('items')
@@ -25,10 +23,8 @@ class ApiOrderController extends Controller
 
     /**
      * Taken orders
-     *
-     * @return object
      */
-    public function taken(): object
+    public function taken()
     {
         return OrderResource::collection(
             Order::with('items', 'user')
@@ -40,10 +36,8 @@ class ApiOrderController extends Controller
 
     /**
      * Closed orders
-     *
-     * @return object
      */
-    public function closed(): object
+    public function closed()
     {
         return OrderResource::collection(
             Order::with('items')

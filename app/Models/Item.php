@@ -63,9 +63,8 @@ class Item extends Model
      * Eloquent scope
      *
      * @param $query
-     * @return object
      */
-    public function scopeInStock($query): object
+    public function scopeInStock($query)
     {
         return $query->where('stock', '>', 0);
     }
@@ -90,9 +89,8 @@ class Item extends Model
      *
      * @param null $visitor_id
      * @param string|null $category
-     * @return object
      */
-    public static function getRandomUnseen(int $visitor_id = null, ?string $category = null): object
+    public static function getRandomUnseen(int $visitor_id = null, ?string $category = null)
     {
         $seen = View::whereVisitorId($visitor_id ?? visitor_id())->pluck('item_id');
         $random = self::query();
