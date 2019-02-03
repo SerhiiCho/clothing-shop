@@ -2,6 +2,7 @@ FROM php:7.3-fpm
 
 COPY ./start.sh /
 
+########## Install packages ##########
 RUN apt-get update \
     && apt-get install -y \
         software-properties-common \
@@ -26,13 +27,25 @@ RUN apt-get update \
         gnupg \
         gnupg2 \
         gnupg1 \
-    && docker-php-ext-configure gd \
+        \
+    ########## Apache2 enable mods ##########
+    && a2enmod rewrite \
+    ########## Install php extentions ##########
+    && docker-php-ext-install -j$(nproc) \
+        pdo_mysql \
+        gd \
+        bz2 \
+        zip \
+        pcntl \
+        bcmath \
+        \
+    ########## Configure php extentions ##########
+    && docker-php-ext-configure \
+        gd \
         --with-freetype-dir=/usr/include/ \
         --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install  \
-    pdo_mysql \
-    zip \
+        \
+    ########## Add aliases to a .bashrc file ##########
     && echo 'alias phpunit="vendor/bin/phpunit"' >> ~/.bashrc \
     && echo 'alias pa="php artisan"' >> ~/.bashrc \
     && chmod u+x /start.sh \
