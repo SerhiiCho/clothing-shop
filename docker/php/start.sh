@@ -24,7 +24,7 @@ while [ true ]; do
         chown -R www-data:www-data $(ls | awk '{if($1 != "docker"){ print $1 }}')
         chmod -R 775 storage
 
-        printf 'DONE! You can go to a localhost \n'
+        printf 'DONE! You can go to a localhost:8100 \n'
         break;
     fi
 done
