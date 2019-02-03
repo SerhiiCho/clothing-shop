@@ -1,1 +1,1 @@
-docker-compose up -d && docker-compose exec php /start.sh
+docker-compose up -d && docker-compose exec cs_php /start.sh
