@@ -28,8 +28,6 @@ RUN apt-get update \
         gnupg2 \
         gnupg1 \
         \
-    ########## Apache2 enable mods ##########
-    && a2enmod rewrite \
     ########## Install php extentions ##########
     && docker-php-ext-install -j$(nproc) \
         pdo_mysql \
