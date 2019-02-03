@@ -18,7 +18,8 @@ services:
       - ./docker/nginx/logs:/var/log/nginx
 
   cs_php:
-    image: serhiicho/clothing_shop:php
+    # image: serhiicho/clothing_shop:php
+    build: docker/php
     container_name: cs_php
     working_dir: /var/www
     ports:
