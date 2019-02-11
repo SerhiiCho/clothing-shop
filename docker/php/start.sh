@@ -29,6 +29,6 @@ while [ true ]; do
     fi
 done
 
-# if [ -f /etc/supervisor/conf.d/laravel-worker.conf ]; then
-#     supervisord && supervisorctl update && supervisorctl start laravel-worker:*
-# fi
+if [ -f /etc/supervisor/conf.d/laravel-worker.conf ]; then
+    supervisord && supervisorctl update && supervisorctl start laravel-worker:*
+fi
