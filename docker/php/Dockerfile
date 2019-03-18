@@ -23,9 +23,7 @@ RUN apt-get update \
         vim \
         zip \
         unzip \
-        gnupg \
         gnupg2 \
-        gnupg1 \
     ########## Configure php extentions ##########
     && docker-php-ext-configure gd \
         --with-freetype-dir=/usr/include/ \
