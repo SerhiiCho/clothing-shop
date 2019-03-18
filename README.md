@@ -1,4 +1,4 @@
-![clothing shop](https://raw.githubusercontent.com/SerhiiCho/clothing_shop/master/storage/app/public/img/big/slider/slider.jpg)
+![clothing shop](https://bitbucket.org/serhii_cho/clothing_shop/raw/f0260925b39eb09b2892c046e7b798e0940cb9a5/storage/app/public/img/big/slider/slider.jpg)
 
 ## About
 
