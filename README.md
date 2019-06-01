@@ -1,4 +1,4 @@
-![clothing shop](https://bitbucket.org/serhii_cho/clothing_shop/raw/f0260925b39eb09b2892c046e7b798e0940cb9a5/storage/app/public/img/big/slider/slider.jpg)
+![clothing shop](https://github.com/SerhiiCho/clothing_shop/blob/master/storage/app/public/img/big/slider/slider.jpg?raw=true)
 
 ## About
 
@@ -68,4 +68,4 @@ The app supports only russian language, but can be easily translated. Just by co
 
 ## Get started with Docker
 
-> Clone files and enter clothing_shop folder. Now just run `./run.sh`
+> Clone files and enter clothing_shop folder. Now just run `./run`
