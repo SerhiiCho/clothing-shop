@@ -28,44 +28,20 @@ Here is what admin can choose on the dashboard.
 
 The app supports only russian language, but can be easily translated. Just by copying /resources/lang/ru folder and translating all files to whatever language you want. Also translate couple seeders. There are no hard coded word, everything is using laravel translations via functions *lang()* and *trans()*.
 
-## What we are using
-##### Technologies
-
-* [PHP](http://php.net/)
-* [NGINX](https://nginx.org/)
-* [MySQL](https://www.mysql.com/)
-* [REDIS](https://redis.io/)
-* [JavaScript](https://www.javascript.com/)
-* [Docker](https://www.docker.com/)
-
-##### Frameworks
-
-* [laravel/laravel](https://github.com/laravel/laravel) | PHP framework
-* [vuejs/vue](https://github.com/vuejs/vue) | JavaScript framework
-* [twbs/bootstrap](https://github.com/twbs/bootstrap) | CSS framework
-
 ## Before downloading
 
-* Register page is going to be at **localhost/hello/register**
+* Register page is going to be at **localhost:8100/hello/register**
 
-* Login page is going to be at **localhost/hello/login**
+* Login page is going to be at **localhost:8100/hello/login**
 
-* There is a registered admin user with email **ser@ser.com** and password **111111**
+* There is a registered admin user with email `ser@ser.com` and password `111111`
 
-## Get started (without Docker)
+## Get started
+```bash
+git clone https://github.com/SerhiiCho/clothing_shop.git
+```
+```bash
+cd clothing_shop && ./run
+```
 
-> Clone files and enter clothing_shop folder. Now make these steps:
-
-1. `cp .env.example .env` copy the *env.example* and create *.env*
-2. Open just created *.env* file and fill database credentials
-3. Create database with the name that you filled in *.env* file in DB_DATABASE field
-4. `composer install` to install all PHP packages
-5. `php artisan key:generate` to generate laravel app key
-6. `php artisan wipe`, migrate all migrations and seed the database
-7. `php artisan storage:link`, create a link in public folder to storage
-8. `php artisan serve` to start a server *(go to localhost:8000)*
-9. `vendor/bin/phpunit` make sure tests are green
-
-## Get started with Docker
-
-> Clone files and enter clothing_shop folder. Now just run `./run`
+It will be ready on port `8100` after pulling all needed images
