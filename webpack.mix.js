@@ -1,18 +1,10 @@
 let mix = require('laravel-mix');
 
-const css = 1;
-const js = 1;
-const server = 1;
-
-if (css === 1) {
-    mix.sass('resources/sass/app.scss', 'public/css/app.css').options({
-        processCssUrls: false,
-    })
-}
-
-if (js === 1) {
-    mix.js('resources/js/app.js', 'public/js/app.js')
+    mix.sass('resources/sass/app.scss', 'public/css/app.css')
+        .js('resources/js/app.js', 'public/js/app.js')
+        .disableNotifications()
         .options({
+            processCssUrls: false,
             uglify: {
                 uglifyOptions: {
                     compress: {
@@ -21,15 +13,4 @@ if (js === 1) {
                 }
             }
         })
-}
 
-if (server === 1) {
-    mix.browserSync({
-        proxy: '127.0.0.1',
-        files: [
-            'public/css/*.css',
-            'public/js/*.js',
-        ],
-        notify: false,
-    })
-}

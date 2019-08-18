@@ -35,6 +35,7 @@ class TypesSeeder extends Seeder
             ['name' => 'Платья'],
             ['name' => 'Парки'],
             ['name' => 'Поло'],
+            ['name' => 'Лосины'],
             ['name' => 'Рубашки'],
             ['name' => 'Юбки'],
             ['name' => 'Шорты'],
