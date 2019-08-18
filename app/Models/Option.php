@@ -20,6 +20,7 @@ class Option extends Model
      * @param string $option
      * @param int $value
      * @return void
+     * @throws \Exception
      */
     public static function set(string $option, int $value): void
     {

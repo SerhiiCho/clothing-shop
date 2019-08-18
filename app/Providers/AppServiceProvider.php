@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use App\Models\Option;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,21 +18,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        \Schema::defaultStringLength(191);
+        Schema::defaultStringLength(191);
 
         $this->enableSqlQueryLogging(false);
         $this->enableHttps(false);
         $this->fetchAdminOptionsFromDb();
     }
 
-    /**
-     * @return void
-     */
-    private function fetchAdminOptionsFromDb(): void
+    private function fetchAdminOptionsFromDb(): ?array
     {
         $admin_options = cache()->rememberForever('admin_options', function () {
             try {
                 $options = Option::get();
+
                 return [
                     'registration' => $options->where('option', 'registration')->first()->value,
                     'men_category' => $options->where('option', 'men_category')->first()->value,
@@ -39,7 +40,10 @@ class AppServiceProvider extends ServiceProvider
                 no_connection_error($e, __CLASS__);
             }
         });
+
         view()->share(compact('admin_options'));
+
+        return null;
     }
 
     /**
@@ -50,12 +54,12 @@ class AppServiceProvider extends ServiceProvider
     private function enableHttps(bool $enable): void
     {
         if (app()->env === 'production' && $enable) {
-            \URL::forceScheme('https');
+            URL::forceScheme('https');
         }
     }
 
     /**
-     * Method for debuging sql queries
+     * Method for debugging sql queries
      *
      * @codeCoverageIgnore
      * @param bool $enable
@@ -64,7 +68,7 @@ class AppServiceProvider extends ServiceProvider
     private function enableSqlQueryLogging(bool $enable): void
     {
         if (app()->env == 'local' && $enable) {
-            \DB::listen(function ($query) {
+            DB::listen(function ($query) {
                 dump($query->sql);
                 // dump($query->time);
                 // dump($query->bindings);

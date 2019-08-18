@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Models\Card;
 use App\Models\Slider;
+use App\Observers\CardObserver;
+use App\Observers\SliderObserver;
 use Illuminate\Support\ServiceProvider;
 
 class EloquentEventProvider extends ServiceProvider
@@ -23,7 +25,7 @@ class EloquentEventProvider extends ServiceProvider
      */
     private function callModelObservers(): void
     {
-        Card::observe(\App\Observers\CardObserver::class);
-        Slider::observe(\App\Observers\SliderObserver::class);
+        Card::observe(CardObserver::class);
+        Slider::observe(SliderObserver::class);
     }
 }

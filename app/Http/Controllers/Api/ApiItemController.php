@@ -15,7 +15,7 @@ class ApiItemController extends Controller
     /**
      * @param null|string $category
      * @param null|string $type
-     * @return \App\Http\Resources\ItemResource
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index($category = null, $type = null)
     {
@@ -54,6 +54,7 @@ class ApiItemController extends Controller
      *
      * @param string|null $category
      * @param int $visitor_id
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection|\Illuminate\Support\Collection
      */
     public function random(int $visitor_id, ?string $category = null)
     {
@@ -65,8 +66,8 @@ class ApiItemController extends Controller
             }
             return ItemResource::collection($items);
         } catch (QueryException $e) {
-            return collect();
             logs()->error($e->getMessage());
+            return collect();
         }
     }
 
@@ -90,6 +91,8 @@ class ApiItemController extends Controller
 
     /**
      * @param string $slug
+     * @return array|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(string $slug)
     {
@@ -116,9 +119,8 @@ class ApiItemController extends Controller
 
         if ($item->delete()) {
             return response(['status' => 'ok'], 200);
-        } else {
-            return response(['status' => 'error'], 500);
         }
 
+        return response(['status' => 'error'], 500);
     }
 }

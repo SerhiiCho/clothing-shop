@@ -10,6 +10,7 @@ class SliderObserver
     /**
      * Deleting slide image if slide is being deleted
      *
+     * @param \App\Models\Slider $slider
      * @return void
      */
     public function deleting(Slider $slider): void

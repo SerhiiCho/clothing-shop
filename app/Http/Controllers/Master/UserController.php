@@ -34,6 +34,7 @@ class UserController extends Controller
      *
      * @param \App\Models\User $user
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function update(User $user): RedirectResponse
     {
@@ -54,6 +55,7 @@ class UserController extends Controller
      *
      * @param \App\Models\User $user
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(User $user): RedirectResponse
     {

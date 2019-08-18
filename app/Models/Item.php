@@ -63,6 +63,7 @@ class Item extends Model
      * Eloquent scope
      *
      * @param $query
+     * @return mixed
      */
     public function scopeInStock($query)
     {
@@ -87,8 +88,9 @@ class Item extends Model
      * Returns only those items that user haven't seen, if there no items
      * the he haven't seen, shows just random
      *
-     * @param null $visitor_id
+     * @param int $visitor_id
      * @param string|null $category
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public static function getRandomUnseen(int $visitor_id = null, ?string $category = null)
     {

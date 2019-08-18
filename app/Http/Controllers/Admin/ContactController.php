@@ -46,6 +46,7 @@ class ContactController extends Controller
      *
      * @param \App\Http\Requests\ContactRequest $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function store(ContactRequest $request): RedirectResponse
     {
@@ -81,6 +82,7 @@ class ContactController extends Controller
      * @param \App\Http\Requests\ContactRequest $request
      * @param \App\Models\Contact $contact
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function update(ContactRequest $request, Contact $contact): RedirectResponse
     {
@@ -99,6 +101,7 @@ class ContactController extends Controller
      *
      * @param \App\Models\Contact $contact
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(Contact $contact): RedirectResponse
     {

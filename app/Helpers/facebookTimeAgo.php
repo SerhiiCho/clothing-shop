@@ -19,9 +19,8 @@ function facebookTimeAgo($date)
     $phrase = array($seconds, $minutes, $hours, $days, $weeks, $months, $years, $decades);
     $length = array(1, 60, 3600, 86400, 604800, 2630880, 31570560, 315705600);
 
-    for ($i = sizeof($length) - 1; ($i >= 0) && (($no = $diff / $length[$i]) <= 1); $i--) {
-        ;
-    }
+    for ($i = sizeof($length) - 1; ($i >= 0) && (($no = $diff / $length[$i]) <= 1); $i--);
+
     if ($i < 0) {
         $i = 0;
     }

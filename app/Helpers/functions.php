@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Visitor;
+use Illuminate\Support\Facades\Cookie;
 
 /**
  * Alias for auth() helper
@@ -12,7 +13,12 @@ function user()
 }
 
 /**
- * Helper for giving an active button class "avtive"
+ * Helper for giving an active button class "active"
+ *
+ * @param $route
+ * @param null $request
+ * @param null $get
+ * @return string
  */
 function active_if_route_is($route, $request = null, $get = null)
 {
@@ -28,7 +34,7 @@ function active_if_route_is($route, $request = null, $get = null)
  *
  * @codeCoverageIgnore
  * @param string $title
- * @param string $ext - extention
+ * @param string $ext - extension
  * @return string
  */
 function get_file_name(string $title, string $ext): string
@@ -37,13 +43,13 @@ function get_file_name(string $title, string $ext): string
 }
 
 /**
- * This helper helps clean Item controller by separeting
+ * This helper helps clean Item controller by separating
  * this logic to helper
  *
- * @param string $path
+ * @param string $param
  * @return string
  */
-function what_is_current(string $param): string
+function what_is_current(string $param): ?string
 {
     if ($param === 'category') {
         if (str_contains(request()->fullUrl(), 'women')) {
@@ -64,6 +70,8 @@ function what_is_current(string $param): string
         }
         return trans('items.all_items');
     }
+
+    return null;
 }
 
 /**
@@ -86,7 +94,7 @@ function visitor_id()
         return request()->cookie('cs_rotsiv');
     }
     $visitor_id = Visitor::whereIp(request()->ip())->value('id');
-    \Cookie::queue('cs_rotsiv', $visitor_id, 218400);
+    Cookie::queue('cs_rotsiv', $visitor_id, 218400);
 
     return $visitor_id;
 }

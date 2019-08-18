@@ -12,6 +12,7 @@ class FooterProvider extends ServiceProvider
      * Take 7 last items from database and display them in the footer
      *
      * @return void
+     * @throws \Exception
      */
     public function boot(): void
     {
@@ -22,6 +23,7 @@ class FooterProvider extends ServiceProvider
 
     /**
      * @return void
+     * @throws \Exception
      */
     private function categoriesMen(): void
     {
@@ -43,6 +45,7 @@ class FooterProvider extends ServiceProvider
 
     /**
      * @return void
+     * @throws \Exception
      */
     private function categoriesWomen(): void
     {
@@ -64,6 +67,7 @@ class FooterProvider extends ServiceProvider
 
     /**
      * @return void
+     * @throws \Exception
      */
     private function lastItems(): void
     {

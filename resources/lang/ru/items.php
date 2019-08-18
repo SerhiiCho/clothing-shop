@@ -45,7 +45,6 @@ return [
     'go_to_product' => 'Перейти к товару',
     'go_to_product_with_title' => 'Перейти к :title',
     'description' => 'Описание',
-    'all_items' => 'Вся одежда',
     'add_to_cart' => 'Добавить в корзину',
     'add_item' => 'Добавить товар',
     'code_of_the_item' => 'Код товара:',

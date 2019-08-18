@@ -12,6 +12,7 @@ class ContactProvider extends ServiceProvider
      * Bootstrap any application services
      *
      * @return void
+     * @throws \Exception
      */
     public function boot(): void
     {
@@ -20,6 +21,7 @@ class ContactProvider extends ServiceProvider
 
     /**
      * @return void
+     * @throws \Exception
      */
     private function showPhoneNumbersInHeader(): void
     {

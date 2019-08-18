@@ -15,6 +15,7 @@ class PageController extends Controller
      * Display starting home page
      *
      * @return \Illuminate\Contracts\View\View
+     * @throws \Exception
      */
     public function home(): View
     {
@@ -37,7 +38,7 @@ class PageController extends Controller
     }
 
     /**
-     * If queary exist, give result
+     * If query exist, give result
      * otherwise just return view
      *
      * @param \App\Http\Requests\SearchRequest $request

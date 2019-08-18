@@ -12,7 +12,6 @@ return [
     'empty' => 'Ваша корзина пуста',
     'favorite' => 'Избранное',
     'add_to_cart' => 'Добавить в корзину',
-    'favorite' => 'Избранное',
     'add_to_favorite' => 'Добавить в избранное',
 
     // Controller

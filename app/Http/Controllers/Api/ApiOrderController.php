@@ -51,6 +51,7 @@ class ApiOrderController extends Controller
      * Count all orders
      *
      * @return array
+     * @throws \Exception
      */
     public function count(): array
     {

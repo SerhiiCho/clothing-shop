@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SectionRequest;
 use App\Models\Section;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
@@ -16,6 +15,7 @@ class SectionController extends Controller
      * @param \App\Http\Requests\SectionRequest $request
      * @param \App\Models\Section $section
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function update(SectionRequest $request, Section $section): RedirectResponse
     {

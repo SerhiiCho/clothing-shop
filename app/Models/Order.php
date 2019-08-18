@@ -46,6 +46,9 @@ class Order extends Model
 
     /**
      * Accessor that formats created_at record to readable format
+     *
+     * @param $value
+     * @return string
      */
     public function getCreatedAtAttribute($value)
     {

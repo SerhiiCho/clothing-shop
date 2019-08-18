@@ -29,6 +29,7 @@ class CheckoutController extends Controller
      *
      * @param \App\Http\Requests\CheckoutRequest $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function store(CheckoutRequest $request): RedirectResponse
     {
@@ -52,11 +53,10 @@ class CheckoutController extends Controller
             }, Cart::getContent()->toArray());
 
             $order->items()->attach($item_ids);
+
             Cart::clear();
 
-            return redirect('/cart')->withSuccess(
-                trans('checkout.order_sent')
-            );
+            return redirect('/cart')->withSuccess(trans('checkout.order_sent'));
         } catch (InvalidConditionException | InvalidItemException | QueryException $e) {
             no_connection_error($e, __CLASS__);
             return back();

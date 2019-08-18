@@ -30,6 +30,7 @@ class OrderController extends Controller
      *
      * @param \App\Models\Order $order
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function store(Order $order): RedirectResponse
     {
@@ -68,6 +69,7 @@ class OrderController extends Controller
     /**
      * @param \App\Models\Order $order
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function softDelete(Order $order): RedirectResponse
     {
@@ -89,6 +91,7 @@ class OrderController extends Controller
     /**
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(int $id): RedirectResponse
     {

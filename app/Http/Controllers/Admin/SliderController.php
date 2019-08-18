@@ -46,7 +46,7 @@ class SliderController extends Controller
     /**
      * Store new slider in database
      *
-     * @param \App\Http\Requests\liderRequest $request
+     * @param \App\Http\Requests\SliderRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(SliderRequest $request): RedirectResponse
@@ -113,9 +113,10 @@ class SliderController extends Controller
     /**
      * Remove slider from database
      *
-     * @see I use observer for this method \App\Observers\SliderObserver
      * @param \App\Models\Slider $slider
      * @return \Illuminate\Http\RedirectResponse
+     * @see I use observer for this method \App\Observers\SliderObserver
+     * @throws \Exception
      */
     public function destroy(Slider $slider): RedirectResponse
     {

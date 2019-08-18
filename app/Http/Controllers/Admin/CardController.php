@@ -51,6 +51,7 @@ class CardController extends Controller
      *
      * @param \App\Http\Requests\CardRequest $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function store(CardRequest $request): RedirectResponse
     {
@@ -103,6 +104,7 @@ class CardController extends Controller
      * @param \App\Http\Requests\CardRequest $request
      * @param \App\Models\Card $card
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function update(CardRequest $request, Card $card): RedirectResponse
     {
@@ -132,19 +134,20 @@ class CardController extends Controller
     }
 
     /**
-     * Remove the specified carc from database
+     * Remove the specified cards from database
      *
-     * @see I use observer for this method \App\Observers\CardObserver
      * @param \App\Models\Card $card
      * @return \Illuminate\Http\RedirectResponse
+     * @see I use observer for this method \App\Observers\CardObserver
+     * @throws \Exception
      */
     public function destroy(Card $card): RedirectResponse
     {
         cache()->forget('home_cards');
 
         return ($card->delete())
-        ? redirect('admin/cards')->withSuccess(trans('cards.card_deleted'))
-        : redirect('admin/cards')->withError(trans('cards.deleted_fail'));
+            ? redirect('admin/cards')->withSuccess(trans('cards.card_deleted'))
+            : redirect('admin/cards')->withError(trans('cards.deleted_fail'));
     }
 
     /**

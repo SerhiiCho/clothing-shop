@@ -19,6 +19,7 @@ class DashboardController extends Controller
 
     /**
      * @return \Illuminate\View\View
+     * @throws \Exception
      */
     public function index(): View
     {

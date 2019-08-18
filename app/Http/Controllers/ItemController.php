@@ -52,6 +52,7 @@ class ItemController extends Controller
      *
      * @param \App\Http\Requests\ItemRequest $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function store(ItemRequest $request): RedirectResponse
     {
@@ -59,7 +60,7 @@ class ItemController extends Controller
 
         $item = $this->createOrUpdateItem($request);
 
-        $image_names = $this->uploadPhotos($request, $item->id);
+        $image_names = $this->uploadPhotos($request);
         $this->updateImagesInDb($image_names, $item);
 
         return redirect('items')->withSuccess(
@@ -124,7 +125,7 @@ class ItemController extends Controller
 
         if ($request->hasFile('photos')) {
             $this->deleteOldPhotos($item->photos);
-            $image_names = $this->uploadPhotos($request, $item->id);
+            $image_names = $this->uploadPhotos($request);
             $this->updateImagesInDb($image_names, $item);
         }
 
@@ -135,6 +136,7 @@ class ItemController extends Controller
 
     /**
      * @return void
+     * @throws \Exception
      */
     public function forgetCache(): void
     {

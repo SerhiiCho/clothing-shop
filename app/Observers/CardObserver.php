@@ -10,6 +10,7 @@ class CardObserver
     /**
      * Deleting card image if card is being deleted
      *
+     * @param \App\Models\Card $card
      * @return void
      */
     public function deleting(Card $card): void

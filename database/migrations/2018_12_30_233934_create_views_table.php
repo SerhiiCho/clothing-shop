@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateViewsTable extends Migration
@@ -19,7 +20,7 @@ class CreateViewsTable extends Migration
 
             $table->unsignedInteger('item_id');
             $table->foreign('item_id')->references('id')->on('items');
-            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
