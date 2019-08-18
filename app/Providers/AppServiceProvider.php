@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
 
     private function fetchAdminOptionsFromDb(): ?array
     {
-        $admin_options = cache()->rememberForever('admin_options', function () {
+        $admin_options = cache()->rememberForever('admin_options', function (): ?array {
             try {
                 $options = Option::get();
 
@@ -38,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
                 ];
             } catch (QueryException $e) {
                 no_connection_error($e, __CLASS__);
+                return null;
             }
         });
 

@@ -16,7 +16,7 @@ class WipeCommand extends Command
      * The console command description
      * @var string
      */
-    protected $description = 'This command cleans cache and freshes databese';
+    protected $description = 'This command cleans cache and clears database';
 
     /**
      * Create a new command instance

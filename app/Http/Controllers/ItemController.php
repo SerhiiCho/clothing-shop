@@ -117,6 +117,7 @@ class ItemController extends Controller
      * @param \App\Http\Requests\ItemRequest $request
      * @param string $slug
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function update(ItemRequest $request, string $slug): RedirectResponse
     {

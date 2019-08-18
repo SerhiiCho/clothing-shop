@@ -20,6 +20,7 @@ class OptionController extends Controller
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function registration(Request $request): RedirectResponse
     {
@@ -40,6 +41,7 @@ class OptionController extends Controller
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function menCategory(Request $request): RedirectResponse
     {
@@ -60,6 +62,7 @@ class OptionController extends Controller
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function womenCategory(Request $request): RedirectResponse
     {

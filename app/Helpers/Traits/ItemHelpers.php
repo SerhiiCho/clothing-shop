@@ -86,9 +86,9 @@ trait ItemHelpers
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Item|null $item
-     * @return bool
+     * @return \App\Models\Item
      */
-    public function createOrUpdateItem(Request $request, ?Item $item = null): bool
+    public function createOrUpdateItem(Request $request, ?Item $item = null): Item
     {
         $items = [
             'title' => $request->title,
@@ -100,9 +100,12 @@ trait ItemHelpers
             'type_id' => $request->type,
         ];
 
-        return $item
-            ? $item->update($items)
-            : user()->items()->create($items);
+        if ($item) {
+            $item->update($items);
+            return $item;
+        }
+
+        return user()->items()->create($items);
     }
 
     /**

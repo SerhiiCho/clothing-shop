@@ -42,7 +42,7 @@ class ContactController extends Controller
     }
 
     /**
-     * Store a newly created cantact in database
+     * Store a newly created contact in database
      *
      * @param \App\Http\Requests\ContactRequest $request
      * @return \Illuminate\Http\RedirectResponse

@@ -34,7 +34,7 @@ class CheckoutController extends Controller
     public function store(CheckoutRequest $request): RedirectResponse
     {
         if (Order::whereIp($request->ip())->count() > 0) {
-            return back()->withError(trans('checkout.olready_did_order'));
+            return back()->withError(trans('checkout.already_did_order'));
         }
 
         try {

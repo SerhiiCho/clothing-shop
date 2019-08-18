@@ -8,7 +8,7 @@ class TypesSeeder extends Seeder
     public function run()
     {
         DB::table('types')->insert([
-            ['name' => 'Аксесcуары'],
+            ['name' => 'Аксессуары'],
             ['name' => 'Боди'],
             ['name' => 'Брюки'],
             ['name' => 'Бомпер'],
@@ -26,7 +26,7 @@ class TypesSeeder extends Seeder
             ['name' => 'Кофты'],
             ['name' => 'Толстовки'],
             ['name' => 'Спортивная одежда'],
-            ['name' => 'Cвитера'],
+            ['name' => 'Свитера'],
             ['name' => 'Сарафаны'],
             ['name' => 'Свитшоты'],
             ['name' => 'Туники'],
