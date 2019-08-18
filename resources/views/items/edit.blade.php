@@ -9,7 +9,7 @@
 @section('content')
 
 <div class="container pb-4 col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
-    <h5 class="text-center pt-4">
+    <h5 class="text-center pt-4 pb-3">
         @lang('items.change_item')
     </h5>
 
@@ -23,7 +23,7 @@
             @method('PUT')
 
             <div class="row">
-                <div class="form-group col-12 col-sm-6">
+                <div class="form-group col-12 col-sm-8">
                     <label>@lang('items.name')</label>
                     <input type="text"
                         value="{{ $item->title }}"
@@ -32,7 +32,7 @@
                         class="form-control"
                     >
                 </div>
-                <div class="form-group col-12 col-sm-6">
+                <div class="form-group col-12 col-sm-4">
                     <label>@lang('items.price')</label>
                     <input type="text"
                         value="{{ $item->price }}"

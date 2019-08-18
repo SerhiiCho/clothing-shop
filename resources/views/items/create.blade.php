@@ -9,7 +9,7 @@
 @section('content')
 
 <div class="container pb-4 col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
-    <h5 class="text-center pt-4">
+    <h5 class="text-center pt-4 pb-3">
         @lang('items.add_item')
     </h5>
 
@@ -20,10 +20,10 @@
             class="col-md-6 col-lg-8"
         >
             @csrf
-            <div class="row">
-                <div class="form-group col-12 col-sm-6">
-                    <label>@lang('items.name')</label>
 
+            <div class="row">
+                <div class="form-group col-12 col-sm-8">
+                    <label>@lang('items.name')</label>
                     <input type="text"
                         value="{{ old('title') }}"
                         name="title"
@@ -31,7 +31,7 @@
                         class="form-control"
                     >
                 </div>
-                <div class="form-group col-12 col-sm-6">
+                <div class="form-group col-12 col-sm-4">
                     <label>@lang('items.select_price')</label>
                     <input type="text"
                         value="{{ old('price', '0') }}"
@@ -79,9 +79,12 @@
                 </div>
                 <div class="form-group col-sm-5">
                     <label>@lang('items.type')</label>
+
                     <select name="type" class="form-control">
                         @foreach ($types as $type)
-                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+                            <option value="{{ $type->id }}" {{ $type->name === 'Лосины' ? 'selected' : null }}>
+                                {{ $type->name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
