@@ -26,7 +26,6 @@
         ])
     @endif
 
-
     {{-- Home Up Section --}}
     @isset($home_sections[0])
         @include('includes.section', [
@@ -34,13 +33,15 @@
             'anchor' => 'home_up'
         ])
     @endisset
+</div>
 
-    <items-api
-        hryvnia="@lang('items.hryvnia')"
-        headline="@lang('cards.popular')"
-        to="/api/item/popular"
-    ></items-api>
+<items-api
+    hryvnia="@lang('items.hryvnia')"
+    headline="@lang('cards.popular')"
+    to="/api/item/popular"
+></items-api>
 
+<div class="wrapper">
     {{-- Home Down Section --}}
     @isset($home_sections[1])
         @include('includes.section', [
@@ -48,19 +49,19 @@
             'anchor' => 'home_down',
         ])
     @endisset
-
-    <items-api
-        hryvnia="@lang('items.hryvnia')"
-        headline="@lang('messages.more_clothes')"
-
-        @if ($admin_options['men_category'] && !$admin_options['women_category'])
-            to="/api/item/random/{{ visitor_id() }}/men"
-        @elseif (!$admin_options['men_category'] && $admin_options['women_category'])
-            to="/api/item/random/{{ visitor_id() }}/women"
-        @else
-            to="/api/item/random/{{ visitor_id() }}"
-        @endif
-    ></items-api>
 </div>
+
+<items-api
+    hryvnia="@lang('items.hryvnia')"
+    headline="@lang('messages.more_clothes')"
+
+    @if ($admin_options['men_category'] && !$admin_options['women_category'])
+        to="/api/item/random/{{ visitor_id() }}/men"
+    @elseif (!$admin_options['men_category'] && $admin_options['women_category'])
+        to="/api/item/random/{{ visitor_id() }}/women"
+    @else
+        to="/api/item/random/{{ visitor_id() }}"
+    @endif
+></items-api>
 
 @endsection
