@@ -2,7 +2,10 @@
 
 namespace Tests\Unit;
 
+use Illuminate\Support\Facades\File;
+use Mockery;
 use Tests\TestCase;
+use App\Models\Visitor;
 
 class HelpersFunctionsTest extends TestCase
 {
@@ -26,15 +29,15 @@ class HelpersFunctionsTest extends TestCase
      * @author Cho
      * @test
      */
-    public function forget_all_cache_helper_removes_all_cache(): void
+    public function forget_all_cache_helper_removes_all_cache_that_are_listed_in_cache_config(): void
     {
-        cache()->put('name', 'Serhii');
-        cache()->put('color', 'Red');
+        cache()->put('home_cards', ['nice'], 5);
+        cache()->put('orders', ['nice'], 5);
 
         forget_all_cache();
 
-        $this->assertFalse(cache()->has('name'));
-        $this->assertFalse(cache()->has('color'));
+        $this->assertFalse(cache()->has('home_cards'));
+        $this->assertFalse(cache()->has('orders'));
     }
 
     /**
@@ -43,7 +46,7 @@ class HelpersFunctionsTest extends TestCase
      */
     public function visitor_id_function_returns_correct_data(): void
     {
-        $expected = factory(\App\Models\Visitor::class)->create()->value('id');
+        $expected = factory(Visitor::class)->create()->value('id');
         $this->assertEquals($expected, visitor_id());
     }
 
@@ -53,7 +56,7 @@ class HelpersFunctionsTest extends TestCase
      */
     public function no_connection_error_function_flashes_message_and_logs_given_error(): void
     {
-        $exception = \Mockery::mock('Exception');
+        $exception = Mockery::mock('Exception');
         $exception->shouldReceive('getMessage')->andReturn('Lorem');
 
         no_connection_error($exception, 'SomeFile');
@@ -61,6 +64,7 @@ class HelpersFunctionsTest extends TestCase
         $this->assertFileExists(storage_path('logs/laravel-' . date('Y-m-d') . '.log'));
         $this->get('/')->assertSessionHas('error', trans('messages.query_error'));
 
-        \File::delete(storage_path('logs/laravel-' . date('Y-m-d') . '.log'));
+        File::delete(storage_path('logs/laravel-' . date('Y-m-d') . '.log'));
     }
+
 }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Cookie;
 
 /**
  * Alias for auth() helper
+ *
  * @codeCoverageIgnore
  */
 function user()
@@ -74,20 +75,13 @@ function what_is_current(string $param): ?string
     return null;
 }
 
-/**
- * @param $exception
- * @param string $file
- * @return void
- */
-function no_connection_error($exception, string $file): void
+function no_connection_error(Exception $exception, string $file): void
 {
     logger()->error("{$exception->getMessage()} in file $file.php");
     session()->flash('error', trans('messages.query_error'));
 }
 
-/**
- * It returns visitor_id even if cookie is not set
- */
+// It returns visitor_id even if cookie is not set
 function visitor_id()
 {
     if (request()->cookie('cs_rotsiv')) {
