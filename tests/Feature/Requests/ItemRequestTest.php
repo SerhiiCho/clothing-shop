@@ -28,100 +28,70 @@ class ItemRequestTest extends TestCase
             'price' => rand(1, 10000),
         ];
     }
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function title_is_not_required(): void
     {
         $this->form_data['title'] = '';
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function content_is_not_required(): void
     {
         $this->form_data['content'] = '';
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function category_is_not_required(): void
     {
         $this->form_data['category'] = '';
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function type_is_not_required(): void
     {
         $this->form_data['type'] = '';
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function stock_is_not_required(): void
     {
         $this->form_data['stock'] = '';
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function price_is_not_required(): void
     {
         $this->form_data['price'] = '';
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function type_must_be_numeric(): void
     {
         $this->form_data['type'] = 'text';
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function stock_must_be_numeric(): void
     {
         $this->form_data['stock'] = 'text';
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function price_must_be_numeric(): void
     {
         $this->form_data['price'] = 'text';
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function stock_must_be_between_two_numbers(): void
     {
         $this->form_data['stock'] = config('valid.item.stock.min') - 1;
@@ -131,10 +101,7 @@ class ItemRequestTest extends TestCase
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function price_must_between_two_numbers(): void
     {
         $this->form_data['price'] = config('valid.item.price.min') - 1;
@@ -144,10 +111,7 @@ class ItemRequestTest extends TestCase
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function title_must_have_min_length(): void
     {
         $title_min = config('valid.item.title.min');
@@ -156,10 +120,7 @@ class ItemRequestTest extends TestCase
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function title_must_have_max_length(): void
     {
         $title_max = config('valid.item.title.max');
@@ -168,10 +129,7 @@ class ItemRequestTest extends TestCase
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function content_must_have_min_length(): void
     {
         $content_min = config('valid.item.content.min');
@@ -180,10 +138,7 @@ class ItemRequestTest extends TestCase
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function content_must_have_max_length(): void
     {
         $content_max = config('valid.item.content.max');
@@ -192,10 +147,7 @@ class ItemRequestTest extends TestCase
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function category_must_have_max_length(): void
     {
         $category_max = config('valid.item.category.max');

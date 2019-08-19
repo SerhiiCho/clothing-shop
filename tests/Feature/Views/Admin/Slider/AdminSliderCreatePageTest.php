@@ -10,10 +10,7 @@ class AdminSliderCreatePageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_not_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
@@ -21,20 +18,14 @@ class AdminSliderCreatePageTest extends TestCase
             ->assertRedirect();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_not_accessible_by_guest(): void
     {
         $this->get("/admin/slider/create")
             ->assertRedirect();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_accessible_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
@@ -43,10 +34,7 @@ class AdminSliderCreatePageTest extends TestCase
             ->assertViewIs('admin.slider.create');
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function admin_can_add_new_slider(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())

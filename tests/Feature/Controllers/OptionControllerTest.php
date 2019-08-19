@@ -11,37 +11,25 @@ class OptionControllerTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function option_Registration_is_on_by_default(): void
     {
         $this->assertOptionHasValue('registration', 1);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function option_MenCategory_is_on_by_default(): void
     {
         $this->assertOptionHasValue('men_category', 1);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function option_WomenCategory_is_on_by_default(): void
     {
         $this->assertOptionHasValue('women_category', 1);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function admin_can_turn_off_registration(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
@@ -50,10 +38,7 @@ class OptionControllerTest extends TestCase
         $this->assertOptionHasValue('registration', 0);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function admin_can_turn_off_men_category(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
@@ -62,10 +47,7 @@ class OptionControllerTest extends TestCase
         $this->assertOptionHasValue('men_category', 0);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function admin_can_turn_off_women_category(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
@@ -74,10 +56,7 @@ class OptionControllerTest extends TestCase
         $this->assertOptionHasValue('women_category', 0);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function admin_can_remove_cache_data(): void
     {
         $this->get('/');

@@ -10,10 +10,7 @@ use App\Models\Visitor;
 
 class HelpersFunctionsTest extends TestCase
 {
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function active_if_route_is_helper_returns_active_string(): void
     {
         $this->get('/');
@@ -26,10 +23,7 @@ class HelpersFunctionsTest extends TestCase
         $this->assertEquals('active', active_if_route_is('items', 'category', 'men'));
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function forget_all_cache_helper_removes_all_cache_that_are_listed_in_cache_config(): void
     {
         cache()->put('home_cards', ['nice'], 5);
@@ -41,20 +35,14 @@ class HelpersFunctionsTest extends TestCase
         $this->assertFalse(cache()->has('orders'));
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function visitor_id_function_returns_correct_data(): void
     {
         $expected = factory(Visitor::class)->create()->value('id');
         $this->assertEquals($expected, visitor_id());
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function no_connection_error_function_flashes_message_and_logs_given_error(): void
     {
         $exception = Mockery::mock('Exception');

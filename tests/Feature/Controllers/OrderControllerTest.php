@@ -26,10 +26,7 @@ class OrderControllerTest extends TestCase
         ]);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function open_order_can_be_soft_deleted_by_admin(): void
     {
         $this->softDeleteOrder($this->order);
@@ -39,10 +36,7 @@ class OrderControllerTest extends TestCase
         ]);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function open_order_cant_be_soft_deleted_by_admin_if_admin_hasnt_taken_this_order(): void
     {
         $order = factory(Order::class)->create();
@@ -55,10 +49,7 @@ class OrderControllerTest extends TestCase
         ]);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function open_order_cant_be_soft_deleted_by_guest(): void
     {
         $this->put(action('Admin\OrderController@softDelete', [
@@ -66,10 +57,7 @@ class OrderControllerTest extends TestCase
         ]))->assertRedirect('/');
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function closed_order_can_be_force_deleted_by_admin(): void
     {
         $this->softDeleteOrder($this->order);
@@ -84,10 +72,7 @@ class OrderControllerTest extends TestCase
         ]);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function order_appears_in_db_after_guest_makes_successful_checkout_request(): void
     {
         $client_data = [

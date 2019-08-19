@@ -10,10 +10,7 @@ class ItemsIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_accessible_by_guest(): void
     {
         $this->get('/items')
@@ -21,10 +18,7 @@ class ItemsIndexPageTest extends TestCase
             ->assertViewIs('items.index');
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
@@ -32,10 +26,7 @@ class ItemsIndexPageTest extends TestCase
             ->assertOk();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_accessible_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())

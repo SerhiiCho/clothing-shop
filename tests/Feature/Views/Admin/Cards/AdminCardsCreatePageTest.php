@@ -10,10 +10,7 @@ class AdminCardsCreatePageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_not_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
@@ -21,20 +18,14 @@ class AdminCardsCreatePageTest extends TestCase
             ->assertRedirect();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_not_accessible_by_guest(): void
     {
         $this->get("/admin/cards/create")
             ->assertRedirect();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_accessible_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
@@ -43,10 +34,7 @@ class AdminCardsCreatePageTest extends TestCase
             ->assertViewIs('admin.cards.create');
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function admin_can_add_new_card(): void
     {
         $form_data = [

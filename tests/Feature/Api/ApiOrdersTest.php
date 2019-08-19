@@ -10,10 +10,7 @@ class OptionControllerTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function see_open_orders_json(): void
     {
         $order = factory(Order::class)->create();
@@ -23,10 +20,7 @@ class OptionControllerTest extends TestCase
             ->assertJsonFragment(['phone' => $order->phone]);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function see_taken_orders_json(): void
     {
         $order = factory(Order::class)->state('taken')->create();
@@ -36,10 +30,7 @@ class OptionControllerTest extends TestCase
             ->assertJsonFragment(['phone' => $order->phone]);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function see_closed_orders_json(): void
     {
         $order = factory(Order::class)->create();

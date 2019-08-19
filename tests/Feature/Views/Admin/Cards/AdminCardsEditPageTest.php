@@ -25,10 +25,7 @@ class AdminCardsEditPageTest extends TestCase
         $this->url = "/admin/cards/{$this->card->id}/edit";
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_not_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
@@ -36,19 +33,13 @@ class AdminCardsEditPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_not_accessible_by_guest(): void
     {
         $this->get($this->url)->assertRedirect();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_accessible_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
@@ -57,10 +48,7 @@ class AdminCardsEditPageTest extends TestCase
             ->assertViewIs('admin.cards.edit');
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function admin_can_update_card(): void
     {
         $card = factory(Card::class)->create();
@@ -81,10 +69,7 @@ class AdminCardsEditPageTest extends TestCase
         ]);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function admin_can_remove_card(): void
     {
         $card = factory(Card::class)->create();

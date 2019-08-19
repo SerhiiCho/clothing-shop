@@ -24,10 +24,7 @@ class ItemsEditPageTest extends TestCase
         $this->url = "/items/{$this->item->slug}/edit";
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_not_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
@@ -35,19 +32,13 @@ class ItemsEditPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_not_accessible_by_guest(): void
     {
         $this->get($this->url)->assertRedirect();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_accessible_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
@@ -56,10 +47,7 @@ class ItemsEditPageTest extends TestCase
             ->assertViewIs('items.edit');
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function admin_can_update_items(): void
     {
         $item = factory(Item::class)->create();

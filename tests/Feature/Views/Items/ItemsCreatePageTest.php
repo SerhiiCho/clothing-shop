@@ -23,10 +23,7 @@ class ItemsCreatePageTest extends TestCase
         $this->admin = factory(User::class)->state('admin')->create();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_not_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
@@ -34,20 +31,14 @@ class ItemsCreatePageTest extends TestCase
             ->assertRedirect();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_not_accessible_by_guest(): void
     {
         $this->get("/items/create")
             ->assertRedirect();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_accessible_by_admin(): void
     {
         $this->actingAs($this->admin)
@@ -56,10 +47,7 @@ class ItemsCreatePageTest extends TestCase
             ->assertViewIs('items.create');
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function admin_can_add_new_items(): void
     {
         $form_data = $this->generateFormData(false);
@@ -73,10 +61,7 @@ class ItemsCreatePageTest extends TestCase
         ]);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function admin_can_upload_image(): void
     {
         $form_data = $this->generateFormData(true);
@@ -93,10 +78,7 @@ class ItemsCreatePageTest extends TestCase
         $this->assertImagesExist($photo);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function admin_can_change_image(): void
     {
         $form_data = $this->generateFormData(true);
@@ -112,10 +94,7 @@ class ItemsCreatePageTest extends TestCase
         $this->assertImagesExist($item->photos()->first()->name);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function image_is_deleted_with_the_item(): void
     {
         $form_data = $this->generateFormData(true);

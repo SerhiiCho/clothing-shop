@@ -25,10 +25,7 @@ class SectionRequestTest extends TestCase
         ];
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function title_must_have_max_length(): void
     {
         $max = config('valid.section.title.max');
@@ -37,10 +34,7 @@ class SectionRequestTest extends TestCase
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function content_must_have_max_length(): void
     {
         $max = config('valid.section.content.max');

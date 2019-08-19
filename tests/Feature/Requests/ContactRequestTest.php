@@ -24,40 +24,28 @@ class ConractRequestTest extends TestCase
             'icon' => rand(1, 10),
         ];
     }
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function icon_is_not_required(): void
     {
         $this->form_data['icon'] = '';
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function icon_must_be_numeric(): void
     {
         $this->form_data['icon'] = 'text';
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function icon_must_be_between_two_numbers(): void
     {
         $this->form_data['icon'] = config('valid.contact.icon.max') + 1;
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function phone_must_have_min_length(): void
     {
         $phone_min = config('valid.contact.phone.min');
@@ -66,10 +54,7 @@ class ConractRequestTest extends TestCase
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function phone_must_have_max_length(): void
     {
         $phone_max = config('valid.contact.phone.max');
@@ -78,10 +63,7 @@ class ConractRequestTest extends TestCase
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function phone_is_required(): void
     {
         $this->form_data['phone'] = '';

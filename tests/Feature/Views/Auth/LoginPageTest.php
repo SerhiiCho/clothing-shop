@@ -10,10 +10,7 @@ class LoginPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_accessible_by_guest(): void
     {
         $this->get('/' . config('custom.enter_slug') . '/login')
@@ -21,10 +18,7 @@ class LoginPageTest extends TestCase
             ->assertViewIs('auth.login');
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_not_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())

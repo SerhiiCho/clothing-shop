@@ -22,10 +22,7 @@ class AdminSliderEditPageTest extends TestCase
         $this->slider = factory(Slider::class)->create();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_not_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
@@ -33,20 +30,14 @@ class AdminSliderEditPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_not_accessible_by_guest(): void
     {
         $this->get("/admin/slider/{$this->slider->id}/edit")
             ->assertRedirect();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_accessible_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
@@ -55,10 +46,7 @@ class AdminSliderEditPageTest extends TestCase
             ->assertViewIs('admin.slider.edit');
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function admin_can_update_slider(): void
     {
         $slider = factory(Slider::class)->create();
@@ -72,10 +60,7 @@ class AdminSliderEditPageTest extends TestCase
         $this->assertDatabaseHas('slider', ['order' => 11]);
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function admin_can_remove_slider(): void
     {
         $slider = factory(Slider::class)->create();

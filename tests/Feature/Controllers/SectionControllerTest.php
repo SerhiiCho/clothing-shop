@@ -24,10 +24,7 @@ class SectionControllerTest extends TestCase
         $this->section = factory(Section::class)->create();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function admin_can_edit_section(): void
     {
         $form_data = [

@@ -24,10 +24,7 @@ class CheckoutRequestTest extends TestCase
         ];
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function phone_must_have_min_length(): void
     {
         $phone_min = config('valid.checkout.phone.min');
@@ -36,10 +33,7 @@ class CheckoutRequestTest extends TestCase
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function phone_must_have_max_length(): void
     {
         $phone_max = config('valid.checkout.phone.max');
@@ -48,30 +42,21 @@ class CheckoutRequestTest extends TestCase
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function phone_is_required(): void
     {
         $this->form_data['phone'] = '';
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function name_is_required(): void
     {
         $this->form_data['name'] = '';
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function name_must_have_min_length(): void
     {
         $name_min = config('valid.checkout.name.min');
@@ -80,10 +65,7 @@ class CheckoutRequestTest extends TestCase
         $this->makeRequestAndCheckDatabase();
     }
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function name_must_have_max_length(): void
     {
         $name_max = config('valid.checkout.name.max');

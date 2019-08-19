@@ -9,10 +9,7 @@ class PagesSearchPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @author Cho
-     * @test
-     */
+    /* @test */
     public function page_is_accessible_by_guest(): void
     {
         $this->get('/search')
