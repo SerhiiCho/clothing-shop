@@ -6,21 +6,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CardRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules(): array
     {
         $type_max = config('valid.card.type.max');
@@ -38,11 +28,6 @@ class CardRequest extends FormRequest
         return $rules;
     }
 
-    /**
-     * Get the validation messages that apply to the request.
-     *
-     * @return array
-     */
     public function messages(): array
     {
         return [

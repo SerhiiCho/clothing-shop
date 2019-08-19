@@ -23,6 +23,7 @@
             enctype="multipart/form-data"
         >
             @csrf
+
             <div class="custom-file mt-3">
                 <input type="file"
                     name="image"
