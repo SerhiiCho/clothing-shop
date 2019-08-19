@@ -49,40 +49,35 @@ function string_random(int $length): string
     return Str::random($length);
 }
 
-function string_limit(string $value, ?int $limit = 100, ?string $end = '...'): string {
+function string_limit(string $value, ?int $limit = 100, ?string $end = '...'): string
+{
     return Str::limit($value, $limit, $end);
 }
 
-/**
- * This helper helps clean Item controller by separating
- * this logic to helper
- *
- * @param string $param
- * @return string
- */
-function what_is_current(string $param): ?string
+function get_current_category(string $url): ?string
 {
-    if ($param === 'category') {
-        if (Str::contains(request()->fullUrl(), 'women')) {
-            return 'women';
-        }
-        if (Str::contains(request()->fullUrl(), 'men')) {
-            return 'men';
-        }
-        return '';
+    if (Str::contains($url, 'women')) {
+        return 'women';
     }
 
-    if ($param === 'title') {
-        if (Str::contains(request()->fullUrl(), 'women')) {
-            return trans('items.women_items');
-        }
-        if (Str::contains(request()->fullUrl(), 'men')) {
-            return trans('items.men_items');
-        }
-        return trans('items.all_items');
+    if (Str::contains($url, 'men')) {
+        return 'men';
     }
 
     return null;
+}
+
+function get_current_title(string $url): string
+{
+    if (Str::contains($url, 'women')) {
+        return trans('items.women_items');
+    }
+
+    if (Str::contains($url, 'men')) {
+        return trans('items.men_items');
+    }
+
+    return trans('items.all_items');
 }
 
 function no_connection_error(Exception $exception, string $file): void

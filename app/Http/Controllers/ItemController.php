@@ -29,9 +29,11 @@ class ItemController extends Controller
      */
     public function index(): View
     {
+        $category = get_current_category(request()->url());
+
         return view('items.index')->with([
-            'current_category' => what_is_current('category'),
-            'sidebar' => $this->currentStateOfSidebar(what_is_current('category')),
+            'current_category' => $category,
+            'sidebar' => $this->currentStateOfSidebar($category),
         ]);
     }
 

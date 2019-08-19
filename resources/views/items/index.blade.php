@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', what_is_current('title'))
+@section('title', get_current_title(request()->url()))
 
 @section('content')
 
@@ -38,7 +38,7 @@
 
             <div class="col-md-{{ $sidebar ? '9' : '10 offset-md-1' }}">
                 <section class="display-4 p-4 text-center">
-                    {{ what_is_current('title') }}
+                    {{ get_current_category(request()->url()) }}
                 </section>
 
                 @if ($sidebar)
