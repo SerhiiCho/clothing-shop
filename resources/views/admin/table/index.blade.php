@@ -89,7 +89,7 @@
                             {{-- Item Title --}}
                             <td title="{{ $item->title }}">
                                 <a href="/item/{{ $item->category }}/{{ $item->slug }}" class="grey">
-                                    {{ str_limit($item->title, 30) }}
+                                    {{ string_limit($item->title, 30) }}
                                 </a>
                             </td>
 
@@ -100,7 +100,7 @@
                             <td>{{ $item->price }}</td>
 
                             {{-- Type --}}
-                            <td title="{{ $item->type->name }}">{{ str_limit($item->type->name, 14) }}</td>
+                            <td title="{{ $item->type->name }}">{{ string_limit($item->type->name, 14) }}</td>
 
                             {{-- Category --}}
                             @if ($admin_options['men_category'] && $admin_options['women_category'])

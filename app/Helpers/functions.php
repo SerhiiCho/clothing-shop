@@ -41,12 +41,16 @@ function active_if_route_is($route, $request = null, $get = null)
  */
 function get_file_name(string $title, string $ext): string
 {
-    return str_slug($title) . '-' . string_random(7) . '.' . $ext;
+    return Str::slug($title) . '-' . string_random(7) . '.' . $ext;
 }
 
 function string_random(int $length): string
 {
     return Str::random($length);
+}
+
+function string_limit(string $value, ?int $limit = 100, ?string $end = '...'): string {
+    return Str::limit($value, $limit, $end);
 }
 
 /**

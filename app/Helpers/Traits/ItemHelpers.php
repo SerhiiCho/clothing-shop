@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Intervention\Image\ImageManager;
 
 trait ItemHelpers
@@ -128,8 +129,10 @@ trait ItemHelpers
 
     public function makeSlug(string $title): string
     {
-        $slug = str_slug($title);
+        $slug = Str::slug($title);
+
         $time = time();
-        return str_limit("{$slug}_{$time}", 250);
+
+        return Str::limit("{$slug}_{$time}", 250);
     }
 }
