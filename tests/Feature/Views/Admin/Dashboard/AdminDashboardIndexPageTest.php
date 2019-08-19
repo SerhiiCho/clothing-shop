@@ -14,7 +14,7 @@ class AdminDashboardIndexPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function page_is_not_accessable_by_auth(): void
+    public function page_is_not_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
             ->get('/admin/dashboard')
@@ -25,7 +25,7 @@ class AdminDashboardIndexPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function page_is_not_accessable_by_guest(): void
+    public function page_is_not_accessible_by_guest(): void
     {
         $this->get('/admin/dashboard')
             ->assertRedirect();
@@ -35,7 +35,7 @@ class AdminDashboardIndexPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function page_is_accessable_by_admin(): void
+    public function page_is_accessible_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
             ->get('/admin/dashboard')

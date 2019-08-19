@@ -25,7 +25,7 @@ class RegisterPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function page_is_accessable_by_guest(): void
+    public function page_is_accessible_by_guest(): void
     {
         $this->get($this->url)
             ->assertOk()
@@ -36,7 +36,7 @@ class RegisterPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function page_is_not_accessable_by_auth(): void
+    public function page_is_not_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
             ->get($this->url)

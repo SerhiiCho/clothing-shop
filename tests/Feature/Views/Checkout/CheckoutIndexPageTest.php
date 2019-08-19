@@ -14,7 +14,7 @@ class CheckoutIndexPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function page_is_not_accessable_by_guest_without_order(): void
+    public function page_is_not_accessible_by_guest_without_order(): void
     {
         $this->get('/checkout')->assertRedirect();
     }
@@ -23,7 +23,7 @@ class CheckoutIndexPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function page_is_not_accessable_by_auth_without_order(): void
+    public function page_is_not_accessible_by_auth_without_order(): void
     {
         $this->actingAs(factory(User::class)->create())
             ->get('/checkout')
@@ -34,7 +34,7 @@ class CheckoutIndexPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function page_is_not_accessable_by_admin_without_order(): void
+    public function page_is_not_accessible_by_admin_without_order(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
             ->get('/checkout')

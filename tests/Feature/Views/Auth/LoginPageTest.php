@@ -14,7 +14,7 @@ class LoginPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function page_is_accessable_by_guest(): void
+    public function page_is_accessible_by_guest(): void
     {
         $this->get('/' . config('custom.enter_slug') . '/login')
             ->assertOk()
@@ -25,7 +25,7 @@ class LoginPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function page_is_not_accessable_by_auth(): void
+    public function page_is_not_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
             ->get('/' . config('custom.enter_slug') . '/login')

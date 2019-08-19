@@ -27,7 +27,7 @@ class ItemsShowPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function page_is_accessable_by_guest(): void
+    public function page_is_accessible_by_guest(): void
     {
 
         $this->get($this->url)->assertOk()->assertViewIs('items.show');

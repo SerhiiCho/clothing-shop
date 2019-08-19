@@ -14,7 +14,7 @@ class CartIndexPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function page_is_accessable_by_guest(): void
+    public function page_is_accessible_by_guest(): void
     {
         $this->get('/cart')
             ->assertOk()
@@ -25,7 +25,7 @@ class CartIndexPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function page_is_accessable_by_auth(): void
+    public function page_is_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
             ->get('/cart')
@@ -36,7 +36,7 @@ class CartIndexPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function page_is_accessable_by_admin(): void
+    public function page_is_accessible_by_admin(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
             ->get('/cart')
