@@ -14,37 +14,20 @@ function user()
     return auth()->user();
 }
 
-/**
- * Helper for giving an active button class "active"
- *
- * @param $route
- * @param null $request
- * @param null $get
- * @return string
- */
-function active_if_route_is($route, $request = null, $get = null)
+function active_if_route_is(string $route, ?string $request = null, ?string $get_param = null): ?string
 {
     if ($request) {
-        return request($request) == $get ? 'active' : '';
+        return request($request) == $get_param ? 'active' : null;
     }
-    return request()->is($route) ? 'active' : '';
+    return request()->is($route) ? 'active' : null;
 }
 
-/**
- * This function is needed for getting name
- * for images then they will be saved in storage
- *
- * @codeCoverageIgnore
- * @param string $title
- * @param string $ext - extension
- * @return string
- */
 function get_file_name(string $title, string $ext): string
 {
     return Str::slug($title) . '-' . string_random(7) . '.' . $ext;
 }
 
-function string_random(int $length): string
+function string_random(?int $length = 16): string
 {
     return Str::random($length);
 }

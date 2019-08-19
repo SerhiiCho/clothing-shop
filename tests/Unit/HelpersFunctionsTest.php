@@ -118,4 +118,33 @@ class HelpersFunctionsTest extends TestCase
         $this->assertSame(trans('items.all_items'), get_current_title('http://duckduckgo.com/nice/search'));
         $this->assertSame(trans('items.all_items'), get_current_title('http://duckduckgo.com/nice/all'));
     }
+
+    /** @test */
+    public function get_file_name_returns_string(): void
+    {
+        $this->assertTrue(is_string(get_file_name('Nice', 'png')));
+    }
+
+    /** @test */
+    public function get_file_name_returns_image_name_slug_based_on_given_params(): void
+    {
+        $this->assertTrue((bool) preg_match('/nice-[\w]{7}+.png/', get_file_name('Nice', 'png')));
+        $this->assertTrue((bool) preg_match('/cool-dd-[\w]{7}+.jpg/', get_file_name('CooL dd', 'jpg')));
+        $this->assertTrue((bool) preg_match('/hello-man-[\w]{7}+.png/', get_file_name('Hello man', 'png')));
+    }
+
+    /** @test */
+    public function string_random_returns_string(): void
+    {
+        $this->assertTrue(is_string(string_random()));
+    }
+
+    /** @test */
+    public function string_random_returns_string_with_given_chars_length_if_you_pass_the_number(): void
+    {
+        $this->assertEquals(10, strlen(string_random(10)));
+        $this->assertEquals(0, strlen(string_random(0)));
+        $this->assertEquals(33, strlen(string_random(33)));
+        $this->assertEquals(12, strlen(string_random(12)));
+    }
 }
