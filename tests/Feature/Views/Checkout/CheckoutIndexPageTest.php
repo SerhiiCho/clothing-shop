@@ -10,13 +10,13 @@ class CheckoutIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /* @test */
+    /** @test */
     public function page_is_not_accessible_by_guest_without_order(): void
     {
         $this->get('/checkout')->assertRedirect();
     }
 
-    /* @test */
+    /** @test */
     public function page_is_not_accessible_by_auth_without_order(): void
     {
         $this->actingAs(factory(User::class)->create())
@@ -24,7 +24,7 @@ class CheckoutIndexPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /* @test */
+    /** @test */
     public function page_is_not_accessible_by_admin_without_order(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
@@ -32,7 +32,7 @@ class CheckoutIndexPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /* @test */
+    /** @test */
     public function client_can_make_checkout_post_request(): void
     {
         $this->assertDatabaseHas('orders', $this->clientMakesCheckoutPostRequest());

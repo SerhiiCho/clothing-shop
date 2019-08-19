@@ -9,7 +9,7 @@ class PagesHomePageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /* @test */
+    /** @test */
     public function page_is_accessible_by_guest(): void
     {
         $this->get('/')

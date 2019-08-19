@@ -10,7 +10,7 @@ class OptionTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /* @test */
+    /** @test */
     public function Set_method_sets_value_of_needed_option(): void
     {
         Option::set('registration', 0);

@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 class ViewTest extends TestCase
 {
-    /* @test */
+    /** @test */
     public function view_model_has_attributes(): void
     {
         $this->assertClassHasAttribute('guarded', View::class);

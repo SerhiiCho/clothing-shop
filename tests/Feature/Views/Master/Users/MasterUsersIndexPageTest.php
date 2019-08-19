@@ -21,7 +21,7 @@ class MasterUsersIndexPageTest extends TestCase
         $this->master = User::first();
     }
 
-    /* @test */
+    /** @test */
     public function page_is_not_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
@@ -29,13 +29,13 @@ class MasterUsersIndexPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /* @test */
+    /** @test */
     public function page_is_not_accessible_by_guest(): void
     {
         $this->get('/master/users')->assertRedirect();
     }
 
-    /* @test */
+    /** @test */
     public function page_is_not_accessible_by_admin(): void
     {
         $admin = factory(User::class)->state('admin')->create();
@@ -45,7 +45,7 @@ class MasterUsersIndexPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /* @test */
+    /** @test */
     public function page_is_accessible_by_master(): void
     {
         $this->actingAs($this->master)
@@ -54,7 +54,7 @@ class MasterUsersIndexPageTest extends TestCase
             ->assertViewIs('master.users.index');
     }
 
-    /* @test */
+    /** @test */
     public function master_can_see_all_users(): void
     {
         $user = factory(User::class)->create();
@@ -64,7 +64,7 @@ class MasterUsersIndexPageTest extends TestCase
             ->assertSeeText($user->name);
     }
 
-    /* @test */
+    /** @test */
     public function master_can_make_a_user_an_admin(): void
     {
         $user = factory(User::class)->create();
@@ -80,7 +80,7 @@ class MasterUsersIndexPageTest extends TestCase
         ]);
     }
 
-    /* @test */
+    /** @test */
     public function master_can_remove_user(): void
     {
         $user = factory(User::class)->create();
@@ -91,7 +91,7 @@ class MasterUsersIndexPageTest extends TestCase
         $this->assertDatabaseMissing('users', ['id' => $user->id]);
     }
 
-    /* @test */
+    /** @test */
     public function admin_cant_remove_master(): void
     {
         $admin = factory(User::class)->state('admin')->create();

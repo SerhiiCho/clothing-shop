@@ -10,7 +10,7 @@ class AuthControllerTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /* @test */
+    /** @test */
     public function admin_can_logout(): void
     {
         $admin = factory(User::class)->state('admin')->create();

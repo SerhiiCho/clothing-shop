@@ -21,7 +21,7 @@ class RegisterPageTest extends TestCase
         $this->url = '/' . config('custom.enter_slug') . '/register';
     }
 
-    /* @test */
+    /** @test */
     public function page_is_accessible_by_guest(): void
     {
         $this->get($this->url)
@@ -29,7 +29,7 @@ class RegisterPageTest extends TestCase
             ->assertViewIs('auth.register');
     }
 
-    /* @test */
+    /** @test */
     public function page_is_not_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())

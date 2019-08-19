@@ -22,7 +22,7 @@ class AdminOrdersIndexPageTest extends TestCase
         $this->admin = factory(User::class)->state('admin')->create();
     }
 
-    /* @test */
+    /** @test */
     public function page_is_not_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
@@ -30,13 +30,13 @@ class AdminOrdersIndexPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /* @test */
+    /** @test */
     public function page_is_not_accessible_by_guest(): void
     {
         $this->get('/admin/orders')->assertRedirect();
     }
 
-    /* @test */
+    /** @test */
     public function page_is_accessible_by_admin(): void
     {
         $this->actingAs($this->admin)
@@ -45,7 +45,7 @@ class AdminOrdersIndexPageTest extends TestCase
             ->assertViewIs('admin.orders.index');
     }
 
-    /* @test */
+    /** @test */
     public function admin_can_take_order(): void
     {
         $order = factory(Order::class)->create();
@@ -61,7 +61,7 @@ class AdminOrdersIndexPageTest extends TestCase
         ]);
     }
 
-    /* @test */
+    /** @test */
     public function admin_cant_take_order_if_other_admin_took_it(): void
     {
         $other_admin = factory(User::class)->state('admin')->create();
@@ -80,7 +80,7 @@ class AdminOrdersIndexPageTest extends TestCase
         ]);
     }
 
-    /* @test */
+    /** @test */
     public function admin_can_untake_order(): void
     {
         $order = factory(Order::class)->create([

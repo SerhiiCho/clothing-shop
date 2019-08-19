@@ -23,7 +23,7 @@ class ItemsShowPageTest extends TestCase
         $this->url = "/item/{$this->item->category}/{$this->item->slug}";
     }
 
-    /* @test */
+    /** @test */
     public function page_is_accessible_by_guest(): void
     {
 
