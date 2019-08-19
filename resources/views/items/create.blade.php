@@ -32,7 +32,7 @@
                     >
                 </div>
                 <div class="form-group col-12 col-sm-4">
-                    <label>@lang('items.select_price')</label>
+                    <label>@lang('items.price')</label>
                     <input type="text"
                         value="{{ old('price', '0') }}"
                         name="price"
