@@ -20,7 +20,7 @@ class CheckoutRequestTest extends TestCase
 
         $this->form_data = [
             'phone' => '(095) 777-77-' . rand(10, 99),
-            'name' => str_random(7),
+            'name' => string_random(7),
         ];
     }
 
@@ -32,7 +32,7 @@ class CheckoutRequestTest extends TestCase
     {
         $phone_min = config('valid.checkout.phone.min');
 
-        $this->form_data['phone'] = str_random($phone_min - 1);
+        $this->form_data['phone'] = string_random($phone_min - 1);
         $this->makeRequestAndCheckDatabase();
     }
 
@@ -44,7 +44,7 @@ class CheckoutRequestTest extends TestCase
     {
         $phone_max = config('valid.checkout.phone.max');
 
-        $this->form_data['phone'] = str_random($phone_max + 1);
+        $this->form_data['phone'] = string_random($phone_max + 1);
         $this->makeRequestAndCheckDatabase();
     }
 
@@ -76,7 +76,7 @@ class CheckoutRequestTest extends TestCase
     {
         $name_min = config('valid.checkout.name.min');
 
-        $this->form_data['name'] = str_random($name_min - 1);
+        $this->form_data['name'] = string_random($name_min - 1);
         $this->makeRequestAndCheckDatabase();
     }
 
@@ -88,7 +88,7 @@ class CheckoutRequestTest extends TestCase
     {
         $name_max = config('valid.checkout.name.max');
 
-        $this->form_data['name'] = str_random($name_max + 1);
+        $this->form_data['name'] = string_random($name_max + 1);
         $this->makeRequestAndCheckDatabase();
     }
 

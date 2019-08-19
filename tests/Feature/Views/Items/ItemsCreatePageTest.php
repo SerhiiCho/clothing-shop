@@ -145,8 +145,8 @@ class ItemsCreatePageTest extends TestCase
     private function generateFormData(bool $with_photo): array
     {
         $form_data = [
-            'title' => str_random(7),
-            'content' => str_random(12),
+            'title' => string_random(7),
+            'content' => string_random(12),
             'category' => 'men',
             'type' => rand(1, 10),
             'stock' => rand(1, config('valid.item.stock.max')),

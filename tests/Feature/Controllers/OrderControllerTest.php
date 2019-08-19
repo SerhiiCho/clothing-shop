@@ -91,7 +91,7 @@ class OrderControllerTest extends TestCase
     public function order_appears_in_db_after_guest_makes_successful_checkout_request(): void
     {
         $client_data = [
-            'name' => str_random(5),
+            'name' => string_random(5),
             'phone' => '3809' . rand(1000, 9999) . rand(1000, 9999),
         ];
 

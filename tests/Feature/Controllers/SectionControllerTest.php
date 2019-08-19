@@ -31,8 +31,8 @@ class SectionControllerTest extends TestCase
     public function admin_can_edit_section(): void
     {
         $form_data = [
-            'title' => str_random(10),
-            'content' => str_random(10),
+            'title' => string_random(10),
+            'content' => string_random(10),
         ];
 
         $this->actingAs($this->admin)

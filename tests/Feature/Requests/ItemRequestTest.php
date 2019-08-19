@@ -20,8 +20,8 @@ class ItemRequestTest extends TestCase
         parent::setUp();
 
         $this->form_data = [
-            'title' => str_random(7),
-            'content' => str_random(12),
+            'title' => string_random(7),
+            'content' => string_random(12),
             'category' => 'men',
             'type' => rand(1, 10),
             'stock' => rand(1, config('valid.item.stock.max')),
@@ -152,7 +152,7 @@ class ItemRequestTest extends TestCase
     {
         $title_min = config('valid.item.title.min');
 
-        $this->form_data['title'] = str_random($title_min - 1);
+        $this->form_data['title'] = string_random($title_min - 1);
         $this->makeRequestAndCheckDatabase();
     }
 
@@ -164,7 +164,7 @@ class ItemRequestTest extends TestCase
     {
         $title_max = config('valid.item.title.max');
 
-        $this->form_data['title'] = str_random($title_max + 1);
+        $this->form_data['title'] = string_random($title_max + 1);
         $this->makeRequestAndCheckDatabase();
     }
 
@@ -176,7 +176,7 @@ class ItemRequestTest extends TestCase
     {
         $content_min = config('valid.item.content.min');
 
-        $this->form_data['content'] = str_random($content_min - 1);
+        $this->form_data['content'] = string_random($content_min - 1);
         $this->makeRequestAndCheckDatabase();
     }
 
@@ -188,7 +188,7 @@ class ItemRequestTest extends TestCase
     {
         $content_max = config('valid.item.content.max');
 
-        $this->form_data['content'] = str_random($content_max + 1);
+        $this->form_data['content'] = string_random($content_max + 1);
         $this->makeRequestAndCheckDatabase();
     }
 
@@ -200,7 +200,7 @@ class ItemRequestTest extends TestCase
     {
         $category_max = config('valid.item.category.max');
 
-        $this->form_data['category'] = str_random($category_max + 1);
+        $this->form_data['category'] = string_random($category_max + 1);
         $this->makeRequestAndCheckDatabase();
     }
 

@@ -58,7 +58,7 @@ class CheckoutIndexPageTest extends TestCase
     private function clientMakesCheckoutPostRequest(): array
     {
         $this->post(action('CheckoutController@store'), $client_data = [
-            'name' => str_random(5),
+            'name' => string_random(5),
             'phone' => '3809' . rand(1000, 9999) . rand(1000, 9999),
         ]);
         return $client_data;

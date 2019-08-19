@@ -2,6 +2,7 @@
 
 use App\Models\Visitor;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Str;
 
 /**
  * Alias for auth() helper
@@ -31,7 +32,7 @@ function active_if_route_is($route, $request = null, $get = null)
 
 /**
  * This function is needed for getting name
- * for images than I'm saving in storage
+ * for images then they will be saved in storage
  *
  * @codeCoverageIgnore
  * @param string $title
@@ -40,7 +41,12 @@ function active_if_route_is($route, $request = null, $get = null)
  */
 function get_file_name(string $title, string $ext): string
 {
-    return str_slug($title) . '-' . str_random(7) . '.' . $ext;
+    return str_slug($title) . '-' . string_random(7) . '.' . $ext;
+}
+
+function string_random(int $length): string
+{
+    return Str::random($length);
 }
 
 /**
@@ -53,20 +59,20 @@ function get_file_name(string $title, string $ext): string
 function what_is_current(string $param): ?string
 {
     if ($param === 'category') {
-        if (str_contains(request()->fullUrl(), 'women')) {
+        if (Str::contains(request()->fullUrl(), 'women')) {
             return 'women';
         }
-        if (str_contains(request()->fullUrl(), 'men')) {
+        if (Str::contains(request()->fullUrl(), 'men')) {
             return 'men';
         }
         return '';
     }
 
     if ($param === 'title') {
-        if (str_contains(request()->fullUrl(), 'women')) {
+        if (Str::contains(request()->fullUrl(), 'women')) {
             return trans('items.women_items');
         }
-        if (str_contains(request()->fullUrl(), 'men')) {
+        if (Str::contains(request()->fullUrl(), 'men')) {
             return trans('items.men_items');
         }
         return trans('items.all_items');

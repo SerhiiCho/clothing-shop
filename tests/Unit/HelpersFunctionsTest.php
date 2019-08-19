@@ -66,5 +66,4 @@ class HelpersFunctionsTest extends TestCase
 
         File::delete(storage_path('logs/laravel-' . date('Y-m-d') . '.log'));
     }
-
 }

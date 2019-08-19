@@ -20,8 +20,8 @@ class SectionRequestTest extends TestCase
         parent::setUp();
 
         $this->form_data = [
-            'title' => str_random(10),
-            'content' => str_random(10),
+            'title' => string_random(10),
+            'content' => string_random(10),
         ];
     }
 
@@ -33,7 +33,7 @@ class SectionRequestTest extends TestCase
     {
         $max = config('valid.section.title.max');
 
-        $this->form_data['title'] = str_random($max + 1);
+        $this->form_data['title'] = string_random($max + 1);
         $this->makeRequestAndCheckDatabase();
     }
 
@@ -45,7 +45,7 @@ class SectionRequestTest extends TestCase
     {
         $max = config('valid.section.content.max');
 
-        $this->form_data['content'] = str_random($max + 1);
+        $this->form_data['content'] = string_random($max + 1);
         $this->makeRequestAndCheckDatabase();
     }
 

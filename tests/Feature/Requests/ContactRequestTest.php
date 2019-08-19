@@ -62,7 +62,7 @@ class ConractRequestTest extends TestCase
     {
         $phone_min = config('valid.contact.phone.min');
 
-        $this->form_data['phone'] = str_random($phone_min - 1);
+        $this->form_data['phone'] = string_random($phone_min - 1);
         $this->makeRequestAndCheckDatabase();
     }
 
@@ -74,7 +74,7 @@ class ConractRequestTest extends TestCase
     {
         $phone_max = config('valid.contact.phone.max');
 
-        $this->form_data['phone'] = str_random($phone_max + 1);
+        $this->form_data['phone'] = string_random($phone_max + 1);
         $this->makeRequestAndCheckDatabase();
     }
 
