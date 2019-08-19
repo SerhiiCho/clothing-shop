@@ -13,10 +13,6 @@ use Intervention\Image\ImageManager;
 
 trait ItemHelpers
 {
-    /**
-     * @param \App\Http\Requests\ItemRequest $request
-     * @return array|null
-     */
     public function uploadPhotos(ItemRequest $request): ?array
     {
         if (!$request->has('photos')) {
@@ -54,11 +50,6 @@ trait ItemHelpers
         return null;
     }
 
-    /**
-     * @param array|null $image_names
-     * @param \App\Models\Item $item
-     * @return void
-     */
     public function updateImagesInDb(?array $image_names, Item $item): void
     {
         if (is_null($image_names)) {
@@ -82,7 +73,7 @@ trait ItemHelpers
 
     /**
      * This contract creates new item in database if param $item is null,
-     * if it's not, than it will update the item that is passed
+     * if it's not than it will update the item that is passed
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Item|null $item
@@ -108,10 +99,6 @@ trait ItemHelpers
         return user()->items()->create($items);
     }
 
-    /**
-     * @param $current_category
-     * @return bool
-     */
     public function currentStateOfSidebar($current_category): bool
     {
         return $current_category === 'women' || $current_category === 'men';
@@ -127,11 +114,6 @@ trait ItemHelpers
         }
     }
 
-    /**
-     * @param \Illuminate\Http\UploadedFile $image
-     * @param array $image_data
-     * @return void
-     */
     public function uploadImages(UploadedFile $image, array $image_data): void
     {
         foreach ($image_data as $data) {
@@ -144,12 +126,6 @@ trait ItemHelpers
         }
     }
 
-    /**
-     * Method helper
-     *
-     * @param string $title
-     * @return string
-     */
     public function makeSlug(string $title): string
     {
         $slug = str_slug($title);
