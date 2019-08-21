@@ -7,7 +7,10 @@
     <tr> {{-- Registration option --}}
         <td>
             <form action="{{ action('Admin\OptionController@registration') }}" method="post">
-                @csrf @method('put')
+
+                @csrf
+                @method('put')
+
                 <input type="checkbox"
                     class="auto-submit-cb switch"
                     id="switch1"
@@ -21,7 +24,10 @@
     <tr> {{-- Men category option --}}
         <td>
             <form action="{{ action('Admin\OptionController@menCategory') }}" method="post">
-                @csrf @method('put')
+
+                @csrf
+                @method('put')
+
                 <input type="checkbox"
                     name="option" 
                     id="switch2"
@@ -35,7 +41,10 @@
     <tr> {{-- Women category option --}}
         <td>
             <form action="{{ action('Admin\OptionController@womenCategory') }}" method="post">
-                @csrf @method('put')
+
+                @csrf
+                @method('put')
+
                 <input type="checkbox"
                     name="option" 
                     id="switch3"
@@ -49,7 +58,10 @@
     <tr> {{-- Forget cache --}}
         <td align="left">
             <form action="{{ action('Admin\OptionController@cacheForget') }}" method="post">
-                @csrf @method('put')
+
+                @csrf
+                @method('put')
+
                 <button type="submit" class="btn btn-sm clean-cache-btn">
                     <i class="fas fa-trash-alt fa-1x"></i> 
                     @lang('options.forget_cache')
