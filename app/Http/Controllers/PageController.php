@@ -11,12 +11,6 @@ use Illuminate\Database\QueryException;
 
 class PageController extends Controller
 {
-    /**
-     * Display starting home page
-     *
-     * @return \Illuminate\Contracts\View\View
-     * @throws \Exception
-     */
     public function home(): View
     {
         try {

@@ -22,11 +22,6 @@ class ItemController extends Controller
         $this->middleware('admin')->except(['index', 'show']);
     }
 
-    /**
-     * Show page with all items
-     *
-     * @return \Illuminate\View\View
-     */
     public function index(): View
     {
         $category = get_current_category(request()->url());
@@ -37,11 +32,6 @@ class ItemController extends Controller
         ]);
     }
 
-    /**
-     * Show page with form for creating a new item
-     *
-     * @return \Illuminate\View\View
-     */
     public function create(): View
     {
         return view('items.create')->withTypes(
@@ -49,13 +39,6 @@ class ItemController extends Controller
         );
     }
 
-    /**
-     * Create new item in database
-     *
-     * @param \App\Http\Requests\ItemRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function store(ItemRequest $request): RedirectResponse
     {
         $this->forgetCache();
@@ -70,11 +53,6 @@ class ItemController extends Controller
         );
     }
 
-    /**
-     * @param string $category
-     * @param string $slug
-     * @return \Illuminate\View\View
-     */
     public function show(string $category, string $slug): View
     {
         $item = Item::whereSlug($slug)->first();
@@ -95,12 +73,6 @@ class ItemController extends Controller
         ]);
     }
 
-    /**
-     * Show page with form
-     *
-     * @param string $slug
-     * @return \Illuminate\View\View
-     */
     public function edit(string $slug): View
     {
         $item = Item::whereSlug($slug)->first();
@@ -113,14 +85,6 @@ class ItemController extends Controller
         return view('items.edit')->with(compact('item', 'types', 'category'));
     }
 
-    /**
-     * Update specific item
-     *
-     * @param \App\Http\Requests\ItemRequest $request
-     * @param string $slug
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function update(ItemRequest $request, string $slug): RedirectResponse
     {
         $this->forgetCache();
@@ -137,10 +101,6 @@ class ItemController extends Controller
         return back()->withSuccess(trans('items.item_changed'));
     }
 
-    /**
-     * @return void
-     * @throws \Exception
-     */
     public function forgetCache(): void
     {
         cache()->forget('footer_latest');

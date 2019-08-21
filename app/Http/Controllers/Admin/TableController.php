@@ -8,17 +8,11 @@ use Illuminate\View\View;
 
 class TableController extends Controller
 {
-    /**
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('admin');
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
     public function index(): View
     {
         $order = request('order') ?? 'id';

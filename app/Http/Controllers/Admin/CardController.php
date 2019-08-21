@@ -14,19 +14,11 @@ use Intervention\Image\ImageManager;
 
 class CardController extends Controller
 {
-    /**
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('admin');
     }
 
-    /**
-     * Display all cards
-     *
-     * @return \Illuminate\View\View
-     */
     public function index(): View
     {
         return view('admin.cards.index', [
@@ -34,11 +26,6 @@ class CardController extends Controller
         ]);
     }
 
-    /**
-     * Display create card page with form
-     *
-     * @return \Illuminate\View\View
-     */
     public function create(): View
     {
         return view('admin.cards.create', [
@@ -46,13 +33,6 @@ class CardController extends Controller
         ]);
     }
 
-    /**
-     * Store new card in database
-     *
-     * @param \App\Http\Requests\CardRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function store(CardRequest $request): RedirectResponse
     {
         if (Card::count() >= 3) {
@@ -79,12 +59,6 @@ class CardController extends Controller
         return redirect('/admin/cards')->withSuccess(trans('cards.card_added'));
     }
 
-    /**
-     * Display edit card page with form
-     *
-     * @param \App\Models\Card $card
-     * @return \Illuminate\View\View
-     */
     public function edit(Card $card): View
     {
         $types = Type::orderBy('name')->get();
@@ -98,14 +72,6 @@ class CardController extends Controller
         );
     }
 
-    /**
-     * Update card in database
-     *
-     * @param \App\Http\Requests\CardRequest $request
-     * @param \App\Models\Card $card
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function update(CardRequest $request, Card $card): RedirectResponse
     {
         if ($request->hasFile('image')) {
@@ -150,13 +116,6 @@ class CardController extends Controller
             : redirect('admin/cards')->withError(trans('cards.deleted_fail'));
     }
 
-    /**
-     * Method helper upload image in storage
-     *
-     * @param \Illuminate\Http\UploadedFile $image_inst
-     * @param string $filename
-     * @return void
-     */
     public function uploadCardImage(UploadedFile $image_inst, string $filename): void
     {
         (new ImageManager)

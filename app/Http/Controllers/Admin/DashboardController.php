@@ -9,18 +9,11 @@ use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-    /**
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('admin');
     }
 
-    /**
-     * @return \Illuminate\View\View
-     * @throws \Exception
-     */
     public function index(): View
     {
         try {

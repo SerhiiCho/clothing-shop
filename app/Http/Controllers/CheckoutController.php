@@ -12,25 +12,12 @@ use Illuminate\Http\RedirectResponse;
 
 class CheckoutController extends Controller
 {
-    /**
-     * If client didn't make the order, redirect to cart page
-     *
-     * @return mixed
-     */
     public function index()
     {
-        return (Cart::isEmpty())
-        ? redirect('/cart')
-        : view('checkout.index');
+        return Cart::isEmpty() ? redirect('/cart') : view('checkout.index');
     }
 
-    /**
-     * Handle the client's order and save in database
-     *
-     * @param \App\Http\Requests\CheckoutRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
+    // Handle the client's order and save in database
     public function store(CheckoutRequest $request): RedirectResponse
     {
         if (Order::whereIp($request->ip())->count() > 0) {

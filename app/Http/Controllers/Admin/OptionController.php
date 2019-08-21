@@ -9,19 +9,11 @@ use Illuminate\Http\Request;
 
 class OptionController extends Controller
 {
-    /**
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('admin');
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function registration(Request $request): RedirectResponse
     {
         if ($request->has('option') && $request->option === 'on') {
@@ -38,11 +30,6 @@ class OptionController extends Controller
         );
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function menCategory(Request $request): RedirectResponse
     {
         if ($request->has('option') && $request->option === 'on') {
@@ -59,11 +46,6 @@ class OptionController extends Controller
         );
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function womenCategory(Request $request): RedirectResponse
     {
         if ($request->has('option') && $request->option === 'on') {
@@ -80,9 +62,6 @@ class OptionController extends Controller
         );
     }
 
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function cacheForget(): RedirectResponse
     {
         forget_all_cache();

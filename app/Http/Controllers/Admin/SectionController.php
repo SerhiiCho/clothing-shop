@@ -9,14 +9,6 @@ use Illuminate\Http\RedirectResponse;
 
 class SectionController extends Controller
 {
-    /**
-     * Update section in database
-     *
-     * @param \App\Http\Requests\SectionRequest $request
-     * @param \App\Models\Section $section
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function update(SectionRequest $request, Section $section): RedirectResponse
     {
         cache()->forget('home_sections');

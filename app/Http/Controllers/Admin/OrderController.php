@@ -9,29 +9,16 @@ use Illuminate\View\View;
 
 class OrderController extends Controller
 {
-    /**
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('admin');
     }
 
-    /**
-     * @return \Illuminate\View\View
-     */
     public function index(): View
     {
         return view('admin.orders.index');
     }
 
-    /**
-     * Take order
-     *
-     * @param \App\Models\Order $order
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function store(Order $order): RedirectResponse
     {
         cache()->forget('orders');
@@ -66,11 +53,6 @@ class OrderController extends Controller
         );
     }
 
-    /**
-     * @param \App\Models\Order $order
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function softDelete(Order $order): RedirectResponse
     {
         if ($order->isTakenBy(user())) {
@@ -88,11 +70,6 @@ class OrderController extends Controller
         );
     }
 
-    /**
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function destroy(int $id): RedirectResponse
     {
         $order = Order::onlyTrashed()->whereId($id)->first();

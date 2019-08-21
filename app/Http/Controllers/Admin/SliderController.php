@@ -13,19 +13,11 @@ use Intervention\Image\ImageManager;
 
 class SliderController extends Controller
 {
-    /**
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('admin');
     }
 
-    /**
-     * Show page with all sliders
-     *
-     * @return \Illuminate\View\View
-     */
     public function index(): View
     {
         return view('admin.slider.index', [
@@ -33,22 +25,11 @@ class SliderController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource
-     *
-     * @return \Illuminate\View\View
-     */
     public function create(): View
     {
         return view('admin.slider.create');
     }
 
-    /**
-     * Store new slider in database
-     *
-     * @param \App\Http\Requests\SliderRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(SliderRequest $request): RedirectResponse
     {
         $img = $request->file('image');
@@ -70,24 +51,11 @@ class SliderController extends Controller
         );
     }
 
-    /**
-     * Show the form for editing slider resource
-     *
-     * @param \App\Models\Slider $slider
-     * @return \Illuminate\View\View
-     */
     public function edit(Slider $slider): View
     {
         return view('admin.slider.edit')->withSlider($slider);
     }
 
-    /**
-     * Update the slider in database
-     *
-     * @param \App\Http\Requests\SliderRequest $request
-     * @param \App\Models\Slider $slider
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(SliderRequest $request, Slider $slider): RedirectResponse
     {
         if ($request->hasFile('image')) {
@@ -124,13 +92,6 @@ class SliderController extends Controller
         return redirect('/admin/slider')->withSuccess(trans('slider.deleted'));
     }
 
-    /**
-     * Method helper for uploading image in storage
-     *
-     * @param \Illuminate\Http\UploadedFile $image_inst
-     * @param string $filename
-     * @return void
-     */
     public function uploadImageInStorage(UploadedFile $image_inst, string $filename): void
     {
         (new ImageManager)

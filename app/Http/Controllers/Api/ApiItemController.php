@@ -12,12 +12,7 @@ class ApiItemController extends Controller
 {
     use ItemHelpers;
 
-    /**
-     * @param null|string $category
-     * @param null|string $type
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-     */
-    public function index($category = null, $type = null)
+    public function index(?string $category = null, ?string $type = null)
     {
         if ($category && !$type) {
             $query = [['category', $category]];
@@ -41,22 +36,11 @@ class ApiItemController extends Controller
         }
     }
 
-    /**
-     * @param string $slug
-     * @return \App\Http\Resources\ItemResource
-     */
     public function show(string $slug)
     {
         return new ItemResource(Item::whereSlug($slug)->first());
     }
 
-    /**
-     * Get list of random items
-     *
-     * @param string|null $category
-     * @param int $visitor_id
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection|\Illuminate\Support\Collection
-     */
     public function random(int $visitor_id, ?string $category = null)
     {
         try {
@@ -71,9 +55,6 @@ class ApiItemController extends Controller
         }
     }
 
-    /**
-     * Get list of popular items
-     */
     public function popular()
     {
         try {
@@ -89,11 +70,6 @@ class ApiItemController extends Controller
         }
     }
 
-    /**
-     * @param string $slug
-     * @return array|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     * @throws \Exception
-     */
     public function destroy(string $slug)
     {
         try {

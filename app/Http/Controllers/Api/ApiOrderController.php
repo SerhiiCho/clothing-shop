@@ -8,9 +8,6 @@ use App\Models\Order;
 
 class ApiOrderController extends Controller
 {
-    /**
-     * Open orders
-     */
     public function opened()
     {
         return OrderResource::collection(
@@ -21,9 +18,6 @@ class ApiOrderController extends Controller
         );
     }
 
-    /**
-     * Taken orders
-     */
     public function taken()
     {
         return OrderResource::collection(
@@ -34,9 +28,6 @@ class ApiOrderController extends Controller
         );
     }
 
-    /**
-     * Closed orders
-     */
     public function closed()
     {
         return OrderResource::collection(
@@ -47,12 +38,6 @@ class ApiOrderController extends Controller
         );
     }
 
-    /**
-     * Count all orders
-     *
-     * @return array
-     * @throws \Exception
-     */
     public function count(): array
     {
         return cache()->rememberForever('counted_orders', function () {

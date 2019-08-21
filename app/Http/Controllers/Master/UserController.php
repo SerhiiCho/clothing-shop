@@ -9,19 +9,11 @@ use Illuminate\View\View;
 
 class UserController extends Controller
 {
-    /**
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('master');
     }
 
-    /**
-     * Display all users
-     *
-     * @return \Illuminate\View\View
-     */
     public function index(): View
     {
         return view('master.users.index', [
@@ -29,13 +21,6 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Make user an admin
-     *
-     * @param \App\Models\User $user
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function update(User $user): RedirectResponse
     {
         if ($user->isAdmin()) {
@@ -50,13 +35,6 @@ class UserController extends Controller
         );
     }
 
-    /**
-     * Remove the specified user from database
-     *
-     * @param \App\Models\User $user
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function destroy(User $user): RedirectResponse
     {
         if ($user->isMaster()) {
@@ -66,7 +44,7 @@ class UserController extends Controller
         cache()->forget('non_admin_users');
 
         return ($user->delete())
-        ? redirect('master/users')->withSuccess(trans('users.user_deleted'))
-        : redirect('master/users')->withError(trans('users.user_deleted_fail'));
+            ? redirect('master/users')->withSuccess(trans('users.user_deleted'))
+            : redirect('master/users')->withError(trans('users.user_deleted_fail'));
     }
 }

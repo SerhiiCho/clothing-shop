@@ -9,22 +9,11 @@ use Illuminate\View\View;
 
 class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource
-     *
-     * @return \Illuminate\View\View
-     */
     public function index(): View
     {
         return view('cart.index');
     }
 
-    /**
-     * Store a newly created cart item in session
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(Request $request): RedirectResponse
     {
         if (Cart::get($request->id)) {
@@ -42,12 +31,6 @@ class CartController extends Controller
         ]));
     }
 
-    /**
-     * Remove the specified cart item from session
-     *
-     * @param string $item_id The id of a cart item
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function destroy(string $item_id): RedirectResponse
     {
         Cart::remove($item_id);

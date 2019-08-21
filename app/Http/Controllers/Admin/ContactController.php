@@ -11,29 +11,16 @@ use Illuminate\View\View;
 
 class ContactController extends Controller
 {
-    /**
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('admin');
     }
 
-    /**
-     * Show list of all contacts
-     *
-     * @return \Illuminate\View\View
-     */
     public function index(): View
     {
         return view('admin.contacts.index');
     }
 
-    /**
-     * Show the form for creating a new contact
-     *
-     * @return \Illuminate\View\View
-     */
     public function create(): View
     {
         return view('admin.contacts.create', [
@@ -41,13 +28,6 @@ class ContactController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created contact in database
-     *
-     * @param \App\Http\Requests\ContactRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function store(ContactRequest $request): RedirectResponse
     {
         cache()->forget('nav_contacts');
@@ -62,12 +42,6 @@ class ContactController extends Controller
         );
     }
 
-    /**
-     * Show the form for editing the contact record
-     *
-     * @param \App\Models\Contact $contact
-     * @return \Illuminate\View\View
-     */
     public function edit(Contact $contact): View
     {
         return view('admin.contacts.edit')->with([
@@ -76,14 +50,6 @@ class ContactController extends Controller
         ]);
     }
 
-    /**
-     * Update contact in db
-     *
-     * @param \App\Http\Requests\ContactRequest $request
-     * @param \App\Models\Contact $contact
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function update(ContactRequest $request, Contact $contact): RedirectResponse
     {
         cache()->forget('nav_contacts');
@@ -96,13 +62,6 @@ class ContactController extends Controller
         : redirect('admin/contacts')->withError(trans('contacts.changing_fails'));
     }
 
-    /**
-     * Remove the specified resource from db
-     *
-     * @param \App\Models\Contact $contact
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
-     */
     public function destroy(Contact $contact): RedirectResponse
     {
         cache()->forget('nav_contacts');
