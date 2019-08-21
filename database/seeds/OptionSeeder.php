@@ -16,6 +16,8 @@ class OptionSeeder extends Seeder
             ['option' => 'registration', 'value' => 1],
             ['option' => 'men_category', 'value' => 1],
             ['option' => 'women_category', 'value' => 1],
+            ['option' => 'women_category_title', 'value' => 'Женская одежда'],
+            ['option' => 'men_category_title', 'value' => 'Мужская одежда'],
         ]);
     }
 }
