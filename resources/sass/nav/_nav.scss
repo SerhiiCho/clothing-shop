@@ -49,7 +49,7 @@
         border: none;
 
         ul {
-            padding: .3em;
+            padding: 10px;
         }
 
         li {
@@ -63,7 +63,7 @@
         }
 
         .active {
-            border-bottom: 2px solid color(pink-darkest);
+            border-bottom: 2px solid darken(color(pink), 5%);
         }
 
         .close-top-nav {
