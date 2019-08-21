@@ -12,13 +12,10 @@ class RegisterPageTest extends TestCase
 
     private $url;
 
-    /**
-     * @author Cho
-     */
     public function setUp(): void
     {
         parent::setUp();
-        $this->url = '/' . config('custom.enter_slug') . '/register';
+        $this->url = '/register';
     }
 
     /** @test */

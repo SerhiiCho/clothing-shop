@@ -7,9 +7,7 @@
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')
     ->middleware('admin');
 
-Route::prefix(config('custom.enter_slug'))->group(function () {
-    Auth::routes();
-});
+Auth::routes();
 
 // Cart
 Route::prefix('cart')->group(function () {

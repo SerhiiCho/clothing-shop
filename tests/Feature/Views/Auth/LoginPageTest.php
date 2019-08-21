@@ -13,7 +13,7 @@ class LoginPageTest extends TestCase
     /** @test */
     public function page_is_accessible_by_guest(): void
     {
-        $this->get('/' . config('custom.enter_slug') . '/login')
+        $this->get('/login')
             ->assertOk()
             ->assertViewIs('auth.login');
     }
@@ -22,7 +22,7 @@ class LoginPageTest extends TestCase
     public function page_is_not_accessible_by_auth(): void
     {
         $this->actingAs(factory(User::class)->create())
-            ->get('/' . config('custom.enter_slug') . '/login')
+            ->get('/login')
             ->assertRedirect();
     }
 }
