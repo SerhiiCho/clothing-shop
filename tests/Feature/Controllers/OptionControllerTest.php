@@ -51,13 +51,6 @@ class OptionControllerTest extends TestCase
         }, config('cache.cache_names'));
     }
 
-    /**
-     * Method helper
-     *
-     * @param string $option
-     * @param int $value
-     * @return void
-     */
     public function assertOptionHasValue(string $option, int $value)
     {
         $this->assertDatabaseHas('options', compact('option', 'value'));
