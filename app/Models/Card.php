@@ -16,19 +16,11 @@ class Card extends Model
      */
     protected $guarded = ['id'];
 
-    /**
-     * Relationship with Type model
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function type()
     {
         return $this->belongsTo(Type::class);
     }
 
-    /**
-     * @return array
-     */
     public static function getCards(): array
     {
         return self::with('type')->get()->take(3)->toArray();

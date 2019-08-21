@@ -139,10 +139,6 @@ class ItemsCreatePageTest extends TestCase
         return $form_data;
     }
 
-    /**
-     * @param string $photo
-     * @return void
-     */
     private function assertImagesExist(string $photo): void
     {
         $this->assertFileExists(storage_path("app/public/img/big/clothes/{$photo}"));
