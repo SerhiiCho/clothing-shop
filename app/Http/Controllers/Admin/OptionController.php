@@ -18,6 +18,7 @@ class OptionController extends Controller
     {
         if ($request->has('option') && $request->option === 'on') {
             Option::set('registration', 1);
+
             return redirect('/admin/dashboard')->withSuccess(
                 trans('options.registration_enabled')
             );
@@ -34,6 +35,7 @@ class OptionController extends Controller
     {
         if ($request->has('option') && $request->option === 'on') {
             Option::set('men_category', 1);
+
             return redirect('/admin/dashboard')->withSuccess(
                 trans('options.men_category_enabled')
             );
@@ -50,6 +52,7 @@ class OptionController extends Controller
     {
         if ($request->has('option') && $request->option === 'on') {
             Option::set('women_category', 1);
+
             return redirect('/admin/dashboard')->withSuccess(
                 trans('options.women_category_enabled')
             );

@@ -17,7 +17,18 @@ class OptionTest extends TestCase
 
         $this->assertDatabaseHas('options', [
             'option' => 'registration',
-            'value' => 0,
+            'value' => '0',
+        ]);
+    }
+
+    /** @test */
+    public function Set_method_sets_string_type_value_of_needed_option(): void
+    {
+        Option::set('registration', 'Hello');
+
+        $this->assertDatabaseHas('options', [
+            'option' => 'registration',
+            'value' => 'Hello',
         ]);
     }
 }
