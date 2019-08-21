@@ -40,7 +40,7 @@
                         </td>
 
                         <td class="text-center">
-                            <h6>{{ $item->price }} @lang('items.hryvnia')</h6>
+                            <h6>{{ nice_money_format($item->price) }} @lang('items.hryvnia')</h6>
                         </td>
 
                         {{-- Remove item --}}

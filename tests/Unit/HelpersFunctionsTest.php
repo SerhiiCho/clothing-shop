@@ -15,11 +15,11 @@ class HelpersFunctionsTest extends TestCase
         $this->get('/');
         $this->assertEquals('active', active_if_route_is('/'));
 
-        $this->get('/items?category=women');
-        $this->assertEquals('active', active_if_route_is('items', 'category', 'women'));
+        $this->get('/items?category=category2');
+        $this->assertEquals('active', active_if_route_is('items', 'category', 'category2'));
 
-        $this->get('/items?category=men');
-        $this->assertEquals('active', active_if_route_is('items', 'category', 'men'));
+        $this->get('/items?category=category1');
+        $this->assertEquals('active', active_if_route_is('items', 'category', 'category1'));
     }
 
     /** @test */
@@ -56,25 +56,25 @@ class HelpersFunctionsTest extends TestCase
     }
 
     /** @test */
-    public function get_current_category_returns_string_women_if_request_url_contains_women_word(): void
+    public function get_current_category_returns_string_category2_if_request_url_contains_this_word(): void
     {
-        $this->assertSame('women', get_current_category('http://some-url/nice/women/'));
-        $this->assertSame('women', get_current_category('http://some-url/women/nice/'));
-        $this->assertSame('women', get_current_category('https://women/nice/hello/'));
-        $this->assertSame('women', get_current_category('https://nicewomen/nice/hello/'));
+        $this->assertSame('category2', get_current_category('http://some-url/nice/category2/'));
+        $this->assertSame('category2', get_current_category('http://some-url/category2/nice/'));
+        $this->assertSame('category2', get_current_category('https://category2/nice/hello/'));
+        $this->assertSame('category2', get_current_category('https://nicecategory2/nice/hello/'));
     }
 
     /** @test */
-    public function get_current_category_returns_string_men_if_request_url_contains_men_word(): void
+    public function get_current_category_returns_string_category1_if_request_url_contains_this_word(): void
     {
-        $this->assertSame('men', get_current_category('http://some-url/nice/men/'));
-        $this->assertSame('men', get_current_category('http://some-url/men/nice/'));
-        $this->assertSame('men', get_current_category('https://men/nice/hello/'));
-        $this->assertSame('men', get_current_category('https://nicemen/nice/hello/'));
+        $this->assertSame('category1', get_current_category('http://some-url/nice/category1/'));
+        $this->assertSame('category1', get_current_category('http://some-url/category1/nice/'));
+        $this->assertSame('category1', get_current_category('https://category1/nice/hello/'));
+        $this->assertSame('category1', get_current_category('https://nicecategory1/nice/hello/'));
     }
 
     /** @test */
-    public function get_current_category_returns_null_if_request_url_is_not_containing_men_or_women(): void
+    public function get_current_category_returns_null_if_request_url_is_not_containing_first_or_second(): void
     {
         $this->assertNull(get_current_category('http://some-url/nice/meddnnn/'));
         $this->assertNull(get_current_category('http://some-url/nicmnen/nwoice/'));

@@ -102,7 +102,7 @@ trait ItemHelpers
 
     public function currentStateOfSidebar($current_category): bool
     {
-        return $current_category === 'women' || $current_category === 'men';
+        return $current_category === 'category2' || $current_category === 'category1';
     }
 
     public function deleteOldPhotos($photos)

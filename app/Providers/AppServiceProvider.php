@@ -33,10 +33,10 @@ class AppServiceProvider extends ServiceProvider
 
                 return [
                     'registration' => $options->where('option', 'registration')->first()->value,
-                    'men_category' => $options->where('option', 'men_category')->first()->value,
-                    'women_category' => $options->where('option', 'women_category')->first()->value,
-                    'men_category_title' => $options->where('option', 'men_category_title')->first()->value,
-                    'women_category_title' => $options->where('option', 'women_category_title')->first()->value,
+                    'category1' => $options->where('option', 'category1')->first()->value,
+                    'category2' => $options->where('option', 'category2')->first()->value,
+                    'category1_title' => $options->where('option', 'category1_title')->first()->value,
+                    'category2_title' => $options->where('option', 'category2_title')->first()->value,
                 ];
             } catch (QueryException $e) {
                 no_connection_error($e, __CLASS__);

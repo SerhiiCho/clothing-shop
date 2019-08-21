@@ -62,7 +62,7 @@
                         </th>
 
                         {{-- Category --}}
-                        @if ($admin_options['men_category'] && $admin_options['women_category'])
+                        @if ($admin_options['category1'] && $admin_options['category2'])
                             <th scope="col">
                                 <a href="/admin/table?order=category">
                                     <span class="{{ $order == 'category' ? 'text-success' : 'grey' }}">
@@ -103,12 +103,12 @@
                             <td title="{{ $item->type->name }}">{{ string_limit($item->type->name, 14) }}</td>
 
                             {{-- Category --}}
-                            @if ($admin_options['men_category'] && $admin_options['women_category'])
+                            @if ($admin_options['category1'] && $admin_options['category2'])
                                 <td>
                                     {{
-                                        $item->category == 'men'
-                                            ? $admin_options['men_category_title']
-                                            : $admin_options['women_category_title']
+                                        $item->category == 'category1'
+                                            ? $admin_options['category1_title']
+                                            : $admin_options['category2_title']
                                     }}
                                 </td>
                             @endif

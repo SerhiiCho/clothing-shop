@@ -18,11 +18,11 @@ class DashboardController extends Controller
     {
         try {
             return view('admin.dashboard.index', [
-                'all_men_items' => cache()->rememberForever('all_men_items', function () {
-                    return Item::whereCategory('men')->sum('stock');
+                'all_first_items' => cache()->rememberForever('all_first_items', function () {
+                    return Item::whereCategory('category1')->sum('stock');
                 }),
-                'all_women_items' => cache()->rememberForever('all_women_items', function () {
-                    return Item::whereCategory('women')->sum('stock');
+                'all_second_items' => cache()->rememberForever('all_second_items', function () {
+                    return Item::whereCategory('category2')->sum('stock');
                 }),
             ]);
         } catch (QueryException $e) {

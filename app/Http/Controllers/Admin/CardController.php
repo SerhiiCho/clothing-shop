@@ -63,7 +63,7 @@ class CardController extends Controller
     public function edit(Card $card): View
     {
         $types = Type::orderBy('name')->get();
-        $category = Option::get()->where('option', "{$card->category}_category_title")->first()->value;
+        $category = Option::get()->where('option', "{$card->category}_title")->first()->value;
 
         return view('admin.cards.edit')->with(
             compact('card', 'types', 'category')

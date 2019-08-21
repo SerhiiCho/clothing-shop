@@ -14,10 +14,10 @@ class OptionSeeder extends Seeder
     {
         DB::table('options')->insert([
             ['option' => 'registration', 'value' => 1],
-            ['option' => 'men_category', 'value' => 1],
-            ['option' => 'women_category', 'value' => 1],
-            ['option' => 'women_category_title', 'value' => 'Женская одежда'],
-            ['option' => 'men_category_title', 'value' => 'Мужская одежда'],
+            ['option' => 'category1', 'value' => 1],
+            ['option' => 'category2', 'value' => 1],
+            ['option' => 'category1_title', 'value' => 'Мужская одежда'],
+            ['option' => 'category2_title', 'value' => 'Женская одежда'],
         ]);
     }
 }

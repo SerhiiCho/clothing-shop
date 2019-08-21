@@ -46,20 +46,20 @@
             <a href="/">@lang('navigation.home')</a>
         </li>
 
-        {{-- Items / men --}}
-        @if ($admin_options['men_category'])
-            <li class="{{ active_if_route_is('items', 'category', 'men') }}">
-                <a href="/items?category=men">
-                    {{ $admin_options['men_category_title'] }}
+        {{-- Items / first category --}}
+        @if ($admin_options['category1'])
+            <li class="{{ active_if_route_is('items', 'category', 'category1') }}">
+                <a href="/items?category=category1">
+                    {{ $admin_options['category1_title'] }}
                 </a>
             </li>
         @endif
 
-        {{-- Items / women --}}
-        @if ($admin_options['women_category'])
-            <li class="{{ active_if_route_is('items', 'category', 'women') }}">
-                <a href="/items?category=women">
-                    {{ $admin_options['women_category_title'] }}
+        {{-- Items / second category --}}
+        @if ($admin_options['category2'])
+            <li class="{{ active_if_route_is('items', 'category', 'category2') }}">
+                <a href="/items?category=category2">
+                    {{ $admin_options['category2_title'] }}
                 </a>
             </li>
         @endif

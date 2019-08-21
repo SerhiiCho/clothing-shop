@@ -29,43 +29,43 @@ class OptionController extends Controller
             ->withSuccess(trans('options.registration_disabled'));
     }
 
-    public function menCategory(Request $request): RedirectResponse
+    public function firstCategory(Request $request): RedirectResponse
     {
         if ($request->has('option') && $request->option === 'on') {
-            Option::set('men_category', 1);
+            Option::set('category1', 1);
 
             return redirect('/admin/dashboard')
-                ->withSuccess(trans('options.men_category_enabled'));
+                ->withSuccess(trans('options.category1_enabled'));
         }
 
-        Option::set('men_category', 0);
+        Option::set('category1', 0);
 
         return redirect('/admin/dashboard')
-            ->withSuccess(trans('options.men_category_disabled'));
+            ->withSuccess(trans('options.category1_disabled'));
     }
 
-    public function womenCategory(Request $request): RedirectResponse
+    public function secondCategory(Request $request): RedirectResponse
     {
         if ($request->has('option') && $request->option === 'on') {
-            Option::set('women_category', 1);
+            Option::set('category2', 1);
 
             return redirect('/admin/dashboard')
-                ->withSuccess(trans('options.women_category_enabled'));
+                ->withSuccess(trans('options.category2_enabled'));
         }
 
-        Option::set('women_category', 0);
+        Option::set('category2', 0);
 
         return redirect('/admin/dashboard')
-            ->withSuccess(trans('options.women_category_disabled'));
+            ->withSuccess(trans('options.category2_disabled'));
     }
 
     public function categoryTitle(Request $request): RedirectResponse
     {
-        Option::set('women_category_title', $request->women);
-        Option::set('men_category_title', $request->men);
+        Option::set('category1_title', $request->first);
+        Option::set('category2_title', $request->second);
 
         return redirect('/admin/dashboard')
-            ->withSuccess(trans('options.women_category_title_changed'));
+            ->withSuccess(trans('options.category1_title_changed'));
     }
 
     public function cacheForget(): RedirectResponse

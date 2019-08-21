@@ -43,65 +43,65 @@ class OptionControllerTest extends TestCase
     }
 
     /** @test */
-    public function admin_can_turn_off_men_category(): void
+    public function admin_can_turn_off_first_category(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
-            ->put(action('Admin\OptionController@menCategory'));
+            ->put(action('Admin\OptionController@firstCategory'));
 
-        $this->assertOptionHasValue('men_category', 0);
+        $this->assertOptionHasValue('category1', 0);
     }
 
     /** @test */
-    public function admin_can_turn_on_men_category_if_option_input_is_checked(): void
+    public function admin_can_turn_on_fitst_category_if_option_input_is_checked(): void
     {
-        Option::set('men_category', 0);
+        Option::set('category1', 0);
 
         $this->actingAs(factory(User::class)->state('admin')->create())
-            ->put(action('Admin\OptionController@menCategory'), ['option' => 'on']);
+            ->put(action('Admin\OptionController@firstCategory'), ['option' => 'on']);
 
-        $this->assertOptionHasValue('men_category', 1);
+        $this->assertOptionHasValue('category1', 1);
     }
 
     /** @test */
-    public function admin_cant_turn_on_men_category_if_option_input_is_not_checked(): void
+    public function admin_cant_turn_on_fitst_category_if_option_input_is_not_checked(): void
     {
-        Option::set('men_category', 0);
+        Option::set('category1', 0);
 
         $this->actingAs(factory(User::class)->state('admin')->create())
-            ->put(action('Admin\OptionController@menCategory'), ['option' => 'off']);
+            ->put(action('Admin\OptionController@firstCategory'), ['option' => 'off']);
 
-        $this->assertOptionHasValue('men_category', 0);
+        $this->assertOptionHasValue('category1', 0);
     }
 
     /** @test */
-    public function admin_can_turn_off_women_category(): void
+    public function admin_can_turn_off_second_category(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
-            ->put(action('Admin\OptionController@womenCategory'));
+            ->put(action('Admin\OptionController@secondCategory'));
 
-        $this->assertOptionHasValue('women_category', 0);
+        $this->assertOptionHasValue('category2', 0);
     }
 
     /** @test */
-    public function admin_can_turn_on_women_category_if_option_input_is_checked(): void
+    public function admin_can_turn_on_second_category_if_option_input_is_checked(): void
     {
-        Option::set('women_category', 0);
+        Option::set('category2', 0);
 
         $this->actingAs(factory(User::class)->state('admin')->create())
-            ->put(action('Admin\OptionController@womenCategory'), ['option' => 'on']);
+            ->put(action('Admin\OptionController@secondCategory'), ['option' => 'on']);
 
-        $this->assertOptionHasValue('women_category', 1);
+        $this->assertOptionHasValue('category2', 1);
     }
 
     /** @test */
-    public function admin_cant_turn_on_women_category_if_option_input_is_not_checked(): void
+    public function admin_cant_turn_on_second_category_if_option_input_is_not_checked(): void
     {
-        Option::set('women_category', 0);
+        Option::set('category2', 0);
 
         $this->actingAs(factory(User::class)->state('admin')->create())
-            ->put(action('Admin\OptionController@womenCategory'), ['option' => 'off']);
+            ->put(action('Admin\OptionController@secondCategory'), ['option' => 'off']);
 
-        $this->assertOptionHasValue('women_category', 0);
+        $this->assertOptionHasValue('category2', 0);
     }
 
     /** @test */
@@ -118,15 +118,15 @@ class OptionControllerTest extends TestCase
     }
 
     /** @test */
-    public function admin_can_change_WomenCategoryTitle_option(): void
+    public function admin_can_change_Category1Title_option(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
             ->put(action('Admin\OptionController@categoryTitle'), [
-                'women' => $new_title = string_random(7),
-                'men' => 'value',
+                'second' => $new_title = string_random(7),
+                'first' => 'value',
             ]);
 
-        $this->assertOptionHasValue('women_category_title', $new_title);
+        $this->assertOptionHasValue('category2_title', $new_title);
     }
 
     /** @test */
@@ -134,11 +134,11 @@ class OptionControllerTest extends TestCase
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
             ->put(action('Admin\OptionController@categoryTitle'), [
-                'men' => $new_title = string_random(7),
-                'women' => 'title',
+                'first' => $new_title = string_random(7),
+                'second' => 'title',
             ]);
 
-        $this->assertOptionHasValue('men_category_title', $new_title);
+        $this->assertOptionHasValue('category1_title', $new_title);
     }
 
     public function assertOptionHasValue(string $option, $value)

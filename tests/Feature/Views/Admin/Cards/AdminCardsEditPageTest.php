@@ -54,7 +54,7 @@ class AdminCardsEditPageTest extends TestCase
         $card = factory(Card::class)->create();
         $admin = factory(User::class)->state('admin')->create();
         $form_data = [
-            'category' => 'men',
+            'category' => 'category1',
             'type' => rand(1, 10),
         ];
 

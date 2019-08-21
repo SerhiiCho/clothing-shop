@@ -77,7 +77,7 @@ class ItemController extends Controller
     public function edit(string $slug): View
     {
         $item = Item::whereSlug($slug)->first();
-        $category = Option::get()->where('option', "{$item->category}_category_title")->first()->value;
+        $category = Option::get()->where('option', "{$item->category}_title")->first()->value;
         $types = (new Type)->orderBy('name')->get();
 
         return view('items.edit')->with(compact('item', 'types', 'category'));
@@ -102,9 +102,9 @@ class ItemController extends Controller
     public function forgetCache(): void
     {
         cache()->forget('footer_latest');
-        cache()->forget('categories_men');
-        cache()->forget('categories_women');
-        cache()->forget('all_women_items');
-        cache()->forget('all_men_items');
+        cache()->forget('categories1');
+        cache()->forget('categories2');
+        cache()->forget('all_second_items');
+        cache()->forget('all_first_items');
     }
 }

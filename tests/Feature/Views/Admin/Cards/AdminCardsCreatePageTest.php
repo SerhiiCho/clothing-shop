@@ -38,7 +38,7 @@ class AdminCardsCreatePageTest extends TestCase
     public function admin_can_add_new_card(): void
     {
         $form_data = [
-            'category' => 'men',
+            'category' => 'category1',
             'type' => rand(1, 10),
         ];
 

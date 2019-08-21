@@ -38,8 +38,8 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::post('orders/{order}', 'OrderController@store');
     Route::delete('orders/{order}', 'OrderController@destroy');
     Route::put('registration', 'OptionController@registration');
-    Route::put('men-category', 'OptionController@menCategory');
-    Route::put('women-category', 'OptionController@womenCategory');
+    Route::put('first-category', 'OptionController@firstCategory');
+    Route::put('second-category', 'OptionController@secondCategory');
     Route::put('category-title', 'OptionController@categoryTitle');
     Route::put('cache-forget', 'OptionController@cacheForget');
     Route::resource('slider', 'SliderController', ['except' => ['show']]);

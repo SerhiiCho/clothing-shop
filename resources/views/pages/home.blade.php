@@ -55,10 +55,10 @@
     hryvnia="@lang('items.hryvnia')"
     headline="@lang('messages.more_clothes')"
 
-    @if ($admin_options['men_category'] && !$admin_options['women_category'])
-        to="/api/item/random/{{ visitor_id() }}/men"
-    @elseif (!$admin_options['men_category'] && $admin_options['women_category'])
-        to="/api/item/random/{{ visitor_id() }}/women"
+    @if ($admin_options['category1'] && !$admin_options['category2'])
+        to="/api/item/random/{{ visitor_id() }}/category1"
+    @elseif (!$admin_options['category1'] && $admin_options['category2'])
+        to="/api/item/random/{{ visitor_id() }}/category2"
     @else
         to="/api/item/random/{{ visitor_id() }}"
     @endif

@@ -22,7 +22,7 @@ class ItemRequestTest extends TestCase
         $this->form_data = [
             'title' => string_random(7),
             'content' => string_random(12),
-            'category' => 'men',
+            'category' => 'category1',
             'type' => rand(1, 10),
             'stock' => rand(1, config('valid.item.stock.max')),
             'price' => rand(1, 10000),

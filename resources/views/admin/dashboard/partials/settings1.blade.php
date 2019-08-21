@@ -18,35 +18,35 @@
     </tr>
     <tr> {{-- Men category option --}}
         <td>
-            <form action="{{ action('Admin\OptionController@menCategory') }}" method="post">
+            <form action="{{ action('Admin\OptionController@secondCategory') }}" method="post">
 
                 @csrf
                 @method('put')
 
                 <input type="checkbox"
-                    name="option" 
+                    name="option"
                     id="switch2"
                     class="auto-submit-cb switch"
-                    {{ $admin_options['men_category'] ? 'checked' : '' }}
+                    {{ $admin_options['category1'] ? 'checked' : '' }}
                 >
-                <label for="switch2">@lang('options.turn_on_men_category')</label>
+                <label for="switch2">@lang('options.turn_on_category1')</label>
             </form>
         </td>
     </tr>
-    <tr> {{-- Women category option --}}
+    <tr> {{-- Second category option --}}
         <td>
-            <form action="{{ action('Admin\OptionController@womenCategory') }}" method="post">
+            <form action="{{ action('Admin\OptionController@firstCategory') }}" method="post">
 
                 @csrf
                 @method('put')
 
                 <input type="checkbox"
-                    name="option" 
+                    name="option"
                     id="switch3"
                     class="auto-submit-cb switch"
-                    {{ $admin_options['women_category'] ? 'checked' : '' }}
+                    {{ $admin_options['category2'] ? 'checked' : '' }}
                 >
-                <label for="switch3">@lang('options.turn_on_women_category')</label>
+                <label for="switch3">@lang('options.turn_on_category2')</label>
             </form>
         </td>
     </tr>

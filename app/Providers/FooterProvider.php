@@ -16,8 +16,8 @@ class FooterProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->categoriesWomen();
-        $this->categoriesMen();
+        $this->categoriesSecond();
+        $this->categoriesFirst();
         $this->lastItems();
     }
 
@@ -25,13 +25,13 @@ class FooterProvider extends ServiceProvider
      * @return void
      * @throws \Exception
      */
-    private function categoriesMen(): void
+    private function categoriesFirst(): void
     {
-        $categories_men = cache()->rememberForever('categories_men', function () {
+        $categories1 = cache()->rememberForever('categories1', function () {
             try {
                 return Item::distinct()
                     ->with('type')
-                    ->whereCategory('men')
+                    ->whereCategory('category1')
                     ->inStock()
                     ->get(['type_id', 'category'])
                     ->toArray();
@@ -40,20 +40,20 @@ class FooterProvider extends ServiceProvider
                 return [];
             }
         });
-        view()->share(compact('categories_men'));
+        view()->share(compact('categories1'));
     }
 
     /**
      * @return void
      * @throws \Exception
      */
-    private function categoriesWomen(): void
+    private function categoriesSecond(): void
     {
-        $categories_women = cache()->rememberForever('categories_women', function () {
+        $categories2 = cache()->rememberForever('categories2', function () {
             try {
                 return Item::distinct()
                     ->with('type')
-                    ->whereCategory('women')
+                    ->whereCategory('category2')
                     ->inStock()
                     ->get(['type_id', 'category'])
                     ->toArray();
@@ -62,7 +62,7 @@ class FooterProvider extends ServiceProvider
                 return [];
             }
         });
-        view()->share(compact('categories_women'));
+        view()->share(compact('categories2'));
     }
 
     /**

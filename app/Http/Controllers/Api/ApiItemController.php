@@ -80,10 +80,10 @@ class ApiItemController extends Controller
         }
 
         cache()->forget('footer_latest');
-        cache()->forget('categories_men');
-        cache()->forget('categories_women');
-        cache()->forget('all_women_items');
-        cache()->forget('all_men_items');
+        cache()->forget('categories1');
+        cache()->forget('categories2');
+        cache()->forget('all_second_items');
+        cache()->forget('all_first_items');
 
         $this->deleteOldPhotos($item->photos);
 

@@ -69,11 +69,12 @@
                     <label>@lang('items.category')</label>
 
                     <select name="category" class="form-control">
-                        @if ($admin_options['women_category'])
-                            <option value="women">{{ $admin_options['women_category_title'] }}</option>
+                        @if ($admin_options['category1'])
+                            <option value="category1">{{ $admin_options['category1_title'] }}</option>
                         @endif
-                        @if ($admin_options['men_category'])
-                            <option value="men">{{ $admin_options['men_category_title'] }}</option>
+
+                        @if ($admin_options['category2'])
+                            <option value="category2">{{ $admin_options['category2_title'] }}</option>
                         @endif
                     </select>
                 </div>

@@ -40,12 +40,12 @@ function string_limit(string $value, ?int $limit = 100, ?string $end = '...'): s
 
 function get_current_category(string $url): ?string
 {
-    if (Str::contains($url, 'women')) {
-        return 'women';
+    if (Str::contains($url, 'category1')) {
+        return 'category1';
     }
 
-    if (Str::contains($url, 'men')) {
-        return 'men';
+    if (Str::contains($url, 'category2')) {
+        return 'category2';
     }
 
     return null;

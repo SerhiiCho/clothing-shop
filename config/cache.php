@@ -90,14 +90,14 @@ return [
 
     'cache_names' => [
         'home_cards',
-        'categories_men',
-        'categories_women',
+        'categories1',
+        'categories2',
         'nav_contacts',
         'admin_options',
         'non_admin_users',
         'orders',
-        'all_women_items',
-        'all_men_items',
+        'all_second_items',
+        'all_first_items',
         'counted_orders',
     ],
 

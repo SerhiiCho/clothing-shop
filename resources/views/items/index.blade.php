@@ -13,16 +13,16 @@
                             @lang('navigation.types')
                         </h4>
 
-                        @if($current_category == 'women' && isset($categories_women))
-                            @foreach ($categories_women as $item)
+                        @if($current_category == 'category2' && isset($categories2))
+                            @foreach ($categories2 as $item)
                                 <a href="/items?category={{ $current_category }}&type={{ $item['type_id'] }}" 
                                     class="list-group-item {{ active_if_route_is('items', 'type', $item['type_id']) }}"
                                 >
                                     {{ $item['type']['name'] }}
                                 </a>
                             @endforeach
-                        @elseif ($current_category == 'men' && isset($categories_men))
-                            @foreach ($categories_men as $item)
+                        @elseif ($current_category == 'category1' && isset($categories1))
+                            @foreach ($categories1 as $item)
                                 <a href="/items?category={{ $current_category }}&type={{ $item['type_id'] }}" 
                                     class="list-group-item {{ active_if_route_is('items', 'type', $item['type_id']) }}"
                                 >
