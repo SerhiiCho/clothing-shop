@@ -12,24 +12,6 @@ class OptionControllerTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function option_Registration_is_on_by_default(): void
-    {
-        $this->assertOptionHasValue('registration', 1);
-    }
-
-    /** @test */
-    public function option_MenCategory_is_on_by_default(): void
-    {
-        $this->assertOptionHasValue('men_category', 1);
-    }
-
-    /** @test */
-    public function option_WomenCategory_is_on_by_default(): void
-    {
-        $this->assertOptionHasValue('women_category', 1);
-    }
-
-    /** @test */
     public function admin_can_turn_off_registration(): void
     {
         $this->actingAs(factory(User::class)->state('admin')->create())
