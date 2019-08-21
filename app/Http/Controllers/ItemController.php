@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Traits\ItemHelpers;
 use App\Http\Requests\ItemRequest;
 use App\Models\Item;
+use App\Models\Option;
 use App\Models\Type;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
@@ -76,11 +77,8 @@ class ItemController extends Controller
     public function edit(string $slug): View
     {
         $item = Item::whereSlug($slug)->first();
+        $category = Option::get()->where('option', "{$item->category}_category_title")->first()->value;
         $types = (new Type)->orderBy('name')->get();
-
-        $category = ($item->category === 'men')
-        ? trans('items.men_items')
-        : trans('items.women_items');
 
         return view('items.edit')->with(compact('item', 'types', 'category'));
     }
