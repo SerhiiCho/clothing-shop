@@ -45,8 +45,6 @@ return [
     'add_to_cart' => 'Добавить в корзину',
     'add_item' => 'Добавить товар',
     'code_of_the_item' => 'Код товара:',
-    'men_items' => 'Мужская одежда',
-    'women_items' => 'Женская одежда',
     'change_item' => 'Изменить товар',
     'price' => 'Цена',
     'all_items' => 'Весь товар',

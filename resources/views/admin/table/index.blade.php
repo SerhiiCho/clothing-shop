@@ -105,7 +105,11 @@
                             {{-- Category --}}
                             @if ($admin_options['men_category'] && $admin_options['women_category'])
                                 <td>
-                                    {{ $item->category == 'men' ? trans('navigation.men') : trans('navigation.women') }}
+                                    {{
+                                        $item->category == 'men'
+                                            ? $admin_options['men_category_title']
+                                            : $admin_options['women_category_title']
+                                    }}
                                 </td>
                             @endif
 

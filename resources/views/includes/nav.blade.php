@@ -48,21 +48,19 @@
 
         {{-- Items / men --}}
         @if ($admin_options['men_category'])
-            <li class="{{ active_if_route_is('items', 'category', 'men') }}" 
-                title="@lang('navigation.men')"
-            >
+            <li class="{{ active_if_route_is('items', 'category', 'men') }}">
                 <a href="/items?category=men">
-                    @lang('navigation.men')
+                    {{ $admin_options['men_category_title'] }}
                 </a>
             </li>
         @endif
 
         {{-- Items / women --}}
         @if ($admin_options['women_category'])
-            <li class="{{ active_if_route_is('items', 'category', 'women') }}" 
-                title="@lang('navigation.women')"
-            >
-                <a href="/items?category=women">@lang('navigation.women')</a>
+            <li class="{{ active_if_route_is('items', 'category', 'women') }}">
+                <a href="/items?category=women">
+                    {{ $admin_options['women_category_title'] }}
+                </a>
             </li>
         @endif
 

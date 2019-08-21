@@ -70,10 +70,10 @@
 
                     <select name="category" class="form-control">
                         @if ($admin_options['women_category'])
-                            <option value="women">@lang('items.women_items')</option>
+                            <option value="women">{{ $admin_options['women_category_title'] }}</option>
                         @endif
                         @if ($admin_options['men_category'])
-                            <option value="men">@lang('items.men_items')</option>
+                            <option value="men">{{ $admin_options['men_category_title'] }}</option>
                         @endif
                     </select>
                 </div>

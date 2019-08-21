@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', get_current_title(request()->url()))
-
 @section('content')
 
 <div class="wrapper pb-5">

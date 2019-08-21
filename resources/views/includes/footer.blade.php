@@ -9,11 +9,19 @@
                     <li><a href="/">@lang('navigation.home')</a></li>
 
                     @if ($admin_options['men_category'])
-                        <li><a href="/items?category=men">@lang('navigation.men')</a></li>
+                        <li>
+                            <a href="/items?category=men">
+                                {{ $admin_options['men_category_title'] }}
+                            </a>
+                        </li>
                     @endif
 
                     @if ($admin_options['women_category'])
-                        <li><a href="/items?category=women">@lang('navigation.women')</a></li>
+                        <li>
+                            <a href="/items?category=women">
+                                {{ $admin_options['women_category_title'] }}
+                            </a>
+                        </li>
                     @endif
 
                     <li><a href="/search">@lang('navigation.search')</a></li>
@@ -41,7 +49,7 @@
             {{-- Categories women --}}
             @if (isset($categories_women) && $admin_options['women_category'])
                 <nav class="col-6 col-md-3">
-                    <h4>@lang('navigation.women')</h4>
+                    <h4>{{ $admin_options['women_category_title'] }}</h4>
                     <ul>
                         @foreach ($categories_women as $item)
                         <li>
@@ -59,7 +67,7 @@
             {{-- Categories men --}}
             @if (isset($categories_men) && $admin_options['men_category'])
                 <nav class="col-6 col-md-3">
-                    <h4>@lang('navigation.men')</h4>
+                    <h4>{{ $admin_options['men_category_title'] }}</h4>
                     <ul>
                         @foreach ($categories_men as $item)
                         <li>

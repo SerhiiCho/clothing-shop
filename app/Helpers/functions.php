@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Option;
 use App\Models\Visitor;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Str;
@@ -48,19 +49,6 @@ function get_current_category(string $url): ?string
     }
 
     return null;
-}
-
-function get_current_title(string $url): string
-{
-    if (Str::contains($url, 'women')) {
-        return trans('items.women_items');
-    }
-
-    if (Str::contains($url, 'men')) {
-        return trans('items.men_items');
-    }
-
-    return trans('items.all_items');
 }
 
 function no_connection_error(Exception $exception, string $file): void

@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Request;
 use Mockery;
 use Tests\TestCase;
 use App\Models\Visitor;
@@ -79,32 +78,6 @@ class HelpersFunctionsTest extends TestCase
     {
         $this->assertNull(get_current_category('http://some-url/nice/meddnnn/'));
         $this->assertNull(get_current_category('http://some-url/nicmnen/nwoice/'));
-    }
-
-    /** @test */
-    public function get_current_title_returns_headline_for_women_if_request_url_contains_women_word(): void
-    {
-        $this->assertSame(trans('items.women_items'), get_current_title('http://some-url/nice/women/'));
-        $this->assertSame(trans('items.women_items'), get_current_title('http://some-url/women/nice/'));
-        $this->assertSame(trans('items.women_items'), get_current_title('https://women/nice/hello/'));
-        $this->assertSame(trans('items.women_items'), get_current_title('https://nicewomen/nice/hello/'));
-    }
-
-    /** @test */
-    public function get_current_title_returns_headline_for_men_if_request_url_contains_men_word(): void
-    {
-        $this->assertSame(trans('items.men_items'), get_current_title('http://some-url/nice/men/'));
-        $this->assertSame(trans('items.men_items'), get_current_title('http://some-url/men/nice/'));
-        $this->assertSame(trans('items.men_items'), get_current_title('https://men/nice/hello/'));
-        $this->assertSame(trans('items.men_items'), get_current_title('https://nicemen/nice/hello/'));
-    }
-
-    /** @test */
-    public function get_current_title_returns_headline_for_both_genders_if_no_gender_specified(): void
-    {
-        $this->assertSame(trans('items.all_items'), get_current_title('http://duckduckgo.com/'));
-        $this->assertSame(trans('items.all_items'), get_current_title('http://duckduckgo.com/nice/search'));
-        $this->assertSame(trans('items.all_items'), get_current_title('http://duckduckgo.com/nice/all'));
     }
 
     /** @test */

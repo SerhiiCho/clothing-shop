@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CardRequest;
 use App\Models\Card;
+use App\Models\Option;
 use App\Models\Type;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\UploadedFile;
@@ -62,10 +63,7 @@ class CardController extends Controller
     public function edit(Card $card): View
     {
         $types = Type::orderBy('name')->get();
-
-        $category = ($card->category === 'men')
-        ? trans('items.men_items')
-        : trans('items.women_items');
+        $category = Option::get()->where('option', "{$card->category}_category_title")->first()->value;
 
         return view('admin.cards.edit')->with(
             compact('card', 'types', 'category')
