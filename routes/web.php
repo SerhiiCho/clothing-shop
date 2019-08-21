@@ -40,6 +40,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::put('registration', 'OptionController@registration');
     Route::put('men-category', 'OptionController@menCategory');
     Route::put('women-category', 'OptionController@womenCategory');
+    Route::put('category-title', 'OptionController@categoryTitle');
     Route::put('cache-forget', 'OptionController@cacheForget');
     Route::resource('slider', 'SliderController', ['except' => ['show']]);
     Route::resource('cards', 'CardController', ['except' => ['show']]);

@@ -35,6 +35,8 @@ class AppServiceProvider extends ServiceProvider
                     'registration' => $options->where('option', 'registration')->first()->value,
                     'men_category' => $options->where('option', 'men_category')->first()->value,
                     'women_category' => $options->where('option', 'women_category')->first()->value,
+                    'men_category_title' => $options->where('option', 'men_category_title')->first()->value,
+                    'women_category_title' => $options->where('option', 'women_category_title')->first()->value,
                 ];
             } catch (QueryException $e) {
                 no_connection_error($e, __CLASS__);

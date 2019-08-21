@@ -11,6 +11,5 @@ return [
     'delete_number' => 'Удалить номер',
     'dashboard' => 'Панель управления',
     'dash' => 'Панель',
-    'statistics' => 'Статистика',
 
 ];

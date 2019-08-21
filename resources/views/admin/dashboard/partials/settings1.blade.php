@@ -1,8 +1,3 @@
-<h5 class="mb-4">
-    <i class="fas fa-wrench grey"></i>
-    @lang('dashboard.dashboard')
-</h5>
-
 <table class="table">
     <tr> {{-- Registration option --}}
         <td>
@@ -70,3 +65,4 @@
         </td>
     </tr>
 </table>
+

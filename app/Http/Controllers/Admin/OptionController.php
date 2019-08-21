@@ -59,6 +59,15 @@ class OptionController extends Controller
             ->withSuccess(trans('options.women_category_disabled'));
     }
 
+    public function categoryTitle(Request $request): RedirectResponse
+    {
+        Option::set('women_category_title', $request->women);
+        Option::set('men_category_title', $request->men);
+
+        return redirect('/admin/dashboard')
+            ->withSuccess(trans('options.women_category_title_changed'));
+    }
+
     public function cacheForget(): RedirectResponse
     {
         forget_all_cache();

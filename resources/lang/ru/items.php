@@ -30,8 +30,6 @@ return [
     'type' => 'Тип',
     'all_amount_1' => 'В наличии:',
     'all_amount_2' => 'шт.',
-    'all_men_items' => 'Всего мужской одежды',
-    'all_women_items' => 'Всего женской одежды',
     'all_closed_orders' => 'Закрытые заказы',
     'all_open_orders' => 'Открытые заказы',
     'hryvnia' => 'грн',
