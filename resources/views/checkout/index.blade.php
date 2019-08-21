@@ -12,6 +12,7 @@
                     {{ Cart::getTotalQuantity() }}
                 </span>
             </h4>
+
             <ul class="list-group mb-3">
                 @foreach (Cart::getContent() as $item)
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -19,18 +20,21 @@
                             <h6 class="my-0">{{ $item->name }}</h6>
                         </div>
                         <span class="text-muted text-right" style="min-width:80px">
-                            {{ $item->price }} @lang('items.hryvnia')
+                            {{ nice_money_format($item->price) }} @lang('items.hryvnia')
                         </span>
                     </li>
                 @endforeach
+
                 <li class="list-group-item d-flex justify-content-between">
                     <span>@lang('cart.total')</span>
-                    <strong>{{ Cart::getTotal() }} @lang('items.hryvnia')</strong>
+                    <strong>{{ nice_money_format(Cart::getTotal()) }} @lang('items.hryvnia')</strong>
                 </li>
             </ul>
         </div>
+
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">@lang('checkout.your_info')</h4>
+
             <form action="{{ action('CheckoutController@store') }}" 
                 method="post" 
                 class="needs-validation" 
@@ -62,6 +66,7 @@
                     </div>
                 </div>
                 <hr class="mb-4">
+
                 {{-- Checkout button --}}
                 <button class="btn btn-success pull-right pl-5 pr-5" 
                     type="submit" 
@@ -71,7 +76,7 @@
                 </button>
 
                 {{-- Back btn --}}
-                <a href="/cart" class="btn btn-primary" title="@lang('messages.back')">
+                <a href="/cart" class="btn" title="@lang('messages.back')">
                     &laquo; @lang('messages.back')
                 </a>
             </form>

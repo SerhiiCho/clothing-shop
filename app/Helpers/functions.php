@@ -81,14 +81,14 @@ function visitor_id()
     return $visitor_id;
 }
 
-/**
- * Removes all cache
- *
- * @return void
- */
 function forget_all_cache(): void
 {
     array_map(function ($name) {
         cache()->forget($name);
     }, config('cache.cache_names'));
+}
+
+function nice_money_format(string $sum): string
+{
+    return number_format($sum, 0, ',', ' ');
 }

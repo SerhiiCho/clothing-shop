@@ -38,22 +38,18 @@
                                 </div>
                             </div>
                         </td>
+
                         <td class="text-center">
                             <h6>{{ $item->price }} @lang('items.hryvnia')</h6>
                         </td>
+
                         {{-- Remove item --}}
                         <td class="text-center">
-                            <form action="{{ action('CartController@destroy', ['item' => $item->id]) }}" 
-                                method="post" 
-                                class="d-inline"
-                            >
+                            <form action="{{ action('CartController@destroy', ['item' => $item->id]) }}" method="post" class="d-inline">
                                 @csrf @method('delete')
 
-                                <button type="submit"
-                                    class="btn btn-success btn-sm" 
-                                    title="@lang('cart.delete')"
-                                >
-                                    @lang('cart.delete')
+                                <button type="submit" class="btn btn-success btn-sm" title="@lang('cart.delete')">
+                                    <i class="fas fa-trash"></i>
                                 </button>
                             </form>
                         </td>
@@ -64,16 +60,16 @@
             {{-- Table Footer --}}
             <tfoot>
                 <tr>
+                    <td>
+                        <a href="/checkout" class="btn btn-success btn-block">
+                            <i class="fas fa-phone-volume mr-2"></i> @lang('cart.order')
+                        </a>
+                    </td>
                     <td></td>
                     <td class="hidden-xs text-center">
                         <strong>
-                            @lang('cart.total')  {{ Cart::getTotal() }} @lang('items.hryvnia')
+                            @lang('cart.total')  {{ nice_money_format(Cart::getTotal()) }} @lang('items.hryvnia')
                         </strong>
-                    </td>
-                    <td>
-                        <a href="/checkout" class="btn btn-success btn-block">
-                            @lang('cart.order') <i class="fas fa-angle-right"></i>
-                        </a>
                     </td>
                 </tr>
             </tfoot>

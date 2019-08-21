@@ -20,7 +20,7 @@ class ItemResource extends JsonResource
             'slug' => $this->slug,
             'content' => $this->content,
             'category' => $this->category,
-            'price' => $this->price,
+            'price' => nice_money_format($this->price),
             'stock' => $this->stock,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

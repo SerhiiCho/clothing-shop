@@ -20,36 +20,39 @@
             class="row"
         >
             @csrf
-            <div class="custom-file mt-3 col-12 col-md-6">
-                <input type="file" 
-                    name="image" 
-                    class="custom-file-input"
-                    id="src-image"
-                >
-                <label class="custom-file-label" for="src-image">
-                    @lang('forms.choose_file')...
-                </label>
-            </div>
-            <div class="form-group mt-3 col-12 col-md-6">
-                <input type="number" 
-                    class="form-control" 
+
+            <div class="form-group mt-3 col-12 col-md-4">
+                <input type="number"
+                    class="form-control"
                     name="order"
                     placeholder="@lang('slider.choose_order_number')"
                 >
             </div>
 
-            {{-- Add slide button --}}
-            <button type="submit" class="btn btn-success btn-block mt-3">
-                @lang('slider.add_slide')
-            </button>
+            <div class="custom-file mt-3 col-12 col-md-8">
+                <input type="file"
+                       name="image"
+                       class="custom-file-input"
+                       id="src-image"
+                >
+                <label class="custom-file-label" for="src-image">
+                    @lang('forms.choose_file')...
+                </label>
+            </div>
 
-            {{-- Back button --}}
-            <a href="/admin/slider" 
-                title="@lang('messages.back')" 
-                class="btn btn-primary btn-block mt-2"
-            >
-                @lang('messages.back')
-            </a>
+            <div class="col-12 mt-3 text-center">
+                {{-- Add slide button --}}
+                <button type="submit" class="btn btn-success btn-block">
+                    <i class="fas fa-plus mr-2"></i>
+                    @lang('slider.add_slide')
+                </button>
+
+                {{-- Back button --}}
+                <a href="/admin/slider" class="btn btn-block mt-2">
+                    <i class="fas fa-chevron-left mr-2"></i>
+                    @lang('messages.back')
+                </a>
+            </div>
         </form>
     </div>
 </div>

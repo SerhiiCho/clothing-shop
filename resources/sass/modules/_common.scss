@@ -2,6 +2,10 @@
     list-style: none;
 }
 
+.min-height {
+    min-height: 600px;
+}
+
 @media(min-width: 840px) {
     .hide-on-desktop {
         display: none !important;

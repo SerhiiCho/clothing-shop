@@ -97,7 +97,7 @@
                 </div>
             </div>
 
-            <div class="custom-file">
+            <div class="custom-file mb-3">
                 <input type="file"
                     name="photos[]"
                     class="form-control-file"
@@ -109,14 +109,12 @@
                 </label>
             </div>
 
-            <button type="submit" class="btn btn-success btn-block mt-3">
-                @lang('items.save_item')
+            <button type="submit" class="btn btn-success">
+                <i class="fas fa-save mr-2"></i>
+                @lang('contacts.save')
             </button>
 
-            <a href="/items"
-                title="@lang('messages.back')"
-                class="btn btn-primary btn-block mt-2"
-            >
+            <a href="/items" title="@lang('messages.back')" class="btn btn-success">
                 @lang('messages.back')
             </a>
         </form>

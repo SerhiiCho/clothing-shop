@@ -37,16 +37,15 @@
 
                 <div class="text-center">
                     {{-- Add contact btn --}}
-                    <button type="submit" 
-                        class="btn btn-success"
-                        title="@lang('contacts.add_contact')"
-                    >
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-plus mr-2"></i>
                         @lang('contacts.add_contact')
                     </button>
 
                     {{-- Back btn --}}
-                    <a href="/admin/contacts" class="btn btn-primary" title="@lang('messages.back')">
-                        &laquo; @lang('messages.back')
+                    <a href="/admin/contacts" class="btn btn-success">
+                        <i class="fas fa-chevron-left mr-2"></i>
+                        @lang('messages.back')
                     </a>
                 </div>
             </form>

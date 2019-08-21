@@ -20,29 +20,29 @@
             class="row"
         >
 
-            @csrf @method('put')
+            @csrf
+            @method('put')
 
-            <div class="custom-file mt-3 col-12 col-md-6">
+            <div class="form-group mt-3 col-12 col-md-4">
+                <input type="number"
+                    value="{{ $slider->order }}"
+                    class="form-control"
+                    name="order"
+                    placeholder="@lang('slider.choose_order_number')"
+                >
+            </div>
+
+            <div class="custom-file mt-3 col-12 col-md-8">
                 <input type="file" name="image" class="custom-file-input" id="src-image">
                 <label class="custom-file-label" for="src-image">
                     @lang('forms.choose_file')...
                 </label>
             </div>
-            <div class="form-group mt-3 col-12 col-md-6">
-                <input type="number" 
-                    value="{{ $slider->order }}" 
-                    class="form-control" 
-                    name="order" 
-                    placeholder="@lang('slider.choose_order_number')"
-                >
-            </div>
 
             {{-- Save button --}}
-            <button type="submit" 
-                class="btn btn-success btn-block mt-3" 
-                title="@lang('slider.save_changes')"
-            >
-                @lang('slider.save_changes')
+            <button type="submit" class="btn btn-success btn-block mt-3">
+                <i class="fas fa-save mr-2"></i>
+                @lang('contacts.save')
             </button>
         </form>
 
@@ -56,15 +56,16 @@
 
             {{-- Delete button --}}
             <button type="submit"
-                class="btn btn-primary btn-block confirm"
-                title="@lang('slider.delete')"
+                class="btn btn-success btn-block confirm"
                 data-confirm="@lang('slider.are_you_sure')"
             >
+                <i class="fas fa-trash mr-2"></i>
                 @lang('slider.delete')
             </button>
 
             {{-- Back button --}}
-            <a href="/admin/slider" title="@lang('messages.back')" class="btn btn-primary btn-block mt-2">
+            <a href="/admin/slider" class="btn btn-block">
+                <i class="fas fa-chevron-left mr-2"></i>
                 @lang('messages.back')
             </a>
         </form>

@@ -7,15 +7,8 @@ $colors: (
     grey-dark: #444
 );
 
-// Primary Btn
-$btnPrimaryText: #311b28;
-$btnPrimaryBorder: #e8e2d3;
 $btnPrimaryBg: #f7f1f7;
-
-// Success Btn
-$btnSuccessText: darken($btnPrimaryBg, 70);
-$btnSuccessBorder: darken($btnPrimaryBg, 3);
-$btnSuccessBg: #ecdcdc;
+$btnSuccessBg: #ecddddbd;
 
 // Typography
 $mainFont: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;

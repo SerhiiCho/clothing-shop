@@ -45,13 +45,11 @@
                 </div>
 
                 {{-- Save btn --}}
-                <button type="submit"
-                    class="btn btn-success btn-block" 
-                    title="@lang('contacts.change_contact')"
-                >
-                    @lang('contacts.save')
+                <button type="submit" class="btn btn-success btn-block" title="@lang('contacts.change_contact')">
+                    <i class="fas fa-save float-left mt-1"></i> @lang('contacts.save')
                 </button>
             </form>
+
             <form action="{{ action('Admin\ContactController@destroy', ['contact' => $contact->id]) }}"
                 method="post" 
                 class="mt-2" 
@@ -59,20 +57,15 @@
                 @csrf @method('delete')
 
                 {{-- Delete btn --}}
-                <button class="btn btn-primary btn-block confirm"
-                    title="@lang('contacts.delete')"
-                    data-confirm="@lang('contacts.confirm_delete')"
-                >
-                    @lang('contacts.delete')
+                <button class="btn btn-success btn-block confirm" data-confirm="@lang('contacts.confirm_delete')">
+                    <i class="fas fa-trash float-left mt-1"></i>
+                    @lang('logs.delete')
                 </button>
             </form>
 
             {{-- Back btn --}}
-            <a href="/admin/contacts" 
-                title="@lang('messages.back')"
-                class="btn btn-primary btn-block mt-2"
-            >
-                &laquo; @lang('messages.back')
+            <a href="/admin/contacts" class="btn btn-success btn-block mt-2">
+                <i class="fas fa-chevron-left float-left mt-1"></i> @lang('messages.back')
             </a>
         </div>
     </div>

@@ -93,7 +93,7 @@
 
                     <input type="hidden" name="category" :value="item.category">
                     <input type="hidden" name="price" :value="item.price">
-                    <button type="submit" :title="addToCart" class="btn btn-outline-success">
+                    <button type="submit" :title="addToCart" class="btn btn-primary">
                         {{ addToCart }}
                     </button>
                     <hr class="mt-3" />

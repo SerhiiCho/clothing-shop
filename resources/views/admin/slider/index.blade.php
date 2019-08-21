@@ -41,10 +41,8 @@
                         <div class="card-body row py-2">
                             @admin
                                 {{-- Edit button --}}
-                                <a href="slider/{{ $slide->id }}/edit" 
-                                    class="btn btn-sm btn-primary col-6 px-2" 
-                                    title="@lang('slider.edit')"
-                                >
+                                <a href="slider/{{ $slide->id }}/edit" class="btn btn-sm col-6 px-2">
+                                    <i class="fas fa-pen mr-2"></i>
                                     @lang('slider.edit')
                                 </a>
 
@@ -58,10 +56,10 @@
 
                                     {{-- Delete slide btn --}}
                                     <button type="submit" 
-                                        class="btn btn-sm btn-success btn-block confirm" 
-                                        title="@lang('slider.delete')"
+                                        class="btn btn-sm btn-block confirm"
                                         data-confirm="@lang('slider.are_you_sure')"
                                     >
+                                        <i class="fas fa-trash mr-2"></i>
                                         @lang('slider.delete')
                                     </button>
                                 </form>
@@ -77,7 +75,7 @@
 
     {{-- Add slide btn --}}
     <div class="text-center py-5">
-        <a href="/admin/slider/create" title="@lang('slider.add_slide')" class="btn btn-success">
+        <a href="/admin/slider/create" title="@lang('slider.add_slide')" class="btn">
             @lang('slider.add_slide')
         </a>
     </div>

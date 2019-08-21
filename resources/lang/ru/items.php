@@ -41,7 +41,6 @@ return [
     'clients_order' => 'Заказ',
     'change' => 'Изменить',
     'category' => 'Категория',
-    'save_item' => 'Сохранить изменения',
     'go_to_product' => 'Перейти к товару',
     'go_to_product_with_title' => 'Перейти к :title',
     'description' => 'Описание',

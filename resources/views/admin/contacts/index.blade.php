@@ -45,10 +45,7 @@
                                     >
                                         @csrf @method('delete')
 
-                                        <button class="btn btn-primary confirm"
-                                            title="@lang('contacts.delete')"
-                                            data-confirm="@lang('contacts.confirm_delete')"
-                                        >
+                                        <button class="btn btn-primary confirm" data-confirm="@lang('contacts.confirm_delete')">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </form>

@@ -5,7 +5,6 @@ return [
     // Views
     'add_contact' => 'Добавить контакт',
     'change_contact' => 'Изменить контакт',
-    'delete' => 'Удалить контакт',
     'write_phone_number' => 'Укажите номер телефона',
     'choose_icon' => 'Выберите иконку',
     'without_icon' => 'Без иконки',

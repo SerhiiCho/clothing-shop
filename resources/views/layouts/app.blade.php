@@ -10,7 +10,9 @@
         @include('includes.nav')
         @include('includes.gsm')
         @include('includes.messages')
-        @yield('content')
+        <div class="min-height">
+            @yield('content')
+        </div>
         @include('includes.footer')
     </main>
     <script src="{{ asset('js/app.js?').config('app.version') }}"></script>

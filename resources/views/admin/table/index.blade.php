@@ -97,7 +97,7 @@
                             <td>{{ $item->views()->count() }}</td>
 
                             <td>{{ $item->stock }}</td>
-                            <td>{{ $item->price }}</td>
+                            <td>{{ nice_money_format($item->price) }}</td>
 
                             {{-- Type --}}
                             <td title="{{ $item->type->name }}">{{ string_limit($item->type->name, 14) }}</td>

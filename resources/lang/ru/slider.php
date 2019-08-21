@@ -7,7 +7,6 @@ return [
     'choose_order_number' => 'Номер порядка',
     'edit_slide' => 'Редактировать слайд',
     'slider_changed' => 'Слайд изменен',
-    'save_changes' => 'Сохранить изменения',
     'add_slide' => 'Добавить слайд',
     'no_order' => 'Нет порядка',
     'no_slides' => 'У вас пока нет слайдов',
