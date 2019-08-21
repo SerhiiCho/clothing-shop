@@ -29,7 +29,8 @@ class ApiItemController extends Controller
 
         try {
             return ItemResource::collection(
-                Item::where($query)
+                Item::with('photos')
+                    ->where($query)
                     ->inStock()
                     ->latest()
                     ->paginate(20)
@@ -59,11 +60,10 @@ class ApiItemController extends Controller
     public function random(int $visitor_id, ?string $category = null)
     {
         try {
-            if ($category) {
-                $items = Item::getRandomUnseen($visitor_id, $category);
-            } else {
-                $items = Item::getRandomUnseen($visitor_id);
-            }
+            $items = $category
+                ? Item::getRandomUnseen($visitor_id, $category)
+                : Item::getRandomUnseen($visitor_id);
+
             return ItemResource::collection($items);
         } catch (QueryException $e) {
             logs()->error($e->getMessage());

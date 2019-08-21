@@ -98,7 +98,7 @@ class Item extends Model
         $random = self::query();
 
         if ($category) {
-            $random = $random->whereCategory($category);
+            $random = $random->with('photos')->whereCategory($category);
         }
 
         $random = $random->inRandomOrder()
@@ -112,7 +112,8 @@ class Item extends Model
         // If not enough items to display, show just random items
         if ($random->count() < 6) {
             if ($category) {
-                return self::inRandomOrder()
+                return self::with('photos')
+                    ->inRandomOrder()
                     ->whereCategory($category)
                     ->inStock()
                     ->limit(12)
