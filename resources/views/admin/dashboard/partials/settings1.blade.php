@@ -16,9 +16,9 @@
             </form>
         </td>
     </tr>
-    <tr> {{-- Men category option --}}
+    <tr> {{-- First category option --}}
         <td>
-            <form action="{{ action('Admin\OptionController@secondCategory') }}" method="post">
+            <form action="{{ action('Admin\OptionController@firstCategory') }}" method="post">
 
                 @csrf
                 @method('put')
@@ -35,7 +35,7 @@
     </tr>
     <tr> {{-- Second category option --}}
         <td>
-            <form action="{{ action('Admin\OptionController@firstCategory') }}" method="post">
+            <form action="{{ action('Admin\OptionController@secondCategory') }}" method="post">
 
                 @csrf
                 @method('put')
