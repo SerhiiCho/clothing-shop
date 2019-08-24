@@ -30,7 +30,7 @@ export default {
     data() {
         return {
             visible: true,
-            counter: 4,
+            counter: 3,
             timerStopped: false,
             intervalId: 0,
             successMessage: 'alert-success',
