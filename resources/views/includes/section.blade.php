@@ -47,13 +47,13 @@
     <div id="home-section-{{ $section['id'] }}">
         {{-- Title --}}
         @if (!empty($section['title']))
-            <h3 class="display-4 text-center p-4">
+            <h3 class="display-4 text-center p-3">
                 {{ $section['title'] }}
             </h3>
         @endif
         {{-- Content --}}
         @if (!empty($section['content']))
-            <p class="text-justify px-5 pb-5" style="font-size:1.2em">
+            <p class="text-justify px-4 pb-5" style="font-size:1.2em">
                 {!! nl2br($section['content']) !!}
             </p>
         @endif

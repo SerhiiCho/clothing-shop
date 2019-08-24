@@ -12,7 +12,7 @@
         </h4>
 
         <div class="row">
-            <div class="col-12 col-lg-8 offset-lg-2">
+            <ul class="col-12 col-lg-8 offset-lg-2">
                 <ul class="list-group mb-4">
                     @foreach ($contacts as $contact)
                         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -30,27 +30,30 @@
                             <strong>{{ $contact['phone'] }}</strong>
                                 
                             {{-- Buttons --}}
-                            <div class="align-items-right">
+                            <ul class="m-0" style="max-width: 30px">
                                 @admin
-                                    <a href="/admin/contacts/{{ $contact['id'] }}/edit" 
-                                        class="btn btn-primary mr-3" 
-                                        title="@lang('contacts.change_contact')"
+                                <li class="mb-1">
+                                    <a href="/admin/contacts/{{ $contact['id'] }}/edit"
+                                       class="btn btn-primary btn-sm mr-3"
+                                       title="@lang('contacts.change_contact')"
                                     >
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-
-                                    <form action="{{ action('Admin\ContactController@destroy', ['contact' => $contact['id']]) }}" 
-                                        method="post" 
-                                        class="d-inline" 
+                                </li>
+                                <li>
+                                    <form action="{{ action('Admin\ContactController@destroy', ['contact' => $contact['id']]) }}"
+                                          method="post"
+                                          class="d-inline"
                                     >
                                         @csrf @method('delete')
 
-                                        <button class="btn btn-primary confirm" data-confirm="@lang('contacts.confirm_delete')">
+                                        <button class="btn btn-primary btn-sm confirm" data-confirm="@lang('contacts.confirm_delete')">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </form>
+                                </li>
                                 @endadmin
-                            </div>
+                            </ul>
                         </li>
                     @endforeach
                 </ul>

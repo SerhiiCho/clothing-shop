@@ -9,7 +9,7 @@ input.switch:empty {
 input.switch:empty ~ label {
     position: relative;
     float: left;
-    line-height: 1.6em;
+    line-height: 1.2em;
     text-indent: 4em;
     margin: 0.2em 0;
     cursor: pointer;
@@ -55,4 +55,10 @@ input.switch:checked ~ label:after {
 .clean-cache-btn {
     background-color: #468bfa;
     color: white;
+    transition: background-color 200ms;
+
+    &:hover {
+        color: white;
+        background-color: #3f7de1;
+    }
 }
