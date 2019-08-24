@@ -14,19 +14,3 @@
     })
 })();
 
-(function HideNavbarAfterScrollDown() {
-    window.onscroll = () => {
-        let logo = document.getElementById('logo-clothing')
-        let hamburger = document.getElementById('hamburger-container')
-
-        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-            logo.style.opacity = 0
-            logo.style.display = 'none'
-            hamburger.classList.add('hamburger-down')
-        } else {
-            logo.style.opacity = 1
-            hamburger.classList.remove('hamburger-down')
-            setTimeout(() => logo.style.display = 'block', 250)
-        }
-    }
-})();

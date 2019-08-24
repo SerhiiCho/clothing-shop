@@ -60,3 +60,12 @@
         );
     });
 })();
+
+(function ToggleUserSidebarView() {
+    const triggerOpen = document.querySelector('.show-user-sidebar-btn')
+    const triggerClose =  document.querySelector('#close-sidebar-button')
+    const sidebar =  document.querySelector('.user-sidebar')
+
+    triggerOpen.addEventListener('click', () => sidebar.classList.add('user-sidebar--active'))
+    triggerClose.addEventListener('click', () => sidebar.classList.remove('user-sidebar--active'))
+})();

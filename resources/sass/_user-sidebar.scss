@@ -6,12 +6,11 @@
     bottom: 0;
     width: 43px;
     overflow: hidden;
-    -webkit-transition: width 200ms, opacity 200ms;
     transition: width 200ms, opacity 200ms;
     transform: translateZ(0) scale(1, 1);
     opacity: .5;
     z-index: 10;
-    padding-top: 51px;
+    padding-top: 63px;
 
     &:hover {
         overflow: visible;
@@ -22,7 +21,7 @@
     }
 
     &::-webkit-scrollbar {
-        width: 0px;
+        width: 0;
         background: transparent;
     }
 
@@ -50,7 +49,6 @@
             border-collapse: collapse;
             border-spacing: 0;
             color: #fff;
-            font-family: arial;
             font-size: 14px;
             text-decoration: none;
             transform: translateZ(0) scale(1, 1);
@@ -60,8 +58,30 @@
     .remove-hover:hover {
         background: none;
     }
+}
 
-    
+.show-user-sidebar-btn {
+    height: 34px;
+    width: 34px;
+    display: none;
+    position: fixed;
+    left: 11px;
+    font-size: 25px;
+    color: #4d4d4d;
+    z-index: 8;
+    top: 55px;
+    background-color: #ffffffad;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        color: #333;
+    }
+}
+
+#close-sidebar-button {
+    display: none;
 }
 
 .red-button {
@@ -77,4 +97,28 @@
     text-align: center;
     margin: 0 10px;
     vertical-align: middle;
+}
+
+@media (max-width: $sm-screen) {
+    .user-sidebar {
+        overflow: visible;
+        width: 180px;
+        height: 100%;
+        overflow-y: scroll;
+        opacity: .95;
+        transform: translateX(-100%);
+        transition: transform 200ms;
+
+        &--active {
+            transform: translateX(0);
+        }
+    }
+
+    .show-user-sidebar-btn {
+        display: flex;
+    }
+
+    #close-sidebar-button {
+        display: block;
+    }
 }

@@ -8,6 +8,7 @@
     <main id="app">
         @include('includes.user-sidebar')
         @include('includes.nav')
+        <a href="javascript:;" class="show-user-sidebar-btn"><i class="fas fa-arrow-alt-circle-right"></i></a>
         @include('includes.gsm')
         @include('includes.messages')
         <div class="min-height">

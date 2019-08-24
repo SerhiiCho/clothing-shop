@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Option;
 use App\Models\Visitor;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Str;

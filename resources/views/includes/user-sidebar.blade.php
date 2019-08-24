@@ -1,6 +1,13 @@
 @admin
     <nav class="user-sidebar">
         <ul>
+            <li style="background-color:#2d6439" id="close-sidebar-button">
+                <a href="javascript:;" title="@lang('user-sidebar.close')">
+                    <i class="fas fa-times icon-profile-menu-line"></i>
+                    <span>@lang('user-sidebar.close')</span>
+                </a>
+            </li>
+
             <li class="{{ active_if_route_is('items/create') }}">
                 <a href="/items/create" title="@lang('user-sidebar.add_new_item')">
                     <i class="fas fa-plus-circle icon-profile-menu-line"></i>
