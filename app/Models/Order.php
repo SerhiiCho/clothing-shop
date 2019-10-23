@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Serhii\Ago\Ago;
+use Serhii\Ago\Time;
 
 class Order extends Model
 {
@@ -53,7 +53,7 @@ class Order extends Model
      */
     public function getCreatedAtAttribute($value)
     {
-        return Ago::take($value);
+        return Time::ago($value);
     }
 
     /**

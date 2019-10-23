@@ -58,7 +58,7 @@
                                 </button>
                             </form>
                         </td>
-                        <td>{{ \Serhii\Ago\Ago::take($user->created_at) }}</td>
+                        <td>{{ \Serhii\Ago\Time::ago($user->created_at) }}</td>
                     </tr>
                 @endforeach
             </tbody>
