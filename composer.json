@@ -12,7 +12,8 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "predis/predis": "^1.1",
-        "rap2hpoutre/laravel-log-viewer": "^0.14.3"
+        "rap2hpoutre/laravel-log-viewer": "^0.14.3",
+        "serhii/ago": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
@@ -31,8 +32,7 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Helpers/functions.php",
-            "app/Helpers/facebookTimeAgo.php"
+            "app/Helpers/functions.php"
         ]
     },
     "autoload-dev": {
