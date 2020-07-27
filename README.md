@@ -1,1 +1,0 @@
-![clothing shop](https://github.com/SerhiiCho/clothing_shop/blob/master/storage/app/public/img/big/slider/slider.jpg?raw=true)

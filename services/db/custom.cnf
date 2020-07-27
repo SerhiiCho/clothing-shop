@@ -1,0 +1,19 @@
+[mysqld]
+# ==== Charset and collation ==== #
+character_set_server=utf8mb4
+collation_server=utf8mb4_unicode_ci
+
+# ==== InnoDB ==== #
+innodb_flush_log_at_trx_commit=0
+innodb_flush_method=O_DIRECT
+innodb_buffer_pool_instances=8
+innodb_thread_concurrency=8
+innodb_checksum_algorithm=crc32
+
+# To avoid DNS resolution on connect
+skip_name_resolve
+
+# If mysql server has no slaves and doesn't do backups, then set to 0,
+# it will increase performance. Don't want to keep a record of the comitted
+# transactions on the disk
+sync_binlog=0
