@@ -1,0 +1,80 @@
+.user-sidebar {
+    background: #222;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    bottom: 0;
+    width: 43px;
+    overflow: hidden;
+    -webkit-transition: width 200ms, opacity 200ms;
+    transition: width 200ms, opacity 200ms;
+    transform: translateZ(0) scale(1, 1);
+    opacity: .5;
+    z-index: 10;
+    padding-top: 51px;
+
+    &:hover {
+        overflow: visible;
+        width: 180px;
+        height: 100%;
+        overflow-y: scroll;
+        opacity: .95;
+    }
+
+    &::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+    }
+
+    ul { margin: 7px 0; }
+
+    .active {
+        background: color(pink-darkest);
+    }
+    
+    li {
+        position: relative;
+        display: block;
+        width: 200px;
+        line-height: 40px;
+        margin: auto;
+
+        &:hover {
+            color: #fff;
+            background: color(pink-darkest);
+        }
+
+        a {
+            position: relative;
+            display: table;
+            border-collapse: collapse;
+            border-spacing: 0;
+            color: #fff;
+            font-family: arial;
+            font-size: 14px;
+            text-decoration: none;
+            transform: translateZ(0) scale(1, 1);
+        }
+    }
+
+    .remove-hover:hover {
+        background: none;
+    }
+
+    
+}
+
+.red-button {
+    position: absolute;
+    top: 3px;
+    z-index: 5;
+    left: 25px;
+}
+
+.icon-profile-menu-line {
+    width: 25px;
+    font-size: 1.6em !important;
+    text-align: center;
+    margin: 0 10px;
+    vertical-align: middle;
+}

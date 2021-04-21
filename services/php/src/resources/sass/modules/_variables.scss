@@ -1,0 +1,21 @@
+$colors: (
+    pink-light: #f9f8f6,
+    pink: #EDE2ED,
+    pink-dark: #ecdcdc,
+    pink-darkest: #974c4c,
+    grey: #646464,
+    grey-dark: #444
+);
+
+// Primary Btn
+$btnPrimaryText: #311b28;
+$btnPrimaryBorder: #e8e2d3;
+$btnPrimaryBg: #f7f1f7;
+
+// Success Btn
+$btnSuccessText: darken($btnPrimaryBg, 70);
+$btnSuccessBorder: darken($btnPrimaryBg, 3);
+$btnSuccessBg: #ecdcdc;
+
+// Typography
+$mainFont: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;

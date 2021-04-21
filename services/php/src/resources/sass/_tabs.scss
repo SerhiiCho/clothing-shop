@@ -1,0 +1,24 @@
+.order-tabs {
+    border-bottom: none;
+
+    &__ul {
+        border-radius: 5px 5px 0 0;
+        padding: 7px 7px 0 7px;
+        background: color(pink-dark);
+
+        .nav-link {
+            color: #333;
+
+            &.active {
+                background: color(pink-light);
+                border-radius: 5px 5px 0 0;
+                border-color: color(pink-light);
+            }
+
+            b {
+                color: brown;
+                font-size: .9em;
+            }
+        }
+    }
+}

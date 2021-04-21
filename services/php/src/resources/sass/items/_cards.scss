@@ -1,0 +1,52 @@
+.main-content {
+	background: #F2F2F2;
+}
+
+.item-card {
+	height: auto;
+	text-align: center;
+	margin-bottom: 10px;
+
+	img {
+		width: 100%;
+		height: auto;
+		transition: transform 300ms;
+		border-radius: 2px;
+		border: 1px dotted color(pink-dark);
+		margin-bottom: 5px;
+
+		&:hover {
+			transform: scale(1.05) translateZ(0);
+		}
+	}
+
+	&-price {
+		min-width: 100%;
+		margin: 0 auto;
+		font-weight: bold;
+		font-size: .9em;
+		text-align: left;
+	
+		span {
+			display: block;
+			color: color(grey);
+			font-size: .9em;
+			padding: 0 6px;
+		}
+
+		.hryvnia {
+			display: inline-block;
+			font-size: 1.3em;
+			color: color(pink-darkest);
+			margin-right: -13px;
+		}
+	}
+}
+
+@media (min-width: 500px) {
+	.item-card {
+		&-price {
+			width: 100%;
+		}
+	}
+}

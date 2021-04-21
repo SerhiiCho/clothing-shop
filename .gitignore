@@ -1,3 +1,2 @@
-services/php/src/
 services/db/storage/
 services/nginx/logs/*

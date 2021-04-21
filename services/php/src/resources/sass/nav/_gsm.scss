@@ -1,0 +1,28 @@
+.contact-container {
+    height: auto;
+    min-height: 46px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: color(pink);
+    font-weight: bold;
+    font-size: .9em;
+    padding: .4em 0;
+    box-shadow: inset 0 15px 8px -16px #111;
+    clear: both;
+    transition: transform .5s;
+    transform: scaleY(0);
+    animation: appearContactContainer 500ms ease-in-out 100ms 1 normal forwards;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    line-height: 100%;
+}
+
+.gsm-operator {
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+}
